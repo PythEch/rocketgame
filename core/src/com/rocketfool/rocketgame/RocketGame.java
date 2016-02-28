@@ -38,7 +38,13 @@ public class RocketGame extends ApplicationAdapter {
         // repeat background
         batch.draw(backgroundImage, 0, 0, 0, 0, WIDTH, HEIGHT);
         // scale spaceship by 0.5
-        batch.draw(playerImage, WIDTH / 2, HEIGHT / 2, playerImage.getWidth() / 2, playerImage.getHeight() / 2);
+        batch.draw(
+                playerImage,
+                (WIDTH - playerImage.getWidth()) / 2,
+                (HEIGHT - playerImage.getHeight()) / 2,
+                playerImage.getWidth() / 2,
+                playerImage.getHeight() / 2
+        );
 
         batch.end();
     }
