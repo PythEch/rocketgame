@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class RocketGame extends ApplicationAdapter {
+	public static final String version = "0.1";
+
 	SpriteBatch batch;
 	Texture img;
 	
