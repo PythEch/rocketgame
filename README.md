@@ -14,3 +14,4 @@ File -> Open -> YourProject.ipr
   * Consider [splitting up your changes](http://stackoverflow.com/a/18531719) so it becomes easier to both
     * keep a nice history of commits
     * analyze each commit's purpose and results
+  * Otherwise git becomes nothing more than a glorified Dropbox
