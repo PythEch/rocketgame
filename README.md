@@ -15,3 +15,4 @@ File -> Open -> YourProject.ipr
     * keep a nice history of commits
     * analyze each commit's purpose and results
   * Otherwise git becomes nothing more than a glorified Dropbox
+* Always ![Sync](http://i.imgur.com/0t5l4QJ.png) before you start working on the project
