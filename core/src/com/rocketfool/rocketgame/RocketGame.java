@@ -36,7 +36,8 @@ public class RocketGame extends ApplicationAdapter {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, WIDTH, HEIGHT);
 
-        player = new Player(new Texture("PNG/playerShip2_orange.png"));
+        FileHandle fh = new FileHandle("PNG/playerShip2_orange.png");
+        player = new Player(new Texture(fh, true));
     }
 
     @Override

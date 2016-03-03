@@ -21,6 +21,8 @@ public class Player {
     private float velocity_y = 0;
 
     public Player(Texture image) {
+        // increase the quality of image
+        image.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.MipMapLinearLinear);
         this.image = image;
 
         // Parameters for Polygon is a bit weird
