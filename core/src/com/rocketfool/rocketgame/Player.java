@@ -91,4 +91,18 @@ public class Player {
                 false
         );
     }
+
+    /**
+     * @return Returns the center x-coordinate of the player's position within the world.
+     */
+    public float getX() {
+        return spaceship.getX() + image.getWidth() / 2.0f;
+    }
+
+    /**
+     * @return Returns the center y-coordinate of the player's position within the world.
+     */
+    public float getY() {
+        return spaceship.getY() + image.getHeight() / 2.0f;
+    }
 }

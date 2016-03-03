@@ -3,6 +3,7 @@ package com.rocketfool.rocketgame;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -45,6 +46,10 @@ public class RocketGame extends ApplicationAdapter {
         draw();
 
         player.move();
+
+        // Make the camera focus on the player
+        camera.position.set(player.getX(), player.getY(), 0);
+        camera.update();
     }
 
     private void draw() {
@@ -54,7 +59,17 @@ public class RocketGame extends ApplicationAdapter {
 
         // Drawing goes here!
 
-        batch.draw(backgroundImage, 0, 0, 0, 0, WIDTH, HEIGHT);
+        // FIXME: This looks buggy, watch out
+        // Draw the background according to the camera position
+        batch.draw(
+                backgroundImage,
+                camera.position.x - WIDTH / 2,
+                camera.position.y - HEIGHT / 2,
+                (int)camera.position.x,
+                -(int)camera.position.y,
+                WIDTH,
+                HEIGHT
+        );
         player.draw(batch);
 
         batch.end();
