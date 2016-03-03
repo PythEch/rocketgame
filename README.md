@@ -10,4 +10,7 @@ File -> Open -> YourProject.ipr
   * [Learn markdown](https://guides.github.com/features/mastering-markdown/)
   * [Make toy repositories](https://guides.github.com/activities/hello-world/)
   * ???
-* ??? (TBC)
+* Do not commit all your changes at once (often I'm guilty of doing this while I'm in a rush)!
+  * Consider [splitting up your changes](http://stackoverflow.com/a/18531719) so it becomes easier to both
+    * keep a nice history of commits
+    * analyze each commit's purpose and results
