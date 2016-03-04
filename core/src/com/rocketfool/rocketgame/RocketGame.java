@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.*;
 
 public class RocketGame extends ApplicationAdapter {
 
+    private static RocketGame instance = new RocketGame();
 
     private OrthographicCamera camera;
     private SpriteBatch batch;
@@ -21,6 +22,14 @@ public class RocketGame extends ApplicationAdapter {
     private Texture backgroundImage;
 
     private Player player;
+
+    private RocketGame() {
+        // Exists only to defeat instantiation.
+    }
+
+    public static RocketGame getInstance() {
+        return instance;
+    }
 
     @Override
     public void create() {
