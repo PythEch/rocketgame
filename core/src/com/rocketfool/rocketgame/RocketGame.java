@@ -10,13 +10,18 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.*;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.*;
+
+import static com.rocketfool.rocketgame.utils.Constants.PPM;
 
 public class RocketGame extends ApplicationAdapter {
+    public World world;
 
     private static RocketGame instance = new RocketGame();
 
     private OrthographicCamera camera;
+    private Box2DDebugRenderer renderer;
     private SpriteBatch batch;
 
     private Texture backgroundImage;
@@ -35,14 +40,16 @@ public class RocketGame extends ApplicationAdapter {
     public void create() {
         int width = Gdx.graphics.getWidth();
         int height = Gdx.graphics.getHeight();
+
         batch = new SpriteBatch();
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, width, height);
+        world = new World(new Vector2(0, 0), true);
+        renderer = new Box2DDebugRenderer();
 
         backgroundImage = new Texture("Backgrounds/darkPurple.png");
         // makes background repeatable
         backgroundImage.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, WIDTH, HEIGHT);
 
         FileHandle fh = new FileHandle("PNG/playerShip2_orange.png");
         player = new Player(new Texture(fh, true));
@@ -50,35 +57,55 @@ public class RocketGame extends ApplicationAdapter {
 
     @Override
     public void render() {
+        update(Gdx.graphics.getDeltaTime());
+
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // This cryptic line clears the screen.
+        batch.setProjectionMatrix(camera.combined);
+
+        batch.begin();
+
         draw();
 
-        player.move();
+        batch.end();
 
-        // Make the camera focus on the player
-        camera.position.set(player.getX(), player.getY(), 0);
-        camera.update();
+        renderer.render(world, camera.combined.scl(PPM));
+    }
+
+    @Override
+    public void dispose() {
+        renderer.dispose();
+        world.dispose();
     }
 
     private void draw() {
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // This cryptic line clears the screen.
-        batch.setProjectionMatrix(camera.combined);
-        batch.begin();
-
-        // Drawing goes here!
+        int width = Gdx.graphics.getWidth();
+        int height = Gdx.graphics.getHeight();
 
         // FIXME: This looks buggy, watch out
         // Draw the background according to the camera position
-        batch.draw(
+        /*batch.draw(
                 backgroundImage,
-                camera.position.x - WIDTH / 2,
-                camera.position.y - HEIGHT / 2,
-                (int)camera.position.x,
-                -(int)camera.position.y,
-                WIDTH,
-                HEIGHT
+                0,
+                0,
+                0,
+                0,
+                width,
+                height
         );
+*/
         player.draw(batch);
 
-        batch.end();
+    }
+
+    private void update(float dt) {
+        player.update(dt);
+
+        // Make the camera focus on the player
+        camera.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
+        camera.update();
+
+        // update physics objects
+        world.step(1 / 60f, 6, 2);
+
     }
 }
