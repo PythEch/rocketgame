@@ -81,9 +81,7 @@ public class RocketGame extends ApplicationAdapter {
         int width = Gdx.graphics.getWidth();
         int height = Gdx.graphics.getHeight();
 
-        // FIXME: This looks buggy, watch out
-        // Draw the background according to the camera position
-        /*batch.draw(
+        batch.draw(
                 backgroundImage,
                 0,
                 0,
@@ -92,7 +90,7 @@ public class RocketGame extends ApplicationAdapter {
                 width,
                 height
         );
-*/
+
         player.draw(batch);
 
     }
