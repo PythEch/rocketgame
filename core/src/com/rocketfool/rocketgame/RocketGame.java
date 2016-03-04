@@ -22,7 +22,7 @@ public class RocketGame extends ApplicationAdapter {
 
     /** A Box2D world which manages the physics engine. */
     public World world;
-    
+
     /** Internal property that holds only one instance of {@link RocketGame} at a time. */
     private static RocketGame instance = new RocketGame();
 

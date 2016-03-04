@@ -5,10 +5,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.rocketfool.rocketgame.utils.Math;
 
 import static com.rocketfool.rocketgame.utils.Constants.PPM;
 
@@ -59,18 +57,17 @@ public class Player {
             spaceship.applyAngularImpulse(-ROTATE_IMPULSE * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            float angle = -spaceship.getAngle();
+            float angle = spaceship.getAngle();
 
-            float horizontalImpulse = Math.offsetX(angle, IMPULSE * dt);
-            float verticalImpulse = Math.offsetY(angle, IMPULSE * dt);
+            Vector2 bottomVector = new Vector2(0, -image.getHeight() / 2f / PPM).rotateRad(angle);
+            Vector2 bottomPosition = bottomVector.add(spaceship.getPosition());
 
-            float bottomCenterX = spaceship.getPosition().x - Math.offsetX(angle, image.getHeight() / 2f / PPM);
-            float bottomCenterY = spaceship.getPosition().y - Math.offsetY(angle, image.getHeight() / 2f / PPM);
+            Vector2 impulseVector = new Vector2(0, dt * IMPULSE).rotateRad(spaceship.getAngle());
 
             if (RocketGame.DEBUG)
-                RocketGame.getInstance().drawDebugBox(bottomCenterX, bottomCenterY, 4 / PPM, 4 / PPM);
+                RocketGame.getInstance().drawDebugBox(bottomPosition.x, bottomPosition.y, 4 / PPM, 4 / PPM);
 
-            spaceship.applyLinearImpulse(horizontalImpulse, verticalImpulse, bottomCenterX, bottomCenterY, false);
+            spaceship.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             // Do nothing for now
