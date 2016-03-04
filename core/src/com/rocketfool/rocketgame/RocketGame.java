@@ -99,7 +99,7 @@ public class RocketGame extends ApplicationAdapter {
         player.update(dt);
 
         // Make the camera focus on the player
-        camera.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
+        camera.position.set(player.getX(), player.getY(), 0);
         camera.update();
 
         // update physics objects

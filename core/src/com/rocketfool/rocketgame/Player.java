@@ -68,10 +68,10 @@ public class Player {
     public void draw(SpriteBatch batch) {
         batch.draw(
                 image,
-                spaceship.getPosition().x * PPM,
-                spaceship.getPosition().y * PPM,
-                0,
-                0,
+                getCenterX(),
+                getCenterY(),
+                image.getWidth() / 2f,
+                image.getHeight() / 2f,
                 image.getWidth(),
                 image.getHeight(),
                 1,
@@ -86,11 +86,31 @@ public class Player {
         );
     }
 
+    /**
+     * @return Returns the absolute pixel x-coordinate of the player's within the world.
+     */
     public float getX() {
-        return spaceship.getPosition().x;
+        return spaceship.getPosition().x * PPM;
     }
 
+    /**
+     * @return Returns the absolute pixel y-coordinate of the player's within the world.
+     */
     public float getY() {
-        return spaceship.getPosition().y;
+        return spaceship.getPosition().y * PPM;
+    }
+
+    /**
+     * @return Returns the pixel x-coordinate of the player's center within the world.
+     */
+    public float getCenterX() {
+        return getX() - image.getWidth() / 2f;
+    }
+
+    /**
+     * @return Returns the pixel y-coordinate of the player's center within the world.
+     */
+    public float getCenterY() {
+        return getY() - image.getHeight() / 2f;
     }
 }
