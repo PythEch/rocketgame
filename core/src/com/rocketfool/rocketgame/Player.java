@@ -16,7 +16,7 @@ import static com.rocketfool.rocketgame.utils.Constants.PPM;
  */
 public class Player {
     private static final float IMPULSE = 45;
-    private static final float ROTATE_DEGREE = 3 * MathUtils.degreesToRadians;
+    private static final float ROTATE_IMPULSE = 35;
 
     private Body spaceship;
     private Texture image;
@@ -48,10 +48,10 @@ public class Player {
 
     public void update(float dt) {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            spaceship.applyAngularImpulse(IMPULSE * dt, true);
+            spaceship.applyAngularImpulse(ROTATE_IMPULSE * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            spaceship.applyAngularImpulse(-IMPULSE * dt, true);
+            spaceship.applyAngularImpulse(-ROTATE_IMPULSE * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             float x = MathUtils.sin(-spaceship.getAngle()) * dt * IMPULSE;
