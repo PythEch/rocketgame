@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -16,12 +17,12 @@ import com.badlogic.gdx.physics.box2d.*;
 import static com.rocketfool.rocketgame.utils.Constants.PPM;
 
 public class RocketGame extends ApplicationAdapter {
+    /** Used to indicate whether DEBUG features should be enabled. */
+    public static final boolean DEBUG = true;
+
     /** A Box2D world which manages the physics engine. */
     public World world;
-
-    /** Used to indicate whether DEBUG features should be enabled. */
-    private static final boolean DEBUG = true;
-
+    
     /** Internal property that holds only one instance of {@link RocketGame} at a time. */
     private static RocketGame instance = new RocketGame();
 
@@ -112,6 +113,23 @@ public class RocketGame extends ApplicationAdapter {
         debugRenderer.dispose();
         world.dispose();
         backgroundImage.dispose();
+    }
+
+    public void drawDebugBox(float x, float y, float width, float height) {
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.StaticBody;
+        bodyDef.active = false;
+        bodyDef.position.set(x, y);
+
+        Body body = world.createBody(bodyDef);
+
+        PolygonShape rectangle = new PolygonShape();
+        rectangle.setAsBox(width, height);
+
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.shape = rectangle;
+
+        Fixture fixture = body.createFixture(fixtureDef);
     }
 
     /**

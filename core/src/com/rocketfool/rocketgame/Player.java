@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.rocketfool.rocketgame.utils.Math;
 
 import static com.rocketfool.rocketgame.utils.Constants.PPM;
 
@@ -16,7 +17,7 @@ import static com.rocketfool.rocketgame.utils.Constants.PPM;
  */
 public class Player {
     private static final float IMPULSE = 45;
-    private static final float ROTATE_IMPULSE = 35;
+    private static final float ROTATE_IMPULSE = 45;
 
     private Body spaceship;
     private Texture image;
@@ -33,6 +34,8 @@ public class Player {
         bodyDef.position.set(Gdx.graphics.getWidth() / 2f / PPM, Gdx.graphics.getHeight() / 2f / PPM);
 
         spaceship = RocketGame.getInstance().world.createBody(bodyDef);
+
+        spaceship.setTransform(0, 0, -90 * MathUtils.degreesToRadians);
 
         PolygonShape rectangle = new PolygonShape();
         rectangle.setAsBox(image.getWidth() / 2f / PPM, image.getHeight() / 2f / PPM);
@@ -56,14 +59,21 @@ public class Player {
             spaceship.applyAngularImpulse(-ROTATE_IMPULSE * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            float x = MathUtils.sin(-spaceship.getAngle()) * dt * IMPULSE;
-            float y = MathUtils.cos(-spaceship.getAngle()) * dt * IMPULSE;
-            spaceship.applyLinearImpulse(new Vector2(x, y), spaceship.getPosition(), false);
+            float angle = -spaceship.getAngle();
+
+            float horizontalImpulse = Math.offsetX(angle, IMPULSE * dt);
+            float verticalImpulse = Math.offsetY(angle, IMPULSE * dt);
+
+            float bottomCenterX = spaceship.getPosition().x - Math.offsetX(angle, image.getHeight() / 2f / PPM);
+            float bottomCenterY = spaceship.getPosition().y - Math.offsetY(angle, image.getHeight() / 2f / PPM);
+
+            if (RocketGame.DEBUG)
+                RocketGame.getInstance().drawDebugBox(bottomCenterX, bottomCenterY, 4 / PPM, 4 / PPM);
+
+            spaceship.applyLinearImpulse(horizontalImpulse, verticalImpulse, bottomCenterX, bottomCenterY, false);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            float x = MathUtils.sin(-spaceship.getAngle()) * dt * IMPULSE;
-            float y = MathUtils.cos(-spaceship.getAngle()) * dt * IMPULSE;
-            spaceship.applyLinearImpulse(new Vector2(x, -y), spaceship.getPosition(), false);
+            // Do nothing for now
         }
     }
 
