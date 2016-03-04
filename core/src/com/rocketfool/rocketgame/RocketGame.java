@@ -13,11 +13,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.*;
 
 public class RocketGame extends ApplicationAdapter {
-    public static final String VERSION = "0.1";
-    public static final String TITLE = "Rocket Game";
 
-    public static final int WIDTH = 1280;
-    public static final int HEIGHT = 720;
 
     private OrthographicCamera camera;
     private SpriteBatch batch;
@@ -28,6 +24,8 @@ public class RocketGame extends ApplicationAdapter {
 
     @Override
     public void create() {
+        int width = Gdx.graphics.getWidth();
+        int height = Gdx.graphics.getHeight();
         batch = new SpriteBatch();
 
         backgroundImage = new Texture("Backgrounds/darkPurple.png");

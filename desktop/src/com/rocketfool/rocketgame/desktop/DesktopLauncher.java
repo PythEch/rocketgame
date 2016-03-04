@@ -7,9 +7,9 @@ import com.rocketfool.rocketgame.RocketGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.title = RocketGame.TITLE + " v" + RocketGame.VERSION;
-		config.width = RocketGame.WIDTH;
-		config.height = RocketGame.HEIGHT;
-		new LwjglApplication(new RocketGame(), config);
+		config.title = "RocketGame v0.1";
+		config.width = 1280;
+		config.height = 720;
+		new LwjglApplication(RocketGame.getInstance(), config);
 	}
 }
