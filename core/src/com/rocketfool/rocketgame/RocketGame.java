@@ -96,6 +96,7 @@ public class RocketGame extends ApplicationAdapter {
     public void dispose() {
         debugRenderer.dispose();
         world.dispose();
+        backgroundImage.dispose();
     }
 
     /**
