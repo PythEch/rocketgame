@@ -15,7 +15,7 @@ import static com.rocketfool.rocketgame.utils.Constants.PPM;
  * Created by pythech on 03/03/16.
  */
 public class Player {
-    private static final float IMPULSE = 3;
+    private static final float IMPULSE = 45;
     private static final float ROTATE_DEGREE = 3 * MathUtils.degreesToRadians;
 
     private Body spaceship;
@@ -48,19 +48,19 @@ public class Player {
 
     public void update(float dt) {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            spaceship.applyAngularImpulse(IMPULSE, true);
+            spaceship.applyAngularImpulse(IMPULSE * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            spaceship.applyAngularImpulse(-IMPULSE, true);
+            spaceship.applyAngularImpulse(-IMPULSE * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            float x = MathUtils.sin(-spaceship.getAngle()) * dt * IMPULSE * 25;
-            float y = MathUtils.cos(-spaceship.getAngle()) * dt * IMPULSE * 25;
+            float x = MathUtils.sin(-spaceship.getAngle()) * dt * IMPULSE;
+            float y = MathUtils.cos(-spaceship.getAngle()) * dt * IMPULSE;
             spaceship.applyLinearImpulse(new Vector2(x, y), spaceship.getPosition(), false);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            float x = MathUtils.sin(-spaceship.getAngle()) * dt * IMPULSE * 25;
-            float y = MathUtils.cos(-spaceship.getAngle()) * dt * IMPULSE * 25;
+            float x = MathUtils.sin(-spaceship.getAngle()) * dt * IMPULSE;
+            float y = MathUtils.cos(-spaceship.getAngle()) * dt * IMPULSE;
             spaceship.applyLinearImpulse(new Vector2(x, -y), spaceship.getPosition(), false);
         }
     }
