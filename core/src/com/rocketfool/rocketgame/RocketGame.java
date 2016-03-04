@@ -64,7 +64,7 @@ public class RocketGame extends ApplicationAdapter {
     }
 
     /**
-     * This method is called whenever rendering is needed (once a frame is drawn).
+     * This method is called whenever rendering is needed (once a frame is drawn, i.e 60 fps = 60 calls).
      * We are diving business logic and drawing logic with methods
      * {@link #update(float)} and
      * {@link #draw()}.
