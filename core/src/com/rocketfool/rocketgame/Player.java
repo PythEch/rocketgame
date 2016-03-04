@@ -27,6 +27,7 @@ public class Player {
         this.image = image;
 
         // create physics body
+
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(Gdx.graphics.getWidth() / 2f / PPM, Gdx.graphics.getHeight() / 2f / PPM);
@@ -36,9 +37,10 @@ public class Player {
         PolygonShape rectangle = new PolygonShape();
         rectangle.setAsBox(image.getWidth() / 2f / PPM, image.getHeight() / 2f / PPM);
 
+        // Define properties of object here
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = rectangle;
-        fixtureDef.density = 1.0f;
+        fixtureDef.density = 1.0f; // TODO: Calculate a reasonable density
         fixtureDef.friction = 0.0f;
 
         Fixture fixture = spaceship.createFixture(fixtureDef);

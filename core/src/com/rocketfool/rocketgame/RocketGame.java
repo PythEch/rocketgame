@@ -16,16 +16,29 @@ import com.badlogic.gdx.physics.box2d.*;
 import static com.rocketfool.rocketgame.utils.Constants.PPM;
 
 public class RocketGame extends ApplicationAdapter {
+    /** A Box2D world which manages the physics engine. */
     public World world;
 
+    /** Used to indicate whether DEBUG features should be enabled. */
     private static final boolean DEBUG = true;
 
+    /** Internal property that holds only one instance of {@link RocketGame} at a time. */
     private static RocketGame instance = new RocketGame();
 
+    // These are used for game engine logic
+
+    /** Orthographic cameras are used for 2D games, the other one Perspective camera is for 3D games. */
     private OrthographicCamera camera;
+    /** Used for drawing the bounds of objects etc. */
     private Box2DDebugRenderer debugRenderer;
+    /**
+     * This is used to make OpenGL draw objects in one go, for performance reasons.
+     * @see com.badlogic.gdx.graphics.g2d.Sprite
+     * @see com.badlogic.gdx.graphics.g2d.Batch
+     * */
     private SpriteBatch batch;
 
+    // These are our objects within the world
     private Texture backgroundImage;
     private Player player;
 
@@ -50,16 +63,18 @@ public class RocketGame extends ApplicationAdapter {
         int width = Gdx.graphics.getWidth();
         int height = Gdx.graphics.getHeight();
 
+        // configure the world
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, width, height);
-        world = new World(new Vector2(0, 0), true);
+        camera.setToOrtho(false, width, height); // we use bottom-left as our origin
+        world = new World(new Vector2(0, 0), true); // with no gravity
         debugRenderer = new Box2DDebugRenderer();
 
+        // create map
         backgroundImage = new Texture("Backgrounds/darkPurple.png");
-        // makes background repeatable
-        backgroundImage.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        backgroundImage.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat); // makes background repeatable
 
+        // create player
         FileHandle fh = new FileHandle("PNG/playerShip2_orange.png");
         player = new Player(new Texture(fh, true));
     }
@@ -107,6 +122,7 @@ public class RocketGame extends ApplicationAdapter {
         int width = Gdx.graphics.getWidth();
         int height = Gdx.graphics.getHeight();
 
+        // draw map
         batch.draw(
                 backgroundImage,
                 0,
@@ -132,8 +148,7 @@ public class RocketGame extends ApplicationAdapter {
         camera.position.set(player.getX(), player.getY(), 0);
         camera.update();
 
-        // update physics objects
+        // update/calculate physics objects
         world.step(1 / 60f, 6, 2);
-
     }
 }
