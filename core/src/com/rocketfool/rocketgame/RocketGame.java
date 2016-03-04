@@ -18,14 +18,15 @@ import static com.rocketfool.rocketgame.utils.Constants.PPM;
 public class RocketGame extends ApplicationAdapter {
     public World world;
 
+    private static final boolean DEBUG = true;
+
     private static RocketGame instance = new RocketGame();
 
     private OrthographicCamera camera;
-    private Box2DDebugRenderer renderer;
+    private Box2DDebugRenderer debugRenderer;
     private SpriteBatch batch;
 
     private Texture backgroundImage;
-
     private Player player;
 
     /** Exists only to defeat instantiation. */
@@ -53,7 +54,7 @@ public class RocketGame extends ApplicationAdapter {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, width, height);
         world = new World(new Vector2(0, 0), true);
-        renderer = new Box2DDebugRenderer();
+        debugRenderer = new Box2DDebugRenderer();
 
         backgroundImage = new Texture("Backgrounds/darkPurple.png");
         // makes background repeatable
@@ -82,7 +83,8 @@ public class RocketGame extends ApplicationAdapter {
 
         batch.end();
 
-        renderer.render(world, camera.combined.scl(PPM));
+        if (DEBUG)
+            debugRenderer.render(world, camera.combined.scl(PPM));
     }
 
     /**
@@ -92,7 +94,7 @@ public class RocketGame extends ApplicationAdapter {
      */
     @Override
     public void dispose() {
-        renderer.dispose();
+        debugRenderer.dispose();
         world.dispose();
     }
 
