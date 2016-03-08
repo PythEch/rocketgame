@@ -42,6 +42,7 @@ public class RocketGame extends ApplicationAdapter {
     // These are our objects within the world
     private Texture backgroundImage;
     private Player player;
+    private Map map;
 
     /** Exists only to defeat instantiation. */
     private RocketGame() { }
@@ -78,6 +79,9 @@ public class RocketGame extends ApplicationAdapter {
         // create player
         FileHandle fh = new FileHandle("PNG/playerShip2_orange.png");
         player = new Player(new Texture(fh, true));
+
+        map = new Map(width, height, player);
+        map.addPlanet(new Planet(30, 30, 10, 10));
     }
 
     /**
@@ -147,8 +151,8 @@ public class RocketGame extends ApplicationAdapter {
                 0,
                 0,
                 0,
-                width,
-                height
+                width * 100,
+                height * 100
         );
 
         player.draw(batch);
@@ -161,6 +165,7 @@ public class RocketGame extends ApplicationAdapter {
      */
     private void update(float dt) {
         player.update(dt);
+        map.update(dt);
 
         // Make the camera focus on the player
         camera.position.set(player.getX(), player.getY(), 0);

@@ -13,9 +13,12 @@ import static com.rocketfool.rocketgame.utils.Constants.PPM;
 /**
  * Created by pythech on 03/03/16.
  */
+
 public class Player {
-    private static final float IMPULSE = 45;
+    private static final float IMPULSE = 100;
     private static final float ROTATE_IMPULSE = 45;
+
+    private int currentImpulse;
 
     private Body spaceship;
     private Texture image;
@@ -57,21 +60,29 @@ public class Player {
             spaceship.applyAngularImpulse(-ROTATE_IMPULSE * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            float angle = spaceship.getAngle();
-
-            Vector2 bottomVector = new Vector2(0, -image.getHeight() / 2f / PPM).rotateRad(angle);
-            Vector2 bottomPosition = bottomVector.add(spaceship.getPosition());
-
-            Vector2 impulseVector = new Vector2(0, dt * IMPULSE).rotateRad(spaceship.getAngle());
-
-            if (RocketGame.DEBUG)
-                RocketGame.getInstance().drawDebugBox(bottomPosition.x, bottomPosition.y, 4 / PPM, 4 / PPM);
-
-            spaceship.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
+            currentImpulse += dt * IMPULSE;
+            currentImpulse = Math.max(currentImpulse, 0);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            // Do nothing for now
+            currentImpulse -= dt * IMPULSE;
+            currentImpulse = Math.max(currentImpulse, 0);
         }
+
+        move(dt);
+    }
+
+    private void move(float dt) {
+        float angle = spaceship.getAngle();
+
+        Vector2 bottomVector = new Vector2(0, -image.getHeight() / 2f / PPM).rotateRad(angle);
+        Vector2 bottomPosition = bottomVector.add(spaceship.getPosition());
+
+        Vector2 impulseVector = new Vector2(0 ,dt * currentImpulse).rotateRad(spaceship.getAngle());
+
+        if (RocketGame.DEBUG)
+            RocketGame.getInstance().drawDebugBox(bottomPosition.x, bottomPosition.y, 4 / PPM, 4 / PPM);
+
+        spaceship.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
     }
 
     public void draw(SpriteBatch batch) {
@@ -107,5 +118,9 @@ public class Player {
      */
     public float getY() {
         return spaceship.getPosition().y * PPM;
+    }
+
+    public Body getSpaceship() {
+        return spaceship;
     }
 }
