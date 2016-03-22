@@ -8,56 +8,58 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 
-import static com.rocketfool.rocketgame.utils.Constants.PPM;
+import static com.rocketfool.rocketgame.utils.Constants.*;
 
 /**
  * Created by pythech on 03/03/16.
  */
 
-public class Player {
-    private static final float IMPULSE = 100;
-    private static final float ROTATE_IMPULSE = 45;
+public class Player extends GameObject {
+    private static final float IMPULSE = 65;
+    private static final float ROTATE_IMPULSE = 100;
 
     private int currentImpulse;
-
-    private Body spaceship;
-    private Texture image;
 
     public Player(Texture image) {
         // increase the quality of image
         image.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.MipMapLinearLinear);
-        this.image = image;
+        this.texture = image;
+        this.body = createBody(0,0,0);
+    }
 
-        // create physics body
-
+    private Body createBody(float x, float y, float z) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(Gdx.graphics.getWidth() / 2f / PPM, Gdx.graphics.getHeight() / 2f / PPM);
+        bodyDef.position.set(Gdx.graphics.getWidth() / 2f * toMeter, Gdx.graphics.getHeight() / 2f * toMeter);
 
-        spaceship = RocketGame.getInstance().world.createBody(bodyDef);
+        Body body = RocketGame.getInstance().world.createBody(bodyDef);
 
-        spaceship.setTransform(0, 0, -90 * MathUtils.degreesToRadians);
+        body.setTransform(0, 0, -90 * MathUtils.degreesToRadians);
 
         PolygonShape rectangle = new PolygonShape();
-        rectangle.setAsBox(image.getWidth() / 2f / PPM, image.getHeight() / 2f / PPM);
+        rectangle.setAsBox(texture.getWidth() / 2f * toMeter, texture.getHeight() / 2f * toMeter);
 
         // Define properties of object here
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = rectangle;
         fixtureDef.density = 1.0f; // TODO: Calculate a reasonable density
         fixtureDef.friction = 0.0f;
+        fixtureDef.restitution = 0.0f;
 
-        Fixture fixture = spaceship.createFixture(fixtureDef);
+        Fixture fixture = body.createFixture(fixtureDef);
 
         rectangle.dispose();
+
+        return body;
     }
 
+    @Override
     public void update(float dt) {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            spaceship.applyAngularImpulse(ROTATE_IMPULSE * dt, true);
+            body.applyAngularImpulse(ROTATE_IMPULSE * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            spaceship.applyAngularImpulse(-ROTATE_IMPULSE * dt, true);
+            body.applyAngularImpulse(-ROTATE_IMPULSE * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             currentImpulse += dt * IMPULSE;
@@ -72,55 +74,38 @@ public class Player {
     }
 
     private void move(float dt) {
-        float angle = spaceship.getAngle();
+        float angle = body.getAngle();
 
-        Vector2 bottomVector = new Vector2(0, -image.getHeight() / 2f / PPM).rotateRad(angle);
-        Vector2 bottomPosition = bottomVector.add(spaceship.getPosition());
+        Vector2 bottomVector = new Vector2(0, -texture.getHeight() / 2f * toMeter).rotateRad(angle);
+        Vector2 bottomPosition = bottomVector.add(body.getPosition());
 
-        Vector2 impulseVector = new Vector2(0 ,dt * currentImpulse).rotateRad(spaceship.getAngle());
+        Vector2 impulseVector = new Vector2(0 ,dt * currentImpulse).rotateRad(body.getAngle());
 
         if (RocketGame.DEBUG)
-            RocketGame.getInstance().drawDebugBox(bottomPosition.x, bottomPosition.y, 4 / PPM, 4 / PPM);
+            RocketGame.getInstance().drawDebugBox(bottomPosition.x, bottomPosition.y, 4 * toMeter, 4 * toMeter);
 
-        spaceship.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
+        body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
     }
 
+    @Override
     public void draw(SpriteBatch batch) {
         batch.draw(
-                image,
-                getX() - image.getWidth() / 2f,
-                getY() - image.getHeight() / 2f,
-                image.getWidth() / 2f,
-                image.getHeight() / 2f,
-                image.getWidth(),
-                image.getHeight(),
+                texture,
+                this.getBody().getPosition().x * toPixel - texture.getWidth() / 2f,
+                this.getBody().getPosition().y * toPixel - texture.getHeight() / 2f,
+                texture.getWidth() / 2f,
+                texture.getHeight() / 2f,
+                texture.getWidth(),
+                texture.getHeight(),
                 1,
                 1,
-                spaceship.getAngle() * MathUtils.radiansToDegrees,
+                body.getAngle() * MathUtils.radiansToDegrees,
                 0,
                 0,
-                image.getWidth(),
-                image.getHeight(),
+                texture.getWidth(),
+                texture.getHeight(),
                 false,
                 false
         );
-    }
-
-    /**
-     * @return Returns the pixel x-coordinate of the player's center within the world.
-     */
-    public float getX() {
-        return spaceship.getPosition().x * PPM;
-    }
-
-    /**
-     * @return Returns the pixel y-coordinate of the player's center within the world.
-     */
-    public float getY() {
-        return spaceship.getPosition().y * PPM;
-    }
-
-    public Body getSpaceship() {
-        return spaceship;
     }
 }

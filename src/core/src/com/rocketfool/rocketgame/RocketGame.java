@@ -13,8 +13,10 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.utils.Array;
 
 import static com.rocketfool.rocketgame.utils.Constants.PPM;
+import static com.rocketfool.rocketgame.utils.Constants.toPixel;
 
 public class RocketGame extends ApplicationAdapter {
     /** Used to indicate whether DEBUG features should be enabled. */
@@ -40,9 +42,10 @@ public class RocketGame extends ApplicationAdapter {
     private SpriteBatch batch;
 
     // These are our objects within the world
-    private Texture backgroundImage;
     private Player player;
     private Map map;
+
+    private Array<GameObject> gameObjects;
 
     /** Exists only to defeat instantiation. */
     private RocketGame() { }
@@ -72,16 +75,17 @@ public class RocketGame extends ApplicationAdapter {
         world = new World(new Vector2(0, 0), true); // with no gravity
         debugRenderer = new Box2DDebugRenderer();
 
-        // create map
-        backgroundImage = new Texture("Backgrounds/darkPurple.png");
-        backgroundImage.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat); // makes background repeatable
+        gameObjects = new Array<GameObject>();
 
         // create player
         FileHandle fh = new FileHandle("PNG/playerShip2_orange.png");
         player = new Player(new Texture(fh, true));
 
         map = new Map(width, height, player);
-        map.addPlanet(new Planet(30, 30, 10, 10));
+        map.addPlanet(new Planet(75, 75, 1e4f, 50));
+
+        gameObjects.add(map);
+        gameObjects.add(player);
     }
 
     /**
@@ -116,7 +120,6 @@ public class RocketGame extends ApplicationAdapter {
     public void dispose() {
         debugRenderer.dispose();
         world.dispose();
-        backgroundImage.dispose();
     }
 
     public void drawDebugBox(float x, float y, float width, float height) {
@@ -144,18 +147,9 @@ public class RocketGame extends ApplicationAdapter {
         int width = Gdx.graphics.getWidth();
         int height = Gdx.graphics.getHeight();
 
-        // draw map
-        batch.draw(
-                backgroundImage,
-                0,
-                0,
-                0,
-                0,
-                width * 100,
-                height * 100
-        );
-
-        player.draw(batch);
+        for (GameObject go : gameObjects) {
+            go.draw(batch);
+        }
 
     }
 
@@ -164,11 +158,15 @@ public class RocketGame extends ApplicationAdapter {
      * @param dt Stands for DeltaTime which is the time passed between two sequential calls of update.
      */
     private void update(float dt) {
-        player.update(dt);
+
+        for (GameObject go : gameObjects) {
+            go.update(dt);
+        }
+
         map.update(dt);
 
         // Make the camera focus on the player
-        camera.position.set(player.getX(), player.getY(), 0);
+        camera.position.set(player.getBody().getPosition().x * toPixel, player.getBody().getPosition().y * toPixel, 0);
         camera.update();
 
         // update/calculate physics objects
