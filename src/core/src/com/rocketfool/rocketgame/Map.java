@@ -17,12 +17,10 @@ public class Map extends GameObject {
     private int width;
     private int height;
     private Array<Planet> planets;
-    private Player player;
 
-    public Map(int width, int height, Player player) {
-        this.width = width;
-        this.height = height;
-        this.player = player;
+    public Map(int width, int height) {
+        this.width = width * 100;
+        this.height = height * 100;
         planets = new Array<Planet>();
 
         texture = new Texture("Backgrounds/darkPurple.png");
@@ -44,10 +42,7 @@ public class Map extends GameObject {
     @Override
     public void update(float dt) {
         for (Planet planet : planets) {
-            Vector2 directionVector = planet.getBody().getPosition().sub(player.getBody().getPosition());
-            float forceScalar = player.getBody().getMass() * planet.getMass() / (float)Math.pow(directionVector.len(), 2);
-            Vector2 forceVector = directionVector.setLength(forceScalar);
-            player.getBody().applyForceToCenter(forceVector, true);
+            planet.update(dt);
         }
     }
 
@@ -59,8 +54,8 @@ public class Map extends GameObject {
                 0,
                 0,
                 0,
-                width * 100,
-                height * 100
+                width,
+                height
         );
     }
 }

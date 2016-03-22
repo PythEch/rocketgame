@@ -58,6 +58,10 @@ public class RocketGame extends ApplicationAdapter {
         return instance;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
     /**
      * This is our initialization method, akin to constructor
      * though used for different purposes.
@@ -81,7 +85,7 @@ public class RocketGame extends ApplicationAdapter {
         FileHandle fh = new FileHandle("PNG/playerShip2_orange.png");
         player = new Player(new Texture(fh, true));
 
-        map = new Map(width, height, player);
+        map = new Map(width, height);
         map.addPlanet(new Planet(75, 75, 1e4f, 50));
 
         gameObjects.add(map);
