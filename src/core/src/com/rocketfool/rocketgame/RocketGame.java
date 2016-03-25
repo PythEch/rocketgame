@@ -7,6 +7,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
@@ -46,6 +47,7 @@ public class RocketGame extends ApplicationAdapter {
     private Map map;
 
     private Array<GameObject> gameObjects;
+    private BitmapFont font;
 
     /** Exists only to defeat instantiation. */
     private RocketGame() { }
@@ -90,6 +92,8 @@ public class RocketGame extends ApplicationAdapter {
 
         gameObjects.add(map);
         gameObjects.add(player);
+
+        font = new BitmapFont();
     }
 
     /**
@@ -155,6 +159,13 @@ public class RocketGame extends ApplicationAdapter {
             go.draw(batch);
         }
 
+        if (DEBUG)
+            font.draw(
+                    batch,
+                    "Linear velocity: " + player.getCurrentImpulse(),
+                    player.getBody().getPosition().x * toPixel - player.getTexture().getWidth() / 2f,
+                    player.getBody().getPosition().y * toPixel - 100
+            );
     }
 
     /**

@@ -107,4 +107,8 @@ public class Player extends GameObject {
                 false
         );
     }
+
+    public float getCurrentImpulse() {
+        return currentImpulse;
+    }
 }
