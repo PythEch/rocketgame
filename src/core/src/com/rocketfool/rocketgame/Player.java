@@ -13,12 +13,11 @@ import static com.rocketfool.rocketgame.utils.Constants.*;
 /**
  * Created by pythech on 03/03/16.
  */
-
 public class Player extends GameObject {
     private static final float IMPULSE = 65;
     private static final float ROTATE_IMPULSE = 100;
 
-    private int currentImpulse;
+    private float currentImpulse;
 
     public Player(Texture image) {
         // increase the quality of image
@@ -79,7 +78,7 @@ public class Player extends GameObject {
         Vector2 bottomVector = new Vector2(0, -texture.getHeight() / 2f * toMeter).rotateRad(angle);
         Vector2 bottomPosition = bottomVector.add(body.getPosition());
 
-        Vector2 impulseVector = new Vector2(0 ,dt * currentImpulse).rotateRad(body.getAngle());
+        Vector2 impulseVector = new Vector2(0, dt * currentImpulse).rotateRad(body.getAngle());
 
         if (RocketGame.DEBUG)
             RocketGame.getInstance().drawDebugBox(bottomPosition.x, bottomPosition.y, 4 * toMeter, 4 * toMeter);
