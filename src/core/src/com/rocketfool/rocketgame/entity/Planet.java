@@ -1,19 +1,25 @@
-package com.rocketfool.rocketgame;
+package com.rocketfool.rocketgame.entity;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.rocketfool.rocketgame.screen.GameScreen;
 
 /**
  * Created by pythech on 07/03/16.
  */
-public class Planet extends GameObject {
+public class Planet extends Entity {
+    //region Constants
+    private static final float G = 6.67408e-11f;
+    //endregion
+
+    //region Fields
     private float mass;
     private float radius;
+    //endregion
 
+    //region Constructor
     public Planet(int x, int y, float mass, float radius) {
-        super(x, y);
         this.mass = mass;
         this.radius = radius;
         this.body = createBody(x, y);
@@ -24,7 +30,7 @@ public class Planet extends GameObject {
         bodyDef.type = BodyDef.BodyType.KinematicBody;
         bodyDef.position.set(x, y);
 
-        Body body = RocketGame.getInstance().world.createBody(bodyDef);
+        Body body = GameScreen.getInstance().getWorld().createBody(bodyDef);
 
         CircleShape circle = new CircleShape();
         circle.setRadius(radius);
@@ -39,22 +45,12 @@ public class Planet extends GameObject {
 
         return body;
     }
+    //endregion
 
-    public float getMass() {
-        return mass;
-    }
-
-    public float getRadius() {
-        return radius;
-    }
-
-    public Body getBody() {
-        return body;
-    }
-
+    //region Methods
     @Override
     public void update(float dt) {
-        Body spaceship = RocketGame.getInstance().getPlayer().getBody();
+        Body spaceship = GameScreen.getInstance().getPlayer().getBody();
 
         // Get the directionVector by substracting the middle points of two objects
         Vector2 directionVector = this.body.getPosition().sub( spaceship.getPosition() );
@@ -80,4 +76,15 @@ public class Planet extends GameObject {
 
     @Override
     public void draw(SpriteBatch batch) { }
+    //endregion
+
+    //region Getters & Setters
+    public float getMass() {
+        return mass;
+    }
+
+    public float getRadius() {
+        return radius;
+    }
+    //endregion
 }

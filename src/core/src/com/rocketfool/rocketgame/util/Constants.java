@@ -1,4 +1,4 @@
-package com.rocketfool.rocketgame.utils;
+package com.rocketfool.rocketgame.util;
 
 public final class Constants {
     /**
@@ -7,6 +7,7 @@ public final class Constants {
      */
     public static final float PPM = 16;
 
+    //region PPM Aliases
     public static final float toPixel = PPM;
     public static final float toMeter = 1f / PPM;
 
@@ -18,4 +19,8 @@ public final class Constants {
 
     public static final float fromBox2DtoLibGDX = toPixel;
     public static final float fromLibGDXtoBox2D = toMeter;
+    //endregion
+
+    /** Used to indicate whether DEBUG features should be enabled. */
+    public static final boolean DEBUG = true;
 }

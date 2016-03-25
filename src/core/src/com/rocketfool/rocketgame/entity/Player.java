@@ -1,4 +1,4 @@
-package com.rocketfool.rocketgame;
+package com.rocketfool.rocketgame.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -7,31 +7,39 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.rocketfool.rocketgame.screen.GameScreen;
+import com.rocketfool.rocketgame.util.TextureManager;
 
-import static com.rocketfool.rocketgame.utils.Constants.*;
+import static com.rocketfool.rocketgame.util.Constants.*;
 
 /**
  * Created by pythech on 03/03/16.
  */
-public class Player extends GameObject {
+public class Player extends Entity {
+    //region Constants
     private static final float IMPULSE = 65;
     private static final float ROTATE_IMPULSE = 100;
+    //endregion
 
+    //region Fields
     private float currentImpulse;
+    //endregion
 
-    public Player(Texture image) {
+    //region Constructor
+    public Player(float x, float y) {
+        texture = TextureManager.PLAYER_TEXTURE;
         // increase the quality of image
-        image.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.MipMapLinearLinear);
-        this.texture = image;
-        this.body = createBody(0,0,0);
+        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+        body = createBody(x, y);
     }
 
-    private Body createBody(float x, float y, float z) {
+    private Body createBody(float x, float y) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(Gdx.graphics.getWidth() / 2f * toMeter, Gdx.graphics.getHeight() / 2f * toMeter);
 
-        Body body = RocketGame.getInstance().world.createBody(bodyDef);
+        Body body = GameScreen.getInstance().getWorld().createBody(bodyDef);
 
         body.setTransform(0, 0, -90 * MathUtils.degreesToRadians);
 
@@ -51,7 +59,9 @@ public class Player extends GameObject {
 
         return body;
     }
+    //endregion
 
+    //region Methods
     @Override
     public void update(float dt) {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
@@ -80,8 +90,8 @@ public class Player extends GameObject {
 
         Vector2 impulseVector = new Vector2(0, dt * currentImpulse).rotateRad(body.getAngle());
 
-        if (RocketGame.DEBUG)
-            RocketGame.getInstance().drawDebugBox(bottomPosition.x, bottomPosition.y, 4 * toMeter, 4 * toMeter);
+        if (DEBUG)
+            //GameScreen.getInstance().drawDebugBox(bottomPosition.x, bottomPosition.y, 4 * toMeter, 4 * toMeter);
 
         body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
     }
@@ -107,8 +117,11 @@ public class Player extends GameObject {
                 false
         );
     }
+    //endregion
 
+    //region Getters & Setters
     public float getCurrentImpulse() {
         return currentImpulse;
     }
+    //endregion
 }

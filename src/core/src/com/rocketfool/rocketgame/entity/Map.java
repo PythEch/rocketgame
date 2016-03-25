@@ -1,40 +1,33 @@
-package com.rocketfool.rocketgame;
+package com.rocketfool.rocketgame.entity;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-
-import static com.rocketfool.rocketgame.utils.Constants.PPM;
+import com.rocketfool.rocketgame.util.TextureManager;
 
 /**
  * Created by pythech on 07/03/16.
  */
-public class Map extends GameObject {
-    private static final float G = 6.67408e-11f;
-
+public class Map extends Entity {
+    //region Fields
     private int width;
     private int height;
     private Array<Planet> planets;
+    //endregion
 
+    //region Constructor
     public Map(int width, int height) {
-        this.width = width * 100;
-        this.height = height * 100;
+        this.width = width;
+        this.height = height;
         planets = new Array<Planet>();
 
-        texture = new Texture("Backgrounds/darkPurple.png");
-        texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat); // makes background repeatable
+        texture = TextureManager.MAP_TEXTURE;
+        // this makes background repeatable
+        texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
     }
+    //endregion
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
+    //region Methods
     public void addPlanet(Planet planet) {
         planets.add(planet);
     }
@@ -58,4 +51,5 @@ public class Map extends GameObject {
                 height
         );
     }
+    //endregion
 }
