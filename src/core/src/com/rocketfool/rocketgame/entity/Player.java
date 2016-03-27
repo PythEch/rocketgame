@@ -79,6 +79,16 @@ public class Player extends Entity {
             currentImpulse = Math.max(currentImpulse, 0);
         }
 
+        if (DEBUG) {
+            if (Gdx.input.isKeyPressed(Input.Keys.R)) {
+                currentImpulse = 0;
+                body.setAngularVelocity(0);
+            }
+            if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+                body.setLinearVelocity(0, 0);
+            }
+        }
+
         move(dt);
     }
 
