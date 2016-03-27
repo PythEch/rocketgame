@@ -141,21 +141,21 @@ public class GameScreen implements Screen {
         if (DEBUG) {
             font.draw(
                     batch,
-                    "  Linear Impulse: " + player.getCurrentImpulse(),
+                    "  Linear Impulse: " + (int)player.getCurrentImpulse(),
                     camera.position.x - camera.viewportWidth / 2f,
                     camera.position.y - camera.viewportHeight / 2f + font.getLineHeight()
             );
 
             font.draw(
                     batch,
-                    "Angular Velocity: " + player.getBody().getAngularVelocity(),
+                    "Angular Velocity: " + (int)(player.getBody().getAngularVelocity() * 100),
                     camera.position.x - camera.viewportWidth / 2f,
                     camera.position.y - camera.viewportHeight / 2f + font.getLineHeight() * 2
             );
 
             font.draw(
                     batch,
-                    "  Linear Velocity: " + player.getBody().getLinearVelocity().len(),
+                    "  Linear Velocity: " + (int)(player.getBody().getLinearVelocity().len() * 10),
                     camera.position.x - camera.viewportWidth / 2f,
                     camera.position.y - camera.viewportHeight / 2f + font.getLineHeight() * 3
             );
