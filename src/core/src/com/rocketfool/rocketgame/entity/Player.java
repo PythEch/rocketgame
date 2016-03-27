@@ -87,6 +87,9 @@ public class Player extends Entity {
             if (Gdx.input.isKeyPressed(Input.Keys.S)) {
                 body.setLinearVelocity(0, 0);
             }
+            if (Gdx.input.isKeyPressed(Input.Keys.H)) {
+                body.setTransform(0, 0, 0);
+            }
         }
 
         move(dt);
