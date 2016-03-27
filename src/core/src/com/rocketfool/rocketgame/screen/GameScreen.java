@@ -138,13 +138,21 @@ public class GameScreen implements Screen {
         }
 
         // Draw a debug string which shows the velocity of the spaceship
-        if (DEBUG)
+        if (DEBUG) {
             font.draw(
                     batch,
-                    "Linear velocity: " + player.getCurrentImpulse(),
-                    player.getBody().getPosition().x * toPixel - player.getTexture().getWidth() / 2f,
-                    player.getBody().getPosition().y * toPixel - 100
+                    "Linear Impulse: " + player.getCurrentImpulse(),
+                    camera.position.x - camera.viewportWidth / 2f,
+                    camera.position.y - camera.viewportHeight / 2f + font.getLineHeight()
             );
+
+            font.draw(
+                    batch,
+                    "Angular Velocity: " + player.getBody().getAngularVelocity(),
+                    camera.position.x - camera.viewportWidth / 2f,
+                    camera.position.y - camera.viewportHeight / 2f + font.getLineHeight() * 2
+            );
+        }
     }
 
     /**
