@@ -3,9 +3,13 @@ package com.rocketfool.rocketgame.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.rocketfool.rocketgame.RocketGame;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -14,6 +18,15 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  */
 public class MainMenuScreen implements Screen {
     private Stage stage;
+    private RocketGame game;
+    private SpriteBatch batch;
+    private BitmapFont font;
+
+    public MainMenuScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
+        this.game = game;
+        this.batch = batch;
+        this.font = font;
+    }
 
     @Override
     public void show() {
@@ -47,6 +60,17 @@ public class MainMenuScreen implements Screen {
         table.add(options).uniform().fill();
         table.row().padTop(20);
         table.add(exit).uniform().fill();
+
+        newGame.addListener(new EventListener() {
+            @Override
+            public boolean handle(Event event) {
+                GameScreen screen = GameScreen.getInstance();
+                screen.init(batch, font);
+                game.setScreen(screen);
+
+                return true;
+            }
+        });
 
         stage.addActor(table);
     }
