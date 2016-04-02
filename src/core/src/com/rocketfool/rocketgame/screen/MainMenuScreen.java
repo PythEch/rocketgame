@@ -4,12 +4,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.rocketfool.rocketgame.RocketGame;
+
+import javax.swing.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -61,14 +67,10 @@ public class MainMenuScreen implements Screen {
         table.row().padTop(20);
         table.add(exit).uniform().fill();
 
-        newGame.addListener(new EventListener() {
+        newGame.addListener(new ClickListener() {
             @Override
-            public boolean handle(Event event) {
-                GameScreen screen = GameScreen.getInstance();
-                screen.init(batch, font);
-                game.setScreen(screen);
-
-                return true;
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new GameScreen(batch, font));
             }
         });
 

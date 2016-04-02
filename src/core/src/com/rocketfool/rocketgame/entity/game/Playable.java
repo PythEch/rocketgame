@@ -1,4 +1,4 @@
-package com.rocketfool.rocketgame.entity;
+package com.rocketfool.rocketgame.entity.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -7,75 +7,38 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.rocketfool.rocketgame.screen.GameScreen;
+import com.rocketfool.rocketgame.entity.SolidObject;
 import com.rocketfool.rocketgame.util.TextureManager;
 
-import static com.rocketfool.rocketgame.util.Constants.*;
+import static com.rocketfool.rocketgame.util.Constants.DEBUG;
+import static com.rocketfool.rocketgame.util.Constants.toMeter;
+import static com.rocketfool.rocketgame.util.Constants.toPixel;
 
 /**
- * Created by pythech on 03/03/16.
+ * Created by pythech on 02/04/16.
  */
-public class Player extends Entity {
-    //region Constants
-    private static final float IMPULSE = 65;
-    private static final float ROTATE_IMPULSE = 100;
-    //endregion
-
+public class Playable extends SolidObject {
     //region Fields
-    private float currentImpulse;
-    //endregion
-
-    //region Constructor
-    public Player(float x, float y) {
-        texture = TextureManager.PLAYER_TEXTURE;
-        // increase the quality of image
-        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-
-        body = createBody(x, y);
-    }
-
-    private Body createBody(float x, float y) {
-        BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(Gdx.graphics.getWidth() / 2f * toMeter, Gdx.graphics.getHeight() / 2f * toMeter);
-
-        Body body = GameScreen.getInstance().getWorld().createBody(bodyDef);
-
-        body.setTransform(0, 0, -90 * MathUtils.degreesToRadians);
-
-        PolygonShape rectangle = new PolygonShape();
-        rectangle.setAsBox(texture.getWidth() / 2f * toMeter, texture.getHeight() / 2f * toMeter);
-
-        // Define properties of object here
-        FixtureDef fixtureDef = new FixtureDef();
-        fixtureDef.shape = rectangle;
-        fixtureDef.density = 1.0f; // TODO: Calculate a reasonable density
-        fixtureDef.friction = 0.0f;
-        fixtureDef.restitution = 0.0f;
-
-        Fixture fixture = body.createFixture(fixtureDef);
-
-        rectangle.dispose();
-
-        return body;
-    }
+    protected float currentImpulse;
+    protected float rotateImpulse;
+    protected float impulse;
     //endregion
 
     //region Methods
     @Override
     public void update(float dt) {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            body.applyAngularImpulse(ROTATE_IMPULSE * dt, true);
+            body.applyAngularImpulse(rotateImpulse * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            body.applyAngularImpulse(-ROTATE_IMPULSE * dt, true);
+            body.applyAngularImpulse(-rotateImpulse * dt, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            currentImpulse += dt * IMPULSE;
+            currentImpulse += dt * impulse;
             currentImpulse = Math.max(currentImpulse, 0);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            currentImpulse -= dt * IMPULSE;
+            currentImpulse -= dt * impulse;
             currentImpulse = Math.max(currentImpulse, 0);
         }
 
@@ -102,9 +65,6 @@ public class Player extends Entity {
         Vector2 bottomPosition = bottomVector.add(body.getPosition());
 
         Vector2 impulseVector = new Vector2(0, dt * currentImpulse).rotateRad(body.getAngle());
-
-        if (DEBUG)
-            //GameScreen.getInstance().drawDebugBox(bottomPosition.x, bottomPosition.y, 4 * toMeter, 4 * toMeter);
 
         body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
     }
@@ -135,6 +95,14 @@ public class Player extends Entity {
     //region Getters & Setters
     public float getCurrentImpulse() {
         return currentImpulse;
+    }
+
+    public float getRotateImpulse() {
+        return rotateImpulse;
+    }
+
+    public float getImpulse() {
+        return impulse;
     }
     //endregion
 }

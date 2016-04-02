@@ -1,25 +1,26 @@
-package com.rocketfool.rocketgame.entity;
+package com.rocketfool.rocketgame.entity.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
+import com.rocketfool.rocketgame.entity.VisualObject;
 import com.rocketfool.rocketgame.util.TextureManager;
 
 /**
  * Created by pythech on 07/03/16.
  */
-public class Map extends Entity {
+public class Map extends VisualObject {
     //region Fields
     private int width;
     private int height;
-    private Array<Planet> planets;
     //endregion
 
     //region Constructor
     public Map(int width, int height) {
         this.width = width;
         this.height = height;
-        planets = new Array<Planet>();
 
         texture = TextureManager.MAP_TEXTURE;
         // this makes background repeatable
@@ -28,17 +29,6 @@ public class Map extends Entity {
     //endregion
 
     //region Methods
-    public void addPlanet(Planet planet) {
-        planets.add(planet);
-    }
-
-    @Override
-    public void update(float dt) {
-        for (Planet planet : planets) {
-            planet.update(dt);
-        }
-    }
-
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(

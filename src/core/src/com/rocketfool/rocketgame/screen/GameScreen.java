@@ -11,6 +11,14 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.entity.*;
+import com.rocketfool.rocketgame.entity.game.EntityManager;
+import com.rocketfool.rocketgame.entity.game.Map;
+import com.rocketfool.rocketgame.entity.game.Planet;
+import com.rocketfool.rocketgame.entity.game.Player;
+import com.rocketfool.rocketgame.level.Level;
+import com.rocketfool.rocketgame.level.Level1;
+
+import java.text.DecimalFormat;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -24,43 +32,18 @@ public class GameScreen implements Screen {
     /** Just like SpriteBatch, but is used to draw strings */
     private BitmapFont font;
 
-
-    /** A Box2D world which manages the physics engine. */
-    private World world;
     /** Orthographic cameras are used for 2D games, the other one Perspective camera is for 3D games. */
     private OrthographicCamera camera;
     /** Used for drawing the bounds of objects in the physics engine for easier debugging */
     private Box2DDebugRenderer debugRenderer;
 
+    private Level level;
 
-    /** Manages the spaceship entity and responds to player input at the same time */
     private Player player;
-    /** Draws the map and manages the objects like planets */
-    private Map map;
-
-
-    /** This holds all entities in the game so we can `draw` and `update` them */
-    private Array<Entity> entities;
-    //endregion
-
-    //region Things which make this screen singleton
-    /** Internal property that holds only one instance of {@link GameScreen} at a time. */
-    private static final GameScreen instance = new GameScreen();
-
-    /** Exists only to defeat instantiation. */
-    private GameScreen() {}
-
-    /** Returns the shared instance of {@link GameScreen} */
-    public static GameScreen getInstance() {
-        return instance;
-    }
     //endregion
 
     //region Constructor
-    /**
-     * This is our initialization method, akin to constructor though used for different purposes.
-     */
-    public void init(SpriteBatch batch, BitmapFont font) {
+    public GameScreen(SpriteBatch batch, BitmapFont font) {
         // Get these from the Game instance
         this.batch = batch;
         this.font = font;
@@ -68,10 +51,6 @@ public class GameScreen implements Screen {
         // these will be useful later on
         int width = Gdx.graphics.getWidth();
         int height = Gdx.graphics.getHeight();
-
-        //region Setup the environment for our game
-        // construct the world for Box2D with no gravity
-        world = new World(new Vector2(0, 0), true);
 
         // construct the camera with given width and height
         camera = new OrthographicCamera();
@@ -81,16 +60,10 @@ public class GameScreen implements Screen {
         debugRenderer = new Box2DDebugRenderer();
         //endregion
 
-        //region Construct game specific objects
-        player = new Player(0, 0);
-        map = new Map(width * 100, height * 100);
-        map.addPlanet(new Planet(75, 75, 1e4f, 50));
-
-        // the order of addition is important because it changes z-order
-        entities = new Array<Entity>();
-        entities.add(map);
-        entities.add(player);
         //endregion
+
+        level = new Level1();
+        player = level.getPlayer();
     }
     //endregion
 
@@ -121,7 +94,7 @@ public class GameScreen implements Screen {
 
         // Draw boundries of physics objects if debug is enabled
         if (DEBUG)
-            debugRenderer.render(world, camera.combined.scl(PPM));
+            debugRenderer.render(level.getWorld(), camera.combined.scl(PPM));
     }
 
     /**
@@ -133,33 +106,25 @@ public class GameScreen implements Screen {
         int height = Gdx.graphics.getHeight();
 
         // Draw all entities
-        for (Entity entity : entities) {
-            entity.draw(batch);
-        }
+        level.draw(batch);
 
         // Draw a debug string which shows the velocity of the spaceship
         if (DEBUG) {
-            font.draw(
-                    batch,
-                    "  Linear Impulse: " + (int)player.getCurrentImpulse(),
-                    camera.position.x - camera.viewportWidth / 2f,
-                    camera.position.y - camera.viewportHeight / 2f + font.getLineHeight()
-            );
-
-            font.draw(
-                    batch,
-                    "Angular Velocity: " + (int)(player.getBody().getAngularVelocity() * 100),
-                    camera.position.x - camera.viewportWidth / 2f,
-                    camera.position.y - camera.viewportHeight / 2f + font.getLineHeight() * 2
-            );
-
-            font.draw(
-                    batch,
-                    "  Linear Velocity: " + (int)(player.getBody().getLinearVelocity().len() * 10),
-                    camera.position.x - camera.viewportWidth / 2f,
-                    camera.position.y - camera.viewportHeight / 2f + font.getLineHeight() * 3
-            );
+            drawDebugString("  Linear Impulse: " + (int)player.getCurrentImpulse(), 1);
+            drawDebugString("Angular Velocity: " + (int)(player.getBody().getAngularVelocity() * 100), 2);
+            drawDebugString("  Linear Velocity: " + (int)(player.getBody().getLinearVelocity().len() * 10), 3);
+            drawDebugString("X: " + String.format("%.1f", player.getBody().getPosition().x) +
+                           " Y: " + String.format("%.1f", player.getBody().getPosition().y), 4);
         }
+    }
+
+    private void drawDebugString(String str, int row) {
+        font.draw(
+                batch,
+                str,
+                camera.position.x - camera.viewportWidth / 2f,
+                camera.position.y - camera.viewportHeight / 2f + font.getLineHeight() * row
+        );
     }
 
     /**
@@ -168,16 +133,11 @@ public class GameScreen implements Screen {
      */
     private void update(float dt) {
         // Update all entities
-        for (Entity entity : entities) {
-            entity.update(dt);
-        }
+        level.update(dt);
 
         // Make the camera focus on the player
         camera.position.set(player.getBody().getPosition().x * toPixel, player.getBody().getPosition().y * toPixel, 0);
         camera.update();
-
-        // update/calculate physics objects
-        world.step(1 / 60f, 6, 2);
     }
 
     /**
@@ -188,17 +148,6 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         debugRenderer.dispose();
-        world.dispose();
-    }
-    //endregion
-
-    //region Getters & Setters
-    public World getWorld() {
-        return world;
-    }
-
-    public Player getPlayer() {
-        return player;
     }
     //endregion
 

@@ -22,9 +22,7 @@ public class RocketGame extends Game {
         batch = new SpriteBatch();
         font = new BitmapFont();
 
-        GameScreen screen = GameScreen.getInstance();
-        screen.init(batch, font);
-        this.setScreen(screen);
+        this.setScreen(new MainMenuScreen(this, batch, font));
     }
 
     @Override
