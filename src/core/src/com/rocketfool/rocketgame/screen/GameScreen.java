@@ -11,10 +11,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.entity.*;
-import com.rocketfool.rocketgame.entity.game.EntityManager;
-import com.rocketfool.rocketgame.entity.game.Map;
-import com.rocketfool.rocketgame.entity.game.Planet;
-import com.rocketfool.rocketgame.entity.game.Player;
+import com.rocketfool.rocketgame.entity.game.*;
 import com.rocketfool.rocketgame.level.Level;
 import com.rocketfool.rocketgame.level.Level1;
 
@@ -39,7 +36,7 @@ public class GameScreen implements Screen {
 
     private Level level;
 
-    private Player player;
+    private Playable cameraTarget;
     //endregion
 
     //region Constructor
@@ -63,7 +60,7 @@ public class GameScreen implements Screen {
         //endregion
 
         level = new Level1();
-        player = level.getPlayer();
+        cameraTarget = level.getEntityManager().getPlayer();
     }
     //endregion
 
@@ -110,11 +107,11 @@ public class GameScreen implements Screen {
 
         // Draw a debug string which shows the velocity of the spaceship
         if (DEBUG) {
-            drawDebugString("  Linear Impulse: " + (int)player.getCurrentImpulse(), 1);
-            drawDebugString("Angular Velocity: " + (int)(player.getBody().getAngularVelocity() * 100), 2);
-            drawDebugString("  Linear Velocity: " + (int)(player.getBody().getLinearVelocity().len() * 10), 3);
-            drawDebugString("X: " + String.format("%.1f", player.getBody().getPosition().x) +
-                           " Y: " + String.format("%.1f", player.getBody().getPosition().y), 4);
+            drawDebugString("  Linear Impulse: " + (int)cameraTarget.getCurrentImpulse(), 1);
+            drawDebugString("Angular Velocity: " + (int)(cameraTarget.getBody().getAngularVelocity() * 100), 2);
+            drawDebugString("  Linear Velocity: " + (int)(cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
+            drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
+                           " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
         }
     }
 
@@ -136,8 +133,13 @@ public class GameScreen implements Screen {
         level.update(dt);
 
         // Make the camera focus on the player
-        camera.position.set(player.getBody().getPosition().x * toPixel, player.getBody().getPosition().y * toPixel, 0);
+        camera.position.set(cameraTarget.getBody().getPosition().x * toPixel, cameraTarget.getBody().getPosition().y * toPixel, 0);
         camera.update();
+    }
+
+    public void lookAt(Playable target) {
+        // TODO: make animation
+        cameraTarget = target;
     }
 
     /**

@@ -7,7 +7,10 @@ import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.Drawable;
 import com.rocketfool.rocketgame.Updatable;
 import com.rocketfool.rocketgame.entity.game.EntityManager;
+import com.rocketfool.rocketgame.entity.game.Map;
 import com.rocketfool.rocketgame.entity.game.Player;
+import com.rocketfool.rocketgame.level.trigger.FuelDepletionTrigger;
+import com.rocketfool.rocketgame.level.trigger.OutOfMapTrigger;
 import com.rocketfool.rocketgame.level.trigger.Trigger;
 
 /**
@@ -15,7 +18,6 @@ import com.rocketfool.rocketgame.level.trigger.Trigger;
  */
 public abstract class Level implements Updatable, Drawable {
     protected EntityManager entityManager;
-    protected Player player;
     protected World world;
     protected Array<Trigger> triggers;
 
@@ -24,12 +26,28 @@ public abstract class Level implements Updatable, Drawable {
         this.triggers = new Array<Trigger>();
     }
 
-    public World getWorld() {
-        return world;
+    protected void addTriggers() {
+        triggers.add(new OutOfMapTrigger(entityManager.getMap(), entityManager.getPlayer()) {
+            @Override
+            public void triggerPerformed() {
+                System.out.println("OUT OF MAP!");
+            }
+        });
+
+        triggers.add(new FuelDepletionTrigger(entityManager.getPlayer()) {
+            @Override
+            public void triggerPerformed() {
+                System.out.println("NO FUEL!");
+            }
+        });
     }
 
-    public Player getPlayer() {
-        return player;
+    protected void gameOver(String reason) {
+        // TODO: do something
+    }
+
+    public World getWorld() {
+        return world;
     }
 
     public EntityManager getEntityManager() {

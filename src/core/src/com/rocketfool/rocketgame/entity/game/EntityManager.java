@@ -65,4 +65,16 @@ public class EntityManager implements Updatable, Drawable {
             spaceship.applyForceToCenter(forceVector, true);
         }
     }
+
+    public Array<Planet> getPlanets() {
+        return planets;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Map getMap() {
+        return map;
+    }
 }

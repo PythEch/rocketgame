@@ -12,7 +12,7 @@ import java.awt.event.MouseListener;
 /**
  * Created by pythech on 02/04/16.
  */
-public abstract class PositionTrigger extends Trigger {
+public abstract class PositionTrigger implements Trigger {
     private float x;
     private float y;
     private float radius;

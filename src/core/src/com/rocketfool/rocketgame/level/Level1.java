@@ -20,8 +20,7 @@ public class Level1 extends Level {
         int width = Gdx.graphics.getWidth() * 100;
         int height = Gdx.graphics.getHeight() * 100;
 
-        this.player = new Player(0, 0, world);
-        this.entityManager = new EntityManager(player, new Map(width, height));
+        this.entityManager = new EntityManager(new Player(0, 0, world), new Map(width, height));
 
         addTriggers();
         addPlanets();
@@ -31,8 +30,10 @@ public class Level1 extends Level {
         entityManager.addPlanet(new Planet(75, 75, 1e4f, 50, world));
     }
 
-    private void addTriggers() {
-        triggers.add(new PositionTrigger(10, 10, 10, player) {
+    @Override
+    protected void addTriggers() {
+        super.addTriggers();
+        triggers.add(new PositionTrigger(10, 10, 10, entityManager.getPlayer()) {
             @Override
             public void triggerPerformed() {
                 System.out.println("omg");

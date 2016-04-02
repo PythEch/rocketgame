@@ -22,6 +22,7 @@ public class Playable extends SolidObject {
     protected float currentImpulse;
     protected float rotateImpulse;
     protected float impulse;
+    protected float fuel;
     //endregion
 
     //region Methods
@@ -103,6 +104,14 @@ public class Playable extends SolidObject {
 
     public float getImpulse() {
         return impulse;
+    }
+
+    public float getFuel() {
+        return fuel;
+    }
+
+    public void addFuel(float amount) {
+        fuel += amount;
     }
     //endregion
 }

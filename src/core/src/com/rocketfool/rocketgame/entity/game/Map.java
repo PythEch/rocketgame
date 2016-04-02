@@ -42,4 +42,13 @@ public class Map extends VisualObject {
         );
     }
     //endregion
+
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }
