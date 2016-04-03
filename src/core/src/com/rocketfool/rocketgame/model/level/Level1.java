@@ -16,7 +16,7 @@ public class Level1 extends Level {
         int width = Gdx.graphics.getWidth() * 100;
         int height = Gdx.graphics.getHeight() * 100;
 
-        this.player = new Player(0, 0, world);
+        this.playable = new Player(0, 0, world);
         this.map = new Map(width, height);
 
         addTriggers();
@@ -30,7 +30,7 @@ public class Level1 extends Level {
     @Override
     protected void addTriggers() {
         super.addTriggers();
-        triggers.add(new PositionTrigger(10, 10, 10, player) {
+        triggers.add(new PositionTrigger(10, 10, 10, playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("omg");

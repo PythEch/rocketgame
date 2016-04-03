@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.model.entity.Map;
 import com.rocketfool.rocketgame.model.entity.Playable;
 import com.rocketfool.rocketgame.model.level.Level;
@@ -36,6 +37,8 @@ public class GameScreen implements Screen {
     private Map map;
 
     private WorldRenderer renderer;
+
+    private WorldController controller;
     //endregion
 
     //region Constructor
@@ -56,6 +59,7 @@ public class GameScreen implements Screen {
     @Override
     public void render(float dt) {
         // Our main method update comes before draw
+        controller.update(dt);
         update(dt);
 
         // This cryptic line clears the screen.
@@ -67,8 +71,9 @@ public class GameScreen implements Screen {
         batch.begin();
 
         // Our main draw method
-        draw();
         renderer.draw(batch);
+        draw();
+
 
         batch.end();
 
@@ -153,8 +158,9 @@ public class GameScreen implements Screen {
 
         //endregion
         level = new Level1();
-        cameraTarget = level.getPlayer();
+        cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
+        controller = new WorldController(level);
     }
 
     @Override

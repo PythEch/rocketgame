@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.rocketfool.rocketgame.model.entity.Playable;
+import com.rocketfool.rocketgame.model.level.Level;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 
@@ -11,10 +12,10 @@ import static com.rocketfool.rocketgame.util.Constants.DEBUG;
  * Created by pythech on 02/04/16.
  */
 public class WorldController {
-    private Playable playable;
+    private Level level;
 
-    public WorldController(Playable playable) {
-        this.playable = playable;
+    public WorldController(Level level) {
+        this.level = level;
     }
 
     public void update(float deltaTime) {
@@ -22,6 +23,7 @@ public class WorldController {
     }
 
     private void updatePlayable(float deltaTime) {
+        Playable playable = level.getPlayable();
         Body body = playable.getBody();
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {

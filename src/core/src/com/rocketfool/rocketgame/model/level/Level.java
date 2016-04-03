@@ -6,9 +6,10 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.model.entity.Map;
 import com.rocketfool.rocketgame.model.entity.Planet;
-import com.rocketfool.rocketgame.model.entity.Player;
+import com.rocketfool.rocketgame.model.entity.Playable;
 import com.rocketfool.rocketgame.model.level.trigger.FuelDepletionTrigger;
 import com.rocketfool.rocketgame.model.level.trigger.OutOfMapTrigger;
+import com.rocketfool.rocketgame.model.level.trigger.PositionTrigger;
 import com.rocketfool.rocketgame.model.level.trigger.Trigger;
 
 /**
@@ -16,7 +17,7 @@ import com.rocketfool.rocketgame.model.level.trigger.Trigger;
  */
 public abstract class Level {
     protected World world;
-    protected Player player;
+    protected Playable playable;
     protected Map map;
     protected Array<Trigger> triggers;
     protected Array<Planet> planets;
@@ -28,14 +29,14 @@ public abstract class Level {
     }
 
     protected void addTriggers() {
-        triggers.add(new OutOfMapTrigger(map, player) {
+        triggers.add(new OutOfMapTrigger(map, playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("OUT OF MAP!");
             }
         });
 
-        triggers.add(new FuelDepletionTrigger(player) {
+        triggers.add(new FuelDepletionTrigger(playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("NO FUEL!");
@@ -64,7 +65,7 @@ public abstract class Level {
 
     private void updateGravity() {
         for (Planet planet : planets) {
-            Body spaceship = player.getBody();
+            Body spaceship = playable.getBody();
 
             // Get the directionVector by substracting the middle points of two objects
             Vector2 directionVector = planet.getBody().getPosition().sub(spaceship.getPosition());
@@ -92,8 +93,8 @@ public abstract class Level {
         return world;
     }
 
-    public Player getPlayer() {
-        return player;
+    public Playable getPlayable() {
+        return playable;
     }
 
     public Map getMap() {

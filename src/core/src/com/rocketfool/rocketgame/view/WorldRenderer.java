@@ -19,15 +19,16 @@ public class WorldRenderer {
     }
 
     public void draw(SpriteBatch batch) {
-        drawPlayer(batch);
+
         drawMap(batch);
+        drawPlayer(batch);
         drawPlanets(batch);
     }
 
     private void drawPlayer(SpriteBatch batch) {
         Texture texture = AssetManager.MAP_TEXTURE;
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        Body body = level.getPlayer().getBody();
+        Body body = level.getPlayable().getBody();
 
         batch.draw(
                 texture,
