@@ -1,4 +1,4 @@
-package com.rocketfool.rocketgame.model.entity;
+package com.rocketfool.rocketgame.model;
 
 import com.badlogic.gdx.physics.box2d.Body;
 

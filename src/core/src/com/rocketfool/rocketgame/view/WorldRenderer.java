@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.rocketfool.rocketgame.model.level.Level;
+import com.rocketfool.rocketgame.model.Level;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 

@@ -3,8 +3,8 @@ package com.rocketfool.rocketgame.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.rocketfool.rocketgame.model.entity.Playable;
-import com.rocketfool.rocketgame.model.level.Level;
+import com.rocketfool.rocketgame.model.Playable;
+import com.rocketfool.rocketgame.model.Level;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 

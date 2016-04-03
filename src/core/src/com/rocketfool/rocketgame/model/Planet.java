@@ -1,21 +1,18 @@
-package com.rocketfool.rocketgame.model.entity;
+package com.rocketfool.rocketgame.model;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.*;
 
 /**
  * Created by pythech on 07/03/16.
  */
-public class Planet extends SolidObject {
+public class Planet extends CelestialObject {
     //region Fields
-    private float mass;
-    private float radius;
+
     //endregion
 
     //region Constructor
     public Planet(int x, int y, float mass, float radius, World world) {
-        this.mass = mass;
-        this.radius = radius;
+        super(mass, radius);
         this.body = createBody(x, y, mass, radius, world);
     }
 
@@ -47,12 +44,5 @@ public class Planet extends SolidObject {
     //endregion
 
     //region Getters & Setters
-    public float getMass() {
-        return mass;
-    }
-
-    public float getRadius() {
-        return radius;
-    }
     //endregion
 }

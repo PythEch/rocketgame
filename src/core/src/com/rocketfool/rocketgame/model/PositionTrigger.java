@@ -1,7 +1,6 @@
-package com.rocketfool.rocketgame.model.level.trigger;
+package com.rocketfool.rocketgame.model;
 
 import com.badlogic.gdx.math.Vector2;
-import com.rocketfool.rocketgame.model.entity.SolidObject;
 
 /**
  * Created by pythech on 02/04/16.

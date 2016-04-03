@@ -1,4 +1,4 @@
-package com.rocketfool.rocketgame.model.entity;
+package com.rocketfool.rocketgame.model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,7 +11,6 @@ public class Map {
     //region Fields
     private int width;
     private int height;
-    private Texture texture;
     //endregion
 
     //region Constructor

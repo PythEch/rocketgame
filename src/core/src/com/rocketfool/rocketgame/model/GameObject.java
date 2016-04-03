@@ -1,4 +1,4 @@
-package com.rocketfool.rocketgame.model.entity;
+package com.rocketfool.rocketgame.model;
 
 /**
  * A base entity class which represents common functionality of the game objects

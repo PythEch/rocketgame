@@ -1,14 +1,8 @@
-package com.rocketfool.rocketgame.model.entity;
+package com.rocketfool.rocketgame.model;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
-import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 import static com.rocketfool.rocketgame.util.Constants.toMeter;
-import static com.rocketfool.rocketgame.util.Constants.toPixel;
 
 /**
  * Created by pythech on 02/04/16.

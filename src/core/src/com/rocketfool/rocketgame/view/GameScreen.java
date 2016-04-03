@@ -8,10 +8,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.rocketfool.rocketgame.controller.WorldController;
-import com.rocketfool.rocketgame.model.entity.Map;
-import com.rocketfool.rocketgame.model.entity.Playable;
-import com.rocketfool.rocketgame.model.level.Level;
-import com.rocketfool.rocketgame.model.level.Level1;
+import com.rocketfool.rocketgame.model.Map;
+import com.rocketfool.rocketgame.model.Playable;
+import com.rocketfool.rocketgame.model.Level;
+import com.rocketfool.rocketgame.model.Level1;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 

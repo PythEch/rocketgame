@@ -1,7 +1,4 @@
-package com.rocketfool.rocketgame.model.level.trigger;
-
-import com.rocketfool.rocketgame.model.entity.Playable;
-import com.rocketfool.rocketgame.model.entity.Player;
+package com.rocketfool.rocketgame.model;
 
 /**
  * Created by pythech on 02/04/16.

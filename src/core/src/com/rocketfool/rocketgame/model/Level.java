@@ -1,16 +1,10 @@
-package com.rocketfool.rocketgame.model.level;
+package com.rocketfool.rocketgame.model;
 
+import com.badlogic.gdx.math.Plane;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
-import com.rocketfool.rocketgame.model.entity.Map;
-import com.rocketfool.rocketgame.model.entity.Planet;
-import com.rocketfool.rocketgame.model.entity.Playable;
-import com.rocketfool.rocketgame.model.level.trigger.FuelDepletionTrigger;
-import com.rocketfool.rocketgame.model.level.trigger.OutOfMapTrigger;
-import com.rocketfool.rocketgame.model.level.trigger.PositionTrigger;
-import com.rocketfool.rocketgame.model.level.trigger.Trigger;
 
 /**
  * Created by pythech on 02/04/16.
@@ -22,12 +16,18 @@ public abstract class Level {
     protected Playable playable;
     protected Map map;
     protected Array<Trigger> triggers;
-    protected Array<Planet> planets;
+    protected Array<Waypoint> waypoints;
+    protected Array<Particle> particles;
+    protected Array<SolidObject> solidObjects;
+    protected boolean gameOver;
 
     public Level() {
         this.world = new World(new Vector2(0, 0), true);
         this.triggers = new Array<Trigger>();
-        this.planets = new Array<Planet>();
+        this.waypoints = new Array<Waypoint>();
+        this.particles = new Array<Particle>();
+        this.gameOver = false;
+        this.solidObjects = new Array<SolidObject>();
     }
 
     protected void addTriggers() {
@@ -50,15 +50,19 @@ public abstract class Level {
         // TODO: do something
     }
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
     public void update(float deltaTime) {
-        updatePlayable(deltaTime);
+        updateSolidObjects(deltaTime);
         updateGravity(deltaTime);
         updateTriggers(deltaTime);
 
         world.step(1 / 60f, 6, 2);
     }
 
-    private void updatePlayable(float deltaTime) {
+    private void updateSolidObjects(float deltaTime) {
         playable.update(deltaTime);
     }
 
@@ -71,7 +75,12 @@ public abstract class Level {
     }
 
     private void updateGravity(float deltaTime) {
-        for (Planet planet : planets) {
+        for (SolidObject solidObject : solidObjects) {
+            if (!(solidObject instanceof Planet))
+                continue;
+
+            Planet planet = (Planet) solidObject;
+
             Body spaceship = playable.getBody();
 
             // Get the directionVector by substracting the middle points of two objects
@@ -96,6 +105,10 @@ public abstract class Level {
         }
     }
 
+    private void updateWaypoints(float deltaTime) {}
+
+    private void updateParticles(float deltaTime) {}
+
     public World getWorld() {
         return world;
     }
@@ -106,13 +119,5 @@ public abstract class Level {
 
     public Map getMap() {
         return map;
-    }
-
-    public Array<Trigger> getTriggers() {
-        return triggers;
-    }
-
-    public Array<Planet> getPlanets() {
-        return planets;
     }
 }

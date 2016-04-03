@@ -1,10 +1,6 @@
-package com.rocketfool.rocketgame.model.level;
+package com.rocketfool.rocketgame.model;
 
 import com.badlogic.gdx.Gdx;
-import com.rocketfool.rocketgame.model.entity.Map;
-import com.rocketfool.rocketgame.model.entity.Planet;
-import com.rocketfool.rocketgame.model.entity.Player;
-import com.rocketfool.rocketgame.model.level.trigger.PositionTrigger;
 
 /**
  * Created by pythech on 02/04/16.
@@ -24,7 +20,7 @@ public class Level1 extends Level {
     }
 
     private void addPlanets() {
-        planets.add(new Planet(75, 75, 1e4f, 50, world));
+        solidObjects.add(new Planet(75, 75, 1e4f, 50, world));
     }
 
     @Override
@@ -36,6 +32,14 @@ public class Level1 extends Level {
                 System.out.println("omg");
             }
         });
+    }
+
+    private void addObstacles() {
+
+    }
+
+    private void addParticles() {
+
     }
 
     @Override
