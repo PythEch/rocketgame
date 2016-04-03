@@ -16,6 +16,8 @@ import com.rocketfool.rocketgame.model.level.trigger.Trigger;
  * Created by pythech on 02/04/16.
  */
 public abstract class Level {
+    protected static final float G = 6.67408e-11f;
+
     protected World world;
     protected Playable playable;
     protected Map map;

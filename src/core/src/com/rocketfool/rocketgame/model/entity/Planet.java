@@ -7,10 +7,6 @@ import com.badlogic.gdx.physics.box2d.*;
  * Created by pythech on 07/03/16.
  */
 public class Planet extends SolidObject {
-    //region Constants
-    private static final float G = 6.67408e-11f;
-    //endregion
-
     //region Fields
     private float mass;
     private float radius;
