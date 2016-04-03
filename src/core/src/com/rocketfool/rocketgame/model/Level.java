@@ -19,14 +19,18 @@ public abstract class Level {
     protected Array<Waypoint> waypoints;
     protected Array<Particle> particles;
     protected Array<SolidObject> solidObjects;
-    protected boolean gameOver;
+
+    enum STATE {
+        RUNNING, PAUSED, GAME_OVER
+    }
+
+    protected STATE state;
 
     public Level() {
         this.world = new World(new Vector2(0, 0), true);
         this.triggers = new Array<Trigger>();
         this.waypoints = new Array<Waypoint>();
         this.particles = new Array<Particle>();
-        this.gameOver = false;
         this.solidObjects = new Array<SolidObject>();
     }
 
@@ -46,12 +50,16 @@ public abstract class Level {
         });
     }
 
-    protected void gameOver(String reason) {
-        // TODO: do something
+    public STATE getState() {
+        return state;
     }
 
-    public boolean isGameOver() {
-        return gameOver;
+    public void setState(STATE state) {
+        this.state = state;
+    }
+
+    public void saveGame() {
+        
     }
 
     public void update(float deltaTime) {

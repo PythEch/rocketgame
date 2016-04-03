@@ -68,20 +68,20 @@ public class Playable extends SolidObject {
     }
     //endregion
 
-    public void left(float deltaTime) {
+    public void turnLeft(float deltaTime) {
         body.applyAngularImpulse(rotateImpulse * deltaTime, true);
     }
 
-    public void right(float deltaTime) {
+    public void turnRight(float deltaTime) {
         body.applyAngularImpulse(-rotateImpulse * deltaTime, true);
     }
 
-    public void up(float deltaTime) {
+    public void increaseThrust(float deltaTime) {
         // FIXME: Use Math.min with some max speed
         currentImpulse = Math.max(0, currentImpulse + deltaTime * impulse);
     }
 
-    public void down(float deltaTime) {
+    public void decreaseThrust(float deltaTime) {
         currentImpulse = Math.max(0, currentImpulse - deltaTime * impulse);
     }
 }

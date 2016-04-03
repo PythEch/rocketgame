@@ -27,16 +27,16 @@ public class WorldController {
         Body body = playable.getBody();
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            playable.left(deltaTime);
+            playable.turnLeft(deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            playable.right(deltaTime);
+            playable.turnRight(deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            playable.up(deltaTime);
+            playable.increaseThrust(deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            playable.down(deltaTime);
+            playable.decreaseThrust(deltaTime);
         }
 
         if (DEBUG) {
