@@ -2,7 +2,7 @@ package com.rocketfool.rocketgame.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.rocketfool.rocketgame.RocketGame;
+import com.rocketfool.rocketgame.external.RocketGame;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
