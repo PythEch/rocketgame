@@ -26,7 +26,7 @@ public class WorldRenderer {
     }
 
     private void drawPlayer(SpriteBatch batch) {
-        Texture texture = AssetManager.MAP_TEXTURE;
+        Texture texture = AssetManager.PLAYER_TEXTURE;
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         Body body = level.getPlayable().getBody();
 

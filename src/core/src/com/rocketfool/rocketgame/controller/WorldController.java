@@ -27,16 +27,16 @@ public class WorldController {
         Body body = playable.getBody();
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            body.applyAngularImpulse(playable.getRotateImpulse() * deltaTime, true);
+            playable.left(deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            body.applyAngularImpulse(-playable.getRotateImpulse() * deltaTime, true);
+            playable.right(deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            playable.setCurrentImpulse( Math.max(0, playable.getCurrentImpulse() * (1 + deltaTime)) );
+            playable.up(deltaTime);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            playable.setCurrentImpulse( Math.max(0,  playable.getCurrentImpulse() * (1 - deltaTime)) );
+            playable.down(deltaTime);
         }
 
         if (DEBUG) {

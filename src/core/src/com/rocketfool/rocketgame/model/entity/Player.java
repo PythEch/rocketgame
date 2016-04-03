@@ -15,8 +15,8 @@ public class Player extends Playable {
     private static final float IMPULSE = 100;
     private static final float ROTATE_IMPULSE = 75;
 
-    private static final float WIDTH = 128;
-    private static final float HEIGHT = 128;
+    private static final float WIDTH = 112;
+    private static final float HEIGHT = 75;
 
     //region Constructor
     public Player(float x, float y, World world) {

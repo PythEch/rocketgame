@@ -53,24 +53,12 @@ public class Playable extends SolidObject {
         return rotateImpulse;
     }
 
-    public void setCurrentImpulse(float impulse) {
-        this.currentImpulse = impulse;
-    }
-
-    public void addCurrentImpulse(float amount) {
-        this.currentImpulse += amount;
-    }
-
     public float getImpulse() {
         return impulse;
     }
 
     public float getFuel() {
         return fuel;
-    }
-
-    public void addFuel(float amount) {
-        fuel += amount;
     }
 
     public float getWidth() {
@@ -81,5 +69,25 @@ public class Playable extends SolidObject {
         return height;
     }
 
+    public void setCurrentImpulse(float currentImpulse) {
+        this.currentImpulse = currentImpulse;
+    }
     //endregion
+
+    public void left(float deltaTime) {
+        body.applyAngularImpulse(rotateImpulse * deltaTime, true);
+    }
+
+    public void right(float deltaTime) {
+        body.applyAngularImpulse(-rotateImpulse * deltaTime, true);
+    }
+
+    public void up(float deltaTime) {
+        // FIXME: Use Math.min with some max speed
+        currentImpulse = Math.max(0, currentImpulse + deltaTime * impulse);
+    }
+
+    public void down(float deltaTime) {
+        currentImpulse = Math.max(0, currentImpulse - deltaTime * impulse);
+    }
 }

@@ -49,13 +49,18 @@ public abstract class Level {
     }
 
     public void update(float deltaTime) {
-        updateTriggers();
-        updateGravity();
+        updatePlayable(deltaTime);
+        updateGravity(deltaTime);
+        updateTriggers(deltaTime);
 
         world.step(1 / 60f, 6, 2);
     }
 
-    private void updateTriggers() {
+    private void updatePlayable(float deltaTime) {
+        playable.update(deltaTime);
+    }
+
+    private void updateTriggers(float deltaTime) {
         for (Trigger trigger : triggers) {
             if (trigger.isTriggered()) {
                 trigger.triggerPerformed();
@@ -63,7 +68,7 @@ public abstract class Level {
         }
     }
 
-    private void updateGravity() {
+    private void updateGravity(float deltaTime) {
         for (Planet planet : planets) {
             Body spaceship = playable.getBody();
 
