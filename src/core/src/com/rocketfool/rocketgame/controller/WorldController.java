@@ -25,6 +25,7 @@ public class WorldController {
     private void updatePlayable(float deltaTime) {
         Playable playable = level.getPlayable();
         Body body = playable.getBody();
+        playable.applySAS(deltaTime);
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             playable.turnLeft(deltaTime);
