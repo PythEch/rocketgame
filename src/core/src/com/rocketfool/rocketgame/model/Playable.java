@@ -84,11 +84,4 @@ public class Playable extends SolidObject {
     public void decreaseThrust(float deltaTime) {
         currentImpulse = Math.max(0, currentImpulse - deltaTime * impulse);
     }
-
-    //If SAS is enabled by the player (shortcut key?), this method is run to automatically reduce angular impulse
-    //(didnt add the boolean yet)
-    public void applySAS(float deltaTime) {
-        body.applyAngularImpulse( -1 / 10 * rotateImpulse * deltaTime, true);
-    }
-
 }
