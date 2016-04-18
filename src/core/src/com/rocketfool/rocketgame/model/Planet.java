@@ -7,12 +7,13 @@ import com.badlogic.gdx.physics.box2d.*;
  */
 public class Planet extends CelestialObject {
     //region Fields
-
+    private Star star;
     //endregion
 
     //region Constructor
-    public Planet(int x, int y, float mass, float radius, World world) {
+    public Planet(int x, int y, float mass, float radius, Star star, World world) {
         super(mass, radius);
+        this.star = star;
         this.body = createBody(x, y, mass, radius, world);
     }
 

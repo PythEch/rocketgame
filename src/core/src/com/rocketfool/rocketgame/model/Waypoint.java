@@ -1,7 +1,5 @@
 package com.rocketfool.rocketgame.model;
 
-import com.badlogic.gdx.graphics.Color;
-
 /**
  * Created by pythech on 02/04/16.
  */
@@ -9,13 +7,13 @@ public class Waypoint extends GameObject {
     private int x;
     private int y;
     private int radius;
-    private boolean active;
+    private boolean onScreen;
 
     public Waypoint(int x, int y, int radius) {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.active = true;
+        this.onScreen = true;
     }
 
     public int getX() {
@@ -30,12 +28,12 @@ public class Waypoint extends GameObject {
         return radius;
     }
 
-    public boolean isActive() {
-        return active;
+    public boolean isOnScreen() {
+        return onScreen;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setOnScreen(boolean onScreen) {
+        this.onScreen = onScreen;
     }
 
     @Override

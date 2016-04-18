@@ -1,6 +1,5 @@
 package com.rocketfool.rocketgame.model;
 
-import com.badlogic.gdx.math.Plane;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
@@ -17,21 +16,24 @@ public abstract class Level {
     protected Map map;
     protected Array<Trigger> triggers;
     protected Array<Waypoint> waypoints;
-    protected Array<Particle> particles;
     protected Array<SolidObject> solidObjects;
+    protected float timePassed;
+    protected int score;
 
-    enum STATE {
+    enum State {
         RUNNING, PAUSED, GAME_OVER
     }
 
-    protected STATE state;
+    protected State state;
 
     public Level() {
         this.world = new World(new Vector2(0, 0), true);
         this.triggers = new Array<Trigger>();
         this.waypoints = new Array<Waypoint>();
-        this.particles = new Array<Particle>();
         this.solidObjects = new Array<SolidObject>();
+        this.timePassed = 0;
+
+        this.score = 0;
     }
 
     protected void addTriggers() {
@@ -50,16 +52,16 @@ public abstract class Level {
         });
     }
 
-    public STATE getState() {
+    public State getState() {
         return state;
     }
 
-    public void setState(STATE state) {
+    public void setState(State state) {
         this.state = state;
     }
 
     public void saveGame() {
-        
+
     }
 
     public void update(float deltaTime) {
@@ -67,6 +69,7 @@ public abstract class Level {
         updateGravity(deltaTime);
         updateTriggers(deltaTime);
 
+        timePassed += deltaTime;
         world.step(1 / 60f, 6, 2);
     }
 
@@ -102,7 +105,7 @@ public abstract class Level {
             // it's also faster because normally distance calculation involves an Math.sqrt()
             // while len2() doesn't have to do so, so we don't have two Math.pow(Math.sqrt(distance), 2)
             // which is unnecessary work.
-            float forceScalar = spaceship.getMass() * planet.getMass() / directionVector.len2();
+            float forceScalar = 5 * spaceship.getMass() * planet.getMass() / directionVector.len2(); //**
 
             // So now we have the value of the force and the direction
             // We have to get a vector with given direction and value
@@ -127,5 +130,17 @@ public abstract class Level {
 
     public Map getMap() {
         return map;
+    }
+
+    public float getTimePassed() {
+        return timePassed;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
