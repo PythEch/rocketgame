@@ -35,7 +35,6 @@ public class Playable extends SolidObject {
         Vector2 impulseVector = new Vector2(0, dt * currentImpulse).rotateRad(body.getAngle());
 
         body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
-
     }
     //endregion
 
