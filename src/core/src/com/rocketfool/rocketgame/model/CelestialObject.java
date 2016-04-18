@@ -1,7 +1,7 @@
 package com.rocketfool.rocketgame.model;
 
 /**
- * Created by pythech on 02/04/16.
+ * Parent class for all planets, moons, and stars.
  */
 public abstract class CelestialObject extends SolidObject {
     protected float mass;
