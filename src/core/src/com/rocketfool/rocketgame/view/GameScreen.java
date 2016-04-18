@@ -11,7 +11,7 @@ import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.model.Map;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
-import com.rocketfool.rocketgame.model.Level1;
+import com.rocketfool.rocketgame.model.ExampleLevel;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -157,10 +157,18 @@ public class GameScreen implements Screen {
         //endregion
 
         //endregion
-        level = new Level1();
+        level = new ExampleLevel();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
-        controller = new WorldController(level);
+        controller = new WorldController(level, this);
+    }
+
+    public void zoomIn() {
+        camera.zoom = (float) Math.max(0, camera.zoom - 0.01);
+    }
+
+    public void zoomOut() {
+        camera.zoom += 0.01;
     }
 
     @Override

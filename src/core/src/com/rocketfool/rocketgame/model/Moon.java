@@ -7,12 +7,13 @@ import com.badlogic.gdx.physics.box2d.*;
  */
 public class Moon extends CelestialObject {
     //region Fields
-
+    private Planet planet;
     //endregion
 
     //region Constructor
-    public Moon(int x, int y, float mass, float radius, World world) {
+    public Moon(int x, int y, float mass, float radius, Planet planet, World world) {
         super(mass, radius);
+        this.planet = planet;
         this.body = createBody(x, y, mass, radius, world);
     }
 
