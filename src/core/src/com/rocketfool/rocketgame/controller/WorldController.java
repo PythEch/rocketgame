@@ -5,6 +5,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
+import com.rocketfool.rocketgame.view.GameScreen;
+import com.rocketfool.rocketgame.view.WorldRenderer;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 
@@ -13,9 +15,11 @@ import static com.rocketfool.rocketgame.util.Constants.DEBUG;
  */
 public class WorldController {
     private Level level;
+    private GameScreen screen;
 
-    public WorldController(Level level) {
+    public WorldController(Level level, GameScreen screen) {
         this.level = level;
+        this.screen = screen;
     }
 
     public void update(float deltaTime) {
@@ -37,6 +41,17 @@ public class WorldController {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             playable.decreaseThrust(deltaTime);
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
+            screen.zoomIn();
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.X)) {
+            screen.zoomOut();
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.C)) {
+            playable.toggleSAS();
         }
 
         if (DEBUG) {

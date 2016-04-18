@@ -12,7 +12,7 @@ public class ExampleLevel extends Level {
         int width = Gdx.graphics.getWidth() * 100;
         int height = Gdx.graphics.getHeight() * 100;
 
-        this.playable = new Playable(0, 0, 112, 75, 1, 75, 100, 1, world);
+        this.playable = new Playable(0, 0, 112, 75, 1, 75, 100, 1, 1, world);
         this.map = new Map(width, height);
 
         addTriggers();
@@ -23,7 +23,8 @@ public class ExampleLevel extends Level {
         solidObjects.add(new Planet(75, 75, 1e4f, 50, null, world));
     }
 
-    private void addTriggers() {
+    protected void addTriggers() {
+        super.addTriggers();
         triggers.add(new PositionTrigger(10, 10, 10, playable) {
             @Override
             public void triggerPerformed() {
