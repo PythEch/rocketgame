@@ -36,7 +36,6 @@ public class GameScreen implements Screen {
 
     private Playable cameraTarget;
 
-    private Map map;
 
     private WorldRenderer renderer;
 
