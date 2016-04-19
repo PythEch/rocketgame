@@ -15,8 +15,7 @@ import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.model.ExampleLevel;
 import com.rocketfool.rocketgame.model.*;
-
-import com.badlogic.gdx.video.VideoPlayer;
+//ToDo:import com.badlogic.gdx.video.VideoPlayer;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -29,9 +28,6 @@ public class GameScreen implements Screen {
      * This is used to make OpenGL draw objects in one go, for performance reasons.
      */
     private SpriteBatch batch;
-
-    private VideoPlayer player;
-
     /**
      * Just like SpriteBatch, but is used to draw strings
      */
@@ -57,7 +53,7 @@ public class GameScreen implements Screen {
     private WorldController controller;
 
     private ParticleEffect particleEffect;
-
+    //ToDo:private VideoPlayer videoPlayer;
 
     //endregion
 
