@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.rocketfool.rocketgame.model.SolidObject;
 
 import static com.rocketfool.rocketgame.util.Constants.toMeter;
 
@@ -21,6 +20,7 @@ public class Playable extends SolidObject {
     private float height;
     private float maxImpulse;
     private boolean SASenabled;
+    private float mass;
     //endregion
 
 
@@ -33,6 +33,7 @@ public class Playable extends SolidObject {
         this.height = height;
         this.maxImpulse = maxImpulse;
         this.SASenabled = false;
+        this.mass = mass;
 
         this.body = createBody(x, y, mass, world);
     }
@@ -86,7 +87,14 @@ public class Playable extends SolidObject {
         //body.setAngularDamping(body.getAngularDamping() + 1);
     }
 
-    private void consumeFuelAndDecreaseMass(float deltaTime) {
+    public void consumeFuelAndDecreaseMass(float deltaTime) {
+        if (fuel > 0) {
+            fuel -= currentImpulse * deltaTime/100;
+        }
+        //kilogram per liter is taken as 0.18
+        if (fuel > 0 && mass > 0) {
+            mass -= fuel * 0.18;
+        }
 
     }
 
@@ -99,8 +107,7 @@ public class Playable extends SolidObject {
         SASenabled = !SASenabled;
         if (SASenabled) {
             body.setAngularDamping(rotateImpulse / 50);
-        }
-        else {
+        } else {
             body.setAngularDamping(0);
         }
     }
@@ -108,6 +115,10 @@ public class Playable extends SolidObject {
     //region Getters & Setters
     public float getCurrentImpulse() {
         return currentImpulse;
+    }
+
+    public void setCurrentImpulse(float currentImpulse) {
+        this.currentImpulse = currentImpulse;
     }
 
     public float getRotateImpulse() {
@@ -126,12 +137,12 @@ public class Playable extends SolidObject {
         return width;
     }
 
-    public float getHeight() {
-        return height;
+    public float getMass() {
+        return mass;
     }
 
-    public void setCurrentImpulse(float currentImpulse) {
-        this.currentImpulse = currentImpulse;
+    public float getHeight() {
+        return height;
     }
     //endregion
 
@@ -145,7 +156,9 @@ public class Playable extends SolidObject {
 
     public void increaseThrust(float deltaTime) {
         // FIXME: Use Math.min with some max speed
-        currentImpulse = Math.max(0, currentImpulse + deltaTime * impulse);
+        if (fuel > 0) {
+            currentImpulse = Math.max(0, currentImpulse + deltaTime * impulse);
+        }
     }
 
     public void decreaseThrust(float deltaTime) {

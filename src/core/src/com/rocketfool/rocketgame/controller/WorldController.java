@@ -38,6 +38,7 @@ public class WorldController {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             playable.increaseThrust(deltaTime);
+            playable.consumeFuelAndDecreaseMass(deltaTime/100);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             playable.decreaseThrust(deltaTime);
