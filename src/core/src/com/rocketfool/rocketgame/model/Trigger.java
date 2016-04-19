@@ -1,7 +1,7 @@
 package com.rocketfool.rocketgame.model;
 
 /**
- * Created by pythech on 02/04/16.
+ * Triggers are like listeners; they check for certains events/changes and perform actions.
  */
 public interface Trigger {
     public boolean isTriggered();

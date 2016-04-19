@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rocketfool.rocketgame.view.MainMenuScreen;
 
 /**
- * Created by pythech on 25/03/16.
+ * Prepares the game environment. It is run once.
  */
 public class RocketGame extends Game {
     //region Fields

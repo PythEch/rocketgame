@@ -6,7 +6,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * Created by pythech on 02/04/16.
+ * Class to create instances of all levels. Also, it performs most of the calculations.
  */
 public abstract class Level {
     protected static final float G = 6.67408e-11f;
@@ -60,11 +60,10 @@ public abstract class Level {
         this.state = state;
     }
 
-    public void saveGame() {
-
-    }
+    public void saveGame() {} //TODO: Implement
 
     public void update(float deltaTime) {
+        //Calculate physical quantities and game components
         updateSolidObjects(deltaTime);
         updateGravity(deltaTime);
         updateTriggers(deltaTime);
@@ -116,9 +115,9 @@ public abstract class Level {
         }
     }
 
-    private void updateWaypoints(float deltaTime) {}
+    private void updateWaypoints(float deltaTime) {} //TODO: implement
 
-    private void updateParticles(float deltaTime) {}
+    private void updateParticles(float deltaTime) {} //TODO: implement
 
     public World getWorld() {
         return world;

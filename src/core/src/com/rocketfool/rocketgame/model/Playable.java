@@ -4,31 +4,32 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.rocketfool.rocketgame.model.SolidObject;
 
 import static com.rocketfool.rocketgame.util.Constants.toMeter;
 
 /**
- * Created by pythech on 02/04/16.
+ * Instances of this class are player-controlled spacecraft, which may be ships, satellites, or others.
+ * The constructor provides the properties of the crafts.
  */
 public class Playable extends SolidObject {
     //region Fields
     private float currentImpulse;
-    private float rotateImpulse;
-    private float impulse;
-    private float fuel;
+    private float deltaAngularImpulse;
+    private float deltaLinearImpulse;
+    private float fuelLeft;
     private float width;
     private float height;
     private float maxImpulse;
+    /** SAS is the system of a spacecraft that automatically stops its spinning. */
     private boolean SASenabled;
     //endregion
 
 
     public Playable(float x, float y, float width, float height, float mass, float rotateImpulse, float impulse, float maxImpulse, float fuel, World world) {
         this.currentImpulse = 0;
-        this.rotateImpulse = rotateImpulse;
-        this.impulse = impulse;
-        this.fuel = fuel;
+        this.deltaAngularImpulse = rotateImpulse;
+        this.deltaLinearImpulse = impulse;
+        this.fuelLeft = fuel;
         this.width = width;
         this.height = height;
         this.maxImpulse = maxImpulse;
@@ -36,7 +37,7 @@ public class Playable extends SolidObject {
 
         this.body = createBody(x, y, mass, world);
     }
-
+/** This creation is according to Box2D definitions.*/
     private Body createBody(float x, float y, float mass, World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -67,7 +68,23 @@ public class Playable extends SolidObject {
 
     //region Methods
     @Override
+    /** Receives impulses and updates momenta of the body.*/
     public void update(float dt) {
+        move(dt);
+        if (SASenabled) {
+            runSAS();
+        }
+    }
+/** Reduces angular momentum over time (using reaction wheeels in reality).*/
+    private void runSAS() {
+        //body.setAngularDamping(body.getAngularDamping() + 1);
+    }
+
+    private void consumeFuelAndDecreaseMass(float deltaTime) {
+    //TODO: implement
+    }
+
+    private void move(float dt) {
         float angle = body.getAngle();
 
         Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(angle);
@@ -77,28 +94,13 @@ public class Playable extends SolidObject {
 
         body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
 
-        if (SASenabled) {
-            runSAS();
-        }
-    }
-
-    private void runSAS() {
-        //body.setAngularDamping(body.getAngularDamping() + 1);
-    }
-
-    private void consumeFuelAndDecreaseMass(float deltaTime) {
-
-    }
-
-    private void move(float deltaTime) {
-
     }
     //endregion
 
     public void toggleSAS() {
         SASenabled = !SASenabled;
         if (SASenabled) {
-            body.setAngularDamping(rotateImpulse / 50);
+            body.setAngularDamping(deltaAngularImpulse / 50);
         }
         else {
             body.setAngularDamping(0);
@@ -110,16 +112,16 @@ public class Playable extends SolidObject {
         return currentImpulse;
     }
 
-    public float getRotateImpulse() {
-        return rotateImpulse;
+    public float getDeltaAngularImpulse() {
+        return deltaAngularImpulse;
     }
 
-    public float getImpulse() {
-        return impulse;
+    public float getDeltaLinearImpulse() {
+        return deltaLinearImpulse;
     }
 
-    public float getFuel() {
-        return fuel;
+    public float getFuelLeft() {
+        return fuelLeft;
     }
 
     public float getWidth() {
@@ -136,19 +138,19 @@ public class Playable extends SolidObject {
     //endregion
 
     public void turnLeft(float deltaTime) {
-        body.applyAngularImpulse(rotateImpulse * deltaTime, true);
+        body.applyAngularImpulse(deltaAngularImpulse * deltaTime, true);
     }
 
     public void turnRight(float deltaTime) {
-        body.applyAngularImpulse(-rotateImpulse * deltaTime, true);
+        body.applyAngularImpulse(-deltaAngularImpulse * deltaTime, true);
     }
 
     public void increaseThrust(float deltaTime) {
         // FIXME: Use Math.min with some max speed
-        currentImpulse = Math.max(0, currentImpulse + deltaTime * impulse);
+        currentImpulse = Math.max(0, currentImpulse + deltaTime * deltaLinearImpulse);
     }
 
     public void decreaseThrust(float deltaTime) {
-        currentImpulse = Math.max(0, currentImpulse - deltaTime * impulse);
+        currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse);
     }
 }
