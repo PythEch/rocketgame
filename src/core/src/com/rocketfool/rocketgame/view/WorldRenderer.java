@@ -9,7 +9,8 @@ import com.rocketfool.rocketgame.model.Level;
 import static com.rocketfool.rocketgame.util.Constants.*;
 
 /**
- * Created by pythech on 02/04/16.
+ * Together wht GameScreen, this class draws the view.
+ * The main differences are WorldRenderer drawing the objects and GameScreen presenting the UI elements.
  */
 public class WorldRenderer {
     private Level level;
@@ -27,6 +28,8 @@ public class WorldRenderer {
 
     private void drawPlayer(SpriteBatch batch) {
         Texture texture = AssetManager.PLAYER_TEXTURE;
+
+        //Increase rendering quality
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         Body body = level.getPlayable().getBody();
 
@@ -52,7 +55,8 @@ public class WorldRenderer {
 
     private void drawMap(SpriteBatch batch) {
         Texture texture = AssetManager.MAP_TEXTURE;
-        // this makes background repeatable
+
+        // this makes background tessellate
         texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
 
         batch.draw(

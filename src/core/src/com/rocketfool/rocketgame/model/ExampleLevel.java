@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.Gdx;
 
 /**
- * Created by pythech on 02/04/16.
+ * Our map for testing the current physical behaviour. It is a work in progress right now.
  */
 public class ExampleLevel extends Level {
     public ExampleLevel() {
@@ -20,7 +20,9 @@ public class ExampleLevel extends Level {
     }
 
     private void addPlanets() {
-        solidObjects.add(new Planet(75, 75, 1e4f, 50, null, world));
+
+        solidObjects.add(new Planet(75, 75, 3*1e3f, 50, null, world));
+        solidObjects.add(new Planet(400, 400, 1e4f, 100, null, world));
     }
 
     protected void addTriggers() {

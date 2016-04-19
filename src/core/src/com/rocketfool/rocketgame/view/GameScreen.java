@@ -16,7 +16,9 @@ import com.rocketfool.rocketgame.model.ExampleLevel;
 import static com.rocketfool.rocketgame.util.Constants.*;
 
 /**
- * Created by pythech on 25/03/16.
+ * Together wht WorldRenderer, this class draws the view.
+ * The main differences are WorldRenderer drawing the objects and GameScreen presenting the UI elements.
+ * TODO: Add UI panels
  */
 public class GameScreen implements Screen {
     //region Fields

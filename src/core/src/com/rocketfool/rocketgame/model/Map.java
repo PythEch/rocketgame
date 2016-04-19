@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rocketfool.rocketgame.view.AssetManager;
 
 /**
- * Created by pythech on 07/03/16.
+ * Outlines playable area.
  */
 public class Map {
     //region Fields
