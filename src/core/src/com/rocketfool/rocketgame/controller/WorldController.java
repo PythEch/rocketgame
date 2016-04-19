@@ -2,6 +2,7 @@ package com.rocketfool.rocketgame.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
@@ -36,9 +37,16 @@ public class WorldController {
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             playable.turnRight(deltaTime);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.UP))
+        {
             playable.increaseThrust(deltaTime);
+            screen.igniteRocketTrail();
         }
+        else
+        {
+            screen.stopRocketTrail();
+        }
+
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             playable.decreaseThrust(deltaTime);
         }

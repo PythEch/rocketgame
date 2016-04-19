@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rocketfool.rocketgame.view.MainMenuScreen;
+import com.rocketfool.rocketgame.view.SplashScreen;
 
 /**
  * Created by pythech on 25/03/16.
