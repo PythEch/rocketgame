@@ -28,7 +28,7 @@ public class ExampleLevel extends Level {
         triggers.add(new PositionTrigger(10, 10, 10, playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("omg");
+                //System.out.println("omg");
             }
         });
     }
