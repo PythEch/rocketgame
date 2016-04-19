@@ -190,7 +190,7 @@ public class GameScreen implements Screen {
         //For Particles
         particleEffect = new ParticleEffect();
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
-        particleEffect.start();
+
 
 
         //endregion
@@ -198,6 +198,7 @@ public class GameScreen implements Screen {
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
         controller = new WorldController(level, this);
+
     }
 
     public void zoomIn() {
@@ -209,20 +210,26 @@ public class GameScreen implements Screen {
     }
 
     public void igniteRocketTrail() {
+
         System.out.println("ignite");
         if (particleEffect.isComplete() )
         {
             particleEffect.reset();
 
         }
-        particleEffect.getEmitters().first().setContinuous(true);
-
+        for(int i = 0; i < particleEffect.getEmitters().size; i++){
+            particleEffect.getEmitters().get(i).setContinuous(true);
+        }
     }
 
     public void stopRocketTrail() {
         System.out.println("stop");
 
-        particleEffect.getEmitters().first().setContinuous(false);
+        for(int i = 0; i < particleEffect.getEmitters().size; i++)
+        {
+            particleEffect.getEmitters().get(i).setContinuous(false);
+            particleEffect.getEmitters().get(i).duration = 0;
+        }
     }
 
     @Override
