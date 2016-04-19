@@ -12,24 +12,24 @@ public class ExampleLevel extends Level {
         int width = Gdx.graphics.getWidth() * 100;
         int height = Gdx.graphics.getHeight() * 100;
 
-        //distance is in m
-        //mass is in kg
-        this.playable = new Playable(125, 125,    100, 75,    1e5f,    150, 100, 500,    1, world);
-                                    //x, y,         w, h,      m,  rttImp, imp, maxImp, fuel, world
+        //distance is in m , mass is in kg
+        this.playable = new Playable(200, 200, 112, 75, 1e5f, 150, 100, 500, 1, world);
+        //x, y,         w, h,      m,  rttImp, imp, maxImp, fuel, world
 
-        this.map = new Map(width, height);//**?
+        this.map = new Map(width, height);
 
         addTriggers();
         addPlanets();
-        G = 6.67408e-11f*1e-12f; //** distances scaled 1:1e6f , so G is increased by (1e6f )^2 = 12
-    } //Currently everything is pretty much to scale... but something is wrong with forces...
-      //and the distances are terribly large
+    }
 
     private void addPlanets() {
+        G = 6.67408f*1e-11f*1e-12f; //** distances scaled 1:1e6f , so G is decreased by the same amount to not affect energy relations
+      //Currently everything is pretty much to scale and the distances are terribly large despite the 1/1000 000 scale
+      //TODO: ERROR: Galiba scale-down etmekte bir mantık hatası var çünkü şu haliyle force r değişince çok çok hızlı değişiyor
 
-        solidObjects.add(new Planet(0, 0,     6*1e24f,    127/2, null, world));
+        solidObjects.add(new Planet(150, 150,     6*1e24f,    127/2, null, world));
         //                                     mass        rad
-        solidObjects.add(new Planet( 15000 , 1,     2*1e30f,     1390/2, null, world));
+        //solidObjects.add(new Planet( 15000 , 1,     2*1e30f,     1390/2, null, world));
         //                           10^5             mass        rad
     }
 
