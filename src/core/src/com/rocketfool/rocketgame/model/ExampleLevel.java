@@ -12,8 +12,10 @@ public class ExampleLevel extends Level {
         int width = Gdx.graphics.getWidth() * 100;
         int height = Gdx.graphics.getHeight() * 100;
 
-        this.playable = new Playable(0, 0, 112, 75, 1, 75, 100, 1, 1, world);
-        this.map = new Map(width, height);
+        this.playable = new Playable(0, 0, 112, 75, 10, 150, 100, 500, 1, world);
+        //float x, float y, float w, float h, float m, float rotateImpulse, float impulse, float maxImpulse, float fuel, World world
+
+        this.map = new Map(width, height);//**?
 
         addTriggers();
         addPlanets();
@@ -22,7 +24,8 @@ public class ExampleLevel extends Level {
     private void addPlanets() {
 
         solidObjects.add(new Planet(75, 75, 3*1e3f, 50, null, world));
-        solidObjects.add(new Planet(400, 400, 1e4f, 100, null, world));
+        //solidObjects.add(new Planet(400, 400, 1e4f, 100, null, world));
+        solidObjects.add(new Planet(2000, 2000, 1e7f, 500, null, world));
     }
 
     protected void addTriggers() {
