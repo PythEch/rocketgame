@@ -12,20 +12,25 @@ public class ExampleLevel extends Level {
         int width = Gdx.graphics.getWidth() * 100;
         int height = Gdx.graphics.getHeight() * 100;
 
-        this.playable = new Playable(0, 0, 112, 75, 10, 150, 100, 500, 1, world);
-        //float x, float y, float w, float h, float m, float rotateImpulse, float impulse, float maxImpulse, float fuel, World world
+        //distance is in m
+        //mass is in kg
+        this.playable = new Playable(125, 125,    100, 75,    1e5f,    150, 100, 500,    1, world);
+                                    //x, y,         w, h,      m,  rttImp, imp, maxImp, fuel, world
 
         this.map = new Map(width, height);//**?
 
         addTriggers();
         addPlanets();
-    }
+        G = 6.67408e-11f*1e-12f; //** distances scaled 1:1e6f , so G is increased by (1e6f )^2 = 12
+    } //Currently everything is pretty much to scale... but something is wrong with forces...
+      //and the distances are terribly large
 
     private void addPlanets() {
 
-        solidObjects.add(new Planet(75, 75, 3*1e3f, 50, null, world));
-        //solidObjects.add(new Planet(400, 400, 1e4f, 100, null, world));
-        solidObjects.add(new Planet(2000, 2000, 1e7f, 500, null, world));
+        solidObjects.add(new Planet(0, 0,     6*1e24f,    127/2, null, world));
+        //                                     mass        rad
+        solidObjects.add(new Planet( 15000 , 1,     2*1e30f,     1390/2, null, world));
+        //                           10^5             mass        rad
     }
 
     protected void addTriggers() {
