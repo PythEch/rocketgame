@@ -165,11 +165,11 @@ public class GameScreen implements Screen {
     }
 
     public void zoomIn() {
-        camera.zoom = (float) Math.max(0, camera.zoom - 0.01);
-    }
+        camera.zoom = (float) Math.max(0.5, camera.zoom - 0.10);
+    } //**
 
     public void zoomOut() {
-        camera.zoom += 0.01;
+        camera.zoom += 0.10;
     }
 
     @Override

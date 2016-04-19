@@ -53,6 +53,10 @@ public class WorldController {
         if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)) {
             playable.toggleSAS();
         }
+        /** Cut engine thrust */
+        if (Gdx.input.isKeyPressed(Input.Keys.X)) {
+            playable.setCurrentImpulse(0);
+        }
 
         if (DEBUG) {
             if (Gdx.input.isKeyPressed(Input.Keys.F)) {
