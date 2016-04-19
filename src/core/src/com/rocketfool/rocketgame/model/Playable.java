@@ -21,6 +21,7 @@ public class Playable extends SolidObject {
     private float height;
     private float maxImpulse;
     private boolean SASenabled;
+    private Vector2 bottomPosition;
     //endregion
 
 
@@ -71,7 +72,7 @@ public class Playable extends SolidObject {
         float angle = body.getAngle();
 
         Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(angle);
-        Vector2 bottomPosition = bottomVector.add(body.getPosition());
+        bottomPosition = bottomVector.add(body.getPosition());
 
         Vector2 impulseVector = new Vector2(0, dt * currentImpulse).rotateRad(body.getAngle());
 
@@ -128,6 +129,10 @@ public class Playable extends SolidObject {
 
     public float getHeight() {
         return height;
+    }
+
+    public Vector2 getBottomPosition(){
+        return bottomPosition;
     }
 
     public void setCurrentImpulse(float currentImpulse) {
