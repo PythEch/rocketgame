@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.rocketfool.rocketgame.external.RocketGame;
 
+
 import static com.rocketfool.rocketgame.util.Constants.*;
 
 /**
@@ -54,7 +55,7 @@ public class MainMenuScreen implements Screen {
         exit.add(exitText);
 
         table.right().padRight(75);
-        table.add(newGame).width(newGame.getPrefWidth() * 1.5f).height(newGame.getPrefHeight() * 1.3f).uniform();
+        table.add(newGame).width(newGame.getPrefWidth() * 1.5f).height(newGame.getPrefHeight() * 1.5f).uniform();
         table.row().padTop(20);
         table.add(options).uniform().fill();
         table.row().padTop(20);
