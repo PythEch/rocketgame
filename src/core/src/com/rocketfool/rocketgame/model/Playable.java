@@ -38,7 +38,7 @@ public class Playable extends SolidObject {
 
         this.body = createBody(x, y, mass, world);
     }
-/** This creation is according to Box2D definitions.*/
+	/** This creation is according to Box2D definitions.*/
     private Body createBody(float x, float y, float mass, World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -72,22 +72,17 @@ public class Playable extends SolidObject {
     @Override
     public void update(float dt) {
         move(dt);
-        
-        if (SASenabled) {
-            body.setAngularDamping( deltaAngularImpulse / 100 ); //TODO: Run SAS WHILE shift is pressed (toggle is too sensitive).
-        }
-        else {
-            body.setAngularDamping(0);
-        }
     }
 
     private void consumeFuelAndDecreaseMass(float deltaTime) {
-    //TODO: implement
+		//kilogram per liter is taken as 0.18
+    	if (fuelLeft > 0) {
+            fuelLeft -= currentImpulse * deltaTime / 100;
+            body.getMassData().mass -= fuelLeft * 0.18; //FIXME: make a constant for this
+        }
     }
 
-    private void move(float dt) {
-        float angle = body.getAngle();
-
+    private void move(float deltaTime) {
         Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(angle);
         bottomPosition = bottomVector.add(body.getPosition());
 
@@ -100,6 +95,12 @@ public class Playable extends SolidObject {
 
     public void toggleSAS() {
         SASenabled = !SASenabled;
+		if (SASenabled) {
+            body.setAngularDamping( deltaAngularImpulse / 100 ); //TODO: Run SAS WHILE shift is pressed (toggle is too sensitive).
+        }
+        else {
+            body.setAngularDamping(0);
+        }
     }
 
     //region Getters & Setters
@@ -146,7 +147,9 @@ public class Playable extends SolidObject {
 
     public void increaseThrust(float deltaTime) {
         // FIXME: Use Math.min with some max speed
-        currentImpulse = Math.max(0, currentImpulse + deltaTime * deltaLinearImpulse);
+        if (fuel > 0) {
+            currentImpulse = Math.max(0, currentImpulse + deltaTime * deltaLinearImpulse);
+        }
     }
 
     public void decreaseThrust(float deltaTime) {
