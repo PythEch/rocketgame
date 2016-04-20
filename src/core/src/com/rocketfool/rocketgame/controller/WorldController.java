@@ -2,6 +2,7 @@ package com.rocketfool.rocketgame.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
@@ -36,31 +37,42 @@ public class WorldController {
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             playable.turnRight(deltaTime);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.UP))
+        {
             playable.increaseThrust(deltaTime);
-            playable.consumeFuelAndDecreaseMass(deltaTime/100);
+            screen.igniteRocketTrail();
         }
+        else
+        {
+            screen.stopRocketTrail();
+        }
+
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             playable.decreaseThrust(deltaTime);
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             screen.zoomIn();
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.X)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             screen.zoomOut();
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.C)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)) {
             playable.toggleSAS();
+        }
+        /** Cut engine thrust */
+        //TODO: Make this actually happen in about 0.5s. Also, add a maximize thrust input for the Z key.
+        if (Gdx.input.isKeyPressed(Input.Keys.X)) {
+            playable.setCurrentImpulse(0);
         }
 
         if (DEBUG) {
-            if (Gdx.input.isKeyPressed(Input.Keys.R)) {
+            if (Gdx.input.isKeyPressed(Input.Keys.F)) {
                 playable.setCurrentImpulse(0);
                 body.setAngularVelocity(0);
             }
-            if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+            if (Gdx.input.isKeyPressed(Input.Keys.G)) {
                 body.setLinearVelocity(0, 0);
             }
             if (Gdx.input.isKeyPressed(Input.Keys.H)) {

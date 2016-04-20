@@ -10,10 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.rocketfool.rocketgame.external.RocketGame;
 
+
 import static com.rocketfool.rocketgame.util.Constants.*;
 
 /**
- * A standard main menu screen for the game
+ * A standard main menu screen for the game. It is a work in progress.
  */
 public class MainMenuScreen implements Screen {
     private Stage stage;
@@ -32,12 +33,14 @@ public class MainMenuScreen implements Screen {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
 
+        //Set the table as the main component of the menu screen.
         Table table = new Table();
         table.setFillParent(true);
         table.setDebug(DEBUG);
 
         Skin skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
 
+        //Create table buttons
         Button newGame = new Button(skin);
         Label newGameText = new Label("New Game", skin);
         newGameText.setFontScale(2);
@@ -53,8 +56,9 @@ public class MainMenuScreen implements Screen {
         exitText.setFontScale(2);
         exit.add(exitText);
 
+        //Align everything with regular size and spacing
         table.right().padRight(75);
-        table.add(newGame).width(newGame.getPrefWidth() * 1.5f).height(newGame.getPrefHeight() * 1.3f).uniform();
+        table.add(newGame).width(newGame.getPrefWidth() * 1.5f).height(newGame.getPrefHeight() * 1.5f).uniform();
         table.row().padTop(20);
         table.add(options).uniform().fill();
         table.row().padTop(20);

@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Created by pythech on 02/04/16.
+ * Triggers an event if the playable object enters a circular, predetermined region.
  */
 public abstract class PositionTrigger implements Trigger {
     private float x;
