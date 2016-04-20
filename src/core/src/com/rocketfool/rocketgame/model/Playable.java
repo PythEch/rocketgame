@@ -22,6 +22,7 @@ public class Playable extends SolidObject {
     private float maxImpulse;
     /** SAS is the system of a spacecraft that automatically stops its spinning. */
     private boolean SASenabled;
+    private Vector2 bottomPosition;
     //endregion
 
 
@@ -67,15 +68,11 @@ public class Playable extends SolidObject {
 
 
     //region Methods
-    @Override
     /** Receives impulses and updates momenta of the body.*/
+    @Override
     public void update(float dt) {
         move(dt);
-        runSAS();
-
-    }
-/** Reduces angular momentum over time (using reaction wheels in reality).*/
-    private void runSAS() {
+        
         if (SASenabled) {
             body.setAngularDamping( deltaAngularImpulse / 100 ); //TODO: Run SAS WHILE shift is pressed (toggle is too sensitive).
         }
@@ -92,7 +89,7 @@ public class Playable extends SolidObject {
         float angle = body.getAngle();
 
         Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(angle);
-        Vector2 bottomPosition = bottomVector.add(body.getPosition());
+        bottomPosition = bottomVector.add(body.getPosition());
 
         Vector2 impulseVector = new Vector2(0, dt * currentImpulse).rotateRad(body.getAngle());
 
@@ -128,6 +125,10 @@ public class Playable extends SolidObject {
 
     public float getHeight() {
         return height;
+    }
+
+    public Vector2 getBottomPosition(){
+        return bottomPosition;
     }
 
     public void setCurrentImpulse(float currentImpulse) {
