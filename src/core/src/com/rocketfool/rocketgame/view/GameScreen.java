@@ -140,8 +140,8 @@ public class GameScreen implements Screen {
         font.draw(
                 batch,
                 str,
-                camera.position.x - camera.viewportWidth / 2f,
-                camera.position.y - camera.viewportHeight / 2f + font.getLineHeight() * row
+                camera.position.x - camera.viewportWidth / 2f * camera.zoom,
+                camera.position.y - camera.viewportHeight / 2f * camera.zoom + font.getLineHeight() * row
         );
     }
 
@@ -205,11 +205,18 @@ public class GameScreen implements Screen {
     }
 
     public void zoomIn() {
+
         camera.zoom = (float) Math.max(0.5, camera.zoom / 1.04f );
+        if ( camera.zoom > 0.5 ) {
+            font.setScale(font.getScaleX() / 1.04f);
+        }
+
     } //**
 
     public void zoomOut() {
         camera.zoom = (float) Math.min( camera.zoom * 1.04f , 150 );
+        if ( camera.zoom < 150 )
+            font.setScale( font.getScaleX() * 1.04f );
     }
 
     public void igniteRocketTrail() {

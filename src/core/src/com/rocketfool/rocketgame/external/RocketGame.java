@@ -3,6 +3,7 @@ package com.rocketfool.rocketgame.external;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.rocketfool.rocketgame.view.GameScreen;
 import com.rocketfool.rocketgame.view.MainMenuScreen;
 import com.rocketfool.rocketgame.view.Splash.SplashScreen;
 
@@ -21,7 +22,8 @@ public class RocketGame extends Game {
         batch = new SpriteBatch();
         font = new BitmapFont();
 
-        this.setScreen(new SplashScreen(this, batch, font));
+        this.setScreen(new SplashScreen(this, batch, font)); //** Normal game start
+        //this.setScreen(new GameScreen(batch, font)); //** Skip to game
     }
 
     @Override
