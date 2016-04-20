@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.physics.box2d.Body;
 
 /**
- * Created by pythech on 02/04/16.
+ * Class for all objects with physical properties and a rectangular shape. Eg. Unplayed satellites.
  */
 public class RectangleObstacle extends SolidObject {
     public RectangleObstacle(float x, float y, int width, int height, int speed, float angle) {

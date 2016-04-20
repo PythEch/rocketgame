@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Created by pythech on 02/04/16.
+ * Causes the out-of-map endgame scenario when triggered.
  */
 public abstract class OutOfMapTrigger implements Trigger {
     private Map map;

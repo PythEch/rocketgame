@@ -4,22 +4,23 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.rocketfool.rocketgame.model.SolidObject;
 
 import static com.rocketfool.rocketgame.util.Constants.toMeter;
 
 /**
- * Created by pythech on 02/04/16.
+ * Instances of this class are player-controlled spacecraft, which may be ships, satellites, or others.
+ * The constructor provides the properties of the crafts.
  */
 public class Playable extends SolidObject {
     //region Fields
     private float currentImpulse;
-    private float rotateImpulse;
-    private float impulse;
-    private float fuel;
+    private float deltaAngularImpulse;
+    private float deltaLinearImpulse;
+    private float fuelLeft;
     private float width;
     private float height;
     private float maxImpulse;
+    /** SAS is the system of a spacecraft that automatically stops its spinning. */
     private boolean SASenabled;
     private Vector2 bottomPosition;
     //endregion
@@ -27,9 +28,9 @@ public class Playable extends SolidObject {
 
     public Playable(float x, float y, float width, float height, float mass, float rotateImpulse, float impulse, float maxImpulse, float fuel, World world) {
         this.currentImpulse = 0;
-        this.rotateImpulse = rotateImpulse;
-        this.impulse = impulse;
-        this.fuel = fuel;
+        this.deltaAngularImpulse = rotateImpulse;
+        this.deltaLinearImpulse = impulse;
+        this.fuelLeft = fuel;
         this.width = width;
         this.height = height;
         this.maxImpulse = maxImpulse;
@@ -37,7 +38,7 @@ public class Playable extends SolidObject {
 
         this.body = createBody(x, y, mass, world);
     }
-
+	/** This creation is according to Box2D definitions.*/
     private Body createBody(float x, float y, float mass, World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -45,7 +46,7 @@ public class Playable extends SolidObject {
 
         Body body = world.createBody(bodyDef);
 
-        body.setTransform(0, 0, -90 * MathUtils.degreesToRadians);
+        body.setTransform(x, y, -90 * MathUtils.degreesToRadians);
 
         PolygonShape rectangle = new PolygonShape();
         rectangle.setAsBox(width / 2f * toMeter, height / 2f * toMeter);
@@ -67,39 +68,36 @@ public class Playable extends SolidObject {
 
 
     //region Methods
+    /** Receives impulses and updates momenta of the body.*/
     @Override
-    public void update(float dt) {
-        float angle = body.getAngle();
-
-        Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(angle);
-        bottomPosition = bottomVector.add(body.getPosition());
-
-        Vector2 impulseVector = new Vector2(0, dt * currentImpulse).rotateRad(body.getAngle());
-
-        body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
-
-        if (SASenabled) {
-            runSAS();
-        }
-    }
-
-    private void runSAS() {
-        //body.setAngularDamping(body.getAngularDamping() + 1);
+    public void update(float deltaTime) {
+        move(deltaTime);
+        consumeFuelAndDecreaseMass(deltaTime);
     }
 
     private void consumeFuelAndDecreaseMass(float deltaTime) {
-
+		//kilogram per liter is taken as 0.18
+    	if (fuelLeft > 0) {
+            fuelLeft -= currentImpulse * deltaTime / 100;
+            body.getMassData().mass -= fuelLeft * 0.18; //FIXME: make a constant for this
+        }
     }
 
     private void move(float deltaTime) {
+        Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(body.getAngle());
+        bottomPosition = bottomVector.add(body.getPosition());
+
+        Vector2 impulseVector = new Vector2(0, deltaTime * currentImpulse).rotateRad(body.getAngle());
+
+        body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
 
     }
     //endregion
 
     public void toggleSAS() {
         SASenabled = !SASenabled;
-        if (SASenabled) {
-            body.setAngularDamping(rotateImpulse / 50);
+		if (SASenabled) {
+            body.setAngularDamping( deltaAngularImpulse / 100 ); //TODO: Run SAS WHILE shift is pressed (toggle is too sensitive).
         }
         else {
             body.setAngularDamping(0);
@@ -111,16 +109,16 @@ public class Playable extends SolidObject {
         return currentImpulse;
     }
 
-    public float getRotateImpulse() {
-        return rotateImpulse;
+    public float getDeltaAngularImpulse() {
+        return deltaAngularImpulse;
     }
 
-    public float getImpulse() {
-        return impulse;
+    public float getDeltaLinearImpulse() {
+        return deltaLinearImpulse;
     }
 
-    public float getFuel() {
-        return fuel;
+    public float getFuelLeft() {
+        return fuelLeft;
     }
 
     public float getWidth() {
@@ -141,19 +139,21 @@ public class Playable extends SolidObject {
     //endregion
 
     public void turnLeft(float deltaTime) {
-        body.applyAngularImpulse(rotateImpulse * deltaTime, true);
+        body.applyAngularImpulse(deltaAngularImpulse * deltaTime, true);
     }
 
     public void turnRight(float deltaTime) {
-        body.applyAngularImpulse(-rotateImpulse * deltaTime, true);
+        body.applyAngularImpulse(-deltaAngularImpulse * deltaTime, true);
     }
 
     public void increaseThrust(float deltaTime) {
         // FIXME: Use Math.min with some max speed
-        currentImpulse = Math.max(0, currentImpulse + deltaTime * impulse);
+        if (fuelLeft > 0) {
+            currentImpulse = Math.max(0, currentImpulse + deltaTime * deltaLinearImpulse);
+        }
     }
 
     public void decreaseThrust(float deltaTime) {
-        currentImpulse = Math.max(0, currentImpulse - deltaTime * impulse);
+        currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse);
     }
 }

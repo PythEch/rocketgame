@@ -3,7 +3,8 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.physics.box2d.*;
 
 /**
- * Created by pythech on 07/03/16.
+ * Work in progress.
+ * TODO: Add motion
  */
 public class Planet extends CelestialObject {
     //region Fields

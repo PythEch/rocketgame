@@ -21,7 +21,9 @@ import com.badlogic.gdx.video.VideoPlayer;
 import static com.rocketfool.rocketgame.util.Constants.*;
 
 /**
- * Created by pythech on 25/03/16.
+ * Together wht WorldRenderer, this class draws the view.
+ * The main differences are WorldRenderer drawing the objects and GameScreen presenting the UI elements.
+ * TODO: Add UI panels
  */
 public class GameScreen implements Screen {
     //region Fields
@@ -50,7 +52,6 @@ public class GameScreen implements Screen {
 
     private Playable cameraTarget;
 
-    private Map map;
 
     private WorldRenderer renderer;
 
@@ -202,11 +203,11 @@ public class GameScreen implements Screen {
     }
 
     public void zoomIn() {
-        camera.zoom = (float) Math.max(0, camera.zoom - 0.01);
-    }
+        camera.zoom = (float) Math.max(0.5, camera.zoom / 1.04f );
+    } //**
 
     public void zoomOut() {
-        camera.zoom += 0.01;
+        camera.zoom = (float) Math.min( camera.zoom * 1.04f , 150 );
     }
 
     public void igniteRocketTrail() {
