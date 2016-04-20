@@ -45,7 +45,7 @@ public class Playable extends SolidObject {
 
         Body body = world.createBody(bodyDef);
 
-        body.setTransform(0, 0, -90 * MathUtils.degreesToRadians);
+        body.setTransform(x, y, -90 * MathUtils.degreesToRadians);
 
         PolygonShape rectangle = new PolygonShape();
         rectangle.setAsBox(width / 2f * toMeter, height / 2f * toMeter);
@@ -71,13 +71,17 @@ public class Playable extends SolidObject {
     /** Receives impulses and updates momenta of the body.*/
     public void update(float dt) {
         move(dt);
-        if (SASenabled) {
-            runSAS();
-        }
+        runSAS();
+
     }
-/** Reduces angular momentum over time (using reaction wheeels in reality).*/
+/** Reduces angular momentum over time (using reaction wheels in reality).*/
     private void runSAS() {
-        //body.setAngularDamping(body.getAngularDamping() + 1);
+        if (SASenabled) {
+            body.setAngularDamping( deltaAngularImpulse / 100 ); //TODO: Run SAS WHILE shift is pressed (toggle is too sensitive).
+        }
+        else {
+            body.setAngularDamping(0);
+        }
     }
 
     private void consumeFuelAndDecreaseMass(float deltaTime) {
@@ -99,12 +103,6 @@ public class Playable extends SolidObject {
 
     public void toggleSAS() {
         SASenabled = !SASenabled;
-        if (SASenabled) {
-            body.setAngularDamping(deltaAngularImpulse / 50);
-        }
-        else {
-            body.setAngularDamping(0);
-        }
     }
 
     //region Getters & Setters

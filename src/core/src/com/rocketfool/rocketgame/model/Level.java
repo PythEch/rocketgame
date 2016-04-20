@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Array;
  * Class to create instances of all levels. Also, it performs most of the calculations.
  */
 public abstract class Level {
-    protected static final float G = 6.67408e-11f;
+    protected static /*final*/ float G = 6.67408e-11f;
 
     protected World world;
     protected Playable playable;
@@ -104,7 +104,7 @@ public abstract class Level {
             // it's also faster because normally distance calculation involves an Math.sqrt()
             // while len2() doesn't have to do so, so we don't have two Math.pow(Math.sqrt(distance), 2)
             // which is unnecessary work.
-            float forceScalar = 5 * spaceship.getMass() * planet.getMass() / directionVector.len2(); //**
+            float forceScalar = G * spaceship.getMass() * planet.getMass() / directionVector.len2(); //**
 
             // So now we have the value of the force and the direction
             // We have to get a vector with given direction and value
