@@ -8,7 +8,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 0
 
@@ -21,7 +21,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 1
 
@@ -34,7 +34,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 2
 
@@ -47,7 +47,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 3
 
@@ -60,7 +60,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 4
 
@@ -73,7 +73,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 5
 
@@ -86,7 +86,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 6
 
@@ -99,7 +99,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 7
 
@@ -112,7 +112,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 8
 
@@ -125,7 +125,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 9
 
@@ -138,7 +138,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 10
 
@@ -151,7 +151,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 11
 
@@ -164,7 +164,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 12
 
@@ -177,7 +177,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 13
 
@@ -190,7 +190,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 14
 
@@ -203,7 +203,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 15
 
@@ -216,7 +216,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 16
 
@@ -229,7 +229,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 17
 
@@ -242,7 +242,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 18
 
@@ -255,7 +255,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 19
 
@@ -268,7 +268,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 20
 
@@ -281,7 +281,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 21
 
@@ -294,7 +294,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 22
 
@@ -307,7 +307,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 23
 
@@ -320,7 +320,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 24
 
@@ -333,7 +333,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 25
 
@@ -346,7 +346,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 26
 
@@ -359,7 +359,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 27
 
@@ -372,7 +372,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 28
 
@@ -385,7 +385,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 29
 
@@ -398,7 +398,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 30
 
@@ -411,7 +411,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 31
 
@@ -424,7 +424,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 32
 
@@ -437,7 +437,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 33
 
@@ -450,7 +450,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 34
 
@@ -463,7 +463,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 35
 
@@ -476,7 +476,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 36
 
@@ -489,7 +489,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 37
 
@@ -502,7 +502,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 38
 
@@ -515,7 +515,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 39
 
@@ -528,7 +528,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 40
 
@@ -541,7 +541,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 41
 
@@ -554,7 +554,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 42
 
@@ -567,7 +567,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 43
 
@@ -580,7 +580,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 44
 
@@ -593,7 +593,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 45
 
@@ -606,7 +606,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 46
 
@@ -619,7 +619,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 47
 
@@ -632,7 +632,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 48
 
@@ -645,7 +645,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 49
 
@@ -658,7 +658,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 50
 
@@ -671,7 +671,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 51
 
@@ -684,7 +684,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 52
 
@@ -697,7 +697,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 53
 
@@ -710,7 +710,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 54
 
@@ -723,7 +723,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 55
 
@@ -736,7 +736,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 56
 
@@ -749,7 +749,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 57
 
@@ -762,7 +762,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 58
 
@@ -775,7 +775,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 59
 
@@ -788,7 +788,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 60
 
@@ -801,7 +801,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 61
 
@@ -814,7 +814,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 62
 
@@ -827,7 +827,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 63
 
@@ -840,7 +840,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 64
 
@@ -853,7 +853,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 65
 
@@ -866,7 +866,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 66
 
@@ -879,7 +879,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 67
 
@@ -892,7 +892,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 68
 
@@ -905,7 +905,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 69
 
@@ -918,7 +918,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 70
 
@@ -931,7 +931,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 71
 
@@ -944,7 +944,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 72
 
@@ -957,7 +957,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 73
 
@@ -970,7 +970,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 74
 
@@ -983,7 +983,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 75
 
@@ -996,7 +996,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 76
 
@@ -1009,7 +1009,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 77
 
@@ -1022,7 +1022,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 78
 
@@ -1035,7 +1035,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 79
 
@@ -1048,7 +1048,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 80
 
@@ -1061,7 +1061,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 81
 
@@ -1074,7 +1074,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 82
 
@@ -1087,7 +1087,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 83
 
@@ -1100,7 +1100,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 84
 
@@ -1113,7 +1113,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 85
 
@@ -1126,7 +1126,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 86
 
@@ -1139,7 +1139,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 87
 
@@ -1152,7 +1152,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 88
 
@@ -1165,7 +1165,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 89
 
@@ -1178,7 +1178,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 90
 
@@ -1191,7 +1191,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 91
 
@@ -1204,7 +1204,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 92
 
@@ -1217,7 +1217,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 93
 
@@ -1230,7 +1230,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 94
 
@@ -1243,7 +1243,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 95
 
@@ -1256,7 +1256,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 96
 
@@ -1269,7 +1269,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 97
 
@@ -1282,7 +1282,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 98
 
@@ -1295,7 +1295,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 99
 
@@ -1308,7 +1308,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 100
 
@@ -1321,7 +1321,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 101
 
@@ -1334,7 +1334,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 102
 
@@ -1347,7 +1347,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 103
 
@@ -1360,7 +1360,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 104
 
@@ -1373,7 +1373,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 105
 
@@ -1386,7 +1386,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 106
 
@@ -1399,7 +1399,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 107
 
@@ -1412,7 +1412,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 108
 
@@ -1425,7 +1425,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 109
 
@@ -1438,7 +1438,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 110
 
@@ -1451,7 +1451,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 111
 
@@ -1464,7 +1464,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 112
 
@@ -1477,7 +1477,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 113
 
@@ -1490,7 +1490,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 114
 
@@ -1503,7 +1503,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 115
 
@@ -1516,7 +1516,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 116
 
@@ -1529,7 +1529,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 117
 
@@ -1542,7 +1542,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 118
 
@@ -1555,7 +1555,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 119
 
@@ -1568,7 +1568,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 120
 
@@ -1581,7 +1581,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 121
 
@@ -1594,7 +1594,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 122
 
@@ -1607,7 +1607,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 123
 
@@ -1620,7 +1620,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 124
 
@@ -1633,7 +1633,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 125
 
@@ -1646,7 +1646,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 126
 
@@ -1659,7 +1659,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 127
 
@@ -1672,7 +1672,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 128
 
@@ -1685,7 +1685,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 129
 
@@ -1698,7 +1698,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 130
 
@@ -1711,7 +1711,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 131
 
@@ -1724,7 +1724,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 132
 
@@ -1737,7 +1737,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 133
 
@@ -1750,7 +1750,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 134
 
@@ -1763,7 +1763,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 135
 
@@ -1776,7 +1776,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 136
 
@@ -1789,7 +1789,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 137
 
@@ -1802,7 +1802,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 138
 
@@ -1815,7 +1815,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 139
 
@@ -1828,7 +1828,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 140
 
@@ -1841,7 +1841,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 141
 
@@ -1854,7 +1854,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 142
 
@@ -1867,7 +1867,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 143
 
@@ -1880,7 +1880,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 144
 
@@ -1893,7 +1893,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 145
 
@@ -1906,7 +1906,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 146
 
@@ -1919,7 +1919,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 147
 
@@ -1932,7 +1932,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 148
 
@@ -1945,7 +1945,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 149
 
@@ -1958,7 +1958,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 150
 
@@ -1971,7 +1971,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 151
 
@@ -1984,7 +1984,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 152
 
@@ -1997,7 +1997,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 153
 
@@ -2010,7 +2010,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 154
 
@@ -2023,7 +2023,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 155
 
@@ -2036,7 +2036,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 156
 
@@ -2049,7 +2049,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 157
 
@@ -2062,7 +2062,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 158
 
@@ -2075,7 +2075,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 159
 
@@ -2088,7 +2088,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 160
 
@@ -2101,7 +2101,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 161
 
@@ -2114,7 +2114,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 162
 
@@ -2127,7 +2127,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 163
 
@@ -2140,7 +2140,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 164
 
@@ -2153,7 +2153,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 165
 
@@ -2166,7 +2166,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 166
 
@@ -2179,7 +2179,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 167
 
@@ -2192,7 +2192,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 168
 
@@ -2205,7 +2205,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 169
 
@@ -2218,7 +2218,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 170
 
@@ -2231,7 +2231,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 171
 
@@ -2244,7 +2244,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 172
 
@@ -2257,7 +2257,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 173
 
@@ -2270,7 +2270,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 174
 
@@ -2283,7 +2283,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 175
 
@@ -2296,7 +2296,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 176
 
@@ -2309,7 +2309,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 177
 
@@ -2322,7 +2322,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 178
 
@@ -2335,7 +2335,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 179
 
@@ -2348,7 +2348,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 180
 
@@ -2361,7 +2361,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 181
 
@@ -2374,7 +2374,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 182
 
@@ -2387,7 +2387,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 183
 
@@ -2400,7 +2400,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 184
 
@@ -2413,7 +2413,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 185
 
@@ -2426,7 +2426,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 186
 
@@ -2439,7 +2439,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 187
 
@@ -2452,7 +2452,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 188
 
@@ -2465,7 +2465,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 189
 
@@ -2478,7 +2478,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 190
 
@@ -2491,7 +2491,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 191
 
@@ -2504,7 +2504,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 192
 
@@ -2517,7 +2517,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 193
 
@@ -2530,7 +2530,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 194
 
@@ -2543,7 +2543,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 195
 
@@ -2556,7 +2556,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 196
 
@@ -2569,7 +2569,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 197
 
@@ -2582,7 +2582,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 198
 
@@ -2595,7 +2595,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 199
 
@@ -2608,7 +2608,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 200
 
@@ -2621,7 +2621,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 201
 
@@ -2634,7 +2634,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 202
 
@@ -2647,7 +2647,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 203
 
@@ -2660,7 +2660,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 204
 
@@ -2673,7 +2673,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 205
 
@@ -2686,7 +2686,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 206
 
@@ -2699,7 +2699,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 207
 
@@ -2712,7 +2712,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 208
 
@@ -2725,7 +2725,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 209
 
@@ -2738,7 +2738,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 210
 
@@ -2751,7 +2751,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 211
 
@@ -2764,7 +2764,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 212
 
@@ -2777,7 +2777,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 213
 
@@ -2790,7 +2790,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 214
 
@@ -2803,7 +2803,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 215
 
@@ -2816,7 +2816,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 216
 
@@ -2829,7 +2829,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 217
 
@@ -2842,7 +2842,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 218
 
@@ -2855,7 +2855,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 219
 
@@ -2868,7 +2868,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 220
 
@@ -2881,7 +2881,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 221
 
@@ -2894,7 +2894,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 222
 
@@ -2907,7 +2907,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 223
 
@@ -2920,7 +2920,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 224
 
@@ -2933,7 +2933,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 225
 
@@ -2946,7 +2946,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 226
 
@@ -2959,7 +2959,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 227
 
@@ -2972,7 +2972,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 228
 
@@ -2985,7 +2985,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 229
 
@@ -2998,7 +2998,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 230
 
@@ -3011,7 +3011,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 231
 
@@ -3024,7 +3024,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 232
 
@@ -3037,7 +3037,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 233
 
@@ -3050,7 +3050,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 234
 
@@ -3063,7 +3063,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 235
 
@@ -3076,7 +3076,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 236
 
@@ -3089,7 +3089,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 237
 
@@ -3102,7 +3102,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 238
 
@@ -3115,7 +3115,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 239
 
@@ -3128,7 +3128,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 240
 
@@ -3141,7 +3141,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 241
 
@@ -3154,7 +3154,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 242
 
@@ -3167,7 +3167,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 243
 
@@ -3180,7 +3180,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 244
 
@@ -3193,7 +3193,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 245
 
@@ -3206,7 +3206,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 246
 
@@ -3219,7 +3219,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 247
 
@@ -3232,7 +3232,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 248
 
@@ -3245,7 +3245,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 249
 
@@ -3258,7 +3258,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 250
 
@@ -3271,7 +3271,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 251
 
@@ -3284,7 +3284,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 252
 
@@ -3297,7 +3297,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 253
 
@@ -3310,7 +3310,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 254
 
@@ -3323,7 +3323,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 255
 
@@ -3336,7 +3336,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 256
 
@@ -3349,7 +3349,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 257
 
@@ -3362,7 +3362,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 258
 
@@ -3375,7 +3375,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 259
 
@@ -3388,7 +3388,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 260
 
@@ -3401,7 +3401,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 261
 
@@ -3414,7 +3414,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 262
 
@@ -3427,7 +3427,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 263
 
@@ -3440,7 +3440,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 264
 
@@ -3453,7 +3453,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 265
 
@@ -3466,7 +3466,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 266
 
@@ -3479,7 +3479,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 267
 
@@ -3492,7 +3492,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 268
 
@@ -3505,7 +3505,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 269
 
@@ -3518,7 +3518,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 270
 
@@ -3531,7 +3531,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 271
 
@@ -3544,7 +3544,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 272
 
@@ -3557,7 +3557,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 273
 
@@ -3570,7 +3570,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 274
 
@@ -3583,7 +3583,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 275
 
@@ -3596,7 +3596,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 276
 
@@ -3609,7 +3609,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 277
 
@@ -3622,7 +3622,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 278
 
@@ -3635,7 +3635,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 279
 
@@ -3648,7 +3648,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 280
 
@@ -3661,7 +3661,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 281
 
@@ -3674,7 +3674,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 282
 
@@ -3687,7 +3687,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 283
 
@@ -3700,7 +3700,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 284
 
@@ -3713,7 +3713,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 285
 
@@ -3726,7 +3726,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 286
 
@@ -3739,7 +3739,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 287
 
@@ -3752,7 +3752,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 288
 
@@ -3765,7 +3765,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 289
 
@@ -3778,7 +3778,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 290
 
@@ -3791,7 +3791,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 291
 
@@ -3804,7 +3804,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 292
 
@@ -3817,7 +3817,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 293
 
@@ -3830,7 +3830,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 294
 
@@ -3843,7 +3843,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 295
 
@@ -3856,7 +3856,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 296
 
@@ -3869,7 +3869,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 297
 
@@ -3882,7 +3882,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 298
 
@@ -3895,7 +3895,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 299
 
@@ -3908,7 +3908,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 300
 
@@ -3921,7 +3921,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 301
 
@@ -3934,7 +3934,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 302
 
@@ -3947,7 +3947,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 303
 
@@ -3960,7 +3960,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 304
 
@@ -3973,7 +3973,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 305
 
@@ -3986,7 +3986,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 306
 
@@ -3999,7 +3999,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 307
 
@@ -4012,7 +4012,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 308
 
@@ -4025,7 +4025,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 309
 
@@ -4038,7 +4038,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 310
 
@@ -4051,7 +4051,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 311
 
@@ -4064,7 +4064,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 312
 
@@ -4077,7 +4077,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 313
 
@@ -4090,7 +4090,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 314
 
@@ -4103,7 +4103,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 315
 
@@ -4116,7 +4116,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 316
 
@@ -4129,7 +4129,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 317
 
@@ -4142,7 +4142,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 318
 
@@ -4155,7 +4155,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 319
 
@@ -4168,7 +4168,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 320
 
@@ -4181,7 +4181,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 321
 
@@ -4194,7 +4194,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 322
 
@@ -4207,7 +4207,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 323
 
@@ -4220,7 +4220,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 324
 
@@ -4233,7 +4233,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 325
 
@@ -4246,7 +4246,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 326
 
@@ -4259,7 +4259,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 327
 
@@ -4272,7 +4272,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 328
 
@@ -4285,7 +4285,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 329
 
@@ -4298,7 +4298,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 330
 
@@ -4311,7 +4311,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 331
 
@@ -4324,7 +4324,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 332
 
@@ -4337,7 +4337,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 333
 
@@ -4350,7 +4350,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 334
 
@@ -4363,7 +4363,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 335
 
@@ -4376,7 +4376,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 336
 
@@ -4389,7 +4389,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 337
 
@@ -4402,7 +4402,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 338
 
@@ -4415,7 +4415,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 339
 
@@ -4428,7 +4428,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 340
 
@@ -4441,7 +4441,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 341
 
@@ -4454,7 +4454,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 342
 
@@ -4467,7 +4467,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 343
 
@@ -4480,7 +4480,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 344
 
@@ -4493,7 +4493,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 345
 
@@ -4506,7 +4506,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 346
 
@@ -4519,7 +4519,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 347
 
@@ -4532,7 +4532,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 348
 
@@ -4545,7 +4545,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 349
 
@@ -4558,7 +4558,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 350
 
@@ -4571,7 +4571,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 351
 
@@ -4584,7 +4584,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 352
 
@@ -4597,7 +4597,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 353
 
@@ -4610,7 +4610,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 354
 
@@ -4623,7 +4623,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 355
 
@@ -4636,7 +4636,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 356
 
@@ -4649,7 +4649,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 357
 
@@ -4662,7 +4662,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 358
 
@@ -4675,7 +4675,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 359
 
@@ -4688,7 +4688,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 360
 
@@ -4701,7 +4701,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 361
 
@@ -4714,7 +4714,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 362
 
@@ -4727,7 +4727,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 363
 
@@ -4740,7 +4740,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 364
 
@@ -4753,7 +4753,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 365
 
@@ -4766,7 +4766,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 366
 
@@ -4779,7 +4779,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 367
 
@@ -4792,7 +4792,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 368
 
@@ -4805,7 +4805,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 369
 
@@ -4818,7 +4818,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 370
 
@@ -4831,7 +4831,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 371
 
@@ -4844,7 +4844,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 372
 
@@ -4857,7 +4857,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 373
 
@@ -4870,7 +4870,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 374
 
@@ -4883,7 +4883,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 375
 
@@ -4896,7 +4896,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 376
 
@@ -4909,7 +4909,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 377
 
@@ -4922,7 +4922,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 378
 
@@ -4935,7 +4935,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 379
 
@@ -4948,7 +4948,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 380
 
@@ -4961,7 +4961,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 381
 
@@ -4974,7 +4974,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 382
 
@@ -4987,7 +4987,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 383
 
@@ -5000,7 +5000,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 384
 
@@ -5013,7 +5013,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 385
 
@@ -5026,7 +5026,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 386
 
@@ -5039,7 +5039,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 387
 
@@ -5052,7 +5052,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 388
 
@@ -5065,7 +5065,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 389
 
@@ -5078,7 +5078,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 390
 
@@ -5091,7 +5091,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 391
 
@@ -5104,7 +5104,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 392
 
@@ -5117,7 +5117,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 393
 
@@ -5130,7 +5130,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 394
 
@@ -5143,7 +5143,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 395
 
@@ -5156,7 +5156,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 396
 
@@ -5169,7 +5169,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 397
 
@@ -5182,7 +5182,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 398
 
@@ -5195,7 +5195,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 399
 
@@ -5208,7 +5208,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 400
 
@@ -5221,7 +5221,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 401
 
@@ -5234,7 +5234,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 402
 
@@ -5247,7 +5247,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 403
 
@@ -5260,7 +5260,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 404
 
@@ -5273,7 +5273,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 405
 
@@ -5286,7 +5286,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 406
 
@@ -5299,7 +5299,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 407
 
@@ -5312,7 +5312,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 408
 
@@ -5325,7 +5325,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 409
 
@@ -5338,7 +5338,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 410
 
@@ -5351,7 +5351,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 411
 
@@ -5364,7 +5364,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 412
 
@@ -5377,7 +5377,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 413
 
@@ -5390,7 +5390,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 414
 
@@ -5403,7 +5403,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 415
 
@@ -5416,7 +5416,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 416
 
@@ -5429,7 +5429,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 417
 
@@ -5442,7 +5442,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 418
 
@@ -5455,7 +5455,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 419
 
@@ -5468,7 +5468,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 420
 
@@ -5481,7 +5481,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 421
 
@@ -5494,7 +5494,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 422
 
@@ -5507,7 +5507,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 423
 
@@ -5520,7 +5520,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 424
 
@@ -5533,7 +5533,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 425
 
@@ -5546,7 +5546,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 426
 
@@ -5559,7 +5559,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 427
 
@@ -5572,7 +5572,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 428
 
@@ -5585,7 +5585,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 429
 
@@ -5598,7 +5598,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 430
 
@@ -5611,7 +5611,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 431
 
@@ -5624,7 +5624,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 432
 
@@ -5637,7 +5637,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 433
 
@@ -5650,7 +5650,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 434
 
@@ -5663,7 +5663,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 435
 
@@ -5676,7 +5676,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 436
 
@@ -5689,7 +5689,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 437
 
@@ -5702,7 +5702,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 438
 
@@ -5715,7 +5715,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 439
 
@@ -5728,7 +5728,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 440
 
@@ -5741,7 +5741,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 441
 
@@ -5754,7 +5754,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 442
 
@@ -5767,7 +5767,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 443
 
@@ -5780,7 +5780,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 444
 
@@ -5793,7 +5793,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 445
 
@@ -5806,7 +5806,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 446
 
@@ -5819,7 +5819,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 447
 
@@ -5832,7 +5832,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 448
 
@@ -5845,7 +5845,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 449
 
@@ -5858,7 +5858,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 450
 
@@ -5871,7 +5871,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 451
 
@@ -5884,7 +5884,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 452
 
@@ -5897,7 +5897,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 453
 
@@ -5910,7 +5910,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 454
 
@@ -5923,7 +5923,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 455
 
@@ -5936,7 +5936,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 456
 
@@ -5949,7 +5949,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 457
 
@@ -5962,7 +5962,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 458
 
@@ -5975,7 +5975,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 459
 
@@ -5988,7 +5988,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 460
 
@@ -6001,7 +6001,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 461
 
@@ -6014,7 +6014,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 462
 
@@ -6027,7 +6027,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 463
 
@@ -6040,7 +6040,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 464
 
@@ -6053,7 +6053,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 465
 
@@ -6066,7 +6066,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 466
 
@@ -6079,7 +6079,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 467
 
@@ -6092,7 +6092,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 468
 
@@ -6105,7 +6105,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 469
 
@@ -6118,7 +6118,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 470
 
@@ -6131,7 +6131,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 471
 
@@ -6144,7 +6144,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 472
 
@@ -6157,7 +6157,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 473
 
@@ -6170,7 +6170,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 474
 
@@ -6183,7 +6183,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 475
 
@@ -6196,7 +6196,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 476
 
@@ -6209,7 +6209,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 477
 
@@ -6222,7 +6222,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 478
 
@@ -6235,7 +6235,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 479
 
@@ -6248,7 +6248,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 480
 
@@ -6261,7 +6261,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 481
 
@@ -6274,7 +6274,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 482
 
@@ -6287,7 +6287,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 483
 
@@ -6300,7 +6300,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 484
 
@@ -6313,7 +6313,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 485
 
@@ -6326,7 +6326,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 486
 
@@ -6339,7 +6339,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 487
 
@@ -6352,7 +6352,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 488
 
@@ -6365,7 +6365,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 489
 
@@ -6378,7 +6378,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 490
 
@@ -6391,7 +6391,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 491
 
@@ -6404,7 +6404,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 492
 
@@ -6417,7 +6417,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 493
 
@@ -6430,7 +6430,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 494
 
@@ -6443,7 +6443,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 495
 
@@ -6456,7 +6456,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 496
 
@@ -6469,7 +6469,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 497
 
@@ -6482,7 +6482,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 498
 
@@ -6495,7 +6495,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 499
 
@@ -6508,7 +6508,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 500
 
@@ -6521,7 +6521,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 501
 
@@ -6534,7 +6534,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 502
 
@@ -6547,7 +6547,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 503
 
@@ -6560,7 +6560,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 504
 
@@ -6573,7 +6573,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 505
 
@@ -6586,7 +6586,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 506
 
@@ -6599,7 +6599,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 507
 
@@ -6612,7 +6612,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 508
 
@@ -6625,7 +6625,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 509
 
@@ -6638,7 +6638,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 510
 
@@ -6651,7 +6651,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 511
 
@@ -6664,7 +6664,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 512
 
@@ -6677,7 +6677,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 513
 
@@ -6690,7 +6690,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 514
 
@@ -6703,7 +6703,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 515
 
@@ -6716,7 +6716,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 516
 
@@ -6729,7 +6729,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 517
 
@@ -6742,7 +6742,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 518
 
@@ -6755,7 +6755,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 519
 
@@ -6768,7 +6768,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 520
 
@@ -6781,7 +6781,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 521
 
@@ -6794,7 +6794,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 522
 
@@ -6807,7 +6807,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 523
 
@@ -6820,7 +6820,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 524
 
@@ -6833,7 +6833,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 525
 
@@ -6846,7 +6846,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 526
 
@@ -6859,7 +6859,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 527
 
@@ -6872,7 +6872,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 528
 
@@ -6885,7 +6885,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 529
 
@@ -6898,7 +6898,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 530
 
@@ -6911,7 +6911,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 531
 
@@ -6924,7 +6924,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 532
 
@@ -6937,7 +6937,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 533
 
@@ -6950,7 +6950,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 534
 
@@ -6963,7 +6963,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 535
 
@@ -6976,7 +6976,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 536
 
@@ -6989,7 +6989,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 537
 
@@ -7002,7 +7002,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 538
 
@@ -7015,7 +7015,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 539
 
@@ -7028,7 +7028,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 540
 
@@ -7041,7 +7041,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 541
 
@@ -7054,7 +7054,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 542
 
@@ -7067,7 +7067,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 543
 
@@ -7080,7 +7080,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 544
 
@@ -7093,7 +7093,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 545
 
@@ -7106,7 +7106,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 546
 
@@ -7119,7 +7119,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 547
 
@@ -7132,7 +7132,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 548
 
@@ -7145,7 +7145,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 549
 
@@ -7158,7 +7158,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 550
 
@@ -7171,7 +7171,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 551
 
@@ -7184,7 +7184,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 552
 
@@ -7197,7 +7197,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 553
 
@@ -7210,7 +7210,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 554
 
@@ -7223,7 +7223,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 555
 
@@ -7236,7 +7236,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 556
 
@@ -7249,7 +7249,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 557
 
@@ -7262,7 +7262,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 558
 
@@ -7275,7 +7275,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 559
 
@@ -7288,7 +7288,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 560
 
@@ -7301,7 +7301,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 561
 
@@ -7314,7 +7314,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 562
 
@@ -7327,7 +7327,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 563
 
@@ -7340,7 +7340,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 564
 
@@ -7353,7 +7353,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 565
 
@@ -7366,7 +7366,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 566
 
@@ -7379,7 +7379,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 567
 
@@ -7392,7 +7392,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 568
 
@@ -7405,7 +7405,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 569
 
@@ -7418,7 +7418,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 570
 
@@ -7431,7 +7431,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 571
 
@@ -7444,7 +7444,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 572
 
@@ -7457,7 +7457,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 573
 
@@ -7470,7 +7470,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 574
 
@@ -7483,7 +7483,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 575
 
@@ -7496,7 +7496,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 576
 
@@ -7509,7 +7509,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 577
 
@@ -7522,7 +7522,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 578
 
@@ -7535,7 +7535,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 579
 
@@ -7548,7 +7548,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 580
 
@@ -7561,7 +7561,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 581
 
@@ -7574,7 +7574,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 582
 
@@ -7587,7 +7587,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 583
 
@@ -7600,7 +7600,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 584
 
@@ -7613,7 +7613,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 585
 
@@ -7626,7 +7626,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 586
 
@@ -7639,7 +7639,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 587
 
@@ -7652,7 +7652,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 588
 
@@ -7665,7 +7665,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 589
 
@@ -7678,7 +7678,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 590
 
@@ -7691,7 +7691,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 591
 
@@ -7704,7 +7704,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 592
 
@@ -7717,7 +7717,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 593
 
@@ -7730,7 +7730,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 594
 
@@ -7743,7 +7743,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 595
 
@@ -7756,7 +7756,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 596
 
@@ -7769,7 +7769,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 597
 
@@ -7782,7 +7782,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 598
 
@@ -7795,7 +7795,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 599
 
@@ -7808,7 +7808,7 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 600
 
@@ -7821,6 +7821,6 @@ meteor
   rotate: false
   xy: 2, 2
   size: 600, 600
-  orig: 600, 600
+  orig: 0, 0
   offset: 0, 0
   index: 601

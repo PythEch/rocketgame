@@ -22,8 +22,8 @@ public class hakanos extends ApplicationAdapter{
     @Override
     public void create() {
         batch = new SpriteBatch();
-        textureAtlas = new TextureAtlas(Gdx.files.internal("/Backgrounds/starSheets/stars.atlas"));
-        animation = new Animation(1f/30f, textureAtlas.getRegions() );
+        textureAtlas = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
+        animation = new Animation(1f/80f, textureAtlas.getRegions() );
      }
 
     @Override

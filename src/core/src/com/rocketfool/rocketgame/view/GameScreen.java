@@ -212,7 +212,6 @@ public class GameScreen implements Screen {
 
     public void igniteRocketTrail() {
 
-        System.out.println("ignite");
         if (particleEffect.isComplete() )
         {
             particleEffect.reset();
@@ -224,7 +223,6 @@ public class GameScreen implements Screen {
     }
 
     public void stopRocketTrail() {
-        System.out.println("stop");
 
         for(int i = 0; i < particleEffect.getEmitters().size; i++)
         {
