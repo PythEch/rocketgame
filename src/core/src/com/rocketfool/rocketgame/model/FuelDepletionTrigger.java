@@ -1,7 +1,7 @@
 package com.rocketfool.rocketgame.model;
 
 /**
- * Created by pythech on 02/04/16.
+ * Triggered when fuel is depleted (not modeled yet).
  */
 public abstract class FuelDepletionTrigger implements Trigger {
     private Playable playable;
@@ -12,6 +12,6 @@ public abstract class FuelDepletionTrigger implements Trigger {
 
     @Override
     public final boolean isTriggered() {
-        return playable.getFuel() <= 0;
+        return playable.getFuelLeft() <= 0;
     }
 }

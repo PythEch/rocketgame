@@ -7,7 +7,7 @@ import com.rocketfool.rocketgame.view.MainMenuScreen;
 import com.rocketfool.rocketgame.view.Splash.SplashScreen;
 
 /**
- * Created by pythech on 25/03/16.
+ * Prepares the game environment. It is run once.
  */
 public class RocketGame extends Game {
     //region Fields

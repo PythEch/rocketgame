@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.physics.box2d.Body;
 
 /**
- * Created by pythech on 02/04/16.
+ * Any game object with physical properties, using Box2D.
  */
 public abstract class SolidObject extends GameObject {
     //region Fields

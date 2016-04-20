@@ -1,7 +1,7 @@
 package com.rocketfool.rocketgame.model;
 
 /**
- * Created by pythech on 02/04/16.
+ * Non-physical bodies as visual indicators for game objectives.
  */
 public class Waypoint extends GameObject {
     private int x;

@@ -1,5 +1,7 @@
 package com.rocketfool.rocketgame.util;
-
+/**
+ * List of global constants for the game.
+ */
 public final class Constants {
     /**
      * Stands for Pixels Per Meter, used for Box2D as

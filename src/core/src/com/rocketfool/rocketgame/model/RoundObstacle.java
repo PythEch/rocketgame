@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.physics.box2d.Body;
 
 /**
- * Created by pythech on 02/04/16.
+ * Class for all objects with physical properties and a circular shape. Eg. asteroids.
  */
 public class RoundObstacle extends SolidObject {
     public RoundObstacle(float x, float y, int radius, int speed, float angle) {

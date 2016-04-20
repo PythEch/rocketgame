@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.physics.box2d.*;
 
 /**
- * Created by pythech on 07/03/16.
+ * Star class. The class with the highest rating.
  */
 public class Star extends CelestialObject {
     //region Fields
