@@ -1,6 +1,8 @@
 package com.rocketfool.rocketgame.model;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
+import com.rocketfool.rocketgame.util.Constants;
 
 /**
  * Our map for testing the current physical behaviour. It is a work in progress right now.
@@ -48,6 +50,14 @@ public class ExampleLevel extends Level {
                 System.out.println("Final Destination reached");
             }
         });
+        if (Constants.DEBUG){
+            triggers.add(new PositionTrigger(300, 300, 10, playable) {
+                @Override
+                public void triggerPerformed() {
+                    ExampleLevel.periodStopWatch.updatePeriod();
+                }
+            });
+        }
     }
 
     private void addObstacles() {
@@ -61,5 +71,21 @@ public class ExampleLevel extends Level {
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);
+    }
+
+    public static class periodStopWatch{
+        private static long stopTime = System.currentTimeMillis();
+        private static long startTime = stopTime - 2000;
+        private static long period = -1;
+
+        public static void updatePeriod() {
+            if ( stopTime - startTime > 2000 ) {
+                stopTime = System.currentTimeMillis();
+                period = ((stopTime - startTime) / 1000);
+                startTime = stopTime;
+            }
+        }
+
+        public static long getPeriod(){return period;}
     }
 }

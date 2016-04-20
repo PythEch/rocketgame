@@ -132,7 +132,8 @@ public class GameScreen implements Screen {
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
                     " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
             drawDebugString("Distance: " + (int)
-                    ( cameraTarget.getBody().getPosition().dst(  level.getPlanet1Location() ) ) , 5 );
+                    ( cameraTarget.getBody().getPosition().dst(  level.getPlanetLocation(0) ) ) , 5 );
+            drawDebugString(" Period (P1): " + (int) ExampleLevel.periodStopWatch.getPeriod() , 6 );
         }
     }
 

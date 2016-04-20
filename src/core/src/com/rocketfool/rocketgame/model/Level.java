@@ -144,9 +144,9 @@ public abstract class Level {
     }
 
     /** This method is needed for analysis and debugging, but we may remove it if necessary.*/
-    public Vector2 getPlanet1Location(){
+    public Vector2 getPlanetLocation( int no ){
         if (com.rocketfool.rocketgame.util.Constants.DEBUG) {
-            return this.solidObjects.get(0).getBody().getPosition();
+            return this.solidObjects.get(no).getBody().getPosition();
         }
         else {
             return null;
