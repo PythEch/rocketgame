@@ -5,13 +5,18 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.model.Map;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.model.ExampleLevel;
+import com.rocketfool.rocketgame.model.*;
+
+import com.badlogic.gdx.video.VideoPlayer;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -22,25 +27,39 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  */
 public class GameScreen implements Screen {
     //region Fields
-    /** This is used to make OpenGL draw objects in one go, for performance reasons. */
+    /**
+     * This is used to make OpenGL draw objects in one go, for performance reasons.
+     */
     private SpriteBatch batch;
-    /** Just like SpriteBatch, but is used to draw strings */
+
+    private VideoPlayer player;
+
+    /**
+     * Just like SpriteBatch, but is used to draw strings
+     */
     private BitmapFont font;
 
-    /** Orthographic cameras are used for 2D games, the other one Perspective camera is for 3D games. */
+    /**
+     * Orthographic cameras are used for 2D games, the other one Perspective camera is for 3D games.
+     */
     private OrthographicCamera camera;
-    /** Used for drawing the bounds of objects in the physics engine for easier debugging */
+    /**
+     * Used for drawing the bounds of objects in the physics engine for easier debugging
+     */
     private Box2DDebugRenderer debugRenderer;
 
     private Level level;
 
     private Playable cameraTarget;
 
-    private Map map;
 
     private WorldRenderer renderer;
 
     private WorldController controller;
+
+    private ParticleEffect particleEffect;
+
+
     //endregion
 
     //region Constructor
@@ -52,6 +71,7 @@ public class GameScreen implements Screen {
     //endregion
 
     //region Methods
+
     /**
      * This method is called whenever rendering is needed (once a frame is drawn, i.e 60 fps = 60 calls).
      * We are diving business logic and drawing logic with methods
@@ -70,13 +90,22 @@ public class GameScreen implements Screen {
 
         batch.setProjectionMatrix(camera.combined);
 
-        batch.begin();
 
+        batch.begin();
         // Our main draw method
         renderer.draw(batch);
+        particleEffect.draw(batch);
+        particleEffect.update(dt);
+        particleEffect.setPosition(level.getPlayable().getBottomPosition().x * toPixel, level.getPlayable().getBottomPosition().y * toPixel);
+        float angle = level.getPlayable().getBody().getAngle() * MathUtils.radiansToDegrees + 270;
+        for(int i = 0; i < particleEffect.getEmitters().size; i++)
+        {
+            particleEffect.getEmitters().get(i).getAngle().setHigh(angle, angle);
+            particleEffect.getEmitters().get(i).getAngle().setLow(angle);
+        }
+
+
         draw();
-
-
         batch.end();
 
         // Draw boundries of physics objects if debug is enabled
@@ -97,11 +126,11 @@ public class GameScreen implements Screen {
 
         // Draw a debug string which shows the velocity of the spaceship
         if (DEBUG) {
-            drawDebugString("  Linear Impulse: " + (int)cameraTarget.getCurrentImpulse(), 1);
-            drawDebugString("Angular Velocity: " + (int)(cameraTarget.getBody().getAngularVelocity() * 100), 2);
-            drawDebugString("  Linear Velocity: " + (int)(cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
+            drawDebugString("  Linear Impulse: " + (int) cameraTarget.getCurrentImpulse(), 1);
+            drawDebugString("Angular Velocity: " + (int) (cameraTarget.getBody().getAngularVelocity() * 100), 2);
+            drawDebugString("  Linear Velocity: " + (int) (cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
-                           " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
+                    " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
         }
     }
 
@@ -116,6 +145,7 @@ public class GameScreen implements Screen {
 
     /**
      * Business logic of the game goes here such as physics, camera, UI, statistics etc.
+     *
      * @param dt Stands for DeltaTime which is the time passed between two sequential calls of update.
      */
     private void update(float dt) {
@@ -158,19 +188,49 @@ public class GameScreen implements Screen {
         debugRenderer = new Box2DDebugRenderer();
         //endregion
 
+        //For Particles
+        particleEffect = new ParticleEffect();
+        particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
+
+
+
         //endregion
         level = new ExampleLevel();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
         controller = new WorldController(level, this);
+
     }
 
     public void zoomIn() {
-        camera.zoom = (float) Math.max(0, camera.zoom - 0.01);
-    }
+        camera.zoom = (float) Math.max(0.5, camera.zoom / 1.04f );
+    } //**
 
     public void zoomOut() {
-        camera.zoom += 0.01;
+        camera.zoom = (float) Math.min( camera.zoom * 1.04f , 150 );
+    }
+
+    public void igniteRocketTrail() {
+
+        System.out.println("ignite");
+        if (particleEffect.isComplete() )
+        {
+            particleEffect.reset();
+
+        }
+        for(int i = 0; i < particleEffect.getEmitters().size; i++){
+            particleEffect.getEmitters().get(i).setContinuous(true);
+        }
+    }
+
+    public void stopRocketTrail() {
+        System.out.println("stop");
+
+        for(int i = 0; i < particleEffect.getEmitters().size; i++)
+        {
+            particleEffect.getEmitters().get(i).setContinuous(false);
+            particleEffect.getEmitters().get(i).duration = 0;
+        }
     }
 
     @Override

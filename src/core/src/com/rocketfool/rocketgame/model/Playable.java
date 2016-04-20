@@ -22,6 +22,7 @@ public class Playable extends SolidObject {
     private float maxImpulse;
     /** SAS is the system of a spacecraft that automatically stops its spinning. */
     private boolean SASenabled;
+    private Vector2 bottomPosition;
     //endregion
 
 
@@ -37,7 +38,7 @@ public class Playable extends SolidObject {
 
         this.body = createBody(x, y, mass, world);
     }
-/** This creation is according to Box2D definitions.*/
+	/** This creation is according to Box2D definitions.*/
     private Body createBody(float x, float y, float mass, World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -45,7 +46,7 @@ public class Playable extends SolidObject {
 
         Body body = world.createBody(bodyDef);
 
-        body.setTransform(0, 0, -90 * MathUtils.degreesToRadians);
+        body.setTransform(x, y, -90 * MathUtils.degreesToRadians);
 
         PolygonShape rectangle = new PolygonShape();
         rectangle.setAsBox(width / 2f * toMeter, height / 2f * toMeter);
@@ -67,28 +68,23 @@ public class Playable extends SolidObject {
 
 
     //region Methods
-    @Override
     /** Receives impulses and updates momenta of the body.*/
+    @Override
     public void update(float dt) {
         move(dt);
-        if (SASenabled) {
-            runSAS();
-        }
-    }
-/** Reduces angular momentum over time (using reaction wheeels in reality).*/
-    private void runSAS() {
-        //body.setAngularDamping(body.getAngularDamping() + 1);
     }
 
     private void consumeFuelAndDecreaseMass(float deltaTime) {
-    //TODO: implement
+		//kilogram per liter is taken as 0.18
+    	if (fuelLeft > 0) {
+            fuelLeft -= currentImpulse * deltaTime / 100;
+            body.getMassData().mass -= fuelLeft * 0.18; //FIXME: make a constant for this
+        }
     }
 
-    private void move(float dt) {
-        float angle = body.getAngle();
-
+    private void move(float deltaTime) {
         Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(angle);
-        Vector2 bottomPosition = bottomVector.add(body.getPosition());
+        bottomPosition = bottomVector.add(body.getPosition());
 
         Vector2 impulseVector = new Vector2(0, dt * currentImpulse).rotateRad(body.getAngle());
 
@@ -99,8 +95,8 @@ public class Playable extends SolidObject {
 
     public void toggleSAS() {
         SASenabled = !SASenabled;
-        if (SASenabled) {
-            body.setAngularDamping(deltaAngularImpulse / 50);
+		if (SASenabled) {
+            body.setAngularDamping( deltaAngularImpulse / 100 ); //TODO: Run SAS WHILE shift is pressed (toggle is too sensitive).
         }
         else {
             body.setAngularDamping(0);
@@ -132,6 +128,10 @@ public class Playable extends SolidObject {
         return height;
     }
 
+    public Vector2 getBottomPosition(){
+        return bottomPosition;
+    }
+
     public void setCurrentImpulse(float currentImpulse) {
         this.currentImpulse = currentImpulse;
     }
@@ -147,7 +147,9 @@ public class Playable extends SolidObject {
 
     public void increaseThrust(float deltaTime) {
         // FIXME: Use Math.min with some max speed
-        currentImpulse = Math.max(0, currentImpulse + deltaTime * deltaLinearImpulse);
+        if (fuel > 0) {
+            currentImpulse = Math.max(0, currentImpulse + deltaTime * deltaLinearImpulse);
+        }
     }
 
     public void decreaseThrust(float deltaTime) {
