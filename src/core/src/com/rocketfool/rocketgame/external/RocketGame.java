@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rocketfool.rocketgame.view.MainMenuScreen;
+import com.rocketfool.rocketgame.view.Splash.SplashScreen;
 
 /**
  * Prepares the game environment. It is run once.
@@ -20,7 +21,7 @@ public class RocketGame extends Game {
         batch = new SpriteBatch();
         font = new BitmapFont();
 
-        this.setScreen(new MainMenuScreen(this, batch, font));
+        this.setScreen(new SplashScreen(this, batch, font));
     }
 
     @Override

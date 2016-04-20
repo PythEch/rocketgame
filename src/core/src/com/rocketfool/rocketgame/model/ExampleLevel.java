@@ -35,12 +35,19 @@ public class ExampleLevel extends Level {
         solidObjects.add(new Planet( 500 , 1200,     4.7f*1e24f,     200, null, world));
     }
 
+
     protected void addTriggers() {
         super.addTriggers();
         triggers.add(new PositionTrigger(10, 10, 10, playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("omg");
+                System.out.println("just started the journey");
+            }
+        });
+        triggers.add(new PositionTrigger(400,400,100,playable) {
+            @Override
+            public void triggerPerformed() {
+                System.out.println("Final Destination reached");
             }
         });
     }
