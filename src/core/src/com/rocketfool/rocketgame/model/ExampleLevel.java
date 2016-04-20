@@ -16,12 +16,12 @@ public class ExampleLevel extends Level {
         this.map = new Map(width, height);
 
         addTriggers();
-        addPlanets();
+        //addPlanets();
     }
 
-    private void addPlanets() {
+    /*private void addPlanets() {
         solidObjects.add(new Planet(75, 75, 1e4f, 50, null, world));
-    }
+    }*/
 
     protected void addTriggers() {
         super.addTriggers();
