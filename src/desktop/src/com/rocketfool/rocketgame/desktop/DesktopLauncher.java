@@ -10,7 +10,7 @@ import com.rocketfool.rocketgame.external.RocketGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.title = "RocketGame v0.1";
+		config.title = "RocketGame v1.0";
 		config.width = 1280;
 		config.height = 720;
 		config.vSyncEnabled = true;
