@@ -131,6 +131,8 @@ public class GameScreen implements Screen {
             drawDebugString("  Linear Velocity: " + (int) (cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
                     " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
+            drawDebugString("Distance: " + (int)
+                    ( cameraTarget.getBody().getPosition().dst(  level.getPlanet1Location() ) ) , 5 );
         }
     }
 

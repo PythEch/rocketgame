@@ -13,12 +13,12 @@ public class ExampleLevel extends Level {
         int height = Gdx.graphics.getHeight() * 100;
 
         this.playable = new Playable(300, 300, 112, 75, 1e5f, 250, 200, 1000, 1e25f, world);
+        this.playable.getBody().setLinearVelocity( 30f , -30f );
+
         this.map = new Map(width, height);
 
         addTriggers();
         addPlanets();
-
-        this.playable.getBody().setLinearVelocity( 27f , -27f );
     }
 
     private void addPlanets() {
@@ -28,9 +28,9 @@ public class ExampleLevel extends Level {
       // Current scale 1/10^6 approx
         G = 4*1e-20f; //Plan B: G is whatever we like... idare eder...**
 
-        solidObjects.add(new Planet(200,  150,  6*1e24f,    100, null, world));
-        solidObjects.add(new Planet(1600, 1600, 2.7f*1e25f, 250, null, world));
-        solidObjects.add(new Planet(500,  1200, 4.7f*1e24f, 200, null, world));
+        solidObjects.add(new Planet( 200, 200,     6*1e24f,    100, null, world));
+        //solidObjects.add(new Planet( 2500 , 3000,     2.7f*1e25f,     250, null, world));
+        //solidObjects.add(new Planet( 1700 , 2400,     4.7f*1e24f,     200, null, world));
     }
 
 

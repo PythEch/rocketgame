@@ -142,4 +142,14 @@ public abstract class Level {
     public void setScore(int score) {
         this.score = score;
     }
+
+    /** This method is needed for analysis and debugging, but we may remove it if necessary.*/
+    public Vector2 getPlanet1Location(){
+        if (com.rocketfool.rocketgame.util.Constants.DEBUG) {
+            return this.solidObjects.get(0).getBody().getPosition();
+        }
+        else {
+            return null;
+        }
+    }
 }
