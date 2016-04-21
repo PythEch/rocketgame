@@ -70,8 +70,9 @@ public class Playable extends SolidObject {
     //region Methods
     /** Receives impulses and updates momenta of the body.*/
     @Override
-    public void update(float dt) {
-        move(dt);
+    public void update(float deltaTime) {
+        move(deltaTime);
+        consumeFuelAndDecreaseMass(deltaTime);
     }
 
     private void consumeFuelAndDecreaseMass(float deltaTime) {
@@ -83,10 +84,10 @@ public class Playable extends SolidObject {
     }
 
     private void move(float deltaTime) {
-        Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(angle);
+        Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(body.getAngle());
         bottomPosition = bottomVector.add(body.getPosition());
 
-        Vector2 impulseVector = new Vector2(0, dt * currentImpulse).rotateRad(body.getAngle());
+        Vector2 impulseVector = new Vector2(0, deltaTime * currentImpulse).rotateRad(body.getAngle());
 
         body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
 
@@ -147,7 +148,7 @@ public class Playable extends SolidObject {
 
     public void increaseThrust(float deltaTime) {
         // FIXME: Use Math.min with some max speed
-        if (fuel > 0) {
+        if (fuelLeft > 0) {
             currentImpulse = Math.max(0, currentImpulse + deltaTime * deltaLinearImpulse);
         }
     }
