@@ -22,8 +22,7 @@ public class RocketGame extends Game {
         batch = new SpriteBatch();
         font = new BitmapFont();
 
-        this.setScreen(new SplashScreen(this, batch, font)); //** Normal game start
-        //this.setScreen(new GameScreen(batch, font)); //** Skip to game
+        this.setScreen(new MainMenuScreen(this, batch, font));
     }
 
     @Override
