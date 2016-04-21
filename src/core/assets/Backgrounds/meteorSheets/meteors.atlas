@@ -1,0 +1,7826 @@
+
+meteors.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 0
+
+meteors2.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 1
+
+meteors3.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 2
+
+meteors4.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 3
+
+meteors5.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 4
+
+meteors6.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 5
+
+meteors7.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 6
+
+meteors8.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 7
+
+meteors9.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 8
+
+meteors10.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 9
+
+meteors11.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 10
+
+meteors12.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 11
+
+meteors13.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 12
+
+meteors14.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 13
+
+meteors15.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 14
+
+meteors16.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 15
+
+meteors17.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 16
+
+meteors18.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 17
+
+meteors19.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 18
+
+meteors20.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 19
+
+meteors21.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 20
+
+meteors22.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 21
+
+meteors23.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 22
+
+meteors24.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 23
+
+meteors25.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 24
+
+meteors26.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 25
+
+meteors27.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 26
+
+meteors28.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 27
+
+meteors29.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 28
+
+meteors30.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 29
+
+meteors31.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 30
+
+meteors32.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 31
+
+meteors33.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 32
+
+meteors34.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 33
+
+meteors35.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 34
+
+meteors36.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 35
+
+meteors37.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 36
+
+meteors38.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 37
+
+meteors39.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 38
+
+meteors40.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 39
+
+meteors41.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 40
+
+meteors42.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 41
+
+meteors43.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 42
+
+meteors44.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 43
+
+meteors45.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 44
+
+meteors46.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 45
+
+meteors47.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 46
+
+meteors48.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 47
+
+meteors49.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 48
+
+meteors50.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 49
+
+meteors51.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 50
+
+meteors52.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 51
+
+meteors53.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 52
+
+meteors54.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 53
+
+meteors55.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 54
+
+meteors56.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 55
+
+meteors57.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 56
+
+meteors58.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 57
+
+meteors59.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 58
+
+meteors60.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 59
+
+meteors61.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 60
+
+meteors62.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 61
+
+meteors63.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 62
+
+meteors64.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 63
+
+meteors65.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 64
+
+meteors66.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 65
+
+meteors67.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 66
+
+meteors68.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 67
+
+meteors69.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 68
+
+meteors70.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 69
+
+meteors71.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 70
+
+meteors72.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 71
+
+meteors73.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 72
+
+meteors74.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 73
+
+meteors75.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 74
+
+meteors76.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 75
+
+meteors77.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 76
+
+meteors78.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 77
+
+meteors79.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 78
+
+meteors80.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 79
+
+meteors81.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 80
+
+meteors82.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 81
+
+meteors83.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 82
+
+meteors84.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 83
+
+meteors85.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 84
+
+meteors86.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 85
+
+meteors87.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 86
+
+meteors88.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 87
+
+meteors89.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 88
+
+meteors90.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 89
+
+meteors91.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 90
+
+meteors92.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 91
+
+meteors93.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 92
+
+meteors94.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 93
+
+meteors95.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 94
+
+meteors96.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 95
+
+meteors97.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 96
+
+meteors98.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 97
+
+meteors99.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 98
+
+meteors100.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 99
+
+meteors101.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 100
+
+meteors102.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 101
+
+meteors103.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 102
+
+meteors104.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 103
+
+meteors105.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 104
+
+meteors106.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 105
+
+meteors107.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 106
+
+meteors108.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 107
+
+meteors109.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 108
+
+meteors110.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 109
+
+meteors111.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 110
+
+meteors112.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 111
+
+meteors113.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 112
+
+meteors114.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 113
+
+meteors115.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 114
+
+meteors116.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 115
+
+meteors117.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 116
+
+meteors118.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 117
+
+meteors119.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 118
+
+meteors120.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 119
+
+meteors121.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 120
+
+meteors122.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 121
+
+meteors123.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 122
+
+meteors124.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 123
+
+meteors125.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 124
+
+meteors126.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 125
+
+meteors127.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 126
+
+meteors128.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 127
+
+meteors129.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 128
+
+meteors130.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 129
+
+meteors131.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 130
+
+meteors132.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 131
+
+meteors133.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 132
+
+meteors134.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 133
+
+meteors135.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 134
+
+meteors136.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 135
+
+meteors137.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 136
+
+meteors138.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 137
+
+meteors139.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 138
+
+meteors140.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 139
+
+meteors141.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 140
+
+meteors142.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 141
+
+meteors143.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 142
+
+meteors144.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 143
+
+meteors145.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 144
+
+meteors146.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 145
+
+meteors147.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 146
+
+meteors148.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 147
+
+meteors149.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 148
+
+meteors150.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 149
+
+meteors151.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 150
+
+meteors152.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 151
+
+meteors153.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 152
+
+meteors154.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 153
+
+meteors155.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 154
+
+meteors156.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 155
+
+meteors157.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 156
+
+meteors158.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 157
+
+meteors159.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 158
+
+meteors160.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 159
+
+meteors161.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 160
+
+meteors162.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 161
+
+meteors163.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 162
+
+meteors164.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 163
+
+meteors165.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 164
+
+meteors166.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 165
+
+meteors167.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 166
+
+meteors168.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 167
+
+meteors169.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 168
+
+meteors170.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 169
+
+meteors171.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 170
+
+meteors172.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 171
+
+meteors173.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 172
+
+meteors174.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 173
+
+meteors175.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 174
+
+meteors176.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 175
+
+meteors177.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 176
+
+meteors178.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 177
+
+meteors179.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 178
+
+meteors180.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 179
+
+meteors181.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 180
+
+meteors182.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 181
+
+meteors183.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 182
+
+meteors184.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 183
+
+meteors185.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 184
+
+meteors186.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 185
+
+meteors187.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 186
+
+meteors188.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 187
+
+meteors189.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 188
+
+meteors190.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 189
+
+meteors191.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 190
+
+meteors192.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 191
+
+meteors193.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 192
+
+meteors194.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 193
+
+meteors195.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 194
+
+meteors196.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 195
+
+meteors197.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 196
+
+meteors198.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 197
+
+meteors199.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 198
+
+meteors200.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 199
+
+meteors201.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 200
+
+meteors202.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 201
+
+meteors203.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 202
+
+meteors204.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 203
+
+meteors205.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 204
+
+meteors206.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 205
+
+meteors207.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 206
+
+meteors208.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 207
+
+meteors209.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 208
+
+meteors210.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 209
+
+meteors211.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 210
+
+meteors212.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 211
+
+meteors213.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 212
+
+meteors214.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 213
+
+meteors215.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 214
+
+meteors216.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 215
+
+meteors217.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 216
+
+meteors218.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 217
+
+meteors219.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 218
+
+meteors220.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 219
+
+meteors221.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 220
+
+meteors222.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 221
+
+meteors223.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 222
+
+meteors224.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 223
+
+meteors225.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 224
+
+meteors226.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 225
+
+meteors227.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 226
+
+meteors228.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 227
+
+meteors229.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 228
+
+meteors230.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 229
+
+meteors231.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 230
+
+meteors232.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 231
+
+meteors233.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 232
+
+meteors234.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 233
+
+meteors235.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 234
+
+meteors236.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 235
+
+meteors237.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 236
+
+meteors238.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 237
+
+meteors239.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 238
+
+meteors240.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 239
+
+meteors241.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 240
+
+meteors242.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 241
+
+meteors243.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 242
+
+meteors244.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 243
+
+meteors245.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 244
+
+meteors246.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 245
+
+meteors247.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 246
+
+meteors248.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 247
+
+meteors249.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 248
+
+meteors250.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 249
+
+meteors251.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 250
+
+meteors252.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 251
+
+meteors253.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 252
+
+meteors254.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 253
+
+meteors255.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 254
+
+meteors256.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 255
+
+meteors257.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 256
+
+meteors258.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 257
+
+meteors259.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 258
+
+meteors260.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 259
+
+meteors261.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 260
+
+meteors262.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 261
+
+meteors263.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 262
+
+meteors264.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 263
+
+meteors265.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 264
+
+meteors266.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 265
+
+meteors267.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 266
+
+meteors268.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 267
+
+meteors269.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 268
+
+meteors270.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 269
+
+meteors271.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 270
+
+meteors272.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 271
+
+meteors273.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 272
+
+meteors274.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 273
+
+meteors275.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 274
+
+meteors276.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 275
+
+meteors277.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 276
+
+meteors278.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 277
+
+meteors279.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 278
+
+meteors280.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 279
+
+meteors281.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 280
+
+meteors282.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 281
+
+meteors283.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 282
+
+meteors284.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 283
+
+meteors285.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 284
+
+meteors286.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 285
+
+meteors287.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 286
+
+meteors288.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 287
+
+meteors289.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 288
+
+meteors290.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 289
+
+meteors291.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 290
+
+meteors292.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 291
+
+meteors293.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 292
+
+meteors294.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 293
+
+meteors295.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 294
+
+meteors296.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 295
+
+meteors297.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 296
+
+meteors298.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 297
+
+meteors299.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 298
+
+meteors300.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 299
+
+meteors301.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 300
+
+meteors302.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 301
+
+meteors303.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 302
+
+meteors304.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 303
+
+meteors305.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 304
+
+meteors306.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 305
+
+meteors307.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 306
+
+meteors308.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 307
+
+meteors309.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 308
+
+meteors310.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 309
+
+meteors311.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 310
+
+meteors312.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 311
+
+meteors313.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 312
+
+meteors314.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 313
+
+meteors315.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 314
+
+meteors316.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 315
+
+meteors317.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 316
+
+meteors318.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 317
+
+meteors319.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 318
+
+meteors320.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 319
+
+meteors321.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 320
+
+meteors322.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 321
+
+meteors323.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 322
+
+meteors324.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 323
+
+meteors325.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 324
+
+meteors326.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 325
+
+meteors327.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 326
+
+meteors328.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 327
+
+meteors329.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 328
+
+meteors330.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 329
+
+meteors331.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 330
+
+meteors332.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 331
+
+meteors333.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 332
+
+meteors334.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 333
+
+meteors335.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 334
+
+meteors336.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 335
+
+meteors337.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 336
+
+meteors338.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 337
+
+meteors339.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 338
+
+meteors340.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 339
+
+meteors341.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 340
+
+meteors342.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 341
+
+meteors343.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 342
+
+meteors344.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 343
+
+meteors345.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 344
+
+meteors346.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 345
+
+meteors347.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 346
+
+meteors348.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 347
+
+meteors349.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 348
+
+meteors350.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 349
+
+meteors351.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 350
+
+meteors352.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 351
+
+meteors353.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 352
+
+meteors354.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 353
+
+meteors355.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 354
+
+meteors356.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 355
+
+meteors357.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 356
+
+meteors358.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 357
+
+meteors359.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 358
+
+meteors360.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 359
+
+meteors361.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 360
+
+meteors362.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 361
+
+meteors363.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 362
+
+meteors364.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 363
+
+meteors365.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 364
+
+meteors366.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 365
+
+meteors367.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 366
+
+meteors368.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 367
+
+meteors369.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 368
+
+meteors370.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 369
+
+meteors371.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 370
+
+meteors372.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 371
+
+meteors373.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 372
+
+meteors374.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 373
+
+meteors375.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 374
+
+meteors376.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 375
+
+meteors377.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 376
+
+meteors378.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 377
+
+meteors379.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 378
+
+meteors380.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 379
+
+meteors381.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 380
+
+meteors382.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 381
+
+meteors383.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 382
+
+meteors384.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 383
+
+meteors385.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 384
+
+meteors386.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 385
+
+meteors387.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 386
+
+meteors388.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 387
+
+meteors389.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 388
+
+meteors390.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 389
+
+meteors391.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 390
+
+meteors392.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 391
+
+meteors393.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 392
+
+meteors394.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 393
+
+meteors395.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 394
+
+meteors396.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 395
+
+meteors397.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 396
+
+meteors398.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 397
+
+meteors399.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 398
+
+meteors400.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 399
+
+meteors401.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 400
+
+meteors402.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 401
+
+meteors403.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 402
+
+meteors404.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 403
+
+meteors405.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 404
+
+meteors406.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 405
+
+meteors407.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 406
+
+meteors408.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 407
+
+meteors409.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 408
+
+meteors410.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 409
+
+meteors411.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 410
+
+meteors412.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 411
+
+meteors413.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 412
+
+meteors414.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 413
+
+meteors415.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 414
+
+meteors416.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 415
+
+meteors417.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 416
+
+meteors418.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 417
+
+meteors419.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 418
+
+meteors420.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 419
+
+meteors421.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 420
+
+meteors422.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 421
+
+meteors423.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 422
+
+meteors424.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 423
+
+meteors425.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 424
+
+meteors426.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 425
+
+meteors427.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 426
+
+meteors428.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 427
+
+meteors429.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 428
+
+meteors430.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 429
+
+meteors431.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 430
+
+meteors432.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 431
+
+meteors433.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 432
+
+meteors434.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 433
+
+meteors435.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 434
+
+meteors436.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 435
+
+meteors437.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 436
+
+meteors438.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 437
+
+meteors439.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 438
+
+meteors440.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 439
+
+meteors441.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 440
+
+meteors442.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 441
+
+meteors443.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 442
+
+meteors444.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 443
+
+meteors445.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 444
+
+meteors446.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 445
+
+meteors447.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 446
+
+meteors448.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 447
+
+meteors449.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 448
+
+meteors450.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 449
+
+meteors451.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 450
+
+meteors452.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 451
+
+meteors453.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 452
+
+meteors454.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 453
+
+meteors455.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 454
+
+meteors456.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 455
+
+meteors457.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 456
+
+meteors458.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 457
+
+meteors459.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 458
+
+meteors460.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 459
+
+meteors461.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 460
+
+meteors462.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 461
+
+meteors463.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 462
+
+meteors464.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 463
+
+meteors465.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 464
+
+meteors466.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 465
+
+meteors467.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 466
+
+meteors468.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 467
+
+meteors469.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 468
+
+meteors470.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 469
+
+meteors471.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 470
+
+meteors472.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 471
+
+meteors473.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 472
+
+meteors474.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 473
+
+meteors475.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 474
+
+meteors476.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 475
+
+meteors477.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 476
+
+meteors478.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 477
+
+meteors479.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 478
+
+meteors480.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 479
+
+meteors481.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 480
+
+meteors482.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 481
+
+meteors483.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 482
+
+meteors484.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 483
+
+meteors485.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 484
+
+meteors486.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 485
+
+meteors487.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 486
+
+meteors488.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 487
+
+meteors489.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 488
+
+meteors490.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 489
+
+meteors491.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 490
+
+meteors492.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 491
+
+meteors493.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 492
+
+meteors494.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 493
+
+meteors495.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 494
+
+meteors496.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 495
+
+meteors497.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 496
+
+meteors498.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 497
+
+meteors499.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 498
+
+meteors500.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 499
+
+meteors501.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 500
+
+meteors502.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 501
+
+meteors503.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 502
+
+meteors504.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 503
+
+meteors505.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 504
+
+meteors506.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 505
+
+meteors507.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 506
+
+meteors508.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 507
+
+meteors509.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 508
+
+meteors510.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 509
+
+meteors511.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 510
+
+meteors512.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 511
+
+meteors513.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 512
+
+meteors514.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 513
+
+meteors515.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 514
+
+meteors516.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 515
+
+meteors517.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 516
+
+meteors518.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 517
+
+meteors519.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 518
+
+meteors520.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 519
+
+meteors521.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 520
+
+meteors522.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 521
+
+meteors523.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 522
+
+meteors524.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 523
+
+meteors525.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 524
+
+meteors526.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 525
+
+meteors527.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 526
+
+meteors528.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 527
+
+meteors529.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 528
+
+meteors530.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 529
+
+meteors531.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 530
+
+meteors532.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 531
+
+meteors533.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 532
+
+meteors534.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 533
+
+meteors535.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 534
+
+meteors536.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 535
+
+meteors537.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 536
+
+meteors538.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 537
+
+meteors539.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 538
+
+meteors540.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 539
+
+meteors541.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 540
+
+meteors542.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 541
+
+meteors543.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 542
+
+meteors544.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 543
+
+meteors545.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 544
+
+meteors546.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 545
+
+meteors547.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 546
+
+meteors548.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 547
+
+meteors549.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 548
+
+meteors550.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 549
+
+meteors551.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 550
+
+meteors552.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 551
+
+meteors553.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 552
+
+meteors554.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 553
+
+meteors555.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 554
+
+meteors556.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 555
+
+meteors557.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 556
+
+meteors558.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 557
+
+meteors559.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 558
+
+meteors560.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 559
+
+meteors561.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 560
+
+meteors562.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 561
+
+meteors563.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 562
+
+meteors564.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 563
+
+meteors565.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 564
+
+meteors566.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 565
+
+meteors567.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 566
+
+meteors568.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 567
+
+meteors569.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 568
+
+meteors570.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 569
+
+meteors571.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 570
+
+meteors572.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 571
+
+meteors573.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 572
+
+meteors574.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 573
+
+meteors575.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 574
+
+meteors576.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 575
+
+meteors577.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 576
+
+meteors578.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 577
+
+meteors579.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 578
+
+meteors580.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 579
+
+meteors581.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 580
+
+meteors582.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 581
+
+meteors583.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 582
+
+meteors584.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 583
+
+meteors585.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 584
+
+meteors586.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 585
+
+meteors587.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 586
+
+meteors588.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 587
+
+meteors589.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 588
+
+meteors590.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 589
+
+meteors591.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 590
+
+meteors592.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 591
+
+meteors593.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 592
+
+meteors594.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 593
+
+meteors595.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 594
+
+meteors596.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 595
+
+meteors597.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 596
+
+meteors598.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 597
+
+meteors599.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 598
+
+meteors600.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 599
+
+meteors601.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 600
+
+meteors602.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+meteor
+  rotate: false
+  xy: 2, 2
+  size: 600, 600
+  orig: 0, 0
+  offset: 0, 0
+  index: 601
