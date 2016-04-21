@@ -3,6 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.rocketfool.rocketgame.util.Constants;
+import com.badlogic.gdx.utils.Array;
 
 /**
  * Our map for testing the current physical behaviour. It is a work in progress right now.
@@ -53,9 +54,7 @@ public class ExampleLevel extends Level {
         if (Constants.DEBUG){
             triggers.add(new PositionTrigger(300, 300, 10, playable) {
                 @Override
-                public void triggerPerformed() {
-                    ExampleLevel.periodStopWatch.updatePeriod();
-                }
+                public void triggerPerformed() {ExampleLevel.periodStopWatch.updatePeriod(); }
             });
         }
     }
@@ -68,6 +67,10 @@ public class ExampleLevel extends Level {
 
     }
 
+    private void addWaypoints(){
+            waypoints.add( new Waypoint(300 , 300 , 20) );
+    }
+
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);
@@ -75,14 +78,15 @@ public class ExampleLevel extends Level {
 
     public static class periodStopWatch{
         private static long stopTime = System.currentTimeMillis();
-        private static long startTime = stopTime - 2000;
+        private static long startTime = stopTime;
         private static long period = -1;
 
         public static void updatePeriod() {
-            if ( stopTime - startTime > 2000 ) {
-                stopTime = System.currentTimeMillis();
+            stopTime = System.currentTimeMillis();
+            if ( stopTime - startTime >= 2000 ) {
                 period = ((stopTime - startTime) / 1000);
                 startTime = stopTime;
+                System.err.println("Rotation complete. Period updated");
             }
         }
 
