@@ -9,14 +9,20 @@ import com.badlogic.gdx.utils.Array;
  * Our map for testing the current physical behaviour. It is a work in progress right now.
  */
 public class ExampleLevel extends Level {
+
+    //Variables
+    float playerSpawnPointX = 0;
+    float playerSpawnPointY = 0;
+
+    //Constructor
     public ExampleLevel() {
         super();
 
         int width = Gdx.graphics.getWidth() * 10;
         int height = Gdx.graphics.getHeight() * 10;
 
-        this.playable = new Playable(300, 300, 112, 75, 1e5f, 250, 200, 1000, 1e25f, world);
-        this.playable.getBody().setLinearVelocity( 30f , -30f );
+        this.playable = new Playable(playerSpawnPointX, playerSpawnPointY, 112, 75, 1e5f, 250, 200, 1000, 1e25f, world);
+        //this.playable.getBody().setLinearVelocity( 30f , -30f );
 
         this.map = new Map(width, height);
 
@@ -74,6 +80,14 @@ public class ExampleLevel extends Level {
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);
+    }
+
+    public float getPlayerSpawnPointX() {
+        return playerSpawnPointX;
+    }
+
+    public float getPlayerSpawnPointY() {
+        return playerSpawnPointY;
     }
 
     public static class periodStopWatch{

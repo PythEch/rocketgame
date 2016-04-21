@@ -5,9 +5,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.utils.Array;
+import com.rocketfool.rocketgame.model.ExampleLevel;
 import com.rocketfool.rocketgame.model.Level;
+import com.rocketfool.rocketgame.model.VisualMeteor;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -19,28 +23,51 @@ public class WorldRenderer {
 
     //Variable
     private Level level;
+    TextureAtlas textureAtlasMeteor;
     TextureAtlas textureAtlasStar;
+    TextureAtlas textureAtlasObjective1;
+    Animation animationObjective1;
     Animation animationStar;
+    Animation animationMeteor;
     float elapsedTime = 0f;
-    int meteorX;
-    int meteorY;
+    Array<VisualMeteor> meteors;
+
 
     public WorldRenderer(Level level) {
         this.level = level;
 
-        textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
-        animationStar = new Animation(1f/80f, textureAtlasStar.getRegions() );
-        meteorX = level.getMap().getHeight();
-        meteorY = level.getMap().getWidth();
+        //Meteors
+        textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
+        animationMeteor = new Animation(1f/80f, textureAtlasMeteor.getRegions() );
+        meteors = new Array<VisualMeteor>();
+        meteors.add(new VisualMeteor(0, 0, 10, 10, 180));
+        meteors.add(new VisualMeteor(12800, 7200,-3, -4, 0));
+
+        //Stars
+        textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/starSheets/stars.atlas"));
+        for (Texture texture : textureAtlasStar.getTextures()) {
+            texture.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
+        }
+        animationStar = new Animation(1f/100f, textureAtlasStar.getRegions());
+
+        //ObjectiveScreens
+        textureAtlasObjective1 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet/objScreen.atlas"));
+        animationObjective1 = new Animation(1f/80f, textureAtlasObjective1.getRegions() );
+
     }
 
     public void draw(SpriteBatch batch) {
         elapsedTime = elapsedTime + Gdx.graphics.getDeltaTime();
         drawMap(batch);
+        drawStars(batch);
+        drawMeteors(batch);
+        drawObjectiveScreen(batch,animationObjective1);
+        drawPlanets(batch);
         drawMeteors(batch);
         drawPlayer(batch);
-        drawPlanets(batch);
-
+        for (VisualMeteor meteor : meteors) {
+            meteor.update(Gdx.graphics.getDeltaTime());
+        }
     }
 
     private void drawPlayer(SpriteBatch batch) {
@@ -86,18 +113,44 @@ public class WorldRenderer {
         );
     }
 
-    private void drawPlanets(SpriteBatch batch) {
-
-    }
+    private void drawPlanets(SpriteBatch batch) {    }
 
     private void drawMeteors(SpriteBatch batch) {
-        System.out.println("meteorX = " + meteorX);
-        System.out.println("meteorY = " + meteorY);
-        if(meteorX > 0)
-        {
-            batch.draw(animationStar.getKeyFrame(elapsedTime, true), meteorX--, meteorY--);
-            batch.draw(new Texture(Gdx.files.internal("Backgrounds/halkalıŞeker.png")), 0, 0, meteorX, meteorY, 100, 100);
+        for (VisualMeteor meteor : meteors) {
+            if (meteor.getLocation().x > 0 &&
+                    meteor.getLocation().y > 0 &&
+                    meteor.getLocation().x < level.getMap().getWidth() &&
+                    meteor.getLocation().y < level.getMap().getHeight()) {
+                TextureRegion tr = animationMeteor.getKeyFrame(elapsedTime, true);
+                batch.draw(
+                        tr,
+                        meteor.getLocation().x,
+                        meteor.getLocation().y,
+                        (float)tr.getRegionWidth(),
+                        (float)tr.getRegionHeight(),
+                        tr.getRegionWidth(),
+                        tr.getRegionHeight(),
+                        0.6f,
+                        0.6f,
+                        meteor.getRotateDegree()
+                );
+            }
         }
-        //batch.draw(animationStar.getKeyFrame(elapsedTime, true), -200, -200);
+    }
+
+    private void drawStars(SpriteBatch batch){
+        Texture tr = animationStar.getKeyFrame(elapsedTime, true).getTexture();
+        batch.draw(
+                tr,
+                0,
+                0,
+                0,
+                0,
+                level.getMap().getWidth(),
+                level.getMap().getHeight());
+    }
+
+    private void drawObjectiveScreen(SpriteBatch batch,Animation obj){
+        batch.draw(obj.getKeyFrame(elapsedTime,true),( (ExampleLevel)level).getPlayerSpawnPointX() + 200f, ( (ExampleLevel)level).getPlayerSpawnPointY() + 200f );
     }
 }
