@@ -12,8 +12,8 @@ public class ExampleLevel extends Level {
     public ExampleLevel() {
         super();
 
-        int width = Gdx.graphics.getWidth() * 100;
-        int height = Gdx.graphics.getHeight() * 100;
+        int width = Gdx.graphics.getWidth() * 10;
+        int height = Gdx.graphics.getHeight() * 10;
 
         this.playable = new Playable(300, 300, 112, 75, 1e5f, 250, 200, 1000, 1e25f, world);
         this.playable.getBody().setLinearVelocity( 30f , -30f );

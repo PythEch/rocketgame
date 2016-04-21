@@ -94,6 +94,8 @@ public class GameScreen implements Screen {
         batch.begin();
         // Our main draw method
         renderer.draw(batch);
+
+        //This part is for the particles coming out of rocket
         particleEffect.draw(batch);
         particleEffect.update(dt);
         particleEffect.setPosition(level.getPlayable().getBottomPosition().x * toPixel, level.getPlayable().getBottomPosition().y * toPixel);
@@ -103,8 +105,6 @@ public class GameScreen implements Screen {
             particleEffect.getEmitters().get(i).getAngle().setHigh(angle, angle);
             particleEffect.getEmitters().get(i).getAngle().setLow(angle);
         }
-
-
         draw();
         batch.end();
 
@@ -222,7 +222,6 @@ public class GameScreen implements Screen {
 
     public void igniteRocketTrail() {
 
-        System.out.println("ignite");
         if (particleEffect.isComplete() )
         {
             particleEffect.reset();
@@ -234,7 +233,6 @@ public class GameScreen implements Screen {
     }
 
     public void stopRocketTrail() {
-        System.out.println("stop");
 
         for(int i = 0; i < particleEffect.getEmitters().size; i++)
         {
