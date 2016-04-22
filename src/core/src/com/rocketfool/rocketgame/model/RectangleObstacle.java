@@ -1,72 +1,40 @@
 package com.rocketfool.rocketgame.model;
 
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.*;
 
 /**
  * Class for all objects with physical properties and a rectangular shape. Eg. Unplayed satellites.
- * Yaman, 20.04.2016, 23.02
  */
 public class RectangleObstacle extends SolidObject {
+    public RectangleObstacle(float x, float y, float width, float height, Vector2 speed, World world) {
+        this.body = createBody(x, y, width, height, world);
+        body.setLinearVelocity(speed);
+    }
 
-    private int type;
-    public static final int SMALL = 0;
-    public static final int MEDIUM = 1;
-    public static final int LARGE = 2;
+    private Body createBody(float x, float y, float width, float height, World world) {
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.position.set(x, y);
 
-    private int numPoints;
-    private float[] dists;
+        Body body = world.createBody(bodyDef);
 
-    public RectangleObstacle(float x, float y, int type) {
+        PolygonShape rectangle = new PolygonShape();
+        rectangle.setAsBox(width, height);
 
-        this.x = x;
-        this.y = y;
-        this.type = type;
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.shape = rectangle;
+        fixtureDef.restitution = 0.0f;
 
-        if(type == SMALL) {
-            numPoints = 8;
-            width = height = 12;
-            speed = MathUtils.random(70, 100);
-        }
-        else if(type == MEDIUM) {
-            numPoints = 10;
-            width = height = 20;
-            speed = MathUtils.random(50, 60);
-        }
-        else if(type == LARGE) {
-            numPoints = 12;
-            width = height = 40;
-            speed = MathUtils.random(20, 30);
-        }
+        body.createFixture(fixtureDef);
 
-        rotationSpeed = MathUtils.random(-1, 1);
-        int radius = width / 2;
+        rectangle.dispose();
 
-        radians = MathUtils.random(-1, 1);
-        dx = MathUtils.cos(radians) * speed;
-        dy = MathUtils.sin(radians) * speed;
-
-        shapex = new float[numPoints];
-        shapey = new float[numPoints];
-        dists = new float[numPoints];
-
-        for(int i=0; i<numPoints; i++) {
-            dists[i] = MathUtils.random(radius/2, radius);
-        }
-
-
+        return body;
     }
 
     @Override
     public void update(float deltaTime) {
-
-        x += dx * deltaTime;
-        y += dy * deltaTime;
-
-        radians += rotationSpeed * deltaTime;
-
-        wrap();
 
     }
 

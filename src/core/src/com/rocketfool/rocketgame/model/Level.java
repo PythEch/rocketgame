@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.Array;
 /**
  * Class to create instances of all levels. Also, it performs most of the calculations.
  */
-public abstract class Level {
+public class Level {
     protected static /*final*/ float G = 6.67408e-11f;
 
     protected World world;
@@ -17,6 +17,7 @@ public abstract class Level {
     protected Array<Trigger> triggers;
     protected Array<Waypoint> waypoints;
     protected Array<SolidObject> solidObjects;
+    protected Array<GameObject> gameObjects;
     protected float timePassed;
     protected int score;
 
@@ -31,25 +32,10 @@ public abstract class Level {
         this.triggers = new Array<Trigger>();
         this.waypoints = new Array<Waypoint>();
         this.solidObjects = new Array<SolidObject>();
+        this.gameObjects = new Array<GameObject>();
         this.timePassed = 0;
 
         this.score = 0;
-    }
-
-    protected void addTriggers() {
-        triggers.add(new OutOfMapTrigger(map, playable) {
-            @Override
-            public void triggerPerformed() {
-                System.out.println("OUT OF MAP!");
-            }
-        });
-
-        triggers.add(new FuelDepletionTrigger(playable) {
-            @Override
-            public void triggerPerformed() {
-                System.out.println("NO FUEL!");
-            }
-        });
     }
 
     public State getState() {
@@ -67,6 +53,7 @@ public abstract class Level {
         updateSolidObjects(deltaTime);
         updateGravity(deltaTime);
         updateTriggers(deltaTime);
+        updateVisualObjects(deltaTime);
 
         timePassed += deltaTime;
         world.step(1 / 60f, 6, 2);
@@ -118,6 +105,12 @@ public abstract class Level {
     private void updateWaypoints(float deltaTime) {} //TODO: implement
 
     private void updateParticles(float deltaTime) {} //TODO: implement
+
+    private void updateVisualObjects(float deltaTime) {
+        for (GameObject go : gameObjects) {
+            go.update(deltaTime);
+        }
+    }
 
     public World getWorld() {
         return world;
