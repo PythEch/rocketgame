@@ -7,9 +7,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.model.Level;
+import com.rocketfool.rocketgame.model.TrajectorySimulator;
 import com.rocketfool.rocketgame.model.VisualMeteor;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
@@ -30,6 +32,7 @@ public class WorldRenderer {
     private Animation animationMeteor;
     private float elapsedTime = 0f;
     private Array<VisualMeteor> meteors;
+    private TrajectorySimulator trajectorySimulator;
 
 
     public WorldRenderer(Level level) {
@@ -53,6 +56,7 @@ public class WorldRenderer {
         textureAtlasObjective1 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet/objScreen.atlas"));
         animationObjective1 = new Animation(1f / 80f, textureAtlasObjective1.getRegions());
 
+        trajectorySimulator = new TrajectorySimulator(level);
     }
 
     public void draw(SpriteBatch batch) {
@@ -64,6 +68,7 @@ public class WorldRenderer {
         drawPlanets(batch);
         drawMeteors(batch);
         drawPlayer(batch);
+        drawTrajectory(batch);
         for (VisualMeteor meteor : meteors) {
             meteor.update(Gdx.graphics.getDeltaTime());
         }
@@ -156,5 +161,19 @@ public class WorldRenderer {
                 level.getPlayable().getSpawnPoint().x + 200f,
                 level.getPlayable().getSpawnPoint().y + 200f
         );
+    }
+
+    private void drawTrajectory(SpriteBatch batch) {
+        trajectorySimulator.update(Gdx.graphics.getDeltaTime());
+
+        Texture texture = AssetManager.GHOST;
+        for (Vector2 pos : trajectorySimulator.getCurrentEstimationPath()) {
+
+            batch.draw(
+                    texture,
+                    pos.x * toPixel,
+                    pos.y * toPixel
+            );
+        }
     }
 }

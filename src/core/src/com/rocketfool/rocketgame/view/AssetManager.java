@@ -14,5 +14,6 @@ public class AssetManager {
     public static Texture MAP_TEXTURE = new Texture(Gdx.files.internal("Backgrounds/bq.png"));
     //public static final Texture MAP_VIDEO = new Texture(Gdx.files.internal("blablabla"));
     public static final Texture SPLASH = new Texture(Gdx.files.internal("PNG/RocketFoolsSplash.png"));
+    public static final Texture GHOST = new Texture(Gdx.files.internal("PNG/Yellow_icon.png"));
 
 }
