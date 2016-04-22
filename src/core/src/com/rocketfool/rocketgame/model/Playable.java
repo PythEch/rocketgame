@@ -78,8 +78,10 @@ public class Playable extends SolidObject {
     private void consumeFuelAndDecreaseMass(float deltaTime) {
 		//kilogram per liter is taken as 0.18
     	if (fuelLeft > 0) {
-            fuelLeft -= currentImpulse * deltaTime / 100;
-            body.getMassData().mass -= fuelLeft * 0.18; //FIXME: make a constant for this
+            float fuelSpent = currentImpulse * deltaTime / 100;
+            fuelLeft -= fuelSpent;
+            //decrease mass 0.18 for each fuel spent
+            body.getMassData().mass -= fuelSpent * 0.18; //FIXME: make a constant for this
         }
     }
 
