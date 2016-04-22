@@ -1,17 +1,36 @@
 package com.rocketfool.rocketgame.model;
 
-import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.*;
 
 /**
  * Class for all objects with physical properties and a rectangular shape. Eg. Unplayed satellites.
  */
 public class RectangleObstacle extends SolidObject {
-    public RectangleObstacle(float x, float y, int width, int height, int speed, float angle) {
-        this.body = createBody(x, y, width, height, speed, angle);
+    public RectangleObstacle(float x, float y, float width, float height, Vector2 speed, World world) {
+        this.body = createBody(x, y, width, height, world);
+        body.setLinearVelocity(speed);
     }
 
-    private Body createBody(float x, float y, int width, int height, int speed, float angle) {
-        return null;
+    private Body createBody(float x, float y, float width, float height, World world) {
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.position.set(x, y);
+
+        Body body = world.createBody(bodyDef);
+
+        PolygonShape rectangle = new PolygonShape();
+        rectangle.setAsBox(width, height);
+
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.shape = rectangle;
+        fixtureDef.restitution = 0.0f;
+
+        body.createFixture(fixtureDef);
+
+        rectangle.dispose();
+
+        return body;
     }
 
     @Override
