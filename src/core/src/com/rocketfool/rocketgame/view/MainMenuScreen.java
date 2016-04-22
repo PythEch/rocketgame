@@ -2,14 +2,19 @@ package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.video.VideoPlayer;
+import com.badlogic.gdx.video.VideoPlayerCreator;
 import com.rocketfool.rocketgame.external.RocketGame;
 
+
+import java.io.FileNotFoundException;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -21,6 +26,7 @@ public class MainMenuScreen implements Screen {
     private RocketGame game;
     private SpriteBatch batch;
     private BitmapFont font;
+    private VideoPlayer videoPlayer;
 
     public MainMenuScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
         this.game = game;
@@ -72,6 +78,15 @@ public class MainMenuScreen implements Screen {
         });
 
         stage.addActor(table);
+
+        videoPlayer = VideoPlayerCreator.createVideoPlayer();
+        videoPlayer.resize(1280, 720);
+
+        try {
+            videoPlayer.play(Gdx.files.internal("test.webm"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -81,7 +96,21 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void render (float delta) {
-        Gdx.gl.glClear(com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT);
+
+        Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+
+
+
+        if (!videoPlayer.render()) { // As soon as the video is finished, we start the file again using the same player.
+            try {
+                videoPlayer.play(Gdx.files.internal("test.webm"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+
         stage.act(delta);
         stage.draw();
     }
