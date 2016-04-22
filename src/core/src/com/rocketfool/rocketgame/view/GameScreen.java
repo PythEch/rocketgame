@@ -10,11 +10,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.rocketfool.rocketgame.controller.WorldController;
-import com.rocketfool.rocketgame.model.Map;
+import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
-import com.rocketfool.rocketgame.model.ExampleLevel;
-import com.rocketfool.rocketgame.model.*;
 
 import com.badlogic.gdx.video.VideoPlayer;
 
@@ -94,6 +92,8 @@ public class GameScreen implements Screen {
         batch.begin();
         // Our main draw method
         renderer.draw(batch);
+
+        //This part is for the particles coming out of rocket
         particleEffect.draw(batch);
         particleEffect.update(dt);
         particleEffect.setPosition(level.getPlayable().getBottomPosition().x * toPixel, level.getPlayable().getBottomPosition().y * toPixel);
@@ -103,8 +103,6 @@ public class GameScreen implements Screen {
             particleEffect.getEmitters().get(i).getAngle().setHigh(angle, angle);
             particleEffect.getEmitters().get(i).getAngle().setLow(angle);
         }
-
-
         draw();
         batch.end();
 
@@ -131,6 +129,9 @@ public class GameScreen implements Screen {
             drawDebugString("  Linear Velocity: " + (int) (cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
                     " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
+            drawDebugString("Distance: " + (int)
+                    ( cameraTarget.getBody().getPosition().dst(  level.getPlanetLocation(0) ) ) , 5 );
+            drawDebugString(" Period (P1): " + (int) LevelManager.periodStopWatch.getPeriod() , 6 );
         }
     }
 
@@ -138,8 +139,8 @@ public class GameScreen implements Screen {
         font.draw(
                 batch,
                 str,
-                camera.position.x - camera.viewportWidth / 2f,
-                camera.position.y - camera.viewportHeight / 2f + font.getLineHeight() * row
+                camera.position.x - camera.viewportWidth / 2f * camera.zoom,
+                camera.position.y - camera.viewportHeight / 2f * camera.zoom + font.getLineHeight() * row
         );
     }
 
@@ -195,7 +196,7 @@ public class GameScreen implements Screen {
 
 
         //endregion
-        level = new ExampleLevel();
+        level = LevelManager.createLevel1();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
         controller = new WorldController(level, this);
@@ -203,16 +204,22 @@ public class GameScreen implements Screen {
     }
 
     public void zoomIn() {
+
         camera.zoom = (float) Math.max(0.5, camera.zoom / 1.04f );
+        if ( camera.zoom > 0.5 ) {
+            //font.setScale(font.getScaleX() / 1.04f);
+        }
+
     } //**
 
     public void zoomOut() {
         camera.zoom = (float) Math.min( camera.zoom * 1.04f , 150 );
+       // if ( camera.zoom < 150 )
+            //font.setScale( font.getScaleX() * 1.04f );
     }
 
     public void igniteRocketTrail() {
 
-        System.out.println("ignite");
         if (particleEffect.isComplete() )
         {
             particleEffect.reset();
@@ -224,7 +231,6 @@ public class GameScreen implements Screen {
     }
 
     public void stopRocketTrail() {
-        System.out.println("stop");
 
         for(int i = 0; i < particleEffect.getEmitters().size; i++)
         {

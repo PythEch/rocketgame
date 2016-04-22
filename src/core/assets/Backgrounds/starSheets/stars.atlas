@@ -1,0 +1,7800 @@
+
+stars.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 0
+
+stars2.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 1
+
+stars3.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 2
+
+stars4.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 3
+
+stars5.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 4
+
+stars6.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 5
+
+stars7.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 6
+
+stars8.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 7
+
+stars9.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 8
+
+stars10.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 9
+
+stars11.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 10
+
+stars12.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 11
+
+stars13.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 12
+
+stars14.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 13
+
+stars15.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 14
+
+stars16.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 15
+
+stars17.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 16
+
+stars18.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 17
+
+stars19.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 18
+
+stars20.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 19
+
+stars21.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 20
+
+stars22.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 21
+
+stars23.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 22
+
+stars24.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 23
+
+stars25.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 24
+
+stars26.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 25
+
+stars27.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 26
+
+stars28.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 27
+
+stars29.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 28
+
+stars30.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 29
+
+stars31.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 30
+
+stars32.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 31
+
+stars33.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 32
+
+stars34.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 33
+
+stars35.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 34
+
+stars36.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 35
+
+stars37.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 36
+
+stars38.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 37
+
+stars39.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 38
+
+stars40.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 39
+
+stars41.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 40
+
+stars42.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 41
+
+stars43.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 42
+
+stars44.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 43
+
+stars45.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 44
+
+stars46.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 45
+
+stars47.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 46
+
+stars48.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 47
+
+stars49.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 48
+
+stars50.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 49
+
+stars51.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 50
+
+stars52.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 51
+
+stars53.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 52
+
+stars54.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 53
+
+stars55.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 54
+
+stars56.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 55
+
+stars57.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 56
+
+stars58.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 57
+
+stars59.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 58
+
+stars60.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 59
+
+stars61.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 60
+
+stars62.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 61
+
+stars63.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 62
+
+stars64.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 63
+
+stars65.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 64
+
+stars66.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 65
+
+stars67.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 66
+
+stars68.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 67
+
+stars69.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 68
+
+stars70.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 69
+
+stars71.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 70
+
+stars72.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 71
+
+stars73.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 72
+
+stars74.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 73
+
+stars75.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 74
+
+stars76.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 75
+
+stars77.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 76
+
+stars78.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 77
+
+stars79.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 78
+
+stars80.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 79
+
+stars81.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 80
+
+stars82.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 81
+
+stars83.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 82
+
+stars84.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 83
+
+stars85.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 84
+
+stars86.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 85
+
+stars87.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 86
+
+stars88.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 87
+
+stars89.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 88
+
+stars90.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 89
+
+stars91.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 90
+
+stars92.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 91
+
+stars93.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 92
+
+stars94.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 93
+
+stars95.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 94
+
+stars96.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 95
+
+stars97.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 96
+
+stars98.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 97
+
+stars99.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 98
+
+stars100.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 99
+
+stars101.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 100
+
+stars102.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 101
+
+stars103.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 102
+
+stars104.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 103
+
+stars105.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 104
+
+stars106.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 105
+
+stars107.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 106
+
+stars108.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 107
+
+stars109.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 108
+
+stars110.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 109
+
+stars111.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 110
+
+stars112.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 111
+
+stars113.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 112
+
+stars114.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 113
+
+stars115.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 114
+
+stars116.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 115
+
+stars117.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 116
+
+stars118.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 117
+
+stars119.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 118
+
+stars120.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 119
+
+stars121.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 120
+
+stars122.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 121
+
+stars123.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 122
+
+stars124.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 123
+
+stars125.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 124
+
+stars126.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 125
+
+stars127.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 126
+
+stars128.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 127
+
+stars129.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 128
+
+stars130.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 129
+
+stars131.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 130
+
+stars132.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 131
+
+stars133.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 132
+
+stars134.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 133
+
+stars135.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 134
+
+stars136.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 135
+
+stars137.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 136
+
+stars138.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 137
+
+stars139.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 138
+
+stars140.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 139
+
+stars141.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 140
+
+stars142.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 141
+
+stars143.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 142
+
+stars144.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 143
+
+stars145.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 144
+
+stars146.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 145
+
+stars147.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 146
+
+stars148.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 147
+
+stars149.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 148
+
+stars150.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 149
+
+stars151.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 150
+
+stars152.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 151
+
+stars153.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 152
+
+stars154.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 153
+
+stars155.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 154
+
+stars156.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 155
+
+stars157.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 156
+
+stars158.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 157
+
+stars159.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 158
+
+stars160.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 159
+
+stars161.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 160
+
+stars162.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 161
+
+stars163.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 162
+
+stars164.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 163
+
+stars165.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 164
+
+stars166.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 165
+
+stars167.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 166
+
+stars168.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 167
+
+stars169.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 168
+
+stars170.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 169
+
+stars171.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 170
+
+stars172.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 171
+
+stars173.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 172
+
+stars174.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 173
+
+stars175.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 174
+
+stars176.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 175
+
+stars177.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 176
+
+stars178.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 177
+
+stars179.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 178
+
+stars180.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 179
+
+stars181.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 180
+
+stars182.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 181
+
+stars183.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 182
+
+stars184.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 183
+
+stars185.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 184
+
+stars186.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 185
+
+stars187.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 186
+
+stars188.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 187
+
+stars189.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 188
+
+stars190.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 189
+
+stars191.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 190
+
+stars192.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 191
+
+stars193.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 192
+
+stars194.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 193
+
+stars195.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 194
+
+stars196.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 195
+
+stars197.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 196
+
+stars198.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 197
+
+stars199.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 198
+
+stars200.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 199
+
+stars201.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 200
+
+stars202.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 201
+
+stars203.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 202
+
+stars204.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 203
+
+stars205.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 204
+
+stars206.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 205
+
+stars207.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 206
+
+stars208.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 207
+
+stars209.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 208
+
+stars210.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 209
+
+stars211.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 210
+
+stars212.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 211
+
+stars213.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 212
+
+stars214.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 213
+
+stars215.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 214
+
+stars216.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 215
+
+stars217.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 216
+
+stars218.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 217
+
+stars219.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 218
+
+stars220.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 219
+
+stars221.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 220
+
+stars222.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 221
+
+stars223.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 222
+
+stars224.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 223
+
+stars225.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 224
+
+stars226.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 225
+
+stars227.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 226
+
+stars228.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 227
+
+stars229.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 228
+
+stars230.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 229
+
+stars231.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 230
+
+stars232.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 231
+
+stars233.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 232
+
+stars234.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 233
+
+stars235.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 234
+
+stars236.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 235
+
+stars237.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 236
+
+stars238.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 237
+
+stars239.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 238
+
+stars240.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 239
+
+stars241.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 240
+
+stars242.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 241
+
+stars243.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 242
+
+stars244.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 243
+
+stars245.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 244
+
+stars246.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 245
+
+stars247.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 246
+
+stars248.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 247
+
+stars249.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 248
+
+stars250.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 249
+
+stars251.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 250
+
+stars252.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 251
+
+stars253.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 252
+
+stars254.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 253
+
+stars255.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 254
+
+stars256.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 255
+
+stars257.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 256
+
+stars258.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 257
+
+stars259.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 258
+
+stars260.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 259
+
+stars261.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 260
+
+stars262.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 261
+
+stars263.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 262
+
+stars264.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 263
+
+stars265.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 264
+
+stars266.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 265
+
+stars267.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 266
+
+stars268.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 267
+
+stars269.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 268
+
+stars270.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 269
+
+stars271.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 270
+
+stars272.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 271
+
+stars273.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 272
+
+stars274.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 273
+
+stars275.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 274
+
+stars276.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 275
+
+stars277.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 276
+
+stars278.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 277
+
+stars279.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 278
+
+stars280.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 279
+
+stars281.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 280
+
+stars282.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 281
+
+stars283.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 282
+
+stars284.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 283
+
+stars285.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 284
+
+stars286.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 285
+
+stars287.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 286
+
+stars288.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 287
+
+stars289.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 288
+
+stars290.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 289
+
+stars291.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 290
+
+stars292.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 291
+
+stars293.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 292
+
+stars294.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 293
+
+stars295.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 294
+
+stars296.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 295
+
+stars297.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 296
+
+stars298.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 297
+
+stars299.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 298
+
+stars300.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 299
+
+stars301.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 300
+
+stars302.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 301
+
+stars303.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 302
+
+stars304.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 303
+
+stars305.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 304
+
+stars306.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 305
+
+stars307.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 306
+
+stars308.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 307
+
+stars309.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 308
+
+stars310.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 309
+
+stars311.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 310
+
+stars312.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 311
+
+stars313.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 312
+
+stars314.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 313
+
+stars315.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 314
+
+stars316.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 315
+
+stars317.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 316
+
+stars318.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 317
+
+stars319.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 318
+
+stars320.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 319
+
+stars321.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 320
+
+stars322.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 321
+
+stars323.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 322
+
+stars324.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 323
+
+stars325.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 324
+
+stars326.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 325
+
+stars327.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 326
+
+stars328.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 327
+
+stars329.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 328
+
+stars330.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 329
+
+stars331.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 330
+
+stars332.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 331
+
+stars333.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 332
+
+stars334.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 333
+
+stars335.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 334
+
+stars336.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 335
+
+stars337.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 336
+
+stars338.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 337
+
+stars339.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 338
+
+stars340.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 339
+
+stars341.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 340
+
+stars342.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 341
+
+stars343.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 342
+
+stars344.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 343
+
+stars345.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 344
+
+stars346.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 345
+
+stars347.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 346
+
+stars348.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 347
+
+stars349.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 348
+
+stars350.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 349
+
+stars351.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 350
+
+stars352.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 351
+
+stars353.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 352
+
+stars354.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 353
+
+stars355.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 354
+
+stars356.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 355
+
+stars357.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 356
+
+stars358.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 357
+
+stars359.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 358
+
+stars360.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 359
+
+stars361.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 360
+
+stars362.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 361
+
+stars363.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 362
+
+stars364.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 363
+
+stars365.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 364
+
+stars366.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 365
+
+stars367.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 366
+
+stars368.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 367
+
+stars369.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 368
+
+stars370.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 369
+
+stars371.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 370
+
+stars372.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 371
+
+stars373.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 372
+
+stars374.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 373
+
+stars375.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 374
+
+stars376.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 375
+
+stars377.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 376
+
+stars378.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 377
+
+stars379.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 378
+
+stars380.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 379
+
+stars381.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 380
+
+stars382.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 381
+
+stars383.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 382
+
+stars384.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 383
+
+stars385.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 384
+
+stars386.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 385
+
+stars387.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 386
+
+stars388.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 387
+
+stars389.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 388
+
+stars390.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 389
+
+stars391.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 390
+
+stars392.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 391
+
+stars393.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 392
+
+stars394.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 393
+
+stars395.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 394
+
+stars396.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 395
+
+stars397.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 396
+
+stars398.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 397
+
+stars399.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 398
+
+stars400.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 399
+
+stars401.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 400
+
+stars402.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 401
+
+stars403.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 402
+
+stars404.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 403
+
+stars405.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 404
+
+stars406.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 405
+
+stars407.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 406
+
+stars408.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 407
+
+stars409.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 408
+
+stars410.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 409
+
+stars411.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 410
+
+stars412.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 411
+
+stars413.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 412
+
+stars414.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 413
+
+stars415.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 414
+
+stars416.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 415
+
+stars417.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 416
+
+stars418.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 417
+
+stars419.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 418
+
+stars420.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 419
+
+stars421.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 420
+
+stars422.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 421
+
+stars423.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 422
+
+stars424.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 423
+
+stars425.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 424
+
+stars426.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 425
+
+stars427.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 426
+
+stars428.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 427
+
+stars429.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 428
+
+stars430.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 429
+
+stars431.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 430
+
+stars432.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 431
+
+stars433.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 432
+
+stars434.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 433
+
+stars435.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 434
+
+stars436.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 435
+
+stars437.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 436
+
+stars438.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 437
+
+stars439.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 438
+
+stars440.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 439
+
+stars441.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 440
+
+stars442.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 441
+
+stars443.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 442
+
+stars444.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 443
+
+stars445.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 444
+
+stars446.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 445
+
+stars447.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 446
+
+stars448.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 447
+
+stars449.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 448
+
+stars450.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 449
+
+stars451.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 450
+
+stars452.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 451
+
+stars453.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 452
+
+stars454.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 453
+
+stars455.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 454
+
+stars456.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 455
+
+stars457.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 456
+
+stars458.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 457
+
+stars459.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 458
+
+stars460.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 459
+
+stars461.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 460
+
+stars462.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 461
+
+stars463.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 462
+
+stars464.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 463
+
+stars465.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 464
+
+stars466.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 465
+
+stars467.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 466
+
+stars468.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 467
+
+stars469.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 468
+
+stars470.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 469
+
+stars471.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 470
+
+stars472.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 471
+
+stars473.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 472
+
+stars474.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 473
+
+stars475.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 474
+
+stars476.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 475
+
+stars477.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 476
+
+stars478.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 477
+
+stars479.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 478
+
+stars480.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 479
+
+stars481.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 480
+
+stars482.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 481
+
+stars483.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 482
+
+stars484.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 483
+
+stars485.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 484
+
+stars486.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 485
+
+stars487.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 486
+
+stars488.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 487
+
+stars489.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 488
+
+stars490.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 489
+
+stars491.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 490
+
+stars492.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 491
+
+stars493.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 492
+
+stars494.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 493
+
+stars495.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 494
+
+stars496.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 495
+
+stars497.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 496
+
+stars498.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 497
+
+stars499.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 498
+
+stars500.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 499
+
+stars501.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 500
+
+stars502.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 501
+
+stars503.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 502
+
+stars504.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 503
+
+stars505.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 504
+
+stars506.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 505
+
+stars507.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 506
+
+stars508.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 507
+
+stars509.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 508
+
+stars510.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 509
+
+stars511.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 510
+
+stars512.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 511
+
+stars513.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 512
+
+stars514.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 513
+
+stars515.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 514
+
+stars516.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 515
+
+stars517.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 516
+
+stars518.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 517
+
+stars519.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 518
+
+stars520.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 519
+
+stars521.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 520
+
+stars522.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 521
+
+stars523.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 522
+
+stars524.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 523
+
+stars525.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 524
+
+stars526.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 525
+
+stars527.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 526
+
+stars528.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 527
+
+stars529.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 528
+
+stars530.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 529
+
+stars531.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 530
+
+stars532.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 531
+
+stars533.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 532
+
+stars534.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 533
+
+stars535.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 534
+
+stars536.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 535
+
+stars537.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 536
+
+stars538.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 537
+
+stars539.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 538
+
+stars540.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 539
+
+stars541.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 540
+
+stars542.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 541
+
+stars543.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 542
+
+stars544.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 543
+
+stars545.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 544
+
+stars546.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 545
+
+stars547.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 546
+
+stars548.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 547
+
+stars549.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 548
+
+stars550.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 549
+
+stars551.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 550
+
+stars552.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 551
+
+stars553.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 552
+
+stars554.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 553
+
+stars555.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 554
+
+stars556.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 555
+
+stars557.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 556
+
+stars558.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 557
+
+stars559.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 558
+
+stars560.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 559
+
+stars561.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 560
+
+stars562.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 561
+
+stars563.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 562
+
+stars564.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 563
+
+stars565.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 564
+
+stars566.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 565
+
+stars567.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 566
+
+stars568.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 567
+
+stars569.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 568
+
+stars570.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 569
+
+stars571.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 570
+
+stars572.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 571
+
+stars573.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 572
+
+stars574.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 573
+
+stars575.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 574
+
+stars576.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 575
+
+stars577.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 576
+
+stars578.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 577
+
+stars579.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 578
+
+stars580.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 579
+
+stars581.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 580
+
+stars582.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 581
+
+stars583.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 582
+
+stars584.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 583
+
+stars585.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 584
+
+stars586.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 585
+
+stars587.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 586
+
+stars588.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 587
+
+stars589.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 588
+
+stars590.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 589
+
+stars591.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 590
+
+stars592.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 591
+
+stars593.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 592
+
+stars594.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 593
+
+stars595.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 594
+
+stars596.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 595
+
+stars597.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 596
+
+stars598.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 597
+
+stars599.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 598
+
+stars600.png
+size: 604,563
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+star
+  rotate: false
+  xy: 2, 2
+  size: 600, 559
+  orig: 600, 559
+  offset: 0, 0
+  index: 599
