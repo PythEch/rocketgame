@@ -23,6 +23,7 @@ public class Playable extends SolidObject {
     /** SAS is the system of a spacecraft that automatically stops its spinning. */
     private boolean SASenabled;
     private Vector2 bottomPosition;
+    private Vector2 spawnPoint;
     //endregion
 
 
@@ -37,6 +38,7 @@ public class Playable extends SolidObject {
         this.SASenabled = false;
 
         this.body = createBody(x, y, mass, world);
+        this.spawnPoint = body.getPosition().cpy();
     }
 	/** This creation is according to Box2D definitions.*/
     private Body createBody(float x, float y, float mass, World world) {
@@ -157,5 +159,9 @@ public class Playable extends SolidObject {
 
     public void decreaseThrust(float deltaTime) {
         currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse);
+    }
+
+    public Vector2 getSpawnPoint() {
+        return spawnPoint;
     }
 }

@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
-import com.rocketfool.rocketgame.model.ExampleLevel;
 import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.model.VisualMeteor;
 
@@ -38,21 +37,21 @@ public class WorldRenderer {
 
         //Meteors
         textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
-        animationMeteor = new Animation(1f/80f, textureAtlasMeteor.getRegions() );
+        animationMeteor = new Animation(1f / 80f, textureAtlasMeteor.getRegions());
         meteors = new Array<VisualMeteor>();
         meteors.add(new VisualMeteor(0, 0, 10, 10, 180));
-        meteors.add(new VisualMeteor(12800, 7200,-3, -4, 0));
+        meteors.add(new VisualMeteor(12800, 7200, -3, -4, 0));
 
         //Stars
         textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/starSheets/stars.atlas"));
         for (Texture texture : textureAtlasStar.getTextures()) {
-            texture.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
+            texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         }
-        animationStar = new Animation(1f/100f, textureAtlasStar.getRegions());
+        animationStar = new Animation(1f / 100f, textureAtlasStar.getRegions());
 
         //ObjectiveScreens
         textureAtlasObjective1 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet/objScreen.atlas"));
-        animationObjective1 = new Animation(1f/80f, textureAtlasObjective1.getRegions() );
+        animationObjective1 = new Animation(1f / 80f, textureAtlasObjective1.getRegions());
 
     }
 
@@ -61,7 +60,7 @@ public class WorldRenderer {
         drawMap(batch);
         drawStars(batch);
         drawMeteors(batch);
-        drawObjectiveScreen(batch,animationObjective1);
+        drawObjectiveScreen(batch, animationObjective1);
         drawPlanets(batch);
         drawMeteors(batch);
         drawPlayer(batch);
@@ -113,7 +112,8 @@ public class WorldRenderer {
         );
     }
 
-    private void drawPlanets(SpriteBatch batch) {    }
+    private void drawPlanets(SpriteBatch batch) {
+    }
 
     private void drawMeteors(SpriteBatch batch) {
         for (VisualMeteor meteor : meteors) {
@@ -126,8 +126,8 @@ public class WorldRenderer {
                         tr,
                         meteor.getLocation().x,
                         meteor.getLocation().y,
-                        (float)tr.getRegionWidth(),
-                        (float)tr.getRegionHeight(),
+                        (float) tr.getRegionWidth(),
+                        (float) tr.getRegionHeight(),
                         tr.getRegionWidth(),
                         tr.getRegionHeight(),
                         0.6f,
@@ -138,7 +138,7 @@ public class WorldRenderer {
         }
     }
 
-    private void drawStars(SpriteBatch batch){
+    private void drawStars(SpriteBatch batch) {
         Texture tr = animationStar.getKeyFrame(elapsedTime, true).getTexture();
         batch.draw(
                 tr,
@@ -150,7 +150,11 @@ public class WorldRenderer {
                 level.getMap().getHeight());
     }
 
-    private void drawObjectiveScreen(SpriteBatch batch,Animation obj){
-        batch.draw(obj.getKeyFrame(elapsedTime,true),( (ExampleLevel)level).getPlayerSpawnPointX() + 200f, ( (ExampleLevel)level).getPlayerSpawnPointY() + 200f );
+    private void drawObjectiveScreen(SpriteBatch batch, Animation obj) {
+        batch.draw(
+                obj.getKeyFrame(elapsedTime, true),
+                level.getPlayable().getSpawnPoint().x + 200f,
+                level.getPlayable().getSpawnPoint().y + 200f
+        );
     }
 }
