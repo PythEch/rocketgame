@@ -17,6 +17,7 @@ public class Level {
     protected Array<Trigger> triggers;
     protected Array<Waypoint> waypoints;
     protected Array<SolidObject> solidObjects;
+    protected Array<GameObject> gameObjects;
     protected float timePassed;
     protected int score;
 
@@ -31,6 +32,7 @@ public class Level {
         this.triggers = new Array<Trigger>();
         this.waypoints = new Array<Waypoint>();
         this.solidObjects = new Array<SolidObject>();
+        this.gameObjects = new Array<GameObject>();
         this.timePassed = 0;
 
         this.score = 0;
@@ -51,6 +53,7 @@ public class Level {
         updateSolidObjects(deltaTime);
         updateGravity(deltaTime);
         updateTriggers(deltaTime);
+        updateVisualObjects(deltaTime);
 
         timePassed += deltaTime;
         world.step(1 / 60f, 6, 2);
@@ -102,6 +105,12 @@ public class Level {
     private void updateWaypoints(float deltaTime) {} //TODO: implement
 
     private void updateParticles(float deltaTime) {} //TODO: implement
+
+    private void updateVisualObjects(float deltaTime) {
+        for (GameObject go : gameObjects) {
+            go.update(deltaTime);
+        }
+    }
 
     public World getWorld() {
         return world;
