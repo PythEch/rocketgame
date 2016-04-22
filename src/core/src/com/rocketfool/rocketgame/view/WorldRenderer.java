@@ -22,14 +22,14 @@ public class WorldRenderer {
 
     //Variable
     private Level level;
-    TextureAtlas textureAtlasMeteor;
-    TextureAtlas textureAtlasStar;
-    TextureAtlas textureAtlasObjective1;
-    Animation animationObjective1;
-    Animation animationStar;
-    Animation animationMeteor;
-    float elapsedTime = 0f;
-    Array<VisualMeteor> meteors;
+    private TextureAtlas textureAtlasMeteor;
+    private TextureAtlas textureAtlasStar;
+    private TextureAtlas textureAtlasObjective1;
+    private Animation animationObjective1;
+    private Animation animationStar;
+    private Animation animationMeteor;
+    private float elapsedTime = 0f;
+    private Array<VisualMeteor> meteors;
 
 
     public WorldRenderer(Level level) {
