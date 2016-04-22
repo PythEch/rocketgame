@@ -2,8 +2,6 @@ package com.rocketfool.rocketgame.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 
@@ -71,7 +69,7 @@ public class LevelManager {
         Level level = new Level();
 
         level.playable = new Playable(300, 300, 112, 75, 1e5f, 250, 220, 1000, 1e25f, level.world);
-        level.playable.getBody().setLinearVelocity( 0f , 0f );
+        level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
         level.map = new Map(Gdx.graphics.getWidth() * 90, Gdx.graphics.getHeight() * 90);
@@ -119,7 +117,7 @@ public class LevelManager {
         Level level = new Level();
 
         level.playable = new Playable(100, 100, 112, 75, 1e5f, 250, 200, 1000, 1e25f, level.world);
-        level.playable.getBody().setLinearVelocity( 0f, 0f );
+        level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
         level.map = new Map(Gdx.graphics.getWidth() * 90, Gdx.graphics.getHeight() * 90);
@@ -201,14 +199,19 @@ public class LevelManager {
         //g will be edited
         level.G = 4 * 1e-20f;
 
-        //this object stands for the earth and its properties
-        level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
         //this object stands for the target planet and its properties
-        level.solidObjects.add(new Planet(1280, 720, 2.7f * 1e25f, 250, null, level.world));
+        level.solidObjects.add(new Planet(1500, 720, 2.7f * 1e25f, 150, null, level.world));
 
-        //TODO:Add  more random meteors: both moving or in rest
-        //not sure about the vector parameters
-        level.solidObjects.add(new RoundObstacle(250, 300, 15, Vector2.Zero, level.world));
+        //TODO: Dispose method could be implemented for level class to remove the objects going out of the map and summoning new ones
+        //loop for randomizing the movement directions, velocities, sizes and the shapes of the asteroids
+        for (int i = 0; i < 30; i++) {
+            Vector2 vector = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 10f, ((float) Math.random()) * (float) Math.random() * 10f);
+            if (i % 2 == 0) {
+                level.solidObjects.add(new RoundObstacle(((float) (Math.random()) * 2400) - 250, ((float) (Math.random()) * 600) - 310 + 30 * i, 10, vector, level.world));
+            } else {
+                level.solidObjects.add(new RectangleObstacle(((float) (Math.random()) * 1000) - 250, ((float) (Math.random()) * 1000) - 310 + 30 * i, i * 2, i + 1, vector, level.world));
+            }
+        }
 
         //bottom of the earth for landing and ending the level.
         level.waypoints.add(new Waypoint(200, 100, 100));
@@ -276,6 +279,7 @@ public class LevelManager {
         level.triggers.add(new OutOfMapTrigger(level.map, level.playable) {
             @Override
             public void triggerPerformed() {
+                //TODO:Create pop-up options for the triggers
                 /* Skin skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
                 new Dialog("Some Dialog", skin, "dialog") {
                     protected void result (Object object) {
