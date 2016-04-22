@@ -15,7 +15,7 @@ public class LevelManager {
     public static Level createLevel1() {
         Level level = new Level();
 
-        level.playable = new Playable(800, 800, 112, 75, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(300, 300, 112, 75, 1e5f, 250, 200, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity( 30f , -30f );
 
         level.map = new Map(Gdx.graphics.getWidth() * 10, Gdx.graphics.getHeight() * 10);
