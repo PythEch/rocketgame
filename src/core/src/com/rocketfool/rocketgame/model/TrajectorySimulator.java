@@ -26,7 +26,7 @@ public class TrajectorySimulator extends GameObject {
         currentEstimationPath = new Array<Vector2>();
         lastEstimationPath = currentEstimationPath;
 
-        world = new World(new Vector2(0, 0), false);
+        world = new World(new Vector2(0, 0), true);
 
         for (Planet planet : level.getPlanets()) {
             planets.add(new Planet(
