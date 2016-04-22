@@ -55,12 +55,12 @@ public class CutsceneScreen extends ApplicationAdapter {
         MeshBuilder meshBuilder = new MeshBuilder();
         meshBuilder.begin(Usage.Position | Usage.TextureCoordinates, GL20.GL_TRIANGLES);
         // @formatter:off
-        meshBuilder.box(5, 5, 5);
+        meshBuilder.box(10, 10, 10);
         // @formatter:on
         mesh = meshBuilder.end();
         videoPlayer = VideoPlayerCreator.createVideoPlayer(cam, mesh, GL20.GL_TRIANGLES);
         try {
-            videoPlayer.play(Gdx.files.internal("test.ogv"));
+            videoPlayer.play(Gdx.files.internal("test.webm"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -86,7 +86,7 @@ public class CutsceneScreen extends ApplicationAdapter {
 
         if (!videoPlayer.render()) { // As soon as the video is finished, we start the file again using the same player.
             try {
-                videoPlayer.play(Gdx.files.internal("test.ogv"));
+                videoPlayer.play(Gdx.files.internal("test.webm"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
