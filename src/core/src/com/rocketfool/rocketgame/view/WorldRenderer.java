@@ -1,3 +1,4 @@
+
 package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
@@ -167,7 +168,7 @@ public class WorldRenderer {
         trajectorySimulator.update(Gdx.graphics.getDeltaTime());
 
         Texture texture = AssetManager.GHOST;
-        for (Vector2 pos : trajectorySimulator.getCurrentEstimationPath()) {
+        for (Vector2 pos : trajectorySimulator.getEstimationPath()) {
 
             batch.draw(
                     texture,

@@ -14,23 +14,19 @@ public class TrajectorySimulator extends GameObject {
     private World world;
     private Level level;
     private Array<Vector2> currentEstimationPath;
-    private Array<Vector2> lastEstimationPath = new Array<Vector2>();
+    private Array<Vector2> lastEstimationPath;
     private Array<Planet> planets;
     private Playable playable;
     private int times = 0;
 
     public TrajectorySimulator(Level level) {
         this.level = level;
-        createWorld();
-    }
 
-    private void createWorld() {
-        if (world != null)
-            world.dispose();
+        planets = new Array<Planet>();
+        currentEstimationPath = new Array<Vector2>();
+        lastEstimationPath = currentEstimationPath;
 
         world = new World(new Vector2(0, 0), false);
-        currentEstimationPath = new Array<Vector2>();
-        planets = new Array<Planet>();
 
         for (Planet planet : level.getPlanets()) {
             planets.add(new Planet(
@@ -42,6 +38,16 @@ public class TrajectorySimulator extends GameObject {
                     world
             ));
         }
+
+        createWorld();
+
+    }
+
+    private void createWorld() {
+        currentEstimationPath.clear();
+
+        if (playable != null)
+            world.destroyBody(playable.getBody());
 
         playable = new Playable(
                 level.getPlayable().getBody().getPosition().x,
@@ -76,7 +82,7 @@ public class TrajectorySimulator extends GameObject {
         for (int i = 0; i < 60; i++) {
             doGravity();
             playable.update(deltaTime);
-            world.step(1/60f, 6, 2);
+            world.step(1 / 60f, 6, 2);
 
             if (i % 10 == 0)
                 currentEstimationPath.add(playable.getBody().getPosition().cpy());
@@ -84,11 +90,7 @@ public class TrajectorySimulator extends GameObject {
         //createWorld();
     }
 
-    public World getWorld() {
-        return world;
-    }
-
-    public Array<Vector2> getCurrentEstimationPath() {
+    public Array<Vector2> getEstimationPath() {
         return lastEstimationPath;
     }
 
