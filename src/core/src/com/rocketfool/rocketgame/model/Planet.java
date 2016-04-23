@@ -12,7 +12,7 @@ public class Planet extends CelestialObject {
     //endregion
 
     //region Constructor
-    public Planet(int x, int y, float mass, float radius, Star star, World world) {
+    public Planet(float x, float y, float mass, float radius, Star star, World world) {
         super(mass, radius);
         this.star = star;
         this.body = createBody(x, y, mass, radius, world);
