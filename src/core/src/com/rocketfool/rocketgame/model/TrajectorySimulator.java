@@ -66,8 +66,9 @@ public class TrajectorySimulator extends GameObject {
         playable.getBody().setAngularVelocity(level.getPlayable().getBody().getAngularVelocity());
         playable.getBody().setAngularDamping(level.getPlayable().getBody().getAngularDamping());
         playable.getBody().setLinearVelocity(level.getPlayable().getBody().getLinearVelocity());
-        playable.getBody().getTransform().setRotation(level.getPlayable().getBody().getTransform().getRotation());
-        playable.getBody().getTransform().setOrientation(level.getPlayable().getBody().getTransform().getOrientation());
+        playable.getBody().setTransform(level.getPlayable().getBody().getPosition().x, level.getPlayable().getBody().getPosition().y, level.getPlayable().getBody().getAngle());
+        //playable.getBody().getTransform().setRotation(level.getPlayable().getBody().getTransform().getRotation());
+        //playable.getBody().getTransform().setOrientation(level.getPlayable().getBody().getTransform().getOrientation());
     }
 
 
