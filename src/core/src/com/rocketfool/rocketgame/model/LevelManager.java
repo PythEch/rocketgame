@@ -18,7 +18,7 @@ public class LevelManager {
         Level level = new Level();
 
         //initialization of the rocket
-        level.playable = new Playable(500, 500, 88, 108, 1e5f, 350, 100, 4e5f, 1e25f, level.world);
+        level.playable = new Playable(500, 500, 4 * 1e5f, level.world);
         level.playable.getBody().setLinearVelocity(10f, -10f);
 
         //init of map
@@ -45,11 +45,6 @@ public class LevelManager {
             });
         }
 
-        // G = 6.67408f*1e-11f*1e-12f;
-        // Expected G, which doesn't work for some reason
-        // Current scale 1/10^6 approx
-        level.G = 4 * 1e-20f; //Plan B: G is whatever we like... idare eder...**
-
         //this object stands for the earth and its properties
         level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
         //this object stands for the moon and its properties
@@ -68,7 +63,7 @@ public class LevelManager {
     public static Level createLevel2() {
         Level level = new Level();
 
-        level.playable = new Playable(300, 300, 88, 108, 1e5f, 250, 220, 1000, 1e25f, level.world);
+        level.playable = new Playable(300, 300, 4 * 1e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
@@ -96,9 +91,6 @@ public class LevelManager {
             });
         }
 
-        //TODO:Final gravitation will come
-        level.G = 4 * 1e-20f;
-
         level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
         //this object stands for the mars
         level.solidObjects.add(new Planet(2500, 3000, 2.7f * 1e25f, 250, null, level.world));
@@ -116,7 +108,7 @@ public class LevelManager {
     public static Level createLevel3() {
         Level level = new Level();
 
-        level.playable = new Playable(100, 100, 88, 105, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(100, 100, 4 * 1e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
@@ -138,10 +130,6 @@ public class LevelManager {
                 }
             });
         }
-
-
-        //TODO:Final gravitation will come
-        level.G = 4 * 1e-20f;
 
         level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
         //this object stands for the planet 1
@@ -168,7 +156,7 @@ public class LevelManager {
 
         System.err.println( "LEVEL 4 ///////////////////////////////////////////////////////////////");
         //initialization of the rocket
-        level.playable = new Playable(200, 300, 88, 105, 1e5f, 250, 200, 1000, 4*1e5f, level.world);
+        level.playable = new Playable(200, 300, 4 * 1e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //init of map
@@ -195,9 +183,6 @@ public class LevelManager {
                 }
             });
         }
-
-        //g will be edited
-        level.G = 4 * 1e-20f;
 
         //this object stands for the target planet and its properties
         level.solidObjects.add(new Planet(1500, 720, 2.7f * 1e25f, 150, null, level.world));
@@ -252,9 +237,6 @@ public class LevelManager {
                 }
             });
         }
-
-
-        level.G = 4 * 1e-20f;
 
         //this object stands for the earth and its properties
         level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));

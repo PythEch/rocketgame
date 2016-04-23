@@ -13,7 +13,9 @@ import static com.rocketfool.rocketgame.util.Constants.toMeter;
  */
 public class Playable extends SolidObject {
     //region Fields
-    private final float fuelSpecificImpulse = 1; //impulse supplied per kg of fuel consumed***
+    private final float fuelSpecificImpulse = 4500;    // impulse in N generated per kg of fuel //TODO: impulse supplied per kg of fuel consumed***
+                                                       // http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print)
+    private final float thrustMultiplier = 4 * 1e3f;   //TODO: Optimize default values! What is impulse in this case? typical thrust values? current units?
 
     private float currentImpulse;
     private float deltaAngularImpulse;
@@ -29,16 +31,16 @@ public class Playable extends SolidObject {
     private Vector2 spawnPoint;
     //endregion
 
-    /** Contructor for a player-controlled space craft. Mass and fuel values are in kg.*/
+    //region Constructors
+
+    /** Constructor for a player-controlled space craft. Mass and fuel values are in kg.*/
     public Playable(float x, float y, float width, float height, float dryMass, float rotateImpulse, float impulse, float maxImpulse, float fuel, World world) {
-        //Defaults:    0   ,    0   ,    88      ,    108      ,     100*1e3  ,      350           ,    100        ,    1000        ,  400 * 1e3 ,  world
-        // Similar to typical spacecraft, our typical crafts will have a dry mass of 100t and carry up to 400t of fuel
         this.currentImpulse = 0;
+        this.width = width;
+        this.height = height;
         this.deltaAngularImpulse = rotateImpulse;
         this.deltaLinearImpulse = impulse;
         this.fuelLeft = fuel;
-        this.width = width;
-        this.height = height;
         this.maxImpulse = maxImpulse;
         this.SASEnabled = false;
         this.maximizeThrust = false;
@@ -47,6 +49,27 @@ public class Playable extends SolidObject {
         this.body = createBody(x, y, (dryMass + fuel) , world);
         this.spawnPoint = body.getPosition().cpy();
     }
+
+    /** Constructor for a player-controlled space craft with default values. Mass and fuel values are in kg.*/
+    public Playable(float x, float y, float fuel, World world) {
+        // Similar to typical spacecraft, our typical crafts will have a dry mass of 100t and carry up to 400t of fuel.
+        this.width = 88;
+        this.height = 105;
+        float dryMass = 1*1e5f;
+        this.currentImpulse = 0;
+        this.deltaAngularImpulse = 800 * thrustMultiplier;
+        this.deltaLinearImpulse = 100 * thrustMultiplier;
+        this.maxImpulse = 1000 * thrustMultiplier;
+        this.fuelLeft = fuel;
+
+        this.SASEnabled = false;
+        this.maximizeThrust = false;
+        this.maximizeThrust = false;
+
+        this.body = createBody(x, y, ( dryMass + fuel) , world);
+        this.spawnPoint = body.getPosition().cpy();
+    }
+    //endregion
 
 	/** This object's creation is according to Box2D definitions.*/
     private Body createBody(float x, float y, float mass, World world) {
@@ -86,18 +109,11 @@ public class Playable extends SolidObject {
     }
 
     private void consumeFuelAndDecreaseMass(float deltaTime) {
-		//kilogram per liter is taken as 0.18
     	if (fuelLeft > 0) {
-            float fuelSpent = currentImpulse * deltaTime / 100; //K1
+            float fuelSpent = currentImpulse * deltaTime / fuelSpecificImpulse;
             fuelLeft -= fuelSpent;
-            //decrease mass 0.18 for each fuel spent
-            body.getMassData().mass -= fuelSpent * 0.18; //FIXME: Work in progress by Levent
+            body.getMassData().mass -= fuelSpent;
         }
-    }
-
-    //setter to use in level initializations
-    public void setFuelLeft(float fuel){
-        this.fuelLeft = fuel;
     }
 
     private void move(float deltaTime) {
@@ -109,15 +125,17 @@ public class Playable extends SolidObject {
 
         if (fuelLeft <= 0)
             currentImpulse = 0;
-        else if (maximizeThrust) {
-            maximizeThrust(deltaTime);
-            if ( currentImpulse >= maxImpulse )
-                maximizeThrust = false;
-        }
-        else if (minimizeThrust) {
+        if (minimizeThrust) {
+            maximizeThrust = false;
             minimizeThrust(deltaTime);
             if ( currentImpulse == 0 )
                 minimizeThrust = false;
+        }
+        if (maximizeThrust) {
+            minimizeThrust = false;
+            maximizeThrust(deltaTime);
+            if ( currentImpulse >= maxImpulse )
+                maximizeThrust = false;
         }
 
         impulseVector = new Vector2(0, deltaTime * currentImpulse).rotateRad(body.getAngle());
@@ -167,6 +185,11 @@ public class Playable extends SolidObject {
     public void setCurrentImpulse(float currentImpulse) {
         this.currentImpulse = currentImpulse;
     }
+
+    //setter to use in level initializations
+    public void setFuelLeft(float fuel){
+        this.fuelLeft = fuel;
+    }
     //endregion
 
 
@@ -197,12 +220,12 @@ public class Playable extends SolidObject {
 
     public void increaseThrust(float deltaTime) {
         if (fuelLeft > 0 ) {
-            currentImpulse = Math.min(currentImpulse + deltaTime * deltaLinearImpulse , maxImpulse);
+            currentImpulse = Math.min(currentImpulse + deltaTime * 2 * deltaLinearImpulse , maxImpulse);
         }
     }
 
     public void decreaseThrust(float deltaTime) {
-        currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse);
+        currentImpulse = Math.max(0, currentImpulse - deltaTime * 2 * deltaLinearImpulse);
     }
 
     public void toggleMaximizeThrust(){

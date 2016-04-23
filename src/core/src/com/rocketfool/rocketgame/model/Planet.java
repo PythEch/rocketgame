@@ -31,6 +31,7 @@ public class Planet extends CelestialObject {
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = circle;
         fixtureDef.restitution = 0.0f;
+        fixtureDef.friction = 10000f;
 
         body.createFixture(fixtureDef);
 

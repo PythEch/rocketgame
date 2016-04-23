@@ -140,8 +140,9 @@ public class GameScreen implements Screen {
                     ( cameraTarget.getBody().getPosition().dst(  level.getPlanetLocation(0) ) ) , 5 );
             drawDebugString(" Period (P1): " + (int) LevelManager.periodStopWatch.getPeriod() , 6 );
             drawDebugString("FPS: " + (int)(1f/Gdx.graphics.getDeltaTime()), 7 );
-            drawDebugString("SAS: " + level.getPlayable().getSASEnabled(), 10 );
             drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 8 );
+            drawDebugString("Fuel left: " + (int) cameraTarget.getFuelLeft(), 9 );
+            drawDebugString("SAS: " + level.getPlayable().getSASEnabled(), 10 );
         }
     }
 
