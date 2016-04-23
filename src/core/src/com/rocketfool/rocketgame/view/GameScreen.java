@@ -133,6 +133,8 @@ public class GameScreen implements Screen {
                     ( cameraTarget.getBody().getPosition().dst(  level.getPlanetLocation(0) ) ) , 5 );
             drawDebugString(" Period (P1): " + (int) LevelManager.periodStopWatch.getPeriod() , 6 );
             drawDebugString("FPS: " + (int)(1f/Gdx.graphics.getDeltaTime()), 7 );
+            drawDebugString("SAS: " + level.getPlayable().getSASEnabled(), 10 );
+            drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 8 );
         }
     }
 
@@ -206,7 +208,7 @@ public class GameScreen implements Screen {
 
     public void zoomIn() {
 
-        camera.zoom = (float) Math.max(0.5, camera.zoom / 1.04f );
+        camera.zoom = Math.max(0.5f, camera.zoom / 1.04f );
         if ( camera.zoom > 0.5 ) {
             font.setScale(font.getScaleX() / 1.04f);
         }
@@ -214,7 +216,7 @@ public class GameScreen implements Screen {
     } //**
 
     public void zoomOut() {
-        camera.zoom = (float) Math.min( camera.zoom * 1.04f , 150 );
+        camera.zoom = Math.min( camera.zoom * 1.04f , 150f );
         if ( camera.zoom < 150 )
             font.setScale( font.getScaleX() * 1.04f );
     }

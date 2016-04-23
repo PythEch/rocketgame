@@ -58,17 +58,24 @@ public class WorldController {
             screen.zoomOut();
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_RIGHT)) {
             playable.toggleSAS();
+        }
+
+        if ( !Gdx.input.isKeyPressed(Input.Keys.LEFT) && !Gdx.input.isKeyPressed(Input.Keys.RIGHT) ) {
+            playable.runSAS(deltaTime);
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
 
         }
-        /** Cut engine thrust */
-        //TODO: Make this actually happen in about 0.5s. Also, add a maximize thrust input for the Z key.
+
         if (Gdx.input.isKeyPressed(Input.Keys.X)) {
-            playable.setCurrentImpulse(0);
+            playable.minimizeThrust( deltaTime );
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
+            playable.maximizeThrust( deltaTime );
         }
 
         if (DEBUG) {

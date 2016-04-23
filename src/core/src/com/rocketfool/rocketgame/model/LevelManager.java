@@ -18,7 +18,7 @@ public class LevelManager {
         Level level = new Level();
 
         //initialization of the rocket
-        level.playable = new Playable(500, 500, 88, 108, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(500, 500, 88, 108, 1e5f, 350, 100, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(10f, -10f);
 
         //init of map

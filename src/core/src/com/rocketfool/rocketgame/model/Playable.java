@@ -21,7 +21,7 @@ public class Playable extends SolidObject {
     private float height;
     private float maxImpulse;
     /** SAS is the system of a spacecraft that automatically stops its spinning. */
-    private boolean SASenabled;
+    private boolean SASEnabled;
     private Vector2 bottomPosition;
     private Vector2 spawnPoint;
     //endregion
@@ -35,11 +35,12 @@ public class Playable extends SolidObject {
         this.width = width;
         this.height = height;
         this.maxImpulse = maxImpulse;
-        this.SASenabled = false;
+        this.SASEnabled = false;
 
         this.body = createBody(x, y, mass, world);
         this.spawnPoint = body.getPosition().cpy();
     }
+
 	/** This creation is according to Box2D definitions.*/
     private Body createBody(float x, float y, float mass, World world) {
         BodyDef bodyDef = new BodyDef();
@@ -92,10 +93,16 @@ public class Playable extends SolidObject {
     }
 
     private void move(float deltaTime) {
-        Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(body.getAngle());
+        Vector2 bottomVector;
+        Vector2 impulseVector;
+
+        bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(body.getAngle());
         bottomPosition = bottomVector.add(body.getPosition());
 
-        Vector2 impulseVector = new Vector2(0, deltaTime * currentImpulse).rotateRad(body.getAngle());
+        if (fuelLeft <= 0)
+            currentImpulse = 0;
+
+        impulseVector = new Vector2(0, deltaTime * currentImpulse).rotateRad(body.getAngle());
 
         body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
 
@@ -103,12 +110,15 @@ public class Playable extends SolidObject {
     //endregion
 
     public void toggleSAS() {
-        SASenabled = !SASenabled;
-		if (SASenabled) {
-            body.setAngularDamping( deltaAngularImpulse / 100 ); //TODO: Run SAS WHILE shift is pressed (toggle is too sensitive).
-        }
-        else {
-            body.setAngularDamping(0);
+        SASEnabled = !SASEnabled;
+    }
+
+    public void runSAS( float deltaTime ){
+        if (SASEnabled){
+            if ( this.getBody().getAngularVelocity() < 0 )
+                turnLeft( deltaTime );
+            else if ( this.getBody().getAngularVelocity() > 0 )
+                turnRight( deltaTime );
         }
     }
 
@@ -141,6 +151,8 @@ public class Playable extends SolidObject {
         return bottomPosition;
     }
 
+    public boolean getSASEnabled() { return SASEnabled;}
+
     public void setCurrentImpulse(float currentImpulse) {
         this.currentImpulse = currentImpulse;
     }
@@ -155,14 +167,23 @@ public class Playable extends SolidObject {
     }
 
     public void increaseThrust(float deltaTime) {
-        // FIXME: Use Math.min with some max speed
-        if (fuelLeft > 0) {
-            currentImpulse = Math.max(0, currentImpulse + deltaTime * deltaLinearImpulse);
+        if (fuelLeft > 0 ) {
+            currentImpulse = Math.min(currentImpulse + deltaTime * deltaLinearImpulse , maxImpulse);
         }
     }
 
     public void decreaseThrust(float deltaTime) {
         currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse);
+    }
+
+    public void minimizeThrust( float deltaTime ){
+        currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse * 10);
+    }
+
+    public void maximizeThrust( float deltaTime ){
+        if (fuelLeft > 0 ) {
+            currentImpulse = Math.min(maxImpulse , currentImpulse + deltaTime * deltaLinearImpulse * 10);
+        }
     }
 
     public Vector2 getSpawnPoint() {
