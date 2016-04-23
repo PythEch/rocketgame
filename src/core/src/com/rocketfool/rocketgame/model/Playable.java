@@ -29,6 +29,11 @@ public class Playable extends SolidObject {
     private boolean minimizeThrust;
     private Vector2 bottomPosition;
     private Vector2 spawnPoint;
+
+    private FixtureDef bodyFixtureDef;
+    public Fixture bodyFixture;
+    public float desiredMass;
+    public float desiredDensity; //**
     //endregion
 
     //region Constructors
@@ -59,7 +64,7 @@ public class Playable extends SolidObject {
         this.currentImpulse = 0;
         this.deltaAngularImpulse = 800 * thrustMultiplier;
         this.deltaLinearImpulse = 100 * thrustMultiplier;
-        this.maxImpulse = 1000 * thrustMultiplier;
+        this.maxImpulse = 10000 * thrustMultiplier;         //TODO: Revert to 1000 * thrustMultiplier
         this.fuelLeft = fuel;
 
         this.SASEnabled = false;
@@ -91,7 +96,11 @@ public class Playable extends SolidObject {
         fixtureDef.friction = 0.0f;
         fixtureDef.restitution = 0.0f;
 
-        Fixture fixture = body.createFixture(fixtureDef);
+        bodyFixtureDef = fixtureDef;
+        bodyFixture = body.createFixture(fixtureDef);
+
+        desiredDensity = fixtureDef.density;
+        desiredMass = mass;
 
         rectangle.dispose();
 
@@ -108,11 +117,32 @@ public class Playable extends SolidObject {
         consumeFuelAndDecreaseMass(deltaTime);
     }
 
-    private void consumeFuelAndDecreaseMass(float deltaTime) {
-    	if (fuelLeft > 0) {
+    private void consumeFuelAndDecreaseMass(float deltaTime) {//FIXME!
+    	float newMass;
+        MassData tempMD;
+        if (fuelLeft > 0) {
             float fuelSpent = currentImpulse * deltaTime / fuelSpecificImpulse;
             fuelLeft -= fuelSpent;
-            body.getMassData().mass -= fuelSpent;
+            //newMass = desiredMass - fuelSpent;
+            newMass = body.getMass() - fuelSpent;
+            //desiredMass = newMass;
+            //desiredDensity = (newMass / width * toMeter * height  * toMeter);
+            //body.getMassData().mass = newMass;
+            //body.getFixtureList().first().setDensity( desiredDensity );
+            //bodyFixture.setDensity( desiredDensity );
+
+
+            //bodyFixtureDef.density =  desiredDensity;
+            //bodyFixture = body.createFixture( bodyFixtureDef );
+            //body.getFixtureList().removeIndex(0);
+
+            tempMD = new MassData();
+            tempMD.mass = newMass;
+
+            tempMD.I = body.getMassData().I / body.getMass() * tempMD.mass;
+            //tempMD.center = body.getMassData().center;
+
+            body.setMassData( tempMD );
         }
     }
 
