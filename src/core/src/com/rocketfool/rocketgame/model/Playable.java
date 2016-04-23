@@ -13,9 +13,9 @@ import static com.rocketfool.rocketgame.util.Constants.toMeter;
  */
 public class Playable extends SolidObject {
     //region Fields
-    private final float fuelSpecificImpulse = 4500;    // impulse in N generated per kg of fuel //TODO: impulse supplied per kg of fuel consumed***
+    private final float fuelSpecificImpulse = 4500;    // impulse in N generated per kg of fuel //TODO: improve? impulse supplied per kg of fuel consumed***
                                                        // http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print)
-    private final float thrustMultiplier = 4 * 1e3f;   //TODO: Optimize default values! What is impulse in this case? typical thrust values? current units?
+    private final float thrustMultiplier = 4 * 1e3f;   //TODO: improve? Typical thrust values? current units?
 
     private float currentImpulse;
     private float deltaAngularImpulse;
@@ -59,7 +59,7 @@ public class Playable extends SolidObject {
         this.currentImpulse = 0;
         this.deltaAngularImpulse = 800 * thrustMultiplier;
         this.deltaLinearImpulse = 100 * thrustMultiplier;
-        this.maxImpulse = 10000 * thrustMultiplier;         //TODO: Revert to 1000 * thrustMultiplier
+        this.maxImpulse = 1000 * thrustMultiplier;
         this.fuelLeft = fuel;
 
         this.SASEnabled = false;
