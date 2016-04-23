@@ -207,15 +207,15 @@ public class GameScreen implements Screen {
 
         camera.zoom = (float) Math.max(0.5, camera.zoom / 1.04f );
         if ( camera.zoom > 0.5 ) {
-            //font.setScale(font.getScaleX() / 1.04f);
+            font.setScale(font.getScaleX() / 1.04f);
         }
 
     } //**
 
     public void zoomOut() {
         camera.zoom = (float) Math.min( camera.zoom * 1.04f , 150 );
-       // if ( camera.zoom < 150 )
-            //font.setScale( font.getScaleX() * 1.04f );
+        if ( camera.zoom < 150 )
+            font.setScale( font.getScaleX() * 1.04f );
     }
 
     public void igniteRocketTrail() {
