@@ -77,6 +77,7 @@ public class TrajectorySimulator extends GameObject {
         if (times++ == 3) {
             times = 0;
             lastEstimationPath = currentEstimationPath;
+            lastEstimationPath = new Array<Vector2>(currentEstimationPath);
             createWorld();
         }
 
