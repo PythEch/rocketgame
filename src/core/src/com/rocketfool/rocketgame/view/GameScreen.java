@@ -94,6 +94,13 @@ public class GameScreen implements Screen {
         renderer.draw(batch);
 
         //This part is for the particles coming out of rocket
+        if ( cameraTarget.getCurrentImpulse() > 0 ){
+            this.igniteRocketTrail();
+        }
+        else{
+            this.stopRocketTrail();
+        }
+
         particleEffect.draw(batch);
         particleEffect.update(dt);
         particleEffect.setPosition(level.getPlayable().getBottomPosition().x * toPixel, level.getPlayable().getBottomPosition().y * toPixel);

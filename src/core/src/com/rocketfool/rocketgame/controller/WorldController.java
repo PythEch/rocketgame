@@ -40,11 +40,6 @@ public class WorldController {
         if (Gdx.input.isKeyPressed(Input.Keys.UP))
         {
             playable.increaseThrust(deltaTime);
-            screen.igniteRocketTrail();
-        }
-        else
-        {
-            screen.stopRocketTrail();
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {

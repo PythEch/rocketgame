@@ -151,6 +151,8 @@ public class Playable extends SolidObject {
         return height;
     }
 
+    public float getMaxImpulse(){ return maxImpulse; }
+
     public Vector2 getBottomPosition(){
         return bottomPosition;
     }
