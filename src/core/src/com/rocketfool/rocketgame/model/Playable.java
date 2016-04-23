@@ -86,6 +86,10 @@ public class Playable extends SolidObject {
             body.getMassData().mass -= fuelSpent * 0.18; //FIXME: make a constant for this
         }
     }
+    //setter to use in level initializations
+    public void setFuelLeft(float fuel){
+        this.fuelLeft = fuel;
+    }
 
     private void move(float deltaTime) {
         Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(body.getAngle());
