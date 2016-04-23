@@ -68,25 +68,34 @@ public class LevelManager {
     public static Level createLevel2() {
         Level level = new Level();
 
-        level.playable = new Playable(300, 300, 88, 108, 1e5f, 250, 220, 1000, 1e25f, level.world);
+        level.playable = new Playable(220, 450, 88, 108, 1e5f, 250, 220, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
         level.map = new Map(Gdx.graphics.getWidth() * 90, Gdx.graphics.getHeight() * 90);
 
         //add triggers to level 2
-        level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
+        final PositionTrigger marsTrig = new PositionTrigger(5000, 2000, 400, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("You should start your journey now!");
+                System.out.println("Go back to Earth, Moron!");
             }
-        });
-        level.triggers.add(new PositionTrigger(3000, 3000, 350, level.playable) {
+        };
+        level.triggers.add(marsTrig);
+
+        final PositionTrigger earthTrig = new PositionTrigger(220, 300, 200, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("And this is Mars!");
+                if(marsTrig.isTriggeredBefore()) {
+                    System.out.println("Mission Completed");
+                }
+                else {
+                    System.out.println("Go to Mars, Adventurer!");
+                }
             }
-        });
+        };
+        level.triggers.add(earthTrig);
+
         if (DEBUG) {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
@@ -99,14 +108,15 @@ public class LevelManager {
         //TODO:Final gravitation will come
         level.G = 4 * 1e-20f;
 
-        level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
+        level.solidObjects.add(new Planet(220, 300, 6 * 1e24f, 100, null, level.world));
         //this object stands for the mars
-        level.solidObjects.add(new Planet(2500, 3000, 2.7f * 1e25f, 250, null, level.world));
+        level.solidObjects.add(new Planet(5000, 2000, 2.7f * 1e25f, 250, null, level.world));
         //TODO:add the cargo object below to rotate around the mars
 
         //bottom of the planet
         //TODO:cycle through waypoints during the level, so add more
-        level.waypoints.add(new Waypoint(200, 100, 100));
+        level.waypoints.add(new Waypoint(200, 200, 100));
+        level.waypoints.add(new Waypoint(4000,7000, 250));
 
         addDefaultTriggers(level);
 
