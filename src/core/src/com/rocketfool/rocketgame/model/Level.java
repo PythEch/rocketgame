@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Predicate;
 
 /**
  * Class to create instances of all levels. Also, it performs most of the calculations.
@@ -20,6 +21,8 @@ public class Level {
     protected Array<GameObject> gameObjects;
     protected float timePassed;
     protected int score;
+
+    boolean temp = true;
 
     enum State {
         RUNNING, PAUSED, GAME_OVER
@@ -99,6 +102,11 @@ public class Level {
 
             // apply this force to spaceship
             spaceship.applyForceToCenter(forceVector, true);
+
+            //**temp spot
+            //if (temp) //( (System.currentTimeMillis() / 1000) % 7 == 0 )
+            //    this.drawTrajectory( (CelestialObject) this.solidObjects.get(0) , this.playable );
+            //temp = false;
         }
     }
 
@@ -144,5 +152,90 @@ public class Level {
         else {
             return null;
         }
+    }
+
+    /** Trajectory rawing method, very close to actually working... */
+    public void drawTrajectory( CelestialObject body , Playable craft ) { //should take the nearest body
+        //http://physics.stackexchange.com/questions/99094/using-2d-position-velocity-and-mass-to-determine-the-parametric-position-equat
+        double a, e,
+                dtheta,
+                r1, rpath, rper,
+                v, vx, vy,
+                vtan, vtheta,
+                mu,
+                x, y,
+                root,
+                part1, part2, part3;
+
+        float[] pathx, pathy;
+
+        pathx = new float[41];
+        pathy = new float[41];
+
+        v  = craft.getBody().getLinearVelocity().len();
+        vx = craft.getBody().getLinearVelocity().x;
+        vy = craft.getBody().getLinearVelocity().y;
+
+        x = craft.getBody().getPosition().x;
+        y = craft.getBody().getPosition().y;
+
+        double G2 = 6.67e-11;//** error cause does not seem to be G
+
+        root = Math.sqrt( x * x + y * y );
+
+        mu = body.getMass() * G ;
+
+        r1 = craft.getBody().getPosition().dst( body.getBody().getPosition() );
+
+
+        a = mu * r1 / ( 2 * mu - r1 * v * v );
+
+        vtheta = ( x * vy - y * vx ) / root ;
+
+        e = Math.sqrt( 1 + r1 * vtheta * vtheta / mu * ( r1 * v * v / mu - 2 ) );
+
+        vtan = ( x * vx + y * vy ) / root;
+
+        if ( vtan * vtheta < 0 )
+            part1 = -1; //dtheta = -1 * Math.acos( (a * ( 1 - e * e )- root) / e / root ) - Math.atan2( y , x ); // arccos(-10) is NaN!
+        else
+            part1 = 1; //dtheta = Math.acos( (a * ( 1 - e * e )- root) / e / root ) - Math.atan2( y , x );
+
+        part2 = Math.acos( ( (a * ( 1 - e * e ) - root) / (e * root ) ) ); //** part2 is not =0, the sign is a -, not 1/... , not root^2
+        part3 = Math.atan2( y , x );
+        dtheta = part1 * part2 - part3;
+
+        //rper = a * ( 1 - e );
+
+        //dtheta = Math.acos( ( a * ( 1 - e * e ) / r1 / e ) -  ( 1 / e ) ); //can we rev-use the equation for this? NaN here too???!? what?
+
+        int i = 0;
+        for ( double theta = 0f ; theta < 2 * Math.PI ; theta = (theta + Math.PI / 10) ){
+
+            rpath = a * ( 1 - e * e ) / ( 1 + e * Math.cos(theta) ) ;
+            System.err.println( rpath ); //needs to resemble altitude data, and it does!
+            pathx[i] = (float) (rpath * Math.cos( theta + dtheta ) ); //** dtheta cannot be ignored!
+            pathy[i] = (float) (rpath * Math.sin( theta + dtheta ) * -1 );
+            System.err.println( "(" + (int) pathx[i] + "," + (int) pathy[i] + ")" );
+            i++;
+        }
+        System.err.println( "[" + x + "," + y + "]" );
+        //System.err.println( mu + " " + root + " " + vtan + " " + vtheta );
+        System.err.println();
+        //System.err.println( vtan + " " + v + " " + vx + " " + vy );
+        System.err.println( part1 + " " + part2 + " " + part3 + " " + dtheta );
+        System.err.println( "problem, not /1/:" + ( (a * ( 1 - e * e ) - root) / (e * root) )
+                            + "\n \t " + ( ( a * ( 1 - e * e ) / r1 / e ) -  ( 1 / e ) ) );
+        //If I find an alternative way to receive dtheta, this is done! *** :D
+    }
+
+    public Array<Planet> getPlanets() {
+        Array<Planet> planets = new Array<Planet>();
+        for (SolidObject solidObject : solidObjects) {
+            if (solidObject instanceof Planet) {
+                planets.add((Planet) solidObject);
+            }
+        }
+        return planets;
     }
 }

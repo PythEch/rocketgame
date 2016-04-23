@@ -18,7 +18,7 @@ public class LevelManager {
         Level level = new Level();
 
         //initialization of the rocket
-        level.playable = new Playable(500, 500, 112, 75, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(500, 500, 88, 108, 1e5f, 250, 200, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(10f, -10f);
 
         //init of map
@@ -68,7 +68,7 @@ public class LevelManager {
     public static Level createLevel2() {
         Level level = new Level();
 
-        level.playable = new Playable(300, 300, 112, 75, 1e5f, 250, 220, 1000, 1e25f, level.world);
+        level.playable = new Playable(300, 300, 88, 108, 1e5f, 250, 220, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
@@ -116,7 +116,7 @@ public class LevelManager {
     public static Level createLevel3() {
         Level level = new Level();
 
-        level.playable = new Playable(100, 100, 112, 75, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(100, 100, 88, 105, 1e5f, 250, 200, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
@@ -168,7 +168,7 @@ public class LevelManager {
 
 
         //initialization of the rocket
-        level.playable = new Playable(200, 300, 112, 75, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(200, 300, 88, 105, 1e5f, 250, 200, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //init of map
@@ -225,7 +225,7 @@ public class LevelManager {
         Level level = new Level();
 
         //initialization of the rocket
-        level.playable = new Playable(800, 800, 112, 75, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(800, 800, 88, 108, 1e5f, 250, 200, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(15f, 15f);
         level.playable.setFuelLeft(10);
 
