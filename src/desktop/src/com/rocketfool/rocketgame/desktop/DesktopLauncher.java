@@ -3,7 +3,6 @@ package com.rocketfool.rocketgame.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.rocketfool.rocketgame.external.RocketGame;
-import com.rocketfool.rocketgame.view.CutsceneScreen;
 
 /**
  *  Configures and launches the game for desktop. This is the main class to run.
