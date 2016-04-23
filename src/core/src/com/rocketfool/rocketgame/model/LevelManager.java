@@ -30,7 +30,6 @@ public class LevelManager {
         level.playable.getBody().setLinearVelocity(0, 0);
 
 
-
         level.triggers.add(new PositionTrigger(1000, 1000, 200, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -52,9 +51,6 @@ public class LevelManager {
             });
         }
 
-
-
-
         // G = 6.67408f*1e-11f*1e-12f;
         // Expected G, which doesn't work for some reason
         // Current scale 1/10^6 approx
@@ -68,13 +64,10 @@ public class LevelManager {
 
 
         //bottom of the earth for landing and ending the level.
-        level.waypoints.add(new Waypoint(1000, 1000, 200));
-        level.waypoints.add(new Waypoint(5000,3000,350));
+        level.waypoints.add(new Waypoint(1000, 1000, 300));
+        level.waypoints.add(new Waypoint(5000, 3000, 400));
 
         addDefaultTriggers(level);
-
-        if (endGame(level))
-            return null;
 
         return level;
     }
@@ -130,11 +123,11 @@ public class LevelManager {
     public static Level createLevel3() {
         Level level = new Level();
 
-        level.playable = new Playable(100, 100, 88, 105, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(200, 300, 88, 105, 1e5f, 250, 200, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
-        level.map = new Map(Gdx.graphics.getWidth() * 90, Gdx.graphics.getHeight() * 90);
+        level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
 
         //add triggers for the level
         //TODO:increase numbers of triggers for the texts that should appear near the planets
@@ -159,18 +152,22 @@ public class LevelManager {
 
         level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
         //this object stands for the planet 1
-        level.solidObjects.add(new Planet(900, 2300, 2.7f * 1e21f, 250, null, level.world));
+        level.solidObjects.add(new Planet(1200, 3000, 2.7f * 1e21f, 250, null, level.world));
         //this object stands for planet 2
-        level.solidObjects.add(new Planet(2700, 800, 6 * 1e24f, 80, null, level.world));
+        level.solidObjects.add(new Planet(3200, 1220, 6 * 1e24f, 150, null, level.world));
         //this object stands for the planet 3
-        level.solidObjects.add(new Planet(4300, 2000, 2.7f * 1e21f, 300, null, level.world));
+        level.solidObjects.add(new Planet(5300, 3500, 2.7f * 1e21f, 300, null, level.world));
         //this object stands for the planet 4
-        level.solidObjects.add(new Planet(4500, 800, 4 * 1e24f, 150, null, level.world));
+        level.solidObjects.add(new Planet(6000, 800, 4 * 1e24f, 80, null, level.world));
 
 
         //bottom of the planet
-        //TODO:Add waypoints for each planet
-        level.waypoints.add(new Waypoint(200, 100, 100));
+        level.waypoints.add(new Waypoint(200, 200, 300));
+        level.waypoints.add(new Waypoint(1200, 3000, 750));
+        level.waypoints.add(new Waypoint(3200, 1120, 450));
+        level.waypoints.add(new Waypoint(5300, 3500, 900));
+        level.waypoints.add(new Waypoint(6000, 800, 240));
+
 
         addDefaultTriggers(level);
 
@@ -180,13 +177,12 @@ public class LevelManager {
     public static Level createLevel4() {
         Level level = new Level();
 
-
         //initialization of the rocket
         level.playable = new Playable(200, 300, 88, 105, 1e5f, 250, 200, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 80, Gdx.graphics.getHeight() * 80);
+        level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
 
         //triggers
         level.triggers.add(new PositionTrigger(200, 300, 200, level.playable) {
@@ -234,16 +230,16 @@ public class LevelManager {
         level.G = 4 * 1e-20f;
 
         //this object stands for the target planet and its properties
-        level.solidObjects.add(new Planet(4500, 2500, 2.7f * 1e25f, 150, null, level.world));
+        level.solidObjects.add(new Planet(6000, 3000, 2.7f * 1e25f, 150, null, level.world));
 
         //TODO: Dispose method could be implemented for level class to remove the objects going out of the map and summoning new ones
         //loop for randomizing the movement directions, velocities, sizes and the shapes of the asteroids
         for (int i = 0; i < 50; i++) {
             Vector2 vector = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 10f, ((float) Math.random()) * (float) Math.random() * 10f);
             if (i % 2 == 0) {
-                level.solidObjects.add(new RoundObstacle(((float) (Math.random()) * 4000) - 100, ((float) (Math.random()) * 400) - 100 + 30 * i, 10, vector, level.world));
+                level.solidObjects.add(new RoundObstacle(((float) (Math.random()) * 8000) - 100, ((float) (Math.random()) * 2500) - 100 + 30 * i, 10, vector, level.world));
             } else {
-                level.solidObjects.add(new RectangleObstacle(((float) (Math.random()) * 5000) - 100, ((float) (Math.random()) * 5000) - 200 + 30 * i, i * 2, i + 1, vector, level.world));
+                level.solidObjects.add(new RectangleObstacle(((float) (Math.random()) * 8000) - 100, ((float) (Math.random()) * 2500) - 200 + 30 * i, i * 2, i + 1, vector, level.world));
             }
         }
 
@@ -257,23 +253,25 @@ public class LevelManager {
     }
 
     public static Level createLevel5() {
+        //LEVEL 1 Design but low fuel
         Level level = new Level();
 
         //initialization of the rocket
-        level.playable = new Playable(800, 800, 88, 108, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250, 200, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(15f, 15f);
         level.playable.setFuelLeft(10);
 
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 25, Gdx.graphics.getHeight() * 25);
 
-        level.triggers.add(new PositionTrigger(200, 200, 200, level.playable) {
+
+        level.triggers.add(new PositionTrigger(1000, 1000, 200, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("You've reached the Earth");
             }
         });
-        level.triggers.add(new PositionTrigger(400, 400, 100, level.playable) {
+        level.triggers.add(new PositionTrigger(5000, 3000, 350, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("You've reached the Moon");
@@ -292,12 +290,13 @@ public class LevelManager {
         level.G = 4 * 1e-20f;
 
         //this object stands for the earth and its properties
-        level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
+        level.solidObjects.add(new Planet(1000, 1000, 6 * 1e24f, 100, null, level.world));
         //this object stands for the moon and its properties
-        level.solidObjects.add(new Planet(1000, 1000, 2.7f * 1e25f, 250, null, level.world));
+        level.solidObjects.add(new Planet(5000, 3000, 2.7f * 1e25f, 250, null, level.world));
 
         //bottom of the earth for landing and ending the level.
-        level.waypoints.add(new Waypoint(200, 100, 100));
+        level.waypoints.add(new Waypoint(1000, 1000, 300));
+        level.waypoints.add(new Waypoint(5000, 3000, 400));
 
         addDefaultTriggers(level);
 
@@ -333,34 +332,6 @@ public class LevelManager {
                 System.out.println("NO FUEL!");
             }
         });
-    }
-
-    //endGame methods
-    public static boolean endGame(Level level) {
-
-        //check for waypoints
-        boolean temp = true;
-        for (Waypoint waypoint : level.waypoints) {
-            if (waypoint.isOnScreen()) {
-                temp = false;
-            }
-        }
-
-        if (temp == true) {
-            System.out.println("Mission accomplished");
-            return true;
-        }
-        //check for triggers
-        for (Trigger trigger : level.triggers) {
-            if (trigger.isTriggered()) {
-                System.out.println("Game Over");
-                return true;
-            }
-        }
-
-        //check for collisions
-        //TODO:Implement Collisions
-        return false;
     }
 
     // Stopwatch methods
