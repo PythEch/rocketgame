@@ -9,22 +9,12 @@ import com.rocketfool.rocketgame.external.RocketGame;
 public abstract class SolidObject extends GameObject {
     //region Fields
     /** A Box2D body which will be used to simulate the physics object in {@link #update(float)} */
-    protected float x;
-    protected float y;
-
-    protected float dx;
-    protected float dy;
-
-    protected float radians;
-    protected float speed;
-    protected float rotationSpeed;
-
-    protected int width;
-    protected int height;
-
-    protected float[] shapex;
-    protected float[] shapey;
+    protected Body body;
     //endregion
+
+    public Body getBody() {
+        return body;
+    }
 
     //region Getters & Setters
     protected void wrap() {}
