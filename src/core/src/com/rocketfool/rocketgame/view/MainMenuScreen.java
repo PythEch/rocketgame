@@ -2,9 +2,12 @@ package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -42,25 +45,31 @@ public class MainMenuScreen implements Screen {
         //Set the table as the main component of the menu screen.
         Table table = new Table();
         table.setFillParent(true);
-        table.setDebug(DEBUG);
+        //table.setDebug(DEBUG);
 
-        Skin skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
+        Skin skin = new Skin();
+        TextureAtlas atlas = new TextureAtlas("Skin/ui-orange-pale.atlas");
+        skin.addRegions(atlas);
 
-        //Create table buttons
-        Button newGame = new Button(skin);
-        Label newGameText = new Label("New Game", skin);
-        newGameText.setFontScale(2);
-        newGame.add(newGameText);
+        /*final CheckBoxStyle t = new CheckBoxStyle();
+        t.font = mySkin.getFont("default");
+        t.fontColor =new Color(0, 0, 0, 1f);
+        t.disabledFontColor = new Color(0, 0, 0, 0.4f);
+        t.checkboxOff = mySkin.getDrawable( "checkbox_off");
+        t.checkboxOn = mySkin.getDrawable( "checkbox_on");
+        mySkin.add("default", t);*/
 
-        Button options = new Button(skin);
-        Label optionsText = new Label("Options", skin);
-        optionsText.setFontScale(2);
-        options.add(optionsText);
+        TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
+        buttonStyle.font = new BitmapFont(Gdx.files.internal("fonts/CartoonReliefWhite.fnt"));
+        buttonStyle.fontColor = new Color(1, 1, 1, 1);
+        buttonStyle.disabledFontColor = new Color(0, 0, 0, 0.4f);
+        buttonStyle.up = skin.getDrawable("button_04");
+        buttonStyle.down = skin.getDrawable("button_02");
+        skin.add("default", buttonStyle);
 
-        Button exit = new Button(skin);
-        Label exitText = new Label("Exit", skin);
-        exitText.setFontScale(2);
-        exit.add(exitText);
+        TextButton newGame = new TextButton("New Game", buttonStyle);
+        TextButton options = new TextButton("Options", buttonStyle);
+        TextButton exit = new TextButton("Exit", buttonStyle);
 
         //Align everything with regular size and spacing
         table.right().padRight(75);
@@ -73,6 +82,7 @@ public class MainMenuScreen implements Screen {
         newGame.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                videoPlayer.dispose();
                 game.setScreen(new GameScreen(batch, font));
             }
         });
@@ -83,7 +93,7 @@ public class MainMenuScreen implements Screen {
         videoPlayer.resize(1280, 720);
 
         try {
-            videoPlayer.play(Gdx.files.internal("test.webm"));
+            videoPlayer.play(Gdx.files.internal("Backgrounds/mainMenuScreen.webm"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -96,20 +106,15 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void render (float delta) {
-
-        Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-
-
 
         if (!videoPlayer.render()) { // As soon as the video is finished, we start the file again using the same player.
             try {
-                videoPlayer.play(Gdx.files.internal("test.webm"));
+                videoPlayer.play(Gdx.files.internal("Backgrounds/mainMenuScreen.webm"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
-
 
         stage.act(delta);
         stage.draw();
