@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Predicate;
 
 /**
  * Class to create instances of all levels. Also, it performs most of the calculations.
@@ -226,5 +227,15 @@ public class Level {
         System.err.println( "problem, not /1/:" + ( (a * ( 1 - e * e ) - root) / (e * root) )
                             + "\n \t " + ( ( a * ( 1 - e * e ) / r1 / e ) -  ( 1 / e ) ) );
         //If I find an alternative way to receive dtheta, this is done! *** :D
+    }
+
+    public Array<Planet> getPlanets() {
+        Array<Planet> planets = new Array<Planet>();
+        for (SolidObject solidObject : solidObjects) {
+            if (solidObject instanceof Planet) {
+                planets.add((Planet) solidObject);
+            }
+        }
+        return planets;
     }
 }
