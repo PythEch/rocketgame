@@ -13,9 +13,9 @@ import static com.rocketfool.rocketgame.util.Constants.toMeter;
  */
 public class Playable extends SolidObject {
     //region Fields
-    private final float fuelSpecificImpulse = 4500;    // impulse in N generated per kg of fuel //TODO: improve? impulse supplied per kg of fuel consumed***
+    private final float fuelSpecificImpulse = 4500;    // impulse in N generated per kg of fuel //TODO: improve?
                                                        // http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print)
-    private final float thrustMultiplier = 4 * 1e3f;   //TODO: improve? Typical thrust values? current units?
+    private final float thrustMultiplier = 4 * 1e3f;   // A base multiplier for thrust management.
 
     private float currentImpulse;
     private float deltaAngularImpulse;
@@ -23,7 +23,7 @@ public class Playable extends SolidObject {
     private float fuelLeft;
     private float width;
     private float height;
-    private float maxImpulse;
+    private float maxDeltaLinearImpulse;
     private boolean SASEnabled;
     private boolean maximizeThrust;
     private boolean minimizeThrust;
@@ -34,14 +34,14 @@ public class Playable extends SolidObject {
     //region Constructors
 
     /** Constructor for a player-controlled space craft. Mass and fuel values are in kg.*/
-    public Playable(float x, float y, float width, float height, float dryMass, float rotateImpulse, float impulse, float maxImpulse, float fuel, World world) {
+    public Playable(float x, float y, float width, float height, float dryMass, float deltaAngularImpulse, float deltaLinearImpulse, float maxDeltaLinearImpulse, float fuel, World world) {
         this.currentImpulse = 0;
         this.width = width;
         this.height = height;
-        this.deltaAngularImpulse = rotateImpulse;
-        this.deltaLinearImpulse = impulse;
+        this.deltaAngularImpulse = deltaAngularImpulse;
+        this.deltaLinearImpulse = deltaLinearImpulse;
         this.fuelLeft = fuel;
-        this.maxImpulse = maxImpulse;
+        this.maxDeltaLinearImpulse = maxDeltaLinearImpulse;
         this.SASEnabled = false;
         this.maximizeThrust = false;
         this.maximizeThrust = false;
@@ -56,11 +56,11 @@ public class Playable extends SolidObject {
         this.width = 88;
         this.height = 105;
         float dryMass = 1*1e5f;
-        this.currentImpulse = 0;
-        this.deltaAngularImpulse = 800 * thrustMultiplier;
-        this.deltaLinearImpulse = 100 * thrustMultiplier;
-        this.maxImpulse = 1000 * thrustMultiplier;
-        this.fuelLeft = fuel;
+        this.currentImpulse = 0;                               //Current thrust in Newtons per "delta t"
+        this.deltaAngularImpulse = 800 * thrustMultiplier;     //Reaction wheel strength (assuming the craft rotates using electricity.
+        this.deltaLinearImpulse = 100 * thrustMultiplier;      //Thrust change rate multiplier
+        this.maxDeltaLinearImpulse = 1000 * thrustMultiplier;  //Total max thrust therefore is 4000 kN, which is realistic,
+        this.fuelLeft = fuel;                                  //https://en.wikipedia.org/wiki/RD-180
 
         this.SASEnabled = false;
         this.maximizeThrust = false;
@@ -73,6 +73,10 @@ public class Playable extends SolidObject {
 
 	/** This object's creation is according to Box2D definitions.*/
     private Body createBody(float x, float y, float mass, World world) {
+        // In Box2D, every body has a location and some fixtures (in this case one).
+        // The location and orientation of the object is determined by the body while properties like
+        // its mass and friction depend on its fixtures.
+
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(Gdx.graphics.getWidth() / 2f * toMeter, Gdx.graphics.getHeight() / 2f * toMeter);
@@ -91,6 +95,8 @@ public class Playable extends SolidObject {
         fixtureDef.friction = 0.0f;
         fixtureDef.restitution = 0.0f;
 
+        body.createFixture(fixtureDef);
+
         rectangle.dispose();
 
         return body;
@@ -107,6 +113,7 @@ public class Playable extends SolidObject {
     }
 
     private void consumeFuelAndDecreaseMass(float deltaTime) {
+        float newMass;
         MassData tempMD;
         if (fuelLeft > 0) {
             float fuelSpent = currentImpulse * deltaTime / fuelSpecificImpulse;
@@ -114,8 +121,9 @@ public class Playable extends SolidObject {
 
             //The mass information of the body changes only when MassData is updated
             //because of the nature of the Box2D engine.
+            newMass =  body.getMass() - fuelSpent;
             tempMD = new MassData();
-            tempMD.mass = body.getMass() - fuelSpent;
+            tempMD.mass = newMass;
             tempMD.I = body.getMassData().I / body.getMass() * tempMD.mass;
             body.setMassData( tempMD );
         }
@@ -139,7 +147,7 @@ public class Playable extends SolidObject {
         if (maximizeThrust) {
             minimizeThrust = false;
             maximizeThrust(deltaTime);
-            if ( currentImpulse >= maxImpulse )
+            if ( currentImpulse >= maxDeltaLinearImpulse )
                 maximizeThrust = false;
         }
 
@@ -175,7 +183,7 @@ public class Playable extends SolidObject {
         return height;
     }
 
-    public float getMaxImpulse(){ return maxImpulse; }
+    public float getMaxDeltaLinearImpulse(){ return maxDeltaLinearImpulse; }
 
     public Vector2 getBottomPosition(){
         return bottomPosition;
@@ -225,7 +233,7 @@ public class Playable extends SolidObject {
 
     public void increaseThrust(float deltaTime) {
         if (fuelLeft > 0 ) {
-            currentImpulse = Math.min(currentImpulse + deltaTime * 2 * deltaLinearImpulse , maxImpulse);
+            currentImpulse = Math.min(currentImpulse + deltaTime * 2 * deltaLinearImpulse , maxDeltaLinearImpulse);
         }
     }
 
@@ -243,7 +251,7 @@ public class Playable extends SolidObject {
 
     public void maximizeThrust( float deltaTime ){
         if (fuelLeft > 0 ) {
-            currentImpulse = Math.min(maxImpulse , currentImpulse + deltaTime * deltaLinearImpulse * 10);
+            currentImpulse = Math.min(maxDeltaLinearImpulse , currentImpulse + deltaTime * deltaLinearImpulse * 10);
         }
     }
 
