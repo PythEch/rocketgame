@@ -13,6 +13,8 @@ import static com.rocketfool.rocketgame.util.Constants.toMeter;
  */
 public class Playable extends SolidObject {
     //region Fields
+    private final float fuelSpecificImpulse = 1; //impulse supplied per kg of fuel consumed***
+
     private float currentImpulse;
     private float deltaAngularImpulse;
     private float deltaLinearImpulse;
@@ -20,14 +22,16 @@ public class Playable extends SolidObject {
     private float width;
     private float height;
     private float maxImpulse;
-    /** SAS is the system of a spacecraft that automatically stops its spinning. */
     private boolean SASEnabled;
+    private boolean maximizeThrust;
+    private boolean minimizeThrust;
     private Vector2 bottomPosition;
     private Vector2 spawnPoint;
     //endregion
 
-
-    public Playable(float x, float y, float width, float height, float mass, float rotateImpulse, float impulse, float maxImpulse, float fuel, World world) {
+    /** Contructor for a player-controlled space craft. Mass and fuel values are in kg.*/
+    public Playable(float x, float y, float width, float height, float dryMass, float rotateImpulse, float impulse, float maxImpulse, float fuel, World world) {
+        // Similar to typical spacecraft, our typical crafts will have a dry mass of 100t and carry up to 400t of fuel
         this.currentImpulse = 0;
         this.deltaAngularImpulse = rotateImpulse;
         this.deltaLinearImpulse = impulse;
@@ -36,12 +40,14 @@ public class Playable extends SolidObject {
         this.height = height;
         this.maxImpulse = maxImpulse;
         this.SASEnabled = false;
+        this.maximizeThrust = false;
+        this.maximizeThrust = false;
 
-        this.body = createBody(x, y, mass, world);
+        this.body = createBody(x, y, (dryMass + fuel) , world);
         this.spawnPoint = body.getPosition().cpy();
     }
 
-	/** This creation is according to Box2D definitions.*/
+	/** This object's creation is according to Box2D definitions.*/
     private Body createBody(float x, float y, float mass, World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -57,7 +63,7 @@ public class Playable extends SolidObject {
         // Define properties of object here
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = rectangle;
-        fixtureDef.density = 1.0f; // TODO: Calculate a reasonable density
+        fixtureDef.density = 1.0f;
         fixtureDef.friction = 0.0f;
         fixtureDef.restitution = 0.0f;
 
@@ -81,12 +87,13 @@ public class Playable extends SolidObject {
     private void consumeFuelAndDecreaseMass(float deltaTime) {
 		//kilogram per liter is taken as 0.18
     	if (fuelLeft > 0) {
-            float fuelSpent = currentImpulse * deltaTime / 100;
+            float fuelSpent = currentImpulse * deltaTime / 100; //K1
             fuelLeft -= fuelSpent;
             //decrease mass 0.18 for each fuel spent
-            body.getMassData().mass -= fuelSpent * 0.18; //FIXME: make a constant for this
+            body.getMassData().mass -= fuelSpent * 0.18; //FIXME: Work in progress by Levent
         }
     }
+
     //setter to use in level initializations
     public void setFuelLeft(float fuel){
         this.fuelLeft = fuel;
@@ -101,6 +108,16 @@ public class Playable extends SolidObject {
 
         if (fuelLeft <= 0)
             currentImpulse = 0;
+        else if (maximizeThrust) {
+            maximizeThrust(deltaTime);
+            if ( currentImpulse >= maxImpulse )
+                maximizeThrust = false;
+        }
+        else if (minimizeThrust) {
+            minimizeThrust(deltaTime);
+            if ( currentImpulse == 0 )
+                minimizeThrust = false;
+        }
 
         impulseVector = new Vector2(0, deltaTime * currentImpulse).rotateRad(body.getAngle());
 
@@ -108,19 +125,6 @@ public class Playable extends SolidObject {
 
     }
     //endregion
-
-    public void toggleSAS() {
-        SASEnabled = !SASEnabled;
-    }
-
-    public void runSAS( float deltaTime ){
-        if (SASEnabled){
-            if ( this.getBody().getAngularVelocity() < 0 )
-                turnLeft( deltaTime );
-            else if ( this.getBody().getAngularVelocity() > 0 )
-                turnRight( deltaTime );
-        }
-    }
 
     //region Getters & Setters
     public float getCurrentImpulse() {
@@ -153,10 +157,17 @@ public class Playable extends SolidObject {
 
     public boolean getSASEnabled() { return SASEnabled;}
 
+    public Vector2 getSpawnPoint() {
+        return spawnPoint;
+    }
+
     public void setCurrentImpulse(float currentImpulse) {
         this.currentImpulse = currentImpulse;
     }
     //endregion
+
+
+    //region Manually-controlled playable behaviour
 
     public void turnLeft(float deltaTime) {
         body.applyAngularImpulse(deltaAngularImpulse * deltaTime, true);
@@ -164,6 +175,21 @@ public class Playable extends SolidObject {
 
     public void turnRight(float deltaTime) {
         body.applyAngularImpulse(-deltaAngularImpulse * deltaTime, true);
+    }
+
+    public void toggleSAS() {
+        SASEnabled = !SASEnabled;
+    }
+
+    /** The Stability Assist System (SAS) of a spacecraft automatically prevents unwanted
+        spinning to make controlling the craft much easier.*/
+    public void runSAS( float deltaTime ){
+        if (SASEnabled){
+            if ( this.getBody().getAngularVelocity() < 0 )
+                turnLeft( deltaTime );
+            else if ( this.getBody().getAngularVelocity() > 0 )
+                turnRight( deltaTime );
+        }
     }
 
     public void increaseThrust(float deltaTime) {
@@ -176,8 +202,12 @@ public class Playable extends SolidObject {
         currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse);
     }
 
-    public void minimizeThrust( float deltaTime ){
-        currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse * 10);
+    public void toggleMaximizeThrust(){
+        maximizeThrust = !maximizeThrust;
+    }
+
+    public void toggleMinimizeThrust(){
+        minimizeThrust = !minimizeThrust;
     }
 
     public void maximizeThrust( float deltaTime ){
@@ -186,7 +216,12 @@ public class Playable extends SolidObject {
         }
     }
 
-    public Vector2 getSpawnPoint() {
-        return spawnPoint;
+    public void minimizeThrust( float deltaTime ){
+        currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse * 10);
     }
+    //endregion
+
+
+
+
 }

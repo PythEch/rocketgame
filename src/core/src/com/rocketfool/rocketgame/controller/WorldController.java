@@ -70,12 +70,12 @@ public class WorldController {
 
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.X)) {
-            playable.minimizeThrust( deltaTime );
+        if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
+            playable.toggleMinimizeThrust();
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
-            playable.maximizeThrust( deltaTime );
+        if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
+            playable.toggleMaximizeThrust();
         }
 
         if (DEBUG) {
