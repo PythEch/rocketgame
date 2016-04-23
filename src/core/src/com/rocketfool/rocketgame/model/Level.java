@@ -95,8 +95,12 @@ public class Level {
             // it's also faster because normally distance calculation involves an Math.sqrt()
             // while len2() doesn't have to do so, so we don't have two Math.pow(Math.sqrt(distance), 2)
             // which is unnecessary work.
+
             float forceScalar = G * spaceship.getMass() * planet.getMass() / directionVector.len2(); //**
             currentGravForce = forceScalar;
+            System.err.println( spaceship.getMass() );
+            System.err.println( planet.getMass() );
+            System.err.println( forceScalar );
 
             // So now we have the value of the force and the direction
             // We have to get a vector with given direction and value

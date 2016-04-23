@@ -166,9 +166,9 @@ public class LevelManager {
     public static Level createLevel4() {
         Level level = new Level();
 
-
+        System.err.println( "LEVEL 4 ///////////////////////////////////////////////////////////////");
         //initialization of the rocket
-        level.playable = new Playable(200, 300, 88, 105, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(200, 300, 88, 105, 1e5f, 250, 200, 1000, 4*1e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //init of map

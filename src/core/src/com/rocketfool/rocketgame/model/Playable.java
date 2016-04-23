@@ -31,6 +31,7 @@ public class Playable extends SolidObject {
 
     /** Contructor for a player-controlled space craft. Mass and fuel values are in kg.*/
     public Playable(float x, float y, float width, float height, float dryMass, float rotateImpulse, float impulse, float maxImpulse, float fuel, World world) {
+        //Defaults:    0   ,    0   ,    88      ,    108      ,     100*1e3  ,      350           ,    100        ,    1000        ,  400 * 1e3 ,  world
         // Similar to typical spacecraft, our typical crafts will have a dry mass of 100t and carry up to 400t of fuel
         this.currentImpulse = 0;
         this.deltaAngularImpulse = rotateImpulse;
@@ -63,7 +64,7 @@ public class Playable extends SolidObject {
         // Define properties of object here
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = rectangle;
-        fixtureDef.density = 1.0f;
+        fixtureDef.density = mass / ( width * toMeter * height  * toMeter ); //**
         fixtureDef.friction = 0.0f;
         fixtureDef.restitution = 0.0f;
 
