@@ -38,13 +38,4 @@ public class RectangleObstacle extends SolidObject {
 
     }
 
-    public void draw(ShapeRenderer shapeR) {
-        shapeR.setColor(1, 1, 1, 1);
-        shapeR.begin(ShapeRenderer.ShapeType.Line);
-
-        for(int i=0, j=shapex.length-1; i<shapex.length; j=i++) {
-            shapeR.line(shapex[i], shapey[i], shapex[j], shapey[j]);
-        }
-        shapeR.end();
-    }
 }
