@@ -144,12 +144,7 @@ public class GameScreen implements Screen {
             drawDebugString("Fuel left: " + (int) cameraTarget.getFuelLeft(), 8 );
             drawDebugString("SAS: " + level.getPlayable().getSASEnabled(), 35 );
             drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 10 );
-            drawDebugString("Mass2: " + cameraTarget.getBody().getMass(), 11 );
-            //drawDebugString("DsdMass: " + cameraTarget.desiredMass, 12 );
-            drawDebugString("Density1: " + cameraTarget.getBody().getFixtureList().first().getDensity(), 13 );
-            drawDebugString("Density2: " + cameraTarget.bodyFixture.getDensity(), 14 );
-            //drawDebugString("DsdDensity: " + cameraTarget.desiredDensity, 15 );
-            drawDebugString("I: " + cameraTarget.getBody().getMassData().I, 16 );
+
         }
     }
 

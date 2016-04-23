@@ -29,11 +29,6 @@ public class Playable extends SolidObject {
     private boolean minimizeThrust;
     private Vector2 bottomPosition;
     private Vector2 spawnPoint;
-
-    private FixtureDef bodyFixtureDef;
-    public Fixture bodyFixture;
-    public float desiredMass;
-    public float desiredDensity; //**
     //endregion
 
     //region Constructors
@@ -96,12 +91,6 @@ public class Playable extends SolidObject {
         fixtureDef.friction = 0.0f;
         fixtureDef.restitution = 0.0f;
 
-        bodyFixtureDef = fixtureDef;
-        bodyFixture = body.createFixture(fixtureDef);
-
-        desiredDensity = fixtureDef.density;
-        desiredMass = mass;
-
         rectangle.dispose();
 
         return body;
@@ -117,31 +106,17 @@ public class Playable extends SolidObject {
         consumeFuelAndDecreaseMass(deltaTime);
     }
 
-    private void consumeFuelAndDecreaseMass(float deltaTime) {//FIXME!
-    	float newMass;
+    private void consumeFuelAndDecreaseMass(float deltaTime) {
         MassData tempMD;
         if (fuelLeft > 0) {
             float fuelSpent = currentImpulse * deltaTime / fuelSpecificImpulse;
             fuelLeft -= fuelSpent;
-            //newMass = desiredMass - fuelSpent;
-            newMass = body.getMass() - fuelSpent;
-            //desiredMass = newMass;
-            //desiredDensity = (newMass / width * toMeter * height  * toMeter);
-            //body.getMassData().mass = newMass;
-            //body.getFixtureList().first().setDensity( desiredDensity );
-            //bodyFixture.setDensity( desiredDensity );
 
-
-            //bodyFixtureDef.density =  desiredDensity;
-            //bodyFixture = body.createFixture( bodyFixtureDef );
-            //body.getFixtureList().removeIndex(0);
-
+            //The mass information of the body changes only when MassData is updated
+            //because of the nature of the Box2D engine.
             tempMD = new MassData();
-            tempMD.mass = newMass;
-
+            tempMD.mass = body.getMass() - fuelSpent;
             tempMD.I = body.getMassData().I / body.getMass() * tempMD.mass;
-            //tempMD.center = body.getMassData().center;
-
             body.setMassData( tempMD );
         }
     }
