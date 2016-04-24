@@ -1,6 +1,7 @@
 package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -47,9 +48,9 @@ public class MainMenuScreen implements Screen {
         table.setFillParent(true);
         //table.setDebug(DEBUG);
 
-        Skin skin = new Skin();
-        TextureAtlas atlas = new TextureAtlas("Skin/ui-orange-pale.atlas");
-        skin.addRegions(atlas);
+        Skin skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
+        /*TextureAtlas atlas = new TextureAtlas("Skin/uiskin.json");
+        skin.addRegions(atlas);*/
 
         /*final CheckBoxStyle t = new CheckBoxStyle();
         t.font = mySkin.getFont("default");
@@ -58,7 +59,7 @@ public class MainMenuScreen implements Screen {
         t.checkboxOff = mySkin.getDrawable( "checkbox_off");
         t.checkboxOn = mySkin.getDrawable( "checkbox_on");
         mySkin.add("default", t);*/
-
+/*
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
         buttonStyle.font = new BitmapFont(Gdx.files.internal("fonts/CartoonReliefWhite.fnt"));
         buttonStyle.fontColor = new Color(1, 1, 1, 1);
@@ -66,6 +67,8 @@ public class MainMenuScreen implements Screen {
         buttonStyle.up = skin.getDrawable("button_04");
         buttonStyle.down = skin.getDrawable("button_02");
         skin.add("default", buttonStyle);
+*/
+        Skin buttonStyle = skin;
 
         TextButton newGame = new TextButton("New Game", buttonStyle);
         TextButton options = new TextButton("Options", buttonStyle);
@@ -84,6 +87,13 @@ public class MainMenuScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 videoPlayer.dispose();
                 game.setScreen(new GameScreen(batch, font));
+            }
+        });
+
+        exit.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.exit(0);
             }
         });
 
