@@ -49,6 +49,8 @@ public class TrajectorySimulator extends GameObject {
         if (playable != null)
             world.destroyBody(playable.getBody());
 
+        world.clearForces();
+
         playable = new Playable(
                 level.getPlayable().getBody().getPosition().x,
                 level.getPlayable().getBody().getPosition().y,
@@ -62,25 +64,28 @@ public class TrajectorySimulator extends GameObject {
                 world
         );
 
+        Body myBody = playable.getBody();
+        Body other = level.getPlayable().getBody();
+
         playable.setCurrentImpulse(level.getPlayable().getCurrentImpulse());
-        playable.getBody().setAngularVelocity(level.getPlayable().getBody().getAngularVelocity());
-        playable.getBody().setAngularDamping(level.getPlayable().getBody().getAngularDamping());
-        playable.getBody().setLinearVelocity(level.getPlayable().getBody().getLinearVelocity());
-        playable.getBody().setTransform(level.getPlayable().getBody().getPosition().x, level.getPlayable().getBody().getPosition().y, level.getPlayable().getBody().getAngle());
-        //playable.getBody().getTransform().setRotation(level.getPlayable().getBody().getTransform().getRotation());
-        //playable.getBody().getTransform().setOrientation(level.getPlayable().getBody().getTransform().getOrientation());
+        myBody.setAngularVelocity(other.getAngularVelocity());
+        myBody.setAngularDamping(other.getAngularDamping());
+        myBody.setLinearVelocity(other.getLinearVelocity().cpy());
+        myBody.setTransform(other.getPosition().cpy(), other.getAngle());
+        myBody.getTransform().setOrientation(other.getTransform().getOrientation().cpy());
+        myBody.getTransform().setRotation(other.getTransform().getRotation());
     }
 
 
     @Override
     public void update(float deltaTime) {
-        if (times++ == 3) {
+        if (++times == 20) {
             times = 0;
-            lastEstimationPath = currentEstimationPath;
+            lastEstimationPath = new Array<Vector2>(currentEstimationPath);
             createWorld();
         }
 
-        for (int i = 0; i < 60; i++) {
+        for (int i = 1; i <= 60; i++) {
             doGravity();
             playable.update(deltaTime);
             world.step(1 / 60f, 6, 2);
