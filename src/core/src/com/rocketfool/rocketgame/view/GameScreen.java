@@ -209,7 +209,7 @@ public class GameScreen implements Screen {
 
 
         //endregion
-        level = LevelManager.createLevel4();
+        level = LevelManager.createLevel2();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
         controller = new WorldController(level, this);
