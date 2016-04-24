@@ -17,19 +17,20 @@ public class LevelManager {
     //level creation methods
     public static Level createLevel1() {
         Level level = new Level();
-        // trying to implement the timer in order to create story dialogs during the gameplay
-        Timer timer = new Timer();
-        timer.start();
 
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
 
+        //this object stands for the earth and its properties
+        level.solidObjects.add(new Planet(1000, 1000, 6 * 1e24f, 100, null, level.world));
+        //this object stands for the moon and its properties
+        level.solidObjects.add(new Planet(5000, 3000, 2.7f * 1e25f, 250, null, level.world));
 
         //initialization of the rocket
         level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250, 200, 1000, 1e25f, level.world);
         level.playable.getBody().setLinearVelocity(0, 0);
 
-
+        //endGame Triggers
         final PositionTrigger earthTrig = new PositionTrigger(1000, 1000, 200, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -44,7 +45,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(moon);
-
         final PositionTrigger earthTrig2 = new PositionTrigger(1000, 1000, 200, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -64,19 +64,19 @@ public class LevelManager {
                 }
             });
         }
-
-        //this object stands for the earth and its properties
-        level.solidObjects.add(new Planet(1000, 1000, 6 * 1e24f, 100, null, level.world));
-        //this object stands for the moon and its properties
-        level.solidObjects.add(new Planet(5000, 3000, 2.7f * 1e25f, 250, null, level.world));
-        //obstacle
-
+        addDefaultTriggers(level);
 
         //bottom of the earth for landing and ending the level.
         level.waypoints.add(new Waypoint(1000, 1000, 300));
         level.waypoints.add(new Waypoint(5000, 3000, 400));
 
-        addDefaultTriggers(level);
+        //timer and pop up conditions.
+        //TODO:Implement text and time when pop up is ready.
+        if (level.timePassed > 10)
+            System.out.println("space is large");
+        if(level.timePassed > 15)
+            System.out.println("time flies so quickly");
+
 
         return level;
     }
@@ -90,6 +90,11 @@ public class LevelManager {
         //edit the size of the map here
         level.map = new Map(Gdx.graphics.getWidth() * 90, Gdx.graphics.getHeight() * 90);
 
+        //add planets (earth and mars)
+        //TODO:add the cargo object below to rotate around the mars, this could also be a waypoint
+        level.solidObjects.add(new Planet(220, 300, 6 * 1e24f, 100, null, level.world));
+        level.solidObjects.add(new Planet(5000, 2000, 2.7f * 1e25f, 250, null, level.world));
+
         //add triggers to level 2
         final PositionTrigger marsTrig = new PositionTrigger(5000, 2000, 400, level.playable) {
             @Override
@@ -98,7 +103,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(marsTrig);
-
         final PositionTrigger earthTrig = new PositionTrigger(220, 300, 200, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -110,7 +114,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(earthTrig);
-
         if (DEBUG) {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
@@ -119,17 +122,18 @@ public class LevelManager {
                 }
             });
         }
+        addDefaultTriggers(level);
 
-        level.solidObjects.add(new Planet(220, 300, 6 * 1e24f, 100, null, level.world));
-        //this object stands for the mars
-        level.solidObjects.add(new Planet(5000, 2000, 2.7f * 1e25f, 250, null, level.world));
-        //TODO:add the cargo object below to rotate around the mars, this could also be a waypoint
-
-        //bottom of the planet
+        //add waypoints
         level.waypoints.add(new Waypoint(200, 200, 100));
         level.waypoints.add(new Waypoint(4000, 7000, 250));
 
-        addDefaultTriggers(level);
+        //timer and pop up conditions.
+        //TODO:Implement text and time when pop up is ready.
+        if (level.timePassed > 10)
+            System.out.println("space is large");
+        if(level.timePassed > 15)
+            System.out.println("time flies so quickly");
 
         return level;
     }
@@ -143,7 +147,18 @@ public class LevelManager {
         //edit the size of the map here
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
 
-        //add unnecesary triggers for the level
+        //Add planets here
+        level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
+        //this object stands for the planet 1
+        level.solidObjects.add(new Planet(1200, 3000, 2.7f * 1e21f, 250, null, level.world));
+        //this object stands for planet 2
+        level.solidObjects.add(new Planet(3200, 1220, 6 * 1e24f, 150, null, level.world));
+        //this object stands for the planet 3
+        level.solidObjects.add(new Planet(5300, 3500, 2.7f * 1e21f, 300, null, level.world));
+        //this object stands for the planet 4
+        level.solidObjects.add(new Planet(6000, 800, 4 * 1e24f, 80, null, level.world));
+
+        //add unnecesary triggers for text and pop up
         //TODO:increase numbers of basic & nonessential triggers for the texts that should appear near the planets
         level.triggers.add(new PositionTrigger(100, 100, 10, level.playable) {
             @Override
@@ -152,14 +167,13 @@ public class LevelManager {
             }
         });
 
-        //add important endgame triggers
+        //add important endgame triggers here
         final PositionTrigger planet1 = new PositionTrigger(1200, 3000, 500, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("What a beautiful planet");
             }
         };
-
         level.triggers.add(planet1);
         final PositionTrigger planet2 = new PositionTrigger(3200, 1220, 300, level.playable) {
             @Override
@@ -168,7 +182,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(planet2);
-
         final PositionTrigger planet3 = new PositionTrigger(6000, 800, 160, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -179,7 +192,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(planet3);
-
         final PositionTrigger planet4 = new PositionTrigger(5300, 3500, 600, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -190,7 +202,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(planet4);
-
         final PositionTrigger earthTrig = new PositionTrigger(200, 200, 200, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -210,27 +221,21 @@ public class LevelManager {
                 }
             });
         }
+        addDefaultTriggers(level);
 
-        level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
-        //this object stands for the planet 1
-        level.solidObjects.add(new Planet(1200, 3000, 2.7f * 1e21f, 250, null, level.world));
-        //this object stands for planet 2
-        level.solidObjects.add(new Planet(3200, 1220, 6 * 1e24f, 150, null, level.world));
-        //this object stands for the planet 3
-        level.solidObjects.add(new Planet(5300, 3500, 2.7f * 1e21f, 300, null, level.world));
-        //this object stands for the planet 4
-        level.solidObjects.add(new Planet(6000, 800, 4 * 1e24f, 80, null, level.world));
-
-
-        //bottom of the planet
+        //Wapoints as bottom of the planets
         level.waypoints.add(new Waypoint(200, 200, 300));
         level.waypoints.add(new Waypoint(1200, 3000, 750));
         level.waypoints.add(new Waypoint(3200, 1120, 450));
         level.waypoints.add(new Waypoint(5300, 3500, 900));
         level.waypoints.add(new Waypoint(6000, 800, 240));
 
-
-        addDefaultTriggers(level);
+        //timer and pop up conditions.
+        //TODO:Implement text and time when pop up is ready.
+        if (level.timePassed > 10)
+            System.out.println("space is large");
+        if(level.timePassed > 15)
+            System.out.println("time flies so quickly");
 
         return level;
     }
@@ -245,7 +250,21 @@ public class LevelManager {
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
 
-        //triggers
+        //this object stands for the target planet and its properties
+        level.solidObjects.add(new Planet(6000, 3000, 2.7f * 1e25f, 150, null, level.world));
+
+        //TODO: Dispose method could be implemented for level class to remove the objects going out of the map and summoning new ones
+        //loop for randomizing the movement directions, velocities, sizes and the shapes of the asteroids
+        for (int i = 0; i < 50; i++) {
+            Vector2 vector = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 10f, ((float) Math.random()) * (float) Math.random() * 10f);
+            if (i % 2 == 0) {
+                level.solidObjects.add(new RoundObstacle(((float) (Math.random()) * 8000) - 100, ((float) (Math.random()) * 2500) - 100 + 30 * i, 10, vector, level.world));
+            } else {
+                level.solidObjects.add(new RectangleObstacle(((float) (Math.random()) * 8000) - 100, ((float) (Math.random()) * 2500) - 200 + 30 * i, i * 2, i + 1, vector, level.world));
+            }
+        }
+
+        //triggers for pop ups
         level.triggers.add(new PositionTrigger(200, 300, 200, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -307,26 +326,18 @@ public class LevelManager {
                 }
             });
         }
-
-        //this object stands for the target planet and its properties
-        level.solidObjects.add(new Planet(6000, 3000, 2.7f * 1e25f, 150, null, level.world));
-
-        //TODO: Dispose method could be implemented for level class to remove the objects going out of the map and summoning new ones
-        //loop for randomizing the movement directions, velocities, sizes and the shapes of the asteroids
-        for (int i = 0; i < 50; i++) {
-            Vector2 vector = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 10f, ((float) Math.random()) * (float) Math.random() * 10f);
-            if (i % 2 == 0) {
-                level.solidObjects.add(new RoundObstacle(((float) (Math.random()) * 8000) - 100, ((float) (Math.random()) * 2500) - 100 + 30 * i, 10, vector, level.world));
-            } else {
-                level.solidObjects.add(new RectangleObstacle(((float) (Math.random()) * 8000) - 100, ((float) (Math.random()) * 2500) - 200 + 30 * i, i * 2, i + 1, vector, level.world));
-            }
-        }
+        addDefaultTriggers(level);
 
         //Target location and exit location are indicated by waypoints
-        level.waypoints.add(new Waypoint(100, 100, 40));
-        level.waypoints.add(new Waypoint(4500, 2500, 20));
+        level.waypoints.add(new Waypoint(200, 200, 300));
+        level.waypoints.add(new Waypoint(6000, 3000, 20));
 
-        addDefaultTriggers(level);
+        //timer and pop up conditions.
+        //TODO:Implement text and time when pop up is ready.
+        if (level.timePassed > 10)
+            System.out.println("space is large");
+        if(level.timePassed > 15)
+            System.out.println("time flies so quickly");
 
         return level;
     }
@@ -343,8 +354,14 @@ public class LevelManager {
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 25, Gdx.graphics.getHeight() * 25);
 
+        //these objects stand for the earth and moon respectively
+        level.solidObjects.add(new Planet(1000, 1000, 6 * 1e24f, 100, null, level.world));
+        level.solidObjects.add(new Planet(5000, 3000, 2.7f * 1e25f, 250, null, level.world));
 
-        final PositionTrigger moon = new PositionTrigger(5000, 300, 500, level.playable) {
+        //trigger based pop ups written here:
+
+        //end game triggers
+        final PositionTrigger moon = new PositionTrigger(5000, 3000, 500, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("We can return home now!");
@@ -362,7 +379,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(earthTrig);
-
         if (DEBUG) {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
@@ -371,17 +387,18 @@ public class LevelManager {
                 }
             });
         }
-
-        //this object stands for the earth and its properties
-        level.solidObjects.add(new Planet(1000, 1000, 6 * 1e24f, 100, null, level.world));
-        //this object stands for the moon and its properties
-        level.solidObjects.add(new Planet(5000, 3000, 2.7f * 1e25f, 250, null, level.world));
+        addDefaultTriggers(level);
 
         //bottom of the earth for landing and ending the level.
         level.waypoints.add(new Waypoint(1000, 1000, 300));
         level.waypoints.add(new Waypoint(5000, 3000, 400));
 
-        addDefaultTriggers(level);
+        //timer and pop up conditions.
+        //TODO:Implement text and time when pop up is ready.
+        if (level.timePassed > 10)
+            System.out.println("space is large");
+        if(level.timePassed > 15)
+            System.out.println("time flies so quickly");
 
         return level;
     }
