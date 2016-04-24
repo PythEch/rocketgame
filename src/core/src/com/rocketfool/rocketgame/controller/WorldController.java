@@ -61,8 +61,8 @@ public class WorldController {
             playable.runSAS(deltaTime);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+            screen.showPauseScreen();
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {

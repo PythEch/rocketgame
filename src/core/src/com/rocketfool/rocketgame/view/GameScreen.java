@@ -1,6 +1,7 @@
 package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -9,12 +10,15 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
 
 import com.badlogic.gdx.video.VideoPlayer;
+import com.sun.tools.javac.comp.Enter;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -57,6 +61,10 @@ public class GameScreen implements Screen {
 
     private ParticleEffect particleEffect;
 
+    private Stage stage;
+
+    private Skin skin;
+
 
     //endregion
 
@@ -94,10 +102,9 @@ public class GameScreen implements Screen {
         renderer.draw(batch);
 
         //This part is for the particles coming out of rocket
-        if ( cameraTarget.getCurrentImpulse() > 0 ){
+        if (cameraTarget.getCurrentImpulse() > 0) {
             this.igniteRocketTrail();
-        }
-        else{
+        } else {
             this.stopRocketTrail();
         }
 
@@ -105,8 +112,7 @@ public class GameScreen implements Screen {
         particleEffect.update(dt);
         particleEffect.setPosition(level.getPlayable().getBottomPosition().x * toPixel, level.getPlayable().getBottomPosition().y * toPixel);
         float angle = level.getPlayable().getBody().getAngle() * MathUtils.radiansToDegrees + 270;
-        for(int i = 0; i < particleEffect.getEmitters().size; i++)
-        {
+        for (int i = 0; i < particleEffect.getEmitters().size; i++) {
             particleEffect.getEmitters().get(i).getAngle().setHigh(angle, angle);
             particleEffect.getEmitters().get(i).getAngle().setLow(angle);
         }
@@ -116,6 +122,9 @@ public class GameScreen implements Screen {
         // Draw boundries of physics objects if debug is enabled
         if (DEBUG)
             debugRenderer.render(level.getWorld(), camera.combined.scl(PPM));
+
+        stage.act(Gdx.graphics.getDeltaTime());
+        stage.draw();
     }
 
     /**
@@ -137,13 +146,13 @@ public class GameScreen implements Screen {
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
                     " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
             drawDebugString("Distance: " + (int)
-                    ( cameraTarget.getBody().getPosition().dst(  level.getPlanetLocation(0) ) ) , 5 );
-            drawDebugString(" Period (P1): " + (int) LevelManager.periodStopWatch.getPeriod() , 6 );
-            drawDebugString("FPS: " + (int)(1f/Gdx.graphics.getDeltaTime()), 7 );
-            drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 9 );
-            drawDebugString("Fuel left: " + (int) cameraTarget.getFuelLeft(), 8 );
-            drawDebugString("SAS: " + level.getPlayable().getSASEnabled(), 35 );
-            drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 10 );
+                    (cameraTarget.getBody().getPosition().dst(level.getPlanetLocation(0))), 5);
+            drawDebugString(" Period (P1): " + (int) LevelManager.periodStopWatch.getPeriod(), 6);
+            drawDebugString("FPS: " + (int) (1f / Gdx.graphics.getDeltaTime()), 7);
+            drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 9);
+            drawDebugString("Fuel left: " + (int) cameraTarget.getFuelLeft(), 8);
+            drawDebugString("SAS: " + level.getPlayable().getSASEnabled(), 35);
+            drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 10);
 
         }
     }
@@ -206,50 +215,90 @@ public class GameScreen implements Screen {
         particleEffect = new ParticleEffect();
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
-
-
         //endregion
         level = LevelManager.createLevel4();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
         controller = new WorldController(level, this);
 
+        stage = new Stage();
+        Gdx.input.setInputProcessor(stage);
+
+        skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
     }
 
     public void zoomIn() {
 
-        camera.zoom = Math.max(0.5f, camera.zoom / 1.04f );
-        if ( camera.zoom > 0.5 ) {
+        camera.zoom = Math.max(0.5f, camera.zoom / 1.04f);
+        if (camera.zoom > 0.5) {
             font.setScale(font.getScaleX() / 1.04f);
-       }
+        }
 
     } //**
 
     public void zoomOut() {
-        camera.zoom = Math.min( camera.zoom * 1.04f , 150f );
-        if ( camera.zoom < 150 )
-            font.setScale( font.getScaleX() * 1.04f );
+        camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
+        if (camera.zoom < 150)
+            font.setScale(font.getScaleX() * 1.04f);
     }
 
     public void igniteRocketTrail() {
 
-        if (particleEffect.isComplete() )
-        {
+        if (particleEffect.isComplete()) {
             particleEffect.reset();
 
         }
-        for(int i = 0; i < particleEffect.getEmitters().size; i++){
+        for (int i = 0; i < particleEffect.getEmitters().size; i++) {
             particleEffect.getEmitters().get(i).setContinuous(true);
         }
     }
 
     public void stopRocketTrail() {
 
-        for(int i = 0; i < particleEffect.getEmitters().size; i++)
-        {
+        for (int i = 0; i < particleEffect.getEmitters().size; i++) {
             particleEffect.getEmitters().get(i).setContinuous(false);
             particleEffect.getEmitters().get(i).duration = 0;
         }
+    }
+
+    public void showPauseScreen() {
+        Dialog dialog = new Dialog("Paused", skin, "dialog") {
+            public void result(Object obj) {
+                System.out.println("" + obj);
+            }
+
+            @Override
+            public float getPrefWidth() {
+                return super.getPrefWidth() * 1.5f;
+            }
+        };
+
+        dialog.button("Toggle Debug", 0);
+        dialog.getButtonTable().row();
+        dialog.button("Save Checkpoint", 1);
+        dialog.getButtonTable().row();
+        dialog.button("Load Checkpoint", 2);
+        dialog.getButtonTable().row();
+        dialog.button("Restart Level", 3);
+        dialog.getButtonTable().row();
+        dialog.button("Exit", 4);
+        dialog.getButtonTable().row().padTop(
+                dialog.getButtonTable().getCells().first().getPrefHeight()
+        );
+        dialog.button("Continue", 5);
+
+        Cell secondCell = dialog.getButtonTable().getCells().get(1);
+        secondCell.width(secondCell.getPrefWidth() * 1.5f).height(secondCell.getPrefHeight() * 1.5f);
+        for (Cell cell : dialog.getButtonTable().getCells()) {
+            cell.uniform().fill();
+        }
+        dialog.getCells().first().padTop(dialog.getPrefHeight() * 0.05f);
+        dialog.padBottom(dialog.getPrefHeight() * 0.05f);
+
+
+        dialog.key(Input.Keys.ESCAPE, 5);
+        dialog.key(Input.Keys.ENTER, 5);
+        dialog.show(stage);
     }
 
     @Override
