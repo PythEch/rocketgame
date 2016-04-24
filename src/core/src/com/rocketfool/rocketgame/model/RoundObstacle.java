@@ -26,7 +26,9 @@ public class RoundObstacle extends SolidObject {
         fixtureDef.shape = circle;
         fixtureDef.restitution = 0.0f;
 
-        body.createFixture(fixtureDef);
+        Fixture fixture = body.createFixture(fixtureDef);
+
+        fixture.setUserData(Level.ObjectType.OBSTACLE);
 
         circle.dispose();
 
