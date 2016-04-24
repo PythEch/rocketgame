@@ -2,6 +2,7 @@ package com.rocketfool.rocketgame.model;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.MassData;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
@@ -24,7 +25,7 @@ public class TrajectorySimulator extends GameObject {
 
         planets = new Array<Planet>();
         currentEstimationPath = new Array<Vector2>();
-        lastEstimationPath = currentEstimationPath;
+        lastEstimationPath = new Array<Vector2>();
 
         world = new World(new Vector2(0, 0), true);
 
@@ -39,6 +40,19 @@ public class TrajectorySimulator extends GameObject {
             ));
         }
 
+        playable = new Playable(
+                level.getPlayable().getBody().getPosition().x,
+                level.getPlayable().getBody().getPosition().y,
+                level.getPlayable().getWidth(),
+                level.getPlayable().getHeight(),
+                level.getPlayable().getBody().getMass() -  level.getPlayable().getFuelLeft(),
+                level.getPlayable().getDeltaAngularImpulse(),
+                level.getPlayable().getDeltaThrust(),
+                level.getPlayable().getMaxThrust(),
+                level.getPlayable().getFuelLeft(),
+                world
+        );
+
         createWorld();
 
     }
@@ -46,23 +60,7 @@ public class TrajectorySimulator extends GameObject {
     private void createWorld() {
         currentEstimationPath.clear();
 
-        if (playable != null)
-            world.destroyBody(playable.getBody());
-
         world.clearForces();
-
-        playable = new Playable(
-                level.getPlayable().getBody().getPosition().x,
-                level.getPlayable().getBody().getPosition().y,
-                level.getPlayable().getWidth(),
-                level.getPlayable().getHeight(),
-                level.getPlayable().getBody().getMass(),
-                level.getPlayable().getDeltaAngularImpulse(),
-                level.getPlayable().getDeltaThrust(),
-                10000,
-                1000000,
-                world
-        );
 
         Body myBody = playable.getBody();
         Body other = level.getPlayable().getBody();
@@ -74,23 +72,30 @@ public class TrajectorySimulator extends GameObject {
         myBody.setTransform(other.getPosition().cpy(), other.getAngle());
         myBody.getTransform().setOrientation(other.getTransform().getOrientation().cpy());
         myBody.getTransform().setRotation(other.getTransform().getRotation());
+
+        MassData tempMD = new MassData();
+        tempMD.mass = other.getMass();
+        tempMD.I = other.getMassData().I / other.getMass() * tempMD.mass;
+        myBody.setMassData(tempMD);
+
+        playable.setFuelLeft(level.getPlayable().getFuelLeft());
     }
 
 
     @Override
     public void update(float deltaTime) {
-        if (++times == 20) {
+        if (++times == 1) {
             times = 0;
             lastEstimationPath = new Array<Vector2>(currentEstimationPath);
             createWorld();
         }
 
-        for (int i = 1; i <= 60; i++) {
+        for (int i = 1; i <= 2400; i++) {
             doGravity();
-            playable.update(deltaTime);
-            world.step(1 / 60f, 6, 2);
+            playable.update(1f / 60f);
+            world.step(1f / 60f, 6, 2);
 
-            if (i % 10 == 0)
+            if (i % 30 == 0)
                 currentEstimationPath.add(playable.getBody().getPosition().cpy());
         }
         //createWorld();

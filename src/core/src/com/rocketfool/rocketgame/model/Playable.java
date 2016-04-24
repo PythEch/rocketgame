@@ -134,9 +134,9 @@ public class Playable extends SolidObject {
                 maximizeThrust = false;
         }
 
-        impulseVector = new Vector2(0, deltaTime * currentThrust).rotateRad(body.getAngle());
+        impulseVector = new Vector2(0, currentThrust * deltaTime).rotateRad(body.getAngle());
 
-        body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
+        body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, true);
 
     }
     //endregion

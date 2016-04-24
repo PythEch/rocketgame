@@ -97,7 +97,7 @@ public class Level {
             updateWaypoints(deltaTime);
 
             timePassed += deltaTime;
-            world.step(1 / 60f, 6, 2);
+            world.step(deltaTime, 6, 2);
         }
     }
 
