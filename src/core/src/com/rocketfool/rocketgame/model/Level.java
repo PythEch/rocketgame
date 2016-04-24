@@ -1,15 +1,15 @@
 package com.rocketfool.rocketgame.model;
 
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 
 /**
  * Class to create instances of all levels. Also, it performs most of the calculations.
  */
 public class Level {
-    protected static /*final*/ float G;
+    protected static final float G = 6.67408f * 1e-20f;
+    ;
 
     protected World world;
     protected Playable playable;
@@ -24,8 +24,12 @@ public class Level {
     protected State state;
     boolean temp = true;
 
+    public enum ObjectType {
+        PLANET, OBSTACLE, PLAYABLE
+    }
+
     public Level() {
-        G = 6.67408f * 1e-20f; //**
+        this.state = State.RUNNING;
 
         this.world = new World(new Vector2(0, 0), true);
         this.triggers = new Array<Trigger>();
@@ -33,6 +37,38 @@ public class Level {
         this.solidObjects = new Array<SolidObject>();
         this.gameObjects = new Array<GameObject>();
         this.timePassed = 0;
+
+        world.setContactListener(new ContactListener() {
+            @Override
+            public void beginContact(Contact contact) {
+                ObjectType typeA = (ObjectType) contact.getFixtureA().getUserData();
+                ObjectType typeB = (ObjectType) contact.getFixtureB().getUserData();
+
+                if ((typeA == ObjectType.PLANET && typeB == ObjectType.PLAYABLE) ||
+                        (typeB == ObjectType.PLANET && typeA == ObjectType.PLAYABLE)) {
+                    planetCollision(contact);
+                }
+                else if ((typeA == ObjectType.OBSTACLE && typeB == ObjectType.PLAYABLE) ||
+                        (typeB == ObjectType.OBSTACLE && typeA == ObjectType.PLAYABLE)) {
+                    obstacleCollision(contact);
+                }
+            }
+
+            @Override
+            public void endContact(Contact contact) {
+
+            }
+
+            @Override
+            public void preSolve(Contact contact, Manifold oldManifold) {
+
+            }
+
+            @Override
+            public void postSolve(Contact contact, ContactImpulse impulse) {
+
+            }
+        });
 
         this.score = 0;
     }
@@ -43,6 +79,9 @@ public class Level {
 
     public void setState(State state) {
         this.state = state;
+        if (state == State.GAME_OVER) {
+            System.out.println("gg, game over");
+        }
     }
 
     public void saveGame() {
@@ -50,14 +89,17 @@ public class Level {
 
     public void update(float deltaTime) {
         //Calculate physical quantities and game components
-        updateSolidObjects(deltaTime);
-        updateGravity(deltaTime);
-        updateTriggers(deltaTime);
-        updateVisualObjects(deltaTime);
-        updateWaypoints(deltaTime);
 
-        timePassed += deltaTime;
-        world.step(1 / 60f, 6, 2);
+        if (state == State.RUNNING) {
+            updateSolidObjects(deltaTime);
+            updateGravity(deltaTime);
+            updateTriggers(deltaTime);
+            updateVisualObjects(deltaTime);
+            updateWaypoints(deltaTime);
+
+            timePassed += deltaTime;
+            world.step(1 / 60f, 6, 2);
+        }
     }
 
     private void updateSolidObjects(float deltaTime) {
@@ -114,9 +156,9 @@ public class Level {
     private void updateWaypoints(float deltaTime) {
 
         //remove waypoints form screen to meet the endgame condition
-        for (int i =0; i<waypoints.size; i++) {
+        for (int i = 0; i < waypoints.size; i++) {
 
-            if (playable.getBody().getPosition().dst(waypoints.get(i).getX(), waypoints.get(i).getY()) <= 10){
+            if (playable.getBody().getPosition().dst(waypoints.get(i).getX(), waypoints.get(i).getY()) <= 10) {
                 waypoints.get(i).setOnScreen(false);
             }
         }
@@ -131,7 +173,9 @@ public class Level {
         }
     }
 
-    public float getCurrentGravForce(){ return currentGravForce;}
+    public float getCurrentGravForce() {
+        return currentGravForce;
+    }
 
     public World getWorld() {
         return world;
@@ -253,6 +297,16 @@ public class Level {
             }
         }
         return planets;
+    }
+
+    private void planetCollision(Contact contact) {
+        System.out.println("planet collision");
+        setState(State.GAME_OVER);
+    }
+
+    private void obstacleCollision(Contact contact) {
+        System.out.println("obstacle collision");
+        setState(State.GAME_OVER);
     }
 
     enum State {
