@@ -94,7 +94,7 @@ public class GameScreen implements Screen {
         renderer.draw(batch);
 
         //This part is for the particles coming out of rocket
-        if ( cameraTarget.getCurrentImpulse() > 0 ){
+        if ( cameraTarget.getCurrentThrust() > 0 ){
             this.igniteRocketTrail();
         }
         else{
@@ -131,7 +131,7 @@ public class GameScreen implements Screen {
 
         // Draw a debug string which shows the velocity of the spaceship
         if (DEBUG) {
-            drawDebugString("  Linear Impulse: " + (int) cameraTarget.getCurrentImpulse(), 1);
+            drawDebugString("  Thrust: " + (int) cameraTarget.getCurrentThrust(), 1); //**
             drawDebugString("Angular Velocity: " + (int) (cameraTarget.getBody().getAngularVelocity() * 100), 2);
             drawDebugString("  Linear Velocity: " + (int) (cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +

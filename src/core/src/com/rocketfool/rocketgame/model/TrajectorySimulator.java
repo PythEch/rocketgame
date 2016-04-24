@@ -58,7 +58,7 @@ public class TrajectorySimulator extends GameObject {
                 level.getPlayable().getHeight(),
                 level.getPlayable().getBody().getMass(),
                 level.getPlayable().getDeltaAngularImpulse(),
-                level.getPlayable().getDeltaLinearImpulse(),
+                level.getPlayable().getDeltaThrust(),
                 10000,
                 1000000,
                 world
@@ -67,7 +67,7 @@ public class TrajectorySimulator extends GameObject {
         Body myBody = playable.getBody();
         Body other = level.getPlayable().getBody();
 
-        playable.setCurrentImpulse(level.getPlayable().getCurrentImpulse());
+        playable.setCurrentThrust(level.getPlayable().getCurrentThrust());
         myBody.setAngularVelocity(other.getAngularVelocity());
         myBody.setAngularDamping(other.getAngularDamping());
         myBody.setLinearVelocity(other.getLinearVelocity().cpy());

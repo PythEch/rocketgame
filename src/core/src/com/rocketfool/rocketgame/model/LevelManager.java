@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
-
+import static com.rocketfool.rocketgame.model.Playable.BASE;
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 
 /**
@@ -26,20 +26,20 @@ public class LevelManager {
 
 
         //initialization of the rocket
-        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250, 200, 1000, 1e25f, level.world);
-        level.playable.getBody().setLinearVelocity(0, 0);
+        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250 * BASE , 200 * BASE, 1000 * BASE, 5e5f, level.world);
+        level.playable.getBody().setLinearVelocity(0, 0); //TODO We can edit fuel levels later.
 
 
         level.triggers.add(new PositionTrigger(1000, 1000, 200, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("You've reached the Earth");
+                System.out.println("You've reached the Earth.");
             }
         });
         level.triggers.add(new PositionTrigger(5000, 3000, 350, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("You've reached the Moon");
+                System.out.println("You've reached the Moon.");
             }
         });
         if (DEBUG) {
@@ -70,7 +70,7 @@ public class LevelManager {
     public static Level createLevel2() {
         Level level = new Level();
 
-        level.playable = new Playable(300, 300, 88, 108, 1e5f, 250, 220, 1000, 1e25f, level.world);
+        level.playable = new Playable(300, 300, 88, 108, 1e5f, 250 * BASE, 220 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
@@ -89,7 +89,7 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 if(marsTrig.isTriggeredBefore()) {
-                    System.out.println("Mission Completed");
+                    System.out.println("Mission Completed!");
                 }
                 else {
                     System.out.println("Go to Mars, Adventurer!");
@@ -125,7 +125,7 @@ public class LevelManager {
     public static Level createLevel3() {
         Level level = new Level();
 
-        level.playable = new Playable(200, 300, 88, 105, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(200, 300, 88, 105, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
@@ -176,7 +176,7 @@ public class LevelManager {
         Level level = new Level();
 
         //initialization of the rocket
-        level.playable = new Playable(200, 300, 4 * 1e5f, level.world);
+        level.playable = new Playable(200, 300, 88, 105, 1e5f, 500 * BASE, 100 * BASE, 1000 * BASE, 5 * 1e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //init of map
@@ -187,13 +187,13 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 System.out.println("Oh it seems there will be lots of asteroids on the way back home, " +
-                        "we should doge them and we might even try different paths on the way. ");
+                        "we should dodge them and we might even try different paths on the way. ");
             }
         });
         level.triggers.add(new PositionTrigger(500, 500, 100, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("fasten your seat belts crew. This will be a bumpy ride.");
+                System.out.println("Fasten your seat belts crew. This will be a bumpy ride.");
             }
         });
         level.triggers.add(new PositionTrigger(3000, 2000, 500, level.playable) {
@@ -252,7 +252,7 @@ public class LevelManager {
         Level level = new Level();
 
         //initialization of the rocket
-        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(15f, 15f);
         level.playable.setFuelLeft(10);
 
