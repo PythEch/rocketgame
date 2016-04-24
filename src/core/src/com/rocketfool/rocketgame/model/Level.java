@@ -309,7 +309,7 @@ public class Level {
         setState(State.GAME_OVER);
     }
 
-    enum State {
+    public enum State {
         RUNNING, PAUSED, GAME_OVER
     }
 }

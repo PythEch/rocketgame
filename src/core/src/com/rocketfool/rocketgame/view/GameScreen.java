@@ -10,8 +10,10 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.utils.Timer;
 import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.model.Playable;
@@ -264,12 +266,46 @@ public class GameScreen implements Screen {
     public void showPauseScreen() {
         Dialog dialog = new Dialog("Paused", skin, "dialog") {
             public void result(Object obj) {
-                System.out.println("" + obj);
+                switch ((Integer) obj) {
+                    case 0:
+                        DEBUG = !DEBUG;
+                        break;
+                    case 1:
+                        saveCheckpoint();
+                        break;
+                    case 2:
+                        loadCheckpoint();
+                        break;
+                    case 3:
+                        restartLevel();
+                        break;
+                    case 4:
+                        showOptions();
+                        break;
+                    case 5:
+                        System.exit(0);
+                        break;
+                    default:
+                        break;
+                }
             }
 
             @Override
             public float getPrefWidth() {
                 return super.getPrefWidth() * 1.5f;
+            }
+
+            @Override
+            public void hide() {
+                super.hide();
+
+                new Timer().scheduleTask(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        level.setState(Level.State.RUNNING);
+                        System.out.println("called");
+                    }
+                }, 0.150f);
             }
         };
 
@@ -281,11 +317,13 @@ public class GameScreen implements Screen {
         dialog.getButtonTable().row();
         dialog.button("Restart Level", 3);
         dialog.getButtonTable().row();
-        dialog.button("Exit", 4);
+        dialog.button("Options", 4);
+        dialog.getButtonTable().row();
+        dialog.button("Exit", 5);
         dialog.getButtonTable().row().padTop(
                 dialog.getButtonTable().getCells().first().getPrefHeight()
         );
-        dialog.button("Continue", 5);
+        dialog.button("Continue", -1);
 
         Cell secondCell = dialog.getButtonTable().getCells().get(1);
         secondCell.width(secondCell.getPrefWidth() * 1.5f).height(secondCell.getPrefHeight() * 1.5f);
@@ -296,8 +334,10 @@ public class GameScreen implements Screen {
         dialog.padBottom(dialog.getPrefHeight() * 0.05f);
 
 
-        dialog.key(Input.Keys.ESCAPE, 5);
-        dialog.key(Input.Keys.ENTER, 5);
+        dialog.key(Input.Keys.ESCAPE, -1);
+        //dialog.key(Input.Keys.ENTER, 5);
+
+        level.setState(Level.State.PAUSED);
         dialog.show(stage);
     }
 
@@ -321,4 +361,20 @@ public class GameScreen implements Screen {
 
     }
     //endregion
+
+    private void saveCheckpoint() {
+
+    }
+
+    private void loadCheckpoint() {
+
+    }
+
+    private void restartLevel() {
+
+    }
+
+    private void showOptions() {
+
+    }
 }
