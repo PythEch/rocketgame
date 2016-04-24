@@ -63,7 +63,7 @@ public class LevelManager {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
                 public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
+                    //periodStopWatch.updatePeriod();
                 }
             });
         }
@@ -121,7 +121,7 @@ public class LevelManager {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
                 public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
+                    //periodStopWatch.updatePeriod();
                 }
             });
         }
@@ -220,7 +220,7 @@ public class LevelManager {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
                 public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
+                    //periodStopWatch.updatePeriod();
                 }
             });
         }
@@ -325,7 +325,7 @@ public class LevelManager {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
                 public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
+                    //periodStopWatch.updatePeriod();
                 }
             });
         }
@@ -386,7 +386,7 @@ public class LevelManager {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
                 public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
+                    //periodStopWatch.updatePeriod();
                 }
             });
         }
