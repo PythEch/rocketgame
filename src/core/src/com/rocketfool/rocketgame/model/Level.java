@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.Predicate;
  * Class to create instances of all levels. Also, it performs most of the calculations.
  */
 public class Level {
-    protected static /*final*/ float G = 6.67408e-11f;
+    protected static /*final*/ float G;
 
     protected World world;
     protected Playable playable;
@@ -20,6 +20,7 @@ public class Level {
     protected Array<SolidObject> solidObjects;
     protected Array<GameObject> gameObjects;
     protected float timePassed;
+    protected float currentGravForce;
     protected int score;
 
     boolean temp = true;
@@ -31,6 +32,8 @@ public class Level {
     protected State state;
 
     public Level() {
+        G = 6.67408f * 1e-20f; //**
+
         this.world = new World(new Vector2(0, 0), true);
         this.triggers = new Array<Trigger>();
         this.waypoints = new Array<Waypoint>();
@@ -94,7 +97,9 @@ public class Level {
             // it's also faster because normally distance calculation involves an Math.sqrt()
             // while len2() doesn't have to do so, so we don't have two Math.pow(Math.sqrt(distance), 2)
             // which is unnecessary work.
+
             float forceScalar = G * spaceship.getMass() * planet.getMass() / directionVector.len2(); //**
+            currentGravForce = forceScalar;
 
             // So now we have the value of the force and the direction
             // We have to get a vector with given direction and value
@@ -119,6 +124,8 @@ public class Level {
             go.update(deltaTime);
         }
     }
+
+    public float getCurrentGravForce(){ return currentGravForce;}
 
     public World getWorld() {
         return world;
