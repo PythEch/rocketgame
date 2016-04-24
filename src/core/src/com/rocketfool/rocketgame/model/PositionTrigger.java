@@ -10,17 +10,30 @@ public abstract class PositionTrigger implements Trigger {
     private float y;
     private float radius;
     private SolidObject target;
+    private boolean isTriggeredBefore;
 
     public PositionTrigger(float x, float y, float radius, SolidObject target) {
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.target = target;
+        isTriggeredBefore = false;
     }
 
     public final boolean isTriggered() {
         Vector2 pos = target.getBody().getPosition();
 
-        return pos.dst(x, y) <= radius;
+        if(pos.dst(x, y) <= radius) {
+            isTriggeredBefore = true;
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
+    public final boolean isTriggeredBefore() {
+        return isTriggeredBefore;
     }
 }

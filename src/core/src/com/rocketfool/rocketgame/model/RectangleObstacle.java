@@ -26,7 +26,9 @@ public class RectangleObstacle extends SolidObject {
         fixtureDef.shape = rectangle;
         fixtureDef.restitution = 0.0f;
 
-        body.createFixture(fixtureDef);
+        Fixture fixture = body.createFixture(fixtureDef);
+
+        fixture.setUserData(Level.ObjectType.OBSTACLE);
 
         rectangle.dispose();
 

@@ -13,35 +13,70 @@ import static com.rocketfool.rocketgame.util.Constants.toMeter;
  */
 public class Playable extends SolidObject {
     //region Fields
+    private final float fuelSpecificImpulse = 4500;    // impulse in N generated per kg of fuel //TODO: improve?
+                                                       // http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print)
+    private final float thrustMultiplier = 4 * 1e3f;   // A base multiplier for thrust management.
+
     private float currentImpulse;
     private float deltaAngularImpulse;
     private float deltaLinearImpulse;
     private float fuelLeft;
     private float width;
     private float height;
-    private float maxImpulse;
-    /** SAS is the system of a spacecraft that automatically stops its spinning. */
-    private boolean SASenabled;
+    private float maxDeltaLinearImpulse;
+    private boolean SASEnabled;
+    private boolean maximizeThrust;
+    private boolean minimizeThrust;
     private Vector2 bottomPosition;
     private Vector2 spawnPoint;
     //endregion
 
+    //region Constructors
 
-    public Playable(float x, float y, float width, float height, float mass, float rotateImpulse, float impulse, float maxImpulse, float fuel, World world) {
+    /** Constructor for a player-controlled space craft. Mass and fuel values are in kg.*/
+    public Playable(float x, float y, float width, float height, float dryMass, float deltaAngularImpulse, float deltaLinearImpulse, float maxDeltaLinearImpulse, float fuel, World world) {
         this.currentImpulse = 0;
-        this.deltaAngularImpulse = rotateImpulse;
-        this.deltaLinearImpulse = impulse;
-        this.fuelLeft = fuel;
         this.width = width;
         this.height = height;
-        this.maxImpulse = maxImpulse;
-        this.SASenabled = false;
+        this.deltaAngularImpulse = deltaAngularImpulse;
+        this.deltaLinearImpulse = deltaLinearImpulse;
+        this.fuelLeft = fuel;
+        this.maxDeltaLinearImpulse = maxDeltaLinearImpulse;
+        this.SASEnabled = false;
+        this.maximizeThrust = false;
+        this.maximizeThrust = false;
 
-        this.body = createBody(x, y, mass, world);
+        this.body = createBody(x, y, (dryMass + fuel) , world);
         this.spawnPoint = body.getPosition().cpy();
     }
-	/** This creation is according to Box2D definitions.*/
+
+    /** Constructor for a player-controlled space craft with default values. Mass and fuel values are in kg.*/
+    public Playable(float x, float y, float fuel, World world) {
+        // Similar to typical spacecraft, our typical crafts will have a dry mass of 100t and carry up to 400t of fuel.
+        this.width = 88;
+        this.height = 105;
+        float dryMass = 1*1e5f;
+        this.currentImpulse = 0;                               //Current thrust in Newtons per "delta t"
+        this.deltaAngularImpulse = 800 * thrustMultiplier;     //Reaction wheel strength (assuming the craft rotates using electricity.
+        this.deltaLinearImpulse = 100 * thrustMultiplier;      //Thrust change rate multiplier
+        this.maxDeltaLinearImpulse = 1000 * thrustMultiplier;  //Total max thrust therefore is 4000 kN, which is realistic,
+        this.fuelLeft = fuel;                                  //https://en.wikipedia.org/wiki/RD-180
+
+        this.SASEnabled = false;
+        this.maximizeThrust = false;
+        this.maximizeThrust = false;
+
+        this.body = createBody(x, y, ( dryMass + fuel) , world);
+        this.spawnPoint = body.getPosition().cpy();
+    }
+    //endregion
+
+	/** This object's creation is according to Box2D definitions.*/
     private Body createBody(float x, float y, float mass, World world) {
+        // In Box2D, every body has a location and some fixtures (in this case one).
+        // The location and orientation of the object is determined by the body while properties like
+        // its mass and friction depend on its fixtures.
+
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(Gdx.graphics.getWidth() / 2f * toMeter, Gdx.graphics.getHeight() / 2f * toMeter);
@@ -56,11 +91,13 @@ public class Playable extends SolidObject {
         // Define properties of object here
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = rectangle;
-        fixtureDef.density = 1.0f; // TODO: Calculate a reasonable density
+        fixtureDef.density = mass / ( width * toMeter * height  * toMeter ); //**
         fixtureDef.friction = 0.0f;
         fixtureDef.restitution = 0.0f;
 
         Fixture fixture = body.createFixture(fixtureDef);
+
+        fixture.setUserData(Level.ObjectType.PLAYABLE);
 
         rectangle.dispose();
 
@@ -78,39 +115,50 @@ public class Playable extends SolidObject {
     }
 
     private void consumeFuelAndDecreaseMass(float deltaTime) {
-		//kilogram per liter is taken as 0.18
-    	if (fuelLeft > 0) {
-            float fuelSpent = currentImpulse * deltaTime / 100;
+        float newMass;
+        MassData tempMD;
+        if (fuelLeft > 0) {
+            float fuelSpent = currentImpulse * deltaTime / fuelSpecificImpulse;
             fuelLeft -= fuelSpent;
-            //decrease mass 0.18 for each fuel spent
-            body.getMassData().mass -= fuelSpent * 0.18; //FIXME: make a constant for this
+
+            //The mass information of the body changes only when MassData is updated
+            //because of the nature of the Box2D engine.
+            newMass =  body.getMass() - fuelSpent;
+            tempMD = new MassData();
+            tempMD.mass = newMass;
+            tempMD.I = body.getMassData().I / body.getMass() * tempMD.mass;
+            body.setMassData( tempMD );
         }
-    }
-    //setter to use in level initializations
-    public void setFuelLeft(float fuel){
-        this.fuelLeft = fuel;
     }
 
     private void move(float deltaTime) {
-        Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(body.getAngle());
+        Vector2 bottomVector;
+        Vector2 impulseVector;
+
+        bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(body.getAngle());
         bottomPosition = bottomVector.add(body.getPosition());
 
-        Vector2 impulseVector = new Vector2(0, deltaTime * currentImpulse).rotateRad(body.getAngle());
+        if (fuelLeft <= 0)
+            currentImpulse = 0;
+        if (minimizeThrust) {
+            maximizeThrust = false;
+            minimizeThrust(deltaTime);
+            if ( currentImpulse == 0 )
+                minimizeThrust = false;
+        }
+        if (maximizeThrust) {
+            minimizeThrust = false;
+            maximizeThrust(deltaTime);
+            if ( currentImpulse >= maxDeltaLinearImpulse )
+                maximizeThrust = false;
+        }
+
+        impulseVector = new Vector2(0, deltaTime * currentImpulse).rotateRad(body.getAngle());
 
         body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, false);
 
     }
     //endregion
-
-    public void toggleSAS() {
-        SASenabled = !SASenabled;
-		if (SASenabled) {
-            body.setAngularDamping( deltaAngularImpulse / 100 ); //TODO: Run SAS WHILE shift is pressed (toggle is too sensitive).
-        }
-        else {
-            body.setAngularDamping(0);
-        }
-    }
 
     //region Getters & Setters
     public float getCurrentImpulse() {
@@ -137,14 +185,30 @@ public class Playable extends SolidObject {
         return height;
     }
 
+    public float getMaxDeltaLinearImpulse(){ return maxDeltaLinearImpulse; }
+
     public Vector2 getBottomPosition(){
         return bottomPosition;
+    }
+
+    public boolean getSASEnabled() { return SASEnabled;}
+
+    public Vector2 getSpawnPoint() {
+        return spawnPoint;
     }
 
     public void setCurrentImpulse(float currentImpulse) {
         this.currentImpulse = currentImpulse;
     }
+
+    //setter to use in level initializations
+    public void setFuelLeft(float fuel){
+        this.fuelLeft = fuel;
+    }
     //endregion
+
+
+    //region Manually-controlled playable behaviour
 
     public void turnLeft(float deltaTime) {
         body.applyAngularImpulse(deltaAngularImpulse * deltaTime, true);
@@ -154,18 +218,51 @@ public class Playable extends SolidObject {
         body.applyAngularImpulse(-deltaAngularImpulse * deltaTime, true);
     }
 
+    public void toggleSAS() {
+        SASEnabled = !SASEnabled;
+    }
+
+    /** The Stability Assist System (SAS) of a spacecraft automatically prevents unwanted
+        spinning to make controlling the craft much easier.*/
+    public void runSAS( float deltaTime ){
+        if (SASEnabled){
+            if ( this.getBody().getAngularVelocity() < 0 )
+                turnLeft( deltaTime );
+            else if ( this.getBody().getAngularVelocity() > 0 )
+                turnRight( deltaTime );
+        }
+    }
+
     public void increaseThrust(float deltaTime) {
-        // FIXME: Use Math.min with some max speed
-        if (fuelLeft > 0) {
-            currentImpulse = Math.max(0, currentImpulse + deltaTime * deltaLinearImpulse);
+        if (fuelLeft > 0 ) {
+            currentImpulse = Math.min(currentImpulse + deltaTime * 2 * deltaLinearImpulse , maxDeltaLinearImpulse);
         }
     }
 
     public void decreaseThrust(float deltaTime) {
-        currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse);
+        currentImpulse = Math.max(0, currentImpulse - deltaTime * 2 * deltaLinearImpulse);
     }
 
-    public Vector2 getSpawnPoint() {
-        return spawnPoint;
+    public void toggleMaximizeThrust(){
+        maximizeThrust = !maximizeThrust;
     }
+
+    public void toggleMinimizeThrust(){
+        minimizeThrust = !minimizeThrust;
+    }
+
+    public void maximizeThrust( float deltaTime ){
+        if (fuelLeft > 0 ) {
+            currentImpulse = Math.min(maxDeltaLinearImpulse , currentImpulse + deltaTime * deltaLinearImpulse * 10);
+        }
+    }
+
+    public void minimizeThrust( float deltaTime ){
+        currentImpulse = Math.max(0, currentImpulse - deltaTime * deltaLinearImpulse * 10);
+    }
+    //endregion
+
+
+
+
 }

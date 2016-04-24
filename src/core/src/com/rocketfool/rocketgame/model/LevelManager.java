@@ -51,11 +51,6 @@ public class LevelManager {
             });
         }
 
-        // G = 6.67408f*1e-11f*1e-12f;
-        // Expected G, which doesn't work for some reason
-        // Current scale 1/10^6 approx
-        level.G = 4 * 1e-20f; //Plan B: G is whatever we like... idare eder...**
-
         //this object stands for the earth and its properties
         level.solidObjects.add(new Planet(1000, 1000, 6 * 1e24f, 100, null, level.world));
         //this object stands for the moon and its properties
@@ -82,18 +77,27 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 90, Gdx.graphics.getHeight() * 90);
 
         //add triggers to level 2
-        level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
+        final PositionTrigger marsTrig = new PositionTrigger(5000, 2000, 400, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("You should start your journey now!");
+                System.out.println("Go back to Earth, Moron!");
             }
-        });
-        level.triggers.add(new PositionTrigger(3000, 3000, 350, level.playable) {
+        };
+        level.triggers.add(marsTrig);
+
+        final PositionTrigger earthTrig = new PositionTrigger(220, 300, 200, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("And this is Mars!");
+                if(marsTrig.isTriggeredBefore()) {
+                    System.out.println("Mission Completed");
+                }
+                else {
+                    System.out.println("Go to Mars, Adventurer!");
+                }
             }
-        });
+        };
+        level.triggers.add(earthTrig);
+
         if (DEBUG) {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
@@ -103,17 +107,15 @@ public class LevelManager {
             });
         }
 
-        //TODO:Final gravitation will come
-        level.G = 4 * 1e-20f;
-
-        level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
+        level.solidObjects.add(new Planet(220, 300, 6 * 1e24f, 100, null, level.world));
         //this object stands for the mars
-        level.solidObjects.add(new Planet(2500, 3000, 2.7f * 1e25f, 250, null, level.world));
+        level.solidObjects.add(new Planet(5000, 2000, 2.7f * 1e25f, 250, null, level.world));
         //TODO:add the cargo object below to rotate around the mars
 
         //bottom of the planet
         //TODO:cycle through waypoints during the level, so add more
-        level.waypoints.add(new Waypoint(200, 100, 100));
+        level.waypoints.add(new Waypoint(200, 200, 100));
+        level.waypoints.add(new Waypoint(4000,7000, 250));
 
         addDefaultTriggers(level);
 
@@ -146,10 +148,6 @@ public class LevelManager {
             });
         }
 
-
-        //TODO:Final gravitation will come
-        level.G = 4 * 1e-20f;
-
         level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
         //this object stands for the planet 1
         level.solidObjects.add(new Planet(1200, 3000, 2.7f * 1e21f, 250, null, level.world));
@@ -178,7 +176,7 @@ public class LevelManager {
         Level level = new Level();
 
         //initialization of the rocket
-        level.playable = new Playable(200, 300, 88, 105, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(200, 300, 4 * 1e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //init of map
@@ -225,9 +223,6 @@ public class LevelManager {
                 }
             });
         }
-
-        //g will be edited
-        level.G = 4 * 1e-20f;
 
         //this object stands for the target planet and its properties
         level.solidObjects.add(new Planet(6000, 3000, 2.7f * 1e25f, 150, null, level.world));
@@ -285,9 +280,6 @@ public class LevelManager {
                 }
             });
         }
-
-
-        level.G = 4 * 1e-20f;
 
         //this object stands for the earth and its properties
         level.solidObjects.add(new Planet(1000, 1000, 6 * 1e24f, 100, null, level.world));
