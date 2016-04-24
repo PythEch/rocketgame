@@ -30,18 +30,32 @@ public class LevelManager {
         level.playable.getBody().setLinearVelocity(0, 0);
 
 
-        level.triggers.add(new PositionTrigger(1000, 1000, 200, level.playable) {
+        final PositionTrigger earthTrig = new PositionTrigger(1000, 1000, 200, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("You've reached the Earth");
+                System.out.println("How can you forget you wallet at mars?!?!?");
             }
-        });
-        level.triggers.add(new PositionTrigger(5000, 3000, 350, level.playable) {
+        };
+        level.triggers.add(earthTrig);
+        final PositionTrigger moon = new PositionTrigger(5000, 300, 400, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("You've reached the Moon");
+                System.out.println("We can return home now!");
             }
-        });
+        };
+        level.triggers.add(moon);
+
+        final PositionTrigger earthTrig2 = new PositionTrigger(1000, 1000, 200, level.playable) {
+            @Override
+            public void triggerPerformed() {
+                if (moon.isTriggeredBefore() && earthTrig.isTriggeredBefore()) {
+                    System.out.println("Mission Completed");
+                } else {
+                    System.out.println("Mission is not yet over!");
+                }
+            }
+        };
+        level.triggers.add(earthTrig);
         if (DEBUG) {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
@@ -88,10 +102,9 @@ public class LevelManager {
         final PositionTrigger earthTrig = new PositionTrigger(220, 300, 200, level.playable) {
             @Override
             public void triggerPerformed() {
-                if(marsTrig.isTriggeredBefore()) {
+                if (marsTrig.isTriggeredBefore()) {
                     System.out.println("Mission Completed");
-                }
-                else {
+                } else {
                     System.out.println("Go to Mars, Adventurer!");
                 }
             }
@@ -110,12 +123,11 @@ public class LevelManager {
         level.solidObjects.add(new Planet(220, 300, 6 * 1e24f, 100, null, level.world));
         //this object stands for the mars
         level.solidObjects.add(new Planet(5000, 2000, 2.7f * 1e25f, 250, null, level.world));
-        //TODO:add the cargo object below to rotate around the mars
+        //TODO:add the cargo object below to rotate around the mars, this could also be a waypoint
 
         //bottom of the planet
-        //TODO:cycle through waypoints during the level, so add more
         level.waypoints.add(new Waypoint(200, 200, 100));
-        level.waypoints.add(new Waypoint(4000,7000, 250));
+        level.waypoints.add(new Waypoint(4000, 7000, 250));
 
         addDefaultTriggers(level);
 
@@ -131,14 +143,65 @@ public class LevelManager {
         //edit the size of the map here
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
 
-        //add triggers for the level
-        //TODO:increase numbers of triggers for the texts that should appear near the planets
+        //add unnecesary triggers for the level
+        //TODO:increase numbers of basic & nonessential triggers for the texts that should appear near the planets
         level.triggers.add(new PositionTrigger(100, 100, 10, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("You should start your journey now!");
             }
         });
+
+        //add important endgame triggers
+        final PositionTrigger planet1 = new PositionTrigger(1200, 3000, 500, level.playable) {
+            @Override
+            public void triggerPerformed() {
+                System.out.println("What a beautiful planet");
+            }
+        };
+
+        level.triggers.add(planet1);
+        final PositionTrigger planet2 = new PositionTrigger(3200, 1220, 300, level.playable) {
+            @Override
+            public void triggerPerformed() {
+                System.out.println("Lets check the others");
+            }
+        };
+        level.triggers.add(planet2);
+
+        final PositionTrigger planet3 = new PositionTrigger(6000, 800, 160, level.playable) {
+            @Override
+            public void triggerPerformed() {
+                if (planet1.isTriggered() && planet2.isTriggeredBefore())
+                    System.out.println("lets check the next one");
+                else
+                    System.out.println("We skipped one planet it might be there!");
+            }
+        };
+        level.triggers.add(planet3);
+
+        final PositionTrigger planet4 = new PositionTrigger(5300, 3500, 600, level.playable) {
+            @Override
+            public void triggerPerformed() {
+                if (planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered())
+                    System.out.println("OK its here we can go home");
+                else
+                    System.out.println("We should check the remaining ones");
+            }
+        };
+        level.triggers.add(planet4);
+
+        final PositionTrigger earthTrig = new PositionTrigger(200, 200, 200, level.playable) {
+            @Override
+            public void triggerPerformed() {
+                if (planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggeredBefore() && planet4.isTriggeredBefore()) {
+                    System.out.println("Mission Completed");
+                } else {
+                    System.out.println("Some Planets still remain to be discovered");
+                }
+            }
+        };
+        level.triggers.add(earthTrig);
         if (DEBUG) {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
@@ -215,6 +278,27 @@ public class LevelManager {
                 System.out.println("What a strange trip it has been");
             }
         });
+
+        //endgame triggers
+        final PositionTrigger planet = new PositionTrigger(6000, 3000, 300, level.playable) {
+            @Override
+            public void triggerPerformed() {
+                System.out.println("nice we can go back where we started");
+            }
+        };
+        level.triggers.add(planet);
+        final PositionTrigger endGame = new PositionTrigger(200, 200, 300, level.playable) {
+            @Override
+            public void triggerPerformed() {
+                if (planet.isTriggeredBefore()) {
+                    System.out.println("Mission Completed");
+                } else {
+                    System.out.println("We need to go to that planet");
+                }
+            }
+        };
+        level.triggers.add(endGame);
+
         if (DEBUG) {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
@@ -260,18 +344,25 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 25, Gdx.graphics.getHeight() * 25);
 
 
-        level.triggers.add(new PositionTrigger(1000, 1000, 200, level.playable) {
+        final PositionTrigger moon = new PositionTrigger(5000, 300, 500, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("You've reached the Earth");
+                System.out.println("We can return home now!");
             }
-        });
-        level.triggers.add(new PositionTrigger(5000, 3000, 350, level.playable) {
+        };
+        level.triggers.add(moon);
+        final PositionTrigger earthTrig = new PositionTrigger(1000, 1000, 200, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("You've reached the Moon");
+                if (moon.isTriggeredBefore()) {
+                    System.out.println("Mission Completed");
+                } else {
+                    System.out.println("Mission is not yet over!");
+                }
             }
-        });
+        };
+        level.triggers.add(earthTrig);
+
         if (DEBUG) {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
