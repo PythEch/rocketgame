@@ -94,6 +94,13 @@ public class GameScreen implements Screen {
         renderer.draw(batch);
 
         //This part is for the particles coming out of rocket
+        if ( cameraTarget.getCurrentImpulse() > 0 ){
+            this.igniteRocketTrail();
+        }
+        else{
+            this.stopRocketTrail();
+        }
+
         particleEffect.draw(batch);
         particleEffect.update(dt);
         particleEffect.setPosition(level.getPlayable().getBottomPosition().x * toPixel, level.getPlayable().getBottomPosition().y * toPixel);
@@ -133,6 +140,11 @@ public class GameScreen implements Screen {
                     ( cameraTarget.getBody().getPosition().dst(  level.getPlanetLocation(0) ) ) , 5 );
             drawDebugString(" Period (P1): " + (int) LevelManager.periodStopWatch.getPeriod() , 6 );
             drawDebugString("FPS: " + (int)(1f/Gdx.graphics.getDeltaTime()), 7 );
+            drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 9 );
+            drawDebugString("Fuel left: " + (int) cameraTarget.getFuelLeft(), 8 );
+            drawDebugString("SAS: " + level.getPlayable().getSASEnabled(), 35 );
+            drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 10 );
+
         }
     }
 
@@ -197,7 +209,7 @@ public class GameScreen implements Screen {
 
 
         //endregion
-        level = LevelManager.createLevel2();
+        level = LevelManager.createLevel4();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
         controller = new WorldController(level, this);
@@ -206,15 +218,15 @@ public class GameScreen implements Screen {
 
     public void zoomIn() {
 
-        camera.zoom = (float) Math.max(0.5, camera.zoom / 1.04f );
+        camera.zoom = Math.max(0.5f, camera.zoom / 1.04f );
         if ( camera.zoom > 0.5 ) {
             font.setScale(font.getScaleX() / 1.04f);
-        }
+       }
 
     } //**
 
     public void zoomOut() {
-        camera.zoom = (float) Math.min( camera.zoom * 1.04f , 150 );
+        camera.zoom = Math.min( camera.zoom * 1.04f , 150f );
         if ( camera.zoom < 150 )
             font.setScale( font.getScaleX() * 1.04f );
     }
