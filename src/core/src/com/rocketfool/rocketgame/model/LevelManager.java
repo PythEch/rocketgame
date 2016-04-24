@@ -42,14 +42,6 @@ public class LevelManager {
                 System.out.println("You've reached the Moon.");
             }
         });
-        if (DEBUG) {
-            level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
-                @Override
-                public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
-                }
-            });
-        }
 
         //this object stands for the earth and its properties
         level.solidObjects.add(new Planet(1000, 1000, 6 * 1e24f, 100, null, level.world));
@@ -98,15 +90,6 @@ public class LevelManager {
         };
         level.triggers.add(earthTrig);
 
-        if (DEBUG) {
-            level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
-                @Override
-                public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
-                }
-            });
-        }
-
         level.solidObjects.add(new Planet(220, 300, 6 * 1e24f, 100, null, level.world));
         //this object stands for the mars
         level.solidObjects.add(new Planet(5000, 2000, 2.7f * 1e25f, 250, null, level.world));
@@ -139,14 +122,6 @@ public class LevelManager {
                 System.out.println("You should start your journey now!");
             }
         });
-        if (DEBUG) {
-            level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
-                @Override
-                public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
-                }
-            });
-        }
 
         level.solidObjects.add(new Planet(200, 200, 6 * 1e24f, 100, null, level.world));
         //this object stands for the planet 1
@@ -215,14 +190,6 @@ public class LevelManager {
                 System.out.println("What a strange trip it has been");
             }
         });
-        if (DEBUG) {
-            level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
-                @Override
-                public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
-                }
-            });
-        }
 
         //this object stands for the target planet and its properties
         level.solidObjects.add(new Planet(6000, 3000, 2.7f * 1e25f, 150, null, level.world));
@@ -272,14 +239,7 @@ public class LevelManager {
                 System.out.println("You've reached the Moon");
             }
         });
-        if (DEBUG) {
-            level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
-                @Override
-                public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
-                }
-            });
-        }
+
 
         //this object stands for the earth and its properties
         level.solidObjects.add(new Planet(1000, 1000, 6 * 1e24f, 100, null, level.world));
@@ -326,23 +286,4 @@ public class LevelManager {
         });
     }
 
-    // Stopwatch methods
-    public static class periodStopWatch {
-        private static long stopTime = System.currentTimeMillis();
-        private static long startTime = stopTime;
-        private static long period = -1;
-
-        public static void updatePeriod() {
-            stopTime = System.currentTimeMillis();
-            if (stopTime - startTime >= 2000) {
-                period = ((stopTime - startTime) / 1000);
-                startTime = stopTime;
-                System.err.println("Rotation complete. Period updated");
-            }
-        }
-
-        public static long getPeriod() {
-            return period;
-        }
-    }
 }

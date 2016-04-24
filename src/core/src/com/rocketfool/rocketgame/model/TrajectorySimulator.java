@@ -52,7 +52,7 @@ public class TrajectorySimulator extends GameObject {
                 level.getPlayable().getFuelLeft(),
                 world
         );
-
+        playable.setSASEnabled( level.getPlayable().getSASEnabled() );
         createWorld();
 
     }

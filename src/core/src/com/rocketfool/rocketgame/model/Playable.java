@@ -182,10 +182,14 @@ public class Playable extends SolidObject {
         this.currentThrust = currentThrust;
     }
 
-    //setter to use in level initializations
+    /**
+     * Setter to use in level initializations
+     */
     public void setFuelLeft(float fuel){
         this.fuelLeft = fuel;
     }
+
+    public void setSASEnabled( boolean set ) { SASEnabled = set; }
     //endregion
 
 
@@ -206,11 +210,21 @@ public class Playable extends SolidObject {
     /** The Stability Assist System (SAS) of a spacecraft automatically prevents unwanted
         spinning to make controlling the craft much easier.*/
     public void runSAS( float deltaTime ){
+        float spin = this.getBody().getAngularVelocity(); //NOTE: This 1/100 the value on the Debug Screen...
         if (SASEnabled){
-            if ( this.getBody().getAngularVelocity() < 0 )
-                turnLeft( deltaTime );
-            else if ( this.getBody().getAngularVelocity() > 0 )
-                turnRight( deltaTime );
+            if ( spin > 0f ) {
+                if (spin > 0.001f)
+                    turnRight(deltaTime);
+                else
+                    turnRight(deltaTime/1000f);
+            }
+            else if ( spin < 0f ){
+                if ( spin < -0.001f )
+                    turnLeft( deltaTime );
+                else
+                    turnLeft(deltaTime/1000f);
+            }
+            System.err.println( spin );
         }
     }
 
@@ -242,8 +256,5 @@ public class Playable extends SolidObject {
         currentThrust = Math.max(0, currentThrust - deltaTime * deltaThrust * 10);
     }
     //endregion
-
-
-
 
 }

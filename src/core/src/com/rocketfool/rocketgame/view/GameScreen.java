@@ -138,7 +138,7 @@ public class GameScreen implements Screen {
                     " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
             drawDebugString("Distance: " + (int)
                     ( cameraTarget.getBody().getPosition().dst(  level.getPlanetLocation(0) ) ) , 5 );
-            drawDebugString(" Period (P1): " + (int) LevelManager.periodStopWatch.getPeriod() , 6 );
+            drawDebugString(" Period: " + "( N/A )"  , 6 ); //Writing the method for it...
             drawDebugString("FPS: " + (int)(1f/Gdx.graphics.getDeltaTime()), 7 );
             drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 9 );
             drawDebugString("Fuel left: " + (int) cameraTarget.getFuelLeft(), 8 );
@@ -209,7 +209,7 @@ public class GameScreen implements Screen {
 
 
         //endregion
-        level = LevelManager.createLevel4();
+        level = LevelManager.createLevel1();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
         controller = new WorldController(level, this);
