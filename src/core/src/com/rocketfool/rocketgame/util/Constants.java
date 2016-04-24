@@ -17,6 +17,6 @@ public final class Constants {
     /** Used to indicate whether DEBUG features should be enabled. */
     public static final boolean DEBUG = true;
     /** Used to disable some features to reduce load time for debugging. */
-    public static final boolean QUICK_LOAD = false;
+    public static final boolean QUICK_LOAD = true;
     //TODO: Where can we use this other than RocketGame.java?
 }
