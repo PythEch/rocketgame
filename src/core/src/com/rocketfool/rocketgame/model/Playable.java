@@ -95,7 +95,9 @@ public class Playable extends SolidObject {
         fixtureDef.friction = 0.0f;
         fixtureDef.restitution = 0.0f;
 
-        body.createFixture(fixtureDef);
+        Fixture fixture = body.createFixture(fixtureDef);
+
+        fixture.setUserData(Level.ObjectType.PLAYABLE);
 
         rectangle.dispose();
 

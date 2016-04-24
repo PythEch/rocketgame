@@ -221,7 +221,7 @@ public class GameScreen implements Screen {
         camera.zoom = Math.max(0.5f, camera.zoom / 1.04f );
         if ( camera.zoom > 0.5 ) {
             font.setScale(font.getScaleX() / 1.04f);
-        }
+       }
 
     } //**
 
