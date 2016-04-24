@@ -20,7 +20,6 @@ import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
 
 import com.badlogic.gdx.video.VideoPlayer;
-import com.sun.tools.javac.comp.Enter;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
