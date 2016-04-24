@@ -103,7 +103,7 @@ public class GameScreen implements Screen {
         renderer.draw(batch);
 
         //This part is for the particles coming out of rocket
-        if (cameraTarget.getCurrentImpulse() > 0) {
+        if ( cameraTarget.getCurrentThrust() > 0 ){
             this.igniteRocketTrail();
         } else {
             this.stopRocketTrail();
@@ -141,19 +141,19 @@ public class GameScreen implements Screen {
 
         // Draw a debug string which shows the velocity of the spaceship
         if (DEBUG) {
-            drawDebugString("  Linear Impulse: " + (int) cameraTarget.getCurrentImpulse(), 1);
+            drawDebugString("  Thrust: " + (int) cameraTarget.getCurrentThrust(), 1); //**
             drawDebugString("Angular Velocity: " + (int) (cameraTarget.getBody().getAngularVelocity() * 100), 2);
             drawDebugString("  Linear Velocity: " + (int) (cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
                     " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
             drawDebugString("Distance: " + (int)
-                    (cameraTarget.getBody().getPosition().dst(level.getPlanetLocation(0))), 5);
-            drawDebugString(" Period (P1): " + (int) LevelManager.periodStopWatch.getPeriod(), 6);
-            drawDebugString("FPS: " + (int) (1f / Gdx.graphics.getDeltaTime()), 7);
-            drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 9);
-            drawDebugString("Fuel left: " + (int) cameraTarget.getFuelLeft(), 8);
-            drawDebugString("SAS: " + level.getPlayable().getSASEnabled(), 35);
-            drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 10);
+                    ( cameraTarget.getBody().getPosition().dst(  level.getPlanetLocation(0) ) ) , 5 );
+            drawDebugString(" Period: " + "( N/A )"  , 6 ); //Writing the method for it...
+            drawDebugString("FPS: " + (int)(1f/Gdx.graphics.getDeltaTime()), 7 );
+            drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 9 );
+            drawDebugString("Fuel left: " + (int) cameraTarget.getFuelLeft(), 8 );
+            drawDebugString("SAS: " + level.getPlayable().getSASEnabled(), 35 );
+            drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 10 );
 
         }
     }
@@ -217,7 +217,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
         //endregion
-        level = LevelManager.createLevel4();
+        level = LevelManager.createLevel1();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
         controller = new WorldController(level, this);

@@ -1,7 +1,9 @@
 package com.rocketfool.rocketgame.model;
 
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.MassData;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
 import java.io.*;
@@ -81,7 +83,7 @@ public class TrajectorySimulator extends GameObject {
                 level.getPlayable().getFuelLeft(),
                 world
         );
-
+        playable.setSASEnabled( level.getPlayable().getSASEnabled() );
         createWorld();
 
     }
