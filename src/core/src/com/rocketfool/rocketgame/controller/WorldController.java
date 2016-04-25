@@ -61,8 +61,8 @@ public class WorldController {
             playable.runSAS(deltaTime);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && level.getState() == Level.State.RUNNING) {
+            screen.showPauseScreen();
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
@@ -75,7 +75,7 @@ public class WorldController {
 
         if (DEBUG) {
             if (Gdx.input.isKeyPressed(Input.Keys.F)) {
-                playable.setCurrentImpulse(0);
+                playable.setCurrentThrust(0);
                 body.setAngularVelocity(0);
             }
             if (Gdx.input.isKeyPressed(Input.Keys.G)) {

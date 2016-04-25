@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
-
+import static com.rocketfool.rocketgame.model.Playable.BASE;
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 
 /**
@@ -17,6 +17,9 @@ public class LevelManager {
     //level creation methods
     public static Level createLevel1() {
         Level level = new Level();
+        // trying to implement the timer in order to create story dialogs during the gameplay
+        Timer timer = new Timer();
+        timer.start();
 
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
@@ -27,8 +30,8 @@ public class LevelManager {
         level.solidObjects.add(new Planet(5000, 3000, 2.7f * 1e25f, 250, null, level.world));
 
         //initialization of the rocket
-        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250, 200, 1000, 1e25f, level.world);
-        level.playable.getBody().setLinearVelocity(0, 0);
+        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250 * BASE , 200 * BASE, 1000 * BASE, 5e5f, level.world);
+        level.playable.getBody().setLinearVelocity(0, 0); //TODO We can edit fuel levels later.
 
         //endGame Triggers
         final PositionTrigger earthTrig = new PositionTrigger(1000, 1000, 200, level.playable) {
@@ -60,7 +63,7 @@ public class LevelManager {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
                 public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
+                    //periodStopWatch.updatePeriod();
                 }
             });
         }
@@ -84,7 +87,7 @@ public class LevelManager {
     public static Level createLevel2() {
         Level level = new Level();
 
-        level.playable = new Playable(300, 300, 88, 108, 1e5f, 250, 220, 1000, 1e25f, level.world);
+        level.playable = new Playable(300, 300, 88, 108, 1e5f, 250 * BASE, 220 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
@@ -118,7 +121,7 @@ public class LevelManager {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
                 public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
+                    //periodStopWatch.updatePeriod();
                 }
             });
         }
@@ -141,7 +144,7 @@ public class LevelManager {
     public static Level createLevel3() {
         Level level = new Level();
 
-        level.playable = new Playable(200, 300, 88, 105, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(200, 300, 88, 105, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //edit the size of the map here
@@ -217,7 +220,7 @@ public class LevelManager {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
                 public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
+                    //periodStopWatch.updatePeriod();
                 }
             });
         }
@@ -244,7 +247,7 @@ public class LevelManager {
         Level level = new Level();
 
         //initialization of the rocket
-        level.playable = new Playable(200, 300, 4 * 1e5f, level.world);
+        level.playable = new Playable(200, 300, 88, 105, 1e5f, 500 * BASE, 100 * BASE, 1000 * BASE, 5 * 1e5f, level.world);
         level.playable.getBody().setLinearVelocity(0f, 0f);
 
         //init of map
@@ -269,7 +272,7 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 System.out.println("Oh it seems there will be lots of asteroids on the way back home, " +
-                        "we should doge them and we might even try different paths on the way. ");
+                        "we should dodge them and we might even try different paths on the way. ");
             }
         });
         level.triggers.add(new PositionTrigger(500, 500, 100, level.playable) {
@@ -322,7 +325,7 @@ public class LevelManager {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
                 public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
+                    //periodStopWatch.updatePeriod();
                 }
             });
         }
@@ -347,7 +350,7 @@ public class LevelManager {
         Level level = new Level();
 
         //initialization of the rocket
-        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250, 200, 1000, 1e25f, level.world);
+        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(15f, 15f);
         level.playable.setFuelLeft(10);
 
@@ -383,7 +386,7 @@ public class LevelManager {
             level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
                 @Override
                 public void triggerPerformed() {
-                    periodStopWatch.updatePeriod();
+                    //periodStopWatch.updatePeriod();
                 }
             });
         }
@@ -434,23 +437,4 @@ public class LevelManager {
         });
     }
 
-    // Stopwatch methods
-    public static class periodStopWatch {
-        private static long stopTime = System.currentTimeMillis();
-        private static long startTime = stopTime;
-        private static long period = -1;
-
-        public static void updatePeriod() {
-            stopTime = System.currentTimeMillis();
-            if (stopTime - startTime >= 2000) {
-                period = ((stopTime - startTime) / 1000);
-                startTime = stopTime;
-                System.err.println("Rotation complete. Period updated");
-            }
-        }
-
-        public static long getPeriod() {
-            return period;
-        }
-    }
 }

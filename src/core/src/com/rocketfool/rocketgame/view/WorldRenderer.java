@@ -176,5 +176,20 @@ public class WorldRenderer {
                     pos.y * toPixel
             );
         }
+
+        if (trajectorySimulator.isCollided()) {
+            float randMultiplier = MathUtils.random(0.7f, 1.0f);
+            float myWidth = AssetManager.WARNING.getWidth() * randMultiplier;
+            float myHeight = AssetManager.WARNING.getHeight() * randMultiplier;
+
+
+            batch.draw(
+                    AssetManager.WARNING,
+                    trajectorySimulator.getCollisionPoint().x * toPixel - myWidth / 2f,
+                    trajectorySimulator.getCollisionPoint().y * toPixel - myHeight / 2f,
+                    myWidth,
+                    myHeight
+            );
+        }
     }
 }
