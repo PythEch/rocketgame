@@ -35,7 +35,7 @@ public class MainMenuScreen implements Screen {
     private RocketGame game;
     private SpriteBatch batch;
     private BitmapFont font;
-    private VideoPlayer videoPlayer;
+    private VideoPlayerDesktop videoPlayer;
     private OrthographicCamera camera;
     private Vector3 camTarget;
     private Vector3 rocketPos;
@@ -139,6 +139,8 @@ public class MainMenuScreen implements Screen {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        //videoPlayer.setVolume(0.1f);
     }
 
     @Override
