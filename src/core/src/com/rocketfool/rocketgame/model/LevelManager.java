@@ -59,14 +59,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(earthTrig);
-        if (DEBUG) {
-            level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
-                @Override
-                public void triggerPerformed() {
-                    //periodStopWatch.updatePeriod();
-                }
-            });
-        }
         addDefaultTriggers(level);
 
         //bottom of the earth for landing and ending the level.
@@ -117,14 +109,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(earthTrig);
-        if (DEBUG) {
-            level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
-                @Override
-                public void triggerPerformed() {
-                    //periodStopWatch.updatePeriod();
-                }
-            });
-        }
         addDefaultTriggers(level);
 
         //add waypoints
@@ -216,14 +200,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(earthTrig);
-        if (DEBUG) {
-            level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
-                @Override
-                public void triggerPerformed() {
-                    //periodStopWatch.updatePeriod();
-                }
-            });
-        }
         addDefaultTriggers(level);
 
         //Wapoints as bottom of the planets
@@ -320,15 +296,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(endGame);
-
-        if (DEBUG) {
-            level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
-                @Override
-                public void triggerPerformed() {
-                    //periodStopWatch.updatePeriod();
-                }
-            });
-        }
         addDefaultTriggers(level);
 
         //Target location and exit location are indicated by waypoints
@@ -382,14 +349,6 @@ public class LevelManager {
             }
         };
         level.triggers.add(earthTrig);
-        if (DEBUG) {
-            level.triggers.add(new PositionTrigger(300, 300, 10, level.playable) {
-                @Override
-                public void triggerPerformed() {
-                    //periodStopWatch.updatePeriod();
-                }
-            });
-        }
         addDefaultTriggers(level);
 
         //bottom of the earth for landing and ending the level.
