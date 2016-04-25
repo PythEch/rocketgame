@@ -217,7 +217,7 @@ public class GameScreen implements Screen {
         //endregion
         level = LevelManager.createLevel4();
         cameraTarget = level.getPlayable();
-        renderer = new WorldRenderer(level);
+        renderer = new WorldRenderer(level, camera);
         controller = new WorldController(level, this);
 
         stage = new Stage();

@@ -2,6 +2,8 @@
 package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -22,6 +24,12 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  * The main differences are WorldRenderer drawing the objects and GameScreen presenting the UI elements.
  */
 public class WorldRenderer {
+    //region Constants
+    public static final float MAX_ZOOM = 10f;
+    public static final float MIN_ZOOM = 0.5f;
+    public static final int MAX_ALPHA = 1;
+    public static final int MIN_ALPHA = 180;
+    //endregion
 
     //region Fields
     private Level level;
@@ -34,11 +42,13 @@ public class WorldRenderer {
     private float elapsedTime = 0f;
     private Array<VisualMeteor> meteors;
     private TrajectorySimulator trajectorySimulator;
+    private OrthographicCamera camera;
     //endregion
 
     //region Constructor
-    public WorldRenderer(Level level) {
+    public WorldRenderer(Level level, OrthographicCamera camera) {
         this.level = level;
+        this.camera = camera;
 
         //Meteors
         textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
@@ -110,15 +120,28 @@ public class WorldRenderer {
         // this makes background tessellate
         texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
 
+        int alpha = (int)((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
+        batch.setColor(1, 1, 1, alpha);
+
         batch.draw(
                 texture,
+                camera.position.x - camera.viewportWidth / 2f * camera.zoom,
+                camera.position.y - camera.viewportHeight / 2f * camera.zoom,
+                0,
+                0,
+                camera.viewportWidth,
+                camera.viewportHeight,
+                camera.zoom,
+                camera.zoom,
                 0,
                 0,
                 0,
-                0,
-                level.getMap().getWidth(),
-                level.getMap().getHeight()
+                texture.getWidth() * 3,
+                texture.getHeight() * 3,
+                false,
+                false
         );
+        batch.setColor(1, 1, 1, 1);
     }
 
     private void drawPlanets(SpriteBatch batch) {
@@ -148,15 +171,32 @@ public class WorldRenderer {
     }
 
     private void drawStars(SpriteBatch batch) {
-        Texture tr = animationStar.getKeyFrame(elapsedTime, true).getTexture();
+        Texture texture = animationStar.getKeyFrame(elapsedTime, true).getTexture();
+        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        
+        int alpha = (int)((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
+        batch.setColor(1, 1, 1, alpha);
+
         batch.draw(
-                tr,
+                texture,
+                camera.position.x - camera.viewportWidth / 2f * camera.zoom,
+                camera.position.y - camera.viewportHeight / 2f * camera.zoom,
+                0,
+                0,
+                camera.viewportWidth,
+                camera.viewportHeight,
+                camera.zoom,
+                camera.zoom,
                 0,
                 0,
                 0,
-                0,
-                level.getMap().getWidth(),
-                level.getMap().getHeight());
+                texture.getWidth() * 3,
+                texture.getHeight() * 3,
+                false,
+                false
+        );
+
+        batch.setColor(1, 1, 1, 1);
     }
 
     private void drawObjectiveScreen(SpriteBatch batch, Animation obj) {
