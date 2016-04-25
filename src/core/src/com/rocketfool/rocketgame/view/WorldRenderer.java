@@ -120,6 +120,7 @@ public class WorldRenderer {
         Texture texture = AssetManager.MAP_TEXTURE;
         // this makes background tessellate
         texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        texture.setFilter(Texture.TextureFilter.MipMapNearestLinear, Texture.TextureFilter.MipMapNearestLinear);
 
         int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
         batch.setColor(1, 1, 1, alpha);
@@ -173,7 +174,7 @@ public class WorldRenderer {
 
     private void drawStars(SpriteBatch batch) {
         Texture texture = animationStar.getKeyFrame(elapsedTime, true).getTexture();
-        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 
         int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
         batch.setColor(1, 1, 1, alpha);
@@ -212,6 +213,7 @@ public class WorldRenderer {
         trajectorySimulator.update(Gdx.graphics.getDeltaTime());
 
         Texture texture = AssetManager.GHOST;
+        texture.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.MipMapLinearLinear);
         for (Vector2 pos : trajectorySimulator.getEstimationPath()) {
 
             batch.draw(
