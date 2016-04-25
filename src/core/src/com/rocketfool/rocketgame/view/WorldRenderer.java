@@ -23,7 +23,7 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  */
 public class WorldRenderer {
 
-    //Variable
+    //region Fields
     private Level level;
     private TextureAtlas textureAtlasMeteor;
     private TextureAtlas textureAtlasStar;
@@ -34,8 +34,9 @@ public class WorldRenderer {
     private float elapsedTime = 0f;
     private Array<VisualMeteor> meteors;
     private TrajectorySimulator trajectorySimulator;
+    //endregion
 
-
+    //region Constructor
     public WorldRenderer(Level level) {
         this.level = level;
 
@@ -59,7 +60,9 @@ public class WorldRenderer {
 
         trajectorySimulator = new TrajectorySimulator(level);
     }
+    //endregion
 
+    //region Methods
     public void draw(SpriteBatch batch) {
         elapsedTime = elapsedTime + Gdx.graphics.getDeltaTime();
         drawMap(batch);
@@ -192,4 +195,5 @@ public class WorldRenderer {
             );
         }
     }
+    //endregion
 }

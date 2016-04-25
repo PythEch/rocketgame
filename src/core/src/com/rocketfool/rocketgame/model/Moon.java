@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.physics.box2d.*;
 
 /**
- * Natural planet satellites. Work in progress.
+ * Natural planet satellites which have orbits around a particular planet.
  */
 public class Moon extends CelestialObject {
     //region Fields
@@ -19,7 +19,7 @@ public class Moon extends CelestialObject {
 
     private Body createBody(float x, float y, float mass, float radius, World world) {
         BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.KinematicBody;
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(x, y);
 
         Body body = world.createBody(bodyDef);
@@ -41,9 +41,7 @@ public class Moon extends CelestialObject {
 
     //region Methods
     @Override
-    public void update(float dt) { }
-    //endregion
-
-    //region Getters & Setters
+    public void update(float dt) {
+    }
     //endregion
 }
