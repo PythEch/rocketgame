@@ -29,6 +29,7 @@ public class WorldRenderer {
     public static final float MIN_ZOOM = 0.5f;
     public static final int MAX_ALPHA = 1;
     public static final int MIN_ALPHA = 180;
+    public static final float STAR_FREQUENCY = 3f;
     //endregion
 
     //region Fields
@@ -120,7 +121,7 @@ public class WorldRenderer {
         // this makes background tessellate
         texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
 
-        int alpha = (int)((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
+        int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
         batch.setColor(1, 1, 1, alpha);
 
         batch.draw(
@@ -136,8 +137,8 @@ public class WorldRenderer {
                 0,
                 0,
                 0,
-                texture.getWidth() * 3,
-                texture.getHeight() * 3,
+                (int) (texture.getWidth() * STAR_FREQUENCY),
+                (int) (texture.getHeight() * STAR_FREQUENCY),
                 false,
                 false
         );
@@ -173,8 +174,8 @@ public class WorldRenderer {
     private void drawStars(SpriteBatch batch) {
         Texture texture = animationStar.getKeyFrame(elapsedTime, true).getTexture();
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        
-        int alpha = (int)((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
+
+        int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
         batch.setColor(1, 1, 1, alpha);
 
         batch.draw(
@@ -190,8 +191,8 @@ public class WorldRenderer {
                 0,
                 0,
                 0,
-                texture.getWidth() * 3,
-                texture.getHeight() * 3,
+                (int) (texture.getWidth() * STAR_FREQUENCY),
+                (int) (texture.getHeight() * STAR_FREQUENCY),
                 false,
                 false
         );
