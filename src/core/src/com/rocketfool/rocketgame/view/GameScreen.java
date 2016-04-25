@@ -146,8 +146,6 @@ public class GameScreen implements Screen {
             drawDebugString("  Linear Velocity: " + (int) (cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
                     " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
-            drawDebugString("Distance: " + (int)
-                    ( cameraTarget.getBody().getPosition().dst(  level.getPlanetLocation(0) ) ) , 5 );
             drawDebugString(" Period: " + "( N/A )"  , 6 ); //Writing the method for it...
             drawDebugString("FPS: " + (int)(1f/Gdx.graphics.getDeltaTime()), 7 );
             drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 9 );
@@ -217,7 +215,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
         //endregion
-        level = LevelManager.createLevel1();
+        level = LevelManager.createLevel4();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level);
         controller = new WorldController(level, this);

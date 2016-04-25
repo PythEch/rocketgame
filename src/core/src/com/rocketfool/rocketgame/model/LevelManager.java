@@ -234,9 +234,9 @@ public class LevelManager {
         for (int i = 0; i < 50; i++) {
             Vector2 vector = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 10f, ((float) Math.random()) * (float) Math.random() * 10f);
             if (i % 2 == 0) {
-                level.planets.add(new RoundObstacle(((float) (Math.random()) * 8000) - 100, ((float) (Math.random()) * 2500) - 100 + 30 * i, 10, vector, level.world));
+                new RoundObstacle(((float) (Math.random()) * 8000) - 100, ((float) (Math.random()) * 2500) - 100 + 30 * i, 10, vector, level.world);
             } else {
-                level.planets.add(new RectangleObstacle(((float) (Math.random()) * 8000) - 100, ((float) (Math.random()) * 2500) - 200 + 30 * i, i * 2, i + 1, vector, level.world));
+                new RectangleObstacle(((float) (Math.random()) * 8000) - 100, ((float) (Math.random()) * 2500) - 200 + 30 * i, i * 2, i + 1, vector, level.world);
             }
         }
 
