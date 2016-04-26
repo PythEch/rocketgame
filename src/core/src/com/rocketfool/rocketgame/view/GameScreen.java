@@ -241,7 +241,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
         //endregion
-        level = LevelManager.createLevel4();
+        level = LevelManager.createLevel1();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
         controller = new WorldController(level, this);
@@ -251,7 +251,7 @@ public class GameScreen implements Screen {
 
         skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
 
-        minimap = new Minimap(1040, 25, 105, level, camera);
+        minimap = new Minimap(1040, 25, 105, level, camera, renderer.getTrajectorySimulator());
     }
 
     public void zoomIn() {

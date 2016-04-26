@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.model.Planet;
+import com.rocketfool.rocketgame.model.TrajectorySimulator;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -22,13 +23,15 @@ public class Minimap {
     private int radius;
     private Level level;
     private OrthographicCamera camera;
+    private TrajectorySimulator trajectorySimulator;
 
-    public Minimap(int originX, int originY, int radius, Level level, OrthographicCamera camera) {
+    public Minimap(int originX, int originY, int radius, Level level, OrthographicCamera camera, TrajectorySimulator trajectorySimulator) {
         this.originX = originX;
         this.originY = originY;
         this.radius = radius;
         this.level = level;
         this.camera = camera;
+        this.trajectorySimulator = trajectorySimulator;
     }
 
     public void draw(SpriteBatch batch) {
@@ -45,6 +48,11 @@ public class Minimap {
             float planetScale = planetArea / (float)Math.pow(playableArea, 1.5f) * playableScale;
 
             drawAt(batch, AssetManager.MINIMAP_PLANET, planetPos.x, planetPos.y, planetScale);
+        }
+
+        for (int i = 0; i < trajectorySimulator.getEstimationPath().size; i += 10) {
+            Vector2 point = trajectorySimulator.getEstimationPath().get(i);
+            drawAt(batch, AssetManager.GHOST, point.x, point.y, 0.1f);
         }
     }
 
