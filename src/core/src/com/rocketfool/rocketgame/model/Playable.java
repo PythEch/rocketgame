@@ -20,22 +20,23 @@ public class Playable extends SolidObject {
     */
     private final float fuelSpecificImpulse = 4500;
 
-    /** For convenience, a base multiplier for thrust calculations multiplied by the game step length (1/60s). */
+    /** A base multiplier for thrust calculations, for convenience. */
     public static final float BASE = 5 * 1e3f / 60f;
     //endregion
 
     //region Fields
-    /** Current impulse in Ns */
+    /** Current thrust in Newtons in every "deltaTime"*/
     private float currentImpulse;
-    /** Angular impulse change rate multiplier. Also, reaction wheel strength (assuming the craft rotates using electricity). */
+    /** Reaction wheel strength (assuming the craft rotates using electricity). */
+    //TODO rename
     private float deltaAngularImpulse;
-    /** Impulse change rate multiplier. Also, engine throttle sensitivity. */
+    /** Thrust change rate multiplier */
     private float deltaImpulse;
     /** Mass and fuel values are both in kg. */
     private float fuelLeft;
     private float width;
     private float height;
-    /** Maximum impulse in Ns. Also, maximum engine output thrust in 1/60s. */
+    /** Maximum thrust in Newtons in every "deltaTime" */
     private float maxImpulse;
     private boolean SASEnabled;
     private boolean maximizeImpulse;
