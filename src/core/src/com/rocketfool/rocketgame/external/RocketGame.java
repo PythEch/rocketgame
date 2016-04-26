@@ -30,7 +30,7 @@ public class RocketGame extends Game {
         if (!QUICK_LOAD)
             this.setScreen(new MainMenuScreen(this, batch, font));
         else
-            this.setScreen(new GameScreen(batch, font));
+            this.setScreen(new GameScreen(this, batch, font));
     }
 
     @Override

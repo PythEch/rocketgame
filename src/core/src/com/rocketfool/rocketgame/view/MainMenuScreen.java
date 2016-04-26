@@ -91,7 +91,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 videoPlayer.dispose();
-                game.setScreen(new GameScreen(batch, font));
+                game.setScreen(new GameScreen(game, batch, font));
             }
         });
 
@@ -154,6 +154,7 @@ public class MainMenuScreen implements Screen {
         stage.act(delta);
         stage.draw();
 
+        //This code make us track the rocket all the time, when we hit options camera becomes active
         if (focusRocket) {
             camTarget = camTarget.add(rocketPos.x / 100f, rocketPos.y / 100f, 0);
 
