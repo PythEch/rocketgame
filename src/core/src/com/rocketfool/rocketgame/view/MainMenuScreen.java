@@ -122,29 +122,17 @@ public class MainMenuScreen implements Screen {
         camera = (OrthographicCamera) viewport.getCamera();
         videoPlayer = new VideoPlayerDesktop(viewport);
 
-
-        //ToDo: Below method does not work, because of that video is not being resized when in fullScreen
-        if(game.isFullScreen() )
-        {
-            videoPlayer.resize(Gdx.graphics.getDesktopDisplayMode().width,
-                    Gdx.graphics.getDesktopDisplayMode().height);
-        }
-        else
-        {
-            videoPlayer.resize(1280, 720);
-        }
-
         try {
             videoPlayer.play(Gdx.files.internal("Backgrounds/mainMenuScreen.webm"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        //videoPlayer.setVolume(0.1f);
+        videoPlayer.resize(1280, 720);
     }
 
     @Override
-    public void resize (int width, int height) {
+    public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
     }
 
