@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Timer;
 import com.rocketfool.rocketgame.controller.WorldController;
+import com.rocketfool.rocketgame.external.RocketGame;
 import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
@@ -66,12 +67,15 @@ public class GameScreen implements Screen {
 
     private Skin skin;
 
+    private RocketGame game;
 
     //endregion
 
     //region Constructor
     public GameScreen(SpriteBatch batch, BitmapFont font) {
+    public GameScreen(RocketGame game,SpriteBatch batch, BitmapFont font) {
         // Get these from the Game instance
+        this.game = game;
         this.batch = batch;
         this.font = font;
     }
@@ -281,6 +285,8 @@ public class GameScreen implements Screen {
                         break;
                     case 5:
                         System.exit(0);
+                        game.setScreen(new MainMenuScreen(game, batch, font));
+                        dispose();
                         break;
                     default:
                         break;
