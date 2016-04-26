@@ -21,26 +21,26 @@ public class Playable extends SolidObject {
     private final float fuelSpecificImpulse = 4500;
 
     /** A base multiplier for thrust calculations, for convenience. */
-    public static final float BASE = 5 * 1e3f;
+    public static final float BASE = 5 * 1e3f / 60f;
     //endregion
 
     //region Fields
     /** Current thrust in Newtons in every "deltaTime"*/
-    private float currentThrust;
+    private float currentImpulse;
     /** Reaction wheel strength (assuming the craft rotates using electricity). */
     //TODO rename
     private float deltaAngularImpulse;
     /** Thrust change rate multiplier */
-    private float deltaThrust;
+    private float deltaImpulse;
     /** Mass and fuel values are both in kg. */
     private float fuelLeft;
     private float width;
     private float height;
     /** Maximum thrust in Newtons in every "deltaTime" */
-    private float maxThrust;
+    private float maxImpulse;
     private boolean SASEnabled;
-    private boolean maximizeThrust;
-    private boolean minimizeThrust;
+    private boolean maximizeImpulse;
+    private boolean minimizeImpulse;
     private Vector2 bottomPosition;
     private Vector2 spawnPoint;
     //endregion
@@ -50,17 +50,17 @@ public class Playable extends SolidObject {
     // Their max thrust will be in the 1-100 megaNewtons range, which is realistic.
     // Sources for comparison: (https://en.wikipedia.org/wiki/RD-180) (https://en.wikipedia.org/wiki/Saturn_V#US_Space_Shuttle)
 
-    public Playable(float x, float y, float width, float height, float dryMass, float deltaAngularImpulse, float deltaThrust, float maxThrust, float fuel, World world) {
-        this.currentThrust = 0;
+    public Playable(float x, float y, float width, float height, float dryMass, float deltaAngularImpulse, float deltaImpulse, float maxImpulse, float fuel, World world) {
+        this.currentImpulse = 0;
         this.width = width;
         this.height = height;
         this.deltaAngularImpulse = deltaAngularImpulse;
-        this.deltaThrust = deltaThrust;
+        this.deltaImpulse = deltaImpulse;
         this.fuelLeft = fuel;
-        this.maxThrust = maxThrust;
+        this.maxImpulse = maxImpulse;
         this.SASEnabled = false;
-        this.maximizeThrust = false;
-        this.maximizeThrust = false;
+        this.maximizeImpulse = false;
+        this.maximizeImpulse = false;
 
         this.body = createBody(x, y, (dryMass + fuel), world);
         this.spawnPoint = body.getPosition().cpy();
@@ -113,7 +113,7 @@ public class Playable extends SolidObject {
     /** Reduce mass of the spacecraft by burning its fuel */
     private void consumeFuelAndDecreaseMass(float deltaTime) {
         if (fuelLeft > 0) {
-            float fuelSpent = currentThrust * deltaTime / fuelSpecificImpulse;
+            float fuelSpent = currentImpulse / fuelSpecificImpulse;
             fuelLeft -= fuelSpent;
 
             //The mass information of the body changes only when MassData is updated
@@ -130,24 +130,24 @@ public class Playable extends SolidObject {
 
         // Manipulate thrust according to these preconditions
         if (fuelLeft <= 0)
-            currentThrust = 0;
+            currentImpulse = 0;
 
-        if (minimizeThrust) {
-            maximizeThrust = false;
+        if (minimizeImpulse) {
+            maximizeImpulse = false;
             minimizeThrust(deltaTime);
-            if (currentThrust == 0)
-                minimizeThrust = false;
+            if (currentImpulse == 0)
+                minimizeImpulse = false;
         }
 
-        if (maximizeThrust) {
-            minimizeThrust = false;
+        if (maximizeImpulse) {
+            minimizeImpulse = false;
             maximizeThrust(deltaTime);
-            if (currentThrust >= maxThrust)
-                maximizeThrust = false;
+            if (currentImpulse >= maxImpulse)
+                maximizeImpulse = false;
         }
 
         // Push the spacecraft with the thrust we calculated
-        Vector2 impulseVector = new Vector2(0, currentThrust * deltaTime).rotateRad(body.getAngle());
+        Vector2 impulseVector = new Vector2(0, currentImpulse).rotateRad(body.getAngle());
         body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, true);
 
     }
@@ -155,11 +155,19 @@ public class Playable extends SolidObject {
 
     //region Manually-controlled playable behaviour
     public void turnLeft(float deltaTime) {
-        body.applyAngularImpulse(deltaAngularImpulse * deltaTime, true);
+        body.applyAngularImpulse(deltaAngularImpulse, true);
     }
 
     public void turnRight(float deltaTime) {
-        body.applyAngularImpulse(-deltaAngularImpulse * deltaTime, true);
+        body.applyAngularImpulse(-deltaAngularImpulse, true);
+    }
+
+    public void turnLeft(float deltaTime, float scale) {
+        body.applyAngularImpulse(deltaAngularImpulse * scale, true);
+    }
+
+    public void turnRight(float deltaTime, float scale) {
+        body.applyAngularImpulse(-deltaAngularImpulse * scale, true);
     }
 
     public void toggleSAS() {
@@ -177,12 +185,12 @@ public class Playable extends SolidObject {
                 if (spin > 0.001f)
                     turnRight(deltaTime);
                 else
-                    turnRight(deltaTime / 1000f);
+                    turnRight(deltaTime, 1 / 1000f);
             } else if (spin < 0f) {
                 if (spin < -0.001f)
                     turnLeft(deltaTime);
                 else
-                    turnLeft(deltaTime / 1000f);
+                    turnLeft(deltaTime, 1 / 1000f);
             }
             System.err.println(spin);
         }
@@ -190,45 +198,45 @@ public class Playable extends SolidObject {
 
     public void increaseThrust(float deltaTime) {
         if (fuelLeft > 0) {
-            currentThrust = Math.min(currentThrust + deltaTime * 2 * deltaThrust, maxThrust);
+            currentImpulse = Math.min(currentImpulse + 2 * deltaImpulse, maxImpulse);
         }
     }
 
     public void decreaseThrust(float deltaTime) {
-        currentThrust = Math.max(0, currentThrust - deltaTime * 2 * deltaThrust);
+        currentImpulse = Math.max(0, currentImpulse - 2 * deltaImpulse);
     }
 
     public void toggleMaximizeThrust() {
-        maximizeThrust = !maximizeThrust;
+        maximizeImpulse = !maximizeImpulse;
     }
 
     public void toggleMinimizeThrust() {
-        minimizeThrust = !minimizeThrust;
+        minimizeImpulse = !minimizeImpulse;
     }
 
     public void maximizeThrust(float deltaTime) {
         if (fuelLeft > 0) {
-            currentThrust = Math.min(maxThrust, currentThrust + deltaTime * deltaThrust * 10);
+            currentImpulse = Math.min(maxImpulse, currentImpulse + deltaImpulse * 10);
         }
     }
 
     public void minimizeThrust(float deltaTime) {
-        currentThrust = Math.max(0, currentThrust - deltaTime * deltaThrust * 10);
+        currentImpulse = Math.max(0, currentImpulse - deltaImpulse * 10);
     }
     //endregion
 
 
     //region Getters & Setters
-    public float getCurrentThrust() {
-        return currentThrust;
+    public float getCurrentImpulse() {
+        return currentImpulse;
     }
 
     public float getDeltaAngularImpulse() {
         return deltaAngularImpulse;
     }
 
-    public float getDeltaThrust() {
-        return deltaThrust;
+    public float getDeltaImpulse() {
+        return deltaImpulse;
     }
 
     public float getFuelLeft() {
@@ -243,8 +251,8 @@ public class Playable extends SolidObject {
         return height;
     }
 
-    public float getMaxThrust() {
-        return maxThrust;
+    public float getMaxImpulse() {
+        return maxImpulse;
     }
 
     public Vector2 getBottomPosition() {
@@ -259,8 +267,8 @@ public class Playable extends SolidObject {
         return spawnPoint;
     }
 
-    public void setCurrentThrust(float currentThrust) {
-        this.currentThrust = currentThrust;
+    public void setCurrentImpulse(float currentImpulse) {
+        this.currentImpulse = currentImpulse;
     }
 
     public void setFuelLeft(float fuel) {
