@@ -233,16 +233,13 @@ public class GameScreen implements Screen {
     public void zoomIn() {
 
         camera.zoom = Math.max(0.5f, camera.zoom / 1.04f);
-        if (camera.zoom > 0.5) {
-            font.setScale(font.getScaleX() / 1.04f);
-        }
+        font.setScale(camera.zoom);
 
     } //**
 
     public void zoomOut() {
         camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
-        if (camera.zoom < 150)
-            font.setScale(font.getScaleX() * 1.04f);
+        font.setScale(camera.zoom);
     }
 
     public void igniteRocketTrail() {
