@@ -69,6 +69,8 @@ public class GameScreen implements Screen {
 
     private RocketGame game;
 
+    private Minimap minimap;
+
 
     //endregion
 
@@ -122,6 +124,7 @@ public class GameScreen implements Screen {
             particleEffect.getEmitters().get(i).getAngle().setLow(angle);
         }
         draw();
+        minimap.draw(batch);
         batch.end();
 
         // Draw boundries of physics objects if debug is enabled
@@ -247,6 +250,8 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
+
+        minimap = new Minimap(1040, 25, 105, level, camera);
     }
 
     public void zoomIn() {
