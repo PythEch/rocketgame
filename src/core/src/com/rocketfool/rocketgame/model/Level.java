@@ -105,7 +105,7 @@ public class Level {
 
             timePassed += deltaTime;
             // A world step simulates the Box2D world
-            world.step(deltaTime, 6, 2);
+            world.step(1 / 60f, 6, 2);
         }
     }
 
