@@ -3,7 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.physics.box2d.*;
 
 /**
- * Work in progress.
+ * A Planet which has fixed position with a huge mass
  * TODO: Add motion
  */
 public class Planet extends CelestialObject {
@@ -45,9 +45,7 @@ public class Planet extends CelestialObject {
 
     //region Methods
     @Override
-    public void update(float dt) { }
-    //endregion
-
-    //region Getters & Setters
+    public void update(float dt) {
+    }
     //endregion
 }
