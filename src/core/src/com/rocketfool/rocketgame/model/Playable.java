@@ -174,17 +174,16 @@ public class Playable extends SolidObject {
         float spin = this.getBody().getAngularVelocity(); //NOTE: This 1/100 the value on the Debug Screen...
         if (SASEnabled) {
             if (spin > 0f) {
-                if (spin > 0.001f)
+                if (spin > 0.0075f)
                     turnRight(deltaTime);
                 else
-                    turnRight(deltaTime / 1000f);
+                    this.body.setAngularVelocity(0);
             } else if (spin < 0f) {
-                if (spin < -0.001f)
+                if (spin < -0.0075f)
                     turnLeft(deltaTime);
                 else
-                    turnLeft(deltaTime / 1000f);
+                    this.body.setAngularVelocity(0);
             }
-            System.err.println(spin);
         }
     }
 

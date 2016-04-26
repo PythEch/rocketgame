@@ -105,7 +105,7 @@ public class Level {
 
             timePassed += deltaTime;
             // A world step simulates the Box2D world
-            world.step(deltaTime, 6, 2);
+            world.step( 1/60f , 8, 3); //New values suggested by Box2D user manual. **
         }
     }
 
@@ -152,7 +152,7 @@ public class Level {
     }
 
     /*
-     * remove waypoints form screen to meet the endgame condition
+     * Removes a waypoint from the screen when the playable approaches it.
      */
     private void updateWaypoints(float deltaTime) {
         for (Waypoint waypoint : waypoints) {
@@ -163,7 +163,7 @@ public class Level {
     }
 
     /**
-     * This is used update objects like background visuals
+     * This is used to update objects like background visuals
      */
     private void updateVisualObjects(float deltaTime) {
         for (GameObject go : gameObjects) {
