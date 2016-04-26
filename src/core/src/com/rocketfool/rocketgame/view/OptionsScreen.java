@@ -32,8 +32,8 @@ public class OptionsScreen implements Screen {
     private SpriteBatch batch;
     private BitmapFont font;
     private VideoPlayer videoPlayer;
-    private String sfxStatus;
-    private String fullscreenStatus;
+    private boolean sfxStatus;
+    private boolean fullscreenStatus;
     private RocketGame game;
     private MainMenuScreen mainMenuScreen;
 
@@ -67,10 +67,11 @@ public class OptionsScreen implements Screen {
         buttonStyle.down = skin.getDrawable("button_02");
         skin.add("default", buttonStyle);
 
-        sfxStatus = "Off";
-        fullscreenStatus = "Off";
-        final TextButton sfx = new TextButton("Toggle Sfx:  " + sfxStatus, buttonStyle);
-        final TextButton fullscreen = new TextButton("Fullscreen:  " + fullscreenStatus, buttonStyle);
+        sfxStatus = false;
+        fullscreenStatus = game.isFullScreen();
+
+        final TextButton sfx = new TextButton("Toggle Sfx:  " + (sfxStatus ? "On" : "Off"), buttonStyle);
+        final TextButton fullscreen = new TextButton("Fullscreen:  " + (fullscreenStatus ? "On" : "Off"), buttonStyle);
         final TextButton back = new TextButton("Back", buttonStyle);
 
         //Align everything with regular size and spacing
@@ -86,32 +87,21 @@ public class OptionsScreen implements Screen {
         sfx.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if(sfxStatus.equals("Off"))
-                {
-                    sfxStatus = "On";
-                }
-                else
-                {
-                    sfxStatus = "Off";
-                }
-                sfx.setText("Toggle Sfx:  " + sfxStatus);
+                sfxStatus = !sfxStatus;
+                sfx.setText("Toggle Sfx:  " + (sfxStatus ? "On" : "Off"));
             }
         });
 
         //FullScreen Listener
         fullscreen.addListener(new ClickListener() {
-            Boolean isFullScreen = false;
-
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if(!isFullScreen) {
+                if(!game.isFullScreen()) {
                     Gdx.graphics.setDisplayMode(
                             Gdx.graphics.getDesktopDisplayMode().width,
                             Gdx.graphics.getDesktopDisplayMode().height,
                             true
                     );
-                    isFullScreen = true;
-                    fullscreenStatus = "On";
                     game.setFullScreen(true);
                 }
                 else
@@ -121,11 +111,11 @@ public class OptionsScreen implements Screen {
                             Constants.GAME_HEIGHT,
                             false
                     );
-                    fullscreenStatus = "Off";
-                    isFullScreen = false;
                     game.setFullScreen(false);
                 }
-                fullscreen.setText("Fullscreen:  " + fullscreenStatus);
+                fullscreenStatus = game.isFullScreen();
+                fullscreen.setText("Fullscreen:  " + (fullscreenStatus ? "On" : "Off"));
+                game.setScreen(new OptionsScreen(game, batch, font, mainMenuScreen));
             }
         });
 
@@ -142,12 +132,12 @@ public class OptionsScreen implements Screen {
 
         //BQ video
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
-        videoPlayer.resize(1280, 720);
         try {
             videoPlayer.play(Gdx.files.internal("Backgrounds/optionScreen.webm"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        videoPlayer.resize(1280, 720);
     }
 
     @Override
