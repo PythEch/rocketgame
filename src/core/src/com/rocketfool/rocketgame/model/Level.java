@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
+import static com.rocketfool.rocketgame.util.Constants.FRAME_RATE;
 
 /**
  * Class to create instances of all levels. Also, it performs most of the calculations.
@@ -98,15 +99,19 @@ public class Level {
      */
     public void update(float deltaTime) {
         if (state == State.RUNNING) {
+            timePassed += deltaTime;
+
+            // Hack to make physics engine stable
+            deltaTime = FRAME_RATE;
+
             playable.update(deltaTime);
             updateGravity(deltaTime);
             updateTriggers(deltaTime);
             updateVisualObjects(deltaTime);
             updateWaypoints(deltaTime);
 
-            timePassed += deltaTime;
             // A world step simulates the Box2D world
-            world.step(1 / 60f, 8, 3);
+            world.step(deltaTime, 8, 3);
         }
     }
 

@@ -177,20 +177,12 @@ public class Playable extends SolidObject {
                 if (spin > 0.0075f)
                     turnRight(deltaTime);
                 else
-<<<<<<< HEAD
                     this.body.setAngularVelocity(0);
-=======
-                    turnRight(deltaTime / 1000f);
->>>>>>> parent of 44ab712... Revert to impulse model and increase iterations of box2d and some fixes with trajectory
             } else if (spin < 0f) {
                 if (spin < -0.0075f)
                     turnLeft(deltaTime);
                 else
-<<<<<<< HEAD
                     this.body.setAngularVelocity(0);
-=======
-                    turnLeft(deltaTime / 1000f);
->>>>>>> parent of 44ab712... Revert to impulse model and increase iterations of box2d and some fixes with trajectory
             }
         }
     }

@@ -5,6 +5,8 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.util.GameUtils;
 
+import static com.rocketfool.rocketgame.util.Constants.*;
+
 /**
  * Simulates the Box2D in advance in order to predict where the player is going.
  * Very precise especially when additional controls (i.e keyboard keys) are not used.
@@ -15,12 +17,6 @@ public class TrajectorySimulator extends GameObject {
      * Number of steps that will be calculated in advance
      */
     public static final int SIMULATION_STEPS = 3600;
-    /**
-     * Assume a fixed but similar frame rate to the one used by the monitor.
-     * This has to be fixed because otherwise we cannot guarantee the ship will go to the exact same length in every frame.
-     * TODO: Calculate this according to the system frame rate
-     */
-    public static final float FRAME_RATE = 1f / 60;
 
     /**
      * A hand tweaked multiplier to make the intervals between trajectory dots evenly as possible
@@ -32,6 +28,10 @@ public class TrajectorySimulator extends GameObject {
      * In this case the skipCount never goes below 10 but who knows what's going to happen?
      */
     public static final int MIN_SKIP = 10;
+
+    public static final float MIN_THRUST = 100;
+
+    public static final int IGNORE_THRESHOLD = 25;
     //endregion
 
     //region Fields
@@ -169,8 +169,13 @@ public class TrajectorySimulator extends GameObject {
     public void update(float deltaTime) {
         collided = false;
 
+        if (level.getPlayable().getBody().getLinearVelocity().len() + level.getPlayable().getCurrentThrust() < IGNORE_THRESHOLD) {
+            currentEstimationPath.clear();
+            return;
+        }
+
         // Calculate skip count by making a reverse correlation with the square root of thrust
-        int skipCount = (int) (SKIP_MULTIPLIER / Math.max(1, Math.sqrt(playable.getCurrentThrust())));
+        int skipCount = (int) (SKIP_MULTIPLIER / Math.max(MIN_THRUST, Math.sqrt(playable.getCurrentThrust())));
         // Smooth out the changes (i.e remove the last digit) since the frequent change of the interval (skipCount) causes flickers
         skipCount = Math.max(MIN_SKIP, skipCount - skipCount % 10);
 
@@ -186,7 +191,7 @@ public class TrajectorySimulator extends GameObject {
             // Simulate the world
             doGravity();
             playable.update(FRAME_RATE);
-            world.step(FRAME_RATE, 6, 2);
+            world.step(FRAME_RATE, 8, 3);
 
             // Skip a certain N amounts of points as to not clutter the screen
             if (i % skipCount == 0)
