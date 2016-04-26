@@ -17,6 +17,8 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
+        final PopUp popUp = new PopUp();
+        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
 
         //levelMap
         level.map = new Map(Gdx.graphics.getWidth() * 400, Gdx.graphics.getHeight() * 400);
@@ -37,6 +39,8 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 System.out.println("Congratulations! You regained the control of the ship and reached the Earth. Level 1 is completed.");
+                popUp.setTitle("HQ");
+                popUp.setText("Mission Accomplished!!!");
                 //TODO: Next level should be given here. However, the method createLevel2() fails here.
             }
         };
@@ -54,14 +58,17 @@ public class LevelManager {
                                        "The ship is damaged.! You must regain control!");
                                Waypoint earth = new Waypoint(1000, 1855, 5);
                                level.waypoints.add(earth);
+                               popUp.setText("Your bad luck during the pursuit of the aliens left you spinning out of control in space!" +
+                                       "The ship is damaged.! You must regain control!");
                            }
                        },
                 5.0f);
-        //TODO: Update objective: "Regain control of the ship."
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                System.out.println("Use RIGHT & LEFT arrow keys to regain control of your angular movement.");
+                               popUp.setText("Use RIGHT & LEFT arrow keys to regain control of your angular movement.");
+                               objectiveWindow.setText("Regain control of the ship");
                            }
                        },
                 15.0f);
@@ -70,6 +77,7 @@ public class LevelManager {
                            public void run() {
                                System.out.println("The Stability Assist System restored!" +
                                        "The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
+                               popUp.setText( "The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
                            }
                        },
                 25.0f);
@@ -77,6 +85,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
+                               popUp.setText("The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
                            }
                        },
                 30.0f);
@@ -84,6 +93,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Use UP & DOWN arrow keys to increase and decrease the thrust.");
+                               popUp.setText("Use UP & DOWN arrow keys to increase and decrease the thrust.");
                            }
                        },
                 35.0f);
@@ -91,6 +101,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Use A & S keys to zoom out or zoom in, press ESC for the Pause Menu.");
+                               popUp.setText("Use A & S keys to zoom out or zoom in, press ESC for the Pause Menu.");
                            }
                        },
                 40.0f);
@@ -99,6 +110,8 @@ public class LevelManager {
                            public void run() {
                                System.out.println("Supercomputer connections restored! Trajectory calculation features online." +
                                        " (Press T to activate it)");
+                               popUp.setText("Supercomputer connections restored! Trajectory calculation features online." +
+                                       " (Press T to activate it)");
                            }
                        },
                 45.0f);
@@ -106,6 +119,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("The yellow dots in front of you simulates your future motion.");
+                               popUp.setText("The yellow dots in front of you simulates your future motion.");
                            }
                        },
                 50.0f);
@@ -113,6 +127,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Navigation system restored! Minimap online!.");
+                               popUp.setText("Navigation system restored! Minimap online!.");
                            }
                        },
                 60.0f);
@@ -121,6 +136,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("All systems restored. Additional information is along the top of the screen.");
+                               popUp.setText("All systems restored. Additional information is along the top of the screen.");
                            }
                        },
                 65.0f);
@@ -128,6 +144,8 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Now it's time to find your way back!");
+                               popUp.setText("Now it's time to find your way back!");
+                               objectiveWindow.setText("Find your way back home!");
                            }
                        },
                 70.0f);
@@ -591,6 +609,7 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 System.out.println("Out of map");
+                level.healthOver();
             }
         });
 
@@ -598,6 +617,7 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 System.out.println("NO FUEL!");
+                level.healthOver();
             }
         });
     }
