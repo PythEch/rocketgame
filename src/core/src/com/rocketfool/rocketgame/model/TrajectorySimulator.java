@@ -25,17 +25,13 @@ public class TrajectorySimulator extends GameObject {
     /**
      * A hand tweaked multiplier to make the intervals between trajectory dots evenly as possible
      */
-    public static final float SKIP_MULTIPLIER = 3e4f / 9;
+    public static final float SKIP_MULTIPLIER = 3e4f;
 
     /**
      * The minimum threshold in our skip algorithm.
      * In this case the skipCount never goes below 10 but who knows what's going to happen?
      */
     public static final int MIN_SKIP = 10;
-
-    public static final float MIN_THRUST = 100;
-
-    public static final int IGNORE_THRESHOLD = 25;
     //endregion
 
     //region Fields
@@ -127,8 +123,8 @@ public class TrajectorySimulator extends GameObject {
                 level.getPlayable().getHeight(),
                 level.getPlayable().getBody().getMass() - level.getPlayable().getFuelLeft(),
                 level.getPlayable().getDeltaAngularImpulse(),
-                level.getPlayable().getDeltaImpulse(),
-                level.getPlayable().getMaxImpulse(),
+                level.getPlayable().getDeltaThrust(),
+                level.getPlayable().getMaxThrust(),
                 level.getPlayable().getFuelLeft(),
                 world
         );
@@ -153,7 +149,7 @@ public class TrajectorySimulator extends GameObject {
         Body simulatedPlayable = playable.getBody();
         Body realPlayable = level.getPlayable().getBody();
 
-        playable.setCurrentImpulse(level.getPlayable().getCurrentImpulse());
+        playable.setCurrentThrust(level.getPlayable().getCurrentThrust());
         playable.setFuelLeft(level.getPlayable().getFuelLeft());
 
         simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
@@ -173,16 +169,11 @@ public class TrajectorySimulator extends GameObject {
     public void update(float deltaTime) {
         collided = false;
 
-        if (level.getPlayable().getBody().getLinearVelocity().len() + level.getPlayable().getCurrentImpulse() < IGNORE_THRESHOLD) {
-            currentEstimationPath.clear();
-            return;
-        }
-
         // Calculate skip count by making a reverse correlation with the square root of thrust
-        int skipCount = (int) (SKIP_MULTIPLIER / Math.max(MIN_THRUST, Math.sqrt(playable.getCurrentImpulse())));
-
+        int skipCount = (int) (SKIP_MULTIPLIER / Math.max(1, Math.sqrt(playable.getCurrentThrust())));
         // Smooth out the changes (i.e remove the last digit) since the frequent change of the interval (skipCount) causes flickers
         skipCount = Math.max(MIN_SKIP, skipCount - skipCount % 10);
+
 
         // Reset our simulation in case of a user input
         resetSimulation();
@@ -195,7 +186,7 @@ public class TrajectorySimulator extends GameObject {
             // Simulate the world
             doGravity();
             playable.update(FRAME_RATE);
-            world.step(FRAME_RATE, 8, 3);
+            world.step(FRAME_RATE, 6, 2);
 
             // Skip a certain N amounts of points as to not clutter the screen
             if (i % skipCount == 0)
