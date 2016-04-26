@@ -26,6 +26,7 @@ public class Level {
     protected float currentGravForce;
     protected int score;
     protected State state;
+    protected int health = 3;
     //endregion
 
     //region Nested Types
@@ -34,7 +35,7 @@ public class Level {
     }
 
     public enum State {
-        RUNNING, PAUSED, GAME_OVER
+        RUNNING, PAUSED, GAME_OVER, HEALTH_OVER
     }
     //endregion
 
@@ -105,7 +106,7 @@ public class Level {
 
             timePassed += deltaTime;
             // A world step simulates the Box2D world
-            world.step(1 / 60f, 6, 2);
+            world.step(1 / 60f, 8, 3);
         }
     }
 
@@ -152,7 +153,7 @@ public class Level {
     }
 
     /*
-     * remove waypoints form screen to meet the endgame condition
+     * Removes a waypoint from the screen when the playable approaches it.
      */
     private void updateWaypoints(float deltaTime) {
         for (Waypoint waypoint : waypoints) {
@@ -163,7 +164,7 @@ public class Level {
     }
 
     /**
-     * This is used update objects like background visuals
+     * This is used to update objects like background visuals
      */
     private void updateVisualObjects(float deltaTime) {
         for (GameObject go : gameObjects) {
@@ -245,8 +246,26 @@ public class Level {
 
     public void setState(State state) {
         this.state = state;
-        if (state == State.GAME_OVER) {
-            System.out.println("gg, game over");
+        if (state == State.HEALTH_OVER) {
+            healthOver();
+        }
+        else if (state == State.GAME_OVER) {
+            System.out.println("time to pack up boyz");
+        }
+    }
+
+    public void healthOver() {
+        health -= 1;
+        if (health == 0) {
+            setState(State.GAME_OVER);
+        }
+        else {
+            // TODO: restart from checkpoint etc.
+            // ridicule gamer etc.
+
+
+            // restart game
+            setState(State.RUNNING);
         }
     }
 
@@ -280,6 +299,14 @@ public class Level {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     //endregion
