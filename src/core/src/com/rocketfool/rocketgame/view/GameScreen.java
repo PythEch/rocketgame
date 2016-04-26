@@ -69,10 +69,10 @@ public class GameScreen implements Screen {
 
     private RocketGame game;
 
+
     //endregion
 
     //region Constructor
-    public GameScreen(SpriteBatch batch, BitmapFont font) {
     public GameScreen(RocketGame game,SpriteBatch batch, BitmapFont font) {
         // Get these from the Game instance
         this.game = game;
@@ -158,6 +158,25 @@ public class GameScreen implements Screen {
             drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 10 );
 
         }
+
+        batch.draw(
+                AssetManager.OVERLAY,
+                camera.position.x - camera.viewportWidth / 2f * camera.zoom,
+                camera.position.y - camera.viewportHeight / 2f * camera.zoom,
+                0,
+                0,
+                camera.viewportWidth,
+                camera.viewportHeight,
+                camera.zoom,
+                camera.zoom,
+                0,
+                0,
+                0,
+                AssetManager.OVERLAY.getWidth() ,
+                AssetManager.OVERLAY.getHeight() ,
+                false,
+                false
+        );
     }
 
     private void drawDebugString(String str, int row) {
@@ -281,7 +300,6 @@ public class GameScreen implements Screen {
                         showOptions();
                         break;
                     case 5:
-                        System.exit(0);
                         game.setScreen(new MainMenuScreen(game, batch, font));
                         dispose();
                         break;
