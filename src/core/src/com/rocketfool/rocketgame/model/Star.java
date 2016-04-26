@@ -6,10 +6,6 @@ import com.badlogic.gdx.physics.box2d.*;
  * Star class. The class with the highest rating.
  */
 public class Star extends CelestialObject {
-    //region Fields
-
-    //endregion
-
     //region Constructor
     public Star(int x, int y, float mass, float radius, World world) {
         super(mass, radius);
@@ -40,9 +36,7 @@ public class Star extends CelestialObject {
 
     //region Methods
     @Override
-    public void update(float dt) { }
-    //endregion
-
-    //region Getters & Setters
+    public void update(float dt) {
+    }
     //endregion
 }

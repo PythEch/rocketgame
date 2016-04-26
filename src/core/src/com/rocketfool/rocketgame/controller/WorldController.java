@@ -12,22 +12,23 @@ import com.rocketfool.rocketgame.view.WorldRenderer;
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 
 /**
- * Created by pythech on 02/04/16.
+ * Handles user input and signals view {@link GameScreen} and model {@link Level} accordingly
  */
 public class WorldController {
+    //region Fields
     private Level level;
     private GameScreen screen;
+    //endregion
 
+    //region Constructor
     public WorldController(Level level, GameScreen screen) {
         this.level = level;
         this.screen = screen;
     }
+    //endregion
 
+    //region Methods
     public void update(float deltaTime) {
-        updatePlayable(deltaTime);
-    }
-
-    private void updatePlayable(float deltaTime) {
         Playable playable = level.getPlayable();
         Body body = playable.getBody();
 
@@ -37,8 +38,7 @@ public class WorldController {
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             playable.turnRight(deltaTime);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.UP))
-        {
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             playable.increaseThrust(deltaTime);
         }
 
@@ -57,7 +57,7 @@ public class WorldController {
             playable.toggleSAS();
         }
 
-        if ( !Gdx.input.isKeyPressed(Input.Keys.LEFT) && !Gdx.input.isKeyPressed(Input.Keys.RIGHT) ) {
+        if (!Gdx.input.isKeyPressed(Input.Keys.LEFT) && !Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             playable.runSAS(deltaTime);
         }
 
@@ -86,4 +86,5 @@ public class WorldController {
             }
         }
     }
+    //endregion
 }

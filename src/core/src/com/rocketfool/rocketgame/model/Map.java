@@ -20,6 +20,7 @@ public class Map {
     }
     //endregion
 
+    //region Getters & Setters
     public int getWidth() {
         return width;
     }
@@ -27,4 +28,5 @@ public class Map {
     public int getHeight() {
         return height;
     }
+    //endregion
 }

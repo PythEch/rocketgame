@@ -143,11 +143,11 @@ public class OptionsScreen implements Screen {
         //BQ video
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
         videoPlayer.resize(1280, 720);
-       /* try {
-            videoPlayer.play(Gdx.files.internal("Backgrounds/mainMenuScreen.webm"));
+        try {
+            videoPlayer.play(Gdx.files.internal("Backgrounds/optionScreen.webm"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @Override
@@ -155,13 +155,13 @@ public class OptionsScreen implements Screen {
 
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
-       /* if (!videoPlayer.render()) { // As soon as the video is finished, we start the file again using the same player.
+       if (!videoPlayer.render()) { // As soon as the video is finished, we start the file again using the same player.
             try {
-                videoPlayer.play(Gdx.files.internal("Backgrounds/mainMenuScreen.webm"));
+                videoPlayer.play(Gdx.files.internal("Backgrounds/optionScreen.webm"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        }*/
+        }
 
         stage.act(delta);
         stage.draw();

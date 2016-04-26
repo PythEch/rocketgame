@@ -2,6 +2,8 @@
 package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -22,8 +24,15 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  * The main differences are WorldRenderer drawing the objects and GameScreen presenting the UI elements.
  */
 public class WorldRenderer {
+    //region Constants
+    public static final float MAX_ZOOM = 10f;
+    public static final float MIN_ZOOM = 0.5f;
+    public static final int MAX_ALPHA = 1;
+    public static final int MIN_ALPHA = 180;
+    public static final float STAR_FREQUENCY = 3f;
+    //endregion
 
-    //Variable
+    //region Fields
     private Level level;
     private TextureAtlas textureAtlasMeteor;
     private TextureAtlas textureAtlasStar;
@@ -34,10 +43,13 @@ public class WorldRenderer {
     private float elapsedTime = 0f;
     private Array<VisualMeteor> meteors;
     private TrajectorySimulator trajectorySimulator;
+    private OrthographicCamera camera;
+    //endregion
 
-
-    public WorldRenderer(Level level) {
+    //region Constructor
+    public WorldRenderer(Level level, OrthographicCamera camera) {
         this.level = level;
+        this.camera = camera;
 
         //Meteors
         textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
@@ -59,7 +71,9 @@ public class WorldRenderer {
 
         trajectorySimulator = new TrajectorySimulator(level);
     }
+    //endregion
 
+    //region Methods
     public void draw(SpriteBatch batch) {
         elapsedTime = elapsedTime + Gdx.graphics.getDeltaTime();
         drawMap(batch);
@@ -106,16 +120,30 @@ public class WorldRenderer {
         Texture texture = AssetManager.MAP_TEXTURE;
         // this makes background tessellate
         texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        texture.setFilter(Texture.TextureFilter.MipMapNearestLinear, Texture.TextureFilter.MipMapNearestLinear);
+
+        int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
+        batch.setColor(1, 1, 1, alpha);
 
         batch.draw(
                 texture,
+                camera.position.x - camera.viewportWidth / 2f * camera.zoom,
+                camera.position.y - camera.viewportHeight / 2f * camera.zoom,
+                0,
+                0,
+                camera.viewportWidth,
+                camera.viewportHeight,
+                camera.zoom,
+                camera.zoom,
                 0,
                 0,
                 0,
-                0,
-                level.getMap().getWidth(),
-                level.getMap().getHeight()
+                (int) (texture.getWidth() * STAR_FREQUENCY),
+                (int) (texture.getHeight() * STAR_FREQUENCY),
+                false,
+                false
         );
+        batch.setColor(1, 1, 1, 1);
     }
 
     private void drawPlanets(SpriteBatch batch) {
@@ -145,15 +173,32 @@ public class WorldRenderer {
     }
 
     private void drawStars(SpriteBatch batch) {
-        Texture tr = animationStar.getKeyFrame(elapsedTime, true).getTexture();
+        Texture texture = animationStar.getKeyFrame(elapsedTime, true).getTexture();
+        texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+
+        int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
+        batch.setColor(1, 1, 1, alpha);
+
         batch.draw(
-                tr,
+                texture,
+                camera.position.x - camera.viewportWidth / 2f * camera.zoom,
+                camera.position.y - camera.viewportHeight / 2f * camera.zoom,
+                0,
+                0,
+                camera.viewportWidth,
+                camera.viewportHeight,
+                camera.zoom,
+                camera.zoom,
                 0,
                 0,
                 0,
-                0,
-                level.getMap().getWidth(),
-                level.getMap().getHeight());
+                (int) (texture.getWidth() * STAR_FREQUENCY),
+                (int) (texture.getHeight() * STAR_FREQUENCY),
+                false,
+                false
+        );
+
+        batch.setColor(1, 1, 1, 1);
     }
 
     private void drawObjectiveScreen(SpriteBatch batch, Animation obj) {
@@ -168,6 +213,7 @@ public class WorldRenderer {
         trajectorySimulator.update(Gdx.graphics.getDeltaTime());
 
         Texture texture = AssetManager.GHOST;
+        texture.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.MipMapLinearLinear);
         for (Vector2 pos : trajectorySimulator.getEstimationPath()) {
 
             batch.draw(
@@ -192,4 +238,5 @@ public class WorldRenderer {
             );
         }
     }
+    //endregion
 }

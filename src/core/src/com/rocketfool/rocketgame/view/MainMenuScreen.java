@@ -35,7 +35,7 @@ public class MainMenuScreen implements Screen {
     private RocketGame game;
     private SpriteBatch batch;
     private BitmapFont font;
-    private VideoPlayer videoPlayer;
+    private VideoPlayerDesktop videoPlayer;
     private OrthographicCamera camera;
     private Vector3 camTarget;
     private Vector3 rocketPos;
@@ -122,27 +122,17 @@ public class MainMenuScreen implements Screen {
         camera = (OrthographicCamera) viewport.getCamera();
         videoPlayer = new VideoPlayerDesktop(viewport);
 
-
-        //ToDo: Below method does not work, because of that video is not being resized when in fullScreen
-        if(game.isFullScreen() )
-        {
-            videoPlayer.resize(Gdx.graphics.getDesktopDisplayMode().width,
-                    Gdx.graphics.getDesktopDisplayMode().height);
-        }
-        else
-        {
-            videoPlayer.resize(1280, 720);
-        }
-
         try {
             videoPlayer.play(Gdx.files.internal("Backgrounds/mainMenuScreen.webm"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        videoPlayer.resize(1280, 720);
     }
 
     @Override
-    public void resize (int width, int height) {
+    public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
     }
 

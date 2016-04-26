@@ -4,13 +4,16 @@ import com.badlogic.gdx.math.Matrix3;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Created by alpino-64 on 21.04.2016.
+ * Model for the meteors floating in the background for stylistic reasons, the user cannot collide with this object
  */
 public class VisualMeteor extends GameObject {
+    //region Fields
     private Vector2 location;
     private Vector2 speed;
     private int rotateDegree;
+    //endregion
 
+    //
     public VisualMeteor(int locationX, int locationY, int speedX, int speedY, int rotateDegree) {
         this.location = new Vector2(locationX, locationY);
         this.speed = new Vector2(speedX, speedY);
