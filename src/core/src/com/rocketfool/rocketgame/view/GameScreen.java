@@ -10,11 +10,11 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Timer;
 import com.rocketfool.rocketgame.controller.WorldController;
+import com.rocketfool.rocketgame.external.RocketGame;
 import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
@@ -66,12 +66,15 @@ public class GameScreen implements Screen {
 
     private Skin skin;
 
+    private RocketGame game;
+
 
     //endregion
 
     //region Constructor
-    public GameScreen(SpriteBatch batch, BitmapFont font) {
+    public GameScreen(RocketGame game,SpriteBatch batch, BitmapFont font) {
         // Get these from the Game instance
+        this.game = game;
         this.batch = batch;
         this.font = font;
     }
@@ -103,7 +106,7 @@ public class GameScreen implements Screen {
         renderer.draw(batch);
 
         //This part is for the particles coming out of rocket
-        if ( cameraTarget.getCurrentThrust() > 0 ){
+        if ( cameraTarget.getCurrentImpulse() > 0 ){
             this.igniteRocketTrail();
         } else {
             this.stopRocketTrail();
@@ -141,7 +144,7 @@ public class GameScreen implements Screen {
 
         // Draw a debug string which shows the velocity of the spaceship
         if (DEBUG) {
-            drawDebugString("  Thrust: " + (int) cameraTarget.getCurrentThrust(), 1); //**
+            drawDebugString("  Thrust: " + (int) cameraTarget.getCurrentImpulse(), 1); //**
             drawDebugString("Angular Velocity: " + (int) (cameraTarget.getBody().getAngularVelocity() * 100), 2);
             drawDebugString("  Linear Velocity: " + (int) (cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
@@ -154,6 +157,25 @@ public class GameScreen implements Screen {
             drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 10 );
 
         }
+
+        batch.draw(
+                AssetManager.OVERLAY,
+                camera.position.x - camera.viewportWidth / 2f * camera.zoom,
+                camera.position.y - camera.viewportHeight / 2f * camera.zoom,
+                0,
+                0,
+                camera.viewportWidth,
+                camera.viewportHeight,
+                camera.zoom,
+                camera.zoom,
+                0,
+                0,
+                0,
+                AssetManager.OVERLAY.getWidth() ,
+                AssetManager.OVERLAY.getHeight() ,
+                false,
+                false
+        );
     }
 
     private void drawDebugString(String str, int row) {
@@ -229,16 +251,13 @@ public class GameScreen implements Screen {
     public void zoomIn() {
 
         camera.zoom = Math.max(0.5f, camera.zoom / 1.04f);
-        if (camera.zoom > 0.5) {
-            font.setScale(font.getScaleX() / 1.04f);
-        }
+        font.setScale(camera.zoom);
 
     } //**
 
     public void zoomOut() {
         camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
-        if (camera.zoom < 150)
-            font.setScale(font.getScaleX() * 1.04f);
+        font.setScale(camera.zoom);
     }
 
     public void igniteRocketTrail() {
@@ -280,7 +299,8 @@ public class GameScreen implements Screen {
                         showOptions();
                         break;
                     case 5:
-                        System.exit(0);
+                        game.setScreen(new MainMenuScreen(game, batch, font));
+                        dispose();
                         break;
                     default:
                         break;
