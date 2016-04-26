@@ -237,7 +237,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
         //endregion
-        level = LevelManager.createLevel5();
+        level = LevelManager.createLevel4();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
         controller = new WorldController(level, this);

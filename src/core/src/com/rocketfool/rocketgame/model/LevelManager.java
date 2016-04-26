@@ -274,6 +274,7 @@ public class LevelManager {
         Timer timer = new Timer();
         final PopUp popUp = new PopUp();
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        popUp.setTitle("HQ");
 
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
@@ -304,7 +305,8 @@ public class LevelManager {
         final PositionTrigger asteroidsPassed = new PositionTrigger(6500, 5000, 25, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("Congratulations! You've managed to pass all of the obstacles without any collisions. We are right on track to reach Mars. Great Job Martian! Level 3 is completed.");
+                System.out.println("Congratulations! You've managed to pass all of the obstacles . We are right on the track to reach Mars. Great Job Martian! Level 3 is completed.");
+                popUp.setText("Congratulations! You've managed to pass all of the obstacles . We are right on the track to reach Mars. Great Job Martian! Level 3 is completed.");
                 //TODO: Next level should be given here. However, the method createLevel4() fails here.
             }
         };
@@ -318,9 +320,13 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               System.out.println("You took a SOS code from a who is at Mars right now. Your friend's ship stuck at the orbit of the Mars. To reach Mars, you have to travel far away. Begin!");
+                               System.out.println("You took a SOS code from a who is at Mars right now. Your friend's ship stuck " +
+                                       "at the orbit of the Mars. To reach Mars, you have to travel far away. Begin!");
+                               popUp.setText("You took a SOS code from a who is at Mars right now. Your friend's ship stuck " +
+                                       "at the orbit of the Mars. To reach Mars, you have to travel far away. Begin!");
                                Waypoint endGame = new Waypoint(6500, 5000, 25);
                                level.waypoints.add(endGame);
+                               objectiveWindow.setText("Reach Mars");
                            }
                        },
                 5.0f);
@@ -328,6 +334,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("The distance between Earth and Mars is 225 million kilometers.");
+                               popUp.setText("The distance between Earth and Mars is 225 million kilometers.");
                            }
                        },
                 20.0f);
@@ -335,6 +342,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Looks like there are lots of obstacles on your way. Try to pass through them.");
+                               popUp.setText("Looks like there are lots of obstacles on your way. Try to pass through them.");
                            }
                        },
                 40.0f);
@@ -342,6 +350,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Be careful!");
+                               popUp.setText("Be careful!");
                            }
                        },
                 60.0f);
@@ -349,6 +358,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Piloting is hard, isn't it?");
+                               popUp.setText("Piloting is hard, isn't it?");
                            }
                        },
                 80.0f);
@@ -356,6 +366,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Avoid collisions with obstacles!");
+                               popUp.setText("Avoid collisions with obstacles!");
                            }
                        },
                 100.0f);
@@ -373,7 +384,7 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
+        level.map = new Map(Gdx.graphics.getWidth() * 20, Gdx.graphics.getHeight() * 120);
 
         //earth
         level.planets.add(new Planet(6500, 5000, 6 * 1e24f, 900, null, level.world));
