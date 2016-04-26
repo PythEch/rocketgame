@@ -162,22 +162,22 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
+        level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
         //earth
-        level.planets.add(new Planet(1000, 1000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(9000, 7000, 8.9f * 1e24f, 750, null, level.world));
         //moon
-        level.planets.add(new Planet(6500, 7000, 6 * 1e24f, 100, null, level.world));
+        level.planets.add(new Planet(14000, 8000, 1.3f * 1e24f, 200, null, level.world));
 
         //initialization of the rocket
-        level.playable = new Playable(1000, 1500, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
-        level.playable.getBody().setLinearVelocity(0, 30);
+        level.playable = new Playable(9700, 7700, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 3.5f * 1e5f, level.world);
+        level.playable.getBody().setLinearVelocity(16f, -16f);                                       //**TODO
 
         //default Triggers
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger moonTrig = new PositionTrigger(6500, 7000, 150, level.playable) {
+        final PositionTrigger moonTrig = new PositionTrigger(14200, 8000, 100, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("You've reached the Moon. Do what you can do and come back home!");
