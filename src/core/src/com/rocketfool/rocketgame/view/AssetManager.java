@@ -16,5 +16,6 @@ public class AssetManager {
     public static final Texture SPLASH = new Texture(Gdx.files.internal("PNG/RocketFoolsSplash.png"));
     public static final Texture GHOST = new Texture(Gdx.files.internal("PNG/Yellow_icon.png"), true);
     public static final Texture WARNING = new Texture(Gdx.files.internal("PNG/redWarning.png"), true);
+    public static final Texture OVERLAY = new Texture(Gdx.files.internal("PNG/overlay.png"), true);
 
 }
