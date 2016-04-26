@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
 
 import static com.rocketfool.rocketgame.model.Playable.BASE;
-import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 
 /**
  * Designs and initiates levels and manages them.
@@ -77,7 +76,7 @@ public class LevelManager {
                            public void run() {
                                System.out.println("The Stability Assist System restored!" +
                                        "The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
-                               popUp.setText( "The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
+                               popUp.setText("The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
                            }
                        },
                 25.0f);
@@ -371,6 +370,7 @@ public class LevelManager {
         Timer timer = new Timer();
         final PopUp popUp = new PopUp();
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        popUp.setTitle("HQ");
 
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
@@ -390,6 +390,8 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 System.out.println("Help your friend!");
+                popUp.setText("Help your friend!");
+                objectiveWindow.setText("Help your friend!");
             }
         };
         level.triggers.add(marsTrig);
@@ -399,6 +401,7 @@ public class LevelManager {
             public void triggerPerformed() {
                 System.out.println("Congratulations! You saved your friend!");
                 System.out.println("News: Scientists've discovered some clues about the aliens and their location from the ship that you had brought. Go back to Earth for the news.");
+                popUp.setText("Congratulations! You saved your friend! There are good news awaiting you at your home!");
                 //TODO: Next level should be given here. However, the method createLevel5() fails here.
             }
         };
@@ -415,6 +418,8 @@ public class LevelManager {
                                System.out.println("Mars is close. Your friend needs help! GO!");
                                Waypoint friendShip = new Waypoint(6500, 5925, 25);
                                level.waypoints.add(friendShip);
+                               objectiveWindow.setText("Save your friend!");
+                               popUp.setText("Mars is close. Your friend needs help! GO");
                            }
                        },
                 5.0f);
@@ -422,13 +427,15 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("You have to pass through your friend's ship in order to save it from the orbit.");
+                               popUp.setText("You have to pass through your friend's ship in order to save it from the orbit.");
                            }
                        },
                 20.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               System.out.println("After saving the ship, go back to Earth.");
+                               System.out.println("After saving the ship, you can go back to Earth.");
+                               popUp.setText("After saving the ship, you can go back to Earth.");
                            }
                        },
                 40.0f);
@@ -443,6 +450,7 @@ public class LevelManager {
         Timer timer = new Timer();
         final PopUp popUp = new PopUp();
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        popUp.setTitle("HQ");
 
         //map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
@@ -464,6 +472,7 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 System.out.println("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
+                popUp.setText("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
                 //TODO: Landing animation is required here.
                 //TODO: Next level should be given here. However, the method createLevel6() fails here.
             }
@@ -479,6 +488,8 @@ public class LevelManager {
                                System.out.println("In order to check out the news. Land on the Earth.");
                                Waypoint earth = new Waypoint(1000, 1805, 5);
                                level.waypoints.add(earth);
+                               objectiveWindow.setText("Land on the Earth.");
+                               popUp.setText("In order to check out the news. Land on the Earth.");
                            }
                        },
                 5.0f);
@@ -486,6 +497,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("You have to make a gravity-assisted landing.");
+                               popUp.setText("You have to make a gravity-assisted landing.");
                            }
                        },
                 20.0f);
@@ -493,6 +505,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Spaceships usually use this method to land on the Earth.");
+                               popUp.setText("Spaceships usually use this method to land on the Earth.");
                            }
                        },
                 40.0f);
@@ -500,6 +513,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Moon is an important object during the process of gravity-assisted landing.");
+                               popUp.setText("Moon is an important object during the process of gravity-assisted landing.");
                            }
                        },
                 60.0f);
@@ -507,6 +521,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Are you excited for the news about the aliens?");
+                               popUp.setText("Are you excited for the news about the aliens?");
                            }
                        },
                 80.0f);
@@ -514,6 +529,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Time for some alien investigation!");
+                               popUp.setText("Time for some alien investigation!");
                            }
                        },
                 100.0f);
@@ -528,6 +544,7 @@ public class LevelManager {
         Timer timer = new Timer();
         final PopUp popUp = new PopUp();
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        popUp.setTitle("HQ");
 
         //map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
@@ -556,6 +573,7 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 System.out.println("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
+                popUp.setText("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
                 //TODO: Landing animation is required here.
                 //TODO: Next level should be given here. However, the method createLevel6() fails here.
             }
@@ -567,8 +585,10 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 System.out.println("What a beautiful planet it is. However, there is no sign of life here.");
+                popUp.setText("What a beautiful planet it is. However, there is no sign of life here.");
                 Waypoint secondPlanet = new Waypoint(3750, 4705, 5);
                 level.waypoints.add(secondPlanet);
+                objectiveWindow.setText("Continue investigating planets");
             }
         };
         level.triggers.add(planet1);
@@ -576,7 +596,8 @@ public class LevelManager {
         final PositionTrigger planet2 = new PositionTrigger(3750, 4200, 600, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("Nothing over here! Lets check the others.");
+                System.out.println("Nothing over here! Lets check the other planets.");
+                popUp.setText("Nothing over here! Lets check the others planets.");
                 Waypoint thirdPlanet = new Waypoint(3200, 1375, 5);
                 level.waypoints.add(thirdPlanet);
             }
@@ -587,11 +608,13 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
-                    System.out.println("I have a bad feeling about this planet. Move on!");
+                    System.out.println("I have a bad feeling about this planet. Let's move on!");
+                    popUp.setText("I have a bad feeling about this planet. Let's move on!");
                     Waypoint secretOne = new Waypoint(6500, 7105, 5);
                     level.waypoints.add(secretOne);
                 } else {
-                    System.out.println("It seems we skipped one planet which aliens might be there!");
+                    System.out.println("It seems we skipped one planet which aliens might be living!");
+                    popUp.setText("It seems we skipped one planet which aliens might be living!");
                 }
             }
         };
@@ -600,11 +623,15 @@ public class LevelManager {
         final PositionTrigger secret = new PositionTrigger(6500, 7000, 100, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered())
+                if (planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
                     System.out.println("Oh My God! ALIENS! They are here, they have a planet called Oz-Turca and they call themselves Oz-Jans.");
-                    //TODO: Alien & Human Gardasligi animasyonu. GAME OVER HERE
-                else
-                    System.out.println("I think we missed some planets. Before looking into this.");
+                    popUp.setText("Oh My God! ALIENS! They are here, they have a planet called Oz-Turca and they call themselves Oz-Jans.");
+                }
+                //TODO: Alien & Human Gardasligi animasyonu. GAME OVER HERE
+                else {
+                    System.out.println("We better check all the other planets before looking into this.");
+                    popUp.setText("We better check all the other planets before looking into this.");
+                }
             }
         };
         level.triggers.add(secret);
@@ -618,6 +645,9 @@ public class LevelManager {
                                System.out.println("Is this real? There are evidence of existence of aliens. Your mission is to find their planet in the space. There are several planets. Start searching!");
                                Waypoint firstPlanet = new Waypoint(3750, 4805, 5);
                                level.waypoints.add(firstPlanet);
+                               popUp.setText("Is this real? There are evidence of existence of aliens. Your mission is to find their planet " +
+                                       "in the space. There are several planets. Start searching!");
+                               objectiveWindow.setText("Find the mysterious planet of the aliens");
                            }
                        },
                 5.0f);
