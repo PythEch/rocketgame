@@ -263,7 +263,7 @@ public class Level {
             // TODO: restart from checkpoint etc.
             // ridicule gamer etc.
 
-            
+
             // restart game
             setState(State.RUNNING);
         }
@@ -299,6 +299,14 @@ public class Level {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     //endregion
