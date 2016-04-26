@@ -19,6 +19,7 @@ public class LevelManager {
         Timer timer = new Timer();
         final PopUp popUp = new PopUp();
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        popUp.setTitle("HQ");
 
         //levelMap
         level.map = new Map(Gdx.graphics.getWidth() * 400, Gdx.graphics.getHeight() * 400);
@@ -39,7 +40,6 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 System.out.println("Congratulations! You regained the control of the ship and reached the Earth. Level 1 is completed.");
-                popUp.setTitle("HQ");
                 popUp.setText("Mission Accomplished!!!");
                 //TODO: Next level should be given here. However, the method createLevel2() fails here.
             }
@@ -158,6 +158,9 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
+        final PopUp popUp = new PopUp();
+        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        popUp.setTitle("HQ");
 
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
@@ -178,7 +181,9 @@ public class LevelManager {
         final PositionTrigger moonTrig = new PositionTrigger(6500, 7000, 150, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("You've reached the Moon. Find the jurisdiction now!");
+                System.out.println("You've reached the Moon. Do what you can do and come back home!");
+                popUp.setText("You've reached the Moon. Do what you can do and come back home!");
+                objectiveWindow.setText("Return home again");
             }
         };
         level.triggers.add(moonTrig);
@@ -187,7 +192,8 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 if (moonTrig.isTriggeredBefore()) {
-                    System.out.println("Congratulations! You found a crashed spaceship at Moon. Our scientists are going to analyze it. Great Job! Level 2 is completed.");
+                    System.out.println("Congratulations! Our researchers will be able to find our instructor by examining this craft!!!");
+                    popUp.setText("Congratulations! Our researchers will be able to find our instructor by examining this craft!!!");
                     //TODO: Next level should be given here. However, the method createLevel3() fails here.
                 }
             }
@@ -205,6 +211,8 @@ public class LevelManager {
                                System.out.println("You took off from the Earth because it looks like there is a crash at the Moon. Could they be ALIENS? Go check it out.");
                                Waypoint alienShip = new Waypoint(6500, 7105, 5);
                                level.waypoints.add(alienShip);
+                               popUp.setText("You took off from the Earth because it looks like there is a crash at the Moon. Could they be ALIENS? Go check it out.");
+                               objectiveWindow.setText("Examine the Moon");
                            }
                        },
                 5.0f);
@@ -212,6 +220,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("You are heading towards to the natural satellite of the Earth: Moon.");
+                               popUp.setText("You are heading towards to the natural satellite of the Earth: Moon.");
                            }
                        },
                 20.0f);
@@ -219,6 +228,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Moon is the closest neighbour of our planet in the space.");
+                               popUp.setText("Moon is the closest neighbour of our planet in the space.");
                            }
                        },
                 40.0f);
@@ -226,6 +236,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("When you get close to the Moon, you have to be careful. You are very fast and you should make a smooth curve.");
+                               popUp.setText("When you get close to the Moon, you have to be careful. You are very fast and you should make a smooth curve.");
                            }
                        },
                 60.0f);
@@ -233,6 +244,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("You have to bring anything you found in the accident area back to the Earth.");
+                               popUp.setText("You have to bring anything you found in the accident area back to the Earth.");
                            }
                        },
                 80.0f);
@@ -240,6 +252,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Brace yourself for any possible alien attack or crash because of your bad piloting.");
+                               popUp.setText("Brace yourself for any possible alien attack or crash because of your bad piloting.");
                            }
                        },
                 100.0f);
@@ -247,6 +260,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("After your investigation, go back to Earth!");
+                               popUp.setText("After your investigation, go back to Earth!");
                            }
                        },
                 175.0f);
@@ -259,6 +273,8 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
+        final PopUp popUp = new PopUp();
+        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
 
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
@@ -353,6 +369,8 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
+        final PopUp popUp = new PopUp();
+        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
 
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
@@ -423,6 +441,8 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
+        final PopUp popUp = new PopUp();
+        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
 
         //map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
@@ -506,6 +526,8 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
+        final PopUp popUp = new PopUp();
+        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
 
         //map
         level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
