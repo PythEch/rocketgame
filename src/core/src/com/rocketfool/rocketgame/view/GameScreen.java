@@ -247,7 +247,7 @@ public class GameScreen implements Screen {
 
         //Thrust bar
         float thrustRate;
-        thrustRate = (level.getPlayable().getCurrentImpulse() * 69) / level.getPlayable().getMaxImpulse(); //69 When bar is full
+        thrustRate = (level.getPlayable().getCurrentThrust() * 69) / level.getPlayable().getMaxThrust(); //69 When bar is full
         batch.draw(
                 overlayFiller,
                 camera.position.x - (camera.viewportWidth / 2f - 894) * camera.zoom, //462 Fuel bar's starting pointX
@@ -300,6 +300,29 @@ public class GameScreen implements Screen {
                     0,
                     rocketTexture.getWidth(),
                     rocketTexture.getHeight(),
+                    false,
+                    false
+            );
+        }
+
+        //WarningMapSign
+        if(renderer.getTrajectorySimulator().isCollided() )
+        {
+            batch.draw(
+                    AssetManager.WARNING,
+                    camera.position.x - (camera.viewportWidth / 2f - 1022) * camera.zoom, //1022 hud x pos
+                    camera.position.y - (camera.viewportHeight / 2f - 235) * camera.zoom, //235 hud y pos
+                    0,
+                    0,
+                    AssetManager.WARNING.getWidth() /14f , //14f = scaling ratio
+                    AssetManager.WARNING.getHeight() /14f ,
+                    camera.zoom,
+                    camera.zoom,
+                    0,
+                    0,
+                    0,
+                    AssetManager.WARNING.getWidth(),
+                    AssetManager.WARNING.getHeight(),
                     false,
                     false
             );

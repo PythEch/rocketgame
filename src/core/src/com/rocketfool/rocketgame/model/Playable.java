@@ -62,7 +62,7 @@ public class Playable extends SolidObject {
         this.maxThrust = maxThrust;
         this.SASEnabled = false;
         this.maximizeThrust = false;
-        this.maximizeThrust = false;
+        this.startingFuel = fuel;
 
         this.body = createBody(x, y, (dryMass + fuel), world);
         this.spawnPoint = body.getPosition().cpy();
