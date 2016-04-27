@@ -237,9 +237,6 @@ public class Level {
         return 0f;
     }
 
-    public void saveGame() {
-        //TODO: Implement
-    }
 
     private void updateParticles(float deltaTime) {
         //TODO: implement

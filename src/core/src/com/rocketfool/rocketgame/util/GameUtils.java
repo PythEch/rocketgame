@@ -12,6 +12,7 @@ import java.io.File;
 public class GameUtils {
 
     public static int levelsCleared = 0;
+    public static int currentScore = 0;
 
     public static void saveGame(){
         //FIXME: Is there anything else to save? I don't think there is... -Levent
