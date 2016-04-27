@@ -246,6 +246,8 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
+
+        level.setScreenReference(this); //To set zoom*
     }
 
     public void zoomIn() {
@@ -259,6 +261,8 @@ public class GameScreen implements Screen {
         camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
         font.setScale(camera.zoom);
     }
+
+    public void setZoom(float zoom){ camera.zoom = zoom; }
 
     public void igniteRocketTrail() {
 
