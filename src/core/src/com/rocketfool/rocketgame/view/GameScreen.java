@@ -350,6 +350,10 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
+
+        minimap = new Minimap(1064, 46, 81 * 2, 81 * 1.5f, level, camera, renderer.getTrajectorySimulator());
+
+        level.setScreenReference(this); //To set zoom*
     } //endregion
 
     public void zoomIn() {
