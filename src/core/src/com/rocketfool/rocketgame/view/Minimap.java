@@ -1,9 +1,12 @@
 package com.rocketfool.rocketgame.view;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.model.Planet;
@@ -13,6 +16,7 @@ import static com.rocketfool.rocketgame.util.Constants.*;
 
 /**
  * Created by pythech on 27/04/16.
+ * TODO: reevaluate scales and draw trajectory smoother
  */
 public class Minimap {
 
@@ -54,6 +58,9 @@ public class Minimap {
             Vector2 point = trajectorySimulator.getEstimationPath().get(i);
             drawAt(batch, AssetManager.GHOST, point.x, point.y, 0.1f);
         }
+
+        if (DEBUG)
+            debugDraw(batch);
     }
 
     private void drawAt(SpriteBatch batch, Texture texture, float x, float y, float scale) {
@@ -80,10 +87,12 @@ public class Minimap {
         );
     }
 
-    private void testDraw(SpriteBatch batch) {
-        drawAt(batch, AssetManager.MINIMAP_PLAYER, 0, 0, 1);
-        drawAt(batch, AssetManager.MINIMAP_PLAYER, 0, radius * 2, 1);
-        drawAt(batch, AssetManager.MINIMAP_PLAYER, radius * 2, 0, 1);
-        drawAt(batch, AssetManager.MINIMAP_PLAYER, radius * 2, radius * 2, 1);
+    private void debugDraw(SpriteBatch batch) {
+        batch.end();
+        ShapeRenderer sr = new ShapeRenderer();
+        sr.begin(ShapeRenderer.ShapeType.Line);
+        sr.rect(originX, originY, radius * 2, radius * 2);
+        sr.end();
+        batch.begin();
     }
 }
