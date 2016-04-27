@@ -280,29 +280,29 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 250, Gdx.graphics.getHeight() * 250);
 
         //earth
-        level.planets.add(new Planet(7500, 4000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(1000, 1000, 6 * 1e24f, 800, null, level.world));
 
         //obstacles
         //TODO: Dispose method could be implemented for level class to remove the objects going out of the map and summoning new ones
         //loop for randomizing the movement directions, velocities, sizes and the shapes of the asteroids
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             Vector2 vector = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 20f, ((float) Math.random()) * (float) Math.random() * 20f);
             if (i % 2 == 0) {
-                level.gameObjects.add(new RoundObstacle(((float) (Math.random()) * 8020), ((float) (Math.random()) * 3000) + 30 * i, 10, vector, level.world));
+                level.gameObjects.add(new RoundObstacle(((float) (Math.random()) * 10000), ((float) (Math.random()) * 7000) + 30 * i, 10, vector, level.world));
             } else {
-                level.gameObjects.add(new RectangleObstacle(((float) (Math.random()) * 8020), ((float) (Math.random()) * 3000) + 30 * i, i * 2, i + 0.5f, vector, level.world));
+                level.gameObjects.add(new RectangleObstacle(((float) (Math.random()) * 10000), ((float) (Math.random()) * 7000) + 30 * i, i * 2, i + 0.5f, vector, level.world));
             }
         }
 
         //initialization of the rocket
-        level.playable = new Playable(500, 600, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
+        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(0, 30);
 
         //default Triggers
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger asteroidsPassed = new PositionTrigger(7500, 4000, 1300, level.playable) {
+        final PositionTrigger asteroidsPassed = new PositionTrigger(7500, 5000, 100, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("Congratulations! You've managed to pass all of the obstacles . We are right on the track to reach Mars. Great Job Martian! Level 3 is completed.");
@@ -324,7 +324,7 @@ public class LevelManager {
                                        "at the orbit of the Mars. To reach Mars, you have to travel far away. Begin!");
                                popUp.setText("You took a SOS code from a who is at Mars right now. Your friend's ship stuck " +
                                        "at the orbit of the Mars. To reach Mars, you have to travel far away. Begin!");
-                               Waypoint endGame = new Waypoint(6500, 5000, 25);
+                               Waypoint endGame = new Waypoint(7500, 5000, 50);
                                level.waypoints.add(endGame);
                                objectiveWindow.setText("Reach Mars");
                            }
