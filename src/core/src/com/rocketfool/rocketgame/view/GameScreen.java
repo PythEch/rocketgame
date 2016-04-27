@@ -236,6 +236,28 @@ public class GameScreen implements Screen {
                 false
         );
 
+        //Thrust bar
+        float thrustRate;
+        thrustRate = (level.getPlayable().getCurrentImpulse() * 69) / level.getPlayable().getMaxImpulse(); //69 When bar is full
+        batch.draw(
+                overlayFiller,
+                camera.position.x - (camera.viewportWidth / 2f - 894) * camera.zoom, //462 Fuel bar's starting pointX
+                camera.position.y - (camera.viewportHeight / 2f - 635.9f) * camera.zoom, //635.9f Fuel bar's starting pointY
+                0,
+                0,
+                14,
+                thrustRate, //When bar is max
+                camera.zoom,
+                camera.zoom,
+                0,
+                0,
+                0,
+                overlayFiller.getWidth() ,
+                overlayFiller.getHeight() ,
+                false,
+                false
+        );
+
         //Timer
         BitmapFont timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
         String str = "" + (int)elapsedTime ;
