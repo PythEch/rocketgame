@@ -99,6 +99,16 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
+                               System.out.println("Newton states that a body will continue to move at constant speed or continue to not move at all, " +
+                                       "unless a force is being applied to it. In outer space, that could mean moving forever…");
+                               popUp.setText("Newton states that a body will continue to move at constant speed or continue to not move at all, " +
+                                       "unless a force is being applied to it. In outer space, that could mean moving forever…");
+                           }
+                       },
+                80.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
                                System.out.println("Use A & S keys to zoom out or zoom in, press ESC for the Pause Menu.");
                                popUp.setText("Use A & S keys to zoom out or zoom in, press ESC for the Pause Menu.");
                            }
@@ -148,9 +158,18 @@ public class LevelManager {
                            }
                        },
                 70.0f);
-        //TODO: Update objective: Return to Earth
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               System.out.println("An orbit around a planet depends on 3 things: the masses of the orbiter and the planet," +
+                                       " the distance between them, and the velocity of the orbiter");
+                               popUp.setText("An orbit around a planet depends on 3 things: the masses of the orbiter and the planet," +
+                                       " the distance between them, and the velocity of the orbiter");
+                           }
+                       },
+                80.0f);
 
-        //(The endgame trigger is activated upon reaching the Earth)
+
         return level;
     }
 
@@ -271,7 +290,20 @@ public class LevelManager {
                                popUp.setText("After your investigation, go back to Earth!");
                            }
                        },
-                175.0f);
+                150.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               System.out.println("The parachutes and the Autopilot of the spacecraft (if they exist) can handle the take-offs and landings for you. " +
+                                       "All you need to do is get close to the location you need to land. " +
+                                       "However, bear in mind that trying to land at high speeds might cause the spacecraft to crash.");
+                               popUp.setText("The parachutes and the Autopilot of the spacecraft (if they exist) can handle the take-offs and landings for you." +
+                                       " All you need to do is get close to the location you need to land. " +
+                                       " However, bear in mind that trying to land at high speeds might cause the spacecraft to crash.");
+                           }
+                       },
+                200.0f);
+
 
         return level;
     }
@@ -355,6 +387,16 @@ public class LevelManager {
                            }
                        },
                 40.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               System.out.println("Space might not be so empty after all. Even the smallest rock or space junk piece can cause serious damage to the craft, " +
+                                       "especially at higher speeds, so it would be best to avoid even touching anything!");
+                               popUp.setText("Space might not be so empty after all. Even the smallest rock or space junk piece can cause serious damage to the craft," +
+                                       " especially at higher speeds, so it would be best to avoid even touching anything!");
+                           }
+                       },
+                45.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -459,6 +501,7 @@ public class LevelManager {
                            }
                        },
                 40.0f);
+
 
         return level;
     }
