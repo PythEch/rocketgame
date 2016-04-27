@@ -241,7 +241,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
         //endregion
-        level = LevelManager.createLevel1();
+        level = LevelManager.createLevel4();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
         controller = new WorldController(level, this);
@@ -252,6 +252,8 @@ public class GameScreen implements Screen {
         skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
 
         minimap = new Minimap(1064, 46, 81, level, camera, renderer.getTrajectorySimulator());
+
+        level.setScreenReference(this); //To set zoom*
     }
 
     public void zoomIn() {
@@ -265,6 +267,8 @@ public class GameScreen implements Screen {
         camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
         font.setScale(camera.zoom);
     }
+
+    public void setZoom(float zoom){ camera.zoom = zoom; }
 
     public void igniteRocketTrail() {
 

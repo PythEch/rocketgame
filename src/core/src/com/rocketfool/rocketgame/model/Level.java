@@ -3,6 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.rocketfool.rocketgame.view.GameScreen;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 import static com.rocketfool.rocketgame.util.Constants.FRAME_RATE;
@@ -18,6 +19,7 @@ public class Level {
     //region Fields
     protected World world;
     protected Playable playable;
+    protected GameScreen screen; //Needed to set zoom**
     protected Map map;
     protected Array<Trigger> triggers;
     protected Array<Waypoint> waypoints;
@@ -313,6 +315,8 @@ public class Level {
     public void setHealth(int health) {
         this.health = health;
     }
+
+    public void setScreenReference(GameScreen screen){ this.screen = screen; } //Needed to set zoom**
 
     //endregion
 }
