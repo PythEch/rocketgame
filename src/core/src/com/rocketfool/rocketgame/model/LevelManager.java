@@ -384,7 +384,7 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 120, Gdx.graphics.getHeight() * 120);
+        level.map = new Map(Gdx.graphics.getWidth() * 200, Gdx.graphics.getHeight() * 200);
 
         //earth
         level.planets.add(new Planet(6500, 5000, 6 * 1e24f, 900, null, level.world));
@@ -427,7 +427,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Mars is close. Your friend needs help! GO!");
-                               Waypoint friendShip = new Waypoint(6500, 5925, 25);
+                               Waypoint friendShip = new Waypoint(6500, 5925, 10);
                                level.waypoints.add(friendShip);
                                objectiveWindow.setText("Save your friend!");
                                popUp.setText("Mars is close. Your friend needs help! GO");
@@ -464,15 +464,15 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //map
-        level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
+        level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
         //earth
-        level.planets.add(new Planet(1000, 1000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(7000, 7000, 6 * 1e24f, 800, null, level.world));
         //moon
-        level.planets.add(new Planet(6500, 7000, 6 * 1e24f, 100, null, level.world));
+        level.planets.add(new Planet(12500, 13000, 6 * 1e24f, 100, null, level.world));
 
         //rocket
-        level.playable = new Playable(7000, 7000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
+        level.playable = new Playable(13000, 13000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(45, 0);
 
         //default Triggers
@@ -497,7 +497,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("In order to check out the news. Land on the Earth.");
-                               Waypoint earth = new Waypoint(1000, 1805, 5);
+                               Waypoint earth = new Waypoint(7000, 7805, 10);
                                level.waypoints.add(earth);
                                objectiveWindow.setText("Land on the Earth.");
                                popUp.setText("In order to check out the news. Land on the Earth.");
@@ -558,22 +558,22 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //map
-        level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
+        level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
         //earth
-        level.planets.add(new Planet(1000, 1000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(4000, 4000, 6 * 1e24f, 800, null, level.world));
         //secretPlanet
-        level.planets.add(new Planet(6500, 7000, 6 * 1e24f, 100, null, level.world));
+        level.planets.add(new Planet(9500, 10000, 6 * 1e24f, 100, null, level.world));
 
         //planet1
-        level.planets.add(new Planet(2500, 2000, 6 * 1e24f, 650, null, level.world));
+        level.planets.add(new Planet(5500, 5000, 6 * 1e24f, 650, null, level.world));
         //planet2
-        level.planets.add(new Planet(3750, 4200, 2.7f * 1e21f, 500, null, level.world));
+        level.planets.add(new Planet(6750, 7200, 2.7f * 1e21f, 500, null, level.world));
         //planet3
-        level.planets.add(new Planet(3200, 1220, 6 * 1e24f, 350, null, level.world));
+        level.planets.add(new Planet(6200, 4220, 6 * 1e24f, 350, null, level.world));
 
         //rocket
-        level.playable = new Playable(1000, 1850, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
+        level.playable = new Playable(4000, 4850, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(0, 0);
 
         //default Triggers
@@ -592,36 +592,36 @@ public class LevelManager {
         level.triggers.add(earthTrig);
 
         //add important endgame triggers here
-        final PositionTrigger planet1 = new PositionTrigger(2500, 2000, 700, level.playable) {
+        final PositionTrigger planet1 = new PositionTrigger(5500, 5000, 700, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("What a beautiful planet it is. However, there is no sign of life here.");
                 popUp.setText("What a beautiful planet it is. However, there is no sign of life here.");
-                Waypoint secondPlanet = new Waypoint(3750, 4705, 5);
+                Waypoint secondPlanet = new Waypoint(6750, 7705, 5);
                 level.waypoints.add(secondPlanet);
                 objectiveWindow.setText("Continue investigating planets");
             }
         };
         level.triggers.add(planet1);
 
-        final PositionTrigger planet2 = new PositionTrigger(3750, 4200, 600, level.playable) {
+        final PositionTrigger planet2 = new PositionTrigger(6750, 7200, 600, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("Nothing over here! Lets check the other planets.");
                 popUp.setText("Nothing over here! Lets check the others planets.");
-                Waypoint thirdPlanet = new Waypoint(3200, 1375, 5);
+                Waypoint thirdPlanet = new Waypoint(6200, 4375, 5);
                 level.waypoints.add(thirdPlanet);
             }
         };
         level.triggers.add(planet2);
 
-        final PositionTrigger planet3 = new PositionTrigger(3200, 1220, 500, level.playable) {
+        final PositionTrigger planet3 = new PositionTrigger(6200, 4220, 500, level.playable) {
             @Override
             public void triggerPerformed() {
                 if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
                     System.out.println("I have a bad feeling about this planet. Let's move on!");
                     popUp.setText("I have a bad feeling about this planet. Let's move on!");
-                    Waypoint secretOne = new Waypoint(6500, 7105, 5);
+                    Waypoint secretOne = new Waypoint(9500, 10105, 5);
                     level.waypoints.add(secretOne);
                 } else {
                     System.out.println("It seems we skipped one planet which aliens might be living!");
@@ -631,7 +631,7 @@ public class LevelManager {
         };
         level.triggers.add(planet3);
 
-        final PositionTrigger secret = new PositionTrigger(6500, 7000, 100, level.playable) {
+        final PositionTrigger secret = new PositionTrigger(9500, 10000, 100, level.playable) {
             @Override
             public void triggerPerformed() {
                 if (planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
@@ -654,7 +654,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Is this real? There are evidence of existence of aliens. Your mission is to find their planet in the space. There are several planets. Start searching!");
-                               Waypoint firstPlanet = new Waypoint(3750, 4805, 5);
+                               Waypoint firstPlanet = new Waypoint(6750, 7805, 5);
                                level.waypoints.add(firstPlanet);
                                popUp.setText("Is this real? There are evidence of existence of aliens. Your mission is to find their planet " +
                                        "in the space. There are several planets. Start searching!");
