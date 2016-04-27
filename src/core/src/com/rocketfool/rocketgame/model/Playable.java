@@ -57,7 +57,7 @@ public class Playable extends SolidObject {
         this.deltaAngularImpulse = deltaAngularImpulse;
         this.deltaImpulse = deltaImpulse;
         this.fuelLeft = fuel;
-        this.maxImpulse = maxImpulse;
+        this.maxImpulse = maxImpulse *60; //tempfix for before merge
         this.SASEnabled = false;
         this.maximizeImpulse = false;
         this.maximizeImpulse = false;

@@ -25,9 +25,9 @@ public class LevelManager {
 
         //Earth
         level.planets.add(new Planet(11000, 6000, 6 * 1e24f, 800, null, level.world));
-
+        //TODO add the Moon (because it should exist)
         //initialization of the rocket
-        level.playable = new Playable(16500, 12000, 88, 108, 1e5f, 400 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
+        level.playable = new Playable(16500, 12000, 88, 108, 1e5f, 400 * BASE, 200 * BASE, 1000 * BASE, 2e5f, level.world);
         level.playable.getBody().setLinearVelocity(5f, 2f);
         level.playable.getBody().setAngularVelocity(5f);
 
@@ -40,7 +40,7 @@ public class LevelManager {
             public void triggerPerformed() {
                 System.out.println("Congratulations! You regained the control of the ship and reached the Earth. Level 1 is completed.");
                 popUp.setText("Mission Accomplished!!!");
-                //TODO: Next level should be given here. However, the method createLevel2() fails here.
+                //TODO: End of level popup to move to menu or next level or restart
             }
         };
         level.triggers.add(earthTrig);
@@ -149,6 +149,8 @@ public class LevelManager {
                        },
                 70.0f);
         //TODO: Update objective: Return to Earth
+
+        //(The endgame trigger is activated upon reaching the Earth)
         return level;
     }
 
@@ -167,11 +169,11 @@ public class LevelManager {
         //earth
         level.planets.add(new Planet(9000, 7000, 8.9f * 1e24f, 750, null, level.world));
         //moon
-        level.planets.add(new Planet(14000, 8000, 1.3f * 1e24f, 200, null, level.world));
+        level.planets.add(new Planet(14000, 8000, 2.3f * 1e24f, 200, null, level.world));
 
         //initialization of the rocket
-        level.playable = new Playable(9700, 7700, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 3.5f * 1e5f, level.world);
-        level.playable.getBody().setLinearVelocity(16f, -16f);                                       //**TODO
+        level.playable = new Playable(9650, 6350, 88, 108, 2e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
+        level.playable.getBody().setLinearVelocity(-18f, -18f);                                       //**TODO
 
         //default Triggers
         addDefaultTriggers(level);
@@ -202,8 +204,15 @@ public class LevelManager {
         //level starts here
         timer.start();
 
-        //TODO: Some explosion at the Moon is needed.
+        //TODO: Crashed UFO at the Moon is needed (simple waypoint image)
 
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               level.screen.setZoom(6f); //FIXME
+                           }
+                       },
+                0.001f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
