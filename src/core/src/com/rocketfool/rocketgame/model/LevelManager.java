@@ -286,7 +286,7 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 250, Gdx.graphics.getHeight() * 250);
+        level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
         //earth
         level.planets.add(new Planet(1000, 1000, 6 * 1e24f, 800, null, level.world));
@@ -305,13 +305,13 @@ public class LevelManager {
 
         //initialization of the rocket
         level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
-        level.playable.getBody().setLinearVelocity(0, 30);
+        level.playable.getBody().setLinearVelocity(3, 5);
 
         //default Triggers
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger asteroidsPassed = new PositionTrigger(7500, 5000, 100, level.playable) {
+        final PositionTrigger asteroidsPassed = new PositionTrigger(9000, 8000, 100, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("Congratulations! You've managed to pass all of the obstacles . We are right on the track to reach Mars. Great Job Martian! Level 3 is completed.");
@@ -333,7 +333,7 @@ public class LevelManager {
                                        "at the orbit of the Mars. To reach Mars, you have to travel far away. Begin!");
                                popUp.setText("You took a SOS code from a who is at Mars right now. Your friend's ship stuck " +
                                        "at the orbit of the Mars. To reach Mars, you have to travel far away. Begin!");
-                               Waypoint endGame = new Waypoint(7500, 5000, 50);
+                               Waypoint endGame = new Waypoint(9000, 8000, 50);
                                level.waypoints.add(endGame);
                                objectiveWindow.setText("Reach Mars");
                            }
@@ -473,22 +473,22 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //map
-        level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
+        level.map = new Map(Gdx.graphics.getWidth() * 500, Gdx.graphics.getHeight() * 500);
 
         //earth
-        level.planets.add(new Planet(7000, 7000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(5000, 5000, 6 * 1e24f, 800, null, level.world));
         //moon
         level.planets.add(new Planet(12500, 13000, 6 * 1e24f, 100, null, level.world));
 
         //rocket
         level.playable = new Playable(13000, 13000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
-        level.playable.getBody().setLinearVelocity(45, 0);
+        level.playable.getBody().setLinearVelocity(45, -5);
 
         //default Triggers
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger earthTrig = new PositionTrigger(1000, 1000, 850, level.playable) {
+        final PositionTrigger earthTrig = new PositionTrigger(5000, 5000, 850, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
@@ -506,7 +506,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("In order to check out the news. Land on the Earth.");
-                               Waypoint earth = new Waypoint(7000, 7805, 10);
+                               Waypoint earth = new Waypoint(5000, 5805, 10);
                                level.waypoints.add(earth);
                                objectiveWindow.setText("Land on the Earth.");
                                popUp.setText("In order to check out the news. Land on the Earth.");
@@ -567,19 +567,19 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //map
-        level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
+        level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
 
         //earth
-        level.planets.add(new Planet(4000, 4000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(11000, 13000, 6 * 1e24f, 800, null, level.world));
         //secretPlanet
-        level.planets.add(new Planet(9500, 10000, 6 * 1e24f, 100, null, level.world));
+        level.planets.add(new Planet(16000, 15000, 6 * 1e24f, 100, null, level.world));
 
         //planet1
-        level.planets.add(new Planet(5500, 5000, 6 * 1e24f, 650, null, level.world));
+        level.planets.add(new Planet(5500, 5500, 6 * 1e24f, 650, null, level.world));
         //planet2
-        level.planets.add(new Planet(6750, 7200, 2.7f * 1e21f, 500, null, level.world));
+        level.planets.add(new Planet(14000, 3000, 2.7f * 1e21f, 500, null, level.world));
         //planet3
-        level.planets.add(new Planet(6200, 4220, 6 * 1e24f, 350, null, level.world));
+        level.planets.add(new Planet(8200, 7200, 6 * 1e24f, 350, null, level.world));
 
         //rocket
         level.playable = new Playable(4000, 4850, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
@@ -589,42 +589,39 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger earthTrig = new PositionTrigger(1000, 1000, 850, level.playable) {
+        final PositionTrigger earthTrig = new PositionTrigger(11000, 13000, 400, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
-                popUp.setText("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
-                //TODO: Landing animation is required here.
-                //TODO: Next level should be given here. However, the method createLevel6() fails here.
+                System.out.println("You can't return to Earth yet");
+                popUp.setText("You can't return to Earth yet, go exploring");
+
             }
         };
         level.triggers.add(earthTrig);
-
-        //add important endgame triggers here
-        final PositionTrigger planet1 = new PositionTrigger(5500, 5000, 700, level.playable) {
+        final PositionTrigger planet1 = new PositionTrigger(5500, 5500, 1000, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("What a beautiful planet it is. However, there is no sign of life here.");
                 popUp.setText("What a beautiful planet it is. However, there is no sign of life here.");
-                Waypoint secondPlanet = new Waypoint(6750, 7705, 5);
+                Waypoint secondPlanet = new Waypoint(14000, 3600, 5);
                 level.waypoints.add(secondPlanet);
                 objectiveWindow.setText("Continue investigating planets");
             }
         };
         level.triggers.add(planet1);
 
-        final PositionTrigger planet2 = new PositionTrigger(6750, 7200, 600, level.playable) {
+        final PositionTrigger planet2 = new PositionTrigger(14000, 3000, 850, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("Nothing over here! Lets check the other planets.");
                 popUp.setText("Nothing over here! Lets check the others planets.");
-                Waypoint thirdPlanet = new Waypoint(6200, 4375, 5);
+                Waypoint thirdPlanet = new Waypoint(8200, 7000, 5);
                 level.waypoints.add(thirdPlanet);
             }
         };
         level.triggers.add(planet2);
 
-        final PositionTrigger planet3 = new PositionTrigger(6200, 4220, 500, level.playable) {
+        final PositionTrigger planet3 = new PositionTrigger(8200, 7200, 700, level.playable) {
             @Override
             public void triggerPerformed() {
                 if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
@@ -640,7 +637,7 @@ public class LevelManager {
         };
         level.triggers.add(planet3);
 
-        final PositionTrigger secret = new PositionTrigger(9500, 10000, 100, level.playable) {
+        final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {
             @Override
             public void triggerPerformed() {
                 if (planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
@@ -656,6 +653,7 @@ public class LevelManager {
         };
         level.triggers.add(secret);
 
+
         //level starts here
         timer.start();
 
@@ -663,7 +661,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                System.out.println("Is this real? There are evidence of existence of aliens. Your mission is to find their planet in the space. There are several planets. Start searching!");
-                               Waypoint firstPlanet = new Waypoint(6750, 7805, 5);
+                               Waypoint firstPlanet = new Waypoint(5500, 6200, 5);
                                level.waypoints.add(firstPlanet);
                                popUp.setText("Is this real? There are evidence of existence of aliens. Your mission is to find their planet " +
                                        "in the space. There are several planets. Start searching!");
@@ -671,6 +669,16 @@ public class LevelManager {
                            }
                        },
                 5.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               System.out.println("Space Never Gets Boring!!! It's Always FUN!!!");
+                               Waypoint firstPlanet = new Waypoint(5500, 6200, 5);
+                               level.waypoints.add(firstPlanet);
+                               popUp.setText("Space Never Gets Boring!!! It's Always FUN!!!");
+                           }
+                       },
+                100.0f);
 
         return level;
     }
