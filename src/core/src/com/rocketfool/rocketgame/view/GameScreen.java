@@ -243,7 +243,6 @@ public class GameScreen implements Screen {
         {
             str = ""+ (int)(elapsedTime/60) + ":" + (int)elapsedTime % 60;
         }
-        System.out.println(elapsedTime);
         timerFont.setScale(camera.zoom);
         timerFont.draw(
                 batch,
@@ -251,6 +250,31 @@ public class GameScreen implements Screen {
                 camera.position.x + (camera.viewportWidth / 2 - 140) * camera.zoom - timerFont.getBounds(str).width / 2,
                 camera.position.y + (camera.viewportHeight / 2 + 320)* camera.zoom - timerFont.getLineHeight() * 12
         );
+
+        //Health
+        Texture rocketTexture = AssetManager.PLAYER_TEXTURE;
+        for(int i = 0; i < level.getHealth(); i++ )
+        {
+            batch.draw(
+                    rocketTexture,
+                    //-120 = indent pixel from left, (75*i) = gap between textures
+                    camera.position.x - (-120 + (camera.viewportWidth / 2f) - (75 * i) ) * camera.zoom,
+                    camera.position.y - (camera.viewportHeight / 2f - 635 ) * camera.zoom, //-635 Y axis level
+                    0,
+                    0,
+                    rocketTexture.getWidth() / 1.7f, //1.7f = scaling ratio
+                    rocketTexture.getHeight() / 1.7f,
+                    camera.zoom,
+                    camera.zoom,
+                    0,
+                    0,
+                    0,
+                    rocketTexture.getWidth() ,
+                    rocketTexture.getHeight() ,
+                    false,
+                    false
+            );
+        }
     }
 
     private void drawDebugString(String str, int row) {
