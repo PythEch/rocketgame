@@ -28,11 +28,11 @@ public class Minimap {
     private OrthographicCamera camera;
     private TrajectorySimulator trajectorySimulator;
 
-    public Minimap(float originX, float originY, float side, float radius, Level level, OrthographicCamera camera, TrajectorySimulator trajectorySimulator) {
+    public Minimap(float originX, float originY, float side, Level level, OrthographicCamera camera, TrajectorySimulator trajectorySimulator) {
         this.originX = originX;
         this.originY = originY;
         this.side = side;
-        this.radius = radius;
+        this.radius = (float)(side * Math.sqrt(2) / 2);
         this.level = level;
         this.camera = camera;
         this.trajectorySimulator = trajectorySimulator;

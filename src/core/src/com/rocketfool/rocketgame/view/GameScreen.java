@@ -353,7 +353,7 @@ public class GameScreen implements Screen {
 
         skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
 
-        minimap = new Minimap(1064, 49, 81 * 2, 81 * 1.4f + 2, level, camera, renderer.getTrajectorySimulator());
+        minimap = new Minimap(1064, 49, 81 * 2, level, camera, renderer.getTrajectorySimulator());
 
         level.setScreenReference(this);
 
