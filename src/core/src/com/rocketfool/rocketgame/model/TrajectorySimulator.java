@@ -5,6 +5,8 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.util.GameUtils;
 
+import static com.rocketfool.rocketgame.util.Constants.*;
+
 /**
  * Simulates the Box2D in advance in order to predict where the player is going.
  * Very precise especially when additional controls (i.e keyboard keys) are not used.
@@ -15,17 +17,11 @@ public class TrajectorySimulator extends GameObject {
      * Number of steps that will be calculated in advance
      */
     public static final int SIMULATION_STEPS = 3600;
-    /**
-     * Assume a fixed but similar frame rate to the one used by the monitor.
-     * This has to be fixed because otherwise we cannot guarantee the ship will go to the exact same length in every frame.
-     * TODO: Calculate this according to the system frame rate
-     */
-    public static final float FRAME_RATE = 1f / 60;
 
     /**
      * A hand tweaked multiplier to make the intervals between trajectory dots evenly as possible
      */
-    public static final float SKIP_MULTIPLIER = 3e4f / 9;
+    public static final float SKIP_MULTIPLIER = 3e4f;
 
     /**
      * The minimum threshold in our skip algorithm.
@@ -127,8 +123,8 @@ public class TrajectorySimulator extends GameObject {
                 level.getPlayable().getHeight(),
                 level.getPlayable().getBody().getMass() - level.getPlayable().getFuelLeft(),
                 level.getPlayable().getDeltaAngularImpulse(),
-                level.getPlayable().getDeltaImpulse(),
-                level.getPlayable().getMaxImpulse(),
+                level.getPlayable().getDeltaThrust(),
+                level.getPlayable().getMaxThrust(),
                 level.getPlayable().getFuelLeft(),
                 world
         );
@@ -153,7 +149,7 @@ public class TrajectorySimulator extends GameObject {
         Body simulatedPlayable = playable.getBody();
         Body realPlayable = level.getPlayable().getBody();
 
-        playable.setCurrentImpulse(level.getPlayable().getCurrentImpulse());
+        playable.setCurrentThrust(level.getPlayable().getCurrentThrust());
         playable.setFuelLeft(level.getPlayable().getFuelLeft());
 
         simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
@@ -173,16 +169,16 @@ public class TrajectorySimulator extends GameObject {
     public void update(float deltaTime) {
         collided = false;
 
-        if (level.getPlayable().getBody().getLinearVelocity().len() + level.getPlayable().getCurrentImpulse() < IGNORE_THRESHOLD) {
+        if (level.getPlayable().getBody().getLinearVelocity().len() + level.getPlayable().getCurrentThrust() < IGNORE_THRESHOLD) {
             currentEstimationPath.clear();
             return;
         }
 
         // Calculate skip count by making a reverse correlation with the square root of thrust
-        int skipCount = (int) (SKIP_MULTIPLIER / Math.max(MIN_THRUST, Math.sqrt(playable.getCurrentImpulse())));
-
+        int skipCount = (int) (SKIP_MULTIPLIER / Math.max(MIN_THRUST, Math.sqrt(playable.getCurrentThrust())));
         // Smooth out the changes (i.e remove the last digit) since the frequent change of the interval (skipCount) causes flickers
         skipCount = Math.max(MIN_SKIP, skipCount - skipCount % 10);
+
 
         // Reset our simulation in case of a user input
         resetSimulation();

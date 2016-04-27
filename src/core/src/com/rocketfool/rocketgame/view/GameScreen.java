@@ -5,11 +5,13 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Timer;
@@ -55,7 +57,6 @@ public class GameScreen implements Screen {
 
     private Playable cameraTarget;
 
-
     private WorldRenderer renderer;
 
     private WorldController controller;
@@ -67,6 +68,9 @@ public class GameScreen implements Screen {
     private Skin skin;
 
     private RocketGame game;
+    private float elapsedTime;
+
+    private Minimap minimap;
 
 
     //endregion
@@ -77,6 +81,7 @@ public class GameScreen implements Screen {
         this.game = game;
         this.batch = batch;
         this.font = font;
+        elapsedTime = 0;
     }
     //endregion
 
@@ -106,7 +111,7 @@ public class GameScreen implements Screen {
         renderer.draw(batch);
 
         //This part is for the particles coming out of rocket
-        if ( cameraTarget.getCurrentImpulse() > 0 ){
+        if ( cameraTarget.getCurrentThrust() > 0 ){
             this.igniteRocketTrail();
         } else {
             this.stopRocketTrail();
@@ -121,6 +126,7 @@ public class GameScreen implements Screen {
             particleEffect.getEmitters().get(i).getAngle().setLow(angle);
         }
         draw();
+        minimap.draw(batch);
         batch.end();
 
         // Draw boundries of physics objects if debug is enabled
@@ -129,6 +135,7 @@ public class GameScreen implements Screen {
 
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
+        elapsedTime += dt;
     }
 
     /**
@@ -144,7 +151,7 @@ public class GameScreen implements Screen {
 
         // Draw a debug string which shows the velocity of the spaceship
         if (DEBUG) {
-            drawDebugString("  Thrust: " + (int) cameraTarget.getCurrentImpulse(), 1); //**
+            drawDebugString("  Thrust: " + (int) cameraTarget.getCurrentThrust(), 1); //**
             drawDebugString("Angular Velocity: " + (int) (cameraTarget.getBody().getAngularVelocity() * 100), 2);
             drawDebugString("  Linear Velocity: " + (int) (cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
@@ -158,6 +165,8 @@ public class GameScreen implements Screen {
 
         }
 
+        //Overlay-static
+        //When camera moves or zooms, overlay follows it by below algorithm
         batch.draw(
                 AssetManager.OVERLAY,
                 camera.position.x - camera.viewportWidth / 2f * camera.zoom,
@@ -176,6 +185,101 @@ public class GameScreen implements Screen {
                 false,
                 false
         );
+
+        //Overlay-dynamic
+        Texture overlayFiller = AssetManager.PROGFILLER;
+        overlayFiller.setWrap(Texture.TextureWrap.Repeat ,Texture.TextureWrap.Repeat);
+
+        //Velocity bar
+        float velocityRate;
+        if(cameraTarget.getBody().getLinearVelocity().len() * 10 > 1165)
+        {
+            velocityRate = 394;
+        }
+        else
+        {
+            velocityRate = ( (cameraTarget.getBody().getLinearVelocity().len() * 10) * 394) / level.getPlayable().getMaxVelocity(); // 394 When bar is full
+        }
+        batch.draw(
+                overlayFiller,
+                camera.position.x - (camera.viewportWidth / 2f - 462) * camera.zoom, //462 Velocity bar's starting pointX
+                camera.position.y - (camera.viewportHeight / 2f - 677) * camera.zoom, //677 Velocity bar's starting pointY
+                0,
+                0,
+                velocityRate , // 394 When bar is full
+                20, //Height of bar
+                camera.zoom,
+                camera.zoom,
+                0,
+                0,
+                0,
+                overlayFiller.getWidth() ,
+                overlayFiller.getHeight() ,
+                false,
+                false
+        );
+
+        //Fuel bar
+        float fuelRate;
+        fuelRate = (level.getPlayable().getFuelLeft() * 394) / level.getPlayable().getStartingFuel(); //394 When bar is full
+        batch.draw(
+                overlayFiller,
+                camera.position.x - (camera.viewportWidth / 2f - 462) * camera.zoom, //462 Fuel bar's starting pointX
+                camera.position.y - (camera.viewportHeight / 2f - 635.9f) * camera.zoom, //635.9f Fuel bar's starting pointY
+                0,
+                0,
+                fuelRate,
+                20, //Height of bar
+                camera.zoom,
+                camera.zoom,
+                0,
+                0,
+                0,
+                overlayFiller.getWidth() ,
+                overlayFiller.getHeight() ,
+                false,
+                false
+        );
+
+        //Timer
+        BitmapFont timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
+        String str = "" + (int)elapsedTime ;
+        if( (int)elapsedTime >= 60)
+        {
+            str = ""+ (int)(elapsedTime/60) + ":" + (int)elapsedTime % 60;
+        }
+        timerFont.setScale(camera.zoom);
+        timerFont.draw(
+                batch,
+                str,
+                camera.position.x + (camera.viewportWidth / 2 - 140) * camera.zoom - timerFont.getBounds(str).width / 2,
+                camera.position.y + (camera.viewportHeight / 2 + 320)* camera.zoom - timerFont.getLineHeight() * 12
+        );
+
+        //Health
+        Texture rocketTexture = AssetManager.PLAYER_TEXTURE;
+        for(int i = 0; i < level.getHealth(); i++ )
+        {
+            batch.draw(
+                    rocketTexture,
+                    //-120 = indent pixel from left, (75*i) = gap between textures
+                    camera.position.x - (-120 + (camera.viewportWidth / 2f) - (75 * i) ) * camera.zoom,
+                    camera.position.y - (camera.viewportHeight / 2f - 635 ) * camera.zoom, //-635 Y axis level
+                    0,
+                    0,
+                    rocketTexture.getWidth() / 1.7f, //1.7f = scaling ratio
+                    rocketTexture.getHeight() / 1.7f,
+                    camera.zoom,
+                    camera.zoom,
+                    0,
+                    0,
+                    0,
+                    rocketTexture.getWidth() ,
+                    rocketTexture.getHeight() ,
+                    false,
+                    false
+            );
+        }
     }
 
     private void drawDebugString(String str, int row) {
@@ -190,7 +294,7 @@ public class GameScreen implements Screen {
     /**
      * Business logic of the game goes here such as physics, camera, UI, statistics etc.
      *
-     * @param dt Stands for DeltaTime which is the time passed between two sequential calls of update.
+     * @param dt Stands for DeltaTime which is the elapsedTime passed between two sequential calls of update.
      */
     private void update(float dt) {
         // Update all entities
@@ -236,7 +340,7 @@ public class GameScreen implements Screen {
         particleEffect = new ParticleEffect();
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
-        //endregion
+
         level = LevelManager.createLevel4();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
@@ -246,7 +350,7 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
-    }
+    } //endregion
 
     public void zoomIn() {
 
@@ -259,6 +363,8 @@ public class GameScreen implements Screen {
         camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
         font.setScale(camera.zoom);
     }
+
+    public void setZoom(float zoom){ camera.zoom = zoom; }
 
     public void igniteRocketTrail() {
 
