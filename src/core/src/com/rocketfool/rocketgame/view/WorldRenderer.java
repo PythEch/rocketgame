@@ -262,5 +262,9 @@ public class WorldRenderer {
         }
     }
 
+    public TrajectorySimulator getTrajectorySimulator() {
+        return trajectorySimulator;
+    }
+
     //endregion
 }

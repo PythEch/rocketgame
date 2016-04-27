@@ -2,10 +2,12 @@ package com.rocketfool.rocketgame.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.view.GameScreen;
+import com.rocketfool.rocketgame.view.WorldRenderer;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 
@@ -73,7 +75,7 @@ public class WorldController {
 
         if (DEBUG) {
             if (Gdx.input.isKeyPressed(Input.Keys.F)) {
-                playable.setCurrentImpulse(0);
+                playable.setCurrentThrust(0);
                 body.setAngularVelocity(0);
             }
             if (Gdx.input.isKeyPressed(Input.Keys.G)) {
