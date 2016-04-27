@@ -277,10 +277,10 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 100, Gdx.graphics.getHeight() * 100);
+        level.map = new Map(Gdx.graphics.getWidth() * 250, Gdx.graphics.getHeight() * 250);
 
         //earth
-        level.planets.add(new Planet(1000, 1000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(7500, 4000, 6 * 1e24f, 800, null, level.world));
 
         //obstacles
         //TODO: Dispose method could be implemented for level class to remove the objects going out of the map and summoning new ones
@@ -295,14 +295,14 @@ public class LevelManager {
         }
 
         //initialization of the rocket
-        level.playable = new Playable(1000, 1500, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
+        level.playable = new Playable(500, 600, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(0, 30);
 
         //default Triggers
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger asteroidsPassed = new PositionTrigger(6500, 5000, 25, level.playable) {
+        final PositionTrigger asteroidsPassed = new PositionTrigger(7500, 4000, 1300, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("Congratulations! You've managed to pass all of the obstacles . We are right on the track to reach Mars. Great Job Martian! Level 3 is completed.");
@@ -384,7 +384,7 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 20, Gdx.graphics.getHeight() * 120);
+        level.map = new Map(Gdx.graphics.getWidth() * 120, Gdx.graphics.getHeight() * 120);
 
         //earth
         level.planets.add(new Planet(6500, 5000, 6 * 1e24f, 900, null, level.world));
