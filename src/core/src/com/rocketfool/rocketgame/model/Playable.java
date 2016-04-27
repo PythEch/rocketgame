@@ -19,6 +19,7 @@ public class Playable extends SolidObject {
     * Source for comparison: ( http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print) )
     */
     private final float fuelSpecificImpulse = 4500;
+    private final float maxVelocity = 1200;
 
     /** A base multiplier for thrust calculations, for convenience. */
     public static final float BASE = 5 * 1e3f;
@@ -34,6 +35,7 @@ public class Playable extends SolidObject {
     private float deltaThrust;
     /** Mass and fuel values are both in kg. */
     private float fuelLeft;
+    private float startingFuel;
     private float width;
     private float height;
     /** Maximum thrust in Newtons in every "deltaTime" */
@@ -269,5 +271,14 @@ public class Playable extends SolidObject {
     public void setSASEnabled(boolean set) {
         SASEnabled = set;
     }
+
+    public float getStartingFuel() {
+        return startingFuel;
+    }
+
+    public float getMaxVelocity() {
+        return maxVelocity;
+    }
+
     //endregion
 }
