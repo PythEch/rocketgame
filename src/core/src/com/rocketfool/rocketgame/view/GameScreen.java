@@ -310,7 +310,8 @@ public class GameScreen implements Screen {
         }
 
         //WarningMapSign
-        if(renderer.getTrajectorySimulator().isCollided() )
+        // flash the sign by only showing it for 0.5 seconds
+        if(renderer.getTrajectorySimulator().isCollided() && (int)(elapsedTime * 2) % 2 == 0)
         {
             batch.draw(
                     AssetManager.WARNING,
