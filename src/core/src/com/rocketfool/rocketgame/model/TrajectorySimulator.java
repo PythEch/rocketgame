@@ -122,7 +122,7 @@ public class TrajectorySimulator extends GameObject {
                 level.getPlayable().getWidth(),
                 level.getPlayable().getHeight(),
                 level.getPlayable().getBody().getMass() - level.getPlayable().getFuelLeft(),
-                level.getPlayable().getDeltaAngularImpulse(),
+                level.getPlayable().getDeltaTorque(),
                 level.getPlayable().getDeltaThrust(),
                 level.getPlayable().getMaxThrust(),
                 level.getPlayable().getFuelLeft(),
