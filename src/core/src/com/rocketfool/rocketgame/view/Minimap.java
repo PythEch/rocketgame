@@ -2,6 +2,7 @@ package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -19,19 +20,18 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  * TODO: reevaluate scales and draw trajectory smoother
  */
 public class Minimap {
-
-    public static final float SCALE = 1;
-
-    private int originX;
-    private int originY;
-    private int radius;
+    private float originX;
+    private float originY;
+    private float side;
+    private float radius;
     private Level level;
     private OrthographicCamera camera;
     private TrajectorySimulator trajectorySimulator;
 
-    public Minimap(int originX, int originY, int radius, Level level, OrthographicCamera camera, TrajectorySimulator trajectorySimulator) {
+    public Minimap(float originX, float originY, float side, float radius, Level level, OrthographicCamera camera, TrajectorySimulator trajectorySimulator) {
         this.originX = originX;
         this.originY = originY;
+        this.side = side;
         this.radius = radius;
         this.level = level;
         this.camera = camera;
@@ -48,8 +48,8 @@ public class Minimap {
         for (Planet planet : level.getPlanets()) {
             Vector2 planetPos = planet.getBody().getPosition();
             float playableArea = level.getPlayable().getWidth() * level.getPlayable().getHeight();
-            float planetArea = (float)(Math.PI * planet.getRadius() * planet.getRadius());
-            float planetScale = planetArea / (float)Math.pow(playableArea, 1.5f) * playableScale;
+            float planetArea = (float) (Math.PI * planet.getRadius() * planet.getRadius());
+            float planetScale = planetArea / (float) Math.pow(playableArea, 1.5f) * playableScale;
 
             drawAt(batch, AssetManager.MINIMAP_PLANET, planetPos.x, planetPos.y, planetScale);
         }
@@ -64,8 +64,12 @@ public class Minimap {
     }
 
     private void drawAt(SpriteBatch batch, Texture texture, float x, float y, float scale) {
-        x = 2 * radius * (x * toPixel / level.getMap().getWidth());
-        y = 2 * radius * (y * toPixel / level.getMap().getHeight());
+        x = side * (x * toPixel / level.getMap().getWidth());
+        y = side * (y * toPixel / level.getMap().getHeight());
+
+        if (new Vector2(x, y).dst(side / 2, side / 2) > radius) {
+            return;
+        }
 
         batch.draw(
                 texture,
@@ -91,7 +95,9 @@ public class Minimap {
         batch.end();
         ShapeRenderer sr = new ShapeRenderer();
         sr.begin(ShapeRenderer.ShapeType.Line);
-        sr.rect(originX, originY, radius * 2, radius * 2);
+        sr.setColor(Color.GREEN);
+        sr.rect(originX, originY, side, side);
+        sr.circle(originX + side / 2, originY + side / 2, radius);
         sr.end();
         batch.begin();
     }
