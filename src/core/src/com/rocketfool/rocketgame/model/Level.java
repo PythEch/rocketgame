@@ -30,6 +30,7 @@ public class Level {
     protected int score;
     protected State state;
     protected int health = 3;
+    protected PopUp popUp;
     //endregion
 
     //region Nested Types
@@ -55,6 +56,7 @@ public class Level {
         this.gameObjects = new Array<GameObject>();
         this.timePassed = 0;
         this.score = 0;
+        this.popUp = new PopUp();
 
         // Register collisions
         world.setContactListener(new ContactListener() {
@@ -318,5 +320,8 @@ public class Level {
 
     public void setScreenReference(GameScreen screen){ this.screen = screen; } //Needed to set zoom**
 
+    public PopUp getPopUp() {
+        return popUp;
+    }
     //endregion
 }

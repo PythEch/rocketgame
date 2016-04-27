@@ -16,7 +16,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -178,7 +178,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -313,7 +313,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -430,7 +430,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -511,7 +511,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -605,7 +605,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 

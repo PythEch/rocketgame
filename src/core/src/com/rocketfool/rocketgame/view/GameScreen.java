@@ -26,6 +26,7 @@ import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
 
 import com.badlogic.gdx.video.VideoPlayer;
+import com.rocketfool.rocketgame.model.PopUp;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -78,6 +79,8 @@ public class GameScreen implements Screen {
     private float elapsedTime;
 
     private Minimap minimap;
+
+    private PopupView popupView;
 
 
     //endregion
@@ -134,6 +137,7 @@ public class GameScreen implements Screen {
         }
         draw();
         minimap.draw(batch);
+        popupView.draw(batch);
         batch.end();
 
         // Draw boundries of physics objects if debug is enabled
@@ -404,6 +408,8 @@ public class GameScreen implements Screen {
 
         viewport = new FitViewport(1280, 720, camera);
         viewport.apply();
+
+        popupView = new PopupView(level.getPopUp(), camera);
 
     } //endregion
 
