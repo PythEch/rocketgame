@@ -308,6 +308,29 @@ public class GameScreen implements Screen {
                     false
             );
         }
+
+        //WarningMapSign
+        if(renderer.getTrajectorySimulator().isCollided() )
+        {
+            batch.draw(
+                    AssetManager.WARNING,
+                    camera.position.x - (camera.viewportWidth / 2f - 1022) * camera.zoom, //1022 hud x pos
+                    camera.position.y - (camera.viewportHeight / 2f - 235) * camera.zoom, //235 hud y pos
+                    0,
+                    0,
+                    AssetManager.WARNING.getWidth() /14f , //14f = scaling ratio
+                    AssetManager.WARNING.getHeight() /14f ,
+                    camera.zoom,
+                    camera.zoom,
+                    0,
+                    0,
+                    0,
+                    AssetManager.WARNING.getWidth(),
+                    AssetManager.WARNING.getHeight(),
+                    false,
+                    false
+            );
+        }
     }
 
     private void drawDebugString(String str, int row) {

@@ -246,6 +246,8 @@ public class WorldRenderer {
             );
         }
 
+
+        //Draws warning sign
         if (trajectorySimulator.isCollided()) {
             float randMultiplier = MathUtils.random(0.7f, 1.0f);
             float myWidth = AssetManager.WARNING.getWidth() * randMultiplier;
