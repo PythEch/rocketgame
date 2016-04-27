@@ -113,7 +113,7 @@ public class Playable extends SolidObject {
     /** Reduce mass of the spacecraft by burning its fuel */
     private void consumeFuelAndDecreaseMass(float deltaTime) {
         if (fuelLeft > 0) {
-            float fuelSpent = currentImpulse / fuelSpecificImpulse;
+            float fuelSpent = currentImpulse / fuelSpecificImpulse /60; //temp fix to last until the merge
             fuelLeft -= fuelSpent;
 
             //The mass information of the body changes only when MassData is updated
@@ -147,7 +147,7 @@ public class Playable extends SolidObject {
         }
 
         // Push the spacecraft with the thrust we calculated
-        Vector2 impulseVector = new Vector2(0, currentImpulse).rotateRad(body.getAngle());
+        Vector2 impulseVector = new Vector2(0, currentImpulse/60).rotateRad(body.getAngle());  //temp fix to last until the merge
         body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, true);
 
     }
