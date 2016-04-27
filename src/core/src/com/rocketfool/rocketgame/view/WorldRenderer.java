@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.model.Level;
+import com.rocketfool.rocketgame.model.Planet;
 import com.rocketfool.rocketgame.model.TrajectorySimulator;
 import com.rocketfool.rocketgame.model.VisualMeteor;
 
@@ -123,30 +124,26 @@ public class WorldRenderer {
         texture.setFilter(Texture.TextureFilter.MipMapNearestLinear, Texture.TextureFilter.MipMapNearestLinear);
 
         int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
-        batch.setColor(1, 1, 1, alpha);
+        //sabatch.setColor(1, 1, 1, alpha);
 
         batch.draw(
                 texture,
-                camera.position.x - camera.viewportWidth / 2f * camera.zoom,
-                camera.position.y - camera.viewportHeight / 2f * camera.zoom,
-                0,
-                0,
-                camera.viewportWidth,
-                camera.viewportHeight,
-                camera.zoom,
-                camera.zoom,
                 0,
                 0,
                 0,
-                (int) (texture.getWidth() * STAR_FREQUENCY),
-                (int) (texture.getHeight() * STAR_FREQUENCY),
-                false,
-                false
+                0,
+                level.getMap().getWidth(),
+                level.getMap().getHeight()
         );
+
         batch.setColor(1, 1, 1, 1);
     }
 
     private void drawPlanets(SpriteBatch batch) {
+        /*for (Planet planet : level.getPlanets()) {
+            planet.getBody().getPosition().x * toPixel,
+            planet.getBody().getPosition().y * toPixel,
+        }*/
     }
 
     private void drawMeteors(SpriteBatch batch) {
@@ -174,29 +171,21 @@ public class WorldRenderer {
 
     private void drawStars(SpriteBatch batch) {
         Texture texture = animationStar.getKeyFrame(elapsedTime, true).getTexture();
-        texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
         batch.setColor(1, 1, 1, alpha);
 
         batch.draw(
                 texture,
-                camera.position.x - camera.viewportWidth / 2f * camera.zoom,
-                camera.position.y - camera.viewportHeight / 2f * camera.zoom,
-                0,
-                0,
-                camera.viewportWidth,
-                camera.viewportHeight,
-                camera.zoom,
-                camera.zoom,
                 0,
                 0,
                 0,
-                (int) (texture.getWidth() * STAR_FREQUENCY),
-                (int) (texture.getHeight() * STAR_FREQUENCY),
-                false,
-                false
+                0,
+                level.getMap().getWidth(),
+                level.getMap().getHeight()
         );
+
 
         batch.setColor(1, 1, 1, 1);
     }
