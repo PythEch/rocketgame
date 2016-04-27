@@ -8,11 +8,13 @@ public class PopUp {
     //porperties
     private String text;
     private String title;
+    private boolean propertyChanged;
 
     //constructors
     public PopUp(String title, String text) {
         this.text = text;
         this.title = title;
+        propertyChanged = false;
     }
 
     public PopUp(String text) {
@@ -30,6 +32,7 @@ public class PopUp {
 
     public void setText(String text) {
         this.text = text;
+        propertyChanged = true;
     }
 
     public String getTitle() {
@@ -40,4 +43,11 @@ public class PopUp {
         this.title = title;
     }
 
+    public boolean isPropertyChanged() {
+        return propertyChanged;
+    }
+
+    public void setPropertyChanged(boolean propertyChanged) {
+        this.propertyChanged = propertyChanged;
+    }
 }
