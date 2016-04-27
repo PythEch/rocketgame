@@ -17,5 +17,13 @@ public class AssetManager {
     public static final Texture WARNING = new Texture(Gdx.files.internal("PNG/redWarning.png"), true);
     public static final Texture OVERLAY = new Texture(Gdx.files.internal("PNG/overlay.png"), true);
     public static final Texture PROGFILLER = new Texture(Gdx.files.internal("PNG/progFiller.png"), true);
+    public static final Texture PLANET1 = new Texture(Gdx.files.internal("PNG/Planets/1.png"), true);
+    public static final Texture PLANET2 = new Texture(Gdx.files.internal("PNG/Planets/2.png"), true);
+    public static final Texture PLANET3 = new Texture(Gdx.files.internal("PNG/Planets/3.png"), true);
+    public static final Texture PLANET4 = new Texture(Gdx.files.internal("PNG/Planets/4.png"), true);
+    public static final Texture PLANET5 = new Texture(Gdx.files.internal("PNG/Planets/5.png"), true);
+    public static final Texture PLANET6 = new Texture(Gdx.files.internal("PNG/Planets/6.png"), true);
+    public static final Texture PLANET7 = new Texture(Gdx.files.internal("PNG/Planets/7.png"), true);
+    //public static final Texture PLANET8 = new Texture(Gdx.files.internal("PNG/Planets/8.png"), true);
 
 }
