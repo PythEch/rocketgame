@@ -9,12 +9,15 @@ import com.badlogic.gdx.physics.box2d.*;
 public class Planet extends CelestialObject {
     //region Fields
     private Star star;
+    private int planetType;
+
     //endregion
 
     //region Constructor
-    public Planet(float x, float y, float mass, float radius, Star star, World world) {
+    public Planet(float x, float y, float mass, float radius, Star star, World world, int planetType) {
         super(mass, radius);
         this.star = star;
+        this.planetType = planetType;
         this.body = createBody(x, y, mass, radius, world);
     }
 
@@ -47,5 +50,14 @@ public class Planet extends CelestialObject {
     @Override
     public void update(float dt) {
     }
+
+    public int getPlanetType() {
+        return planetType;
+    }
+
+    public void setPlanetType(int planetType) {
+        this.planetType = planetType;
+    }
+
     //endregion
 }

@@ -140,10 +140,44 @@ public class WorldRenderer {
     }
 
     private void drawPlanets(SpriteBatch batch) {
-        /*for (Planet planet : level.getPlanets()) {
-            planet.getBody().getPosition().x * toPixel,
-            planet.getBody().getPosition().y * toPixel,
-        }*/
+        Texture texturePlanet = AssetManager.PLANET1; //Base case
+
+        //Sets texture
+        for (Planet planet : level.getPlanets() ) {
+            switch (planet.getPlanetType())
+            {
+                case 1:
+                    texturePlanet = AssetManager.PLANET1;
+                    break;
+                case 2:
+                    texturePlanet = AssetManager.PLANET2;
+                    break;
+                case 3:
+                    texturePlanet = AssetManager.PLANET3;
+                    break;
+                case 4:
+                    texturePlanet = AssetManager.PLANET4;
+                    break;
+                case 5:
+                    texturePlanet = AssetManager.PLANET5;
+                    break;
+                case 6:
+                    texturePlanet = AssetManager.PLANET6;
+                    break;
+                case 7:
+                    texturePlanet = AssetManager.PLANET7;
+                    break;
+            }
+            texturePlanet.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+            batch.draw(
+                    texturePlanet,
+                    planet.getBody().getPosition().x * (toPixel) - (planet.getRadius() * toPixel),
+                    planet.getBody().getPosition().y * (toPixel) - (planet.getRadius() * toPixel),
+                    planet.getRadius() * toPixel * 2 ,
+                    planet.getRadius() * toPixel * 2
+                    );
+        }
     }
 
     private void drawMeteors(SpriteBatch batch) {

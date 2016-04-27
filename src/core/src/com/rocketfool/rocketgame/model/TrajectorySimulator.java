@@ -111,7 +111,8 @@ public class TrajectorySimulator extends GameObject {
                     planet.getMass(),
                     planet.getRadius(),
                     null,
-                    world
+                    world,
+                    planet.getPlanetType()
             ));
         }
 
