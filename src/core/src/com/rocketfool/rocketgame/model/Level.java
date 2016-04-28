@@ -26,6 +26,7 @@ public class Level {
     protected Array<Planet> planets;
     protected Array<GameObject> gameObjects;
     protected float timePassed;
+    protected float timePassed2;
     protected float currentGravForce;
     protected int score;
     protected State state;
@@ -54,6 +55,7 @@ public class Level {
         this.planets = new Array<Planet>();
         this.gameObjects = new Array<GameObject>();
         this.timePassed = 0;
+        this.timePassed2 = 0;
         this.score = 0;
 
         // Register collisions
@@ -105,12 +107,14 @@ public class Level {
 
             // Hack to make physics engine stable
             deltaTime = FRAME_RATE;
+            timePassed2 += deltaTime;
 
             playable.update(deltaTime);
             updateGravity(deltaTime);
             updateTriggers(deltaTime);
             updateVisualObjects(deltaTime);
             updateWaypoints(deltaTime);
+            updateCircles();
 
             // A world step simulates the Box2D world
             world.step(deltaTime, 8, 3);
@@ -179,6 +183,14 @@ public class Level {
         }
     }
 
+    public void updateCircles() {
+        for (Planet p: planets){
+            if (p.getCircles()) {
+                //circle(p,40000f,4f,timePassed2); //TODO complete
+            }
+        }
+    }
+
     private void planetCollision(Contact contact) {
         System.out.println("planet collision");
         if (!DEBUG)
@@ -237,6 +249,17 @@ public class Level {
         return 0f;
     }
 
+    public static void circle(Planet planet, float cRadius, float period, float timePassed){
+        float vy;
+        float vx;
+        double w = 2 * Math.PI / period;
+        double t = (double) (timePassed);
+
+        vy = (float) (cRadius * w * Math.sin(w*t));
+        vx = (float) (cRadius * w * Math.cos(w*t));
+        planet.getBody().setLinearVelocity(vx,vy);
+
+    }
 
     private void updateParticles(float deltaTime) {
         //TODO: implement
