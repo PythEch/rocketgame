@@ -186,19 +186,19 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
         //earth
-        level.planets.add(new Planet(9000, 7000, 5.97f * 1e24f, 750, null, level.world));
+        level.planets.add(new Planet(9000, 7000, 8.9f * 1e24f, 750, null, level.world));
         //moon
-        level.planets.add(new Planet(15000, 9000, 5.97f * 0.166f * 1e24f, 200, null, level.world));
+        level.planets.add(new Planet(14000, 8000, 2.3f * 1e24f, 200, null, level.world));
 
         //initialization of the rocket
         level.playable = new Playable(9650, 6350, 88, 108, 2e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
-        level.playable.getBody().setLinearVelocity(-45f, -45f);  //G-20 ... -18f,-18f                  //**TODO
+        level.playable.getBody().setLinearVelocity(-18f, -18f);                                       //**TODO
 
         //default Triggers
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger moonTrig = new PositionTrigger(15200, 9000, 100, level.playable) {
+        final PositionTrigger moonTrig = new PositionTrigger(14200, 8000, 100, level.playable) {
             @Override
             public void triggerPerformed() {
                 System.out.println("You've reached the Moon. Do what you can do and come back home!");
@@ -438,10 +438,10 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 200, Gdx.graphics.getHeight() * 200);
 
         //earth
-        level.planets.add(new Planet(6500, 5000, 4 * 1e25f, 700, null, level.world));
+        level.planets.add(new Planet(6500, 5000, 6 * 1e24f, 900, null, level.world));
 
         //initialization of the rocket
-        level.playable = new Playable(4000, 4000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
+        level.playable = new Playable(1000, 1000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
         level.playable.getBody().setLinearVelocity(0, 0);
 
         //default Triggers

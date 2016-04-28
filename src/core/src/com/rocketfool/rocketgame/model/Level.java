@@ -13,7 +13,7 @@ import static com.rocketfool.rocketgame.util.Constants.FRAME_RATE;
  */
 public class Level {
     //region Constants
-    public static final float G = 6.67408f * 1e-19f;
+    public static final float G = 6.67408f * 1e-20f;
     //endregion
 
     //region Fields
