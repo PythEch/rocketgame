@@ -15,6 +15,8 @@ import java.util.Arrays;
 
 /**
  * Created by pythech on 28/04/16.
+ *
+ * TODO: maybe pop this up when user clicks the head?
  */
 public class PopupView {
     private PopUp popup;
