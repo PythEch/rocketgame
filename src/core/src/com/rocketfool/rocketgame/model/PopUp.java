@@ -19,10 +19,12 @@ public class PopUp {
 
     public PopUp(String text) {
         this.text = text;
+        this.title = "";
     }
 
     public PopUp() {
-
+        this.text = "";
+        this.title = "";
     }
 
     //basic getter setters
@@ -32,6 +34,7 @@ public class PopUp {
 
     public void setText(String text) {
         this.text = text;
+        System.out.println(text);
         propertyChanged = true;
     }
 
