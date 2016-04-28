@@ -186,7 +186,7 @@ public class Level {
     public void updateCircles() {
         for (Planet p: planets){
             if (p.getCircles()) {
-                //circle(p,40000f,4f,timePassed2); //TODO complete
+                circle(p,4000f,10f,timePassed2); //TODO complete
             }
         }
     }
@@ -252,13 +252,16 @@ public class Level {
     public static void circle(Planet planet, float cRadius, float period, float timePassed){
         float vy;
         float vx;
+        float x;
+        float y;
         double w = 2 * Math.PI / period;
         double t = (double) (timePassed);
 
-        vy = (float) (cRadius * w * Math.sin(w*t));
-        vx = (float) (cRadius * w * Math.cos(w*t));
-        planet.getBody().setLinearVelocity(vx,vy);
-
+        //vy = (float) (cRadius * w * Math.cos(w*t));
+        //vx = (float) (cRadius * w * Math.sin(w*t) * -1);
+        y =  2000 + (float) (cRadius * Math.sin(w*t));
+        x =  2000 + (float) (cRadius * Math.cos(w*t));
+        planet.getBody().setTransform(x,y,0f);
     }
 
     private void updateParticles(float deltaTime) {
