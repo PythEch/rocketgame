@@ -3,6 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
+import com.rocketfool.rocketgame.util.Constants;
 
 import static com.rocketfool.rocketgame.model.Playable.BASE;
 
@@ -192,7 +193,7 @@ public class LevelManager {
         level.planets.get(1).setCircles(true);
         //initialization of the rocket
         level.playable = new Playable(9550, 6450, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
-        level.playable.getBody().setLinearVelocity(-50f, -50f);                                      //**TODO
+        level.playable.getBody().setLinearVelocity(-50f, -50f);
 
         //default Triggers
         addDefaultTriggers(level);
@@ -731,8 +732,10 @@ public class LevelManager {
         level.triggers.add(new OutOfMapTrigger(level.map, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("Out of map");
-                level.healthOver();
+                if (!Constants.DEBUG) {
+                    System.out.println("Out of map");
+                    level.healthOver();
+                }
             }
         });
 

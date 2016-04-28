@@ -231,8 +231,8 @@ public class Level {
             float x = planet.getPrimary().getBody().getPosition().x;
             float y = planet.getPrimary().getBody().getPosition().y;
             planet.getBody().setTransform(
-                    x + (float) (7615 * Math.cos(2 * Math.PI / 1500 * timePassed)),
-                    y + (float) (7615 * Math.sin(2 * Math.PI / 1500 * timePassed)),
+                    x + (float) (7615 * Math.cos(2 * Math.PI / 3000 * timePassed)),
+                    y + (float) (7615 * Math.sin(2 * Math.PI / 3000 * timePassed)),
                     0f);
         }
     }
