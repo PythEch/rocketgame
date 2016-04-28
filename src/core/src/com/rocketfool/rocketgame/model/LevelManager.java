@@ -185,14 +185,14 @@ public class LevelManager {
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
-        //earth
-        level.planets.add(new Planet(9000, 7000, 8.9f * 1e24f, 750, null, level.world));
-        //moon
-        level.planets.add(new Planet(14000, 8000, 2.3f * 1e24f, 200, null, level.world));
-
+        //Earth
+        level.planets.add(new Planet(9000, 7000, 6.0f * 1.0e25f, 650, null, level.world));
+        //Moon
+        level.planets.add(new Planet(16000, 10000, 1.0f * 1.0e25f, 170, null, level.world));
+        level.planets.get(1).setCircles(true);
         //initialization of the rocket
-        level.playable = new Playable(9650, 6350, 88, 108, 2e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
-        level.playable.getBody().setLinearVelocity(-18f, -18f);                                       //**TODO
+        level.playable = new Playable(9550, 6450, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
+        level.playable.getBody().setLinearVelocity(-50f, -50f);                                      //**TODO
 
         //default Triggers
         addDefaultTriggers(level);

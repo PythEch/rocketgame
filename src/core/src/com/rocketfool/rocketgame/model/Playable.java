@@ -18,11 +18,11 @@ public class Playable extends SolidObject {
     * The specific impulse of the fuel, Ns/kg, determines its efficiency.
     * Source for comparison: ( http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print) )
     */
-    private final float fuelSpecificImpulse = 4500;
+    private final float fuelSpecificImpulse = 3500;
     private final float maxVelocity = 1200;
 
     /** A base multiplier for thrust calculations, for convenience. */
-    public static final float BASE = 5 * 1e3f;
+    public static final float BASE = 1 * 1e3f; //was 5000 *** FIXME, optimize
     //endregion
 
     //region Fields
