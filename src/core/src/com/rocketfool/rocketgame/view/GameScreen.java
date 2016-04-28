@@ -81,6 +81,7 @@ public class GameScreen implements Screen {
     private Minimap minimap;
 
     private PopupView popupView;
+    private BitmapFont timerFont;
 
 
     //endregion
@@ -272,10 +273,10 @@ public class GameScreen implements Screen {
         );
 
         //Timer
-        BitmapFont timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
-        String str = "" + (int) elapsedTime;
-        if ((int) elapsedTime >= 60) {
-            str = "" + (int) (elapsedTime / 60) + ":" + (int) elapsedTime % 60;
+        String str = "" + (int)elapsedTime ;
+        if( (int)elapsedTime >= 60)
+        {
+            str = ""+ (int)(elapsedTime/60) + ":" + (int)elapsedTime % 60;
         }
         timerFont.setScale(camera.zoom);
         timerFont.draw(
@@ -415,6 +416,7 @@ public class GameScreen implements Screen {
 
         popupView = new PopupView(level.getPopUp(), camera);
 
+        timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
     } //endregion
 
     public void zoomIn() {
@@ -425,7 +427,7 @@ public class GameScreen implements Screen {
     } //**
 
     public void zoomOut() {
-        camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
+        camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
         font.setScale(camera.zoom);
     }
 

@@ -53,20 +53,21 @@ public class WorldRenderer implements Disposable {
         this.level = level;
         this.camera = camera;
 
-        //Meteors
-        textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
-        animationMeteor = new Animation(1f / 80f, textureAtlasMeteor.getRegions());
-        meteors = new Array<VisualMeteor>();
-        meteors.add(new VisualMeteor(0, 0, 10, 10, 180));
-        meteors.add(new VisualMeteor(12800, 7200, -3, -4, 0));
+        if (!QUICK_LOAD) {
+            //Meteors
+            textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
+            animationMeteor = new Animation(1f / 80f, textureAtlasMeteor.getRegions());
+            meteors = new Array<VisualMeteor>();
+            meteors.add(new VisualMeteor(0, 0, 10, 10, 180));
+            meteors.add(new VisualMeteor(12800, 7200, -3, -4, 0));
 
-        //Stars
-        textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/starSheets/stars.atlas"));
-        for (Texture texture : textureAtlasStar.getTextures()) {
-            texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+            //Stars
+            textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/starSheets/stars.atlas"));
+            for (Texture texture : textureAtlasStar.getTextures()) {
+                texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+            }
+            animationStar = new Animation(1f / 100f, textureAtlasStar.getRegions());
         }
-        animationStar = new Animation(1f / 100f, textureAtlasStar.getRegions());
-
         //ObjectiveScreens
         textureAtlasObjective1 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet/objScreen.atlas"));
         animationObjective1 = new Animation(1f / 80f, textureAtlasObjective1.getRegions());
@@ -79,14 +80,18 @@ public class WorldRenderer implements Disposable {
     public void draw(SpriteBatch batch) {
         elapsedTime = elapsedTime + Gdx.graphics.getDeltaTime();
         drawMap(batch);
-        drawStars(batch);
-        drawMeteors(batch);
+        if (!QUICK_LOAD) {
+            drawStars(batch);
+            drawMeteors(batch);
+        }
         drawObjectiveScreen(batch, animationObjective1);
         drawPlanets(batch);
         drawPlayer(batch);
         drawTrajectory(batch);
-        for (VisualMeteor meteor : meteors) {
-            meteor.update(Gdx.graphics.getDeltaTime());
+        if (!QUICK_LOAD) {
+            for (VisualMeteor meteor : meteors) {
+                meteor.update(Gdx.graphics.getDeltaTime());
+            }
         }
     }
 
