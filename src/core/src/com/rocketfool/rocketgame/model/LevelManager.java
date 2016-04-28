@@ -16,7 +16,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -24,7 +24,7 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 400, Gdx.graphics.getHeight() * 400);
 
         //Earth
-        level.planets.add(new Planet(11000, 6000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(11000, 6000, 6 * 1e24f, 800, null, level.world, 1));
         //TODO add the Moon (because it should exist)
         //initialization of the rocket
         level.playable = new Playable(16500, 12000, 88, 108, 1e5f, 400 * BASE, 200 * BASE, 1000 * BASE, 2e5f, level.world);
@@ -178,7 +178,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -186,9 +186,9 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
         //Earth
-        level.planets.add(new Planet(9000, 7000, 6.0f * 1.0e25f, 650, null, level.world));
+        level.planets.add(new Planet(9000, 7000, 6.0f * 1.0e25f, 650, null, level.world, 2));
         //Moon
-        level.planets.add(new Planet(16000, 10000, 1.0f * 1.0e25f, 170, null, level.world));
+        level.planets.add(new Planet(16000, 10000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 3));
         level.planets.get(1).setCircles(true);
         //initialization of the rocket
         level.playable = new Playable(9550, 6450, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
@@ -313,7 +313,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -321,7 +321,7 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
         //earth
-        level.planets.add(new Planet(1000, 1000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(1000, 1000, 6 * 1e24f, 800, null, level.world,4));
 
         //obstacles
         //TODO: Dispose method could be implemented for level class to remove the objects going out of the map and summoning new ones
@@ -430,7 +430,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -438,7 +438,7 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 200, Gdx.graphics.getHeight() * 200);
 
         //earth
-        level.planets.add(new Planet(6500, 5000, 6 * 1e24f, 900, null, level.world));
+        level.planets.add(new Planet(6500, 5000, 6 * 1e24f, 900, null, level.world,5));
 
         //initialization of the rocket
         level.playable = new Playable(1000, 1000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
@@ -511,7 +511,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -519,9 +519,9 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 500, Gdx.graphics.getHeight() * 500);
 
         //earth
-        level.planets.add(new Planet(5000, 5000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(5000, 5000, 6 * 1e24f, 800, null, level.world, 2));
         //moon
-        level.planets.add(new Planet(12500, 13000, 6 * 1e24f, 100, null, level.world));
+        level.planets.add(new Planet(12500, 13000, 6 * 1e24f, 100, null, level.world, 3));
 
         //rocket
         level.playable = new Playable(13000, 13000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
@@ -605,7 +605,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Timer timer = new Timer();
-        final PopUp popUp = new PopUp();
+        final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
@@ -613,16 +613,16 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
 
         //earth
-        level.planets.add(new Planet(11000, 13000, 6 * 1e24f, 800, null, level.world));
+        level.planets.add(new Planet(11000, 13000, 6 * 1e24f, 800, null, level.world, 6));
         //secretPlanet
-        level.planets.add(new Planet(16000, 15000, 6 * 1e24f, 100, null, level.world));
+        level.planets.add(new Planet(16000, 15000, 6 * 1e24f, 100, null, level.world, 7));
 
         //planet1
-        level.planets.add(new Planet(5500, 5500, 6 * 1e24f, 650, null, level.world));
+        level.planets.add(new Planet(5500, 5500, 6 * 1e24f, 650, null, level.world, 1));
         //planet2
-        level.planets.add(new Planet(14000, 3000, 2.7f * 1e21f, 500, null, level.world));
+        level.planets.add(new Planet(14000, 3000, 2.7f * 1e21f, 500, null, level.world, 2));
         //planet3
-        level.planets.add(new Planet(8200, 7200, 6 * 1e24f, 350, null, level.world));
+        level.planets.add(new Planet(8200, 7200, 6 * 1e24f, 350, null, level.world, 3));
 
         //rocket
         level.playable = new Playable(4000, 4850, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
