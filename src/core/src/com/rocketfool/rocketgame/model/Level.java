@@ -132,6 +132,7 @@ public class Level {
                 trigger.triggerPerformed();
             }
         }
+        //for ( PositionTrigger t : triggers) {t.followTarget(); } //TODO FIXME HELP
     }
 
     /**
@@ -170,6 +171,7 @@ public class Level {
      */
     private void updateWaypoints(float deltaTime) {
         for (Waypoint waypoint : waypoints) {
+            waypoint.followTrigger();
             if (playable.getBody().getPosition().dst(waypoint.getX(), waypoint.getY()) <= 10) {
                 waypoint.setOnScreen(false);
             }
