@@ -29,9 +29,9 @@ public class TrajectorySimulator extends GameObject {
      */
     public static final int MIN_SKIP = 10;
 
-    public static final float MIN_THRUST = 100;
+    public static final float MIN_THRUST = 400;
 
-    public static final int IGNORE_THRESHOLD = 5;
+    public static final int IGNORE_THRESHOLD = 15;
     //endregion
 
     //region Fields
@@ -153,7 +153,11 @@ public class TrajectorySimulator extends GameObject {
         playable.setFuelLeft(level.getPlayable().getFuelLeft());
         playable.setSASEnabled(level.getPlayable().getSASEnabled());
 
-        simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
+        if (level.getPlayable().getSASEnabled())
+            simulatedPlayable.setAngularVelocity(0);
+        else
+            simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
+
         simulatedPlayable.setLinearVelocity(realPlayable.getLinearVelocity().cpy());
         simulatedPlayable.setTransform(realPlayable.getPosition().cpy(), realPlayable.getAngle());
         simulatedPlayable.getTransform().setOrientation(realPlayable.getTransform().getOrientation().cpy());
