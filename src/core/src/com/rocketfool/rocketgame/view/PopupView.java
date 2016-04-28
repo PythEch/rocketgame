@@ -23,7 +23,8 @@ public class PopupView {
     private TweenManager tweenManager;
     private float yCoord;
     private float startingYCoord;
-    private int charCaret;
+    private float elapsedTime;
+    private Tween tween;
 
     public PopupView(PopUp popup, OrthographicCamera camera) {
         this.popup = popup;
@@ -31,27 +32,36 @@ public class PopupView {
         this.font = new BitmapFont(); // TODO: select a font
         this.startingYCoord = -AssetManager.POPUP_BODY.getHeight();
         this.yCoord = 0;
-        this.charCaret = 0;
+        this.elapsedTime = 0;
 
         tweenManager = new TweenManager();
         Tween.registerAccessor(PopupView.class, new PopupAcessor());
     }
 
-    public void draw(SpriteBatch batch) {
+    public void update(float deltaTime) {
+        elapsedTime += deltaTime;
+        tweenManager.update(deltaTime);
+
+        float origY = yCoord;
+
         if (popup.isPropertyChanged()) {
             popup.setPropertyChanged(false);
-            if (false) {
-                Tween.set(this, PopupAcessor.Y_COORD).target(startingYCoord).start(tweenManager);
-                Tween.to(this, PopupAcessor.Y_COORD, 2).target(0).repeatYoyo(1, 4).start(tweenManager);
+            elapsedTime = 0;
+
+            if (tween != null && !tween.isFinished()) {
+                tweenManager.killAll();
             }
+            Tween.set(this, PopupAcessor.Y_COORD).target(origY).start(tweenManager);
+            tween = Tween.to(this, PopupAcessor.Y_COORD, 2).target(0).start(tweenManager);
         }
 
-        if (charCaret < popup.getText().length()) {
-            charCaret += 1;
+        if (tween != null && yCoord == 0 && elapsedTime >= 2 + popup.getLastText().length() * 0.1f) {
+            Tween.set(this, PopupAcessor.Y_COORD).target(0).start(tweenManager);
+            tween = Tween.to(this, PopupAcessor.Y_COORD, 2).target(startingYCoord).start(tweenManager);
         }
+    }
 
-        tweenManager.update(Gdx.graphics.getDeltaTime());
-
+    public void draw(SpriteBatch batch) {
         Texture bodyTexture = AssetManager.POPUP_BODY;
         batch.draw(
                 bodyTexture,

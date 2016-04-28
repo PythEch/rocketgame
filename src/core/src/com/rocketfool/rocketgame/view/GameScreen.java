@@ -355,6 +355,8 @@ public class GameScreen implements Screen {
         // Make the camera focus on the player
         camera.position.set(cameraTarget.getBody().getPosition().x * toPixel, cameraTarget.getBody().getPosition().y * toPixel, 0);
         camera.update();
+
+        popupView.update(dt);
     }
 
     public void lookAt(Playable target) {
