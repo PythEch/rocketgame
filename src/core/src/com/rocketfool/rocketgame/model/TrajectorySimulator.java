@@ -158,9 +158,9 @@ public class TrajectorySimulator extends GameObject {
         else
             simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
 
-        simulatedPlayable.setLinearVelocity(realPlayable.getLinearVelocity().cpy());
-        simulatedPlayable.setTransform(realPlayable.getPosition().cpy(), realPlayable.getAngle());
-        simulatedPlayable.getTransform().setOrientation(realPlayable.getTransform().getOrientation().cpy());
+        simulatedPlayable.setLinearVelocity(realPlayable.getLinearVelocity());
+        simulatedPlayable.setTransform(realPlayable.getPosition(), realPlayable.getAngle());
+        simulatedPlayable.getTransform().setOrientation(realPlayable.getTransform().getOrientation());
         simulatedPlayable.getTransform().setRotation(realPlayable.getTransform().getRotation());
 
         GameUtils.changeMass(simulatedPlayable, realPlayable.getMass());
