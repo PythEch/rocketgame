@@ -3,8 +3,10 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.rocketfool.rocketgame.view.GameScreen;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
+import static com.rocketfool.rocketgame.util.Constants.FRAME_RATE;
 
 /**
  * Class to create instances of all levels. Also, it performs most of the calculations.
@@ -17,6 +19,7 @@ public class Level {
     //region Fields
     protected World world;
     protected Playable playable;
+    protected GameScreen screen; //Needed to set zoom**
     protected Map map;
     protected Array<Trigger> triggers;
     protected Array<Waypoint> waypoints;
@@ -26,6 +29,8 @@ public class Level {
     protected float currentGravForce;
     protected int score;
     protected State state;
+    protected int health = 3;
+    protected PopUp popUp;
     //endregion
 
     //region Nested Types
@@ -34,7 +39,7 @@ public class Level {
     }
 
     public enum State {
-        RUNNING, PAUSED, GAME_OVER
+        RUNNING, PAUSED, GAME_OVER, HEALTH_OVER
     }
     //endregion
 
@@ -51,6 +56,7 @@ public class Level {
         this.gameObjects = new Array<GameObject>();
         this.timePassed = 0;
         this.score = 0;
+        this.popUp = new PopUp();
 
         // Register collisions
         world.setContactListener(new ContactListener() {
@@ -97,15 +103,19 @@ public class Level {
      */
     public void update(float deltaTime) {
         if (state == State.RUNNING) {
+            timePassed += deltaTime;
+
+            // Hack to make physics engine stable
+            deltaTime = FRAME_RATE;
+
             playable.update(deltaTime);
             updateGravity(deltaTime);
             updateTriggers(deltaTime);
             updateVisualObjects(deltaTime);
             updateWaypoints(deltaTime);
 
-            timePassed += deltaTime;
             // A world step simulates the Box2D world
-            world.step(deltaTime, 6, 2);
+            world.step(deltaTime, 8, 3);
         }
     }
 
@@ -152,7 +162,7 @@ public class Level {
     }
 
     /*
-     * remove waypoints form screen to meet the endgame condition
+     * Removes a waypoint from the screen when the playable approaches it.
      */
     private void updateWaypoints(float deltaTime) {
         for (Waypoint waypoint : waypoints) {
@@ -163,7 +173,7 @@ public class Level {
     }
 
     /**
-     * This is used update objects like background visuals
+     * This is used to update objects like background visuals
      */
     private void updateVisualObjects(float deltaTime) {
         for (GameObject go : gameObjects) {
@@ -245,8 +255,26 @@ public class Level {
 
     public void setState(State state) {
         this.state = state;
-        if (state == State.GAME_OVER) {
-            System.out.println("gg, game over");
+        if (state == State.HEALTH_OVER) {
+            healthOver();
+        }
+        else if (state == State.GAME_OVER) {
+            System.out.println("time to pack up boyz");
+        }
+    }
+
+    public void healthOver() {
+        health -= 1;
+        if (health == 0) {
+            setState(State.GAME_OVER);
+        }
+        else {
+            // TODO: restart from checkpoint etc.
+            // ridicule gamer etc.
+
+
+            // restart game
+            setState(State.RUNNING);
         }
     }
 
@@ -282,5 +310,18 @@ public class Level {
         this.score = score;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setScreenReference(GameScreen screen){ this.screen = screen; } //Needed to set zoom**
+
+    public PopUp getPopUp() {
+        return popUp;
+    }
     //endregion
 }

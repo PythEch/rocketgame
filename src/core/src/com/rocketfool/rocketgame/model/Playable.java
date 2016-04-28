@@ -19,6 +19,7 @@ public class Playable extends SolidObject {
     * Source for comparison: ( http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print) )
     */
     private final float fuelSpecificImpulse = 4500;
+    private final float maxVelocity = 1200;
 
     /** A base multiplier for thrust calculations, for convenience. */
     public static final float BASE = 5 * 1e3f;
@@ -34,6 +35,7 @@ public class Playable extends SolidObject {
     private float deltaThrust;
     /** Mass and fuel values are both in kg. */
     private float fuelLeft;
+    private float startingFuel;
     private float width;
     private float height;
     /** Maximum thrust in Newtons in every "deltaTime" */
@@ -60,7 +62,7 @@ public class Playable extends SolidObject {
         this.maxThrust = maxThrust;
         this.SASEnabled = false;
         this.maximizeThrust = false;
-        this.maximizeThrust = false;
+        this.startingFuel = fuel;
 
         this.body = createBody(x, y, (dryMass + fuel), world);
         this.spawnPoint = body.getPosition().cpy();
@@ -174,17 +176,16 @@ public class Playable extends SolidObject {
         float spin = this.getBody().getAngularVelocity(); //NOTE: This 1/100 the value on the Debug Screen...
         if (SASEnabled) {
             if (spin > 0f) {
-                if (spin > 0.001f)
+                if (spin > 0.0075f)
                     turnRight(deltaTime);
                 else
-                    turnRight(deltaTime / 1000f);
+                    this.body.setAngularVelocity(0);
             } else if (spin < 0f) {
-                if (spin < -0.001f)
+                if (spin < -0.0075f)
                     turnLeft(deltaTime);
                 else
-                    turnLeft(deltaTime / 1000f);
+                    this.body.setAngularVelocity(0);
             }
-            System.err.println(spin);
         }
     }
 
@@ -270,5 +271,14 @@ public class Playable extends SolidObject {
     public void setSASEnabled(boolean set) {
         SASEnabled = set;
     }
+
+    public float getStartingFuel() {
+        return startingFuel;
+    }
+
+    public float getMaxVelocity() {
+        return maxVelocity;
+    }
+
     //endregion
 }
