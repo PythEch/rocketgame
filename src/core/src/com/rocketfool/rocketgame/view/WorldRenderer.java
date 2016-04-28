@@ -2,6 +2,7 @@
 package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.backends.lwjgl.audio.Wav;
 import com.badlogic.gdx.graphics.Color;
@@ -46,6 +47,7 @@ public class WorldRenderer {
     private TrajectorySimulator trajectorySimulator;
     private OrthographicCamera camera;
     private Sound thrusterGoinger;
+    private Music warningSound;
     private boolean isGoignerplaying;
     private boolean isBQPlaying;
     private boolean isThrustStopperActive;
@@ -78,6 +80,7 @@ public class WorldRenderer {
 
         //SFX
         thrusterGoinger = AssetManager.THRUSTER_GOINGER;
+        warningSound = AssetManager.WARNING_SOUND;
         isGoignerplaying = false;
         isThrustStopperActive = false;
         isBQPlaying = false;
@@ -86,6 +89,7 @@ public class WorldRenderer {
     //endregion
 
     //region Methods
+
     public void draw(SpriteBatch batch) {
         elapsedTime = elapsedTime + Gdx.graphics.getDeltaTime();
         drawMap(batch);
@@ -102,6 +106,7 @@ public class WorldRenderer {
         }
 
         //SFX
+        //Rocket thrust sound
         if(level.getPlayable().getCurrentThrust() > 0)
         {
             if (!isGoignerplaying)
@@ -117,17 +122,20 @@ public class WorldRenderer {
             }
         }
 
-        if(!isBQPlaying)
+        //BQ
+        playBackgroundMusic();
+
+        //MiniMap Warning Sound
+        if(trajectorySimulator.isCollided())
         {
-            playBackgroundMusic();
-            /*isBQPlaying =  true;
-            Timer.schedule(new Timer.Task() {
-                @Override
-                public void run() {
-                    isBQPlaying = false;
-                }
-            },2.0f);*/
+            playWarningSound();
         }
+        else
+        {
+            stopWarningSound();
+        }
+
+
     }
 
     private void drawPlayer(SpriteBatch batch) {
@@ -340,6 +348,15 @@ public class WorldRenderer {
     public void playBackgroundMusic(){
         AssetManager.BQ_MUSIC.setVolume(Preferences.getInstance().getMasterVolume() / 4f);
         AssetManager.BQ_MUSIC.play();
+    }
+
+    public void playWarningSound(){
+        warningSound.setVolume(Preferences.getInstance().getMasterVolume()/3f);
+        warningSound.play();
+    }
+
+    public void stopWarningSound(){
+        warningSound.stop();
     }
     //endregion
 }
