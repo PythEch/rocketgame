@@ -372,6 +372,7 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         debugRenderer.dispose();
+        renderer.dispose();
     }
     //endregion
 

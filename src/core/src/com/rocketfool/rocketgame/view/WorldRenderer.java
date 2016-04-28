@@ -13,6 +13,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Disposable;
 import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.model.Planet;
 import com.rocketfool.rocketgame.model.TrajectorySimulator;
@@ -24,7 +25,7 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  * Together wht GameScreen, this class draws the view.
  * The main differences are WorldRenderer drawing the objects and GameScreen presenting the UI elements.
  */
-public class WorldRenderer {
+public class WorldRenderer implements Disposable {
     //region Constants
     public static final float MAX_ZOOM = 10f;
     public static final float MIN_ZOOM = 0.5f;
@@ -82,7 +83,6 @@ public class WorldRenderer {
         drawMeteors(batch);
         drawObjectiveScreen(batch, animationObjective1);
         drawPlanets(batch);
-        drawMeteors(batch);
         drawPlayer(batch);
         drawTrajectory(batch);
         for (VisualMeteor meteor : meteors) {
@@ -266,6 +266,13 @@ public class WorldRenderer {
 
     public TrajectorySimulator getTrajectorySimulator() {
         return trajectorySimulator;
+    }
+
+    @Override
+    public void dispose() {
+        textureAtlasMeteor.dispose();
+        textureAtlasObjective1.dispose();
+        textureAtlasStar.dispose();
     }
 
     //endregion
