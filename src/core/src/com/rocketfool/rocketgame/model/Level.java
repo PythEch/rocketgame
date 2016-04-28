@@ -191,7 +191,7 @@ public class Level {
     public void updateCircles() {
         for (Planet p: planets){
             if (p.getCircles()) {
-                presetCircle(p, p.getPlanetType(), timePassed2);
+                presetCircle(p, p.getPlanetType(), timePassed2 , p.getOrbitPhase());
             }
         }
     }
@@ -226,13 +226,13 @@ public class Level {
     /** A faster and more efficient but less-explained version of the circle drawing method, for preset bodies
      *  (eg. the Moon around the Earth).
      */
-    public static void presetCircle( Planet planet, int planetType , float timePassed){
+    public static void presetCircle( Planet planet, int planetType , float timePassed, float delay){
         if (planetType == 3) {
             float x = planet.getPrimary().getBody().getPosition().x;
             float y = planet.getPrimary().getBody().getPosition().y;
             planet.getBody().setTransform(
-                    x + (float) (7615 * Math.cos(2 * Math.PI / 3000 * timePassed)),
-                    y + (float) (7615 * Math.sin(2 * Math.PI / 3000 * timePassed)),
+                    x + (float) (7615 * Math.cos(2 * Math.PI / 3000 * timePassed + delay)),
+                    y + (float) (7615 * Math.sin(2 * Math.PI / 3000 * timePassed + delay)),
                     0f);
         }
     }
