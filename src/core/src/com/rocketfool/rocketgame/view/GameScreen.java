@@ -72,6 +72,7 @@ public class GameScreen implements Screen {
 
     private Minimap minimap;
 
+    private BitmapFont timerFont;
 
     //endregion
 
@@ -242,7 +243,6 @@ public class GameScreen implements Screen {
         );
 
         //Timer
-        BitmapFont timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
         String str = "" + (int)elapsedTime ;
         if( (int)elapsedTime >= 60)
         {
@@ -341,7 +341,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
 
-        level = LevelManager.createLevel4();
+        level = LevelManager.createLevel2();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
         controller = new WorldController(level, this);
@@ -354,6 +354,8 @@ public class GameScreen implements Screen {
         minimap = new Minimap(1064, 46, 81 * 2, 81 * 1.5f, level, camera, renderer.getTrajectorySimulator());
 
         level.setScreenReference(this); //To set zoom*
+
+        timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
     } //endregion
 
     public void zoomIn() {
@@ -364,7 +366,7 @@ public class GameScreen implements Screen {
     } //**
 
     public void zoomOut() {
-        camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
+        camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
         font.setScale(camera.zoom);
     }
 
