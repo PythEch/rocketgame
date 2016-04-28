@@ -11,6 +11,8 @@ import com.badlogic.gdx.math.Vector3;
 import com.rocketfool.rocketgame.model.PopUp;
 import com.rocketfool.rocketgame.view.Splash.SpriteAccessor;
 
+import java.util.Arrays;
+
 /**
  * Created by pythech on 28/04/16.
  */
@@ -20,12 +22,16 @@ public class PopupView {
     private BitmapFont font;
     private TweenManager tweenManager;
     private float yCoord;
+    private float startingYCoord;
+    private int charCaret;
 
     public PopupView(PopUp popup, OrthographicCamera camera) {
         this.popup = popup;
         this.camera = camera;
         this.font = new BitmapFont(); // TODO: select a font
-        this.yCoord = -AssetManager.POPUP_BODY.getHeight();
+        this.startingYCoord = -AssetManager.POPUP_BODY.getHeight();
+        this.yCoord = 0;
+        this.charCaret = 0;
 
         tweenManager = new TweenManager();
         Tween.registerAccessor(PopupView.class, new PopupAcessor());
@@ -33,9 +39,15 @@ public class PopupView {
 
     public void draw(SpriteBatch batch) {
         if (popup.isPropertyChanged()) {
-            Tween.set(this, PopupAcessor.Y_COORD).target(-AssetManager.POPUP_BODY.getHeight()).start(tweenManager);
-            Tween.to(this, PopupAcessor.Y_COORD, 2).target(0).repeatYoyo(1, 4).start(tweenManager);
             popup.setPropertyChanged(false);
+            if (false) {
+                Tween.set(this, PopupAcessor.Y_COORD).target(startingYCoord).start(tweenManager);
+                Tween.to(this, PopupAcessor.Y_COORD, 2).target(0).repeatYoyo(1, 4).start(tweenManager);
+            }
+        }
+
+        if (charCaret < popup.getText().length()) {
+            charCaret += 1;
         }
 
         tweenManager.update(Gdx.graphics.getDeltaTime());
@@ -81,12 +93,50 @@ public class PopupView {
         );
 
         font.setScale(camera.zoom);
-        font.draw(
+        drawFont(batch);
+    }
+
+    private void drawFont(SpriteBatch batch) {
+        String[] splitted = splitText(popup.getText(), 235 * camera.zoom, 140 * camera.zoom);
+        String topText = splitted[0];
+        String bottomText = splitted[1];
+
+        font.drawWrapped(
                 batch,
-                popup.getText(),
-                camera.position.x - (camera.viewportWidth / 2f - 150) * camera.zoom,
-                camera.position.y - (camera.viewportHeight / 2f - 280 -yCoord) * camera.zoom
+                topText,
+                camera.position.x - (camera.viewportWidth / 2f - 160) * camera.zoom,
+                camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord) * camera.zoom,
+                235 * camera.zoom
         );
+
+        font.drawWrapped(
+                batch,
+                bottomText,
+                camera.position.x - (camera.viewportWidth / 2f - 20) * camera.zoom,
+                camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord + 140) * camera.zoom,
+                355 * camera.zoom
+        );
+
+        batch.draw(
+                AssetManager.GHOST,
+                camera.position.x - (camera.viewportWidth / 2f - 20 - 355) * camera.zoom,
+                camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord + 140) * camera.zoom
+        );
+    }
+
+    private String[] splitText(String text, float width, float height) {
+        String topText = text;
+
+        BitmapFont.TextBounds bounds = font.getWrappedBounds(text, width);
+
+        while (bounds.height > height) {
+            topText = topText.substring(0, topText.lastIndexOf(' '));
+            bounds = font.getWrappedBounds(topText, width);
+        }
+
+        String bottomText = text.substring(topText.length());
+
+        return new String[]{topText, bottomText};
     }
 
     public float getyCoord() {

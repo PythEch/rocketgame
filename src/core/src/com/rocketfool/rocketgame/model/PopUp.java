@@ -33,8 +33,7 @@ public class PopUp {
     }
 
     public void setText(String text) {
-        this.text = text;
-        System.out.println(text);
+        this.text = text + "\n\n" + this.text;
         propertyChanged = true;
     }
 
