@@ -396,7 +396,7 @@ public class GameScreen implements Screen {
         level = LevelManager.createLevel4();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
-        controller = new WorldController(level, this);
+        controller = new WorldController(level, this, renderer);
 
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);

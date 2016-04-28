@@ -2,6 +2,8 @@
 package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.backends.lwjgl.audio.Wav;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,10 +15,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
-import com.rocketfool.rocketgame.model.Level;
-import com.rocketfool.rocketgame.model.Planet;
-import com.rocketfool.rocketgame.model.TrajectorySimulator;
-import com.rocketfool.rocketgame.model.VisualMeteor;
+import com.badlogic.gdx.utils.Timer;
+import com.rocketfool.rocketgame.model.*;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -45,6 +45,10 @@ public class WorldRenderer {
     private Array<VisualMeteor> meteors;
     private TrajectorySimulator trajectorySimulator;
     private OrthographicCamera camera;
+    private Sound thrusterGoinger;
+    private boolean isGoignerplaying;
+    private boolean isBQPlaying;
+    private boolean isThrustStopperActive;
     //endregion
 
     //region Constructor
@@ -71,6 +75,13 @@ public class WorldRenderer {
         animationObjective1 = new Animation(1f / 80f, textureAtlasObjective1.getRegions());
 
         trajectorySimulator = new TrajectorySimulator(level);
+
+        //SFX
+        thrusterGoinger = AssetManager.THRUSTER_GOINGER;
+        isGoignerplaying = false;
+        isThrustStopperActive = false;
+        isBQPlaying = false;
+
     }
     //endregion
 
@@ -85,8 +96,37 @@ public class WorldRenderer {
         drawMeteors(batch);
         drawPlayer(batch);
         drawTrajectory(batch);
+        drawWarningSign(batch);
         for (VisualMeteor meteor : meteors) {
             meteor.update(Gdx.graphics.getDeltaTime());
+        }
+
+        //SFX
+        if(level.getPlayable().getCurrentThrust() > 0)
+        {
+            if (!isGoignerplaying)
+            {
+                playThrusterGoinger();
+                isGoignerplaying = true;
+                Timer.schedule(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        isGoignerplaying = false;
+                    }
+                }, 4.0f);
+            }
+        }
+
+        if(!isBQPlaying)
+        {
+            playBackgroundMusic();
+            /*isBQPlaying =  true;
+            Timer.schedule(new Timer.Task() {
+                @Override
+                public void run() {
+                    isBQPlaying = false;
+                }
+            },2.0f);*/
         }
     }
 
@@ -245,8 +285,9 @@ public class WorldRenderer {
                     pos.y * toPixel
             );
         }
+    }
 
-
+    private void drawWarningSign(SpriteBatch batch){
         //Draws warning sign
         if (trajectorySimulator.isCollided()) {
             float randMultiplier = MathUtils.random(0.7f, 1.0f);
@@ -268,5 +309,37 @@ public class WorldRenderer {
         return trajectorySimulator;
     }
 
+    //SFX METHODS
+    public void playThrustStarter(){
+        System.out.println("starter");
+        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f );
+    }
+
+    public void playThrusterGoinger(){
+        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f  );
+    }
+
+    public void stopThrusterGoinger(){
+        System.out.println("stopper");
+        thrusterGoinger.stop();
+    }
+
+    public void playThrusterStarter(){
+        AssetManager.THRUSTER_STARTER.play(Preferences.getInstance().getMasterVolume() / 10f );
+    }
+
+    public void playThrusterEnder(){
+        if(isThrustStopperActive)
+        AssetManager.THRUSTER_ENDER.play(Preferences.getInstance().getMasterVolume() / 10f );
+    }
+
+    public void setThrustStopperActive(boolean thrustStopperActive) {
+        isThrustStopperActive = thrustStopperActive;
+    }
+
+    public void playBackgroundMusic(){
+        AssetManager.BQ_MUSIC.setVolume(Preferences.getInstance().getMasterVolume() / 4f);
+        AssetManager.BQ_MUSIC.play();
+    }
     //endregion
 }
