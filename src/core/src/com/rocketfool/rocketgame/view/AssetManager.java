@@ -35,5 +35,7 @@ public class AssetManager {
     public static final Sound THRUSTER_ENDER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterEnder.wav"));
     public static final Music BQ_MUSIC = Gdx.audio.newMusic(Gdx.files.internal("SFX/Space_Atmospheric_01.wav"));
     public static final Music WARNING_SOUND= Gdx.audio.newMusic(Gdx.files.internal("SFX/Emergency_Warning_05.wav"));
+    public static final Sound EXPLOSION = Gdx.audio.newSound(Gdx.files.internal("SFX/Explosion_01.wav"));
+    public static final Sound DEATH_SIGN = Gdx.audio.newSound(Gdx.files.internal("SFX/Medical_EKG_Flat_Line_01.wav"));
 
 }

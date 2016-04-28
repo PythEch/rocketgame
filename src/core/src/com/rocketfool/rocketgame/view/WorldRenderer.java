@@ -14,7 +14,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Timer;
 import com.rocketfool.rocketgame.model.*;
@@ -48,6 +48,7 @@ public class WorldRenderer {
     private OrthographicCamera camera;
     private Sound thrusterGoinger;
     private Music warningSound;
+    private Music bqMusic;
     private boolean isGoignerplaying;
     private boolean isBQPlaying;
     private boolean isThrustStopperActive;
@@ -81,14 +82,59 @@ public class WorldRenderer {
         //SFX
         thrusterGoinger = AssetManager.THRUSTER_GOINGER;
         warningSound = AssetManager.WARNING_SOUND;
+        bqMusic =AssetManager.BQ_MUSIC;
         isGoignerplaying = false;
         isThrustStopperActive = false;
         isBQPlaying = false;
 
+        level.getWorld().setContactListener(new ContactListener() {
+            @Override
+            public void beginContact(Contact contact) {
+                if (contact.getFixtureA().getUserData() == Level.ObjectType.PLAYABLE ||
+                        contact.getFixtureB().getUserData() == Level.ObjectType.PLAYABLE) {
+                    onCollision();
+                }
+            }
+
+            //region Methods just to override
+            @Override
+            public void endContact(Contact contact) {
+
+            }
+
+            @Override
+            public void preSolve(Contact contact, Manifold oldManifold) {
+
+            }
+
+            @Override
+            public void postSolve(Contact contact, ContactImpulse impulse) {
+
+            }
+            //endregion
+        });
     }
     //endregion
 
     //region Methods
+
+    private void onCollision() {
+        stopWarningSound();
+        stopBackgroundMusic();
+        stopThrusterGoinger();
+
+        //Plays collusionSound
+        AssetManager.EXPLOSION.play(Preferences.getInstance().getMasterVolume() / 5f);
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+
+            }
+        },3.0f);
+        AssetManager.DEATH_SIGN.play(Preferences.getInstance().getMasterVolume() );
+
+
+    }
 
     public void draw(SpriteBatch batch) {
         elapsedTime = elapsedTime + Gdx.graphics.getDeltaTime();
@@ -107,10 +153,8 @@ public class WorldRenderer {
 
         //SFX
         //Rocket thrust sound
-        if(level.getPlayable().getCurrentThrust() > 0)
-        {
-            if (!isGoignerplaying)
-            {
+        if (level.getPlayable().getCurrentThrust() > 0) {
+            if (!isGoignerplaying) {
                 playThrusterGoinger();
                 isGoignerplaying = true;
                 Timer.schedule(new Timer.Task() {
@@ -126,16 +170,11 @@ public class WorldRenderer {
         playBackgroundMusic();
 
         //MiniMap Warning Sound
-        if(trajectorySimulator.isCollided())
-        {
+        if (trajectorySimulator.isCollided()) {
             playWarningSound();
-        }
-        else
-        {
+        } else {
             stopWarningSound();
         }
-
-
     }
 
     private void drawPlayer(SpriteBatch batch) {
@@ -191,9 +230,8 @@ public class WorldRenderer {
         Texture texturePlanet = AssetManager.PLANET1; //Base case
 
         //Sets texture
-        for (Planet planet : level.getPlanets() ) {
-            switch (planet.getPlanetType())
-            {
+        for (Planet planet : level.getPlanets()) {
+            switch (planet.getPlanetType()) {
                 case 1:
                     texturePlanet = AssetManager.PLANET1;
                     break;
@@ -222,9 +260,9 @@ public class WorldRenderer {
                     texturePlanet,
                     planet.getBody().getPosition().x * (toPixel) - (planet.getRadius() * toPixel),
                     planet.getBody().getPosition().y * (toPixel) - (planet.getRadius() * toPixel),
-                    planet.getRadius() * toPixel * 2 ,
+                    planet.getRadius() * toPixel * 2,
                     planet.getRadius() * toPixel * 2
-                    );
+            );
         }
     }
 
@@ -295,7 +333,7 @@ public class WorldRenderer {
         }
     }
 
-    private void drawWarningSign(SpriteBatch batch){
+    private void drawWarningSign(SpriteBatch batch) {
         //Draws warning sign
         if (trajectorySimulator.isCollided()) {
             float randMultiplier = MathUtils.random(0.7f, 1.0f);
@@ -318,44 +356,47 @@ public class WorldRenderer {
     }
 
     //SFX METHODS
-    public void playThrustStarter(){
+    public void playThrustStarter() {
         System.out.println("starter");
-        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f );
+        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f);
     }
 
-    public void playThrusterGoinger(){
-        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f  );
+    public void playThrusterGoinger() {
+        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f);
     }
 
-    public void stopThrusterGoinger(){
-        System.out.println("stopper");
+    public void stopThrusterGoinger() {
         thrusterGoinger.stop();
     }
 
-    public void playThrusterStarter(){
-        AssetManager.THRUSTER_STARTER.play(Preferences.getInstance().getMasterVolume() / 10f );
+    public void playThrusterStarter() {
+        AssetManager.THRUSTER_STARTER.play(Preferences.getInstance().getMasterVolume() / 10f);
     }
 
-    public void playThrusterEnder(){
-        if(isThrustStopperActive)
-        AssetManager.THRUSTER_ENDER.play(Preferences.getInstance().getMasterVolume() / 10f );
+    public void playThrusterEnder() {
+        if (isThrustStopperActive)
+            AssetManager.THRUSTER_ENDER.play(Preferences.getInstance().getMasterVolume() / 10f);
     }
 
     public void setThrustStopperActive(boolean thrustStopperActive) {
         isThrustStopperActive = thrustStopperActive;
     }
 
-    public void playBackgroundMusic(){
-        AssetManager.BQ_MUSIC.setVolume(Preferences.getInstance().getMasterVolume() / 4f);
-        AssetManager.BQ_MUSIC.play();
+    public void playBackgroundMusic() {
+        bqMusic.setVolume(Preferences.getInstance().getMasterVolume() / 4f);
+        bqMusic.play();
     }
 
-    public void playWarningSound(){
-        warningSound.setVolume(Preferences.getInstance().getMasterVolume()/3f);
+    public void stopBackgroundMusic(){
+        bqMusic.stop();
+    }
+
+    public void playWarningSound() {
+        warningSound.setVolume(Preferences.getInstance().getMasterVolume() / 3f);
         warningSound.play();
     }
 
-    public void stopWarningSound(){
+    public void stopWarningSound() {
         warningSound.stop();
     }
     //endregion
