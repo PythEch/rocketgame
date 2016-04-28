@@ -8,16 +8,15 @@ import com.badlogic.gdx.physics.box2d.*;
  */
 public class Planet extends CelestialObject {
     //region Fields
-    private Star star;
+    private Planet primary;
     private int planetType;
-
-    boolean circles;
+    private boolean circles;
     //endregion
 
     //region Constructor
-    public Planet(float x, float y, float mass, float radius, Star star, World world, int planetType) {
+    public Planet(float x, float y, float mass, float radius, Planet primary, World world, int planetType) {
         super(mass, radius);
-        this.star = star;
+        this.primary = primary;
         this.planetType = planetType;
         this.body = createBody(x, y, mass, radius, world);
         circles = false;
@@ -61,7 +60,9 @@ public class Planet extends CelestialObject {
         this.planetType = planetType;
     }
 
-    //endregion
+    public Planet getPrimary() { return primary; }
+
+    public void setPrimary( Planet primary){ this.primary = primary; }
 
     public void setCircles(boolean circles) {
         this.circles = circles;
