@@ -1,17 +1,11 @@
 package com.rocketfool.rocketgame.view;
 
 import aurelienribon.tweenengine.*;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
 import com.rocketfool.rocketgame.model.PopUp;
-import com.rocketfool.rocketgame.view.Splash.SpriteAccessor;
-
-import java.util.Arrays;
 
 /**
  * Created by pythech on 28/04/16.
@@ -127,12 +121,6 @@ public class PopupView {
                 camera.position.x - (camera.viewportWidth / 2f - 20) * camera.zoom,
                 camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord + 140) * camera.zoom,
                 355 * camera.zoom
-        );
-
-        batch.draw(
-                AssetManager.GHOST,
-                camera.position.x - (camera.viewportWidth / 2f - 20 - 355) * camera.zoom,
-                camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord + 140) * camera.zoom
         );
     }
 

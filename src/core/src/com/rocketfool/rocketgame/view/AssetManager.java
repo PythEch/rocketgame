@@ -28,6 +28,8 @@ public class AssetManager {
     public static final Texture PLANET5 = new Texture(Gdx.files.internal("PNG/Planets/5.png"), true);
     public static final Texture PLANET6 = new Texture(Gdx.files.internal("PNG/Planets/6.png"), true);
     public static final Texture PLANET7 = new Texture(Gdx.files.internal("PNG/Planets/7.png"), true);
+    public static final Texture EARTH = new Texture(Gdx.files.internal("PNG/Planets/Earth.png"), true); //CASE 8
+    public static final Texture MOON = new Texture(Gdx.files.internal("PNG/Planets/Moon.png"), true); // CASE 9
     public static final Texture POPUP_HEAD = new Texture(Gdx.files.internal("PNG/title.png"));
     public static final Texture POPUP_BODY = new Texture(Gdx.files.internal("PNG/popup.png"));
     public static final Sound THRUSTER_STARTER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterStarter.wav"));
