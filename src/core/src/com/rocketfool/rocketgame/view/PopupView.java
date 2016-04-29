@@ -31,7 +31,7 @@ public class PopupView {
         this.camera = camera;
         this.font = new BitmapFont(); // TODO: select a font
         this.startingYCoord = -AssetManager.POPUP_BODY.getHeight();
-        this.yCoord = 0;
+        this.yCoord = startingYCoord;
         this.elapsedTime = 0;
 
         tweenManager = new TweenManager();
