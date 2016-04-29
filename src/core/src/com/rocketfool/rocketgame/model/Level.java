@@ -133,7 +133,7 @@ public class Level {
                 trigger.triggerPerformed();
             }
             if ( trigger instanceof PositionTrigger){
-                ((PositionTrigger) trigger).followTarget();
+                ((PositionTrigger) trigger).followHost();
             }
         }
     }
