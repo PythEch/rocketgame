@@ -53,8 +53,8 @@ public class LevelManager {
         final PositionTrigger earthTrig = new PositionTrigger(14000, 9000, 1250, level.playable) {
             @Override
             public void triggerPerformed() {
-                //TODO: Stop level
-                //TODO: End of level popup to move to menu or next level or restart
+                //TODO: Stop level here
+                //TODO: End of level popup here with "move to menu" or "next level" or "restart"
                 //Title: ("Mission Accomplished!")
                 //Text: ("Congratulations! You made it back safely! Hopefully this experience will help in the future!");
             }
@@ -198,15 +198,15 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
+        level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
 
         //Earth
-        level.planets.add(new Planet(9000, 7000, 6.0f * 1.0e25f, 650, null, level.world, 2));
+        level.planets.add(new Planet(14000, 11000, 6.0f * 1.0e25f, 650, null, level.world, 2));
         //Moon
-        level.planets.add(new Planet(16000, 10000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 3));
+        level.planets.add(new Planet(21000, 14000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 3));
         level.planets.get(1).setOrbitPreset(true);
         //initialization of the rocket
-        level.playable = new Playable(9550, 7550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
+        level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
         level.playable.getBody().setLinearVelocity(50f, -50f);
 
         //default Triggers
@@ -220,12 +220,12 @@ public class LevelManager {
                 popUp.setText("You've reached the Moon. And what strange things have we found here? Better take it back to Earth!");
                 objectiveWindow.setText("Return to Earth");
                 level.waypoints.removeIndex(0);
-                level.waypoints.add(new Waypoint(9000, 7000, 800));
+                level.waypoints.add(new Waypoint(14000, 11000, 800));
             }
         };
         level.triggers.add(moonTrig);
         level.waypoints.add(new Waypoint(moonTrig));//<== TODO: Simple Waypoint image: crashed UFO on the Moon.
-        final PositionTrigger earthTrig = new PositionTrigger(9000, 7000, 800, level.playable) {
+        final PositionTrigger earthTrig = new PositionTrigger(14000, 11000, 800, level.playable) {
             @Override
             public void triggerPerformed() {
                 if (moonTrig.isTriggeredBefore()) {
@@ -354,7 +354,6 @@ public class LevelManager {
     }
 
     public static Level createLevel3() {
-        //Level Outline II, D part
 
         final Level level = new Level();
         Level.levelNo = 3;
@@ -364,55 +363,53 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
-
-        //earth
-        level.planets.add(new Planet(1000, 1000, 6 * 1e24f, 800, null, level.world,4));
+        int width = Gdx.graphics.getWidth() * 250;
+        int height = Gdx.graphics.getHeight() * 250;
+        level.map = new Map(width, height);
 
         //obstacles
-        //TODO: Dispose method could be implemented for level class to remove the objects going out of the map and summoning new ones
-        //loop for randomizing the movement directions, velocities, sizes and the shapes of the asteroids
-        for (int i = 0; i < 100; i++) {
+        //Loop for randomizing the movement directions, velocities, sizes and the shapes of the asteroids
+        for (int i = 0; i < 150; i++) {
             Vector2 vector = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 20f, ((float) Math.random()) * (float) Math.random() * 20f);
             if (i % 2 == 0) {
-                level.gameObjects.add(new RoundObstacle(((float) (Math.random()) * 10000), ((float) (Math.random()) * 7000) + 30 * i, 10, vector, level.world));
+                level.gameObjects.add(new RoundObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, 10 + i , vector, level.world));
             } else {
-                level.gameObjects.add(new RectangleObstacle(((float) (Math.random()) * 10000), ((float) (Math.random()) * 7000) + 30 * i, i * 2, i + 0.5f, vector, level.world));
+                level.gameObjects.add(new RectangleObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, i * 2, i + 0.5f, vector, level.world));
             }
         }
+        //TODO: Dispose method could maybe be implemented for level class to remove the objects going out of the map and summoning new ones
 
         //initialization of the rocket
-        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 2e5f, level.world);
-        level.playable.getBody().setLinearVelocity(3, 5);
+        level.playable = new Playable(700, 700, 88, 108, 1e5f, 950 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
+        level.playable.getBody().setLinearVelocity(2, 3);
 
         //default Triggers
         addDefaultTriggers(level);
 
+        if (Constants.DEBUG) {
+            //level.planets.add(new Planet(17000, 10000, 1e20f, 500, null, level.world, 4));
+        }
         //endGame Triggers
-        final PositionTrigger asteroidsPassed = new PositionTrigger(9000, 8000, 100, level.playable) {
+        final PositionTrigger asteroidsPassed = new PositionTrigger(17000, 10000, 500, level.playable) {
             @Override
             public void triggerPerformed() {
-                //System.out.println("Congratulations! You've managed to pass all of the obstacles . We are right on the track to reach Mars. Great Job Martian! Level 3 is completed.");
-                popUp.setText("Congratulations! You've managed to pass all of the obstacles . We are right on the track to reach Mars. Great Job Martian! Level 3 is completed.");
-                //TODO: Next level should be given here. However, the method createLevel4() fails here.
+                //TODO: Stop level here
+                //TODO End of level popup here
+                //Text: "Congratulations! You exhibited some nice piloting! We are right on the track to reach Mars. Great Job Martian!"
             }
         };
         level.triggers.add(asteroidsPassed);
+        Waypoint endGame = new Waypoint(asteroidsPassed); //<==TODO: waypoint image (simple crosshairs?)
+        level.waypoints.add(endGame);
 
         //level starts here
         level.timer.start();
-
-        //TODO: Take off animation is needed (it is not essential)
-
+        //TODO Add fun facts!
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("You took a SOS code from a who is at Mars right now. Your friend's ship stuck " +
-                                       //"at the orbit of the Mars. To reach Mars, you have to travel far away. Begin!");
-                               popUp.setText("You took a SOS code from a who is at Mars right now. Your friend's ship stuck " +
-                                       "at the orbit of the Mars. To reach Mars, you have to travel far away. Begin!");
-                               Waypoint endGame = new Waypoint(9000, 8000, 50);
-                               level.waypoints.add(endGame);
+                               popUp.setText("You received an SOS code from a fellow traveller at Mars. Their ship is stranded " +
+                                       "in orbit of Mars. You will need to go through here though...");
                                objectiveWindow.setText("Reach Mars");
                            }
                        },
@@ -420,54 +417,40 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("The distance between Earth and Mars is 225 million kilometers.");
-                               popUp.setText("The distance between Earth and Mars is 225 million kilometers.");
+                               popUp.setText("Looks like there are lots of obstacles on your way. It's best to avoid them.");
                            }
                        },
-                20.0f);
+                15.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Looks like there are lots of obstacles on your way. Try to pass through them.");
-                               popUp.setText("Looks like there are lots of obstacles on your way. Try to pass through them.");
-                           }
-                       },
-                40.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               //System.out.println("Space might not be so empty after all. Even the smallest rock or space junk piece can cause serious damage to the craft, " +
-                                       //"especially at higher speeds, so it would be best to avoid even touching anything!");
                                popUp.setText("Space might not be so empty after all. Even the smallest rock or space junk piece can cause serious damage to the craft," +
                                        " especially at higher speeds, so it would be best to avoid even touching anything!");
+                           }
+                       },
+                25.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know? \n The distance between Earth and Mars is 225 million kilometers.");
                            }
                        },
                 45.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Be careful!");
-                               popUp.setText("Be careful!");
-                           }
-                       },
-                60.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               //System.out.println("Piloting is hard, isn't it?");
                                popUp.setText("Piloting is hard, isn't it?");
                            }
                        },
-                80.0f);
+                65.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Avoid collisions with obstacles!");
                                popUp.setText("Avoid collisions with obstacles!");
                            }
                        },
-                100.0f);
-
+                85.0f);
+        //TODO More fun facts can go here!!!
         return level;
     }
 
@@ -485,7 +468,7 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 200, Gdx.graphics.getHeight() * 200);
 
         //Mars
-        level.planets.add(new Planet(6500, 5000, 6 * 1e24f, 900, null, level.world,5));
+        level.planets.add(new Planet(6500, 5000, 6 * 1e24f, 900, null, level.world,5)); //FIXME: planetType 4?
 
         //initialization of the rocket
         level.playable = new Playable(1000, 1000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 2e5f, level.world);

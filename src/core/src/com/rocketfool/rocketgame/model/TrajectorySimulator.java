@@ -35,7 +35,7 @@ public class TrajectorySimulator extends GameObject {
 
     public static final int IGNORE_THRESHOLD = 15;
 
-    public static boolean enabled;
+    public static boolean enabled = true;
     //endregion
 
     //region Fields
