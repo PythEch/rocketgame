@@ -17,6 +17,7 @@ public abstract class PositionTrigger implements Trigger {
     private float xOffset;
     private float yOffset;
     private boolean isTriggeredBefore;
+    private int trigCount;
     //endregion
 
     //region Constructors
@@ -27,6 +28,7 @@ public abstract class PositionTrigger implements Trigger {
         this.target = target;
         isTriggeredBefore = false;
         this.host = null;
+        trigCount = 0;
     }
 
     public PositionTrigger(SolidObject host, float xOffset, float yOffset, float radius, SolidObject target) {
@@ -36,6 +38,7 @@ public abstract class PositionTrigger implements Trigger {
         this.xOffset = xOffset;
         this.yOffset = yOffset;
         this.target = target;
+        trigCount = 0;
         followHost();
     }
     //endregion
@@ -54,6 +57,7 @@ public abstract class PositionTrigger implements Trigger {
 
         if (pos.dst(x, y) <= radius) {
             isTriggeredBefore = true;
+            trigCount++;
             return true;
         } else {
             return false;
@@ -61,15 +65,15 @@ public abstract class PositionTrigger implements Trigger {
 
     }
 
-    public final boolean isTriggeredBefore() {
-        return isTriggeredBefore;
-    }
+    public final boolean isTriggeredBefore() {return isTriggeredBefore;}
 
-    public float getX(){return  x; }
+    public float getX(){return  x;}
 
-    public float getY() {return y; }
+    public float getY() {return y;}
 
-    public float getRadius() { return radius; }
+    public float getRadius() {return radius;}
+
+    public int getTrigCount() {return trigCount;}
 
     //endregion
 }

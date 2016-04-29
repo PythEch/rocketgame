@@ -645,6 +645,34 @@ public class LevelManager {
 
     public static Level createLevel5() {
         //Previously Level 6. Don't delete this one. :)
+        /* For this level
+         * TODO: Stop triggers firing repetitively! But multiple fires may be needed too.
+         *       TrigCount didnt work. something like a trigdelay can work... might use the timer here?...
+         * TODO: are trigger and waypoint places correct?
+         * TODO: simple crosshairs sprite for all waypoints in this level
+         *
+         * Others
+         * TODO update GameUtils.levelsCleared (all levels)
+         * TODO pass level.playable.fuelLeft to GameUtils.score (counts as a score system after all, right?)
+         * TODO check save/load function.
+         * TODO stop level.timer while game is paused.
+         * TODO restore max zoom to 100-200 instead of 550
+         *
+         * TODO drawer for showForces vectors
+         * TODO Complete health system
+         * TODO endgame popups/screens for out-of-map, no fuel, etc.
+         * TODO credits... box?
+         * TODO complete pause menu (without checkpoints any more)
+         * TODO simple SASEnabled display
+         * TODO play-testing all levels
+         * TODO spelling checks
+         * TODO code clean-up
+         * TODO everything else that I'm forgetting
+         *
+         * TODO reflections
+         * TODO detailed design report
+         * TODO ...?
+         */
 
         final Level level = new Level();
         Level.levelNo = 5;
@@ -656,84 +684,87 @@ public class LevelManager {
         //map
         level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
 
-        //earth
-        level.planets.add(new Planet(11000, 13000, 6 * 1e24f, 800, null, level.world, 6));
         //secretPlanet
-        level.planets.add(new Planet(16000, 15000, 6 * 1e24f, 100, null, level.world, 7));
-
+        level.planets.add(new Planet(16000, 15000, 1.0e25f, 125, null, level.world, 7));
+        //planet0
+        level.planets.add(new Planet(11000, 13000, 4.0e25f, 800, null, level.world, 6));
         //planet1
-        level.planets.add(new Planet(5500, 5500, 6 * 1e24f, 650, null, level.world, 1));
+        level.planets.add(new Planet(5500, 5500, 3.25e25f, 650, null, level.world, 1));
         //planet2
-        level.planets.add(new Planet(14000, 3000, 2.7f * 1e21f, 500, null, level.world, 2));
+        level.planets.add(new Planet(14000, 3700, 2.5e25f, 500, null, level.world, 4));
         //planet3
-        level.planets.add(new Planet(8200, 7200, 6 * 1e24f, 350, null, level.world, 3));
+        level.planets.add(new Planet(8200, 7200, 1.75e25f, 350, null, level.world, 3));
 
         //rocket
-        level.playable = new Playable(4000, 4850, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
-        level.playable.getBody().setLinearVelocity(0, 0);
+        level.playable = new Playable(4000, 4000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
 
         //default Triggers
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger earthTrig = new PositionTrigger(11000, 13000, 400, level.playable) {
+        final PositionTrigger planet0 = new PositionTrigger(1000, 1000, 2000, level.playable) {//FIXME
             @Override
             public void triggerPerformed() {
-                //System.out.println("You can't return to Earth yet");
-                popUp.setText("You can't return to Earth yet, go exploring");
+                if (this.getTrigCount() < 2){
+                    popUp.setText("This is not the planet you are looking for. Move along!");
+                    Waypoint firstPlanet = new Waypoint(14000, 3600, 5);//FIXME
+                    level.waypoints.add(firstPlanet);
+                }
             }
         };
-        level.triggers.add(earthTrig);
-        final PositionTrigger planet1 = new PositionTrigger(5500, 5500, 1000, level.playable) {
+        level.triggers.add(planet0);
+
+        final PositionTrigger planet1 = new PositionTrigger(5500, 5500, 1000, level.playable) {//FIXME
             @Override
             public void triggerPerformed() {
-                //System.out.println("What a beautiful planet it is. However, there is no sign of life here.");
-                popUp.setText("What a beautiful planet it is. However, there is no sign of life here.");
-                Waypoint secondPlanet = new Waypoint(14000, 3600, 5);
-                level.waypoints.add(secondPlanet);
-                objectiveWindow.setText("Continue investigating planets");
+                if (this.getTrigCount() < 2) {
+                    popUp.setText("What a beautiful planet this is! However, there is no sign of life here.");
+                    Waypoint secondPlanet = new Waypoint(14000, 3600, 5);//FIXME
+                    level.waypoints.add(secondPlanet);
+                    objectiveWindow.setText("Continue investigating planets");
+                }
             }
         };
         level.triggers.add(planet1);
 
-        final PositionTrigger planet2 = new PositionTrigger(14000, 3000, 850, level.playable) {
+        final PositionTrigger planet2 = new PositionTrigger(14000, 3000, 850, level.playable) {//FIXME
             @Override
             public void triggerPerformed() {
-                //System.out.println("Nothing over here! Lets check the other planets.");
-                popUp.setText("Nothing over here! Lets check the others planets.");
-                Waypoint thirdPlanet = new Waypoint(8200, 7000, 5);
-                level.waypoints.add(thirdPlanet);
+                if (this.getTrigCount() < 2) {
+                    popUp.setText("Nothing to do here! I don't want to be on this planet anymore.");
+                    Waypoint thirdPlanet = new Waypoint(8200, 7000, 5);//FIXME
+                    level.waypoints.add(thirdPlanet);
+                }
             }
         };
         level.triggers.add(planet2);
 
-        final PositionTrigger planet3 = new PositionTrigger(8200, 7200, 700, level.playable) {
+        final PositionTrigger planet3 = new PositionTrigger(3200, 9200, 700, level.playable) {//FIXME
             @Override
             public void triggerPerformed() {
-                if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
-                    //System.out.println("I have a bad feeling about this planet. Let's move on!");
-                    popUp.setText("I have a bad feeling about this planet. Let's move on!");
-                    Waypoint secretOne = new Waypoint(9500, 10105, 5);
-                    level.waypoints.add(secretOne);
-                } else {
-                    //System.out.println("It seems we skipped one planet which aliens might be living!");
-                    popUp.setText("It seems we skipped one planet which aliens might be living!");
+                if (this.getTrigCount() < 2) {
+                    if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
+                        popUp.setText("I have a bad feeling about this planet. Let's move on!");
+                        Waypoint secretOne = new Waypoint(9500, 10105, 5);//FIXME
+                        level.waypoints.add(secretOne);
+                    } else {
+                        popUp.setText("It seems we skipped one planet on which aliens might be living!");
+                    }
                 }
             }
         };
         level.triggers.add(planet3);
 
-        final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {
+        final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {//FIXME
             @Override
             public void triggerPerformed() {
                 if (planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
-                    //System.out.println("Oh My God! ALIENS! They are here, they have a planet called Oz-Turca and they call themselves Oz-Jans.");
-                    popUp.setText("Oh My God! ALIENS! They are here, they have a planet called Oz-Turca and they call themselves Oz-Jans.");
+                    popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
+                            "called Oz-Turca and they call themselves Oz-Jans."); //risky?**
                 }
                 //TODO: Alien & Human Gardasligi animasyonu. GAME OVER HERE
                 else {
-                    //System.out.println("We better check all the other planets before looking into this.");
-                    popUp.setText("We better check all the other planets before looking into this.");
+                    popUp.setText("We better check all the other planets before looking here.");
                 }
             }
         };
@@ -746,11 +777,11 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Is this real? There are evidence of existence of aliens. Your mission is to find their planet in the space. There are several planets. Start searching!");
-                               Waypoint firstPlanet = new Waypoint(5500, 6200, 5);
-                               level.waypoints.add(firstPlanet);
-                               popUp.setText("Is this real? There are evidence of existence of aliens. Your mission is to find their planet " +
-                                       "in the space. There are several planets. Start searching!");
+                               Waypoint zerothPlanet = new Waypoint(5500, 6200, 5);//FIXME
+                               level.waypoints.add(zerothPlanet);
+                               popUp.setText("Is this really happening? As there now is evidence of existence of aliens, " +
+                                       "your mission is to find their home planet in the space. There are several planets here," +
+                                       "but our research suggests they're one one of these. Start searching!");
                                objectiveWindow.setText("Find the mysterious planet of the aliens");
                            }
                        },
@@ -758,13 +789,18 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Space Never Gets Boring!!! It's Always FUN!!!");
-                               Waypoint firstPlanet = new Waypoint(5500, 6200, 5);
-                               level.waypoints.add(firstPlanet);
-                               popUp.setText("Space Never Gets Boring!!! It's Always FUN!!!");
+                               popUp.setText("...and there seems to be no sign of intelligent life anywhere...");
                            }
                        },
-                100.0f);
+                60.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               //Easter egg (kim 10dak bekleyecek ki?)**
+                               popUp.setText("FLY YOU FOOLS!");
+                           }
+                       },
+                600.0f);
 
         return level;
     }
@@ -775,7 +811,6 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 if (!Constants.DEBUG) {
-                    //System.out.println("Out of map");
                     level.healthOver();
                 }
             }
@@ -784,7 +819,6 @@ public class LevelManager {
         level.triggers.add(new FuelDepletionTrigger(level.playable) {
             @Override
             public void triggerPerformed() {
-                //System.out.println("NO FUEL!");
                 level.healthOver();
             }
         });
