@@ -34,6 +34,8 @@ public class TrajectorySimulator extends GameObject {
     public static final float MIN_THRUST = 0.00001f;
 
     public static final int IGNORE_THRESHOLD = 15;
+
+    public static boolean enabled;
     //endregion
 
     //region Fields

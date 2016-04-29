@@ -354,7 +354,7 @@ public class Level {
         this.health = health;
     }
 
-    public void setScreenReference(GameScreen screen){ this.screen = screen; } //Needed to set zoom**
+    public void setScreenReference(GameScreen screen){ this.screen = screen; }
 
     public PopUp getPopUp() {
         return popUp;

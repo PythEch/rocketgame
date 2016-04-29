@@ -327,20 +327,21 @@ public class WorldRenderer implements Disposable {
     }
 
     private void drawTrajectory(SpriteBatch batch) {
-        trajectorySimulator.update(Gdx.graphics.getDeltaTime());
+        if (TrajectorySimulator.enabled) {
+            trajectorySimulator.update(Gdx.graphics.getDeltaTime());
 
-        Texture texture = AssetManager.GHOST;
-        texture.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.MipMapLinearLinear);
-        for (Vector2 pos : trajectorySimulator.getEstimationPath()) {
+            Texture texture = AssetManager.GHOST;
+            texture.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.MipMapLinearLinear);
+            for (Vector2 pos : trajectorySimulator.getEstimationPath()) {
 
-            batch.draw(
-                    texture,
-                    pos.x * toPixel,
-                    pos.y * toPixel
-            );
+                batch.draw(
+                        texture,
+                        pos.x * toPixel,
+                        pos.y * toPixel
+                );
+            }
         }
     }
-
     private void drawWarningSign(SpriteBatch batch) {
         //Draws warning sign
         if (trajectorySimulator.isCollided()) {

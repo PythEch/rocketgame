@@ -137,7 +137,9 @@ public class GameScreen implements Screen {
             particleEffect.getEmitters().get(i).getAngle().setLow(angle);
         }
         draw();
-        minimap.draw(batch);
+        if (minimap.isEnabled()){
+            minimap.draw(batch);
+        }
         popupView.draw(batch);
         batch.end();
 
@@ -396,7 +398,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
 
-        level = LevelManager.createLevel2();
+        level = LevelManager.createLevel1();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
         controller = new WorldController(level, this, renderer);
@@ -423,7 +425,7 @@ public class GameScreen implements Screen {
         camera.zoom = Math.max(0.5f, camera.zoom / 1.04f);
         font.setScale(camera.zoom);
 
-    } //**
+    }
 
     public void zoomOut() {
         camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
@@ -568,4 +570,6 @@ public class GameScreen implements Screen {
     private void showOptions() {
 
     }
+
+    public Minimap getMinimap(){return minimap;}
 }

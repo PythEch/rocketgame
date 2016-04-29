@@ -11,6 +11,7 @@ import static com.rocketfool.rocketgame.model.Playable.BASE;
  * Designs and initiates levels and manages them.
  */
 public class LevelManager {
+    static float time; //message display time
     //region Methods
 
     /** Test Level */
@@ -24,7 +25,6 @@ public class LevelManager {
     }
 
     public static Level createLevel1() {
-        //Level Outline II, A part
 
         final Level level = new Level();
         Level.levelNo = 1;
@@ -34,7 +34,7 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //levelMap
-        level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
+        level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 700);
 
         //Earth
         level.planets.add(new Planet(14000, 9000, 6.0f * 1e25f, 650, null, level.world, 1));
@@ -42,7 +42,7 @@ public class LevelManager {
         level.planets.add(new Planet(7000, 12000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 3));
         level.planets.get(1).setOrbitPreset(true);
         //initialization of the rocket
-        level.playable = new Playable(18500, 16000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 0.75e5f, level.world);
+        level.playable = new Playable(20000, 18000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 0.75e5f, level.world);
         level.playable.getBody().setLinearVelocity(5f, 2f);
         level.playable.getBody().setAngularVelocity(5f);
 
@@ -50,141 +50,141 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger earthTrig = new PositionTrigger(11000, 6000, 1500, level.playable) {
+        final PositionTrigger earthTrig = new PositionTrigger(14000, 9000, 1250, level.playable) {
             @Override
             public void triggerPerformed() {
-                ////System.out.println("Congratulations! You regained the control of the ship and reached the Earth. Level 1 is completed.");
-                //popUp.setText("Mission Accomplished!!!");
+                //TODO: Stop level
                 //TODO: End of level popup to move to menu or next level or restart
+                //Title: ("Mission Accomplished!")
+                //Text: ("Congratulations! You made it back safely! Hopefully this experience will help in the future!");
             }
         };
         level.triggers.add(earthTrig);
 
         //level starts here
         timer.start();
+        time = 0.01f;
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               level.screen.getMinimap().setEnabled(false);
+                               TrajectorySimulator.enabled = false;
+                           }
+                       },
+                time);
+        time += 2; //<-- this float shows the duration to display the message above
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("What was THAT? A strange object whizzing by left you spinning chaotically in space!" +
+                                       "You must regain control!");
+                               objectiveWindow.setText("Regain control of the ship.");
+                           }
+                       },
+                time);
+        time += 7;
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Use RIGHT & LEFT arrow keys to control angular movement.");
 
-        //TODO: Conflict animation goes here (intro cutscene).
-
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               //System.out.println("Your bad luck during the pursuit of the aliens left you spinning out of control in space! " +
-                                       //"The ship is damaged.! You must regain control!");
-                               Waypoint earth = new Waypoint(1000, 1855, 5);
-                               level.waypoints.add(earth);
-                               popUp.setText("Your bad luck during the pursuit of the aliens left you spinning out of control in space!" +
-                                       "The ship is damaged.! You must regain control!");
                            }
                        },
-                5.0f);
+                time);
+        time += 6;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Use RIGHT & LEFT arrow keys to regain control of your angular movement.");
-                               popUp.setText("Use RIGHT & LEFT arrow keys to regain control of your angular movement.");
-                               objectiveWindow.setText("Regain control of the ship");
+                               popUp.setText("SAS restored! \n The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
                            }
                        },
-                15.0f);
+                time);
+        time += 7;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("The Stability Assist System restored!" +
-                                       //"The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
-                               popUp.setText("The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
+                               popUp.setText("That's better! Now use the UP & DOWN arrow keys to increase/ decrease" +
+                                       "your thrust. \n Try to reduce your velocity to zero " +
+                                       "(The velocity display is at the top).");
                            }
                        },
-                25.0f);
+                time);
+        time += 10;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
-                               popUp.setText("The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
+                               popUp.setText("As said by Newton's first law of motion, unless a force (like thrust) " +
+                                       "acts on you, you would drift at constant speed for ever!");
                            }
                        },
-                30.0f);
+                time);
+        time += 10;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Use UP & DOWN arrow keys to increase and decrease the thrust.");
-                               popUp.setText("Use UP & DOWN arrow keys to increase and decrease the thrust.");
+                               popUp.setText("OK! Now let's get our bearings! \n \n Use A & S keys to zoom out or zoom in, press ESC for the Pause Menu.");
                            }
                        },
-                35.0f);
+                time);
+        time += 7;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Newton states that a body will continue to move at constant speed or continue to not move at all, " +
-                                       //"unless a force is being applied to it. In outer space, that could mean moving forever…");
-                               popUp.setText("Newton states that a body will continue to move at constant speed or continue to not move at all, " +
-                                       "unless a force is being applied to it. In outer space, that could mean moving forever…");
-                           }
-                       },
-                80.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               //System.out.println("Use A & S keys to zoom out or zoom in, press ESC for the Pause Menu.");
-                               popUp.setText("Use A & S keys to zoom out or zoom in, press ESC for the Pause Menu.");
-                           }
-                       },
-                40.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               //System.out.println("Supercomputer connections restored! Trajectory calculation features online." +
-                                       //" (Press T to activate it)");
+                               TrajectorySimulator.enabled = true;
                                popUp.setText("Supercomputer connections restored! Trajectory calculation features online." +
-                                       " (Press T to activate it)");
+                                       " (Press T to activate it. It doesn't work unless you're moving.)");
                            }
                        },
-                45.0f);
+                time);
+        time += 4;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("The yellow dots in front of you simulates your future motion.");
                                popUp.setText("The yellow dots in front of you simulates your future motion.");
                            }
                        },
-                50.0f);
+                time);
+        time += 7;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Navigation system restored! Minimap online!.");
+                               level.screen.getMinimap().setEnabled(true);
                                popUp.setText("Navigation system restored! Minimap online!.");
                            }
                        },
-                60.0f);
-        //TODO enable minimap here
+                time);
+        time += 4;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("All systems restored. Additional information is along the top of the screen.");
-                               popUp.setText("All systems restored. Additional information is along the top of the screen.");
+                               popUp.setText("All systems restored! Now it's time to find your way back home!");
+                               Waypoint earth = new Waypoint(14000, 9000, 1250);
+                               level.waypoints.add(earth);
+                               objectiveWindow.setText("Find your way back to Earth");
                            }
                        },
-                65.0f);
+                time);
+        time += 6;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Now it's time to find your way back!");
-                               popUp.setText("Now it's time to find your way back!");
-                               objectiveWindow.setText("Find your way back home!");
+                               popUp.setText("As Newton's second law of motion says, force is the rate of change of " +
+                                       "momentum, which is a body's likelihood of preserving its speed. \n" +
+                                       "The rocket is pretty heavy, so accelerating takes a while. Be careful, because "
+                                       + "that means stopping takes time too!");
                            }
                        },
-                70.0f);
+                time);
+        time += 20;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("An orbit around a planet depends on 3 things: the masses of the orbiter and the planet," +
-                                       //" the distance between them, and the velocity of the orbiter");
-                               popUp.setText("An orbit around a planet depends on 3 things: the masses of the orbiter and the planet," +
-                                       " the distance between them, and the velocity of the orbiter");
+                               popUp.setText("See that trail behind the rocket? As Newton's third law of motion says," +
+                                       "forces exist in opposite-directioned pairs. \n" +
+                                       "That's why you need to blast away tons of hot plasma to accelerate!");
                            }
                        },
-                80.0f);
-
-
+                time);
         return level;
     }
 
@@ -241,10 +241,11 @@ public class LevelManager {
 
         //TODO: Crashed UFO at the Moon is needed (simple waypoint image)
 
+        //Initial Conditions
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               level.screen.setZoom(6f); //FIXME
+                               level.screen.setZoom(6f);
                            }
                        },
                 0.001f);
