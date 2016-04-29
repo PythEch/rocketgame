@@ -455,7 +455,6 @@ public class LevelManager {
     }
 
     public static Level createLevel4() {
-        //Level Outline II, C part
 
         final Level level = new Level();
         Level.levelNo = 4;
@@ -465,83 +464,93 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 200, Gdx.graphics.getHeight() * 200);
+        level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
         //Mars
-        level.planets.add(new Planet(6500, 5000, 6 * 1e24f, 900, null, level.world,5)); //FIXME: planetType 4?
+        level.planets.add(new Planet(11000, 7000, 8e25f, 700, null, level.world,4));
 
         //initialization of the rocket
-        level.playable = new Playable(1000, 1000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 2e5f, level.world);
+        level.playable = new Playable(7500, 9000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
         level.playable.getBody().setLinearVelocity(0, 0);
 
         //Stranded spacecraft
-        level.gameObjects.add(new Playable(0, 0, 88, 108, 1e5f, 0, 0, 0, 0, level.world));
-        ((SolidObject) level.gameObjects.get(0)).setOrbitPreset(true);
-
+        level.gameObjects.add(new Playable(4000, 4000, 1000, 1000, 1e5f, 0, 0, 0, 0, level.world));
+        ((SolidObject) level.gameObjects.get(0)).setOrbitPreset(true);//TODO set width,height to 1,1 to avoid collisions (for now needed for visibility)
+                                            //Collisions are almost impossible with 1,1 because when <750px this despawns anyway
         //default Triggers
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger marsTrig = new PositionTrigger(6500, 5000, 1000, level.playable) {
+        final PositionTrigger craftTrig = new PositionTrigger(((SolidObject)level.gameObjects.get(0)), 0, 0, 750f, level.playable ) {
             @Override
             public void triggerPerformed() {
-                //System.out.println("Help your friend!");
-                popUp.setText("Help your friend!");
-                objectiveWindow.setText("Help your friend!");
+                //(Halfway point)
+                popUp.setText("Great work! Now let's head back!");
+                objectiveWindow.setText("Head home, towards Earth");
+                level.waypoints.removeIndex(0);
+                Waypoint exitPoint = new Waypoint(5000, 10000, 1000f); //TODO add simple crosshair thingy sprite
+                level.waypoints.add(exitPoint);
             }
         };
-        level.triggers.add(marsTrig);
+        level.triggers.add(craftTrig);
+        Waypoint craftPoint = new Waypoint(craftTrig); //TODO add stranded craft SPRITE, can be any size
+        level.waypoints.add(craftPoint);
 
-        final PositionTrigger friend = new PositionTrigger(6500, 5925, 25, level.playable) {
+        final PositionTrigger endTrig = new PositionTrigger(5000, 10000, 1000f, level.playable) {
             @Override
             public void triggerPerformed() {
-                //System.out.println("Congratulations! You saved your friend!");
-                //System.out.println("News: Scientists've discovered some clues about the aliens and their location from the ship that you had brought. Go back to Earth for the news.");
-                popUp.setText("Congratulations! You saved your friend! There are good news awaiting you at your home!");
-                //TODO: Next level should be given here. However, the method createLevel5() fails here.
+                if (craftTrig.isTriggeredBefore()){
+                //TODO stop and end level here
+                //Popup Text:("Congratulations! You saved your friend! Looks like he is interesting information about the aliens too!!");}
+                }
             }
         };
-        level.triggers.add(friend);
+        level.triggers.add(endTrig);
 
         //level starts here
         level.timer.start();
-
-        //TODO: Take off animation is needed (it is not essential)
+        //TODO ADD FUN FACTS, maybe?
 
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Mars is close. Your friend needs help! GO!");
-                               Waypoint friendShip = new Waypoint(6500, 5925, 10);
-                               level.waypoints.add(friendShip);
                                objectiveWindow.setText("Save your friend!");
-                               popUp.setText("Mars is close. Your friend needs help! GO");
+                               popUp.setText("Mars is close and your friend needs help! But be careful with the strong " +
+                                       "gravity! All that fuel and life support you're carrying is making you heavy!");
                            }
                        },
-                5.0f);
+                3.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("You have to pass through your friend's ship in order to save it from the orbit.");
-                               popUp.setText("You have to pass through your friend's ship in order to save it from the orbit.");
+                               popUp.setText("You have to pass over your friend's ship in order to save them from the orbit.");
+                           }
+                       },
+                12.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("You'll need to orbit Mars carefully to catch up with them! Because remember," +
+                                       "althouh the total energy of a body in orbit is conserved, it continuously changes form " +
+                                       "between gravitational potential energy (high up) kinetic energy (near the surface). " +
+                                       "Therefore, expect to orbit faster at lower altitudes to chase them or take a high" +
+                                       "orbit to wait for them to come near you.");
                            }
                        },
                 20.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("After saving the ship, you can go back to Earth.");
-                               popUp.setText("After saving the ship, you can go back to Earth.");
+                               popUp.setText("Therefore, expect to orbit faster at lower altitudes to chase them or take a high" +
+                                       "orbit to wait for them to come near you.");
                            }
                        },
-                40.0f);
-
-
+                35.0f);
+        //TODO more fun facts here?
         return level;
     }
-
+    /** This level was cut for being too difficult to balance and too difficult to play. */
     public static Level createLevel5() {
-        //Level Outline II, E part
 
         final Level level = new Level();
         Level.levelNo = 5;
@@ -571,8 +580,7 @@ public class LevelManager {
             public void triggerPerformed() {
                 //System.out.println("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
                 popUp.setText("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
-                //TODO: Landing animation is required here.
-                //TODO: Next level should be given here. However, the method createLevel6() fails here.
+                // end of level
             }
         };
         level.triggers.add(earthTrig);

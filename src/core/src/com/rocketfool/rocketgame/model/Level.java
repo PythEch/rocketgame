@@ -260,13 +260,13 @@ public class Level {
                     0f);
         }
         else if (selection == 4){ //Spacecraft in Level 4
-            float x = 10000;//Mars location
-            float y = 10000;//Mars location
-            float w = (float) (2 * Math.PI / 300);
+            float x = 11000;//Mars location
+            float y = 7000; //Mars location
+            float w = (float) (2 * Math.PI / 240);
             float phase = 4f;
             orbiter.getBody().setTransform(
-                    x + (float) (3000 * Math.cos(w * timePassed + phase)),
-                    y + (float) (3000 * Math.sin(w * timePassed + phase)),
+                    x + (float) (1500 * Math.cos(w * timePassed + phase)),
+                    y + (float) (1500 * Math.sin(w * timePassed + phase)),
                     0f);
         }
         else if (selection == 5) { //Moon around Earth quick preset for Level 5

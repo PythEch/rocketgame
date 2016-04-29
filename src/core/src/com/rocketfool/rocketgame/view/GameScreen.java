@@ -33,7 +33,6 @@ import static com.rocketfool.rocketgame.util.Constants.*;
 /**
  * Together wht WorldRenderer, this class draws the view.
  * The main differences are WorldRenderer drawing the objects and GameScreen presenting the UI elements.
- * TODO: Add UI panels
  */
 public class GameScreen implements Screen {
     //region Fields
@@ -398,7 +397,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
 
-        level = LevelManager.createLevel1();
+        level = LevelManager.createLevel4();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
         controller = new WorldController(level, this, renderer);
