@@ -550,7 +550,7 @@ public class LevelManager {
         return level;
     }
     /** This level was cut for being too difficult to balance and too difficult to play. */
-    public static Level createLevel5() {
+    public static Level createLevelX() {
 
         final Level level = new Level();
         Level.levelNo = 5;
@@ -643,11 +643,11 @@ public class LevelManager {
         return level;
     }
 
-    public static Level createLevel6() {
-        //Level Outline II, F part
+    public static Level createLevel5() {
+        //Previously Level 6. Don't delete this one. :)
 
         final Level level = new Level();
-        Level.levelNo = 6;
+        Level.levelNo = 5;
         level.timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
