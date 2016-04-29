@@ -10,7 +10,10 @@ public abstract class PositionTrigger implements Trigger {
     private float x;
     private float y;
     private float radius;
+    /** When the target reaches the trigger, it is activated.*/
     private SolidObject target;
+    /** Position triggers can be made to follow host objects.*/
+    private SolidObject host;
     private float xOffset;
     private float yOffset;
     private boolean isTriggeredBefore;
@@ -23,24 +26,26 @@ public abstract class PositionTrigger implements Trigger {
         this.radius = radius;
         this.target = target;
         isTriggeredBefore = false;
+        this.host = null;
     }
 
-    public PositionTrigger(SolidObject target, float radius, float xOffset, float yOffset) {
-        this.target = target;
+    public PositionTrigger(SolidObject host, float xOffset, float yOffset, float radius, SolidObject target) {
+        this.host = host;
         this.radius = radius;
         this.isTriggeredBefore = false;
         this.xOffset = xOffset;
         this.yOffset = yOffset;
-        followTarget();
+        this.target = target;
+        followHost();
     }
     //endregion
 
     //region Methods
 
-    public void followTarget(){
-        if (target != null) {
-            this.x = target.getBody().getPosition().x + xOffset;
-            this.y = target.getBody().getPosition().y + yOffset;
+    public void followHost(){
+        if (host != null) {
+            this.x = host.getBody().getPosition().x + xOffset;
+            this.y = host.getBody().getPosition().y + yOffset;
         }
     }
 
