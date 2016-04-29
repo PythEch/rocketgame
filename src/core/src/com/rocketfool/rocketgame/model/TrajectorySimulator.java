@@ -5,37 +5,62 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.util.GameUtils;
 
+import static com.rocketfool.rocketgame.util.Constants.*;
+
 /**
  * Simulates the Box2D in advance in order to predict where the player is going.
  * Very precise especially when additional controls (i.e keyboard keys) are not used.
  */
 public class TrajectorySimulator extends GameObject {
     //region Constants
-    /** Number of steps that will be calculated in advance */
-    public static final int SIMULATION_STEPS = 3600;
-    /** Skip certain amount of steps to not report every single estimation point the user is going to travel */
-    public static final int SKIP_COUNT = 10;
     /**
-     * Assume a fixed but similar frame rate to the one used by the monitor.
-     * This has to be fixed because otherwise we cannot guarantee the ship will go to the exact same length in every frame.
-     * TODO: Calculate this according to the system frame rate
+     * Number of steps that will be calculated in advance
      */
-    public static final float FRAME_RATE = 1f / 60;
+    public static final int SIMULATION_STEPS = 3600;
+
+    /**
+     * A hand tweaked multiplier to make the intervals between trajectory dots evenly as possible
+     */
+    public static final float SKIP_MULTIPLIER = 20;
+
+    /**
+     * The minimum threshold in our skip algorithm.
+     * In this case the skipCount never goes below 10 but who knows what's going to happen?
+     */
+    public static final int MIN_SKIP = 2;
+
+    public static final float MAX_VELOCITY = 120;
+
+    public static final float MIN_THRUST = 0.00001f;
+
+    public static final int IGNORE_THRESHOLD = 15;
     //endregion
 
     //region Fields
-    /** Our replica of the Box2D world of the Level we are simulating in */
+    /**
+     * Our replica of the Box2D world of the Level we are simulating in
+     */
     private World world;
     private Level level;
-    /** Used to store the points where the playable has traveled in our simulator */
+    /**
+     * Used to store the points where the playable has traveled in our simulator
+     */
     private Array<Vector2> currentEstimationPath;
-    /** Used to copy planets to our own World */
+    /**
+     * Used to copy planets to our own World
+     */
     private Array<Planet> planets;
-    /** A replica of the playable of the current Level */
+    /**
+     * A replica of the playable of the current Level
+     */
     private Playable playable;
-    /** Used to indiciate if the spacecraft has crashed in the simulation */
+    /**
+     * Used to indiciate if the spacecraft has crashed in the simulation
+     */
     private boolean collided = false;
-    /** Used to give the point of the crash in case it happens */
+    /**
+     * Used to give the point of the crash in case it happens
+     */
     private Vector2 collisionPoint;
     //endregion
 
@@ -88,7 +113,8 @@ public class TrajectorySimulator extends GameObject {
                     planet.getMass(),
                     planet.getRadius(),
                     null,
-                    world
+                    world,
+                    planet.getPlanetType()
             ));
         }
 
@@ -99,7 +125,7 @@ public class TrajectorySimulator extends GameObject {
                 level.getPlayable().getWidth(),
                 level.getPlayable().getHeight(),
                 level.getPlayable().getBody().getMass() - level.getPlayable().getFuelLeft(),
-                level.getPlayable().getDeltaAngularImpulse(),
+                level.getPlayable().getDeltaTorque(),
                 level.getPlayable().getDeltaThrust(),
                 level.getPlayable().getMaxThrust(),
                 level.getPlayable().getFuelLeft(),
@@ -111,6 +137,7 @@ public class TrajectorySimulator extends GameObject {
     //endregion
 
     //region Methods
+
     /**
      * Resets the world in order to update the changes in user behaviour (e.g. user turns the spacecraft, decreases thrust)
      */
@@ -127,21 +154,35 @@ public class TrajectorySimulator extends GameObject {
 
         playable.setCurrentThrust(level.getPlayable().getCurrentThrust());
         playable.setFuelLeft(level.getPlayable().getFuelLeft());
+        playable.setSASEnabled(level.getPlayable().getSASEnabled());
 
-        simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
-        simulatedPlayable.setAngularDamping(realPlayable.getAngularDamping());
-        simulatedPlayable.setLinearVelocity(realPlayable.getLinearVelocity().cpy());
-        simulatedPlayable.setTransform(realPlayable.getPosition().cpy(), realPlayable.getAngle());
-        simulatedPlayable.getTransform().setOrientation(realPlayable.getTransform().getOrientation().cpy());
+        if (level.getPlayable().getSASEnabled())
+            simulatedPlayable.setAngularVelocity(0);
+        else
+            simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
+
+        simulatedPlayable.setLinearVelocity(realPlayable.getLinearVelocity());
+        simulatedPlayable.setTransform(realPlayable.getPosition(), realPlayable.getAngle());
+        simulatedPlayable.getTransform().setOrientation(realPlayable.getTransform().getOrientation());
         simulatedPlayable.getTransform().setRotation(realPlayable.getTransform().getRotation());
 
         GameUtils.changeMass(simulatedPlayable, realPlayable.getMass());
     }
 
-    /** Simulates the world in every frame */
+    /**
+     * Simulates the world in every frame
+     */
     @Override
     public void update(float deltaTime) {
         collided = false;
+
+        if (level.getPlayable().getBody().getLinearVelocity().len() + level.getPlayable().getCurrentThrust() < IGNORE_THRESHOLD) {
+            currentEstimationPath.clear();
+            return;
+        }
+
+        int skipCount = (int)((1 - (level.getPlayable().getBody().getLinearVelocity().len() / MAX_VELOCITY)) * SKIP_MULTIPLIER);
+        skipCount = Math.max(MIN_SKIP, skipCount);
 
         // Reset our simulation in case of a user input
         resetSimulation();
@@ -154,10 +195,10 @@ public class TrajectorySimulator extends GameObject {
             // Simulate the world
             doGravity();
             playable.update(FRAME_RATE);
-            world.step(FRAME_RATE, 6, 2);
+            world.step(FRAME_RATE, 8, 3);
 
             // Skip a certain N amounts of points as to not clutter the screen
-            if (i % SKIP_COUNT == 0)
+            if (i % skipCount == 0)
                 currentEstimationPath.add(playable.getBody().getPosition().cpy());
         }
     }

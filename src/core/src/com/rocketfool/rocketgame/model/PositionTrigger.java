@@ -11,10 +11,12 @@ public abstract class PositionTrigger implements Trigger {
     private float y;
     private float radius;
     private SolidObject target;
+    private float xOffset;
+    private float yOffset;
     private boolean isTriggeredBefore;
     //endregion
 
-    //region Constructor
+    //region Constructors
     public PositionTrigger(float x, float y, float radius, SolidObject target) {
         this.x = x;
         this.y = y;
@@ -22,9 +24,26 @@ public abstract class PositionTrigger implements Trigger {
         this.target = target;
         isTriggeredBefore = false;
     }
+
+    public PositionTrigger(SolidObject target, float radius, float xOffset, float yOffset) {
+        this.target = target;
+        this.radius = radius;
+        this.isTriggeredBefore = false;
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
+        followTarget();
+    }
     //endregion
 
     //region Methods
+
+    public void followTarget(){
+        if (target != null) {
+            this.x = target.getBody().getPosition().x + xOffset;
+            this.y = target.getBody().getPosition().y + yOffset;
+        }
+    }
+
     public final boolean isTriggered() {
         Vector2 pos = target.getBody().getPosition();
 
@@ -40,5 +59,12 @@ public abstract class PositionTrigger implements Trigger {
     public final boolean isTriggeredBefore() {
         return isTriggeredBefore;
     }
+
+    public float getX(){return  x; }
+
+    public float getY() {return y; }
+
+    public float getRadius() { return radius; }
+
     //endregion
 }

@@ -3,8 +3,10 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.rocketfool.rocketgame.view.GameScreen;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
+import static com.rocketfool.rocketgame.util.Constants.FRAME_RATE;
 
 /**
  * Class to create instances of all levels. Also, it performs most of the calculations.
@@ -17,15 +19,19 @@ public class Level {
     //region Fields
     protected World world;
     protected Playable playable;
+    protected GameScreen screen; //Needed to set zoom**
     protected Map map;
     protected Array<Trigger> triggers;
     protected Array<Waypoint> waypoints;
     protected Array<Planet> planets;
     protected Array<GameObject> gameObjects;
     protected float timePassed;
+    protected float timePassed2;
     protected float currentGravForce;
     protected int score;
     protected State state;
+    protected int health = 3;
+    protected PopUp popUp;
     //endregion
 
     //region Nested Types
@@ -34,7 +40,7 @@ public class Level {
     }
 
     public enum State {
-        RUNNING, PAUSED, GAME_OVER
+        RUNNING, PAUSED, GAME_OVER, HEALTH_OVER
     }
     //endregion
 
@@ -50,7 +56,9 @@ public class Level {
         this.planets = new Array<Planet>();
         this.gameObjects = new Array<GameObject>();
         this.timePassed = 0;
+        this.timePassed2 = 0;
         this.score = 0;
+        this.popUp = new PopUp();
 
         // Register collisions
         world.setContactListener(new ContactListener() {
@@ -97,15 +105,21 @@ public class Level {
      */
     public void update(float deltaTime) {
         if (state == State.RUNNING) {
+            timePassed += deltaTime;
+
+            // Hack to make physics engine stable
+            deltaTime = FRAME_RATE;
+            timePassed2 += deltaTime;
+
             playable.update(deltaTime);
             updateGravity(deltaTime);
             updateTriggers(deltaTime);
             updateVisualObjects(deltaTime);
             updateWaypoints(deltaTime);
+            updateCircles();
 
-            timePassed += deltaTime;
             // A world step simulates the Box2D world
-            world.step(deltaTime, 6, 2);
+            world.step(deltaTime, 8, 3);
         }
     }
 
@@ -118,6 +132,7 @@ public class Level {
                 trigger.triggerPerformed();
             }
         }
+        //for ( PositionTrigger t : triggers) {t.followTarget(); } //TODO FIXME HELP
     }
 
     /**
@@ -152,10 +167,11 @@ public class Level {
     }
 
     /*
-     * remove waypoints form screen to meet the endgame condition
+     * Removes a waypoint from the screen when the playable approaches it.
      */
     private void updateWaypoints(float deltaTime) {
         for (Waypoint waypoint : waypoints) {
+            waypoint.followTrigger();
             if (playable.getBody().getPosition().dst(waypoint.getX(), waypoint.getY()) <= 10) {
                 waypoint.setOnScreen(false);
             }
@@ -163,11 +179,22 @@ public class Level {
     }
 
     /**
-     * This is used update objects like background visuals
+     * This is used to update objects like background visuals
      */
     private void updateVisualObjects(float deltaTime) {
         for (GameObject go : gameObjects) {
             go.update(deltaTime);
+        }
+    }
+
+    /**
+     * Updates the motion of planets.
+     */
+    public void updateCircles() {
+        for (Planet p: planets){
+            if (p.getCircles()) {
+                presetCircle(p, p.getPlanetType(), timePassed2 , p.getOrbitPhase());
+            }
         }
     }
 
@@ -184,53 +211,32 @@ public class Level {
     }
 
     /**
-     * This method checks if a point in orbit around a planet is passed by a playable and returns the time it took.
-     * It needs to be run at all updates, but should respond when it is called.
+     * This method is used to make a planet draw circles regularly (ideally to simulate an orbit around a larger body).
      */
-    public static float OrbitPeriod(Playable craft, Planet p, boolean firstRun) {
-        final int MARGIN = 3; //Provides a small error margin when locating positions.
-        float period;
-        long stopTime;
-        long startTime;
-        float px = p.getBody().getPosition().x;
-        float py = p.getBody().getPosition().y;
-        float radius = p.getRadius();
-        float cx = craft.getBody().getPosition().x;
-        float cy = craft.getBody().getPosition().x;
-        //ToDo: remove unneeded declerations later
-
-        boolean pointN;
-        boolean pointE;
-        boolean pointS;
-        boolean pointW;
-
-        boolean firstPoint;
-        boolean oppositePoint;
-
-        /*    Method Plan //ToDo: implement
-           1. Wait for next point to be passed. There, make its boolean true. Get startTime from System.
-           2. Wait for the opposite point to be passed. Then make its boolean true. Make the first point false.
-           3. Wait for the first point again. Then make it true.
-           4. If any both points are now true, get stopTime from System. Return the now-known period. Reset the method fields.
-              (Using the method as a boolean, if the period is larger than 0, the planet has been circled)
-              Note: maybe this could just be a subclass?
-         */
-
-        //Example passage notification:
-        if ((cx < px + MARGIN) && (cx > px - MARGIN) && (cy > py))
-            pointN = true;
-        else if ((cx < px + MARGIN) && (cx > px - MARGIN) && (cy < py))
-            pointS = true;
-        else if ((cy < py + MARGIN) && (cy > py - MARGIN) && (cx > px))
-            pointE = true;
-        else if ((cy < py + MARGIN) && (cy > py - MARGIN) && (cx < px))
-            pointW = true;
-
-        return 0f;
+    public static void circle(Planet planet, float cRadius, float period, float timePassed){
+        float x;
+        float y;
+        float cx = planet.getPrimary().getBody().getPosition().x;
+        float cy = planet.getPrimary().getBody().getPosition().y;
+        double w = 2 * Math.PI / period;
+        double t = (double) (timePassed);
+        x =  cx + (float) (cRadius * Math.cos(w*t));
+        y =  cy + (float) (cRadius * Math.sin(w*t));
+        planet.getBody().setTransform(x,y,0f);
     }
 
-    public void saveGame() {
-        //TODO: Implement
+    /** A faster and more efficient but less-explained version of the circle drawing method, for preset bodies
+     *  (eg. the Moon around the Earth).
+     */
+    public static void presetCircle( Planet planet, int planetType , float timePassed, float delay){
+        if (planetType == 3) {
+            float x = planet.getPrimary().getBody().getPosition().x;
+            float y = planet.getPrimary().getBody().getPosition().y;
+            planet.getBody().setTransform(
+                    x + (float) (7615 * Math.cos(2 * Math.PI / 3000 * timePassed + delay)),
+                    y + (float) (7615 * Math.sin(2 * Math.PI / 3000 * timePassed + delay)),
+                    0f);
+        }
     }
 
     private void updateParticles(float deltaTime) {
@@ -245,8 +251,26 @@ public class Level {
 
     public void setState(State state) {
         this.state = state;
-        if (state == State.GAME_OVER) {
-            System.out.println("gg, game over");
+        if (state == State.HEALTH_OVER) {
+            healthOver();
+        }
+        else if (state == State.GAME_OVER) {
+            System.out.println("time to pack up boyz");
+        }
+    }
+
+    public void healthOver() {
+        health -= 1;
+        if (health == 0) {
+            setState(State.GAME_OVER);
+        }
+        else {
+            // TODO: restart from checkpoint etc.
+            // ridicule gamer etc.
+
+
+            // restart game
+            setState(State.RUNNING);
         }
     }
 
@@ -282,5 +306,18 @@ public class Level {
         this.score = score;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setScreenReference(GameScreen screen){ this.screen = screen; } //Needed to set zoom**
+
+    public PopUp getPopUp() {
+        return popUp;
+    }
     //endregion
 }

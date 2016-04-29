@@ -22,4 +22,11 @@ public final class Constants {
 
     public static final int GAME_WIDTH = 1280;
     public static final int GAME_HEIGHT = 720;
+
+    /**
+     * Assume a fixed but similar frame rate to the one used by the monitor.
+     * This has to be fixed because otherwise we cannot guarantee the ship will go to the exact same length in every frame.
+     * TODO: Calculate this according to the system frame rate
+     */
+    public static final float FRAME_RATE = 1 / 60f;
 }
