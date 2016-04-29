@@ -59,7 +59,7 @@ public class Playable extends SolidObject {
         this.deltaTorque = deltaTorque;
         this.deltaThrust = deltaThrust;
         this.fuelLeft = fuel;
-        this.maxThrust = maxThrust;
+        this.maxImpulse = maxImpulse *60; //tempfix for before merge
         this.SASEnabled = false;
         this.maximizeThrust = false;
         this.startingFuel = fuel;
@@ -115,7 +115,7 @@ public class Playable extends SolidObject {
     /** Reduce mass of the spacecraft by burning its fuel */
     private void consumeFuelAndDecreaseMass(float deltaTime) {
         if (fuelLeft > 0) {
-            float fuelSpent = currentThrust * deltaTime / fuelSpecificImpulse;
+            float fuelSpent = currentImpulse / fuelSpecificImpulse /60; //temp fix to last until the merge
             fuelLeft -= fuelSpent;
 
             //The mass information of the body changes only when MassData is updated
