@@ -18,7 +18,7 @@ import com.rocketfool.rocketgame.view.MainMenuScreen;
 /**
  * Created by alpino-64 on 19.04.2016.
  */
-public class SplashScreen implements Screen{
+public class SplashScreen implements Screen {
 
     //Variables
     private RocketGame game;
@@ -37,18 +37,18 @@ public class SplashScreen implements Screen{
     public void show() {
         batch = new SpriteBatch();
         splash = new Sprite(AssetManager.SPLASH);
-        splash.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        splash.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         //Tween initialise
         tweenManager = new TweenManager();
-        Tween.registerAccessor(Sprite.class,new SpriteAccessor() );
+        Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 
         //Animation
         Tween.set(splash, SpriteAccessor.ALPHA).target(0).start(tweenManager);
-        Tween.to(splash,SpriteAccessor.ALPHA, 2).target(1).repeatYoyo(1,2).setCallback(new TweenCallback() {
+        Tween.to(splash, SpriteAccessor.ALPHA, 2).target(1).repeatYoyo(1, 2).setCallback(new TweenCallback() {
             @Override
             public void onEvent(int type, BaseTween<?> source) {
-                game.setScreen(new MainMenuScreen(game,batch, font));
+                game.setScreen(new MainMenuScreen(game, batch, font));
             }
         }).start(tweenManager);
 
@@ -56,7 +56,7 @@ public class SplashScreen implements Screen{
 
     @Override
     public void render(float dt) {
-        Gdx.gl.glClearColor(0,0,0,1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         tweenManager.update(dt);

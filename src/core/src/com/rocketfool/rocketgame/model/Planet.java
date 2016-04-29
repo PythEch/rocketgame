@@ -3,18 +3,19 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.physics.box2d.*;
 
 /**
- * A Planet which has fixed position with a huge mass
- * TODO: Add motion
+ * A planet or moon, with a fixed mass.
  */
 public class Planet extends CelestialObject {
     //region Fields
-    private Star star;
+    private Planet primary;
+    private int planetType;
     //endregion
 
     //region Constructor
-    public Planet(float x, float y, float mass, float radius, Star star, World world) {
+    public Planet(float x, float y, float mass, float radius, Planet primary, World world, int planetType) {
         super(mass, radius);
-        this.star = star;
+        this.primary = primary;
+        this.planetType = planetType;
         this.body = createBody(x, y, mass, radius, world);
     }
 
@@ -47,5 +48,16 @@ public class Planet extends CelestialObject {
     @Override
     public void update(float dt) {
     }
-    //endregion
+
+    public int getPlanetType() {
+        return planetType;
+    }
+
+    public void setPlanetType(int planetType) {
+        this.planetType = planetType;
+    }
+
+    public Planet getPrimary() { return primary; }
+
+    public void setPrimary( Planet primary){ this.primary = primary; }
 }
