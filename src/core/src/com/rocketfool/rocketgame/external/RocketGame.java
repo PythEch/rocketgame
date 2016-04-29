@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rocketfool.rocketgame.view.GameScreen;
 import com.rocketfool.rocketgame.view.MainMenuScreen;
-import com.rocketfool.rocketgame.view.Splash.SplashScreen;
+import com.rocketfool.rocketgame.view.MoonCrashScreen;
 
 import static com.rocketfool.rocketgame.util.Constants.QUICK_LOAD;
 
@@ -30,7 +30,7 @@ public class RocketGame extends Game {
         setSfx( true);
 
         if (!QUICK_LOAD)
-            this.setScreen(new MainMenuScreen(this, batch, font));
+            this.setScreen(new MoonCrashScreen(this, batch, font));
         else
             this.setScreen(new GameScreen(this, batch, font));
 
