@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.video.VideoPlayer;
 import com.badlogic.gdx.video.VideoPlayerCreator;
 import com.rocketfool.rocketgame.external.RocketGame;
+import com.rocketfool.rocketgame.model.Preferences;
 import com.rocketfool.rocketgame.util.Constants;
 import com.sun.org.apache.bcel.internal.classfile.Constant;
 import com.sun.org.apache.xpath.internal.operations.Bool;
@@ -67,7 +68,7 @@ public class OptionsScreen implements Screen {
         buttonStyle.down = skin.getDrawable("button_02");
         skin.add("default", buttonStyle);
 
-        sfxStatus = false;
+        sfxStatus = game.isSfx();
         fullscreenStatus = game.isFullScreen();
 
         final TextButton sfx = new TextButton("Toggle Sfx:  " + (sfxStatus ? "On" : "Off"), buttonStyle);
@@ -89,6 +90,18 @@ public class OptionsScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 sfxStatus = !sfxStatus;
                 sfx.setText("Toggle Sfx:  " + (sfxStatus ? "On" : "Off"));
+                if(!sfxStatus)
+                {
+                    Preferences.getInstance().setMasterVolume(0);
+                    mainMenuScreen.setVideoPlayerVolume(0);
+                    game.setSfx(false);
+                }
+                else
+                {
+                    Preferences.getInstance().setMasterVolume(1);
+                    mainMenuScreen.setVideoPlayerVolume(1);
+                    game.setSfx(true);
+                }
             }
         });
 

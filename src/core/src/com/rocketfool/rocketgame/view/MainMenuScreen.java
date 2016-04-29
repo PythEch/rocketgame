@@ -123,12 +123,13 @@ public class MainMenuScreen implements Screen {
         videoPlayer = new VideoPlayerDesktop(viewport);
 
         try {
-            videoPlayer.play(Gdx.files.internal("Backgrounds/mainMenuScreen.webm"));
+            videoPlayer.play(Gdx.files.internal("Backgrounds/mainMenuScreen.webm") );
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
         videoPlayer.resize(1280, 720);
+        videoPlayer.setVolume(game.isSfx()? 1:0);
     }
 
     @Override
@@ -196,5 +197,9 @@ public class MainMenuScreen implements Screen {
 
     public void disposePlayer(){
         videoPlayer.dispose();
+    }
+
+    public void setVideoPlayerVolume(float i){
+        videoPlayer.setVolume(i);
     }
 }

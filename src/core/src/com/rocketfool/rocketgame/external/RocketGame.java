@@ -19,6 +19,7 @@ public class RocketGame extends Game {
     private SpriteBatch batch;
     private BitmapFont font;
     private boolean isFullScreen;
+    private boolean isSfx;
     //endregion
 
     //region Methods
@@ -26,11 +27,13 @@ public class RocketGame extends Game {
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont();
+        setSfx( true);
 
         if (!QUICK_LOAD)
             this.setScreen(new MainMenuScreen(this, batch, font));
         else
             this.setScreen(new GameScreen(this, batch, font));
+
     }
 
     @Override
@@ -47,6 +50,15 @@ public class RocketGame extends Game {
 
     public void setFullScreen(boolean fullScreen) {
         isFullScreen = fullScreen;
+    }
+
+    public boolean isSfx()
+    {
+        return isSfx;
+    }
+
+    public void setSfx(boolean sfx){
+        isSfx = sfx;
     }
     //endregion
 }
