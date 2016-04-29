@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -28,7 +29,6 @@ public class MoonCrashScreen implements Screen {
     private Sprite splash;
     private SpriteBatch batch;
     private BitmapFont font;
-    private TweenManager tweenManager;
     private PopUp popup;
     private PopupView popupView;
     private OrthographicCamera camera;
@@ -42,38 +42,33 @@ public class MoonCrashScreen implements Screen {
 
     @Override
     public void show() {
-        batch = new SpriteBatch();
         splash = new Sprite(AssetManager.SPLASH);
         splash.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-        //Tween initialise
-        tweenManager = new TweenManager();
-        Tween.registerAccessor(Sprite.class, new SpriteAccessor());
-
-        //Animation
-        Tween.set(splash, SpriteAccessor.ALPHA).target(0).start(tweenManager);
-        Tween.to(splash, SpriteAccessor.ALPHA, 2).target(1).repeatYoyo(1, 2).setCallback(new TweenCallback() {
-            @Override
-            public void onEvent(int type, BaseTween<?> source) {
-                game.setScreen(new MainMenuScreen(game, batch, font));
-            }
-        }).start(tweenManager);
 
         this.camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        viewport = new FitViewport(1280, 720, camera);
-        viewport.apply();
-
         this.popup = new PopUp();
         this.popupView = new PopupView(popup, camera);
+
 
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
-                popup.setText("Welcome to Level 1!");
+                popup.setText("It is a great idea to check it out.");
+                popup.setText("It looks like there is an unidentified meteor on Moon's orbit.");
             }
-        }, 2.50f);
+        }, 1f);
+
+
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                System.out.println("test");
+                game.setScreen(new TakeoffScreen(game,batch,font));
+            }
+        },13f);
+
     }
 
     @Override
@@ -81,11 +76,12 @@ public class MoonCrashScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        tweenManager.update(dt);
         popupView.update(dt);
+        Texture texture = new Texture(Gdx.files.internal("Backgrounds/level2/MoonCrashBQ.png"));
 
         batch.begin();
         splash.draw(batch);
+        batch.draw(texture,0,0);
         popupView.draw(batch);
         batch.end();
 
