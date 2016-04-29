@@ -28,7 +28,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Level.levelNo = 1;
-        Timer timer = new Timer();
+        level.timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
@@ -62,7 +62,7 @@ public class LevelManager {
         level.triggers.add(earthTrig);
 
         //level starts here
-        timer.start();
+        level.timer.start();
         time = 0.01f;
         Timer.schedule(new Timer.Task() {
                            @Override
@@ -122,7 +122,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("OK! Now let's get our bearings! \n \n Use A & S keys to zoom out or zoom in, press ESC for the Pause Menu.");
+                               popUp.setText("OK! Now let's get our bearings! \n \n Use A & S keys to zoom out or zoom in, and press ESC for the Pause Menu.");
                            }
                        },
                 time);
@@ -189,11 +189,10 @@ public class LevelManager {
     }
 
     public static Level createLevel2() {
-        //Level Outline II, B part
 
         final Level level = new Level();
         Level.levelNo = 2;
-        Timer timer = new Timer();
+        level.timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
@@ -207,121 +206,150 @@ public class LevelManager {
         level.planets.add(new Planet(16000, 10000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 3));
         level.planets.get(1).setOrbitPreset(true);
         //initialization of the rocket
-        level.playable = new Playable(9550, 6450, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
-        level.playable.getBody().setLinearVelocity(-50f, -50f);
+        level.playable = new Playable(9550, 7550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
+        level.playable.getBody().setLinearVelocity(50f, -50f);
 
         //default Triggers
         addDefaultTriggers(level);
 
-        //endGame Triggers
-        final PositionTrigger moonTrig = new PositionTrigger(0, 0, 100, level.playable) {
+        //endGame Triggers & waypoints
+        final PositionTrigger moonTrig = new PositionTrigger(level.planets.get(1), 170, 0, 150, level.playable) {
             @Override
             public void triggerPerformed() {
-                ////System.out.println("You've reached the Moon. Do what you can do and come back home!");
-                popUp.setText("You've reached the Moon. Do what you can do and come back home!");
-                objectiveWindow.setText("Return home again");
+                //(Half way through mission)
+                popUp.setText("You've reached the Moon. And what strange things have we found here? Better take it back to Earth!");
+                objectiveWindow.setText("Return to Earth");
+                level.waypoints.removeIndex(0);
+                level.waypoints.add(new Waypoint(9000, 7000, 800));
             }
         };
         level.triggers.add(moonTrig);
-
-        final PositionTrigger earthTrig = new PositionTrigger(1000, 1000, 850, level.playable) {
+        level.waypoints.add(new Waypoint(moonTrig));//<== TODO: Simple Waypoint image: crashed UFO on the Moon.
+        final PositionTrigger earthTrig = new PositionTrigger(9000, 7000, 800, level.playable) {
             @Override
             public void triggerPerformed() {
                 if (moonTrig.isTriggeredBefore()) {
-                    ////System.out.println("Congratulations! Our researchers will be able to find our instructor by examining this craft!!!");
-                    popUp.setText("Congratulations! Our researchers will be able to find our instructor by examining this craft!!!");
-                    //TODO: Next level should be given here. However, the method createLevel3() fails here.
+                    //TODO stop game here
+                    //TODO end of level screen
+                    //Title: "Mission Accomplished!"
+                    //Text: "Congratulations! Our researchers will examine this craft! It looks like we've finally been visited by aliens!");
                 }
             }
         };
         level.triggers.add(earthTrig);
 
         //level starts here
-        timer.start();
+        level.timer.start();
+        time = 0.01f;
 
-        //TODO: Crashed UFO at the Moon is needed (simple waypoint image)
-
-        //Initial Conditions
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               level.screen.setZoom(6f);
+                               level.screen.setZoom(7f);
                            }
                        },
-                0.001f);
+                time);
+        time += 4;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("You took off from the Earth because it looks like there is a crash at the Moon. Could they be ALIENS? Go check it out.");
-                               Waypoint alienShip = new Waypoint(6500, 7105, 5);
-                               level.waypoints.add(alienShip);
-                               popUp.setText("You took off from the Earth because it looks like there is a crash at the Moon. Could they be ALIENS? Go check it out.");
-                               objectiveWindow.setText("Examine the Moon");
+                               popUp.setText("That strange object from earlier seems to have crashed on the Moon! " +
+                                       "Your task is to investigate it and recover what you find!");
+                               objectiveWindow.setText("Examine the object on the Moon");
                            }
                        },
-                5.0f);
+                time);
+        time += 7;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("You are heading towards to the natural satellite of the Earth: Moon.");
-                               popUp.setText("You are heading towards to the natural satellite of the Earth: Moon.");
+                               popUp.setText("The Moon might be too far to see, but your minimap can help you find it.");
                            }
                        },
-                20.0f);
+                time);
+        time += 5;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Moon is the closest neighbour of our planet in the space.");
-                               popUp.setText("Moon is the closest neighbour of our planet in the space.");
+                               popUp.setText("Thrusting straight towards the Moon would be inefficient and difficult " +
+                                       "because you work directly against Earth's gravity. \n"
+                                     + "Orbits are weird like that...");
                            }
                        },
-                40.0f);
+                time);
+        time += 10;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("When you get close to the Moon, you have to be careful. You are very fast and you should make a smooth curve.");
-                               popUp.setText("When you get close to the Moon, you have to be careful. You are very fast and you should make a smooth curve.");
+                               popUp.setText("First let's quickly recall Newton's Universal Law of Gravitation: \n" +
+                                       "F = G * M * m / r^2 \n " +
+                                       "You probably remember what the letters stand for but don't forget that r is " +
+                                       "squared, so gravity weakens quickly as you get farther away from a planet.");
                            }
                        },
-                60.0f);
+                time);
+        time += 12;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("You have to bring anything you found in the accident area back to the Earth.");
-                               popUp.setText("You have to bring anything you found in the accident area back to the Earth.");
+                               popUp.setText("Anyway, orbits can be regarded as continuous falling due to gravity, " +
+                                       "but actually going too fast to hit the ground, like in Newton's famous " +
+                                       "cannonball model, which... ");
                            }
                        },
-                80.0f);
+                time);
+        time += 10;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("Brace yourself for any possible alien attack or crash because of your bad piloting.");
-                               popUp.setText("Brace yourself for any possible alien attack or crash because of your bad piloting.");
+                               popUp.setText("Sorry, I'm getting carried away. Returning to the situation at hand... " );
                            }
                        },
-                100.0f);
+                time);
+        time += 5;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("After your investigation, go back to Earth!");
-                               popUp.setText("After your investigation, go back to Earth!");
+                               popUp.setText("Perhaps you can do a Hohmann transfer to work with the gravity " +
+                                       "instead of against it? ");
                            }
                        },
-                150.0f);
+                time);
+        time += 5;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("The parachutes and the Autopilot of the spacecraft (if they exist) can handle the take-offs and landings for you. " +
-                                      //"All you need to do is get close to the location you need to land. " +
-                                      //"However, bear in mind that trying to land at high speeds might cause the spacecraft to crash.");
-                               popUp.setText("The parachutes and the Autopilot of the spacecraft (if they exist) can handle the take-offs and landings for you." +
-                                       " All you need to do is get close to the location you need to land. " +
-                                       " However, bear in mind that trying to land at high speeds might cause the spacecraft to crash.");
+                               popUp.setText(
+                                       "The Hohmann Transfer: \n" +
+                                       "1. Fire your engines in the way you are flying in your orbit ('prograde'). \n" +
+                                       "2. This will raise the highest point of your orbit (the apoapsis) on the " +
+                                          "other side of the planet. Wait until you get there. \n" +
+                                       "3. Then burn prograde again and there! You've efficiently raised your orbit"
+                                       +  "altitude! Now give it a try!");
                            }
                        },
-                200.0f);
-
-
+                time);
+        time += 30;
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText(
+                                       "New controls available: \n" +
+                                               "Press Z to rapidly maximize your thrust. \n" +
+                                               "Press X to rapidly cut down your thrust. \n" +
+                                               "Press R to show the forces currently acting on your craft.");
+                           }
+                       },
+                time);
+        time += 7;
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Finally, I should remind you to watch your fuel levels! Good luck!");
+                           }
+                       },
+                time);
+        time += 7;
         return level;
     }
 
@@ -330,7 +358,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Level.levelNo = 3;
-        Timer timer = new Timer();
+        level.timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
@@ -372,7 +400,7 @@ public class LevelManager {
         level.triggers.add(asteroidsPassed);
 
         //level starts here
-        timer.start();
+        level.timer.start();
 
         //TODO: Take off animation is needed (it is not essential)
 
@@ -448,7 +476,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Level.levelNo = 4;
-        Timer timer = new Timer();
+        level.timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
@@ -493,7 +521,7 @@ public class LevelManager {
         level.triggers.add(friend);
 
         //level starts here
-        timer.start();
+        level.timer.start();
 
         //TODO: Take off animation is needed (it is not essential)
 
@@ -534,7 +562,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Level.levelNo = 5;
-        Timer timer = new Timer();
+        level.timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
@@ -567,7 +595,7 @@ public class LevelManager {
         level.triggers.add(earthTrig);
 
         //level starts here
-        timer.start();
+        level.timer.start();
 
         Timer.schedule(new Timer.Task() {
                            @Override
@@ -629,7 +657,7 @@ public class LevelManager {
 
         final Level level = new Level();
         Level.levelNo = 6;
-        Timer timer = new Timer();
+        level.timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
@@ -722,7 +750,7 @@ public class LevelManager {
 
 
         //level starts here
-        timer.start();
+        level.timer.start();
 
         Timer.schedule(new Timer.Task() {
                            @Override
