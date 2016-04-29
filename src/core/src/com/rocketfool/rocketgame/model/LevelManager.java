@@ -16,6 +16,7 @@ public class LevelManager {
         //Level Outline II, A part
 
         final Level level = new Level();
+        Level.levelNo = 1;
         Timer timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
@@ -28,8 +29,7 @@ public class LevelManager {
         level.planets.add(new Planet(14000, 9000, 6.0f * 1e25f, 650, null, level.world, 1));
         //Moon
         level.planets.add(new Planet(7000, 12000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 3));
-        level.planets.get(1).setOrbitPhase((float)(Math.PI * 2f / 3f ));
-        level.planets.get(1).setCircles(true);
+        level.planets.get(1).setOrbitPreset(true);
         //initialization of the rocket
         level.playable = new Playable(18500, 16000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 0.75e5f, level.world);
         level.playable.getBody().setLinearVelocity(5f, 2f);
@@ -181,6 +181,7 @@ public class LevelManager {
         //Level Outline II, B part
 
         final Level level = new Level();
+        Level.levelNo = 2;
         Timer timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
@@ -193,8 +194,7 @@ public class LevelManager {
         level.planets.add(new Planet(9000, 7000, 6.0f * 1.0e25f, 650, null, level.world, 2));
         //Moon
         level.planets.add(new Planet(16000, 10000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 3));
-        level.planets.get(1).setOrbitPhase(0);
-        level.planets.get(1).setCircles(true);
+        level.planets.get(1).setOrbitPreset(true);
         //initialization of the rocket
         level.playable = new Playable(9550, 6450, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
         level.playable.getBody().setLinearVelocity(-50f, -50f);
@@ -206,7 +206,7 @@ public class LevelManager {
         final PositionTrigger moonTrig = new PositionTrigger(14200, 8000, 100, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("You've reached the Moon. Do what you can do and come back home!");
+                //System.out.println("You've reached the Moon. Do what you can do and come back home!");
                 popUp.setText("You've reached the Moon. Do what you can do and come back home!");
                 objectiveWindow.setText("Return home again");
             }
@@ -217,7 +217,7 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 if (moonTrig.isTriggeredBefore()) {
-                    System.out.println("Congratulations! Our researchers will be able to find our instructor by examining this craft!!!");
+                    //System.out.println("Congratulations! Our researchers will be able to find our instructor by examining this craft!!!");
                     popUp.setText("Congratulations! Our researchers will be able to find our instructor by examining this craft!!!");
                     //TODO: Next level should be given here. However, the method createLevel3() fails here.
                 }
@@ -317,6 +317,7 @@ public class LevelManager {
         //Level Outline II, D part
 
         final Level level = new Level();
+        Level.levelNo = 3;
         Timer timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
@@ -341,7 +342,7 @@ public class LevelManager {
         }
 
         //initialization of the rocket
-        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
+        level.playable = new Playable(2000, 2000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 2e5f, level.world);
         level.playable.getBody().setLinearVelocity(3, 5);
 
         //default Triggers
@@ -434,6 +435,7 @@ public class LevelManager {
         //Level Outline II, C part
 
         final Level level = new Level();
+        Level.levelNo = 4;
         Timer timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
@@ -442,12 +444,16 @@ public class LevelManager {
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 200, Gdx.graphics.getHeight() * 200);
 
-        //earth
+        //Mars
         level.planets.add(new Planet(6500, 5000, 6 * 1e24f, 900, null, level.world,5));
 
         //initialization of the rocket
-        level.playable = new Playable(1000, 1000, 88, 108, 1e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 5e5f, level.world);
+        level.playable = new Playable(1000, 1000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 2e5f, level.world);
         level.playable.getBody().setLinearVelocity(0, 0);
+
+        //Stranded spacecraft
+        level.gameObjects.add(new Playable(0, 0, 88, 108, 1e5f, 0, 0, 0, 0, level.world));
+        ((SolidObject) level.gameObjects.get(0)).setOrbitPreset(true);
 
         //default Triggers
         addDefaultTriggers(level);
@@ -515,6 +521,7 @@ public class LevelManager {
         //Level Outline II, E part
 
         final Level level = new Level();
+        Level.levelNo = 5;
         Timer timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
@@ -609,6 +616,7 @@ public class LevelManager {
         //Level Outline II, F part
 
         final Level level = new Level();
+        Level.levelNo = 6;
         Timer timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
@@ -642,7 +650,6 @@ public class LevelManager {
             public void triggerPerformed() {
                 System.out.println("You can't return to Earth yet");
                 popUp.setText("You can't return to Earth yet, go exploring");
-
             }
         };
         level.triggers.add(earthTrig);
