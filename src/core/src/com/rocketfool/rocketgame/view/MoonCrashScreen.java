@@ -8,9 +8,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -33,6 +35,11 @@ public class MoonCrashScreen implements Screen {
     private PopupView popupView;
     private OrthographicCamera camera;
     private Viewport viewport;
+
+    private float meteorAngle;
+    private float meteorDistance;
+    private Vector2 meteorCenter;
+    private Vector2 meteorPosition;
 
     public MoonCrashScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
         this.game = game;
@@ -74,6 +81,10 @@ public class MoonCrashScreen implements Screen {
                 popup.setText("Welcome to Level 1!");
             }
         }, 2.50f);
+
+        meteorAngle = 250;
+        meteorCenter = new Vector2(500, 600);
+        meteorDistance = 30;
     }
 
     @Override
@@ -83,12 +94,27 @@ public class MoonCrashScreen implements Screen {
 
         tweenManager.update(dt);
         popupView.update(dt);
+        updateMeteor(dt);
 
         batch.begin();
         splash.draw(batch);
         popupView.draw(batch);
+        drawMeteor(batch);
         batch.end();
+    }
 
+    private void updateMeteor(float deltaTime) {
+        meteorAngle += 0.1f;
+        meteorPosition = meteorCenter.add(new Vector2(0, meteorDistance).rotateRad(meteorAngle));
+    }
+
+    private void drawMeteor(SpriteBatch batch) {
+        Texture texture = AssetManager.TOXIC_METEOR;
+        batch.draw(
+                texture,
+                meteorPosition.x,
+                meteorPosition.y
+        );
     }
 
     @Override
