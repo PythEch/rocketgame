@@ -92,7 +92,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 videoPlayer.dispose();
-                game.setScreen(new GameScreen(LevelManager.createLevel1(), game, batch, font));
+                game.setScreen(new GameScreen(LevelManager.createLevel2(), game, batch, font));
             }
         });
 
