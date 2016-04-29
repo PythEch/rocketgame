@@ -355,6 +355,8 @@ public class GameScreen implements Screen {
         // Make the camera focus on the player
         camera.position.set(cameraTarget.getBody().getPosition().x * toPixel, cameraTarget.getBody().getPosition().y * toPixel, 0);
         camera.update();
+
+        popupView.update(dt);
     }
 
     public void lookAt(Playable target) {
@@ -393,7 +395,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
 
-        level = LevelManager.createLevel4();
+        level = LevelManager.createLevel1();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
         controller = new WorldController(level, this, renderer);

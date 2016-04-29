@@ -27,6 +27,7 @@ public class Minimap {
     private Level level;
     private OrthographicCamera camera;
     private TrajectorySimulator trajectorySimulator;
+    private ShapeRenderer shapeRenderer;
 
     public Minimap(float originX, float originY, float side, Level level, OrthographicCamera camera, TrajectorySimulator trajectorySimulator) {
         this.originX = originX;
@@ -36,6 +37,8 @@ public class Minimap {
         this.level = level;
         this.camera = camera;
         this.trajectorySimulator = trajectorySimulator;
+        if (DEBUG)
+            shapeRenderer = new ShapeRenderer();
     }
 
     public void draw(SpriteBatch batch) {
@@ -93,12 +96,11 @@ public class Minimap {
 
     private void debugDraw(SpriteBatch batch) {
         batch.end();
-        ShapeRenderer sr = new ShapeRenderer();
-        sr.begin(ShapeRenderer.ShapeType.Line);
-        sr.setColor(Color.GREEN);
-        sr.rect(originX, originY, side, side);
-        sr.circle(originX + side / 2, originY + side / 2, radius);
-        sr.end();
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(Color.GREEN);
+        shapeRenderer.rect(originX, originY, side, side);
+        shapeRenderer.circle(originX + side / 2, originY + side / 2, radius);
+        shapeRenderer.end();
         batch.begin();
     }
 }
