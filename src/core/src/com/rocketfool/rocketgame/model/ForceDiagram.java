@@ -37,8 +37,7 @@ public class ForceDiagram extends GameObject {
     public void update(float deltaTime) {
         doGravity();
         doThrust(FRAME_RATE);
-        doResultant(FRAME_RATE);
-
+        doResultant();
     }
 
     private void doGravity() {
@@ -73,7 +72,7 @@ public class ForceDiagram extends GameObject {
          impulseVector = new Vector2(0, level.playable.getCurrentImpulse() * deltaTime).rotateRad(level.playable.getBody().getAngle());
     }
 
-    private void doResultant(float deltaTime) {
+    private void doResultant() {
         resultant = impulseVector;
         for (Vector2 vector: vectors) {
              resultant = resultant.add(vector);
