@@ -128,12 +128,6 @@ public class PopupView {
                 camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord + 140) * camera.zoom,
                 355 * camera.zoom
         );
-
-        batch.draw(
-                AssetManager.GHOST,
-                camera.position.x - (camera.viewportWidth / 2f - 20 - 355) * camera.zoom,
-                camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord + 140) * camera.zoom
-        );
     }
 
     private String[] splitText(String text, float width, float height) {
