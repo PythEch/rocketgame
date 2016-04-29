@@ -3,9 +3,11 @@ package com.rocketfool.rocketgame.external;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.view.GameScreen;
 import com.rocketfool.rocketgame.view.MainMenuScreen;
 import com.rocketfool.rocketgame.view.MoonCrashScreen;
+import com.rocketfool.rocketgame.view.TakeoffScreen;
 
 import static com.rocketfool.rocketgame.util.Constants.QUICK_LOAD;
 
@@ -29,10 +31,7 @@ public class RocketGame extends Game {
         font = new BitmapFont();
         setSfx( true);
 
-        if (!QUICK_LOAD)
-            this.setScreen(new MoonCrashScreen(this, batch, font));
-        else
-            this.setScreen(new GameScreen(this, batch, font));
+        this.setScreen(new MainMenuScreen(this, batch, font));
 
     }
 

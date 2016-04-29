@@ -20,6 +20,7 @@ import com.badlogic.gdx.video.VideoPlayer;
 import com.badlogic.gdx.video.VideoPlayerCreator;
 import com.badlogic.gdx.video.VideoPlayerDesktop;
 import com.rocketfool.rocketgame.external.RocketGame;
+import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.util.Constants;
 
 
@@ -91,7 +92,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 videoPlayer.dispose();
-                game.setScreen(new GameScreen(game, batch, font));
+                game.setScreen(new GameScreen(LevelManager.createLevel1(), game, batch, font));
             }
         });
 
