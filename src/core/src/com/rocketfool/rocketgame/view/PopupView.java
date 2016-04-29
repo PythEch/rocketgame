@@ -15,6 +15,8 @@ import java.util.Arrays;
 
 /**
  * Created by pythech on 28/04/16.
+ *
+ * TODO: maybe pop this up when user clicks the head?
  */
 public class PopupView {
     private PopUp popup;
@@ -31,7 +33,7 @@ public class PopupView {
         this.camera = camera;
         this.font = new BitmapFont(); // TODO: select a font
         this.startingYCoord = -AssetManager.POPUP_BODY.getHeight();
-        this.yCoord = 0;
+        this.yCoord = startingYCoord;
         this.elapsedTime = 0;
 
         tweenManager = new TweenManager();

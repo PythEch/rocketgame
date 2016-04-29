@@ -81,6 +81,7 @@ public class GameScreen implements Screen {
     private Minimap minimap;
 
     private PopupView popupView;
+    private BitmapFont timerFont;
 
 
     //endregion
@@ -162,17 +163,16 @@ public class GameScreen implements Screen {
 
         // Draw a debug string which shows the velocity of the spaceship
         if (DEBUG) {
-            drawDebugString("  Thrust: " + (int) cameraTarget.getCurrentThrust(), 1); //**
-            drawDebugString("Angular Velocity: " + (int) (cameraTarget.getBody().getAngularVelocity() * 100), 2);
-            drawDebugString("  Linear Velocity: " + (int) (cameraTarget.getBody().getLinearVelocity().len() * 10), 3);
+            drawDebugString("  Thrust: " + (int) cameraTarget.getCurrentThrust(), 25);
+            drawDebugString("Angular Velocity: " + (int) (cameraTarget.getBody().getAngularVelocity() * 100), 26);
+            drawDebugString("  Linear Velocity: " + (int) (cameraTarget.getBody().getLinearVelocity().len() * 10), 27);
             drawDebugString("X: " + String.format("%.1f", cameraTarget.getBody().getPosition().x) +
-                    " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 4);
-            drawDebugString(" Period: " + "( N/A )", 6); //Writing the method for it...
-            drawDebugString("FPS: " + (int) (1f / Gdx.graphics.getDeltaTime()), 7);
-            drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 9);
-            drawDebugString("Fuel left: " + (int) cameraTarget.getFuelLeft(), 8);
+                    " Y: " + String.format("%.1f", cameraTarget.getBody().getPosition().y), 28);
+            drawDebugString("FPS: " + (int) (1f / Gdx.graphics.getDeltaTime()), 29);
+            drawDebugString("GravForce: " + (int) level.getCurrentGravForce(), 31);
+            drawDebugString("Fuel left: " + (int) cameraTarget.getFuelLeft(), 30);
             drawDebugString("SAS: " + level.getPlayable().getSASEnabled(), 35);
-            drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 10);
+            drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 32);
 
         }
 
@@ -272,10 +272,10 @@ public class GameScreen implements Screen {
         );
 
         //Timer
-        BitmapFont timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
-        String str = "" + (int) elapsedTime;
-        if ((int) elapsedTime >= 60) {
-            str = "" + (int) (elapsedTime / 60) + ":" + (int) elapsedTime % 60;
+        String str = "" + (int)elapsedTime ;
+        if( (int)elapsedTime >= 60)
+        {
+            str = ""+ (int)(elapsedTime/60) + ":" + (int)elapsedTime % 60;
         }
         timerFont.setScale(camera.zoom);
         timerFont.draw(
@@ -372,6 +372,7 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         debugRenderer.dispose();
+        renderer.dispose();
     }
     //endregion
 
@@ -395,7 +396,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
 
-        level = LevelManager.createLevel1();
+        level = LevelManager.createLevel2();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
         controller = new WorldController(level, this, renderer);
@@ -414,6 +415,7 @@ public class GameScreen implements Screen {
 
         popupView = new PopupView(level.getPopUp(), camera);
 
+        timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
     } //endregion
 
     public void zoomIn() {
@@ -424,7 +426,7 @@ public class GameScreen implements Screen {
     } //**
 
     public void zoomOut() {
-        camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
+        camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
         font.setScale(camera.zoom);
     }
 

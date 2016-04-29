@@ -4,27 +4,47 @@ package com.rocketfool.rocketgame.model;
  * Non-physical bodies as visual indicators for game objectives.
  */
 public class Waypoint extends GameObject {
-    private int x;
-    private int y;
-    private int radius;
+    private float x;
+    private float y;
+    private float radius;
     private boolean onScreen;
+    private PositionTrigger t;
 
-    public Waypoint(int x, int y, int radius) {
+    //constructors
+    public Waypoint(float x, float y, float radius) {
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.onScreen = true;
+        t = null;
+
     }
 
-    public int getX() {
+    public Waypoint(PositionTrigger t) {
+        this.x = t.getX();
+        this.y = t.getY();
+        this.radius = t.getRadius();
+        this.onScreen = true;
+        this.t = t;
+    }
+
+    //methods
+    public void followTrigger() {
+        if (t != null) {
+            this.x = t.getX();
+            this.y = t.getY();
+        }
+    }
+
+    public float getX() {
         return x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
-    public int getRadius() {
+    public float getRadius() {
         return radius;
     }
 

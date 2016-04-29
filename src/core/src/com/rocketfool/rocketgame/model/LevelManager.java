@@ -3,6 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
+import com.rocketfool.rocketgame.util.Constants;
 
 import static com.rocketfool.rocketgame.model.Playable.BASE;
 
@@ -21,13 +22,16 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //levelMap
-        level.map = new Map(Gdx.graphics.getWidth() * 400, Gdx.graphics.getHeight() * 400);
+        level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
 
         //Earth
-        level.planets.add(new Planet(11000, 6000, 6 * 1e24f, 800, null, level.world, 1));
-        //TODO add the Moon (because it should exist)
+        level.planets.add(new Planet(14000, 9000, 6.0f * 1e25f, 650, null, level.world, 1));
+        //Moon
+        level.planets.add(new Planet(7000, 12000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 3));
+        level.planets.get(1).setOrbitPhase((float)(Math.PI * 2f / 3f ));
+        level.planets.get(1).setCircles(true);
         //initialization of the rocket
-        level.playable = new Playable(16500, 12000, 88, 108, 1e5f, 400 * BASE, 200 * BASE, 1000 * BASE, 2e5f, level.world);
+        level.playable = new Playable(18500, 16000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 0.75e5f, level.world);
         level.playable.getBody().setLinearVelocity(5f, 2f);
         level.playable.getBody().setAngularVelocity(5f);
 
@@ -185,14 +189,15 @@ public class LevelManager {
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
-        //earth
-        level.planets.add(new Planet(9000, 7000, 8.9f * 1e24f, 750, null, level.world, 2));
-        //moon
-        level.planets.add(new Planet(14000, 8000, 2.3f * 1e24f, 200, null, level.world, 3));
-
+        //Earth
+        level.planets.add(new Planet(9000, 7000, 6.0f * 1.0e25f, 650, null, level.world, 2));
+        //Moon
+        level.planets.add(new Planet(16000, 10000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 3));
+        level.planets.get(1).setOrbitPhase(0);
+        level.planets.get(1).setCircles(true);
         //initialization of the rocket
-        level.playable = new Playable(9650, 6350, 88, 108, 2e5f, 250 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
-        level.playable.getBody().setLinearVelocity(-18f, -18f);                                       //**TODO
+        level.playable = new Playable(9550, 6450, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
+        level.playable.getBody().setLinearVelocity(-50f, -50f);
 
         //default Triggers
         addDefaultTriggers(level);
@@ -731,8 +736,10 @@ public class LevelManager {
         level.triggers.add(new OutOfMapTrigger(level.map, level.playable) {
             @Override
             public void triggerPerformed() {
-                System.out.println("Out of map");
-                level.healthOver();
+                if (!Constants.DEBUG) {
+                    System.out.println("Out of map");
+                    level.healthOver();
+                }
             }
         });
 

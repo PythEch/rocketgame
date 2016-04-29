@@ -21,17 +21,19 @@ public class TrajectorySimulator extends GameObject {
     /**
      * A hand tweaked multiplier to make the intervals between trajectory dots evenly as possible
      */
-    public static final float SKIP_MULTIPLIER = 3e4f;
+    public static final float SKIP_MULTIPLIER = 20;
 
     /**
      * The minimum threshold in our skip algorithm.
      * In this case the skipCount never goes below 10 but who knows what's going to happen?
      */
-    public static final int MIN_SKIP = 10;
+    public static final int MIN_SKIP = 2;
 
-    public static final float MIN_THRUST = 100;
+    public static final float MAX_VELOCITY = 120;
 
-    public static final int IGNORE_THRESHOLD = 25;
+    public static final float MIN_THRUST = 0.00001f;
+
+    public static final int IGNORE_THRESHOLD = 15;
     //endregion
 
     //region Fields
@@ -123,7 +125,7 @@ public class TrajectorySimulator extends GameObject {
                 level.getPlayable().getWidth(),
                 level.getPlayable().getHeight(),
                 level.getPlayable().getBody().getMass() - level.getPlayable().getFuelLeft(),
-                level.getPlayable().getDeltaAngularImpulse(),
+                level.getPlayable().getDeltaTorque(),
                 level.getPlayable().getDeltaThrust(),
                 level.getPlayable().getMaxThrust(),
                 level.getPlayable().getFuelLeft(),
@@ -152,12 +154,16 @@ public class TrajectorySimulator extends GameObject {
 
         playable.setCurrentThrust(level.getPlayable().getCurrentThrust());
         playable.setFuelLeft(level.getPlayable().getFuelLeft());
+        playable.setSASEnabled(level.getPlayable().getSASEnabled());
 
-        simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
-        simulatedPlayable.setAngularDamping(realPlayable.getAngularDamping());
-        simulatedPlayable.setLinearVelocity(realPlayable.getLinearVelocity().cpy());
-        simulatedPlayable.setTransform(realPlayable.getPosition().cpy(), realPlayable.getAngle());
-        simulatedPlayable.getTransform().setOrientation(realPlayable.getTransform().getOrientation().cpy());
+        if (level.getPlayable().getSASEnabled())
+            simulatedPlayable.setAngularVelocity(0);
+        else
+            simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
+
+        simulatedPlayable.setLinearVelocity(realPlayable.getLinearVelocity());
+        simulatedPlayable.setTransform(realPlayable.getPosition(), realPlayable.getAngle());
+        simulatedPlayable.getTransform().setOrientation(realPlayable.getTransform().getOrientation());
         simulatedPlayable.getTransform().setRotation(realPlayable.getTransform().getRotation());
 
         GameUtils.changeMass(simulatedPlayable, realPlayable.getMass());
@@ -175,11 +181,8 @@ public class TrajectorySimulator extends GameObject {
             return;
         }
 
-        // Calculate skip count by making a reverse correlation with the square root of thrust
-        int skipCount = (int) (SKIP_MULTIPLIER / Math.max(MIN_THRUST, Math.sqrt(playable.getCurrentThrust())));
-        // Smooth out the changes (i.e remove the last digit) since the frequent change of the interval (skipCount) causes flickers
-        skipCount = Math.max(MIN_SKIP, skipCount - skipCount % 10);
-
+        int skipCount = (int)((1 - (level.getPlayable().getBody().getLinearVelocity().len() / MAX_VELOCITY)) * SKIP_MULTIPLIER);
+        skipCount = Math.max(MIN_SKIP, skipCount);
 
         // Reset our simulation in case of a user input
         resetSimulation();

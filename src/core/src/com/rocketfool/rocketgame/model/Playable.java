@@ -15,14 +15,14 @@ import static com.rocketfool.rocketgame.util.Constants.toMeter;
 public class Playable extends SolidObject {
     //region Constants
     /**
-    * Impulse in Ns generated per kg of fuel, in every deltaT (which is about 1/60 s).
+    * The specific impulse of the fuel, Ns/kg, determines its efficiency.
     * Source for comparison: ( http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print) )
     */
-    private final float fuelSpecificImpulse = 4500;
+    private final float fuelSpecificImpulse = 3500;
     private final float maxVelocity = 1200;
 
     /** A base multiplier for thrust calculations, for convenience. */
-    public static final float BASE = 5 * 1e3f;
+    public static final float BASE = 1 * 1e3f; //was 5000 *** FIXME, optimize
     //endregion
 
     //region Fields
@@ -30,7 +30,7 @@ public class Playable extends SolidObject {
     private float currentThrust;
     /** Reaction wheel strength (assuming the craft rotates using electricity). */
     //TODO rename
-    private float deltaAngularImpulse;
+    private float deltaTorque;
     /** Thrust change rate multiplier */
     private float deltaThrust;
     /** Mass and fuel values are both in kg. */
@@ -48,18 +48,18 @@ public class Playable extends SolidObject {
     //endregion
 
     //Notes
-    // Similar to typical spacecraft, our typical crafts will have a dry mass of 100t and carry up to 400t of fuel.
+    // Similar to typical spacecraft, our typical crafts will have a dry mass of around 100t and carry up to 400t of fuel.
     // Their max thrust will be in the 1-100 megaNewtons range, which is realistic.
     // Sources for comparison: (https://en.wikipedia.org/wiki/RD-180) (https://en.wikipedia.org/wiki/Saturn_V#US_Space_Shuttle)
 
-    public Playable(float x, float y, float width, float height, float dryMass, float deltaAngularImpulse, float deltaThrust, float maxThrust, float fuel, World world) {
+    public Playable(float x, float y, float width, float height, float dryMass, float deltaTorque, float deltaThrust, float maxThrust, float fuel, World world) {
         this.currentThrust = 0;
         this.width = width;
         this.height = height;
-        this.deltaAngularImpulse = deltaAngularImpulse;
+        this.deltaTorque = deltaTorque;
         this.deltaThrust = deltaThrust;
         this.fuelLeft = fuel;
-        this.maxThrust = maxThrust;
+        this.maxImpulse = maxImpulse *60; //tempfix for before merge
         this.SASEnabled = false;
         this.maximizeThrust = false;
         this.startingFuel = fuel;
@@ -115,7 +115,7 @@ public class Playable extends SolidObject {
     /** Reduce mass of the spacecraft by burning its fuel */
     private void consumeFuelAndDecreaseMass(float deltaTime) {
         if (fuelLeft > 0) {
-            float fuelSpent = currentThrust * deltaTime / fuelSpecificImpulse;
+            float fuelSpent = currentImpulse / fuelSpecificImpulse /60; //temp fix to last until the merge
             fuelLeft -= fuelSpent;
 
             //The mass information of the body changes only when MassData is updated
@@ -157,11 +157,11 @@ public class Playable extends SolidObject {
 
     //region Manually-controlled playable behaviour
     public void turnLeft(float deltaTime) {
-        body.applyAngularImpulse(deltaAngularImpulse * deltaTime, true);
+        body.applyAngularImpulse(deltaTorque * deltaTime, true);
     }
 
     public void turnRight(float deltaTime) {
-        body.applyAngularImpulse(-deltaAngularImpulse * deltaTime, true);
+        body.applyAngularImpulse(-deltaTorque * deltaTime, true);
     }
 
     public void toggleSAS() {
@@ -224,8 +224,8 @@ public class Playable extends SolidObject {
         return currentThrust;
     }
 
-    public float getDeltaAngularImpulse() {
-        return deltaAngularImpulse;
+    public float getDeltaTorque() {
+        return deltaTorque;
     }
 
     public float getDeltaThrust() {

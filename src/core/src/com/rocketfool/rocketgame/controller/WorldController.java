@@ -84,6 +84,10 @@ public class WorldController {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
             playable.toggleMaximizeThrust();
+            if (playable.getCurrentThrust() == 0) {
+                renderer.playThrusterStarter();
+                renderer.setThrustStopperActive( true);
+            }
         }
 
         if (DEBUG) {
