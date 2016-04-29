@@ -11,6 +11,7 @@ public class Planet extends CelestialObject {
     private Planet primary;
     private int planetType;
     private boolean circles;
+    private float orbitPhase;
     //endregion
 
     //region Constructor
@@ -20,6 +21,7 @@ public class Planet extends CelestialObject {
         this.planetType = planetType;
         this.body = createBody(x, y, mass, radius, world);
         circles = false;
+        orbitPhase = (float) (Math.random() * 2 * Math.PI);
     }
 
     private Body createBody(float x, float y, float mass, float radius, World world) {
@@ -69,4 +71,8 @@ public class Planet extends CelestialObject {
     }
 
     public boolean getCircles(){ return this.circles; }
+
+    public float getOrbitPhase() { return orbitPhase; }
+
+    public void setOrbitPhase( float newPhase ) { orbitPhase = newPhase; }
 }
