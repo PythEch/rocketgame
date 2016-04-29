@@ -2,6 +2,9 @@
 package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.backends.lwjgl.audio.Wav;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,12 +14,15 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Disposable;
 import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.model.Planet;
 import com.rocketfool.rocketgame.model.TrajectorySimulator;
 import com.rocketfool.rocketgame.model.VisualMeteor;
+import com.badlogic.gdx.utils.Timer;
+import com.rocketfool.rocketgame.model.*;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -24,7 +30,7 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  * Together wht GameScreen, this class draws the view.
  * The main differences are WorldRenderer drawing the objects and GameScreen presenting the UI elements.
  */
-public class WorldRenderer {
+public class WorldRenderer implements Disposable {
     //region Constants
     public static final float MAX_ZOOM = 10f;
     public static final float MIN_ZOOM = 0.5f;
@@ -45,6 +51,12 @@ public class WorldRenderer {
     private Array<VisualMeteor> meteors;
     private TrajectorySimulator trajectorySimulator;
     private OrthographicCamera camera;
+    private Sound thrusterGoinger;
+    private Music warningSound;
+    private Music bqMusic;
+    private boolean isGoignerplaying;
+    private boolean isBQPlaying;
+    private boolean isThrustStopperActive;
     //endregion
 
     //region Constructor
@@ -52,41 +64,124 @@ public class WorldRenderer {
         this.level = level;
         this.camera = camera;
 
-        //Meteors
-        textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
-        animationMeteor = new Animation(1f / 80f, textureAtlasMeteor.getRegions());
-        meteors = new Array<VisualMeteor>();
-        meteors.add(new VisualMeteor(0, 0, 10, 10, 180));
-        meteors.add(new VisualMeteor(12800, 7200, -3, -4, 0));
+        if (!QUICK_LOAD) {
+            //Meteors
+            textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
+            animationMeteor = new Animation(1f / 80f, textureAtlasMeteor.getRegions());
+            meteors = new Array<VisualMeteor>();
+            meteors.add(new VisualMeteor(0, 0, 10, 10, 180));
+            meteors.add(new VisualMeteor(12800, 7200, -3, -4, 0));
 
-        //Stars
-        textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/starSheets/stars.atlas"));
-        for (Texture texture : textureAtlasStar.getTextures()) {
-            texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+            //Stars
+            textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/starSheets/stars.atlas"));
+            for (Texture texture : textureAtlasStar.getTextures()) {
+                texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+            }
+            animationStar = new Animation(1f / 100f, textureAtlasStar.getRegions());
         }
-        animationStar = new Animation(1f / 100f, textureAtlasStar.getRegions());
-
         //ObjectiveScreens
         textureAtlasObjective1 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet/objScreen.atlas"));
         animationObjective1 = new Animation(1f / 80f, textureAtlasObjective1.getRegions());
 
         trajectorySimulator = new TrajectorySimulator(level);
+
+        //SFX
+        thrusterGoinger = AssetManager.THRUSTER_GOINGER;
+        warningSound = AssetManager.WARNING_SOUND;
+        bqMusic =AssetManager.BQ_MUSIC;
+        isGoignerplaying = false;
+        isThrustStopperActive = false;
+        isBQPlaying = false;
+
+        level.getWorld().setContactListener(new ContactListener() {
+            @Override
+            public void beginContact(Contact contact) {
+                if (contact.getFixtureA().getUserData() == Level.ObjectType.PLAYABLE ||
+                        contact.getFixtureB().getUserData() == Level.ObjectType.PLAYABLE) {
+                    onCollision();
+                }
+            }
+
+            //region Methods just to override
+            @Override
+            public void endContact(Contact contact) {
+
+            }
+
+            @Override
+            public void preSolve(Contact contact, Manifold oldManifold) {
+
+            }
+
+            @Override
+            public void postSolve(Contact contact, ContactImpulse impulse) {
+
+            }
+            //endregion
+        });
     }
     //endregion
 
     //region Methods
+
+    private void onCollision() {
+        stopWarningSound();
+        stopBackgroundMusic();
+        stopThrusterGoinger();
+
+        //Plays collusionSound
+        AssetManager.EXPLOSION.play(Preferences.getInstance().getMasterVolume() / 5f);
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+
+            }
+        },3.0f);
+        AssetManager.DEATH_SIGN.play(Preferences.getInstance().getMasterVolume() );
+
+
+    }
+
     public void draw(SpriteBatch batch) {
         elapsedTime = elapsedTime + Gdx.graphics.getDeltaTime();
         drawMap(batch);
-        drawStars(batch);
-        drawMeteors(batch);
+        if (!QUICK_LOAD) {
+            drawStars(batch);
+            drawMeteors(batch);
+        }
         drawObjectiveScreen(batch, animationObjective1);
         drawPlanets(batch);
-        drawMeteors(batch);
         drawPlayer(batch);
         drawTrajectory(batch);
+        drawWarningSign(batch);
+		if (!QUICK_LOAD)
         for (VisualMeteor meteor : meteors) {
             meteor.update(Gdx.graphics.getDeltaTime());
+        }
+
+        //SFX
+        //Rocket thrust sound
+        if (level.getPlayable().getCurrentThrust() > 0) {
+            if (!isGoignerplaying) {
+                playThrusterGoinger();
+                isGoignerplaying = true;
+                Timer.schedule(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        isGoignerplaying = false;
+                    }
+                }, 4.0f);
+            }
+        }
+
+        //BQ
+        playBackgroundMusic();
+
+        //MiniMap Warning Sound
+        if (trajectorySimulator.isCollided()) {
+            playWarningSound();
+        } else {
+            stopWarningSound();
         }
     }
 
@@ -143,9 +238,8 @@ public class WorldRenderer {
         Texture texturePlanet = AssetManager.PLANET1; //Base case
 
         //Sets texture
-        for (Planet planet : level.getPlanets() ) {
-            switch (planet.getPlanetType())
-            {
+        for (Planet planet : level.getPlanets()) {
+            switch (planet.getPlanetType()) {
                 case 1:
                     texturePlanet = AssetManager.PLANET1;
                     break;
@@ -174,9 +268,9 @@ public class WorldRenderer {
                     texturePlanet,
                     planet.getBody().getPosition().x * (toPixel) - (planet.getRadius() * toPixel),
                     planet.getBody().getPosition().y * (toPixel) - (planet.getRadius() * toPixel),
-                    planet.getRadius() * toPixel * 2 ,
+                    planet.getRadius() * toPixel * 2,
                     planet.getRadius() * toPixel * 2
-                    );
+            );
         }
     }
 
@@ -245,8 +339,9 @@ public class WorldRenderer {
                     pos.y * toPixel
             );
         }
+    }
 
-
+    private void drawWarningSign(SpriteBatch batch) {
         //Draws warning sign
         if (trajectorySimulator.isCollided()) {
             float randMultiplier = MathUtils.random(0.7f, 1.0f);
@@ -268,5 +363,56 @@ public class WorldRenderer {
         return trajectorySimulator;
     }
 
+    @Override
+    public void dispose() {
+        textureAtlasMeteor.dispose();
+        textureAtlasObjective1.dispose();
+        textureAtlasStar.dispose();
+    }
+
+    //SFX METHODS
+    public void playThrustStarter() {
+        System.out.println("starter");
+        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f);
+    }
+
+    public void playThrusterGoinger() {
+        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f);
+    }
+
+    public void stopThrusterGoinger() {
+        thrusterGoinger.stop();
+    }
+
+    public void playThrusterStarter() {
+        AssetManager.THRUSTER_STARTER.play(Preferences.getInstance().getMasterVolume() / 10f);
+    }
+
+    public void playThrusterEnder() {
+        if (isThrustStopperActive)
+            AssetManager.THRUSTER_ENDER.play(Preferences.getInstance().getMasterVolume() / 10f);
+    }
+
+    public void setThrustStopperActive(boolean thrustStopperActive) {
+        isThrustStopperActive = thrustStopperActive;
+    }
+
+    public void playBackgroundMusic() {
+        bqMusic.setVolume(Preferences.getInstance().getMasterVolume() / 4f);
+        bqMusic.play();
+    }
+
+    public void stopBackgroundMusic(){
+        bqMusic.stop();
+    }
+
+    public void playWarningSound() {
+        warningSound.setVolume(Preferences.getInstance().getMasterVolume() / 3f);
+        warningSound.play();
+    }
+
+    public void stopWarningSound() {
+        warningSound.stop();
+    }
     //endregion
 }

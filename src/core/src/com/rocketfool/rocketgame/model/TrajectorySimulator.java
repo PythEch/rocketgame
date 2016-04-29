@@ -29,9 +29,9 @@ public class TrajectorySimulator extends GameObject {
      */
     public static final int MIN_SKIP = 10;
 
-    public static final float MIN_THRUST = 100;
+    public static final float MIN_THRUST = 400;
 
-    public static final int IGNORE_THRESHOLD = 25;
+    public static final int IGNORE_THRESHOLD = 15;
     //endregion
 
     //region Fields
@@ -123,7 +123,7 @@ public class TrajectorySimulator extends GameObject {
                 level.getPlayable().getWidth(),
                 level.getPlayable().getHeight(),
                 level.getPlayable().getBody().getMass() - level.getPlayable().getFuelLeft(),
-                level.getPlayable().getDeltaAngularImpulse(),
+                level.getPlayable().getDeltaTorque(),
                 level.getPlayable().getDeltaThrust(),
                 level.getPlayable().getMaxThrust(),
                 level.getPlayable().getFuelLeft(),
@@ -152,12 +152,16 @@ public class TrajectorySimulator extends GameObject {
 
         playable.setCurrentThrust(level.getPlayable().getCurrentThrust());
         playable.setFuelLeft(level.getPlayable().getFuelLeft());
+        playable.setSASEnabled(level.getPlayable().getSASEnabled());
 
-        simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
-        simulatedPlayable.setAngularDamping(realPlayable.getAngularDamping());
-        simulatedPlayable.setLinearVelocity(realPlayable.getLinearVelocity().cpy());
-        simulatedPlayable.setTransform(realPlayable.getPosition().cpy(), realPlayable.getAngle());
-        simulatedPlayable.getTransform().setOrientation(realPlayable.getTransform().getOrientation().cpy());
+        if (level.getPlayable().getSASEnabled())
+            simulatedPlayable.setAngularVelocity(0);
+        else
+            simulatedPlayable.setAngularVelocity(realPlayable.getAngularVelocity());
+
+        simulatedPlayable.setLinearVelocity(realPlayable.getLinearVelocity());
+        simulatedPlayable.setTransform(realPlayable.getPosition(), realPlayable.getAngle());
+        simulatedPlayable.getTransform().setOrientation(realPlayable.getTransform().getOrientation());
         simulatedPlayable.getTransform().setRotation(realPlayable.getTransform().getRotation());
 
         GameUtils.changeMass(simulatedPlayable, realPlayable.getMass());
