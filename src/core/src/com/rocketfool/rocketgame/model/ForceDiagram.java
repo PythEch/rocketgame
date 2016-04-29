@@ -10,11 +10,9 @@ import com.badlogic.gdx.utils.Array;
  */
 public class ForceDiagram extends GameObject {
     public static final float FRAME_RATE = 1f / 60;
-    private World world;
     private Level level;
     private Array<Planet> planets;
     private Array<Vector2> vectors;
-    private Playable playable;
     private Vector2 impulseVector;
     private Vector2 resultant;
 
@@ -22,7 +20,6 @@ public class ForceDiagram extends GameObject {
         this.level = level;
 
         planets = new Array<Planet>();
-        world = new World(new Vector2(0, 0), true);
 
         for (Planet planet : level.getPlanets()) {
             planets.add(new Planet(
@@ -31,21 +28,9 @@ public class ForceDiagram extends GameObject {
                     planet.getMass(),
                     planet.getRadius(),
                     null,
-                    world
+                    level.world
             ));
         }
-        playable = new Playable(
-                level.getPlayable().getBody().getPosition().x,
-                level.getPlayable().getBody().getPosition().y,
-                level.getPlayable().getWidth(),
-                level.getPlayable().getHeight(),
-                level.getPlayable().getBody().getMass() - level.getPlayable().getFuelLeft(),
-                level.getPlayable().getDeltaAngularImpulse(),
-                level.getPlayable().getDeltaImpulse(),
-                level.getPlayable().getMaxImpulse(),
-                level.getPlayable().getFuelLeft(),
-                world
-        );
     }
 
     @Override
@@ -54,8 +39,8 @@ public class ForceDiagram extends GameObject {
         doThrust(FRAME_RATE);
         doResultant(FRAME_RATE);
 
-        playable.update(FRAME_RATE);
-        world.step(FRAME_RATE, 8, 3);
+        level.playable.update(FRAME_RATE);
+        level.world.step(FRAME_RATE, 8, 3);
     }
 
     private void doGravity() {
@@ -64,7 +49,7 @@ public class ForceDiagram extends GameObject {
             vectors.add(vector);
         }
         for (int i = 0; i < planets.size; i++) {
-            Body spaceship = playable.getBody();
+            Body spaceship = level.playable.getBody();
 
             // Get the directionVector by substracting the middle points of two objects
             Vector2 directionVector = planets.get(i).getBody().getPosition().sub(spaceship.getPosition());
@@ -87,7 +72,7 @@ public class ForceDiagram extends GameObject {
     }
 
     private void doThrust(float deltaTime) {
-        Vector2 impulseVector = new Vector2(0, playable.getCurrentImpulse() * deltaTime).rotateRad(playable.getBody().getAngle());
+        Vector2 impulseVector = new Vector2(0, level.playable.getCurrentImpulse() * deltaTime).rotateRad(level.playable.getBody().getAngle());
     }
 
     private void doResultant(float deltaTime) {
