@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.view.GameScreen;
+import sun.util.logging.PlatformLogger;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 import static com.rocketfool.rocketgame.util.Constants.FRAME_RATE;
@@ -100,6 +101,34 @@ public class Level {
     //endregion
 
     //region Methods
+
+    public void resetLevel() {
+        Level newWorld;
+
+        switch (levelNo) {
+            case 0:
+                newWorld = LevelManager.createLevel0();
+                break;
+            case 1:
+                newWorld = LevelManager.createLevel1();
+                break;
+            case 2:
+                newWorld = LevelManager.createLevel2();
+                break;
+            case 3:
+                newWorld = LevelManager.createLevel3();
+                break;
+            case 4:
+                newWorld = LevelManager.createLevel4();
+                break;
+            case 5:
+                newWorld = LevelManager.createLevel5();
+                break;
+            case 6:
+                newWorld = LevelManager.createLevel6();
+                break;
+        }
+    }
 
     /**
      * Update models per frame
