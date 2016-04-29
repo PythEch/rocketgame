@@ -20,6 +20,7 @@ public class PopupView {
     private float yCoord;
     private float startingYCoord;
     private float elapsedTime;
+    private float customDelay;
     private Tween tween;
 
     public PopupView(PopUp popup, OrthographicCamera camera) {
@@ -29,9 +30,15 @@ public class PopupView {
         this.startingYCoord = -AssetManager.POPUP_BODY.getHeight();
         this.yCoord = startingYCoord;
         this.elapsedTime = 0;
+        this.customDelay = -1;
 
         tweenManager = new TweenManager();
         Tween.registerAccessor(PopupView.class, new PopupAcessor());
+    }
+
+    public PopupView(PopUp popup, OrthographicCamera camera, float delay) {
+        this(popup, camera);
+        this.customDelay = delay;
     }
 
     public void update(float deltaTime) {
@@ -51,7 +58,14 @@ public class PopupView {
             tween = Tween.to(this, PopupAcessor.Y_COORD, 2).target(0).start(tweenManager);
         }
 
-        if (tween != null && yCoord == 0 && elapsedTime >= 2 + popup.getLastText().length() * 0.1f) {
+        float delay;
+        if (customDelay == -1) {
+            delay = 2 + popup.getLastText().length() * 0.1f;
+        }
+        else {
+            delay = customDelay;
+        }
+        if (tween != null && yCoord == 0 && elapsedTime >= delay) {
             Tween.set(this, PopupAcessor.Y_COORD).target(0).start(tweenManager);
             tween = Tween.to(this, PopupAcessor.Y_COORD, 2).target(startingYCoord).start(tweenManager);
         }
