@@ -115,7 +115,7 @@ public class Playable extends SolidObject {
     /** Reduce mass of the spacecraft by burning its fuel */
     private void consumeFuelAndDecreaseMass(float deltaTime) {
         if (fuelLeft > 0) {
-            float fuelSpent = currentThrust * deltaTime / fuelSpecificImpulse;
+            float fuelSpent = currentThrust / fuelSpecificImpulse;
             fuelLeft -= fuelSpent;
 
             //The mass information of the body changes only when MassData is updated
