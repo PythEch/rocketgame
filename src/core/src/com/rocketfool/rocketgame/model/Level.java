@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.view.GameScreen;
+import com.badlogic.gdx.utils.Timer;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 import static com.rocketfool.rocketgame.util.Constants.FRAME_RATE;
@@ -33,6 +34,7 @@ public class Level {
     protected State state;
     protected int health = 3;
     protected PopUp popUp;
+    protected Timer timer;
     //endregion
 
     //region Nested Types
@@ -107,7 +109,7 @@ public class Level {
     public void update(float deltaTime) {
         if (state == State.RUNNING) {
             timePassed += deltaTime;
-
+            timer.start();
             // Hack to make physics engine stable
             deltaTime = FRAME_RATE;
             timePassed2 += deltaTime;
@@ -258,13 +260,13 @@ public class Level {
                     0f);
         }
         else if (selection == 4){ //Spacecraft in Level 4
-            float x = 10000;//Mars location
-            float y = 10000;//Mars location
-            float w = (float) (2 * Math.PI / 300);
+            float x = 11000;//Mars location
+            float y = 7000; //Mars location
+            float w = (float) (2 * Math.PI / 240);
             float phase = 4f;
             orbiter.getBody().setTransform(
-                    x + (float) (3000 * Math.cos(w * timePassed + phase)),
-                    y + (float) (3000 * Math.sin(w * timePassed + phase)),
+                    x + (float) (1500 * Math.cos(w * timePassed + phase)),
+                    y + (float) (1500 * Math.sin(w * timePassed + phase)),
                     0f);
         }
         else if (selection == 5) { //Moon around Earth quick preset for Level 5
@@ -354,10 +356,12 @@ public class Level {
         this.health = health;
     }
 
-    public void setScreenReference(GameScreen screen){ this.screen = screen; } //Needed to set zoom**
+    public void setScreenReference(GameScreen screen){ this.screen = screen; }
 
     public PopUp getPopUp() {
         return popUp;
     }
+
+    public Timer getTimer(){return timer;}
     //endregion
 }

@@ -28,6 +28,7 @@ public class Minimap {
     private OrthographicCamera camera;
     private TrajectorySimulator trajectorySimulator;
     private ShapeRenderer shapeRenderer;
+    private boolean enabled;
 
     public Minimap(float originX, float originY, float side, Level level, OrthographicCamera camera, TrajectorySimulator trajectorySimulator) {
         this.originX = originX;
@@ -37,6 +38,7 @@ public class Minimap {
         this.level = level;
         this.camera = camera;
         this.trajectorySimulator = trajectorySimulator;
+        this.enabled = true;
         if (DEBUG)
             shapeRenderer = new ShapeRenderer();
     }
@@ -103,4 +105,8 @@ public class Minimap {
         shapeRenderer.end();
         batch.begin();
     }
+
+    public boolean isEnabled() {return enabled;}
+
+    public void setEnabled(boolean enabled){this.enabled = enabled;}
 }
