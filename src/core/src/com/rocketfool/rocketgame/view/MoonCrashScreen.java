@@ -75,8 +75,6 @@ public class MoonCrashScreen implements Screen {
             }
         },13f);
 
-        }, 2.50f);
-
         meteorAngle = 250;
         meteorCenter = new Vector2(500, 600);
         meteorDistance = 30;
