@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.view.GameScreen;
 import com.badlogic.gdx.utils.Timer;
 import sun.util.logging.PlatformLogger;
@@ -153,6 +154,7 @@ public class Level {
         screen.lookAt(playable);
 
         playable.update(0);
+        WorldController.controlState = 7;
     }
 
     /**
@@ -259,7 +261,6 @@ public class Level {
     /**
      * Updates any preset orbits of game objects.
      * This is all still a little hardcoded, but that is fine for the current scope of the game.
-     * TODO: Future idea: just have an Array<presetOrbiters> and customize accordingly.
      */
     public void updatePresetOrbits() {
         for (GameObject obj: gameObjects){
@@ -300,7 +301,7 @@ public class Level {
         orbiter.getBody().setTransform(x,y,0f);
     }
 
-    /** //TODO comment for this
+    /** Orbits of certain game objects that were created in advance.
      */
     public static void quickPresetOrbits(SolidObject orbiter, int selection , float timePassed){
         if (selection == 1) { //Moon around Earth quick preset for Level 1

@@ -53,13 +53,19 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger earthTrig = new PositionTrigger(14000, 9000, 1250, level.playable) {
+        final PositionTrigger earthTrig = new PositionTrigger(14000, 9000, 750, level.playable) {
             @Override
             public void triggerPerformed() {
-                //TODO: Stop level here
-                //TODO: End of level popup here with "move to menu" or "next level" or "restart"
-                //Title: ("Mission Accomplished!")
-                //Text: ("Congratulations! You made it back safely! Hopefully this experience will help in the future!");
+                if (level.playable.getBody().getLinearVelocity().len() < 70) {
+                    WorldController.controlState = 7;
+                    //TODO: Stop level here
+                    //TODO: End of level popup here with "move to menu" or "next level" or "restart"
+                    //Title: ("Mission Accomplished!")
+                    //Text: ("Congratulations! You made it back safely! Hopefully this experience will help in the future!");
+                }
+                else {
+                    //TODO crash scenario
+                }
             }
         };
         level.triggers.add(earthTrig);
@@ -86,7 +92,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 7;
+        time += 10;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -95,7 +101,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 6;
+        time += 7;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -104,7 +110,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 7;
+        time += 8;
 
         level.timer.schedule(new Timer.Task() {
                            @Override
@@ -116,7 +122,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 10;
+        time += 11;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -125,16 +131,16 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 10;
+        time += 11;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("OK! Now let's get our bearings! \n \n Use A & S keys to zoom out or zoom in, and press ESC for the Pause Menu.");
+                               popUp.setText("OK! Now let's get our bearings! \n Use A & S keys to zoom out or zoom in, and press ESC for the Pause Menu.");
                                WorldController.controlState = 5;
                            }
                        },
                 time);
-        time += 7;
+        time += 8;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -145,7 +151,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 7;
+        time += 8;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -154,7 +160,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 7;
+        time += 11;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -163,7 +169,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 4;
+        time += 5;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -174,7 +180,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 6;
+        time += 7;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -185,7 +191,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 20;
+        time += 21;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -194,6 +200,14 @@ public class LevelManager {
                                        "That's why you need to blast away tons of hot plasma to accelerate!");
                            }
                        },
+                time);
+        time += 20;
+        level.timer.schedule(new Timer.Task() {
+                                 @Override
+                                 public void run() {
+                                     popUp.setText("Remember to slow down near Earth! Coming in too fast will make you crash!");
+                                 }
+                             },
                 time);
         return level;
     }
@@ -215,7 +229,7 @@ public class LevelManager {
         //Moon
         level.planets.add(new Planet(21000, 14000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 9));
         level.planets.get(1).setOrbitPreset(true);
-        level.gameObjects.add(new MoonAsteroid(level.planets.get(1), 3.25e2f, 40, level.world));
+        level.gameObjects.add(new MoonAsteroid(level.planets.get(1), 3.25e2f, 40, level.world)); //TODO IMAGE
         //initialization of the rocket
         level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
         level.playable.getBody().setLinearVelocity(50f, -50f);
@@ -224,26 +238,38 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers & waypoints
-        final PositionTrigger moonTrig = new PositionTrigger(level.planets.get(1), 170, 0, 150, level.playable) {
+        final PositionTrigger moonTrig = new PositionTrigger((SolidObject)level.gameObjects.get(0), 0, 0, 80, level.playable) {
             @Override
             public void triggerPerformed() {
                 //(Half way through mission)
-                popUp.setText("You've reached the Moon. And what strange things have we found here? Better take it back to Earth!");
-                objectiveWindow.setText("Return to Earth");
-                level.waypoints.removeIndex(0);
-                level.waypoints.add(new Waypoint(14000, 11000, 800));
+                if (level.playable.getBody().getLinearVelocity().len() < 70) {
+                    popUp.setText("You've reached the Moon. And what strange things have we found here? Better take it back to Earth!");
+                    objectiveWindow.setText("Return to Earth");
+                    level.waypoints.removeIndex(0);
+                    level.waypoints.add(new Waypoint(14000, 11000, 800));
+                }
+                else{
+                    //TODO CRASH
+                }
+
             }
         };
         level.triggers.add(moonTrig);
-        level.waypoints.add(new Waypoint(moonTrig));//<== TODO: Simple Waypoint image: crashed UFO on the Moon.
-        final PositionTrigger earthTrig = new PositionTrigger(14000, 11000, 800, level.playable) {
+        level.waypoints.add(new Waypoint(moonTrig));
+        final PositionTrigger earthTrig = new PositionTrigger(14000, 11000, 750, level.playable) {
             @Override
             public void triggerPerformed() {
                 if (moonTrig.isTriggeredBefore()) {
-                    //TODO stop game here
-                    //TODO end of level screen
-                    //Title: "Mission Accomplished!"
-                    //Text: "Congratulations! Our researchers will examine this craft! It looks like we've finally been visited by aliens!");
+                    if (level.playable.getBody().getLinearVelocity().len() < 70) {
+                        //TODO stop game here
+                        //TODO end of level screen
+                        //Title: "Mission Accomplished!"
+                        //Text: "Congratulations! Our researchers will examine this craft! It looks like we've finally been visited by aliens!");
+                    }
+                    else{
+                        //TODO crash
+                    }
+
                 }
             }
         };
@@ -251,30 +277,21 @@ public class LevelManager {
 
         //level starts here
         level.timer.start();
-        time = 0.01f;
+        time = 5f;
 
-        //TODO: Crashed UFO at the Moon is needed (simple waypoint image)
-
-       /* Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               level.screen.setZoom(7f);
-                           }
-                       },
-                0.001f);*/
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //System.out.println("You took off from the Earth because it looks like there is a crash at the Moon. Could they be ALIENS? Go check it out.");
-                               Waypoint alienShip = new Waypoint(6500, 7105, 5);
-                               level.waypoints.add(alienShip);
-                               popUp.setText("You are on the Earth's orbit right now.");
-                               popUp.setText("Try to leave to the orbit and slowly approach the Moon");
+                               popUp.setText("You are on the Earth's orbit right now."
+                                             + "Camera controls restored.");
                                objectiveWindow.setText("Examine the object on the Moon's orbit");
+                               WorldController.controlState = -1;
+                               if (Constants.DEBUG)
+                                   WorldController.controlState = 7;
                            }
                        },
                 time);
-        time += 7;
+        time += 9;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -298,7 +315,7 @@ public class LevelManager {
                            public void run() {
                                popUp.setText("First let's quickly recall Newton's Universal Law of Gravitation: \n" +
                                        "F = G * M * m / r^2 \n " +
-                                       "You probably remember what the letters stand for but don't forget that r is " +
+                                       "You probably remember this equation, but don't forget that r is " +
                                        "squared, so gravity weakens quickly as you get farther away from a planet.");
                            }
                        },
@@ -321,7 +338,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 5;
+        time += 6;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -330,29 +347,31 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 5;
+        time += 7;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText(
+                                       "Control systems are online." +
                                        "The Hohmann Transfer: \n" +
                                                "1. Fire your engines in the way you are flying in your orbit ('prograde'). \n" +
                                                "2. This will raise the highest point of your orbit (the apoapsis) on the " +
                                                "other side of the planet. Wait until you get there. \n" +
                                                "3. Then burn prograde again and there! You've efficiently raised your orbit"
                                                + "altitude! Now give it a try!");
+                               WorldController.controlState = 6;
                            }
                        },
                 time);
-        time += 30;
+        time += 33;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText(
                                        "New controls available: \n" +
                                                "Press Z to rapidly maximize your thrust. \n" +
-                                               "Press X to rapidly cut down your thrust. \n" +
-                                               "Press R to show the forces currently acting on your craft.");
+                                               "Press X to rapidly cut down your thrust. \n" );
+                               WorldController.controlState = 7;
                            }
                        },
                 time);
@@ -376,6 +395,7 @@ public class LevelManager {
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
+        WorldController.controlState = 7;
 
         //init of map
         int width = Gdx.graphics.getWidth() * 250;
@@ -521,6 +541,7 @@ public class LevelManager {
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
+        WorldController.controlState = 7;
 
         //init of map
         level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
@@ -778,6 +799,7 @@ public class LevelManager {
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
+        WorldController.controlState = 7;
 
         //map
         level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
