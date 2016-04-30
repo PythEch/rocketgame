@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 /**
  * Triggers an event if the playable object enters a circular, predetermined region.
  */
-public class PositionTrigger implements Trigger {
+public class PositionTrigger extends Trigger {
     //region Fields
     private float x;
     private float y;
@@ -14,8 +14,6 @@ public class PositionTrigger implements Trigger {
     private SolidObject target;
     /** Position triggers can be made to move in unison with designated host objects.*/
     private SolidObject host;
-    private boolean isTriggeredBefore;
-    public static float trigDelay = 1f;
     private boolean reverse;
     //endregion
 
@@ -25,7 +23,6 @@ public class PositionTrigger implements Trigger {
         this.y = y;
         this.radius = radius;
         this.target = target;
-        isTriggeredBefore = false;
         this.host = null;
         this.reverse = false;
     }
@@ -48,19 +45,8 @@ public class PositionTrigger implements Trigger {
     //endregion
 
     //region Methods
-
-    public void followHost(){
-        /*if (host != null) {
-            this.x = host.getBody().getPosition().x + xOffset;
-            this.y = host.getBody().getPosition().y + yOffset;
-        }*/
-    }
-
-    public final boolean isTriggered() {
-        if (isTriggeredBefore) {
-            return false;
-        }
-
+    @Override
+    protected boolean isTriggeredInternal() {
         Vector2 pos = getPosition();
 
         // ^ means XOR operator
@@ -79,21 +65,13 @@ public class PositionTrigger implements Trigger {
         // when reverse is false, produces true when in its inside the circle
         // when reverse is true, produces true when outside the circle
 
-        if (pos.dst(target.getBody().getPosition()) <= radius ^ reverse) {
-            isTriggeredBefore = true;
-            return true;
-        } else {
-            return false;
-        }
-
+        return pos.dst(target.getBody().getPosition()) <= radius ^ reverse;
     }
 
     @Override
     public void triggerPerformed() {
 
     }
-
-    public final boolean isTriggeredBefore() {return isTriggeredBefore;}
 
     public Vector2 getPosition() {
         if (host == null)  {

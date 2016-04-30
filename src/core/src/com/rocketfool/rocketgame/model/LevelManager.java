@@ -207,6 +207,61 @@ public class LevelManager {
                                  }
                              },
                 time);
+
+        // watch as magic happens
+        /*        indicators[0] = ();
+        indicators[1] = );
+        indicators[2] = (playable.getBody().getLinearVelocity().len() < (playable.getMaxVelocity() / 20f));
+        indicators[3] = (playable.getCurrentThrust() < 1);*/
+
+        level.triggers.add(new Trigger() {
+            @Override
+            public boolean isTriggered() {
+                return level.playable.getBody().getAngularVelocity() < 0.1;
+            }
+
+            @Override
+            public void triggerPerformed() {
+                // do stuff
+            }
+        });
+
+        level.triggers.add(new Trigger() {
+            @Override
+            public boolean isTriggered() {
+                return level.playable.getBody().getLinearVelocity().len() < 1;
+            }
+
+            @Override
+            public void triggerPerformed() {
+
+            }
+        });
+
+        level.triggers.add(new Trigger() {
+            @Override
+            public boolean isTriggered() {
+                return level.playable.getBody().getLinearVelocity().len() < (level.playable.getMaxVelocity() / 20f);
+            }
+
+            @Override
+            public void triggerPerformed() {
+                // shit happens here??
+            }
+        });
+
+        level.triggers.add(new Trigger() {
+            @Override
+            public boolean isTriggered() {
+                return level.playable.getCurrentThrust() < 1;
+            }
+
+            @Override
+            public void triggerPerformed() {
+
+            }
+        });
+
         return level;
     }
 
@@ -283,7 +338,7 @@ public class LevelManager {
                 }
             }
         };
-        level.triggers.add(moonTrig);
+
         level.waypoint = new Waypoint(level, moonTrig); //<== TODO: Simple Waypoint image: crashed UFO on the Moon.
 
 
@@ -948,7 +1003,17 @@ public class LevelManager {
 
     //trigger methods
     private static void addDefaultTriggers(final Level level) {
-        level.triggers.add(new OutOfMapTrigger(level.map, level.playable) {
+        // out of map trigger
+        level.triggers.add(new Trigger() {
+            @Override
+            protected boolean isTriggeredInternal() {
+                Vector2 pos = level.playable.getBody().getPosition();
+                int width = level.map.getWidth();
+                int height = level.map.getHeight();
+
+                return pos.x < 0 || pos.y < 0 || pos.x > width || pos.y > height;
+            }
+
             @Override
             public void triggerPerformed() {
                 if (!Constants.DEBUG) {
@@ -957,10 +1022,18 @@ public class LevelManager {
             }
         });
 
-        level.triggers.add(new FuelDepletionTrigger(level.playable) {
+        // fuel depletion trigger
+        level.triggers.add(new Trigger() {
+            @Override
+            protected boolean isTriggeredInternal() {
+                return level.playable.getFuelLeft() <= 0;
+            }
+
             @Override
             public void triggerPerformed() {
-                level.healthOver();
+                if (!Constants.DEBUG) {
+                    level.healthOver();
+                }
             }
         });
     }
