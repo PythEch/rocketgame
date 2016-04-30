@@ -263,12 +263,12 @@ public class Level {
      */
     public void updatePresetOrbits() {
         for (GameObject obj: gameObjects){
-            if ((obj instanceof  CelestialObject) && (((CelestialObject) obj).isOrbitPreset()))
-                quickPresetOrbits((CelestialObject) obj, levelNo, timePassed2);
+            if ((obj instanceof  SolidObject) && (((SolidObject) obj).isOrbitPreset()))
+                quickPresetOrbits((SolidObject) obj, levelNo, timePassed2);
         }
         for (GameObject obj: planets){
-            if ((obj instanceof  CelestialObject) && (((CelestialObject) obj).isOrbitPreset()))
-                quickPresetOrbits((CelestialObject) obj, levelNo, timePassed2);
+            if ((obj instanceof  SolidObject) && (((SolidObject) obj).isOrbitPreset()))
+                quickPresetOrbits((SolidObject) obj, levelNo, timePassed2);
         }
     }
 

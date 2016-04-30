@@ -7,7 +7,6 @@ public abstract class CelestialObject extends SolidObject {
     //region Fields
     protected float mass;
     protected float radius;
-    protected boolean orbitPreset = false;
     //endregion
 
     //region Constructor
@@ -25,9 +24,5 @@ public abstract class CelestialObject extends SolidObject {
     public float getRadius() {
         return radius;
     }
-
-    public boolean isOrbitPreset() {return orbitPreset;}
-
-    public void setOrbitPreset(boolean orbitPreset) {this.orbitPreset = orbitPreset;}
     //endregion
 }

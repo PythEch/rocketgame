@@ -8,6 +8,8 @@ import com.rocketfool.rocketgame.external.RocketGame;
  */
 public abstract class SolidObject extends GameObject {
     //region Fields
+
+    protected boolean orbitPreset = false;
     /**
      * A Box2D body which will be used to simulate the physics object in {@link #update(float)}
      */
@@ -19,4 +21,8 @@ public abstract class SolidObject extends GameObject {
         return body;
     }
     //endregion
+
+    public boolean isOrbitPreset() {return orbitPreset;}
+
+    public void setOrbitPreset(boolean orbitPreset) {this.orbitPreset = orbitPreset;}
 }
