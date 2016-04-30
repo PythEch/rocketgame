@@ -42,6 +42,13 @@ public class WorldController {
         Playable playable = level.getPlayable();
         Body body = playable.getBody();
 
+        if (controlState == -1 && Gdx.input.isKeyPressed(Input.Keys.A)) {
+            screen.zoomIn();
+        }
+        if (controlState == -1 && Gdx.input.isKeyPressed(Input.Keys.S)) {
+            screen.zoomOut();
+        }
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) && level.getState() == Level.State.RUNNING) {
             screen.showPauseScreen();
         }
