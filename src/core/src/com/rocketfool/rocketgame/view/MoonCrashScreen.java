@@ -100,7 +100,7 @@ public class MoonCrashScreen implements Screen {
     }
 
     private void updateMeteor(float deltaTime) {
-        meteorAngle -= 0.3f;
+        meteorAngle -= 0.2f;
         meteorPosition = METEOR_CENTER.cpy().add(new Vector2(0, METEOR_DISTANCE).rotate(meteorAngle));
     }
 
