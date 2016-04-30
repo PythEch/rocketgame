@@ -133,9 +133,6 @@ public class Level {
             case 5:
                 newWorld = LevelManager.createLevel5();
                 break;
-            case 6:
-                newWorld = LevelManager.createLevel6();
-                break;
         }
 
         this.world = newWorld.world;
@@ -155,7 +152,7 @@ public class Level {
 
         screen.lookAt(playable);
 
-        playable.update(1/60f);
+        playable.update(0);
     }
 
     /**
@@ -266,12 +263,12 @@ public class Level {
      */
     public void updatePresetOrbits() {
         for (GameObject obj: gameObjects){
-            if ((obj instanceof  SolidObject) && (((SolidObject) obj).isOrbitPreset()))
-                quickPresetOrbits((SolidObject) obj, levelNo, timePassed2);
+            if ((obj instanceof  CelestialObject) && (((CelestialObject) obj).isOrbitPreset()))
+                quickPresetOrbits((CelestialObject) obj, levelNo, timePassed2);
         }
         for (GameObject obj: planets){
-            if ((obj instanceof  SolidObject) && (((SolidObject) obj).isOrbitPreset()))
-                quickPresetOrbits((SolidObject) obj, levelNo, timePassed2);
+            if ((obj instanceof  CelestialObject) && (((CelestialObject) obj).isOrbitPreset()))
+                quickPresetOrbits((CelestialObject) obj, levelNo, timePassed2);
         }
     }
 

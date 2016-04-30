@@ -489,7 +489,7 @@ public class LevelManager {
 
         //Stranded spacecraft
         level.gameObjects.add(new Playable(4000, 4000, 1000, 1000, 1e5f, 0, 0, 0, 0, level.world));
-        ((SolidObject) level.gameObjects.get(0)).setOrbitPreset(true);//TODO set width,height to 1,1 to avoid collisions (for now needed for visibility)
+        ((CelestialObject) level.gameObjects.get(0)).setOrbitPreset(true);//TODO set width,height to 1,1 to avoid collisions (for now needed for visibility)
         //Collisions are almost impossible with 1,1 because when <750px this despawns anyway
         //default Triggers
         addDefaultTriggers(level);
