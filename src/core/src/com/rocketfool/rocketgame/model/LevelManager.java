@@ -145,7 +145,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 4;
+        time += 7;
         level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {

@@ -180,7 +180,7 @@ public class Level {
     }
 
     /**
-     *  When a listed condition is met, the indicator is activated.
+     *  When a listed condition is met, the indicator is activated.//TODO use or delete
      */
     public void updateIndicators(){
         indicators[0] = (playable.getBody().getAngularVelocity() < 0.1);
