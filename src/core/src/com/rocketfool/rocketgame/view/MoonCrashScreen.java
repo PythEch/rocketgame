@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -22,7 +24,11 @@ import com.rocketfool.rocketgame.view.MainMenuScreen;
 import com.rocketfool.rocketgame.view.PopupView;
 import com.rocketfool.rocketgame.view.SpriteAccessor;
 
+import static com.rocketfool.rocketgame.util.Constants.toPixel;
+
 public class MoonCrashScreen implements Screen {
+    private static final float METEOR_DISTANCE = 450;
+    private static final Vector2 METEOR_CENTER = new Vector2(970, 400);
 
     //Variables
     private RocketGame game;
@@ -33,6 +39,9 @@ public class MoonCrashScreen implements Screen {
     private PopupView popupView;
     private OrthographicCamera camera;
     private Viewport viewport;
+
+    private float meteorAngle;
+    private Vector2 meteorPosition;
 
     public MoonCrashScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
         this.game = game;
@@ -69,6 +78,8 @@ public class MoonCrashScreen implements Screen {
             }
         },13f);
 
+        meteorAngle = 150;
+        meteorPosition = new Vector2(0, 0);
     }
 
     @Override
@@ -78,13 +89,43 @@ public class MoonCrashScreen implements Screen {
 
         popupView.update(dt);
         Texture texture = new Texture(Gdx.files.internal("Backgrounds/level2/MoonCrashBQ.png"));
+        updateMeteor(dt);
 
         batch.begin();
         splash.draw(batch);
         batch.draw(texture,0,0);
         popupView.draw(batch);
+        drawMeteor(batch);
         batch.end();
+    }
 
+    private void updateMeteor(float deltaTime) {
+        meteorAngle -= 0.3f;
+        meteorPosition = METEOR_CENTER.cpy().add(new Vector2(0, METEOR_DISTANCE).rotate(meteorAngle));
+    }
+
+    private void drawMeteor(SpriteBatch batch) {
+        Texture texture = AssetManager.TOXIC_METEOR;
+        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+        batch.draw(
+                texture,
+                meteorPosition.x,
+                meteorPosition.y,
+                texture.getWidth() / 2f,
+                texture.getHeight() / 2f,
+                texture.getWidth(),
+                texture.getHeight(),
+                0.5f,
+                0.5f,
+                meteorAngle * 4,
+                0,
+                0,
+                texture.getWidth(),
+                texture.getHeight(),
+                false,
+                false
+        );
     }
 
     @Override
