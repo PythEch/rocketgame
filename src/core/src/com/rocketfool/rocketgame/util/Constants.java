@@ -29,4 +29,6 @@ public final class Constants {
      * TODO: Calculate this according to the system frame rate
      */
     public static final float FRAME_RATE = 1 / 60f;
+
+    public static final String PREFERENCES = "rocketgame.prefs";
 }

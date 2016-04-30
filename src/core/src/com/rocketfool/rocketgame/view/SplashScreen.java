@@ -1,4 +1,4 @@
-package com.rocketfool.rocketgame.view.Splash;
+package com.rocketfool.rocketgame.view;
 
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
@@ -11,9 +11,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rocketfool.rocketgame.external.RocketGame;
-import com.rocketfool.rocketgame.view.AssetManager;
-import com.rocketfool.rocketgame.view.GameScreen;
-import com.rocketfool.rocketgame.view.MainMenuScreen;
 
 /**
  * Created by alpino-64 on 19.04.2016.

@@ -1,10 +1,12 @@
 package com.rocketfool.rocketgame.model;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.view.GameScreen;
 import com.badlogic.gdx.utils.Timer;
+import sun.util.logging.PlatformLogger;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 import static com.rocketfool.rocketgame.util.Constants.FRAME_RATE;
@@ -108,6 +110,50 @@ public class Level {
     //endregion
 
     //region Methods
+
+    public void resetLevel() {
+        Level newWorld = null;
+
+        switch (levelNo) {
+            case 0:
+                newWorld = LevelManager.createLevel0();
+                break;
+            case 1:
+                newWorld = LevelManager.createLevel1();
+                break;
+            case 2:
+                newWorld = LevelManager.createLevel2();
+                break;
+            case 3:
+                newWorld = LevelManager.createLevel3();
+                break;
+            case 4:
+                newWorld = LevelManager.createLevel4();
+                break;
+            case 5:
+                newWorld = LevelManager.createLevel5();
+                break;
+        }
+
+        this.world = newWorld.world;
+        this.playable = newWorld.playable;
+        //his.screen = newWorld.screen;
+        this.map = newWorld.map;
+        this.triggers = newWorld.triggers;
+        this.waypoints = newWorld.waypoints;
+        this.planets = newWorld.planets;
+        this.timePassed = newWorld.timePassed;
+        this.timePassed2 = newWorld.timePassed2;
+        this.currentGravForce = newWorld.currentGravForce;
+        this.score = newWorld.score;
+        this.state = newWorld.state;
+        //this.health -= 1;
+        this.popUp = newWorld.popUp;
+
+        screen.lookAt(playable);
+
+        playable.update(0);
+    }
 
     /**
      * Update models per frame
@@ -229,13 +275,13 @@ public class Level {
     private void planetCollision(Contact contact) {
         System.out.println("planet collision");
         if (!DEBUG)
-            setState(State.GAME_OVER);
+            setState(State.HEALTH_OVER);
     }
 
     private void obstacleCollision(Contact contact) {
         System.out.println("obstacle collision");
         if (!DEBUG)
-            setState(State.GAME_OVER);
+            setState(State.HEALTH_OVER);
     }
 
     /**
@@ -325,11 +371,7 @@ public class Level {
             setState(State.GAME_OVER);
         }
         else {
-            // TODO: restart from checkpoint etc.
-            // ridicule gamer etc.
-
-
-            // restart game
+            resetLevel();
             setState(State.RUNNING);
         }
     }

@@ -210,10 +210,11 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
 
         //Earth
-        level.planets.add(new Planet(14000, 11000, 6.0f * 1.0e25f, 650, null, level.world, 2));
+        level.planets.add(new Planet(14000, 11000, 6.0f * 1.0e25f, 650, null, level.world, 8));
         //Moon
-        level.planets.add(new Planet(21000, 14000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 3));
+        level.planets.add(new Planet(21000, 14000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 9));
         level.planets.get(1).setOrbitPreset(true);
+        level.gameObjects.add(new MoonAsteroid(level.planets.get(1), 3.25e2f, 40, level.world));
         //initialization of the rocket
         level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
         level.playable.getBody().setLinearVelocity(50f, -50f);
@@ -251,20 +252,24 @@ public class LevelManager {
         level.timer.start();
         time = 0.01f;
 
-        Timer.schedule(new Timer.Task() {
+        //TODO: Crashed UFO at the Moon is needed (simple waypoint image)
+
+       /* Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                level.screen.setZoom(7f);
                            }
                        },
-                time);
-        time += 4;
+                0.001f);*/
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("That strange object from earlier seems to have crashed on the Moon! " +
-                                       "Your task is to investigate it and recover what you find!");
-                               objectiveWindow.setText("Examine the object on the Moon");
+                               //System.out.println("You took off from the Earth because it looks like there is a crash at the Moon. Could they be ALIENS? Go check it out.");
+                               Waypoint alienShip = new Waypoint(6500, 7105, 5);
+                               level.waypoints.add(alienShip);
+                               popUp.setText("You are on the Earth's orbit right now.");
+                               popUp.setText("Try to leave to the orbit and slowly approach the Moon");
+                               objectiveWindow.setText("Examine the object on the Moon's orbit");
                            }
                        },
                 time);
