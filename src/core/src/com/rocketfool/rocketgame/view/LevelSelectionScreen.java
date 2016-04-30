@@ -101,7 +101,9 @@ public class LevelSelectionScreen implements Screen{
         level2.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new MoonCrashScreen(game, batch, font));
+                //game.setScreen(new MoonCrashScreen(game, batch, font));
+                // TODO: revert this shit
+                game.setScreen(new GameScreen(LevelManager.createLevel2(), game, batch, font));
             }
         });
 

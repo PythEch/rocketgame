@@ -27,7 +27,7 @@ public class Waypoint extends GameObject {
     public Vector2 getPosition() {
         float angle = getAngle();
 
-        return level.getPlayable().getBody().getPosition().add(new Vector2(10, 0).rotate(angle));
+        return level.getPlayable().getBody().getPosition().add(new Vector2(5, 0).rotate(angle));
     }
 
     public float getAngle() {
