@@ -15,10 +15,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
-import com.rocketfool.rocketgame.model.Level;
-import com.rocketfool.rocketgame.model.Planet;
-import com.rocketfool.rocketgame.model.TrajectorySimulator;
-import com.rocketfool.rocketgame.model.VisualMeteor;
+import com.rocketfool.rocketgame.model.*;
 import com.badlogic.gdx.utils.Timer;
 import com.rocketfool.rocketgame.util.GamePreferences;
 
@@ -163,6 +160,8 @@ public class WorldRenderer implements Disposable {
         drawPlayer(batch);
         drawTrajectory(batch);
         drawWarningSign(batch);
+        drawLevel2MoonAsteroid(batch);
+
 		if (!QUICK_LOAD)
         for (VisualMeteor meteor : meteors) {
             meteor.update(Gdx.graphics.getDeltaTime());
@@ -288,6 +287,7 @@ public class WorldRenderer implements Disposable {
         }
     }
 
+
     private void drawMeteors(SpriteBatch batch) {
         for (VisualMeteor meteor : meteors) {
             if (meteor.getLocation().x > 0 &&
@@ -356,6 +356,7 @@ public class WorldRenderer implements Disposable {
             }
         }
     }
+
     private void drawWarningSign(SpriteBatch batch) {
         //Draws warning sign
         if (trajectorySimulator.isCollided()) {
@@ -372,6 +373,23 @@ public class WorldRenderer implements Disposable {
                     myHeight
             );
         }
+    }
+
+    private void drawLevel2MoonAsteroid(SpriteBatch batch) {
+
+        for (int i = 0; i < level.getGameObjects().size; i++) {
+            if (level.getGameObjects().get(i) instanceof MoonAsteroid) {
+                MoonAsteroid obj = (MoonAsteroid) level.getGameObjects().get(i);
+                batch.draw(
+                        AssetManager.TOXIC_METEOR,
+                        obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getRadius() * toPixel * 2,
+                        obj.getRadius() * toPixel * 2
+                );
+            }
+        }
+
     }
 
     public TrajectorySimulator getTrajectorySimulator() {

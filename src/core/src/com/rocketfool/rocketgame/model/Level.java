@@ -406,5 +406,9 @@ public class Level {
         return triggers;
     }
 
+    public Array<GameObject> getGameObjects() {
+        return gameObjects;
+    }
+
     //endregion
 }

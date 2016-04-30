@@ -10,6 +10,8 @@ public class MoonAsteroid extends SolidObject {
     private Planet moon;
     private float distance;
     private float angle;
+    private float radius;
+
 
     public MoonAsteroid(Planet moon, float distance, float radius, World world) {
         this.moon = moon;
@@ -24,7 +26,7 @@ public class MoonAsteroid extends SolidObject {
         bodyDef.position.set(moon.getBody().getPosition().x, moon.getBody().getPosition().y);
 
         Body body = world.createBody(bodyDef);
-
+        this.radius = radius;
         CircleShape circle = new CircleShape();
         circle.setRadius(radius);
 
@@ -49,5 +51,13 @@ public class MoonAsteroid extends SolidObject {
 
         body.setTransform(newPos, angle);
         //body.setTransform(0,0,0);
+    }
+
+    public Vector2 getPosition(){
+        return body.getPosition();
+    }
+
+    public float getRadius(){
+        return radius;
     }
 }
