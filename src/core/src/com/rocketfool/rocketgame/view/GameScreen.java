@@ -86,11 +86,12 @@ public class GameScreen implements Screen {
     //endregion
 
     //region Constructor
-    public GameScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
+    public GameScreen(Level level, RocketGame game, SpriteBatch batch, BitmapFont font) {
         // Get these from the Game instance
         this.game = game;
         this.batch = batch;
         this.font = font;
+        this.level = level;
         elapsedTime = 0;
     }
     //endregion
@@ -397,7 +398,7 @@ public class GameScreen implements Screen {
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
 
-        level = LevelManager.createLevel4();
+        //level = LevelManager.createLevel2();
         cameraTarget = level.getPlayable();
         renderer = new WorldRenderer(level, camera);
         controller = new WorldController(level, this, renderer);

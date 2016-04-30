@@ -1,17 +1,13 @@
 package com.rocketfool.rocketgame.view;
 
 import aurelienribon.tweenengine.*;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
 import com.rocketfool.rocketgame.model.PopUp;
-import com.rocketfool.rocketgame.view.Splash.SpriteAccessor;
-
-import java.util.Arrays;
+import com.rocketfool.rocketgame.util.GamePreferences;
 
 /**
  * Created by pythech on 28/04/16.
@@ -26,7 +22,9 @@ public class PopupView {
     private float yCoord;
     private float startingYCoord;
     private float elapsedTime;
+    private float customDelay;
     private Tween tween;
+    private Music popupShutter;
 
     public PopupView(PopUp popup, OrthographicCamera camera) {
         this.popup = popup;
@@ -35,9 +33,17 @@ public class PopupView {
         this.startingYCoord = -AssetManager.POPUP_BODY.getHeight();
         this.yCoord = startingYCoord;
         this.elapsedTime = 0;
+        this.customDelay = -1;
 
         tweenManager = new TweenManager();
         Tween.registerAccessor(PopupView.class, new PopupAcessor());
+
+        popupShutter = AssetManager.POPUP_SHUTTER_1;
+    }
+
+    public PopupView(PopUp popup, OrthographicCamera camera, float delay) {
+        this(popup, camera);
+        this.customDelay = delay;
     }
 
     public void update(float deltaTime) {
@@ -55,11 +61,21 @@ public class PopupView {
             }
             Tween.set(this, PopupAcessor.Y_COORD).target(origY).start(tweenManager);
             tween = Tween.to(this, PopupAcessor.Y_COORD, 2).target(0).start(tweenManager);
+            playPopupOpener();
+            playPopupShutter();
         }
 
-        if (tween != null && yCoord == 0 && elapsedTime >= 2 + popup.getLastText().length() * 0.1f) {
+        float delay;
+        if (customDelay == -1) {
+            delay = 2 + popup.getLastText().length() * 0.1f;
+        }
+        else {
+            delay = customDelay;
+        }
+        if (tween != null && yCoord == 0 && elapsedTime >= delay) {
             Tween.set(this, PopupAcessor.Y_COORD).target(0).start(tweenManager);
             tween = Tween.to(this, PopupAcessor.Y_COORD, 2).target(startingYCoord).start(tweenManager);
+            stopPopupShutter();
         }
     }
 
@@ -128,12 +144,6 @@ public class PopupView {
                 camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord + 140) * camera.zoom,
                 355 * camera.zoom
         );
-
-        batch.draw(
-                AssetManager.GHOST,
-                camera.position.x - (camera.viewportWidth / 2f - 20 - 355) * camera.zoom,
-                camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord + 140) * camera.zoom
-        );
     }
 
     private String[] splitText(String text, float width, float height) {
@@ -149,6 +159,20 @@ public class PopupView {
         String bottomText = text.substring(topText.length());
 
         return new String[]{topText, bottomText};
+    }
+
+    public void playPopupOpener(){
+        AssetManager.POPUP_OPENER.play(GamePreferences.getInstance().getMasterVolume()/2f);
+    }
+
+    public void playPopupShutter(){
+        popupShutter.setVolume(GamePreferences.getInstance().getMasterVolume() /6f );
+        popupShutter.setLooping(true);
+        popupShutter.play();
+    }
+
+    public void stopPopupShutter(){
+        popupShutter.stop();
     }
 
     public float getyCoord() {
