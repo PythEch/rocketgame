@@ -210,9 +210,9 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
 
         //Earth
-        level.planets.add(new Planet(9000, 7000, 6.0f * 1.0e25f, 650, null, level.world, 8));
+        level.planets.add(new Planet(14000, 11000, 6.0f * 1.0e25f, 650, null, level.world, 8));
         //Moon
-        level.planets.add(new Planet(16000, 10000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 9));
+        level.planets.add(new Planet(21000, 14000, 1.0f * 1.0e25f, 170, level.planets.get(0), level.world, 9));
         level.planets.get(1).setOrbitPreset(true);
         level.gameObjects.add(new MoonAsteroid(level.planets.get(1), 3.25e2f, 40, level.world));
         //initialization of the rocket
