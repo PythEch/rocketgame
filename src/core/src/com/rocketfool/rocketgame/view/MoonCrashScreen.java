@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -22,6 +23,8 @@ import com.rocketfool.rocketgame.view.AssetManager;
 import com.rocketfool.rocketgame.view.MainMenuScreen;
 import com.rocketfool.rocketgame.view.PopupView;
 import com.rocketfool.rocketgame.view.SpriteAccessor;
+
+import static com.rocketfool.rocketgame.util.Constants.toPixel;
 
 public class MoonCrashScreen implements Screen {
 
@@ -75,9 +78,10 @@ public class MoonCrashScreen implements Screen {
             }
         },13f);
 
-        meteorAngle = 250;
-        meteorCenter = new Vector2(500, 600);
-        meteorDistance = 30;
+        meteorAngle = 150;
+        meteorCenter = new Vector2(970, 400);
+        meteorPosition = new Vector2(0, 0);
+        meteorDistance = 450;
     }
 
     @Override
@@ -98,16 +102,30 @@ public class MoonCrashScreen implements Screen {
     }
 
     private void updateMeteor(float deltaTime) {
-        meteorAngle += 0.1f;
-        meteorPosition = meteorCenter.add(new Vector2(0, meteorDistance).rotateRad(meteorAngle));
+        meteorAngle -= 0.3f;
+        meteorPosition = meteorCenter.cpy().add(new Vector2(0, meteorDistance).rotate(meteorAngle));
     }
 
     private void drawMeteor(SpriteBatch batch) {
         Texture texture = AssetManager.TOXIC_METEOR;
+        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         batch.draw(
                 texture,
                 meteorPosition.x,
-                meteorPosition.y
+                meteorPosition.y,
+                texture.getWidth() / 2f,
+                texture.getHeight() / 2f,
+                texture.getWidth(),
+                texture.getHeight(),
+                0.5f,
+                0.5f,
+                meteorAngle * 4,
+                0,
+                0,
+                texture.getWidth(),
+                texture.getHeight(),
+                false,
+                false
         );
     }
 
