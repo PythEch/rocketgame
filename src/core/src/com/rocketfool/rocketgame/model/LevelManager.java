@@ -216,7 +216,7 @@ public class LevelManager {
 
         level.triggers.add(new Trigger() {
             @Override
-            public boolean isTriggered() {
+            public boolean isTriggeredInternal() {
                 return level.playable.getBody().getAngularVelocity() < 0.1;
             }
 
@@ -228,7 +228,7 @@ public class LevelManager {
 
         level.triggers.add(new Trigger() {
             @Override
-            public boolean isTriggered() {
+            public boolean isTriggeredInternal() {
                 return level.playable.getBody().getLinearVelocity().len() < 1;
             }
 
@@ -240,7 +240,7 @@ public class LevelManager {
 
         level.triggers.add(new Trigger() {
             @Override
-            public boolean isTriggered() {
+            public boolean isTriggeredInternal() {
                 return level.playable.getBody().getLinearVelocity().len() < (level.playable.getMaxVelocity() / 20f);
             }
 
@@ -252,7 +252,7 @@ public class LevelManager {
 
         level.triggers.add(new Trigger() {
             @Override
-            public boolean isTriggered() {
+            public boolean isTriggeredInternal() {
                 return level.playable.getCurrentThrust() < 1;
             }
 
@@ -900,10 +900,8 @@ public class LevelManager {
         final PositionTrigger planet0 = new PositionTrigger(11000, 13000, 1500, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
-                    popUp.setText("This is not the planet you are looking for. Move along!");
-                    //level.waypoints.removeIndex(0);
-                }
+                popUp.setText("This is not the planet you are looking for. Move along!");
+                //level.waypoints.removeIndex(0);
             }
         };
         level.triggers.add(planet0);
@@ -911,11 +909,10 @@ public class LevelManager {
         final PositionTrigger planet1 = new PositionTrigger(5500, 5500, 1000, level.playable) {
             @Override
             public void triggerPerformed() {
-                if ((level.timePassed2 % PositionTrigger.trigDelay == 0)) {
-                    popUp.setText("What a beautiful planet this is! However, there is no sign of life here.");
-                    objectiveWindow.setText("Continue investigating planets");
-                    //level.waypoints.removeIndex(1);
-                }
+                popUp.setText("What a beautiful planet this is! However, there is no sign of life here.");
+                objectiveWindow.setText("Continue investigating planets");
+                //level.waypoints.removeIndex(1);
+
             }
         };
         level.triggers.add(planet1);
@@ -923,10 +920,9 @@ public class LevelManager {
         final PositionTrigger planet2 = new PositionTrigger(14000, 3700, 850, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
-                    popUp.setText("Nothing to do here! I don't want to be on this planet anymore.");
-                    //level.waypoints.removeIndex(2);
-                }
+                popUp.setText("Nothing to do here! I don't want to be on this planet anymore.");
+                //level.waypoints.removeIndex(2);
+
             }
         };
         level.triggers.add(planet2);
@@ -934,15 +930,14 @@ public class LevelManager {
         final PositionTrigger planet3 = new PositionTrigger(8200, 7200, 700, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
-                    //if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
-                    popUp.setText("I have a bad feeling about this planet. Let's move on!");
-                    //level.waypoints.removeIndex(3);
-                    //}
-                    //else {
-                    //    popUp.setText("It seems we skipped one planet on which aliens might be living!");
-                    //}
-                }
+                //if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
+                popUp.setText("I have a bad feeling about this planet. Let's move on!");
+                //level.waypoints.removeIndex(3);
+                //}
+                //else {
+                //    popUp.setText("It seems we skipped one planet on which aliens might be living!");
+                //}
+
             }
         };
         level.triggers.add(planet3);
@@ -955,16 +950,16 @@ public class LevelManager {
         final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
-                    if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
-                        popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
-                                "called Oz-Turca and they call themselves Oz-Jans."); //risky?**
-                    }
-                    //TODO: Alien & Human Gardasligi animasyonu. GAME OVER HERE
-                    else {
-                        popUp.setText("We better check all the other planets before looking here.");
-                    }
+
+                if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
+                    popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
+                            "called Oz-Turca and they call themselves Oz-Jans."); //risky?**
                 }
+                //TODO: Alien & Human Gardasligi animasyonu. GAME OVER HERE
+                else {
+                    popUp.setText("We better check all the other planets before looking here.");
+                }
+
             }
         };
         level.triggers.add(secret);

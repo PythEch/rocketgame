@@ -1,13 +1,11 @@
 package com.rocketfool.rocketgame.model;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.view.GameScreen;
 import com.badlogic.gdx.utils.Timer;
-import sun.util.logging.PlatformLogger;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 import static com.rocketfool.rocketgame.util.Constants.FRAME_RATE;
@@ -30,8 +28,8 @@ public class Level {
     protected Waypoint waypoint;
     protected Array<Planet> planets;
     protected Array<GameObject> gameObjects;
-    protected float timePassed;
-    protected float timePassed2;
+    protected float timePassedReal;
+    protected float timePassedFixed;
     protected float currentGravForce;
     protected int score;
     protected State state;
@@ -60,8 +58,8 @@ public class Level {
         this.triggers = new Array<Trigger>();
         this.planets = new Array<Planet>();
         this.gameObjects = new Array<GameObject>();
-        this.timePassed = 0;
-        this.timePassed2 = 0;
+        this.timePassedReal = 0;
+        this.timePassedFixed = 0;
         this.score = 0;
         this.popUp = new PopUp();
 
@@ -136,8 +134,8 @@ public class Level {
         this.triggers = newWorld.triggers;
         this.waypoint = newWorld.waypoint;
         this.planets = newWorld.planets;
-        this.timePassed = newWorld.timePassed;
-        this.timePassed2 = newWorld.timePassed2;
+        this.timePassedReal = newWorld.timePassedReal;
+        this.timePassedFixed = newWorld.timePassedFixed;
         this.currentGravForce = newWorld.currentGravForce;
         this.gameObjects = newWorld.gameObjects;
         this.score = newWorld.score;
@@ -159,11 +157,11 @@ public class Level {
      */
     public void update(float deltaTime) {
         if (state == State.RUNNING) {
-            timePassed += deltaTime;
+            timePassedReal += deltaTime;
             timer.start();
             // Hack to make physics engine stable
             deltaTime = FRAME_RATE;
-            timePassed2 += deltaTime;
+            timePassedFixed += deltaTime;
 
             playable.update(deltaTime);
             updateGravity(deltaTime);
@@ -185,9 +183,6 @@ public class Level {
         for (Trigger trigger : triggers) {
             if (trigger.isTriggered()) {
                 trigger.triggerPerformed();
-            }
-            if ( trigger instanceof PositionTrigger){
-                ((PositionTrigger) trigger).followHost();
             }
         }
     }
@@ -239,11 +234,11 @@ public class Level {
     public void updatePresetOrbits() {
         for (GameObject obj: gameObjects){
             if ((obj instanceof  SolidObject) && (((SolidObject) obj).isOrbitPreset()))
-                quickPresetOrbits((SolidObject) obj, levelNo, timePassed2);
+                quickPresetOrbits((SolidObject) obj, levelNo, timePassedFixed);
         }
         for (GameObject obj: planets){
             if ((obj instanceof  SolidObject) && (((SolidObject) obj).isOrbitPreset()))
-                quickPresetOrbits((SolidObject) obj, levelNo, timePassed2);
+                quickPresetOrbits((SolidObject) obj, levelNo, timePassedFixed);
         }
     }
 
@@ -371,8 +366,8 @@ public class Level {
         return map;
     }
 
-    public float getTimePassed() {
-        return timePassed;
+    public float getTimePassedReal() {
+        return timePassedReal;
     }
 
     public int getScore() {

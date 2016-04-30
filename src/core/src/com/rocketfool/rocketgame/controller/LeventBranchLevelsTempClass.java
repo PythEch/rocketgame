@@ -724,7 +724,7 @@ public abstract class LeventBranchLevelsTempClass {
         final PositionTrigger planet0 = new PositionTrigger(11000, 13000, 1500, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
+                if (level.timePassedFixed % PositionTrigger.trigDelay == 0) {
                     popUp.setText("This is not the planet you are looking for. Move along!");
                     level.waypoints.removeIndex(0);
                 }
@@ -735,7 +735,7 @@ public abstract class LeventBranchLevelsTempClass {
         final PositionTrigger planet1 = new PositionTrigger(5500, 5500, 1000, level.playable) {
             @Override
             public void triggerPerformed() {
-                if ((level.timePassed2 % PositionTrigger.trigDelay == 0)) {
+                if ((level.timePassedFixed % PositionTrigger.trigDelay == 0)) {
                     popUp.setText("What a beautiful planet this is! However, there is no sign of life here.");
                     objectiveWindow.setText("Continue investigating planets");
                     level.waypoints.removeIndex(1);
@@ -747,7 +747,7 @@ public abstract class LeventBranchLevelsTempClass {
         final PositionTrigger planet2 = new PositionTrigger(14000, 3700, 850, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
+                if (level.timePassedFixed % PositionTrigger.trigDelay == 0) {
                     popUp.setText("Nothing to do here! I don't want to be on this planet anymore.");
                     level.waypoints.removeIndex(2);
                 }
@@ -758,7 +758,7 @@ public abstract class LeventBranchLevelsTempClass {
         final PositionTrigger planet3 = new PositionTrigger(8200, 7200, 700, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
+                if (level.timePassedFixed % PositionTrigger.trigDelay == 0) {
                     //if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
                     popUp.setText("I have a bad feeling about this planet. Let's move on!");
                     level.waypoints.removeIndex(3);
@@ -779,7 +779,7 @@ public abstract class LeventBranchLevelsTempClass {
         final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
+                if (level.timePassedFixed % PositionTrigger.trigDelay == 0) {
                     if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
                         popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
                                 "called Oz-Turca and they call themselves Oz-Jans."); //risky?**
