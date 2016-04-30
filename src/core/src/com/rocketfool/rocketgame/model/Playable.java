@@ -29,7 +29,6 @@ public class Playable extends SolidObject {
     /** Current thrust in Newtons in every "deltaTime"*/
     private float currentThrust;
     /** Reaction wheel strength (assuming the craft rotates using electricity). */
-    //TODO rename
     private float deltaTorque;
     /** Thrust change rate multiplier */
     private float deltaThrust;
@@ -115,7 +114,7 @@ public class Playable extends SolidObject {
     /** Reduce mass of the spacecraft by burning its fuel */
     private void consumeFuelAndDecreaseMass(float deltaTime) {
         if (fuelLeft > 0) {
-            float fuelSpent = currentThrust / fuelSpecificImpulse;
+            float fuelSpent = currentThrust * deltaTime / fuelSpecificImpulse;
             fuelLeft -= fuelSpent;
 
             //The mass information of the body changes only when MassData is updated

@@ -6,8 +6,10 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Timer;
+import com.rocketfool.rocketgame.model.ForceDiagram;
 import com.rocketfool.rocketgame.model.Playable;
 import com.rocketfool.rocketgame.model.Level;
+import com.rocketfool.rocketgame.model.TrajectorySimulator;
 import com.rocketfool.rocketgame.view.GameScreen;
 import com.rocketfool.rocketgame.view.WorldRenderer;
 
@@ -88,6 +90,14 @@ public class WorldController {
                 renderer.playThrusterStarter();
                 renderer.setThrustStopperActive( true);
             }
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
+            TrajectorySimulator.enabled = !TrajectorySimulator.enabled;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
+            ForceDiagram.setEnabled(!ForceDiagram.isEnabled());
         }
 
         if (DEBUG) {
