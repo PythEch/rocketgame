@@ -255,7 +255,8 @@ public class LevelManager {
                                //System.out.println("You took off from the Earth because it looks like there is a crash at the Moon. Could they be ALIENS? Go check it out.");
                                Waypoint alienShip = new Waypoint(6500, 7105, 5);
                                level.waypoints.add(alienShip);
-                               popUp.setText("You took off from the Earth because it looks like there is a crash at the Moon. Could they be ALIENS? Go check it out.");
+                               popUp.setText("You are on the Earth's orbit right now.");
+                               popUp.setText("Try to leave to the orbit and slowly approach the Moon");
                                objectiveWindow.setText("Examine the Moon");
                            }
                        },
