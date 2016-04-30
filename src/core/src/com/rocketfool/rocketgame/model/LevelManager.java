@@ -242,13 +242,13 @@ public class LevelManager {
 
         //TODO: Crashed UFO at the Moon is needed (simple waypoint image)
 
-        Timer.schedule(new Timer.Task() {
+       /* Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                level.screen.setZoom(6f); //FIXME
                            }
                        },
-                0.001f);
+                0.001f);*/
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {

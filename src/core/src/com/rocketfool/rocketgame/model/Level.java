@@ -1,5 +1,6 @@
 package com.rocketfool.rocketgame.model;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
@@ -34,6 +35,7 @@ public class Level {
     protected State state;
     protected int health = 3;
     protected PopUp popUp;
+
     //endregion
 
     //region Nested Types
@@ -103,7 +105,7 @@ public class Level {
     //region Methods
 
     public void resetLevel() {
-        Level newWorld;
+        Level newWorld = null;
 
         switch (levelNo) {
             case 0:
@@ -128,6 +130,25 @@ public class Level {
                 newWorld = LevelManager.createLevel6();
                 break;
         }
+
+        this.world = newWorld.world;
+        this.playable = newWorld.playable;
+        //his.screen = newWorld.screen;
+        this.map = newWorld.map;
+        this.triggers = newWorld.triggers;
+        this.waypoints = newWorld.waypoints;
+        this.planets = newWorld.planets;
+        this.timePassed = newWorld.timePassed;
+        this.timePassed2 = newWorld.timePassed2;
+        this.currentGravForce = newWorld.currentGravForce;
+        this.score = newWorld.score;
+        this.state = newWorld.state;
+        this.health -= 1;
+        this.popUp = newWorld.popUp;
+
+        screen.lookAt(playable);
+
+        playable.update(1/60f);
     }
 
     /**

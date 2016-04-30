@@ -139,7 +139,7 @@ public class WorldRenderer implements Disposable {
         },3.0f);
         AssetManager.DEATH_SIGN.play(Preferences.getInstance().getMasterVolume() );
 
-
+        level.resetLevel();
     }
 
     public void draw(SpriteBatch batch) {
