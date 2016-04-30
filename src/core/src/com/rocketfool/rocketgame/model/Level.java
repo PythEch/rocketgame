@@ -18,7 +18,8 @@ public class Level {
     //endregion
 
     //region Fields
-    protected static int levelNo;
+    protected static boolean[] indicators = new boolean[7];
+    protected static byte levelNo;
     protected World world;
     protected Playable playable;
     protected GameScreen screen;
@@ -32,7 +33,7 @@ public class Level {
     protected float currentGravForce;
     protected int score;
     protected State state;
-    protected int health = 3;
+    protected byte health = 3;
     protected PopUp popUp;
     protected Timer timer;
     //endregion
@@ -50,6 +51,11 @@ public class Level {
     //region Constructor
     public Level() {
         this.state = State.RUNNING;
+
+        //Prepare various indicators
+        for (boolean b : indicators){
+                b = false;
+        }
 
         // Create a Box2D world with no gravity
         this.world = new World(new Vector2(0, 0), true);
@@ -120,10 +126,22 @@ public class Level {
             updateVisualObjects(deltaTime);
             updateWaypoints(deltaTime);
             updatePresetOrbits();
+            updateIndicators();
 
             // A world step simulates the Box2D world
             world.step(deltaTime, 8, 3);
         }
+    }
+
+    /**
+     *  When a listed condition is met, the indicator is activated.
+     */
+    public void updateIndicators(){
+        indicators[0] = (playable.getBody().getAngularVelocity() < 0.1);
+        indicators[1] = (playable.getBody().getLinearVelocity().len() < 1);
+        indicators[2] = (playable.getBody().getLinearVelocity().len() < (playable.getMaxVelocity() / 20f));
+        indicators[3] = (playable.getCurrentThrust() < 1);
+
     }
 
     /**
@@ -352,7 +370,7 @@ public class Level {
         return health;
     }
 
-    public void setHealth(int health) {
+    public void setHealth(byte health) {
         this.health = health;
     }
 

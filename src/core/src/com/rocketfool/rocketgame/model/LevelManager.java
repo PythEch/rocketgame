@@ -3,6 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
+import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.util.Constants;
 
 import static com.rocketfool.rocketgame.model.Playable.BASE;
@@ -71,6 +72,7 @@ public class LevelManager {
                            public void run() {
                                level.screen.getMinimap().setEnabled(false);
                                TrajectorySimulator.enabled = false;
+                               WorldController.controlState = 1;
                            }
                        },
                 time);
@@ -89,7 +91,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                popUp.setText("Use RIGHT & LEFT arrow keys to control angular movement.");
-
+                               WorldController.controlState = 2;
                            }
                        },
                 time);
@@ -98,6 +100,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                popUp.setText("SAS restored! \n The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
+                               WorldController.controlState = 3;
                            }
                        },
                 time);
@@ -108,6 +111,7 @@ public class LevelManager {
                                popUp.setText("That's better! Now use the UP & DOWN arrow keys to increase/ decrease" +
                                        "your thrust. \n Try to reduce your velocity to zero " +
                                        "(The velocity display is at the top).");
+                               WorldController.controlState = 4;
                            }
                        },
                 time);
@@ -125,6 +129,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                popUp.setText("OK! Now let's get our bearings! \n \n Use A & S keys to zoom out or zoom in, and press ESC for the Pause Menu.");
+                               WorldController.controlState = 5;
                            }
                        },
                 time);
@@ -135,6 +140,7 @@ public class LevelManager {
                                TrajectorySimulator.enabled = true;
                                popUp.setText("Supercomputer connections restored! Trajectory calculation features online." +
                                        " (Press T to activate it. It doesn't work unless you're moving.)");
+                               WorldController.controlState = 6;
                            }
                        },
                 time);
@@ -142,7 +148,8 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("The yellow dots in front of you simulates your future motion.");
+                               popUp.setText("The yellow dots in front of you simulates your future motion. The computer can also " +
+                                       "show the forces active on you (toggled with the R key).");
                            }
                        },
                 time);
