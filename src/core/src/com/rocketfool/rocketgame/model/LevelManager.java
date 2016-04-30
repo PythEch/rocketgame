@@ -222,7 +222,7 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers & waypoints
-        final PositionTrigger moonTrig = new PositionTrigger(level.planets.get(1), 170, 0, 150, level.playable) {
+        final PositionTrigger moonTrig = new PositionTrigger(level.planets.get(1), 170, 0, 250, level.playable) {
             @Override
             public void triggerPerformed() {
                 //(Half way through mission)
