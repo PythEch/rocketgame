@@ -4,8 +4,6 @@ package com.rocketfool.rocketgame.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.backends.lwjgl.audio.Wav;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -22,7 +20,7 @@ import com.rocketfool.rocketgame.model.Planet;
 import com.rocketfool.rocketgame.model.TrajectorySimulator;
 import com.rocketfool.rocketgame.model.VisualMeteor;
 import com.badlogic.gdx.utils.Timer;
-import com.rocketfool.rocketgame.model.*;
+import com.rocketfool.rocketgame.util.GamePreferences;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -134,14 +132,14 @@ public class WorldRenderer implements Disposable {
         stopThrusterGoinger();
 
         //Plays collusionSound
-        AssetManager.EXPLOSION.play(Preferences.getInstance().getMasterVolume() / 5f);
+        AssetManager.EXPLOSION.play(GamePreferences.getInstance().getMasterVolume() / 5f);
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
 
             }
         },3.0f);
-        AssetManager.DEATH_SIGN.play(Preferences.getInstance().getMasterVolume() );
+        AssetManager.DEATH_SIGN.play(GamePreferences.getInstance().getMasterVolume() );
 
         level.setState(Level.State.HEALTH_OVER);
         if (level.getState() == Level.State.GAME_OVER) {
@@ -390,11 +388,11 @@ public class WorldRenderer implements Disposable {
     //SFX METHODS
     public void playThrustStarter() {
         System.out.println("starter");
-        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f);
+        thrusterGoinger.play(GamePreferences.getInstance().getMasterVolume() / 10f);
     }
 
     public void playThrusterGoinger() {
-        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f);
+        thrusterGoinger.play(GamePreferences.getInstance().getMasterVolume() / 10f);
     }
 
     public void stopThrusterGoinger() {
@@ -402,12 +400,12 @@ public class WorldRenderer implements Disposable {
     }
 
     public void playThrusterStarter() {
-        AssetManager.THRUSTER_STARTER.play(Preferences.getInstance().getMasterVolume() / 10f);
+        AssetManager.THRUSTER_STARTER.play(GamePreferences.getInstance().getMasterVolume() / 10f);
     }
 
     public void playThrusterEnder() {
         if (isThrustStopperActive)
-            AssetManager.THRUSTER_ENDER.play(Preferences.getInstance().getMasterVolume() / 10f);
+            AssetManager.THRUSTER_ENDER.play(GamePreferences.getInstance().getMasterVolume() / 10f);
     }
 
     public void setThrustStopperActive(boolean thrustStopperActive) {
@@ -415,7 +413,7 @@ public class WorldRenderer implements Disposable {
     }
 
     public void playBackgroundMusic() {
-        bqMusic.setVolume(Preferences.getInstance().getMasterVolume() / 4f);
+        bqMusic.setVolume(GamePreferences.getInstance().getMasterVolume() / 4f);
         bqMusic.play();
     }
 
@@ -424,7 +422,7 @@ public class WorldRenderer implements Disposable {
     }
 
     public void playWarningSound() {
-        warningSound.setVolume(Preferences.getInstance().getMasterVolume() / 3f);
+        warningSound.setVolume(GamePreferences.getInstance().getMasterVolume() / 3f);
         warningSound.play();
     }
 

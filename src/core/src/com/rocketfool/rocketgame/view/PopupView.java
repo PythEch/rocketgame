@@ -1,16 +1,13 @@
 package com.rocketfool.rocketgame.view;
 
 import aurelienribon.tweenengine.*;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Timer;
 import com.rocketfool.rocketgame.model.PopUp;
-import com.rocketfool.rocketgame.model.Preferences;
+import com.rocketfool.rocketgame.util.GamePreferences;
 
 /**
  * Created by pythech on 28/04/16.
@@ -165,11 +162,11 @@ public class PopupView {
     }
 
     public void playPopupOpener(){
-        AssetManager.POPUP_OPENER.play(Preferences.getInstance().getMasterVolume()/2f);
+        AssetManager.POPUP_OPENER.play(GamePreferences.getInstance().getMasterVolume()/2f);
     }
 
     public void playPopupShutter(){
-        popupShutter.setVolume(Preferences.getInstance().getMasterVolume() /6f );
+        popupShutter.setVolume(GamePreferences.getInstance().getMasterVolume() /6f );
         popupShutter.setLooping(true);
         popupShutter.play();
     }
