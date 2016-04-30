@@ -505,18 +505,10 @@ public class GameScreen implements Screen {
                         DEBUG = !DEBUG;
                         break;
                     case 1:
-                        saveCheckpoint();
+                        level.resetLevel();
+                        level.setHealth(3);
                         break;
                     case 2:
-                        loadCheckpoint();
-                        break;
-                    case 3:
-                        restartLevel();
-                        break;
-                    case 4:
-                        showOptions();
-                        break;
-                    case 5:
                         game.setScreen(new MainMenuScreen(game, batch, font));
                         dispose();
                         break;
@@ -546,15 +538,9 @@ public class GameScreen implements Screen {
 
         dialog.button("Toggle Debug", 0);
         dialog.getButtonTable().row();
-        dialog.button("Save Checkpoint", 1);
+        dialog.button("Restart Level", 1);
         dialog.getButtonTable().row();
-        dialog.button("Load Checkpoint", 2);
-        dialog.getButtonTable().row();
-        dialog.button("Restart Level", 3);
-        dialog.getButtonTable().row();
-        dialog.button("Options", 4);
-        dialog.getButtonTable().row();
-        dialog.button("Exit", 5);
+        dialog.button("Exit", 2);
         dialog.getButtonTable().row().padTop(
                 dialog.getButtonTable().getCells().first().getPrefHeight()
         );

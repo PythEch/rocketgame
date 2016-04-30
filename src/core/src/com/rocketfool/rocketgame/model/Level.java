@@ -36,7 +36,7 @@ public class Level {
     protected float currentGravForce;
     protected int score;
     protected State state;
-    protected byte health = 3;
+    protected int health = 3;
     protected PopUp popUp;
     protected Timer timer;
     //endregion
@@ -56,8 +56,8 @@ public class Level {
         this.state = State.RUNNING;
 
         //Prepare various indicators
-        for (boolean b : indicators){
-                b = false;
+        for (int i = 0; i < indicators.length; i++) {
+            indicators[i] = false;
         }
 
         // Create a Box2D world with no gravity
@@ -145,10 +145,14 @@ public class Level {
         this.timePassed = newWorld.timePassed;
         this.timePassed2 = newWorld.timePassed2;
         this.currentGravForce = newWorld.currentGravForce;
+        this.gameObjects = newWorld.gameObjects;
         this.score = newWorld.score;
         this.state = newWorld.state;
         //this.health -= 1;
         this.popUp = newWorld.popUp;
+
+        this.timer = newWorld.timer;
+
 
         screen.lookAt(playable);
 
@@ -401,7 +405,7 @@ public class Level {
         return health;
     }
 
-    public void setHealth(byte health) {
+    public void setHealth(int health) {
         this.health = health;
     }
 

@@ -131,6 +131,8 @@ public class LevelSelectionScreen implements Screen{
 
         stage.addAction(Actions.alpha(0f));//0 = transperent
 
+       new FitViewport(1280, 720).apply();
+
     }
 
     @Override
@@ -149,8 +151,8 @@ public class LevelSelectionScreen implements Screen{
     }
 
     @Override
-    public void resize(int i, int i1) {
-
+    public void resize(int width, int height) {
+            stage.getViewport().update(width, height, true);
     }
 
     @Override
