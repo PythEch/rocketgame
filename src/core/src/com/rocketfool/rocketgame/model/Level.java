@@ -333,6 +333,12 @@ public class Level {
         else if (state == State.GAME_OVER) {
             System.out.println("time to pack up boyz");
         }
+        else if (state == State.RUNNING) {
+            Timer.instance().start();
+        }
+        else if (state == State.PAUSED) {
+            Timer.instance().stop();
+        }
     }
 
     public void healthOver() {

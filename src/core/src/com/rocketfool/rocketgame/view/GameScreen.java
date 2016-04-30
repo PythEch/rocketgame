@@ -530,7 +530,6 @@ public class GameScreen implements Screen {
                     @Override
                     public void run() {
                         level.setState(Level.State.RUNNING);
-                        System.out.println("called");
                     }
                 }, 0.150f);
             }
@@ -553,7 +552,6 @@ public class GameScreen implements Screen {
         }
         dialog.getCells().first().padTop(dialog.getPrefHeight() * 0.05f);
         dialog.padBottom(dialog.getPrefHeight() * 0.05f);
-
 
         dialog.key(Input.Keys.ESCAPE, -1);
         //dialog.key(Input.Keys.ENTER, 5);
