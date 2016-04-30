@@ -1,4 +1,4 @@
-package com.rocketfool.rocketgame.model;
+package com.rocketfool.rocketgame.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
@@ -9,15 +9,15 @@ import com.rocketfool.rocketgame.util.Constants;
 import static com.rocketfool.rocketgame.model.Playable.BASE;
 
 /**
- * Designs and initiates levels and manages them.
+ * COPY OF LEVELS FOR EASY ACCESS. DELETE LATER. Packaged wrong, I know... :P
  */
-public class LevelManager {
+public abstract class LeventBranchLevelsTempClass {
+    /*
     static float time; //message display time
+    Level level = new Level();
+
     //region Methods
 
-    /**
-     * Test Level
-     */
     public static Level createLevel0() {
         final Level level = new Level();
         Level.levelNo = 0;
@@ -559,9 +559,7 @@ public class LevelManager {
         return level;
     }
 
-    /**
-     * This level was cut for being too difficult to balance and too difficult to play.
-     */
+
     public static Level createLevelX() {
 
         final Level level = new Level();
@@ -658,7 +656,7 @@ public class LevelManager {
     public static Level createLevel5() {
         //Previously Level 6. Don't delete this one. :)
         /* For this level
-         * 
+         *
          * TODO: are trigger and waypoint places correct?
          * TODO: simple crosshairs sprite for all waypoints in this level
          *
@@ -683,7 +681,7 @@ public class LevelManager {
          * TODO reflections
          * TODO detailed design report
          * TODO ...?
-         */
+
 
         final Level level = new Level();
         Level.levelNo = 5;
@@ -845,5 +843,6 @@ public class LevelManager {
             }
         });
     }
-    //endregion
+    //endregion*/
 }
+
