@@ -119,8 +119,6 @@ public class GameScreen implements Screen {
 
         batch.setProjectionMatrix(camera.combined);
 
-        waypointAtlas = new TextureAtlas(Gdx.files.internal("waypointSheets/waypoint.atlas"));
-        waypointAnimation = new Animation(1f / 60f, waypointAtlas.getRegions() );
 
         batch.begin();
         // Our main draw method
@@ -343,10 +341,18 @@ public class GameScreen implements Screen {
         if (level.getWaypoint() != null) {
             //Texture texture = waypointAnimation.getKeyFrame(elapsedTime, true).getTexture();
            //texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+            TextureRegion texture = waypointAnimation.getKeyFrame(elapsedTime, true);
             batch.draw(
-                    waypointAnimation.getKeyFrame(elapsedTime, true),
+                    texture,
                     level.getWaypoint().getPosition().x * toPixel,
-                    level.getWaypoint().getPosition().y * toPixel
+                    level.getWaypoint().getPosition().y * toPixel,
+                    0,
+                    0,
+                    texture.getRegionWidth(),
+                    texture.getRegionHeight(),
+                    0.25f,
+                    0.25f,
+                    level.getWaypoint().getAngle()
             );
         }
 
@@ -443,6 +449,10 @@ public class GameScreen implements Screen {
         //For Particles
         particleEffect = new ParticleEffect();
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
+
+        //Waypoint
+        waypointAtlas = new TextureAtlas(Gdx.files.internal("waypointSheets/waypoint.atlas"));
+        waypointAnimation = new Animation(1f / 60f, waypointAtlas.getRegions() );
 
 
         //level = LevelManager.createLevel2();
