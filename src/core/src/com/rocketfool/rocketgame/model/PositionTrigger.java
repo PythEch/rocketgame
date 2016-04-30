@@ -12,12 +12,12 @@ public abstract class PositionTrigger implements Trigger {
     private float radius;
     /** When the target reaches the trigger, it is activated.*/
     private SolidObject target;
-    /** Position triggers can be made to follow host objects.*/
+    /** Position triggers can be made to move in unison with designated host objects.*/
     private SolidObject host;
     private float xOffset;
     private float yOffset;
     private boolean isTriggeredBefore;
-    private int trigCount;
+    public static float trigDelay = 1f;
     //endregion
 
     //region Constructors
@@ -28,7 +28,6 @@ public abstract class PositionTrigger implements Trigger {
         this.target = target;
         isTriggeredBefore = false;
         this.host = null;
-        trigCount = 0;
     }
 
     public PositionTrigger(SolidObject host, float xOffset, float yOffset, float radius, SolidObject target) {
@@ -38,7 +37,6 @@ public abstract class PositionTrigger implements Trigger {
         this.xOffset = xOffset;
         this.yOffset = yOffset;
         this.target = target;
-        trigCount = 0;
         followHost();
     }
     //endregion
@@ -57,7 +55,6 @@ public abstract class PositionTrigger implements Trigger {
 
         if (pos.dst(x, y) <= radius) {
             isTriggeredBefore = true;
-            trigCount++;
             return true;
         } else {
             return false;
@@ -72,8 +69,6 @@ public abstract class PositionTrigger implements Trigger {
     public float getY() {return y;}
 
     public float getRadius() {return radius;}
-
-    public int getTrigCount() {return trigCount;}
 
     //endregion
 }

@@ -646,8 +646,7 @@ public class LevelManager {
     public static Level createLevel5() {
         //Previously Level 6. Don't delete this one. :)
         /* For this level
-         * TODO: Stop triggers firing repetitively! But multiple fires may be needed too.
-         *       TrigCount didnt work. something like a trigdelay can work... might use the timer here?...
+         * 
          * TODO: are trigger and waypoint places correct?
          * TODO: simple crosshairs sprite for all waypoints in this level
          *
@@ -705,7 +704,7 @@ public class LevelManager {
         final PositionTrigger planet0 = new PositionTrigger(1000, 1000, 2000, level.playable) {//FIXME
             @Override
             public void triggerPerformed() {
-                if (this.getTrigCount() < 2){
+                if (level.timePassed2 % PositionTrigger.trigDelay == 0){
                     popUp.setText("This is not the planet you are looking for. Move along!");
                     Waypoint firstPlanet = new Waypoint(14000, 3600, 5);//FIXME
                     level.waypoints.add(firstPlanet);
@@ -717,7 +716,7 @@ public class LevelManager {
         final PositionTrigger planet1 = new PositionTrigger(5500, 5500, 1000, level.playable) {//FIXME
             @Override
             public void triggerPerformed() {
-                if (this.getTrigCount() < 2) {
+                if ((level.timePassed2 % PositionTrigger.trigDelay == 0)) {
                     popUp.setText("What a beautiful planet this is! However, there is no sign of life here.");
                     Waypoint secondPlanet = new Waypoint(14000, 3600, 5);//FIXME
                     level.waypoints.add(secondPlanet);
@@ -730,7 +729,7 @@ public class LevelManager {
         final PositionTrigger planet2 = new PositionTrigger(14000, 3000, 850, level.playable) {//FIXME
             @Override
             public void triggerPerformed() {
-                if (this.getTrigCount() < 2) {
+                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
                     popUp.setText("Nothing to do here! I don't want to be on this planet anymore.");
                     Waypoint thirdPlanet = new Waypoint(8200, 7000, 5);//FIXME
                     level.waypoints.add(thirdPlanet);
@@ -742,7 +741,7 @@ public class LevelManager {
         final PositionTrigger planet3 = new PositionTrigger(3200, 9200, 700, level.playable) {//FIXME
             @Override
             public void triggerPerformed() {
-                if (this.getTrigCount() < 2) {
+                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
                     if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
                         popUp.setText("I have a bad feeling about this planet. Let's move on!");
                         Waypoint secretOne = new Waypoint(9500, 10105, 5);//FIXME
@@ -758,17 +757,21 @@ public class LevelManager {
         final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {//FIXME
             @Override
             public void triggerPerformed() {
-                if (planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
-                    popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
-                            "called Oz-Turca and they call themselves Oz-Jans."); //risky?**
-                }
-                //TODO: Alien & Human Gardasligi animasyonu. GAME OVER HERE
-                else {
-                    popUp.setText("We better check all the other planets before looking here.");
+                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
+                    if (planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
+                        popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
+                                "called Oz-Turca and they call themselves Oz-Jans."); //risky?**
+                    }
+                    //TODO: Alien & Human Gardasligi animasyonu. GAME OVER HERE
+                    else {
+                        popUp.setText("We better check all the other planets before looking here.");
+                    }
                 }
             }
         };
         level.triggers.add(secret);
+
+        //maybe put waypoints here?
 
 
         //level starts here
