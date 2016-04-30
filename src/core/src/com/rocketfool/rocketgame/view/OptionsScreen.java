@@ -100,6 +100,8 @@ public class OptionsScreen implements Screen {
                     mainMenuScreen.setVideoPlayerVolume(1);
                     game.setSfx(true);
                 }
+
+                GamePreferences.getInstance().save();
             }
         });
 
@@ -127,6 +129,8 @@ public class OptionsScreen implements Screen {
                 fullscreenStatus = game.isFullScreen();
                 fullscreen.setText("Fullscreen:  " + (fullscreenStatus ? "On" : "Off"));
                 game.setScreen(new OptionsScreen(game, batch, font, mainMenuScreen));
+
+                GamePreferences.getInstance().save();
             }
         });
 
