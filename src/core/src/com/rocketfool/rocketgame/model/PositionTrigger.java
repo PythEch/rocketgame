@@ -14,10 +14,9 @@ public class PositionTrigger implements Trigger {
     private SolidObject target;
     /** Position triggers can be made to move in unison with designated host objects.*/
     private SolidObject host;
-    private float xOffset;
-    private float yOffset;
     private boolean isTriggeredBefore;
     public static float trigDelay = 1f;
+    private boolean reverse;
     //endregion
 
     //region Constructors
@@ -28,17 +27,24 @@ public class PositionTrigger implements Trigger {
         this.target = target;
         isTriggeredBefore = false;
         this.host = null;
+        this.reverse = false;
     }
 
     public PositionTrigger(SolidObject host, float xOffset, float yOffset, float radius, SolidObject target) {
+        this(xOffset, yOffset, radius, target);
         this.host = host;
-        this.radius = radius;
-        this.isTriggeredBefore = false;
-        this.xOffset = xOffset;
-        this.yOffset = yOffset;
-        this.target = target;
-        followHost();
     }
+
+    public PositionTrigger(float x, float y, float radius, SolidObject target, boolean reverse) {
+        this(x, y, radius, target);
+        this.reverse = reverse;
+    }
+
+    public PositionTrigger(SolidObject host, float xOffset, float yOffset, float radius, SolidObject target, boolean reverse) {
+        this(host, xOffset, yOffset, radius, target);
+        this.reverse = reverse;
+    }
+
     //endregion
 
     //region Methods
@@ -53,7 +59,23 @@ public class PositionTrigger implements Trigger {
     public final boolean isTriggered() {
         Vector2 pos = getPosition();
 
-        if (pos.dst(x, y) <= radius) {
+        // ^ means XOR operator
+        //
+        // Logic table of XOR
+        //  ________________
+        // | A | B | Output |
+        // | 1 | 1 | 0      |
+        // | 1 | 0 | 1      |
+        // | 0 | 1 | 1      |
+        // | 0 | 0 | 0      |
+        //  ----------------
+        //
+        // Which means it produces true only when inputs differ
+        // So this effectively,
+        // when reverse is false, produces true when in its inside the circle
+        // when reverse is true, produces true when outside the circle
+
+        if (pos.dst(x, y) <= radius ^ reverse) {
             isTriggeredBefore = true;
             return true;
         } else {
