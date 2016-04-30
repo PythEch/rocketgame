@@ -14,8 +14,10 @@ public class LevelManager {
     static float time; //message display time
     //region Methods
 
-    /** Test Level */
-    public static Level createLevel0(){
+    /**
+     * Test Level
+     */
+    public static Level createLevel0() {
         final Level level = new Level();
         Level.levelNo = 0;
 
@@ -273,7 +275,7 @@ public class LevelManager {
                            public void run() {
                                popUp.setText("Thrusting straight towards the Moon would be inefficient and difficult " +
                                        "because you work directly against Earth's gravity. \n"
-                                     + "Orbits are weird like that...");
+                                       + "Orbits are weird like that...");
                            }
                        },
                 time);
@@ -302,7 +304,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Sorry, I'm getting carried away. Returning to the situation at hand... " );
+                               popUp.setText("Sorry, I'm getting carried away. Returning to the situation at hand... ");
                            }
                        },
                 time);
@@ -321,11 +323,11 @@ public class LevelManager {
                            public void run() {
                                popUp.setText(
                                        "The Hohmann Transfer: \n" +
-                                       "1. Fire your engines in the way you are flying in your orbit ('prograde'). \n" +
-                                       "2. This will raise the highest point of your orbit (the apoapsis) on the " +
-                                          "other side of the planet. Wait until you get there. \n" +
-                                       "3. Then burn prograde again and there! You've efficiently raised your orbit"
-                                       +  "altitude! Now give it a try!");
+                                               "1. Fire your engines in the way you are flying in your orbit ('prograde'). \n" +
+                                               "2. This will raise the highest point of your orbit (the apoapsis) on the " +
+                                               "other side of the planet. Wait until you get there. \n" +
+                                               "3. Then burn prograde again and there! You've efficiently raised your orbit"
+                                               + "altitude! Now give it a try!");
                            }
                        },
                 time);
@@ -372,7 +374,7 @@ public class LevelManager {
         for (int i = 0; i < 150; i++) {
             Vector2 vector = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 20f, ((float) Math.random()) * (float) Math.random() * 20f);
             if (i % 2 == 0) {
-                level.gameObjects.add(new RoundObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, 10 + i , vector, level.world));
+                level.gameObjects.add(new RoundObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, 10 + i, vector, level.world));
             } else {
                 level.gameObjects.add(new RectangleObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, i * 2, i + 0.5f, vector, level.world));
             }
@@ -467,7 +469,7 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
         //Mars
-        level.planets.add(new Planet(11000, 7000, 8e25f, 700, null, level.world,4));
+        level.planets.add(new Planet(11000, 7000, 8e25f, 700, null, level.world, 4));
 
         //initialization of the rocket
         level.playable = new Playable(7500, 9000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
@@ -476,12 +478,12 @@ public class LevelManager {
         //Stranded spacecraft
         level.gameObjects.add(new Playable(4000, 4000, 1000, 1000, 1e5f, 0, 0, 0, 0, level.world));
         ((SolidObject) level.gameObjects.get(0)).setOrbitPreset(true);//TODO set width,height to 1,1 to avoid collisions (for now needed for visibility)
-                                            //Collisions are almost impossible with 1,1 because when <750px this despawns anyway
+        //Collisions are almost impossible with 1,1 because when <750px this despawns anyway
         //default Triggers
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger craftTrig = new PositionTrigger(((SolidObject)level.gameObjects.get(0)), 0, 0, 750f, level.playable ) {
+        final PositionTrigger craftTrig = new PositionTrigger(((SolidObject) level.gameObjects.get(0)), 0, 0, 750f, level.playable) {
             @Override
             public void triggerPerformed() {
                 //(Halfway point)
@@ -499,9 +501,9 @@ public class LevelManager {
         final PositionTrigger endTrig = new PositionTrigger(5000, 10000, 1000f, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (craftTrig.isTriggeredBefore()){
-                //TODO stop and end level here
-                //Popup Text:("Congratulations! You saved your friend! Looks like he is interesting information about the aliens too!!");}
+                if (craftTrig.isTriggeredBefore()) {
+                    //TODO stop and end level here
+                    //Popup Text:("Congratulations! You saved your friend! Looks like he is interesting information about the aliens too!!");}
                 }
             }
         };
@@ -549,7 +551,10 @@ public class LevelManager {
         //TODO more fun facts here?
         return level;
     }
-    /** This level was cut for being too difficult to balance and too difficult to play. */
+
+    /**
+     * This level was cut for being too difficult to balance and too difficult to play.
+     */
     public static Level createLevelX() {
 
         final Level level = new Level();
@@ -700,65 +705,77 @@ public class LevelManager {
         //default Triggers
         addDefaultTriggers(level);
 
+        //waypoints
+        Waypoint zerothPlanet = new Waypoint(11000, 11500, 5);
+        level.waypoints.add(zerothPlanet);
+        Waypoint firstPlanet = new Waypoint(5500, 4600, 5);
+        level.waypoints.add(firstPlanet);
+        Waypoint secondWaypoint = new Waypoint(1400, 3700, 5);
+        level.waypoints.add(secondWaypoint);
+        Waypoint thirdPlanet = new Waypoint(8650, 7200, 5);
+        level.waypoints.add(thirdPlanet);
+
         //endGame Triggers
-        final PositionTrigger planet0 = new PositionTrigger(1000, 1000, 2000, level.playable) {//FIXME
+        final PositionTrigger planet0 = new PositionTrigger(11000, 13000, 1500, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (level.timePassed2 % PositionTrigger.trigDelay == 0){
+                if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
                     popUp.setText("This is not the planet you are looking for. Move along!");
-                    Waypoint firstPlanet = new Waypoint(14000, 3600, 5);//FIXME
-                    level.waypoints.add(firstPlanet);
+                    level.waypoints.removeIndex(0);
                 }
             }
         };
         level.triggers.add(planet0);
 
-        final PositionTrigger planet1 = new PositionTrigger(5500, 5500, 1000, level.playable) {//FIXME
+        final PositionTrigger planet1 = new PositionTrigger(5500, 5500, 1000, level.playable) {
             @Override
             public void triggerPerformed() {
                 if ((level.timePassed2 % PositionTrigger.trigDelay == 0)) {
                     popUp.setText("What a beautiful planet this is! However, there is no sign of life here.");
-                    Waypoint secondPlanet = new Waypoint(14000, 3600, 5);//FIXME
-                    level.waypoints.add(secondPlanet);
                     objectiveWindow.setText("Continue investigating planets");
+                    level.waypoints.removeIndex(1);
                 }
             }
         };
         level.triggers.add(planet1);
 
-        final PositionTrigger planet2 = new PositionTrigger(14000, 3000, 850, level.playable) {//FIXME
+        final PositionTrigger planet2 = new PositionTrigger(14000, 3700, 850, level.playable) {
             @Override
             public void triggerPerformed() {
                 if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
                     popUp.setText("Nothing to do here! I don't want to be on this planet anymore.");
-                    Waypoint thirdPlanet = new Waypoint(8200, 7000, 5);//FIXME
-                    level.waypoints.add(thirdPlanet);
+                    level.waypoints.removeIndex(2);
                 }
             }
         };
         level.triggers.add(planet2);
 
-        final PositionTrigger planet3 = new PositionTrigger(3200, 9200, 700, level.playable) {//FIXME
+        final PositionTrigger planet3 = new PositionTrigger(8200, 7200, 700, level.playable) {
             @Override
             public void triggerPerformed() {
                 if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
-                    if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
-                        popUp.setText("I have a bad feeling about this planet. Let's move on!");
-                        Waypoint secretOne = new Waypoint(9500, 10105, 5);//FIXME
-                        level.waypoints.add(secretOne);
-                    } else {
-                        popUp.setText("It seems we skipped one planet on which aliens might be living!");
-                    }
+                    //if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
+                    popUp.setText("I have a bad feeling about this planet. Let's move on!");
+                    level.waypoints.removeIndex(3);
+                    //}
+                    //else {
+                    //    popUp.setText("It seems we skipped one planet on which aliens might be living!");
+                    //}
                 }
             }
         };
         level.triggers.add(planet3);
 
-        final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {//FIXME
+        //add final waypoint for the secret planet
+        if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
+            Waypoint secretOne = new Waypoint(16000, 14750, 5);
+            level.waypoints.add(secretOne);
+        }
+        final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {
             @Override
             public void triggerPerformed() {
                 if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
-                    if (planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
+                    if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
                         popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
                                 "called Oz-Turca and they call themselves Oz-Jans."); //risky?**
                     }
@@ -771,17 +788,12 @@ public class LevelManager {
         };
         level.triggers.add(secret);
 
-        //maybe put waypoints here?
-
-
         //level starts here
         level.timer.start();
 
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               Waypoint zerothPlanet = new Waypoint(5500, 6200, 5);//FIXME
-                               level.waypoints.add(zerothPlanet);
                                popUp.setText("Is this really happening? As there now is evidence of existence of aliens, " +
                                        "your mission is to find their home planet in the space. There are several planets here," +
                                        "but our research suggests they're one one of these. Start searching!");
