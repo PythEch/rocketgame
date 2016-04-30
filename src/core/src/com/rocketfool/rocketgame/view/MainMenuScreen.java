@@ -22,6 +22,7 @@ import com.badlogic.gdx.video.VideoPlayerDesktop;
 import com.rocketfool.rocketgame.external.RocketGame;
 import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.util.Constants;
+import com.rocketfool.rocketgame.util.GamePreferences;
 
 
 import java.io.FileNotFoundException;
@@ -51,6 +52,8 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void show() {
+        GamePreferences.getInstance().load();
+
         focusRocket = false;
         elapsedTime = 0;
 
