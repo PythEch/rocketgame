@@ -44,11 +44,10 @@ public class MoonAsteroid extends SolidObject {
 
     @Override
     public void update(float deltaTime) {
+        angle -= 0.001f;
         Vector2 newPos = moon.getBody().getPosition().add(new Vector2(0, distance).rotateRad(angle));
 
         body.setTransform(newPos, angle);
         //body.setTransform(0,0,0);
-
-        angle += 0.001f;
     }
 }

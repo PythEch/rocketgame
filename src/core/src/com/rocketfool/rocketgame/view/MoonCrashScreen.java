@@ -27,6 +27,8 @@ import com.rocketfool.rocketgame.view.SpriteAccessor;
 import static com.rocketfool.rocketgame.util.Constants.toPixel;
 
 public class MoonCrashScreen implements Screen {
+    private static final float METEOR_DISTANCE = 450;
+    private static final Vector2 METEOR_CENTER = new Vector2(970, 400);
 
     //Variables
     private RocketGame game;
@@ -39,8 +41,6 @@ public class MoonCrashScreen implements Screen {
     private Viewport viewport;
 
     private float meteorAngle;
-    private float meteorDistance;
-    private Vector2 meteorCenter;
     private Vector2 meteorPosition;
 
     public MoonCrashScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
@@ -79,9 +79,7 @@ public class MoonCrashScreen implements Screen {
         },13f);
 
         meteorAngle = 150;
-        meteorCenter = new Vector2(970, 400);
         meteorPosition = new Vector2(0, 0);
-        meteorDistance = 450;
     }
 
     @Override
@@ -103,12 +101,13 @@ public class MoonCrashScreen implements Screen {
 
     private void updateMeteor(float deltaTime) {
         meteorAngle -= 0.3f;
-        meteorPosition = meteorCenter.cpy().add(new Vector2(0, meteorDistance).rotate(meteorAngle));
+        meteorPosition = METEOR_CENTER.cpy().add(new Vector2(0, METEOR_DISTANCE).rotate(meteorAngle));
     }
 
     private void drawMeteor(SpriteBatch batch) {
         Texture texture = AssetManager.TOXIC_METEOR;
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
         batch.draw(
                 texture,
                 meteorPosition.x,
