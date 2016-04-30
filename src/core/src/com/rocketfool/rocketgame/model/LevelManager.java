@@ -167,8 +167,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                popUp.setText("All systems restored! Now it's time to find your way back home!");
-                               Waypoint earth = new Waypoint(14000, 9000, 1250);
-                               level.waypoints.add(earth);
+                               level.waypoint = new Waypoint(level, 4000, 9000, 1250);
                                objectiveWindow.setText("Find your way back to Earth");
                            }
                        },
@@ -229,12 +228,11 @@ public class LevelManager {
                 //(Half way through mission)
                 popUp.setText("You've reached the Moon. And what strange things have we found here? Better take it back to Earth!");
                 objectiveWindow.setText("Return to Earth");
-                level.waypoints.removeIndex(0);
-                level.waypoints.add(new Waypoint(14000, 11000, 800));
+                //level.waypoint = new Waypoint(level, 14000, 11000, 800);
             }
         };
         level.triggers.add(moonTrig);
-        level.waypoints.add(new Waypoint(moonTrig));//<== TODO: Simple Waypoint image: crashed UFO on the Moon.
+        level.waypoint = new Waypoint(level, moonTrig); //<== TODO: Simple Waypoint image: crashed UFO on the Moon.
         final PositionTrigger earthTrig = new PositionTrigger(14000, 11000, 800, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -265,8 +263,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                //System.out.println("You took off from the Earth because it looks like there is a crash at the Moon. Could they be ALIENS? Go check it out.");
-                               Waypoint alienShip = new Waypoint(6500, 7105, 5);
-                               level.waypoints.add(alienShip);
+                               //level.waypoint = new Waypoint(level, 6500, 7105, 5);
                                popUp.setText("You are on the Earth's orbit right now.");
                                popUp.setText("Try to leave to the orbit and slowly approach the Moon");
                                objectiveWindow.setText("Examine the object on the Moon's orbit");
@@ -413,9 +410,7 @@ public class LevelManager {
             }
         };
         level.triggers.add(asteroidsPassed);
-        Waypoint endGame = new Waypoint(asteroidsPassed); //<==TODO: waypoint image (simple crosshairs?)
-        level.waypoints.add(endGame);
-
+        level.waypoint = new Waypoint(level, asteroidsPassed); //<==TODO: waypoint image (simple crosshairs?)
         //level starts here
         level.timer.start();
         //TODO Add fun facts!
@@ -501,14 +496,11 @@ public class LevelManager {
                 //(Halfway point)
                 popUp.setText("Great work! Now let's head back!");
                 objectiveWindow.setText("Head home, towards Earth");
-                level.waypoints.removeIndex(0);
-                Waypoint exitPoint = new Waypoint(5000, 10000, 1000f); //TODO add simple crosshair thingy sprite
-                level.waypoints.add(exitPoint);
+                level.waypoint = new Waypoint(level, 5000, 10000, 1000f); //TODO add simple crosshair thingy sprite
             }
         };
         level.triggers.add(craftTrig);
-        Waypoint craftPoint = new Waypoint(craftTrig); //TODO add stranded craft SPRITE, can be any size
-        level.waypoints.add(craftPoint);
+        level.waypoint = new Waypoint(level, craftTrig); //TODO add stranded craft SPRITE, can be any size
 
         final PositionTrigger endTrig = new PositionTrigger(5000, 10000, 1000f, level.playable) {
             @Override
@@ -609,8 +601,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                //System.out.println("In order to check out the news. Land on the Earth.");
-                               Waypoint earth = new Waypoint(5000, 5805, 10);
-                               level.waypoints.add(earth);
+                               level.waypoint = new Waypoint(level, 5000, 5805, 10);
                                objectiveWindow.setText("Land on the Earth.");
                                popUp.setText("In order to check out the news. Land on the Earth.");
                            }
@@ -718,6 +709,7 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //waypoints
+        /*
         Waypoint zerothPlanet = new Waypoint(11000, 11500, 5);
         level.waypoints.add(zerothPlanet);
         Waypoint firstPlanet = new Waypoint(5500, 4600, 5);
@@ -725,7 +717,10 @@ public class LevelManager {
         Waypoint secondWaypoint = new Waypoint(1400, 3700, 5);
         level.waypoints.add(secondWaypoint);
         Waypoint thirdPlanet = new Waypoint(8650, 7200, 5);
-        level.waypoints.add(thirdPlanet);
+        level.waypoints.add(thirdPlanet);*/
+        // u wot m8
+
+        //FIXME: fix these waypoints, make them in order
 
         //endGame Triggers
         final PositionTrigger planet0 = new PositionTrigger(11000, 13000, 1500, level.playable) {
@@ -733,7 +728,7 @@ public class LevelManager {
             public void triggerPerformed() {
                 if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
                     popUp.setText("This is not the planet you are looking for. Move along!");
-                    level.waypoints.removeIndex(0);
+                    //level.waypoints.removeIndex(0);
                 }
             }
         };
@@ -745,7 +740,7 @@ public class LevelManager {
                 if ((level.timePassed2 % PositionTrigger.trigDelay == 0)) {
                     popUp.setText("What a beautiful planet this is! However, there is no sign of life here.");
                     objectiveWindow.setText("Continue investigating planets");
-                    level.waypoints.removeIndex(1);
+                    //level.waypoints.removeIndex(1);
                 }
             }
         };
@@ -756,7 +751,7 @@ public class LevelManager {
             public void triggerPerformed() {
                 if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
                     popUp.setText("Nothing to do here! I don't want to be on this planet anymore.");
-                    level.waypoints.removeIndex(2);
+                    //level.waypoints.removeIndex(2);
                 }
             }
         };
@@ -768,7 +763,7 @@ public class LevelManager {
                 if (level.timePassed2 % PositionTrigger.trigDelay == 0) {
                     //if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
                     popUp.setText("I have a bad feeling about this planet. Let's move on!");
-                    level.waypoints.removeIndex(3);
+                    //level.waypoints.removeIndex(3);
                     //}
                     //else {
                     //    popUp.setText("It seems we skipped one planet on which aliens might be living!");
@@ -780,8 +775,8 @@ public class LevelManager {
 
         //add final waypoint for the secret planet
         if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
-            Waypoint secretOne = new Waypoint(16000, 14750, 5);
-            level.waypoints.add(secretOne);
+            //Waypoint secretOne = new Waypoint(16000, 14750, 5);
+            //level.waypoints.add(secretOne);
         }
         final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {
             @Override

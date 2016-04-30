@@ -334,6 +334,14 @@ public class GameScreen implements Screen {
                     false
             );
         }
+
+        if (level.getWaypoint() != null) {
+            batch.draw(
+                    AssetManager.TOXIC_METEOR,
+                    level.getWaypoint().getPosition().x * toPixel,
+                    level.getWaypoint().getPosition().y * toPixel
+            );
+        }
     }
 
     private void drawDebugString(String str, int row) {

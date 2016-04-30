@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 /**
  * Triggers an event if the playable object enters a circular, predetermined region.
  */
-public abstract class PositionTrigger implements Trigger {
+public class PositionTrigger implements Trigger {
     //region Fields
     private float x;
     private float y;
@@ -44,14 +44,14 @@ public abstract class PositionTrigger implements Trigger {
     //region Methods
 
     public void followHost(){
-        if (host != null) {
+        /*if (host != null) {
             this.x = host.getBody().getPosition().x + xOffset;
             this.y = host.getBody().getPosition().y + yOffset;
-        }
+        }*/
     }
 
     public final boolean isTriggered() {
-        Vector2 pos = target.getBody().getPosition();
+        Vector2 pos = getPosition();
 
         if (pos.dst(x, y) <= radius) {
             isTriggeredBefore = true;
@@ -62,12 +62,19 @@ public abstract class PositionTrigger implements Trigger {
 
     }
 
+    @Override
+    public void triggerPerformed() {
+
+    }
+
     public final boolean isTriggeredBefore() {return isTriggeredBefore;}
 
-    public float getX(){return  x;}
-
-    public float getY() {return y;}
-
+    public Vector2 getPosition() {
+        if (host == null)  {
+            return new Vector2(x, y);
+        }
+        return new Vector2(x + host.getBody().getPosition().x, y + host.getBody().getPosition().y);
+    }
     public float getRadius() {return radius;}
 
     //endregion

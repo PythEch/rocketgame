@@ -27,7 +27,7 @@ public class Level {
     protected GameScreen screen;
     protected Map map;
     protected Array<Trigger> triggers;
-    protected Array<Waypoint> waypoints;
+    protected Waypoint waypoint;
     protected Array<Planet> planets;
     protected Array<GameObject> gameObjects;
     protected float timePassed;
@@ -63,7 +63,6 @@ public class Level {
         this.world = new World(new Vector2(0, 0), true);
 
         this.triggers = new Array<Trigger>();
-        this.waypoints = new Array<Waypoint>();
         this.planets = new Array<Planet>();
         this.gameObjects = new Array<GameObject>();
         this.timePassed = 0;
@@ -140,7 +139,7 @@ public class Level {
         //his.screen = newWorld.screen;
         this.map = newWorld.map;
         this.triggers = newWorld.triggers;
-        this.waypoints = newWorld.waypoints;
+        this.waypoint = newWorld.waypoint;
         this.planets = newWorld.planets;
         this.timePassed = newWorld.timePassed;
         this.timePassed2 = newWorld.timePassed2;
@@ -170,7 +169,8 @@ public class Level {
             updateGravity(deltaTime);
             updateTriggers(deltaTime);
             updateVisualObjects(deltaTime);
-            updateWaypoints(deltaTime);
+            if (waypoint != null)
+                waypoint.update(deltaTime);
             updatePresetOrbits();
             updateIndicators();
 
@@ -232,18 +232,6 @@ public class Level {
 
             // apply this force to spaceship
             spaceship.applyForceToCenter(forceVector, true);
-        }
-    }
-
-    /*
-     * Removes a waypoint from the screen when the playable approaches it.
-     */
-    private void updateWaypoints(float deltaTime) {
-        for (Waypoint waypoint : waypoints) {
-            waypoint.followTrigger();
-            if (playable.getBody().getPosition().dst(waypoint.getX(), waypoint.getY()) <= 10) {
-                waypoint.setOnScreen(false);
-            }
         }
     }
 
@@ -423,5 +411,14 @@ public class Level {
     }
 
     public Timer getTimer(){return timer;}
+
+    public Waypoint getWaypoint() {
+        return waypoint;
+    }
+
+    public void setWaypoint(Waypoint waypoint) {
+        this.waypoint = waypoint;
+    }
+
     //endregion
 }
