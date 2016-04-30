@@ -62,6 +62,8 @@ public class LevelManager {
                     //TODO: End of level popup here with "move to menu" or "next level" or "restart"
                     //Title: ("Mission Accomplished!")
                     //Text: ("Congratulations! You made it back safely! Hopefully this experience will help in the future!");
+                } else {
+                    //TODO crash scenario
                 }
             }
         };
@@ -70,7 +72,7 @@ public class LevelManager {
         //level starts here
         level.timer.start();
         time = 0.01f;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      level.screen.getMinimap().setEnabled(false);
@@ -80,7 +82,7 @@ public class LevelManager {
                              },
                 time);
         time += 2; //<-- this float shows the duration to display the message above
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      popUp.setText("What was THAT? A strange object whizzing by left you spinning chaotically in space!" +
@@ -90,7 +92,7 @@ public class LevelManager {
                              },
                 time);
         time += 10;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      popUp.setText("Use RIGHT & LEFT arrow keys to control angular movement.");
@@ -99,14 +101,17 @@ public class LevelManager {
                              },
                 time);
         time += 7;
-        Timer.instance().stop();
-        if (level.triggers.get(1).isTriggeredInternal()){
+        level.timer.schedule(new Timer.Task() {
+                                 @Override
+                                 public void run() {
                                      popUp.setText("SAS restored! \n The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
                                      WorldController.controlState = 3;
-                             }
+                                 }
+                             },
+                time);
         time += 8;
 
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      popUp.setText("That's better! Now use the UP & DOWN arrow keys to increase/ decrease" +
@@ -117,7 +122,7 @@ public class LevelManager {
                              },
                 time);
         time += 11;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      popUp.setText("As said by Newton's first law of motion, unless a force (like thrust) " +
@@ -126,7 +131,7 @@ public class LevelManager {
                              },
                 time);
         time += 11;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      popUp.setText("OK! Now let's get our bearings! \n Use A & S keys to zoom out or zoom in, and press ESC for the Pause Menu.");
@@ -135,7 +140,7 @@ public class LevelManager {
                              },
                 time);
         time += 8;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      TrajectorySimulator.enabled = true;
@@ -146,7 +151,7 @@ public class LevelManager {
                              },
                 time);
         time += 8;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      popUp.setText("The yellow dots in front of you simulates your future motion. The computer can also " +
@@ -155,7 +160,7 @@ public class LevelManager {
                              },
                 time);
         time += 11;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      level.screen.getMinimap().setEnabled(true);
@@ -164,7 +169,7 @@ public class LevelManager {
                              },
                 time);
         time += 5;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      popUp.setText("All systems restored! Now it's time to find your way back home!");
@@ -174,7 +179,7 @@ public class LevelManager {
                              },
                 time);
         time += 7;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      popUp.setText("As Newton's second law of motion says, force is the rate of change of " +
@@ -185,7 +190,7 @@ public class LevelManager {
                              },
                 time);
         time += 21;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      popUp.setText("See that trail behind the rocket? As Newton's third law of motion says," +
@@ -195,7 +200,7 @@ public class LevelManager {
                              },
                 time);
         time += 20;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
                                      popUp.setText("Remember to slow down near Earth! Coming in too fast will make you crash!");
@@ -209,17 +214,18 @@ public class LevelManager {
         indicators[2] = (playable.getBody().getLinearVelocity().len() < (playable.getMaxVelocity() / 20f));
         indicators[3] = (playable.getCurrentThrust() < 1);*/
 
-        //level.triggers.get(1)
         level.triggers.add(new Trigger(false) {
             @Override
-            public boolean isTriggeredInternal() {return level.playable.getBody().getAngularVelocity() < 0.1;}
+            public boolean isTriggeredInternal() {
+                return level.playable.getBody().getAngularVelocity() < 0.1;
+            }
 
             @Override
             public void triggerPerformed() {
                 // do stuff
             }
         });
-        //level.triggers.get(2)
+
         level.triggers.add(new Trigger(false) {
             @Override
             public boolean isTriggeredInternal() {
@@ -231,7 +237,7 @@ public class LevelManager {
 
             }
         });
-        //level.triggers.get(3)
+
         level.triggers.add(new Trigger(false) {
             @Override
             public boolean isTriggeredInternal() {
@@ -307,7 +313,10 @@ public class LevelManager {
                     // FIXME: waypointleri tekrar düşün rip
                     //level.waypoints.removeIndex(0);
                     //level.waypoints.add(new Waypoint(14000, 11000, 800));
+                } else {
+                    //TODO CRASH
                 }
+
             }
         };
         level.triggers.add(moonTrig);
@@ -322,6 +331,8 @@ public class LevelManager {
                         //TODO end of level screen
                         //Title: "Mission Accomplished!"
                         //Text: "Congratulations! Our researchers will examine this craft! It looks like we've finally been visited by aliens!");
+                    } else {
+                        //TODO crash
                     }
 
                 }
@@ -493,6 +504,7 @@ public class LevelManager {
         level.waypoint = new Waypoint(level, asteroidsPassed); //<==TODO: waypoint image (simple crosshairs?)
         //level starts here
         level.timer.start();
+        //TODO Add fun facts!
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -639,6 +651,7 @@ public class LevelManager {
 
         //level starts here
         level.timer.start();
+        //TODO ADD FUN FACTS, maybe?
 
         Timer.schedule(new Timer.Task() {
                            @Override
