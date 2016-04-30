@@ -7,9 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -79,10 +77,14 @@ public class GameScreen implements Screen {
     private Minimap minimap;
 
     private PopupView popupView;
+
     private BitmapFont timerFont;
 
     private ShapeRenderer shapeRenderer;
 
+    private Animation waypointAnimation;
+
+    private TextureAtlas waypointAtlas;
 
     //endregion
 
@@ -117,6 +119,8 @@ public class GameScreen implements Screen {
 
         batch.setProjectionMatrix(camera.combined);
 
+        waypointAtlas = new TextureAtlas(Gdx.files.internal("waypointSheets/waypoint.atlas"));
+        waypointAnimation = new Animation(1f / 60f, waypointAtlas.getRegions() );
 
         batch.begin();
         // Our main draw method
@@ -335,9 +339,12 @@ public class GameScreen implements Screen {
         }
 
         // draw waypoint
+
         if (level.getWaypoint() != null) {
+            //Texture texture = waypointAnimation.getKeyFrame(elapsedTime, true).getTexture();
+           //texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             batch.draw(
-                    AssetManager.TOXIC_METEOR,
+                    waypointAnimation.getKeyFrame(elapsedTime, true),
                     level.getWaypoint().getPosition().x * toPixel,
                     level.getWaypoint().getPosition().y * toPixel
             );
