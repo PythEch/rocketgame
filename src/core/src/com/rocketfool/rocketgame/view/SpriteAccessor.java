@@ -1,4 +1,4 @@
-package com.rocketfool.rocketgame.view.Splash;
+package com.rocketfool.rocketgame.view;
 
 import aurelienribon.tweenengine.TweenAccessor;
 import com.badlogic.gdx.graphics.g2d.Sprite;

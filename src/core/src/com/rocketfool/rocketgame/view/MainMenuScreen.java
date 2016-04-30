@@ -20,6 +20,7 @@ import com.badlogic.gdx.video.VideoPlayer;
 import com.badlogic.gdx.video.VideoPlayerCreator;
 import com.badlogic.gdx.video.VideoPlayerDesktop;
 import com.rocketfool.rocketgame.external.RocketGame;
+import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.util.Constants;
 
 
@@ -91,7 +92,8 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 videoPlayer.dispose();
-                game.setScreen(new GameScreen(game, batch, font));
+                game.setScreen(new LevelSelectionScreen(game,batch,font));
+                //game.setScreen(new GameScreen(LevelManager.createLevel2(), game, batch, font));
             }
         });
 
@@ -123,12 +125,13 @@ public class MainMenuScreen implements Screen {
         videoPlayer = new VideoPlayerDesktop(viewport);
 
         try {
-            videoPlayer.play(Gdx.files.internal("Backgrounds/mainMenuScreen.webm"));
+            videoPlayer.play(Gdx.files.internal("Backgrounds/mainMenuScreen.webm") );
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
         videoPlayer.resize(1280, 720);
+        videoPlayer.setVolume(game.isSfx()? 1:0);
     }
 
     @Override
@@ -196,5 +199,9 @@ public class MainMenuScreen implements Screen {
 
     public void disposePlayer(){
         videoPlayer.dispose();
+    }
+
+    public void setVideoPlayerVolume(float i){
+        videoPlayer.setVolume(i);
     }
 }
