@@ -143,7 +143,7 @@ public class Level {
         this.currentGravForce = newWorld.currentGravForce;
         this.score = newWorld.score;
         this.state = newWorld.state;
-        this.health -= 1;
+        //this.health -= 1;
         this.popUp = newWorld.popUp;
 
         screen.lookAt(playable);
@@ -259,13 +259,13 @@ public class Level {
     private void planetCollision(Contact contact) {
         System.out.println("planet collision");
         if (!DEBUG)
-            setState(State.GAME_OVER);
+            setState(State.HEALTH_OVER);
     }
 
     private void obstacleCollision(Contact contact) {
         System.out.println("obstacle collision");
         if (!DEBUG)
-            setState(State.GAME_OVER);
+            setState(State.HEALTH_OVER);
     }
 
     /**
@@ -350,16 +350,16 @@ public class Level {
     }
 
     public void healthOver() {
+        System.out.println("omg");
+
         health -= 1;
+        System.out.println(health);
         if (health == 0) {
             setState(State.GAME_OVER);
         }
         else {
-            // TODO: restart from checkpoint etc.
-            // ridicule gamer etc.
-
-
-            // restart game
+            resetLevel();
+            System.out.println(health);
             setState(State.RUNNING);
         }
     }

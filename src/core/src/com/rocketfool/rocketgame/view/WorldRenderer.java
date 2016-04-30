@@ -93,6 +93,13 @@ public class WorldRenderer implements Disposable {
         isThrustStopperActive = false;
         isBQPlaying = false;
 
+        registerCollision();
+    }
+    //endregion
+
+    //region Methods
+
+    private void registerCollision() {
         level.getWorld().setContactListener(new ContactListener() {
             @Override
             public void beginContact(Contact contact) {
@@ -120,9 +127,6 @@ public class WorldRenderer implements Disposable {
             //endregion
         });
     }
-    //endregion
-
-    //region Methods
 
     private void onCollision() {
         stopWarningSound();
@@ -139,7 +143,14 @@ public class WorldRenderer implements Disposable {
         },3.0f);
         AssetManager.DEATH_SIGN.play(Preferences.getInstance().getMasterVolume() );
 
-        level.resetLevel();
+        level.setState(Level.State.HEALTH_OVER);
+        if (level.getState() == Level.State.GAME_OVER) {
+            // TODO: DO GAME OVER ANIMATION
+        }
+        else {
+            // TODO: DO HEALTH OVER ANIMATION
+        }
+        registerCollision();
     }
 
     public void draw(SpriteBatch batch) {
