@@ -1,11 +1,16 @@
 package com.rocketfool.rocketgame.view;
 
 import aurelienribon.tweenengine.*;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Timer;
 import com.rocketfool.rocketgame.model.PopUp;
+import com.rocketfool.rocketgame.model.Preferences;
 
 /**
  * Created by pythech on 28/04/16.
@@ -21,6 +26,7 @@ public class PopupView {
     private float startingYCoord;
     private float elapsedTime;
     private Tween tween;
+    private Music popupShutter;
 
     public PopupView(PopUp popup, OrthographicCamera camera) {
         this.popup = popup;
@@ -32,6 +38,8 @@ public class PopupView {
 
         tweenManager = new TweenManager();
         Tween.registerAccessor(PopupView.class, new PopupAcessor());
+
+        popupShutter = AssetManager.POPUP_SHUTTER_1;
     }
 
     public void update(float deltaTime) {
@@ -49,11 +57,14 @@ public class PopupView {
             }
             Tween.set(this, PopupAcessor.Y_COORD).target(origY).start(tweenManager);
             tween = Tween.to(this, PopupAcessor.Y_COORD, 2).target(0).start(tweenManager);
+            playPopupOpener();
+            playPopupShutter();
         }
 
         if (tween != null && yCoord == 0 && elapsedTime >= 2 + popup.getLastText().length() * 0.1f) {
             Tween.set(this, PopupAcessor.Y_COORD).target(0).start(tweenManager);
             tween = Tween.to(this, PopupAcessor.Y_COORD, 2).target(startingYCoord).start(tweenManager);
+            stopPopupShutter();
         }
     }
 
@@ -137,6 +148,20 @@ public class PopupView {
         String bottomText = text.substring(topText.length());
 
         return new String[]{topText, bottomText};
+    }
+
+    public void playPopupOpener(){
+        AssetManager.POPUP_OPENER.play(Preferences.getInstance().getMasterVolume()/2f);
+    }
+
+    public void playPopupShutter(){
+        popupShutter.setVolume(Preferences.getInstance().getMasterVolume() /6f );
+        popupShutter.setLooping(true);
+        popupShutter.play();
+    }
+
+    public void stopPopupShutter(){
+        popupShutter.stop();
     }
 
     public float getyCoord() {
