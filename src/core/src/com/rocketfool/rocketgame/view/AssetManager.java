@@ -36,6 +36,8 @@ public class AssetManager {
     public static final Sound THRUSTER_STARTER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterStarter.wav"));
     public static final Sound THRUSTER_GOINGER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterGoinger.wav"));
     public static final Sound THRUSTER_ENDER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterEnder.wav"));
+    public static final Sound POPUP_OPENER = Gdx.audio.newSound(Gdx.files.internal("SFX/popupOpening.wav"));
+    public static final Music POPUP_SHUTTER_1 = Gdx.audio.newMusic(Gdx.files.internal("SFX/Transmission_06.wav"));
     public static final Music BQ_MUSIC = Gdx.audio.newMusic(Gdx.files.internal("SFX/Space_Atmospheric_01.wav"));
     public static final Music WARNING_SOUND= Gdx.audio.newMusic(Gdx.files.internal("SFX/Emergency_Warning_05.wav"));
     public static final Sound EXPLOSION = Gdx.audio.newSound(Gdx.files.internal("SFX/Explosion_01.wav"));
