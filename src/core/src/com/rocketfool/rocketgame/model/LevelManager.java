@@ -214,7 +214,7 @@ public class LevelManager {
         indicators[2] = (playable.getBody().getLinearVelocity().len() < (playable.getMaxVelocity() / 20f));
         indicators[3] = (playable.getCurrentThrust() < 1);*/
 
-        level.triggers.add(new Trigger() {
+        level.triggers.add(new Trigger(false) {
             @Override
             public boolean isTriggeredInternal() {
                 return level.playable.getBody().getAngularVelocity() < 0.1;
@@ -226,7 +226,7 @@ public class LevelManager {
             }
         });
 
-        level.triggers.add(new Trigger() {
+        level.triggers.add(new Trigger(false) {
             @Override
             public boolean isTriggeredInternal() {
                 return level.playable.getBody().getLinearVelocity().len() < 1;
@@ -238,7 +238,7 @@ public class LevelManager {
             }
         });
 
-        level.triggers.add(new Trigger() {
+        level.triggers.add(new Trigger(false) {
             @Override
             public boolean isTriggeredInternal() {
                 return level.playable.getBody().getLinearVelocity().len() < (level.playable.getMaxVelocity() / 20f);
@@ -250,7 +250,7 @@ public class LevelManager {
             }
         });
 
-        level.triggers.add(new Trigger() {
+        level.triggers.add(new Trigger(false) {
             @Override
             public boolean isTriggeredInternal() {
                 return level.playable.getCurrentThrust() < 1;
