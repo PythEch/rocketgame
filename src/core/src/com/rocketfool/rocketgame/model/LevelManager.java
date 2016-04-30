@@ -67,7 +67,7 @@ public class LevelManager {
         //level starts here
         level.timer.start();
         time = 0.01f;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                level.screen.getMinimap().setEnabled(false);
@@ -77,7 +77,7 @@ public class LevelManager {
                        },
                 time);
         time += 2; //<-- this float shows the duration to display the message above
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("What was THAT? A strange object whizzing by left you spinning chaotically in space!" +
@@ -87,7 +87,7 @@ public class LevelManager {
                        },
                 time);
         time += 7;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("Use RIGHT & LEFT arrow keys to control angular movement.");
@@ -96,7 +96,7 @@ public class LevelManager {
                        },
                 time);
         time += 6;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("SAS restored! \n The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
@@ -105,7 +105,8 @@ public class LevelManager {
                        },
                 time);
         time += 7;
-        Timer.schedule(new Timer.Task() {
+
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("That's better! Now use the UP & DOWN arrow keys to increase/ decrease" +
@@ -116,7 +117,7 @@ public class LevelManager {
                        },
                 time);
         time += 10;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("As said by Newton's first law of motion, unless a force (like thrust) " +
@@ -125,7 +126,7 @@ public class LevelManager {
                        },
                 time);
         time += 10;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("OK! Now let's get our bearings! \n \n Use A & S keys to zoom out or zoom in, and press ESC for the Pause Menu.");
@@ -134,7 +135,7 @@ public class LevelManager {
                        },
                 time);
         time += 7;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                TrajectorySimulator.enabled = true;
@@ -145,7 +146,7 @@ public class LevelManager {
                        },
                 time);
         time += 4;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("The yellow dots in front of you simulates your future motion. The computer can also " +
@@ -154,7 +155,7 @@ public class LevelManager {
                        },
                 time);
         time += 7;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                level.screen.getMinimap().setEnabled(true);
@@ -163,7 +164,7 @@ public class LevelManager {
                        },
                 time);
         time += 4;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("All systems restored! Now it's time to find your way back home!");
@@ -174,7 +175,7 @@ public class LevelManager {
                        },
                 time);
         time += 6;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("As Newton's second law of motion says, force is the rate of change of " +
@@ -185,7 +186,7 @@ public class LevelManager {
                        },
                 time);
         time += 20;
-        Timer.schedule(new Timer.Task() {
+        level.timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("See that trail behind the rocket? As Newton's third law of motion says," +
@@ -464,7 +465,51 @@ public class LevelManager {
                            }
                        },
                 85.0f);
-        //TODO More fun facts can go here!!!
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that if two pieces of the same type of metal touch in space, " +
+                                       "they will bond and be permanently stuck together.");
+                           }
+                       },
+                95.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that on Venus a day is longer than a year.");
+                           }
+                       },
+                105.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
+                           }
+                       },
+                115.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
+                           }
+                       },
+                125.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
+                           }
+                       },
+                135.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
+                           }
+                       },
+                145.0f);
+
+
         return level;
     }
 
@@ -560,7 +605,44 @@ public class LevelManager {
                            }
                        },
                 35.0f);
-        //TODO more fun facts here?
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that all of space is completely silent.");
+                           }
+                       },
+                45.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that if you put Saturn in water it would float");
+                           }
+                       },
+                55.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that the hottest planet is not the closest planet to the Sun.");
+                           }
+                       },
+                65.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that he full cost of a spacesuit like the one" +
+                                       " that you are wearing is about $11 million although 70% of this is for " +
+                                       "the backpack and the control module.");
+                           }
+                       },
+                75.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that neutron stars can spin at a rate of 600 rotations per second.");
+                           }
+                       },
+                85.0f);
+
         return level;
     }
 
