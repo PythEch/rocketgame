@@ -420,5 +420,9 @@ public class Level {
         this.waypoint = waypoint;
     }
 
+    public Array<Trigger> getTriggers() {
+        return triggers;
+    }
+
     //endregion
 }

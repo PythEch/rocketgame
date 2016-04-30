@@ -3,12 +3,14 @@ package com.rocketfool.rocketgame.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -21,12 +23,9 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.external.RocketGame;
-import com.rocketfool.rocketgame.model.LevelManager;
-import com.rocketfool.rocketgame.model.Playable;
-import com.rocketfool.rocketgame.model.Level;
+import com.rocketfool.rocketgame.model.*;
 
 import com.badlogic.gdx.video.VideoPlayer;
-import com.rocketfool.rocketgame.model.PopUp;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -81,6 +80,8 @@ public class GameScreen implements Screen {
 
     private PopupView popupView;
     private BitmapFont timerFont;
+
+    private ShapeRenderer shapeRenderer;
 
 
     //endregion
@@ -137,7 +138,7 @@ public class GameScreen implements Screen {
             particleEffect.getEmitters().get(i).getAngle().setLow(angle);
         }
         draw();
-        if (minimap.isEnabled()){
+        if (minimap.isEnabled()) {
             minimap.draw(batch);
         }
         popupView.draw(batch);
@@ -267,17 +268,16 @@ public class GameScreen implements Screen {
                 0,
                 0,
                 0,
-                overlayFiller.getWidth() ,
-                overlayFiller.getHeight() ,
+                overlayFiller.getWidth(),
+                overlayFiller.getHeight(),
                 false,
                 false
         );
 
         //Timer
-        String str = "" + (int)elapsedTime ;
-        if( (int)elapsedTime >= 60)
-        {
-            str = ""+ (int)(elapsedTime/60) + ":" + (int)elapsedTime % 60;
+        String str = "" + (int) elapsedTime;
+        if ((int) elapsedTime >= 60) {
+            str = "" + (int) (elapsedTime / 60) + ":" + (int) elapsedTime % 60;
         }
         timerFont.setScale(camera.zoom);
         timerFont.draw(
@@ -313,16 +313,15 @@ public class GameScreen implements Screen {
 
         //WarningMapSign
         // flash the sign by only showing it for 0.5 seconds
-        if(renderer.getTrajectorySimulator().isCollided() && (int)(elapsedTime * 2) % 2 == 0)
-        {
+        if (renderer.getTrajectorySimulator().isCollided() && (int) (elapsedTime * 2) % 2 == 0) {
             batch.draw(
                     AssetManager.WARNING,
                     camera.position.x - (camera.viewportWidth / 2f - 1022) * camera.zoom, //1022 hud x pos
                     camera.position.y - (camera.viewportHeight / 2f - 235) * camera.zoom, //235 hud y pos
                     0,
                     0,
-                    AssetManager.WARNING.getWidth() /14f , //14f = scaling ratio
-                    AssetManager.WARNING.getHeight() /14f ,
+                    AssetManager.WARNING.getWidth() / 14f, //14f = scaling ratio
+                    AssetManager.WARNING.getHeight() / 14f,
                     camera.zoom,
                     camera.zoom,
                     0,
@@ -335,12 +334,45 @@ public class GameScreen implements Screen {
             );
         }
 
+        // draw waypoint
         if (level.getWaypoint() != null) {
             batch.draw(
                     AssetManager.TOXIC_METEOR,
                     level.getWaypoint().getPosition().x * toPixel,
                     level.getWaypoint().getPosition().y * toPixel
             );
+        }
+
+        // draw trigger bounds for debug
+        if (DEBUG) {
+            for (Trigger trigger : level.getTriggers()) {
+                if (trigger instanceof PositionTrigger) {
+                    PositionTrigger positionTrigger = (PositionTrigger) trigger;
+
+                    batch.end();
+                    shapeRenderer.setProjectionMatrix(camera.combined);
+
+                    shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+
+                    if (positionTrigger.isTriggeredBefore()) {
+                        shapeRenderer.setColor(Color.GREEN);
+                    } else {
+                        shapeRenderer.setColor(Color.RED);
+                    }
+
+                    shapeRenderer.circle(
+                            positionTrigger.getPosition().x * toPixel,
+                            positionTrigger.getPosition().y * toPixel,
+                            positionTrigger.getRadius() * toPixel
+                    );
+
+                    shapeRenderer.circle(0, 0, 100);
+
+                    shapeRenderer.end();
+                    batch.begin();
+
+                }
+            }
         }
     }
 
@@ -426,6 +458,8 @@ public class GameScreen implements Screen {
         popupView = new PopupView(level.getPopUp(), camera);
 
         timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
+
+        shapeRenderer = new ShapeRenderer();
     } //endregion
 
     public void zoomIn() {
@@ -579,5 +613,7 @@ public class GameScreen implements Screen {
 
     }
 
-    public Minimap getMinimap(){return minimap;}
+    public Minimap getMinimap() {
+        return minimap;
+    }
 }
