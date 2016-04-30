@@ -266,7 +266,6 @@ public class LevelManager {
     }
 
     public static Level createLevel2() {
-
         final Level level = new Level();
         Level.levelNo = 2;
         level.timer = new Timer();
@@ -293,23 +292,28 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers & waypoints
-
-        final PositionTrigger outOfEarthTrig = new PositionTrigger(14000, 11000, 800, level.playable, true) {
+        final PositionTrigger goBackToEarthTrig = new PositionTrigger(14000, 11000, 750, level.playable) {
             @Override
             public void triggerPerformed() {
-                popUp.setText("Great, now that you're free from the Earth's gravity bla bla bla"); // TODO: fix script
-                objectiveWindow.setText("Examine the object on the Moon's orbit");
+                if (level.playable.getBody().getLinearVelocity().len() < 70) {
+                    //TODO stop game here
+                    //TODO end of level screen
+                    //Title: "Mission Accomplished!"
+                    //Text: "Congratulations! Our researchers will examine this craft! It looks like we've finally been visited by aliens!");
+                } else {
+                    //TODO crash
+                }
             }
         };
-        level.triggers.add(outOfEarthTrig);
 
-        final PositionTrigger moonTrig = new PositionTrigger(level.planets.get(1), 170, 0, 250, level.playable) {
+        final PositionTrigger moonTrig = new PositionTrigger(level.planets.get(1), 0, 0, 350, level.playable) {
             @Override
             public void triggerPerformed() {
                 //(Half way through mission)
                 if (level.playable.getBody().getLinearVelocity().len() < 70) {
                     popUp.setText("You've reached the Moon. And what strange things have we found here? Better take it back to Earth!");
                     objectiveWindow.setText("Return to Earth");
+                    level.triggers.add(goBackToEarthTrig);
                     // FIXME: waypointleri tekrar düşün rip
                     //level.waypoints.removeIndex(0);
                     //level.waypoints.add(new Waypoint(14000, 11000, 800));
@@ -319,27 +323,17 @@ public class LevelManager {
 
             }
         };
-        level.triggers.add(moonTrig);
-        level.waypoint = new Waypoint(level, moonTrig);
 
-        final PositionTrigger earthTrig = new PositionTrigger(14000, 11000, 750, level.playable) {
+        final PositionTrigger outOfEarthTrig = new PositionTrigger(14000, 11000, 800, level.playable, true) {
             @Override
             public void triggerPerformed() {
-                if (moonTrig.isTriggeredBefore()) {
-                    if (level.playable.getBody().getLinearVelocity().len() < 70) {
-                        //TODO stop game here
-                        //TODO end of level screen
-                        //Title: "Mission Accomplished!"
-                        //Text: "Congratulations! Our researchers will examine this craft! It looks like we've finally been visited by aliens!");
-                    } else {
-                        //TODO crash
-                    }
-
-                }
+                popUp.setText("Great, now that you're free from the Earth's gravity bla bla bla"); // TODO: fix script
+                objectiveWindow.setText("Examine the object on the Moon's orbit");
+                level.triggers.add(moonTrig);
+                level.waypoint = new Waypoint(level, moonTrig); //<== TODO: Simple Waypoint image: crashed UFO on the Moon.
             }
         };
-
-        level.waypoint = new Waypoint(level, moonTrig); //<== TODO: Simple Waypoint image: crashed UFO on the Moon.
+        level.triggers.add(outOfEarthTrig);
 
 
         //level starts here
@@ -353,8 +347,8 @@ public class LevelManager {
                                        + "Camera controls restored.");
                                objectiveWindow.setText("Examine the object on the Moon's orbit");
                                WorldController.controlState = -1;
-                               if (Constants.DEBUG)
-                                   WorldController.controlState = 7;
+                               //if (Constants.DEBUG)
+                               //   WorldController.controlState = 7;
                            }
                        },
                 time);
