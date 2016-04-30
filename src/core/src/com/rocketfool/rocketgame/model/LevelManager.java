@@ -222,6 +222,16 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers & waypoints
+
+        final PositionTrigger outOfEarthTrig = new PositionTrigger(14000, 11000, 800, level.playable, true) {
+            @Override
+            public void triggerPerformed() {
+                popUp.setText("Great, now that you're free from the Earth's gravity bla bla bla"); // TODO: fix script
+                objectiveWindow.setText("Examine the object on the Moon's orbit");
+            }
+        };
+        level.triggers.add(outOfEarthTrig);
+
         final PositionTrigger moonTrig = new PositionTrigger(level.planets.get(1), 170, 0, 250, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -233,18 +243,7 @@ public class LevelManager {
         };
         level.triggers.add(moonTrig);
         level.waypoint = new Waypoint(level, moonTrig); //<== TODO: Simple Waypoint image: crashed UFO on the Moon.
-        final PositionTrigger earthTrig = new PositionTrigger(14000, 11000, 800, level.playable) {
-            @Override
-            public void triggerPerformed() {
-                if (moonTrig.isTriggeredBefore()) {
-                    //TODO stop game here
-                    //TODO end of level screen
-                    //Title: "Mission Accomplished!"
-                    //Text: "Congratulations! Our researchers will examine this craft! It looks like we've finally been visited by aliens!");
-                }
-            }
-        };
-        level.triggers.add(earthTrig);
+
 
         //level starts here
         level.timer.start();
@@ -265,8 +264,8 @@ public class LevelManager {
                                //System.out.println("You took off from the Earth because it looks like there is a crash at the Moon. Could they be ALIENS? Go check it out.");
                                //level.waypoint = new Waypoint(level, 6500, 7105, 5);
                                popUp.setText("You are on the Earth's orbit right now.");
-                               popUp.setText("Try to leave to the orbit and slowly approach the Moon");
-                               objectiveWindow.setText("Examine the object on the Moon's orbit");
+                               popUp.setText("Try to leave the orbit and slowly approach the Moon");
+                               objectiveWindow.setText("Leave the Earth's orbit");
                            }
                        },
                 time);

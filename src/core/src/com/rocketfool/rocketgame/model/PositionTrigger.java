@@ -57,6 +57,10 @@ public class PositionTrigger implements Trigger {
     }
 
     public final boolean isTriggered() {
+        if (isTriggeredBefore) {
+            return false;
+        }
+
         Vector2 pos = getPosition();
 
         // ^ means XOR operator
@@ -75,7 +79,7 @@ public class PositionTrigger implements Trigger {
         // when reverse is false, produces true when in its inside the circle
         // when reverse is true, produces true when outside the circle
 
-        if (pos.dst(x, y) <= radius ^ reverse) {
+        if (pos.dst(target.getBody().getPosition()) <= radius ^ reverse) {
             isTriggeredBefore = true;
             return true;
         } else {
