@@ -371,7 +371,6 @@ public class WorldRenderer implements Disposable {
             float myWidth = AssetManager.WARNING.getWidth() * randMultiplier;
             float myHeight = AssetManager.WARNING.getHeight() * randMultiplier;
 
-
             batch.draw(
                     AssetManager.WARNING,
                     trajectorySimulator.getCollisionPoint().x * toPixel - myWidth / 2f,
@@ -384,9 +383,9 @@ public class WorldRenderer implements Disposable {
 
     private void drawLevel2MoonAsteroid(SpriteBatch batch) {
 
-        for (int i = 0; i < level.getGameObjects().size; i++) {
-            if (level.getGameObjects().get(i) instanceof MoonAsteroid) {
-                MoonAsteroid obj = (MoonAsteroid) level.getGameObjects().get(i);
+        for (int i = 0; i < level.getSolidObjects().size; i++) {
+            if (level.getSolidObjects().get(i) instanceof MoonAsteroid) {
+                MoonAsteroid obj = (MoonAsteroid) level.getSolidObjects().get(i);
                 batch.draw(
                         AssetManager.TOXIC_METEOR,
                         obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
@@ -400,9 +399,9 @@ public class WorldRenderer implements Disposable {
 
     private void drawLevel3Objects(SpriteBatch batch)
     {
-        for(int i = 0; i < level.getGameObjects().size ; i++)
+        for(int i = 0; i < level.getSolidObjects().size ; i++)
         {
-            if(level.getGameObjects().get(i) instanceof RoundObstacle)
+            if(level.getSolidObjects().get(i) instanceof RoundObstacle)
             {
                 if(i % 2 == 0)
                 {
@@ -414,18 +413,18 @@ public class WorldRenderer implements Disposable {
                 }
 
 
-                RoundObstacle obj = (RoundObstacle)level.getGameObjects().get(i);
+                RoundObstacle obj = (RoundObstacle)level.getSolidObjects().get(i);
                 batch.draw(
                         AssetManager.TOXIC_METEOR,
-                        obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
-                        obj.getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getBody().getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getBody().getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
                         obj.getRadius() * toPixel * 2,
                         obj.getRadius() * toPixel * 2.3f
                 );
             }
-           /* else if (level.getGameObjects().get(i) instanceof RectangleObstacle)
+           /* else if (level.getSolidObjects().get(i) instanceof RectangleObstacle)
             {
-                RectangleObstacle obj = (RectangleObstacle)level.getGameObjects().get(i);
+                RectangleObstacle obj = (RectangleObstacle)level.getSolidObjects().get(i);
                 batch.draw(
                         AssetManager.TOXIC_METEOR,
                         obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),

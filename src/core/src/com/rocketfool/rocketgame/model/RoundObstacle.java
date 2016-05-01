@@ -10,13 +10,13 @@ public class RoundObstacle extends SolidObject {
     private float radius;
 
     //region Constructor
-    public RoundObstacle(float x, float y, int radius, Vector2 speed, World world) {
+    public RoundObstacle(float x, float y, float radius, Vector2 speed, World world) {
         this.body = createBody(x, y, radius, world);
         body.setLinearVelocity(speed);
         this.radius = radius;
     }
 
-    private Body createBody(float x, float y, int radius, World world) {
+    private Body createBody(float x, float y, float radius, World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(x, y);
@@ -45,11 +45,9 @@ public class RoundObstacle extends SolidObject {
     public void update(float deltaTime) {
     }
 
-    public float getRadius()
-    {return radius;}
-
-    public Vector2 getPosition(){
-        return body.getPosition();
+    public float getRadius() {
+        return radius;
     }
+
     //endregion
 }

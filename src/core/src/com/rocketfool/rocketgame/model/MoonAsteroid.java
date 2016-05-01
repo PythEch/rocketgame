@@ -60,4 +60,16 @@ public class MoonAsteroid extends SolidObject {
     public float getRadius(){
         return radius;
     }
+
+    public Planet getMoon() {
+        return moon;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+
+    public float getAngle() {
+        return angle;
+    }
 }

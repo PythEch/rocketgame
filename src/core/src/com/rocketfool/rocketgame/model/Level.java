@@ -27,7 +27,7 @@ public class Level {
     protected Array<Trigger> triggers;
     protected Waypoint waypoint;
     protected Array<Planet> planets;
-    protected Array<GameObject> gameObjects;
+    protected Array<SolidObject> solidObjects;
     protected float timePassedReal;
     protected float timePassedFixed;
     protected float currentGravForce;
@@ -58,7 +58,7 @@ public class Level {
 
         this.triggers = new Array<Trigger>();
         this.planets = new Array<Planet>();
-        this.gameObjects = new Array<GameObject>();
+        this.solidObjects = new Array<>();
         this.timePassedReal = 0;
         this.timePassedFixed = 0;
         this.score = 0;
@@ -139,7 +139,7 @@ public class Level {
         this.timePassedReal = newWorld.timePassedReal;
         this.timePassedFixed = newWorld.timePassedFixed;
         this.currentGravForce = newWorld.currentGravForce;
-        this.gameObjects = newWorld.gameObjects;
+        this.solidObjects = newWorld.solidObjects;
         this.score = newWorld.score;
         this.state = newWorld.state;
         //this.health -= 1;
@@ -224,7 +224,7 @@ public class Level {
      * This is used to update objects like background visuals
      */
     private void updateVisualObjects(float deltaTime) {
-        for (GameObject go : gameObjects) {
+        for (GameObject go : solidObjects) {
             go.update(deltaTime);
         }
     }
@@ -234,7 +234,7 @@ public class Level {
      * This is all still a little hardcoded, but that is fine for the current scope of the game.
      */
     public void updatePresetOrbits() {
-        for (GameObject obj: gameObjects){
+        for (GameObject obj: solidObjects){
             if ((obj instanceof  SolidObject) && (((SolidObject) obj).isOrbitPreset()))
                 quickPresetOrbits((SolidObject) obj, levelNo, timePassedFixed);
         }
@@ -414,8 +414,8 @@ public class Level {
         return triggers;
     }
 
-    public Array<GameObject> getGameObjects() {
-        return gameObjects;
+    public Array<SolidObject> getSolidObjects() {
+        return solidObjects;
     }
 
     public static byte getLevelNo() {
