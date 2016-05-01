@@ -422,45 +422,52 @@ public class WorldRenderer implements Disposable {
         }
     }
 
-    private void drawLevel3Objects(SpriteBatch batch) {
-        Texture textureMeteor;
-        Texture textureRock;
-        for (int i = 0; i < level.getSolidObjects().size; i++) {
-            if (level.getSolidObjects().get(i) instanceof RoundObstacle) {
-                if (i % 4 == 0) {
-                    textureMeteor = AssetManager.METEOR_NORMAL;
-                } else {
-                    textureMeteor = AssetManager.METEOR_NORMAL2;
-                }
+    private void drawLevel3Objects(SpriteBatch batch)
+    {
+        if(level.getLevelNo() == 3)
+        {
+            Texture textureMeteor;
+            Texture textureRock;
+            for (int i = 0; i < level.getSolidObjects().size; i++) {
+                if (level.getSolidObjects().get(i) instanceof RoundObstacle) {
+                    if (i % 4 == 0) {
+                        textureMeteor = AssetManager.METEOR_NORMAL;
+                    } else {
+                        textureMeteor = AssetManager.METEOR_NORMAL2;
+                    }
 
-                RoundObstacle obj = (RoundObstacle) level.getSolidObjects().get(i);
-                batch.draw(
-                        textureMeteor,
-                        obj.getBody().getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
-                        obj.getBody().getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
-                        obj.getRadius() * toPixel * 2,
-                        obj.getRadius() * toPixel * 2f
-                );
-            }
-           else if (level.getSolidObjects().get(i) instanceof RectangleObstacle)
-            {
-                RectangleObstacle obj = (RectangleObstacle)level.getSolidObjects().get(i);
-                if(i % 4 == 0)
-                {
-                    textureRock = AssetManager.ALIEN_ROCK1;
+                    RoundObstacle obj = (RoundObstacle) level.getSolidObjects().get(i);
+                    batch.draw(
+                            textureMeteor,
+                            obj.getBody().getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
+                            obj.getBody().getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
+                            obj.getRadius() * toPixel * 2,
+                            obj.getRadius() * toPixel * 2f
+                    );
+                } else if (level.getSolidObjects().get(i) instanceof RectangleObstacle) {
+                    RectangleObstacle obj = (RectangleObstacle) level.getSolidObjects().get(i);
+                    if (i % 4 == 0) {
+                        textureRock = AssetManager.ALIEN_ROCK1;
+                    } else {
+                        textureRock = AssetManager.ALIEN_ROCK2;
+                    }
+                    batch.draw(
+                            textureRock,
+                            obj.getBody().getPosition().x * (toPixel) - (obj.getWidth() * toPixel),
+                            obj.getBody().getPosition().y * (toPixel) - (obj.getHeight() * toPixel),
+                            obj.getWidth() * toPixel * 2,
+                            obj.getHeight() * toPixel * 2
+                    );
                 }
-                else
-                {
-                    textureRock = AssetManager.ALIEN_ROCK2;
-                }
-                batch.draw(
-                        textureRock,
-                        obj.getBody().getPosition().x * (toPixel) - (obj.getWidth() * toPixel),
-                        obj.getBody().getPosition().y * (toPixel) - (obj.getHeight() * toPixel),
-                        obj.getWidth() * toPixel * 2,
-                        obj.getHeight() * toPixel * 2
-                );
             }
+
+            batch.draw(
+                    AssetManager.CROSS_HERE,
+                    16300 * toPixel,
+                    9700 * toPixel,
+                    AssetManager.CROSS_HERE.getWidth() * 50,
+                    AssetManager.CROSS_HERE.getHeight() * 50
+            );
         }
     }
 

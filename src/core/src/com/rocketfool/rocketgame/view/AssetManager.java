@@ -39,6 +39,7 @@ public class AssetManager {
     public static final Texture ALIEN_ROCK2 = new Texture(Gdx.files.internal("PNG/allienrock2.png"));
     public static final Texture MAP_BORDER = new Texture(Gdx.files.internal("PNG/mapBorder.png"));
     public static final Texture LEVEL_FINISHED = new Texture(Gdx.files.internal("Backgrounds/levelFinish.png"));
+    public static final Texture CROSS_HERE = new Texture(Gdx.files.internal("PNG/crossHere.png"));
     public static final Sound THRUSTER_STARTER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterStarter.wav"));
     public static final Sound THRUSTER_GOINGER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterGoinger.wav"));
     public static final Sound THRUSTER_ENDER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterEnder.wav"));
