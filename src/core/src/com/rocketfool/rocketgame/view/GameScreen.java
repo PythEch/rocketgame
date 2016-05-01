@@ -341,7 +341,7 @@ public class GameScreen implements Screen {
 
         if (level.getWaypoint() != null) {
             //Texture texture = waypointAnimation.getKeyFrame(elapsedTime, true).getTexture();
-           //texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+            //texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             TextureRegion texture = waypointAnimation.getKeyFrame(elapsedTime, true);
             batch.draw(
                     texture,
@@ -451,7 +451,7 @@ public class GameScreen implements Screen {
 
         //Waypoint
         waypointAtlas = new TextureAtlas(Gdx.files.internal("waypointSheets/waypoint.atlas"));
-        waypointAnimation = new Animation(1f / 60f, waypointAtlas.getRegions() );
+        waypointAnimation = new Animation(1f / 60f, waypointAtlas.getRegions());
 
 
         //level = LevelManager.createLevel2();
@@ -464,7 +464,7 @@ public class GameScreen implements Screen {
 
         skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
 
-        minimap = new Minimap(1064, 48, 81 * 2 + 2, level, camera, renderer.getTrajectorySimulator());
+        minimap = new Minimap(1064, 48, 116, level, camera, renderer.getTrajectorySimulator());
 
         level.setScreenReference(this);
 
