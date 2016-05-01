@@ -158,6 +158,7 @@ public class LevelSelectionScreen implements Screen {
         //BQ picture
         Texture background = new Texture(Gdx.files.internal("Backgrounds/levelSelectionScreen.png"));
 
+        batch.setProjectionMatrix(stage.getViewport().getCamera().combined);
         batch.begin();
         batch.draw(background, 0, 0);
         back.draw(batch, 1);
