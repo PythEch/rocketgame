@@ -98,7 +98,8 @@ public class LevelSelectionScreen implements Screen {
         level1.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel1()));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel1(),
+                        "ANAN!"));
             }
         });
 
@@ -108,7 +109,7 @@ public class LevelSelectionScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 //game.setScreen(new MoonCrashScreen(game, batch, font));
                 // TODO: revert this shit
-                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel2()));
+                game.setScreen(new MoonCrashScreen(game, batch, font));
             }
         });
 
@@ -116,7 +117,8 @@ public class LevelSelectionScreen implements Screen {
         level3.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel3()));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel3(),
+                        "ANAN!"));
             }
         });
 
@@ -124,7 +126,8 @@ public class LevelSelectionScreen implements Screen {
         level4.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel4()));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel4(),
+                        "You starting a new journey. Be careful out there!"));
             }
         });
 
@@ -132,7 +135,8 @@ public class LevelSelectionScreen implements Screen {
         level5.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel5()));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel5(),
+                        "You starting a new journey. Be careful out there!"));
             }
         });
 

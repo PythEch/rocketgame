@@ -32,13 +32,15 @@ public class CutsceneScreen implements Screen {
     private PopupView popupView;
     private FileHandle videoHandle;
     private Level level;
+    private String welcomeText;
 
-    public CutsceneScreen(RocketGame game, SpriteBatch batch, BitmapFont font, FileHandle fileHandle, Level level) {
+    public CutsceneScreen(RocketGame game, SpriteBatch batch, BitmapFont font, FileHandle fileHandle, Level level, String welcomeText) {
         this.game = game;
         this.batch = batch;
         this.font = font;
         this.videoHandle = fileHandle;
         this.level = level;
+        this.welcomeText = welcomeText;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class CutsceneScreen implements Screen {
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
-                popup.setText("You starting a new journey. Be careful out there! ");
+                popup.setText(welcomeText);
             }
         }, 0.4f);
 
