@@ -298,7 +298,7 @@ public class LevelManager {
                 }
                 else
                 {
-                popUp.setText("Great, now that you're free from the Earth's gravity bla bla bla"); // TODO: fix script
+                popUp.setText("Great, now that you're free from Earth's orbit"); // TODO: fix script
                     System.out.println(time % 100);
                 }
                 objectiveWindow.setText("Examine the object on the Moon's orbit");
@@ -444,21 +444,21 @@ public class LevelManager {
                        },
                 time);
         time += 33;
-        /* /// Z-X for only DeBug, players should not able to use these??
+         /// Z-X for only DeBug, players should not able to use these??
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                if(!outOfEarthTrig.isTriggeredInternal() ) {
                                    popUp.setText(
-                                           "New controls available: \n" +
-                                                   "Press Z to rapidly maximize your thrust. \n" +
-                                                   "Press X to rapidly cut down your thrust. \n");
+                                           "While you are approaching the moon \n" +
+                                                   "Your speed should be less than half."
+                                                    );
                                    WorldController.controlState = 7;
                                }
                            }
                        },
                 time);
-        time += 7;*/
+        time += 7;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
