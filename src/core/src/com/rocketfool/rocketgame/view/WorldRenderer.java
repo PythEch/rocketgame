@@ -83,7 +83,7 @@ public class WorldRenderer implements Disposable {
         //SFX
         thrusterGoinger = AssetManager.THRUSTER_GOINGER;
         warningSound = AssetManager.WARNING_SOUND;
-        bqMusic =AssetManager.BQ_MUSIC;
+        bqMusic = AssetManager.BQ_MUSIC;
         isGoignerplaying = false;
         isThrustStopperActive = false;
         isBQPlaying = false;
@@ -135,14 +135,13 @@ public class WorldRenderer implements Disposable {
             public void run() {
 
             }
-        },3.0f);
-        AssetManager.DEATH_SIGN.play(GamePreferences.getInstance().getMasterVolume() );
+        }, 3.0f);
+        AssetManager.DEATH_SIGN.play(GamePreferences.getInstance().getMasterVolume());
 
         level.setState(Level.State.HEALTH_OVER);
         if (level.getState() == Level.State.GAME_OVER) {
             // TODO: DO GAME OVER ANIMATION
-        }
-        else {
+        } else {
             // TODO: DO HEALTH OVER ANIMATION
         }
         registerCollision();
@@ -163,10 +162,10 @@ public class WorldRenderer implements Disposable {
         drawLevel2MoonAsteroid(batch);
         drawMapBorder(batch);
 
-		if (!QUICK_LOAD)
-        for (VisualMeteor meteor : meteors) {
-            meteor.update(Gdx.graphics.getDeltaTime());
-        }
+        if (!QUICK_LOAD)
+            for (VisualMeteor meteor : meteors) {
+                meteor.update(Gdx.graphics.getDeltaTime());
+            }
 
         //SFX
         //Rocket thrust sound
@@ -394,16 +393,23 @@ public class WorldRenderer implements Disposable {
     }
 
     private void drawMapBorder(SpriteBatch batch) {
-        int side = Math.max(level.getMap().getWidth(), level.getMap().getHeight());
-        float scale = (float)side / AssetManager.MAP_BORDER.getWidth();
+        float radius = Math.max(level.getMap().getWidth(), level.getMap().getHeight());
+        float scale = 300;
 
-        batch.draw(
-                AssetManager.MAP_BORDER,
-                -side / 2f + level.getMap().getWidth() / 2f,
-                -side / 2f + level.getMap().getHeight() / 2f,
-                AssetManager.MAP_BORDER.getWidth() * scale,
-                AssetManager.MAP_BORDER.getHeight() * scale
-        );
+        Vector2 mapCenter = new Vector2(level.getMap().getWidth() / 2f, level.getMap().getHeight() / 2f);
+        Texture texture = AssetManager.MINIMAP_PLANET;
+
+        for (float angle = 0; angle < 360; angle += 1.5f) {
+            Vector2 dotPos = new Vector2(radius, 0).rotate(angle).add(mapCenter);
+
+            batch.draw(
+                    texture,
+                    dotPos.x - texture.getWidth() * scale / 2f,
+                    dotPos.y - texture.getHeight() * scale / 2f,
+                    texture.getWidth() * scale,
+                    texture.getHeight() * scale
+            );
+        }
     }
 
     public TrajectorySimulator getTrajectorySimulator() {
@@ -449,7 +455,7 @@ public class WorldRenderer implements Disposable {
         bqMusic.play();
     }
 
-    public void stopBackgroundMusic(){
+    public void stopBackgroundMusic() {
         bqMusic.stop();
     }
 
