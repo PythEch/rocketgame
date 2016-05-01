@@ -302,6 +302,7 @@ public class LevelManager {
                     System.out.println(time % 100);
                 }
                 objectiveWindow.setText("Examine the object on the Moon's orbit");
+                level.setState(Level.State.LEVEL_FINISHED);
             }
         };
         level.triggers.add(outOfEarthTrig);

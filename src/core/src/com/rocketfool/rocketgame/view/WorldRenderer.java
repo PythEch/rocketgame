@@ -147,7 +147,7 @@ public class WorldRenderer implements Disposable {
         registerCollision();
     }
 
-    public void draw(SpriteBatch batch) {
+    public void draw(final SpriteBatch batch) {
         elapsedTime = elapsedTime + Gdx.graphics.getDeltaTime();
         drawMap(batch);
         if (!QUICK_LOAD) {
@@ -166,6 +166,7 @@ public class WorldRenderer implements Disposable {
             for (VisualMeteor meteor : meteors) {
                 meteor.update(Gdx.graphics.getDeltaTime());
             }
+
 
         //SFX
         //Rocket thrust sound
@@ -416,6 +417,7 @@ public class WorldRenderer implements Disposable {
             );
         }
     }
+
 
     public TrajectorySimulator getTrajectorySimulator() {
         return trajectorySimulator;

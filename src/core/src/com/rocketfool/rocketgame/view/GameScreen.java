@@ -141,53 +141,8 @@ public class GameScreen implements Screen {
             particleEffect.getEmitters().get(i).getAngle().setLow(angle);
         }
         draw();
-        if (minimap.isEnabled()) {
-            minimap.draw(batch);
-        }
-        popupView.draw(batch);
-
-        if (level.getState() == Level.State.LEVEL_FINISHED) {
-            Timer.schedule(new Timer.Task() {
-                @Override
-                public void run() {
-                    batch.draw(AssetManager.LEVEL_FINISHED,0,0);
-                }
-            },2f);
 
 
-            Level newLevel = null;
-            boolean isGameOver = false;
-            switch (level.getLevelNo()) {
-                case 1:
-                    newLevel = LevelManager.createLevel2();
-                    break;
-                case 2:
-                    newLevel = LevelManager.createLevel3();
-                    break;
-                case 3:
-                    newLevel = LevelManager.createLevel4();
-                    break;
-                case 4:
-                    newLevel = LevelManager.createLevel5();
-                    break;
-                case 5:
-                    isGameOver = true;
-                    break;
-            }
-            if(!isGameOver)
-            {
-                game.setScreen(new GameScreen(newLevel, game, batch, font));
-            }
-            else
-            {
-                //game.setScreen(new EndingScreen(game,batch,font));
-            }
-
-        }
-        else if (level.getState() == Level.State.GAME_OVER)
-        {
-            // sexxxx
-        }
         batch.end();
 
         // Draw boundries of physics objects if debug is enabled
@@ -381,7 +336,6 @@ public class GameScreen implements Screen {
         }
 
         // draw waypoint
-
         if (level.getWaypoint() != null) {
             //Texture texture = waypointAnimation.getKeyFrame(elapsedTime, true).getTexture();
             //texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -398,6 +352,58 @@ public class GameScreen implements Screen {
                     0.25f,
                     level.getWaypoint().getAngle()
             );
+        }
+
+        if (minimap.isEnabled()) {
+            minimap.draw(batch);
+        }
+        popupView.draw(batch);
+
+        //Level end
+        if (level.getState() == Level.State.LEVEL_FINISHED) {
+
+            batch.draw(
+                    AssetManager.LEVEL_FINISHED,
+                    camera.position.x - camera.viewportWidth / 2f,
+                    camera.position.y - camera.viewportHeight / 2f
+            );
+
+            Timer.schedule(new Timer.Task() {
+                @Override
+                public void run() {
+
+                    Level newLevel = null;
+                    boolean isGameOver = false;
+                    switch (level.getLevelNo()) {
+                        case 1:
+                            newLevel = LevelManager.createLevel2();
+                            break;
+                        case 2:
+                            newLevel = LevelManager.createLevel3();
+                            break;
+                        case 3:
+                            newLevel = LevelManager.createLevel4();
+                            break;
+                        case 4:
+                            newLevel = LevelManager.createLevel5();
+                            break;
+                        case 5:
+                            isGameOver = true;
+                            break;
+                    }
+                    if (!isGameOver) {
+                        game.setScreen(new GameScreen(newLevel, game, batch, font));
+                    } else {
+                        game.setScreen(new EndingScreen(game,batch,font));
+                    }
+
+                }
+            },5.0f);
+            
+        }
+        else if (level.getState() == Level.State.GAME_OVER)
+        {
+            // sexxxx
         }
 
         // draw trigger bounds for debug
@@ -429,6 +435,7 @@ public class GameScreen implements Screen {
                 }
             }
         }
+
     }
 
     private void drawDebugString(String str, int row) {
