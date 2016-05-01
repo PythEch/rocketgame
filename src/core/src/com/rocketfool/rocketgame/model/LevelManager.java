@@ -280,7 +280,11 @@ public class LevelManager {
         Planet moon = new Planet(21000, 14000, 1.0f * 1.0e25f, 170, earth, level.world, 9);
         level.planets.add(moon);
         moon.setOrbitPreset(true);
+<<<<<<< HEAD
+        level.solidObjects.add(new MoonAsteroid(moon, 3.25e2f, 40, level.world)); //TODO IMAGE
+=======
         level.gameObjects.add(new MoonAsteroid(moon, 3.25e2f, 40, level.world));
+>>>>>>> origin/master
         //initialization of the rocket
         level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
         level.playable.getBody().setLinearVelocity(50f, -50f);
@@ -489,11 +493,12 @@ public class LevelManager {
         //obstacles
         //Loop for randomizing the movement directions, velocities, sizes and the shapes of the asteroids
         for (int i = 0; i < 150; i++) {
-            Vector2 vector = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 20f, ((float) Math.random()) * (float) Math.random() * 20f);
+            Vector2 speed = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 20f, ((float) Math.random()) * (float) Math.random() * 20f);
+            //Vector2
             if (i % 2 == 0) {
-                level.gameObjects.add(new RoundObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, 10 + i / 2, vector, level.world));
+                level.solidObjects.add(new RoundObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, 10 + i / 2, speed, level.world));
             } else {
-                level.gameObjects.add(new RectangleObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, i / 2, i / 3, vector, level.world));
+                level.solidObjects.add(new RectangleObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, i / 2, i / 3, speed, level.world));
             }
         }
         //TODO: Dispose method could maybe be implemented for level class to remove the objects going out of the map and summoning new ones
@@ -618,14 +623,14 @@ public class LevelManager {
         level.playable.getBody().setLinearVelocity(0, 0);
 
         //Stranded spacecraft
-        level.gameObjects.add(new Playable(4000, 4000, 1000, 1000, 1e5f, 0, 0, 0, 0, level.world));
-        ((SolidObject) level.gameObjects.get(0)).setOrbitPreset(true);//TODO set width,height to 1,1 to avoid collisions (for now needed for visibility)
+        level.solidObjects.add(new Playable(4000, 4000, 1000, 1000, 1e5f, 0, 0, 0, 0, level.world));
+        ((SolidObject) level.solidObjects.get(0)).setOrbitPreset(true);//TODO set width,height to 1,1 to avoid collisions (for now needed for visibility)
         //Collisions are almost impossible with 1,1 because when <750px this despawns anyway
         //default Triggers
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger craftTrig = new PositionTrigger(((SolidObject) level.gameObjects.get(0)), 0, 0, 750f, level.playable) {
+        final PositionTrigger craftTrig = new PositionTrigger(((SolidObject) level.solidObjects.get(0)), 0, 0, 750f, level.playable) {
             @Override
             public void triggerPerformed() {
                 //(Halfway point)
