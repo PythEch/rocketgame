@@ -20,7 +20,7 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  * TODO: reevaluate scales and draw trajectory smoother
  */
 public class Minimap {
-    public static final float PLAYABLE_SCALE = 0.75f;
+    public static final float PLAYABLE_SCALE = 0.25f;
     public static final float GHOST_SCALE = 0.1f;
     public static final float PLANET_SCALE = 4e-4f;
 
@@ -81,18 +81,17 @@ public class Minimap {
     }
 
     private void drawAt(SpriteBatch batch, Texture texture, float x, float y, float scale) {
-        x = width * (x * toPixel / level.getMap().getWidth());
-        y = height * (y * toPixel / level.getMap().getHeight());
+        x = width * (x * toPixel / level.getMap().getWidth()) + origin.x;
+        y = height * (y * toPixel / level.getMap().getHeight()) + origin.y;
 
         if (center.dst(x,y) > radius) {
-            //sSystem.out.println("nope");
             return;
         }
 
         batch.draw(
                 texture,
-                camera.position.x + (-camera.viewportWidth / 2f + x + origin.x - texture.getWidth() * scale / 2f) * camera.zoom,
-                camera.position.y + (-camera.viewportHeight / 2f + y + origin.y - texture.getHeight() * scale / 2f) * camera.zoom,
+                camera.position.x + (-camera.viewportWidth / 2f + x - texture.getWidth() * scale / 2f) * camera.zoom,
+                camera.position.y + (-camera.viewportHeight / 2f + y - texture.getHeight() * scale / 2f) * camera.zoom,
                 0,
                 0,
                 texture.getWidth(),
