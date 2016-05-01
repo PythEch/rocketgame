@@ -18,6 +18,7 @@ import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.model.PopUp;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
@@ -33,6 +34,7 @@ public class CutsceneScreen implements Screen {
     private FileHandle videoHandle;
     private Level level;
     private String welcomeText;
+    private CutsceneScreen cutscene;
 
     public CutsceneScreen(RocketGame game, SpriteBatch batch, BitmapFont font, FileHandle fileHandle, Level level, String welcomeText) {
         this.game = game;
@@ -40,6 +42,15 @@ public class CutsceneScreen implements Screen {
         this.font = font;
         this.videoHandle = fileHandle;
         this.level = level;
+        this.welcomeText = welcomeText;
+    }
+
+    public CutsceneScreen(RocketGame game, SpriteBatch batch, BitmapFont font, FileHandle fileHandle, CutsceneScreen cutscene, String welcomeText) {
+        this.game = game;
+        this.batch = batch;
+        this.font = font;
+        this.videoHandle = fileHandle;
+        this.cutscene = cutscene;
         this.welcomeText = welcomeText;
     }
 
@@ -76,7 +87,11 @@ public class CutsceneScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
         if (!videoPlayer.render()) { // As soon as the video is finished, we start level2.
-            game.setScreen(new GameScreen(level, game, batch, font));
+            if (cutscene == null && level != null) {
+                game.setScreen(new GameScreen(level, game, batch, font));
+            } else if (cutscene != null && level == null) {
+                game.setScreen(new CutsceneScreen(game, batch, font, cutscene.videoHandle, cutscene.level, cutscene.welcomeText));
+            }
         }
 
         popupView.update(v);
