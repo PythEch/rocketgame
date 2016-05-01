@@ -303,7 +303,6 @@ public class LevelManager {
                     System.out.println(time % 100);
                 }
                 objectiveWindow.setText("Examine the object on the Moon's orbit");
-                level.setState(Level.State.LEVEL_FINISHED);
             }
         };
         level.triggers.add(outOfEarthTrig);
@@ -897,6 +896,7 @@ public class LevelManager {
                 popUp.setText("What a beautiful planet this is! However, there is no sign of life here.");
                 objectiveWindow.setText("Continue investigating planets");
                 //level.waypoints.removeIndex(1);
+                level.setState(Level.State.GAME_OVER);
 
             }
         };
