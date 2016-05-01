@@ -91,7 +91,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 10;
+        time += 14;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -132,7 +132,7 @@ public class LevelManager {
                                    @Override
                                    public void run() {
                                        popup.setText("As said by Newton's first law of motion, unless a force (like thrust) " +
-                                               "acts on you, you would drift at constant speed for ever!");
+                                               "acts on you, you would drift at constant speed for ever! Now let's turn up those engines!");
                                    }
                                },
                         11f);
