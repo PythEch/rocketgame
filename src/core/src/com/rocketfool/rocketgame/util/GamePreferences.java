@@ -25,6 +25,7 @@ public class GamePreferences {
 
     public void load() {
         masterVolume = prefs.getFloat("masterVolume", 1);
+        System.out.println(masterVolume);
         fullscreen = prefs.getBoolean("fullscreen", false);
 
         scores = new int[5];
@@ -49,6 +50,7 @@ public class GamePreferences {
         prefs.putInteger("scores_2", scores[2]);
         prefs.putInteger("scores_3", scores[3]);
         prefs.putInteger("scores_4", scores[4]);
+        prefs.flush();
     }
 
     public float getMasterVolume(){
