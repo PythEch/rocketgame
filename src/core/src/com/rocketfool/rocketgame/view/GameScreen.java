@@ -361,9 +361,9 @@ public class GameScreen implements Screen {
         }
         popupView.draw(batch);
 
-        //Level end and game end
-        if (level.getState() == Level.State.LEVEL_FINISHED) {
 
+        if (level.getState() == Level.State.LEVEL_FINISHED) {
+            level.setState(Level.State.PAUSED);
             batch.draw(
                     AssetManager.LEVEL_FINISHED,
                     camera.position.x - camera.viewportWidth / 2f * camera.zoom,
@@ -404,6 +404,8 @@ public class GameScreen implements Screen {
 
                 }
             }, 5.0f);
+
+            Timer.instance().start();
 
         } else if (level.getState() == Level.State.GAME_OVER) {
             renderer.stopThrusterGoinger();
@@ -468,6 +470,7 @@ public class GameScreen implements Screen {
         camera.update();
 
         popupView.update(dt);
+
     }
 
     public void lookAt(Playable target) {
