@@ -90,7 +90,7 @@ public class CutsceneScreen implements Screen {
             if (cutscene == null && level != null) {
                 game.setScreen(new GameScreen(level, game, batch, font));
             } else if (cutscene != null && level == null) {
-                game.setScreen(new CutsceneScreen(game, batch, font, cutscene.videoHandle, cutscene.level, cutscene.welcomeText));
+                game.setScreen(cutscene);
             }
         }
 
