@@ -400,40 +400,48 @@ public class WorldRenderer implements Disposable {
 
     private void drawLevel3Objects(SpriteBatch batch)
     {
+        Texture textureMeteor;
+        Texture textureRock;
         for(int i = 0; i < level.getGameObjects().size ; i++)
         {
             if(level.getGameObjects().get(i) instanceof RoundObstacle)
             {
                 if(i % 2 == 0)
                 {
-                    //texture = ANANANAAN;
+                    textureMeteor = AssetManager.METEOR_NORMAL;
                 }
                 else
                 {
-                    //texture = ananaanan;
+                    textureMeteor = AssetManager.METEOR_NORMAL2;
                 }
-
-
                 RoundObstacle obj = (RoundObstacle)level.getGameObjects().get(i);
                 batch.draw(
-                        AssetManager.TOXIC_METEOR,
+                        textureMeteor,
                         obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
                         obj.getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
                         obj.getRadius() * toPixel * 2,
-                        obj.getRadius() * toPixel * 2.3f
+                        obj.getRadius() * toPixel * 2f
                 );
             }
-           /* else if (level.getGameObjects().get(i) instanceof RectangleObstacle)
+           else if (level.getGameObjects().get(i) instanceof RectangleObstacle)
             {
+                if(i % 2 == 0)
+                {
+                    textureRock = AssetManager.ALIEN_ROCK1;
+                }
+                else
+                {
+                    textureRock = AssetManager.ALIEN_ROCK2;
+                }
                 RectangleObstacle obj = (RectangleObstacle)level.getGameObjects().get(i);
                 batch.draw(
-                        AssetManager.TOXIC_METEOR,
-                        obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
-                        obj.getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
-                        obj.getRadius() * toPixel * 2,
-                        obj.getRadius() * toPixel * 2
+                        textureRock,
+                        obj.getPosition().x * (toPixel) - (obj.getWidt() * toPixel),
+                        obj.getPosition().y * (toPixel) - (obj.getHeight() * toPixel),
+                        obj.getWidt() * toPixel * 2,
+                        obj.getHeight() * toPixel * 2
                 );
-            }*/
+            }
         }
     }
 
