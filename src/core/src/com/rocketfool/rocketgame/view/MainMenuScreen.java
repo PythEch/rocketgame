@@ -174,7 +174,6 @@ public class MainMenuScreen implements Screen {
 
             ((OrthographicCamera)stage.getCamera()).zoom -= 0.0070f;
             camera.zoom -= 0.0070f;
-            System.out.println(camera.zoom);
             camera.position.set(camTarget);
             camera.update();
             stage.getCamera().update();

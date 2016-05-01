@@ -151,7 +151,6 @@ public class Level {
         screen.lookAt(playable);
 
         playable.update(0);
-        WorldController.controlState = 7;
     }
 
     /**
