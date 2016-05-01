@@ -83,6 +83,8 @@ public class GameScreen implements Screen {
 
     private TextureAtlas waypointAtlas;
 
+    private Texture sasTexture;
+
     //endregion
 
     //region Constructor
@@ -115,6 +117,8 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.setProjectionMatrix(camera.combined);
+
+        sasTexture = AssetManager.SAS_OFF;
 
 
         batch.begin();
@@ -175,6 +179,8 @@ public class GameScreen implements Screen {
             drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 32);
 
         }
+
+
 
         //Overlay-static
         //When camera moves or zooms, overlay follows it by below algorithm
@@ -359,6 +365,33 @@ public class GameScreen implements Screen {
         if (minimap.isEnabled()) {
             minimap.draw(batch);
         }
+
+        //SAS Indicator
+        if(level.getPlayable().getSASEnabled() )
+            sasTexture = AssetManager.SAS_ON;
+        else
+            sasTexture = AssetManager.SAS_OFF;
+
+        batch.draw(
+                sasTexture,
+                camera.position.x - (camera.viewportWidth / 2f - 0 )  * camera.zoom,
+                camera.position.y - (camera.viewportHeight / 2f - 400) * camera.zoom,
+                0,
+                0,
+                sasTexture.getWidth(),
+                sasTexture.getHeight(),
+                camera.zoom,
+                camera.zoom,
+                0,
+                0,
+                0,
+                sasTexture.getWidth() ,
+                sasTexture.getHeight() ,
+                false,
+                false
+        );
+
+
         popupView.draw(batch);
 
         //Level end and game end
@@ -396,8 +429,8 @@ public class GameScreen implements Screen {
                             break;
                     }
                     if (!isGameOver) {
-                        //game.setScreen(new GameScreen(newLevel, game, batch, font));
-                        game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, newLevel, "aaa"));
+                        game.setScreen(new GameScreen(newLevel, game, batch, font));
+                       // game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, newLevel, "aaa"));
                     } else {
                         level.setState(Level.State.GAME_OVER);
                     }

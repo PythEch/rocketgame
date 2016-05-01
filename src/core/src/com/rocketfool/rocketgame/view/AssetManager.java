@@ -19,6 +19,8 @@ public class AssetManager {
     public static final Texture GHOST = new Texture(Gdx.files.internal("PNG/Yellow_icon.png"), true);
     public static final Texture WARNING = new Texture(Gdx.files.internal("PNG/redWarning.png"), true);
     public static final Texture OVERLAY = new Texture(Gdx.files.internal("PNG/overlay.png"), true);
+    public static final Texture SAS_ON = new Texture(Gdx.files.internal("PNG/SASgreen.png"), true);
+    public static final Texture SAS_OFF = new Texture(Gdx.files.internal("PNG/SASred.png"), true);
     public static final Texture MINIMAP_PLANET = new Texture(Gdx.files.internal("PNG/red_dot.png")); //ToDo: increase quality
     public static final Texture MAPBORDER_DOT = new Texture(Gdx.files.internal("PNG/mapBorderDot.png")); //ToDo: increase quality
     public static final Texture MINIMAP_PLAYER = new Texture(Gdx.files.internal("PNG/green_dot.png"));
