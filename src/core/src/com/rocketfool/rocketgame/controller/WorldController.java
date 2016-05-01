@@ -26,7 +26,7 @@ public class WorldController {
     private WorldRenderer renderer;
 
     /** This int tracks which controls are disabled/enabled.
-     *  Only pausing works at 1, and all controls are enabled at 7*/
+     *  Only pausing works at 1, and all controls are enabled at 7. -1 is for "camera controls only" mode*/
     public static byte controlState = 7;
     //endregion
 
@@ -94,19 +94,18 @@ public class WorldController {
             ForceDiagram.setEnabled(!ForceDiagram.isEnabled());
         }
 
-        if (controlState >= 7 && Gdx.input.isKeyJustPressed(Input.Keys.X)) {
-            playable.toggleMinimizeThrust();
-        }
-
-        if (controlState >= 7 && Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
-            playable.toggleMaximizeThrust();
-            if (playable.getCurrentThrust() == 0) {
-                renderer.playThrusterStarter();
-                renderer.setThrustStopperActive(true);
-            }
-        }
-
         if (DEBUG) {
+            if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
+                playable.toggleMinimizeThrust();
+            }
+
+            if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
+                playable.toggleMaximizeThrust();
+                if (playable.getCurrentThrust() == 0) {
+                    renderer.playThrusterStarter();
+                    renderer.setThrustStopperActive(true);
+                }
+            }
             if (Gdx.input.isKeyPressed(Input.Keys.F)) {
                 playable.setCurrentThrust(0);
                 body.setAngularVelocity(0);

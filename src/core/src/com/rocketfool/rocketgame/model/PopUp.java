@@ -5,7 +5,7 @@ package com.rocketfool.rocketgame.model;
  */
 public class PopUp {
 
-    //porperties
+    //properties
     private String text;
     private String lastText;
     private String title;

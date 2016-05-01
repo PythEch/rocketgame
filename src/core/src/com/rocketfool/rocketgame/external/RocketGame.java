@@ -9,8 +9,6 @@ import com.rocketfool.rocketgame.view.MainMenuScreen;
 import com.rocketfool.rocketgame.view.MoonCrashScreen;
 import com.rocketfool.rocketgame.view.TakeoffScreen;
 
-import static com.rocketfool.rocketgame.util.Constants.QUICK_LOAD;
-
 /**
  * A Game class is used to switch between Screens and share data with them.
  *

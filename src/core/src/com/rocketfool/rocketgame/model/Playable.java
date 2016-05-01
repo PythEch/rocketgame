@@ -22,13 +22,13 @@ public class Playable extends SolidObject {
     private final float MAX_VELOCITY = 1200;
 
     /** A base multiplier for thrust calculations, for convenience. */
-    public static final float BASE = 1 * 1e3f; //was 5000 *** FIXME, optimize
+    public static final float BASE = 1 * 1e3f;
     //endregion
 
     //region Fields
     /** Current thrust in Newtons in every "deltaTime"*/
     private float currentThrust;
-    /** Reaction wheel strength (assuming the craft rotates using electricity). */
+    /** Reaction wheel strength (assuming the craft rotates using electricity instead of fuel). */
     private float deltaTorque;
     /** Thrust change rate multiplier */
     private float deltaThrust;
@@ -118,12 +118,12 @@ public class Playable extends SolidObject {
             fuelLeft -= fuelSpent;
 
             //The mass information of the body changes only when MassData is updated
-            //because of the nature of the Box2D engine.
+            //because of the nature of the Box2D engine (see GameUtils).
             GameUtils.changeMass(body, body.getMass() - fuelSpent);
         }
     }
 
-    /** Uses the momenta of the burned fuel to move the spacecraft in space */
+    /** Uses the momentum from the burned fuel to move the spacecraft in space */
     private void move(float deltaTime) {
         // Calculate the bottom position of the spacecraft
         Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(body.getAngle());
