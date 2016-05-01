@@ -7,7 +7,9 @@ import com.badlogic.gdx.physics.box2d.*;
  * Class for all objects with physical properties and a circular shape. Eg. asteroids.
  */
 public class RoundObstacle extends SolidObject {
+    //region Fields
     private float radius;
+    //endregion
 
     //region Constructor
     public RoundObstacle(float x, float y, float radius, Vector2 speed, World world) {
@@ -44,10 +46,11 @@ public class RoundObstacle extends SolidObject {
     @Override
     public void update(float deltaTime) {
     }
+    //endregion
 
+    //region Getters & Setters
     public float getRadius() {
         return radius;
     }
-
     //endregion
 }

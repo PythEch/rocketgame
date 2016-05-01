@@ -13,7 +13,7 @@ import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.rocketfool.rocketgame.external.RocketGame;
 import com.rocketfool.rocketgame.model.LevelManager;
-import com.rocketfool.rocketgame.model.PopUp;
+import com.rocketfool.rocketgame.model.Popup;
 
 public class MoonCrashScreen implements Screen {
     private static final float METEOR_DISTANCE = 450;
@@ -24,7 +24,7 @@ public class MoonCrashScreen implements Screen {
     private Sprite splash;
     private SpriteBatch batch;
     private BitmapFont font;
-    private PopUp popup;
+    private Popup popup;
     private PopupView popupView;
     private OrthographicCamera camera;
     private Viewport viewport;
@@ -46,7 +46,7 @@ public class MoonCrashScreen implements Screen {
         this.camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        this.popup = new PopUp();
+        this.popup = new Popup();
         this.popupView = new PopupView(popup, camera);
 
 

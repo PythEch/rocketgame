@@ -1,8 +1,6 @@
 package com.rocketfool.rocketgame.view;
 
 import aurelienribon.tweenengine.TweenAccessor;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.rocketfool.rocketgame.model.PopUp;
 
 /**
  * Created by pythech on 28/04/16.

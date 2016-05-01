@@ -5,24 +5,47 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.math.MathUtils;
 
 /**
- * Created by alpino-64 on 28.04.2016.
+ * Saves and loads the game preferences, this is a singleton class
  */
 public class GamePreferences {
+    //region Fields
+    /**
+     * The master volume that is used throughtout the code
+     */
     private float masterVolume;
+    /**
+     * Fullscreen indicator
+     */
     private boolean fullscreen;
+    /**
+     * Scores for each level
+     * TODO: implement
+     */
     private int[] scores;
+    /**
+     * Cleared levels
+     * TODO: implement
+     */
     private boolean[] levelsCleared;
-
-    private static GamePreferences instance = new GamePreferences();
+    /**
+     * Used to store preferences using LibGDX API
+     */
     private Preferences prefs;
 
-    // singleton: prevent instantiation from other classes
+    /**
+     * Stores the singleton instance
+     */
+    private static GamePreferences instance = new GamePreferences();
+    //endregion
+
+    /*
+     * Private, prevent initiation from other classes
+     */
     private GamePreferences() {
         prefs = Gdx.app.getPreferences(Constants.PREFERENCES);
     }
 
-    public static GamePreferences getInstance() { return instance; }
-
+    //region Methods
     public void load() {
         masterVolume = prefs.getFloat("masterVolume", 1);
         fullscreen = prefs.getBoolean("fullscreen", false);
@@ -51,12 +74,14 @@ public class GamePreferences {
         prefs.putInteger("scores_4", scores[4]);
         prefs.flush();
     }
+    //endregion
 
-    public float getMasterVolume(){
+    //region Getters & Setters
+    public float getMasterVolume() {
         return masterVolume;
     }
 
-    public void setMasterVolume(float i){
+    public void setMasterVolume(float i) {
         masterVolume = i;
     }
 
@@ -79,4 +104,14 @@ public class GamePreferences {
     public void setScore(int index, int score) {
         scores[index] = score;
     }
+
+    /**
+     * Returns the singleton instance
+     *
+     * @return The shared instance
+     */
+    public static GamePreferences getInstance() {
+        return instance;
+    }
+    //endregion
 }

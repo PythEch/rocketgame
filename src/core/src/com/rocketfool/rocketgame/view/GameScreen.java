@@ -2,7 +2,6 @@ package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -11,22 +10,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.external.RocketGame;
 import com.rocketfool.rocketgame.model.*;
 
 import com.badlogic.gdx.video.VideoPlayer;
-import com.rocketfool.rocketgame.util.GamePreferences;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -536,11 +530,13 @@ public class GameScreen implements Screen {
         viewport = new FitViewport(1280, 720, camera);
         viewport.apply();
 
-        popupView = new PopupView(level.getPopUp(), camera);
+        popupView = new PopupView(level.getPopup(), camera);
 
         timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
 
         shapeRenderer = new ShapeRenderer();
+
+        level.setState(Level.State.RUNNING);
     } //endregion
 
     public void zoomIn() {

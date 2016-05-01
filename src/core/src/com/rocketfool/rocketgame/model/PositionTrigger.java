@@ -18,6 +18,10 @@ public class PositionTrigger extends Trigger {
      * Position triggers can be made to move in unison with designated host objects.
      */
     private SolidObject host;
+    /**
+     * When the reverse is false, the trigger is fired when the target is inside the positiontrigger,
+     * else it will trigger when the target goes outside of the circle.
+     */
     private boolean reverse;
     //endregion
 
@@ -32,6 +36,7 @@ public class PositionTrigger extends Trigger {
         this.reverse = reverse;
     }
 
+    // Here we have default values for certain needs
     public PositionTrigger(boolean runOnce, float x, float y, float radius, SolidObject target, boolean reverse) {
         this(runOnce, null, x, y, radius, target, reverse);
     }
@@ -59,7 +64,6 @@ public class PositionTrigger extends Trigger {
     public PositionTrigger(float x, float y, float radius, SolidObject target) {
         this(true, null, x, y, radius, target, false);
     }
-
     //endregion
 
     //region Methods
@@ -86,11 +90,20 @@ public class PositionTrigger extends Trigger {
         return pos.dst(target.getBody().getPosition()) <= radius ^ reverse;
     }
 
+    /**
+     * Allow initiation of empty action
+     */
     @Override
-    public void triggerPerformed() {
+    public void triggerAction() {
 
     }
+    //endregion
 
+    //region Getters & Setters
+
+    /**
+     * Current position of the position trigger according to the host
+     */
     public Vector2 getPosition() {
         if (host == null) {
             return new Vector2(x, y);
@@ -101,6 +114,5 @@ public class PositionTrigger extends Trigger {
     public float getRadius() {
         return radius;
     }
-
     //endregion
 }

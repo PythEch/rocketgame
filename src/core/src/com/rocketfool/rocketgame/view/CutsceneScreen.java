@@ -1,7 +1,6 @@
 package com.rocketfool.rocketgame.view;
 
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
@@ -15,10 +14,8 @@ import com.badlogic.gdx.video.VideoPlayer;
 import com.badlogic.gdx.video.VideoPlayerDesktop;
 import com.rocketfool.rocketgame.external.RocketGame;
 import com.rocketfool.rocketgame.model.Level;
-import com.rocketfool.rocketgame.model.LevelManager;
-import com.rocketfool.rocketgame.model.PopUp;
+import com.rocketfool.rocketgame.model.Popup;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
@@ -29,7 +26,7 @@ public class CutsceneScreen implements Screen {
     private RocketGame game;
     private SpriteBatch batch;
     private BitmapFont font;
-    private PopUp popup;
+    private Popup popup;
     private PopupView popupView;
     private FileHandle videoHandle;
     private Level level;
@@ -63,7 +60,7 @@ public class CutsceneScreen implements Screen {
         OrthographicCamera camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        popup = new PopUp();
+        popup = new Popup();
         popupView = new PopupView(popup, camera);
 
         try {
@@ -72,12 +69,16 @@ public class CutsceneScreen implements Screen {
             e.printStackTrace();
         }
 
-        Timer.schedule(new Timer.Task() {
+        Timer timer = new Timer();
+
+        timer.scheduleTask(new Timer.Task() {
             @Override
             public void run() {
                 popup.setText(welcomeText);
             }
         }, 0.4f);
+
+        timer.start();
 
         videoPlayer.resize(1280, 720);
     }

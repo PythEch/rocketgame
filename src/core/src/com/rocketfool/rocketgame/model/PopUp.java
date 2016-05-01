@@ -1,33 +1,48 @@
 package com.rocketfool.rocketgame.model;
 
 /**
- * Created by Omer on 25/04/2016.
+ * The popup that pops up at the bottom left of the screen (kind of like a notification screen)
+ * so that the user will recieve commands and read the story here
  */
-public class PopUp {
-
-    //properties
+public class Popup {
+    //region Fields
+    /**
+     * The text that is displayed on the screen, can be multiline
+     */
     private String text;
+    /**
+     * This is stored so the {@link com.rocketfool.rocketgame.view.PopupView} will delay its close animation.
+     */
     private String lastText;
+    /**
+     * Title of the popup
+     * TODO: implement
+     */
     private String title;
+    /**
+     * This is used to indicate when to pop to the view
+     */
     private boolean propertyChanged;
+    //endregion
 
-    //constructors
-    public PopUp(String title, String text) {
+    //region Constructors
+    public Popup(String title, String text) {
         this.text = text;
         this.title = title;
         this.lastText = text;
         propertyChanged = false;
     }
 
-    public PopUp(String text) {
+    public Popup(String text) {
         this("", text);
     }
 
-    public PopUp() {
+    public Popup() {
         this("", "");
     }
+    //endregion
 
-    //basic getter setters
+    //region Getters & Setters
     public String getText() {
         return text;
     }
@@ -35,8 +50,8 @@ public class PopUp {
     public void setText(String text) {
         this.text = text + "\n\n" + this.text;
         this.lastText = text;
+        // Make the popup view show itself
         propertyChanged = true;
-
     }
 
     public String getTitle() {
@@ -58,4 +73,5 @@ public class PopUp {
     public String getLastText() {
         return lastText;
     }
+    //endregion
 }
