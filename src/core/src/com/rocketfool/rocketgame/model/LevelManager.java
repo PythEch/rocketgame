@@ -974,6 +974,13 @@ public class LevelManager {
                            }
                        },
                 600.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("RIPGDX! What is this?"); //East egg :D
+                           }
+                       },
+                630.0f);
 
         return level;
     }
