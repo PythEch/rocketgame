@@ -370,8 +370,10 @@ public class GameScreen implements Screen {
 
             batch.draw(
                     AssetManager.LEVEL_FINISHED,
-                    camera.position.x - camera.viewportWidth / 2f,
-                    camera.position.y - camera.viewportHeight / 2f
+                    camera.position.x - camera.viewportWidth / 2f * camera.zoom,
+                    camera.position.y - camera.viewportHeight / 2f * camera.zoom,
+                    AssetManager.LEVEL_FINISHED.getWidth() * camera.zoom,
+                    AssetManager.LEVEL_FINISHED.getHeight() * camera.zoom
             );
 
             Timer.schedule(new Timer.Task() {
