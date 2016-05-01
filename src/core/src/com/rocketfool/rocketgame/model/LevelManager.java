@@ -280,11 +280,7 @@ public class LevelManager {
         Planet moon = new Planet(21000, 14000, 1.0f * 1.0e25f, 170, earth, level.world, 9);
         level.planets.add(moon);
         moon.setOrbitPreset(true);
-<<<<<<< HEAD
         level.solidObjects.add(new MoonAsteroid(moon, 3.25e2f, 40, level.world)); //TODO IMAGE
-=======
-        level.gameObjects.add(new MoonAsteroid(moon, 3.25e2f, 40, level.world));
->>>>>>> origin/master
         //initialization of the rocket
         level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
         level.playable.getBody().setLinearVelocity(50f, -50f);

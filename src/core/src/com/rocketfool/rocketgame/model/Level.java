@@ -58,7 +58,7 @@ public class Level {
 
         this.triggers = new Array<Trigger>();
         this.planets = new Array<Planet>();
-        this.solidObjects = new Array<>();
+        this.solidObjects = new Array<SolidObject>();
         this.timePassedReal = 0;
         this.timePassedFixed = 0;
         this.score = 0;

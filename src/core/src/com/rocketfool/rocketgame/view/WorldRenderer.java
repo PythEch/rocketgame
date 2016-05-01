@@ -251,8 +251,8 @@ public class WorldRenderer implements Disposable {
                 minY,
                 0,
                 0,
-                (int)(maxX - minX),
-                (int)(maxY - minY)
+                (int) (maxX - minX),
+                (int) (maxY - minY)
         );
 
         batch.setColor(1, 1, 1, 1);
@@ -352,27 +352,22 @@ public class WorldRenderer implements Disposable {
         boolean shouldDraw = false;
         Animation obj = null;
 
-        if(level.getLevelNo() == 3)
-        {
+        if (level.getLevelNo() == 3) {
             obj = animationLevel3;
             shouldDraw = true;
-        }
-        else if(level.getLevelNo() == 4)
-        {
+        } else if (level.getLevelNo() == 4) {
             obj = animationLevel4;
             shouldDraw = true;
-        }
-        else if (level.getLevelNo() == 5)
-        {
+        } else if (level.getLevelNo() == 5) {
             obj = animationLevel5;
             shouldDraw = true;
         }
 
-        if(shouldDraw) {
+        if (shouldDraw) {
             batch.draw(
                     obj.getKeyFrame(elapsedTime, true),
-                    level.getPlayable().getSpawnPoint().x + 200f,
-                    level.getPlayable().getSpawnPoint().y + 200f
+                    level.getPlayable().getSpawnPoint().x + 500,
+                    level.getPlayable().getSpawnPoint().y + 500
             );
         }
     }
@@ -427,30 +422,18 @@ public class WorldRenderer implements Disposable {
         }
     }
 
-    private void drawLevel3Objects(SpriteBatch batch)
-    {
+    private void drawLevel3Objects(SpriteBatch batch) {
         Texture textureMeteor;
         Texture textureRock;
-        for(int i = 0; i < level.getGameObjects().size ; i++)
-        {
-            if(level.getSolidObjects().get(i) instanceof RoundObstacle)
-            {
-                if(i % 2 == 0)
-                {
+        for (int i = 0; i < level.getSolidObjects().size; i++) {
+            if (level.getSolidObjects().get(i) instanceof RoundObstacle) {
+                if (i % 4 == 0) {
                     textureMeteor = AssetManager.METEOR_NORMAL;
-                }
-                else
-                {
+                } else {
                     textureMeteor = AssetManager.METEOR_NORMAL2;
                 }
 
-
-                RoundObstacle obj = (RoundObstacle)level.getSolidObjects().get(i);
-                batch.draw(
-                        AssetManager.TOXIC_METEOR,
-                        obj.getBody().getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
-                        obj.getBody().getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
-                RoundObstacle obj = (RoundObstacle)level.getSolidObjects().get(i);
+                RoundObstacle obj = (RoundObstacle) level.getSolidObjects().get(i);
                 batch.draw(
                         textureMeteor,
                         obj.getBody().getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
@@ -459,12 +442,10 @@ public class WorldRenderer implements Disposable {
                         obj.getRadius() * toPixel * 2f
                 );
             }
-           /* else if (level.getSolidObjects().get(i) instanceof RectangleObstacle)
+           else if (level.getSolidObjects().get(i) instanceof RectangleObstacle)
             {
                 RectangleObstacle obj = (RectangleObstacle)level.getSolidObjects().get(i);
-           else if (level.getGameObjects().get(i) instanceof RectangleObstacle)
-            {
-                if(i % 2 == 0)
+                if(i % 4 == 0)
                 {
                     textureRock = AssetManager.ALIEN_ROCK1;
                 }
@@ -472,16 +453,15 @@ public class WorldRenderer implements Disposable {
                 {
                     textureRock = AssetManager.ALIEN_ROCK2;
                 }
-                RectangleObstacle obj = (RectangleObstacle)level.getSolidObjects().get(i);
                 batch.draw(
                         textureRock,
-                        obj.getBody().getPosition().x * (toPixel) - (obj.getWidt() * toPixel),
+                        obj.getBody().getPosition().x * (toPixel) - (obj.getWidth() * toPixel),
                         obj.getBody().getPosition().y * (toPixel) - (obj.getHeight() * toPixel),
-                        obj.getWidt() * toPixel * 2,
+                        obj.getWidth() * toPixel * 2,
                         obj.getHeight() * toPixel * 2
                 );
             }
-        }*/
+        }
     }
 
     private void drawMapBorder(SpriteBatch batch) {
