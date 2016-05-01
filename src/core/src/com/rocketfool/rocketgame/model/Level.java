@@ -129,6 +129,8 @@ public class Level {
                 break;
         }
 
+        newWorld.setScreenReference(screen);
+
         this.world = newWorld.world;
         this.playable = newWorld.playable;
         //his.screen = newWorld.screen;
