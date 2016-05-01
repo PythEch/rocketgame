@@ -167,13 +167,14 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
-                                     popUp.setText("All systems restored! Now it's time to find your way back home!");
+                                     popUp.setText("All systems restored! Now it's time to find your way back home! " +
+                                             "This blue waypoint will guide you to your objective!");
                                      level.waypoint = new Waypoint(level, 4000, 9000, 1250);
                                      objectiveWindow.setText("Find your way back to Earth");
                                  }
                              },
                 time);
-        time += 7;
+        time += 9;
         Timer.schedule(new Timer.Task() {
                                  @Override
                                  public void run() {
@@ -293,7 +294,7 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 if(time % 100 < 90) {
-                    popUp.setText("I'm impressed that you are out of orbit already. But dont get too exited. Get close to the moon");
+                    popUp.setText("I'm impressed that you are out of orbit already. But don't get too exited. Get close to the Moon.");
                     System.out.println(time % 100);
                 }
                 else
@@ -339,7 +340,7 @@ public class LevelManager {
         };
 
 
-        level.waypoint = new Waypoint(level, moonTrig); //<== TODO: Simple Waypoint image: crashed UFO on the Moon.
+        level.waypoint = new Waypoint(level, moonTrig);
 
 
         //level starts here
@@ -491,9 +492,9 @@ public class LevelManager {
         for (int i = 0; i < 150; i++) {
             Vector2 vector = new Vector2(((float) Math.random()) * (float) Math.pow(-1, i) * 20f, ((float) Math.random()) * (float) Math.random() * 20f);
             if (i % 2 == 0) {
-                level.gameObjects.add(new RoundObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, 10 + i, vector, level.world));
+                level.gameObjects.add(new RoundObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, 10 + i / 2, vector, level.world));
             } else {
-                level.gameObjects.add(new RectangleObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, i * 2, i + 0.5f, vector, level.world));
+                level.gameObjects.add(new RectangleObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, i / 2, i / 3, vector, level.world));
             }
         }
         //TODO: Dispose method could maybe be implemented for level class to remove the objects going out of the map and summoning new ones
@@ -506,7 +507,7 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger asteroidsPassed = new PositionTrigger(17000, 10000, 500, level.playable) {
+        final PositionTrigger asteroidsPassed = new PositionTrigger(17000, 10500, 750, level.playable) {
             @Override
             public void triggerPerformed() {
                 //TODO: Stop level here
@@ -515,25 +516,26 @@ public class LevelManager {
             }
         };
         level.triggers.add(asteroidsPassed);
-        level.waypoint = new Waypoint(level, asteroidsPassed); //<==TODO: waypoint image (simple crosshairs?)
+        level.waypoint = new Waypoint(level, asteroidsPassed);
         //level starts here
         level.timer.start();
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //TODO Fix minimap or disable minimap here
+                               level.screen.getMinimap().setEnabled(false);
                            }
                        },
                 0.5f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("You received an SOS code from a fellow traveller at Mars. Their ship is stranded " +
-                                       "in orbit and you must save them! You will need to go through these asteroids though...");
+                               popUp.setText("You received an SOS code from a friend near Mars. Their ship is stranded " +
+                                       "in orbit and you must save them! You will need to go through these asteroids though... \n" +
+                                       "Your scanners don't seem to pick them up!");
                                objectiveWindow.setText("Reach Mars");
                            }
                        },
-                15.0f);
+                18.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -828,25 +830,13 @@ public class LevelManager {
          *
          * Others
          * TODO update GameUtils.levelsCleared (all levels)
-         * TODO pass level.playable.fuelLeft to GameUtils.score (counts as a score system after all, right?)
          * TODO check save/load function.
-         * TODO stop level.timer while game is paused.
-         * TODO restore max zoom to 100-200 instead of 550
-         *
-         * TODO drawer for showForces vectors
-         * TODO Complete health system
+         * TODO restore max zoom to 200-400 instead of 550
          * TODO endgame popups/screens for out-of-map, no fuel, etc.
-         * TODO credits... box?
-         * TODO complete pause menu (without checkpoints any more)
-         * TODO simple SASEnabled display
          * TODO play-testing all levels
          * TODO spelling checks
          * TODO code clean-up
          * TODO everything else that I'm forgetting
-         *
-         * TODO reflections
-         * TODO detailed design report
-         * TODO ...?
          */
 
         final Level level = new Level();
