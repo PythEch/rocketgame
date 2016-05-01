@@ -1,9 +1,12 @@
 package com.rocketfool.rocketgame.model;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.rocketfool.rocketgame.view.GameScreen;
+import com.badlogic.gdx.utils.Timer;
+import sun.util.logging.PlatformLogger;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
 import static com.rocketfool.rocketgame.util.Constants.FRAME_RATE;
@@ -17,9 +20,11 @@ public class Level {
     //endregion
 
     //region Fields
+    protected static boolean[] indicators = new boolean[7];
+    protected static byte levelNo;
     protected World world;
     protected Playable playable;
-    protected GameScreen screen; //Needed to set zoom**
+    protected GameScreen screen;
     protected Map map;
     protected Array<Trigger> triggers;
     protected Array<Waypoint> waypoints;
@@ -30,8 +35,9 @@ public class Level {
     protected float currentGravForce;
     protected int score;
     protected State state;
-    protected int health = 3;
+    protected byte health = 3;
     protected PopUp popUp;
+    protected Timer timer;
     //endregion
 
     //region Nested Types
@@ -47,6 +53,11 @@ public class Level {
     //region Constructor
     public Level() {
         this.state = State.RUNNING;
+
+        //Prepare various indicators
+        for (boolean b : indicators){
+                b = false;
+        }
 
         // Create a Box2D world with no gravity
         this.world = new World(new Vector2(0, 0), true);
@@ -100,13 +111,57 @@ public class Level {
 
     //region Methods
 
+    public void resetLevel() {
+        Level newWorld = null;
+
+        switch (levelNo) {
+            case 0:
+                newWorld = LevelManager.createLevel0();
+                break;
+            case 1:
+                newWorld = LevelManager.createLevel1();
+                break;
+            case 2:
+                newWorld = LevelManager.createLevel2();
+                break;
+            case 3:
+                newWorld = LevelManager.createLevel3();
+                break;
+            case 4:
+                newWorld = LevelManager.createLevel4();
+                break;
+            case 5:
+                newWorld = LevelManager.createLevel5();
+                break;
+        }
+
+        this.world = newWorld.world;
+        this.playable = newWorld.playable;
+        //his.screen = newWorld.screen;
+        this.map = newWorld.map;
+        this.triggers = newWorld.triggers;
+        this.waypoints = newWorld.waypoints;
+        this.planets = newWorld.planets;
+        this.timePassed = newWorld.timePassed;
+        this.timePassed2 = newWorld.timePassed2;
+        this.currentGravForce = newWorld.currentGravForce;
+        this.score = newWorld.score;
+        this.state = newWorld.state;
+        //this.health -= 1;
+        this.popUp = newWorld.popUp;
+
+        screen.lookAt(playable);
+
+        playable.update(0);
+    }
+
     /**
      * Update models per frame
      */
     public void update(float deltaTime) {
         if (state == State.RUNNING) {
             timePassed += deltaTime;
-
+            timer.start();
             // Hack to make physics engine stable
             deltaTime = FRAME_RATE;
             timePassed2 += deltaTime;
@@ -116,7 +171,8 @@ public class Level {
             updateTriggers(deltaTime);
             updateVisualObjects(deltaTime);
             updateWaypoints(deltaTime);
-            updateCircles();
+            updatePresetOrbits();
+            updateIndicators();
 
             // A world step simulates the Box2D world
             world.step(deltaTime, 8, 3);
@@ -124,15 +180,28 @@ public class Level {
     }
 
     /**
-     * Fires triggers that have their conditions fullfilled
+     *  When a listed condition is met, the indicator is activated.
+     */
+    public void updateIndicators(){
+        indicators[0] = (playable.getBody().getAngularVelocity() < 0.1);
+        indicators[1] = (playable.getBody().getLinearVelocity().len() < 1);
+        indicators[2] = (playable.getBody().getLinearVelocity().len() < (playable.getMaxVelocity() / 20f));
+        indicators[3] = (playable.getCurrentThrust() < 1);
+
+    }
+
+    /**
+     * Fires triggers that have their conditions fulfilled
      */
     private void updateTriggers(float deltaTime) {
         for (Trigger trigger : triggers) {
             if (trigger.isTriggered()) {
                 trigger.triggerPerformed();
             }
+            if ( trigger instanceof PositionTrigger){
+                ((PositionTrigger) trigger).followHost();
+            }
         }
-        //for ( PositionTrigger t : triggers) {t.followTarget(); } //TODO FIXME HELP
     }
 
     /**
@@ -188,53 +257,90 @@ public class Level {
     }
 
     /**
-     * Updates the motion of planets.
+     * Updates any preset orbits of game objects.
+     * This is all still a little hardcoded, but that is fine for the current scope of the game.
+     * TODO: Future idea: just have an Array<presetOrbiters> and customize accordingly.
      */
-    public void updateCircles() {
-        for (Planet p: planets){
-            if (p.getCircles()) {
-                presetCircle(p, p.getPlanetType(), timePassed2 , p.getOrbitPhase());
-            }
+    public void updatePresetOrbits() {
+        for (GameObject obj: gameObjects){
+            if ((obj instanceof  SolidObject) && (((SolidObject) obj).isOrbitPreset()))
+                quickPresetOrbits((SolidObject) obj, levelNo, timePassed2);
+        }
+        for (GameObject obj: planets){
+            if ((obj instanceof  SolidObject) && (((SolidObject) obj).isOrbitPreset()))
+                quickPresetOrbits((SolidObject) obj, levelNo, timePassed2);
         }
     }
 
     private void planetCollision(Contact contact) {
         System.out.println("planet collision");
         if (!DEBUG)
-            setState(State.GAME_OVER);
+            setState(State.HEALTH_OVER);
     }
 
     private void obstacleCollision(Contact contact) {
         System.out.println("obstacle collision");
         if (!DEBUG)
-            setState(State.GAME_OVER);
+            setState(State.HEALTH_OVER);
     }
 
     /**
-     * This method is used to make a planet draw circles regularly (ideally to simulate an orbit around a larger body).
+     * This method is used to make a a body circle around another (to simulate a circular orbit).
      */
-    public static void circle(Planet planet, float cRadius, float period, float timePassed){
+    public static void presetOrbit(SolidObject orbiter, SolidObject focus, float orbitRadius, float period,
+                                   float timePassed, float phase){
         float x;
         float y;
-        float cx = planet.getPrimary().getBody().getPosition().x;
-        float cy = planet.getPrimary().getBody().getPosition().y;
+        float fx = focus.getBody().getPosition().x;
+        float fy = focus.getBody().getPosition().y;
         double w = 2 * Math.PI / period;
         double t = (double) (timePassed);
-        x =  cx + (float) (cRadius * Math.cos(w*t));
-        y =  cy + (float) (cRadius * Math.sin(w*t));
-        planet.getBody().setTransform(x,y,0f);
+        x =  fx + (float) (orbitRadius * Math.cos(w*t + phase));
+        y =  fy + (float) (orbitRadius * Math.sin(w*t + phase));
+        orbiter.getBody().setTransform(x,y,0f);
     }
 
-    /** A faster and more efficient but less-explained version of the circle drawing method, for preset bodies
-     *  (eg. the Moon around the Earth).
+    /** //TODO comment for this
      */
-    public static void presetCircle( Planet planet, int planetType , float timePassed, float delay){
-        if (planetType == 3) {
-            float x = planet.getPrimary().getBody().getPosition().x;
-            float y = planet.getPrimary().getBody().getPosition().y;
-            planet.getBody().setTransform(
-                    x + (float) (7615 * Math.cos(2 * Math.PI / 3000 * timePassed + delay)),
-                    y + (float) (7615 * Math.sin(2 * Math.PI / 3000 * timePassed + delay)),
+    public static void quickPresetOrbits(SolidObject orbiter, int selection , float timePassed){
+        if (selection == 1) { //Moon around Earth quick preset for Level 1
+            float x = ((Planet) orbiter).getPrimary().getBody().getPosition().x;
+            float y = ((Planet) orbiter).getPrimary().getBody().getPosition().y;
+            float w = (float) (2 * Math.PI / 3000);
+            float phase = (float) (Math.PI * 2f / 3f);
+            orbiter.getBody().setTransform(
+                    x + (float) (7615 * Math.cos(w * timePassed + phase)),
+                    y + (float) (7615 * Math.sin(w * timePassed + phase)),
+                    0f);
+        }
+        else if (selection == 2){ //Moon around Earth quick preset for Level 2
+            float x = ((Planet) orbiter).getPrimary().getBody().getPosition().x;
+            float y = ((Planet) orbiter).getPrimary().getBody().getPosition().y;
+            float w = (float) (2 * Math.PI / 3000);
+            float phase = 0f;
+            orbiter.getBody().setTransform(
+                    x + (float) (7615 * Math.cos(w * timePassed + phase)),
+                    y + (float) (7615 * Math.sin(w * timePassed + phase)),
+                    0f);
+        }
+        else if (selection == 4){ //Spacecraft in Level 4
+            float x = 11000;//Mars location
+            float y = 7000; //Mars location
+            float w = (float) (2 * Math.PI / 240);
+            float phase = 4f;
+            orbiter.getBody().setTransform(
+                    x + (float) (1500 * Math.cos(w * timePassed + phase)),
+                    y + (float) (1500 * Math.sin(w * timePassed + phase)),
+                    0f);
+        }
+        else if (selection == 5) { //Moon around Earth quick preset for Level 5
+            float x = ((Planet) orbiter).getPrimary().getBody().getPosition().x;
+            float y = ((Planet) orbiter).getPrimary().getBody().getPosition().y;
+            float w = (float) (2 * Math.PI / 3000);
+            float phase = -1f;
+            orbiter.getBody().setTransform(
+                    x + (float) (7615 * Math.cos(w * timePassed + phase)),
+                    y + (float) (7615 * Math.sin(w * timePassed + phase)),
                     0f);
         }
     }
@@ -265,11 +371,7 @@ public class Level {
             setState(State.GAME_OVER);
         }
         else {
-            // TODO: restart from checkpoint etc.
-            // ridicule gamer etc.
-
-
-            // restart game
+            resetLevel();
             setState(State.RUNNING);
         }
     }
@@ -310,14 +412,16 @@ public class Level {
         return health;
     }
 
-    public void setHealth(int health) {
+    public void setHealth(byte health) {
         this.health = health;
     }
 
-    public void setScreenReference(GameScreen screen){ this.screen = screen; } //Needed to set zoom**
+    public void setScreenReference(GameScreen screen){ this.screen = screen; }
 
     public PopUp getPopUp() {
         return popUp;
     }
+
+    public Timer getTimer(){return timer;}
     //endregion
 }

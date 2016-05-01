@@ -18,8 +18,8 @@ public class Playable extends SolidObject {
     * The specific impulse of the fuel, Ns/kg, determines its efficiency.
     * Source for comparison: ( http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print) )
     */
-    private final float fuelSpecificImpulse = 3500;
-    private final float maxVelocity = 1200;
+    private final float FUEL_SPECIFIC_IMPULSE = 3500;
+    private final float MAX_VELOCITY = 1200;
 
     /** A base multiplier for thrust calculations, for convenience. */
     public static final float BASE = 1 * 1e3f; //was 5000 *** FIXME, optimize
@@ -29,7 +29,6 @@ public class Playable extends SolidObject {
     /** Current thrust in Newtons in every "deltaTime"*/
     private float currentThrust;
     /** Reaction wheel strength (assuming the craft rotates using electricity). */
-    //TODO rename
     private float deltaTorque;
     /** Thrust change rate multiplier */
     private float deltaThrust;
@@ -115,7 +114,7 @@ public class Playable extends SolidObject {
     /** Reduce mass of the spacecraft by burning its fuel */
     private void consumeFuelAndDecreaseMass(float deltaTime) {
         if (fuelLeft > 0) {
-            float fuelSpent = currentThrust / fuelSpecificImpulse;
+            float fuelSpent = currentThrust * deltaTime / FUEL_SPECIFIC_IMPULSE;
             fuelLeft -= fuelSpent;
 
             //The mass information of the body changes only when MassData is updated
@@ -277,7 +276,7 @@ public class Playable extends SolidObject {
     }
 
     public float getMaxVelocity() {
-        return maxVelocity;
+        return MAX_VELOCITY;
     }
 
     //endregion

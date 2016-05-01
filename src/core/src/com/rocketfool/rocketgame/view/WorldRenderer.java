@@ -4,8 +4,6 @@ package com.rocketfool.rocketgame.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.backends.lwjgl.audio.Wav;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -22,7 +20,7 @@ import com.rocketfool.rocketgame.model.Planet;
 import com.rocketfool.rocketgame.model.TrajectorySimulator;
 import com.rocketfool.rocketgame.model.VisualMeteor;
 import com.badlogic.gdx.utils.Timer;
-import com.rocketfool.rocketgame.model.*;
+import com.rocketfool.rocketgame.util.GamePreferences;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -93,6 +91,13 @@ public class WorldRenderer implements Disposable {
         isThrustStopperActive = false;
         isBQPlaying = false;
 
+        registerCollision();
+    }
+    //endregion
+
+    //region Methods
+
+    private void registerCollision() {
         level.getWorld().setContactListener(new ContactListener() {
             @Override
             public void beginContact(Contact contact) {
@@ -120,9 +125,6 @@ public class WorldRenderer implements Disposable {
             //endregion
         });
     }
-    //endregion
-
-    //region Methods
 
     private void onCollision() {
         stopWarningSound();
@@ -130,16 +132,23 @@ public class WorldRenderer implements Disposable {
         stopThrusterGoinger();
 
         //Plays collusionSound
-        AssetManager.EXPLOSION.play(Preferences.getInstance().getMasterVolume() / 5f);
+        AssetManager.EXPLOSION.play(GamePreferences.getInstance().getMasterVolume() / 5f);
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
 
             }
         },3.0f);
-        AssetManager.DEATH_SIGN.play(Preferences.getInstance().getMasterVolume() );
+        AssetManager.DEATH_SIGN.play(GamePreferences.getInstance().getMasterVolume() );
 
-
+        level.setState(Level.State.HEALTH_OVER);
+        if (level.getState() == Level.State.GAME_OVER) {
+            // TODO: DO GAME OVER ANIMATION
+        }
+        else {
+            // TODO: DO HEALTH OVER ANIMATION
+        }
+        registerCollision();
     }
 
     public void draw(SpriteBatch batch) {
@@ -261,6 +270,11 @@ public class WorldRenderer implements Disposable {
                 case 7:
                     texturePlanet = AssetManager.PLANET7;
                     break;
+                case 8:
+                    texturePlanet = AssetManager.EARTH;
+                    break;
+                case 9:
+                    texturePlanet = AssetManager.MOON;
             }
             texturePlanet.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
@@ -327,20 +341,21 @@ public class WorldRenderer implements Disposable {
     }
 
     private void drawTrajectory(SpriteBatch batch) {
-        trajectorySimulator.update(Gdx.graphics.getDeltaTime());
+        if (TrajectorySimulator.enabled) {
+            trajectorySimulator.update(Gdx.graphics.getDeltaTime());
 
-        Texture texture = AssetManager.GHOST;
-        texture.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.MipMapLinearLinear);
-        for (Vector2 pos : trajectorySimulator.getEstimationPath()) {
+            Texture texture = AssetManager.GHOST;
+            texture.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.MipMapLinearLinear);
+            for (Vector2 pos : trajectorySimulator.getEstimationPath()) {
 
-            batch.draw(
-                    texture,
-                    pos.x * toPixel,
-                    pos.y * toPixel
-            );
+                batch.draw(
+                        texture,
+                        pos.x * toPixel,
+                        pos.y * toPixel
+                );
+            }
         }
     }
-
     private void drawWarningSign(SpriteBatch batch) {
         //Draws warning sign
         if (trajectorySimulator.isCollided()) {
@@ -373,11 +388,11 @@ public class WorldRenderer implements Disposable {
     //SFX METHODS
     public void playThrustStarter() {
         System.out.println("starter");
-        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f);
+        thrusterGoinger.play(GamePreferences.getInstance().getMasterVolume() / 10f);
     }
 
     public void playThrusterGoinger() {
-        thrusterGoinger.play(Preferences.getInstance().getMasterVolume() / 10f);
+        thrusterGoinger.play(GamePreferences.getInstance().getMasterVolume() / 10f);
     }
 
     public void stopThrusterGoinger() {
@@ -385,12 +400,12 @@ public class WorldRenderer implements Disposable {
     }
 
     public void playThrusterStarter() {
-        AssetManager.THRUSTER_STARTER.play(Preferences.getInstance().getMasterVolume() / 10f);
+        AssetManager.THRUSTER_STARTER.play(GamePreferences.getInstance().getMasterVolume() / 10f);
     }
 
     public void playThrusterEnder() {
         if (isThrustStopperActive)
-            AssetManager.THRUSTER_ENDER.play(Preferences.getInstance().getMasterVolume() / 10f);
+            AssetManager.THRUSTER_ENDER.play(GamePreferences.getInstance().getMasterVolume() / 10f);
     }
 
     public void setThrustStopperActive(boolean thrustStopperActive) {
@@ -398,7 +413,7 @@ public class WorldRenderer implements Disposable {
     }
 
     public void playBackgroundMusic() {
-        bqMusic.setVolume(Preferences.getInstance().getMasterVolume() / 4f);
+        bqMusic.setVolume(GamePreferences.getInstance().getMasterVolume() / 4f);
         bqMusic.play();
     }
 
@@ -407,7 +422,7 @@ public class WorldRenderer implements Disposable {
     }
 
     public void playWarningSound() {
-        warningSound.setVolume(Preferences.getInstance().getMasterVolume() / 3f);
+        warningSound.setVolume(GamePreferences.getInstance().getMasterVolume() / 3f);
         warningSound.play();
     }
 

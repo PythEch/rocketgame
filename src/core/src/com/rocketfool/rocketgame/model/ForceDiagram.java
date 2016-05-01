@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.Array;
 
 /**
  * Created by Omer on 29/04/2016.
+ * Calculates all forces acting on the playable individually, in preparation for drawing them.
  */
 public class ForceDiagram extends GameObject {
     public static final float FRAME_RATE = 1f / 60;
@@ -15,6 +16,7 @@ public class ForceDiagram extends GameObject {
     private Array<Vector2> vectors;
     private Vector2 impulseVector;
     private Vector2 resultant;
+    private static boolean enabled = false;
 
     public ForceDiagram(Level level) {
         this.level = level;
@@ -65,4 +67,10 @@ public class ForceDiagram extends GameObject {
     public Vector2 getResultant() {
         return resultant;
     }
+
+    public static boolean isEnabled() {
+        return enabled;
+    }
+
+    public static void setEnabled(boolean set){enabled = set;}
 }

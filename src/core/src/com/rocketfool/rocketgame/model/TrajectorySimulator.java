@@ -34,6 +34,8 @@ public class TrajectorySimulator extends GameObject {
     public static final float MIN_THRUST = 0.00001f;
 
     public static final int IGNORE_THRESHOLD = 15;
+
+    public static boolean enabled = true;
     //endregion
 
     //region Fields
@@ -107,15 +109,16 @@ public class TrajectorySimulator extends GameObject {
 
         // Copy all planets to our own world
         for (Planet planet : level.getPlanets()) {
-            planets.add(new Planet(
-                    planet.getBody().getPosition().x,
-                    planet.getBody().getPosition().y,
-                    planet.getMass(),
-                    planet.getRadius(),
-                    null,
-                    world,
-                    planet.getPlanetType()
-            ));
+           Planet newPlanet = new Planet(
+                   planet.getBody().getPosition().x,
+                   planet.getBody().getPosition().y,
+                   planet.getMass(),
+                   planet.getRadius(),
+                   planet.getPrimary(),
+                   world,
+                   planet.getPlanetType()
+           );
+            planets.add(newPlanet);
         }
 
         // Copy the playable to our own world
@@ -194,12 +197,22 @@ public class TrajectorySimulator extends GameObject {
 
             // Simulate the world
             doGravity();
+            updatePlanets();
             playable.update(FRAME_RATE);
             world.step(FRAME_RATE, 8, 3);
 
             // Skip a certain N amounts of points as to not clutter the screen
             if (i % skipCount == 0)
                 currentEstimationPath.add(playable.getBody().getPosition().cpy());
+        }
+    }
+    
+    private void updatePlanets() {
+        for (int i = 0; i < planets.size; i++) {
+            Planet myPlanet = planets.get(i);
+            Planet otherPlanet = level.getPlanets().get(i);
+
+            myPlanet.getBody().setTransform(otherPlanet.getBody().getPosition(), 0);
         }
     }
 

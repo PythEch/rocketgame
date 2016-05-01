@@ -20,6 +20,10 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  * TODO: reevaluate scales and draw trajectory smoother
  */
 public class Minimap {
+    public static final float PLAYABLE_SCALE = 0.25f;
+    public static final float GHOST_SCALE = 0.1f;
+    public static final float PLANET_SCALE = 4e-4f;
+
     private float originX;
     private float originY;
     private float side;
@@ -28,6 +32,7 @@ public class Minimap {
     private OrthographicCamera camera;
     private TrajectorySimulator trajectorySimulator;
     private ShapeRenderer shapeRenderer;
+    private boolean enabled;
 
     public Minimap(float originX, float originY, float side, Level level, OrthographicCamera camera, TrajectorySimulator trajectorySimulator) {
         this.originX = originX;
@@ -37,29 +42,27 @@ public class Minimap {
         this.level = level;
         this.camera = camera;
         this.trajectorySimulator = trajectorySimulator;
+        this.enabled = true;
         if (DEBUG)
             shapeRenderer = new ShapeRenderer();
     }
 
     public void draw(SpriteBatch batch) {
-        float playableScale = 0.25f;
-
         Vector2 playablePos = level.getPlayable().getBody().getPosition();
 
-        drawAt(batch, AssetManager.MINIMAP_PLAYER, playablePos.x, playablePos.y, playableScale);
+        drawAt(batch, AssetManager.MINIMAP_PLAYER, playablePos.x, playablePos.y, PLAYABLE_SCALE);
 
         for (Planet planet : level.getPlanets()) {
             Vector2 planetPos = planet.getBody().getPosition();
-            float playableArea = level.getPlayable().getWidth() * level.getPlayable().getHeight();
             float planetArea = (float) (Math.PI * planet.getRadius() * planet.getRadius());
-            float planetScale = planetArea / (float) Math.pow(playableArea, 1.5f) * playableScale;
+            float planetScale = (float)(Math.sqrt(planetArea) * PLANET_SCALE);
 
             drawAt(batch, AssetManager.MINIMAP_PLANET, planetPos.x, planetPos.y, planetScale);
         }
 
         for (int i = 0; i < trajectorySimulator.getEstimationPath().size; i += 10) {
             Vector2 point = trajectorySimulator.getEstimationPath().get(i);
-            drawAt(batch, AssetManager.GHOST, point.x, point.y, 0.1f);
+            drawAt(batch, AssetManager.GHOST, point.x, point.y, GHOST_SCALE);
         }
 
         if (DEBUG)
@@ -103,4 +106,8 @@ public class Minimap {
         shapeRenderer.end();
         batch.begin();
     }
+
+    public boolean isEnabled() {return enabled;}
+
+    public void setEnabled(boolean enabled){this.enabled = enabled;}
 }

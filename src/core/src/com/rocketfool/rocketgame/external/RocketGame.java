@@ -3,9 +3,11 @@ package com.rocketfool.rocketgame.external;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.view.GameScreen;
 import com.rocketfool.rocketgame.view.MainMenuScreen;
-import com.rocketfool.rocketgame.view.Splash.SplashScreen;
+import com.rocketfool.rocketgame.view.MoonCrashScreen;
+import com.rocketfool.rocketgame.view.TakeoffScreen;
 
 import static com.rocketfool.rocketgame.util.Constants.QUICK_LOAD;
 
@@ -19,6 +21,7 @@ public class RocketGame extends Game {
     private SpriteBatch batch;
     private BitmapFont font;
     private boolean isFullScreen;
+    private boolean isSfx;
     //endregion
 
     //region Methods
@@ -26,11 +29,10 @@ public class RocketGame extends Game {
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont();
+        setSfx( true);
 
-        if (!QUICK_LOAD)
-            this.setScreen(new MainMenuScreen(this, batch, font));
-        else
-            this.setScreen(new GameScreen(this, batch, font));
+        this.setScreen(new MainMenuScreen(this, batch, font));
+
     }
 
     @Override
@@ -47,6 +49,15 @@ public class RocketGame extends Game {
 
     public void setFullScreen(boolean fullScreen) {
         isFullScreen = fullScreen;
+    }
+
+    public boolean isSfx()
+    {
+        return isSfx;
+    }
+
+    public void setSfx(boolean sfx){
+        isSfx = sfx;
     }
     //endregion
 }
