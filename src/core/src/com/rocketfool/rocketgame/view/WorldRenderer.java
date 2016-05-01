@@ -160,6 +160,7 @@ public class WorldRenderer implements Disposable {
         drawTrajectory(batch);
         drawWarningSign(batch);
         drawLevel2MoonAsteroid(batch);
+        drawLevel3Objects(batch);
         drawMapBorder(batch);
 
         if (!QUICK_LOAD)
@@ -395,7 +396,45 @@ public class WorldRenderer implements Disposable {
                 );
             }
         }
+    }
 
+    private void drawLevel3Objects(SpriteBatch batch)
+    {
+        for(int i = 0; i < level.getGameObjects().size ; i++)
+        {
+            if(level.getGameObjects().get(i) instanceof RoundObstacle)
+            {
+                if(i % 2 == 0)
+                {
+                    //texture = ANANANAAN;
+                }
+                else
+                {
+                    //texture = ananaanan;
+                }
+
+
+                RoundObstacle obj = (RoundObstacle)level.getGameObjects().get(i);
+                batch.draw(
+                        AssetManager.TOXIC_METEOR,
+                        obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getRadius() * toPixel * 2,
+                        obj.getRadius() * toPixel * 2
+                );
+            }
+           /* else if (level.getGameObjects().get(i) instanceof RectangleObstacle)
+            {
+                RectangleObstacle obj = (RectangleObstacle)level.getGameObjects().get(i);
+                batch.draw(
+                        AssetManager.TOXIC_METEOR,
+                        obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getRadius() * toPixel * 2,
+                        obj.getRadius() * toPixel * 2
+                );
+            }*/
+        }
     }
 
     private void drawMapBorder(SpriteBatch batch) {

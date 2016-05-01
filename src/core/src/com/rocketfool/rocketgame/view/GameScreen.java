@@ -404,7 +404,7 @@ public class GameScreen implements Screen {
                     if (!isGameOver) {
                         game.setScreen(new GameScreen(newLevel, game, batch, font));
                     } else {
-                        //game.setScreen(new EndingScreen(game,batch,font));
+                        //game.setScreen(new LevelEnding(game,batch,font));
                         System.out.println("ANAN");
                         //Some shits
                         renderer.stopThrusterGoinger();
