@@ -32,6 +32,7 @@ public class CutsceneScreen implements Screen {
     private Level level;
     private String welcomeText;
     private CutsceneScreen cutscene;
+    private OrthographicCamera camera;
 
     public CutsceneScreen(RocketGame game, SpriteBatch batch, BitmapFont font, FileHandle fileHandle, Level level, String welcomeText) {
         this.game = game;
@@ -53,10 +54,10 @@ public class CutsceneScreen implements Screen {
 
     @Override
     public void show() {
-        FitViewport viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        FitViewport viewport = new FitViewport(1280, 720);
         videoPlayer = new VideoPlayerDesktop(viewport);
 
-        OrthographicCamera camera = new OrthographicCamera();
+        camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         popup = new Popup();
@@ -99,6 +100,7 @@ public class CutsceneScreen implements Screen {
 
         popupView.update(v);
 
+        batch.setProjectionMatrix(camera.combined);
         batch.begin();
         popupView.draw(batch);
         batch.end();
