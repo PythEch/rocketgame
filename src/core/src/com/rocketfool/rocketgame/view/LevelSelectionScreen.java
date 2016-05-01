@@ -98,7 +98,7 @@ public class LevelSelectionScreen implements Screen {
         level1.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel1(),
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL1START, LevelManager.createLevel1(),
                         "level1!"));
             }
         });
@@ -117,7 +117,7 @@ public class LevelSelectionScreen implements Screen {
         level3.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel3(),
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL3START, LevelManager.createLevel3(),
                         "level3!"));
             }
         });
@@ -126,7 +126,7 @@ public class LevelSelectionScreen implements Screen {
         level4.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel4(),
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL4START, LevelManager.createLevel4(),
                         "You starting a new journey. Be careful out there!"));
             }
         });
@@ -135,7 +135,7 @@ public class LevelSelectionScreen implements Screen {
         level5.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel5(),
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL5START, LevelManager.createLevel5(),
                         "You starting a new journey. Be careful out there!"));
             }
         });

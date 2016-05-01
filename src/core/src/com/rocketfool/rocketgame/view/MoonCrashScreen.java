@@ -62,7 +62,7 @@ public class MoonCrashScreen implements Screen {
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
-                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel2(), "You starting a new journey. Be careful out there!"));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL2START, LevelManager.createLevel2(), "You starting a new journey. Be careful out there!"));
             }
         }, 13f);
 
