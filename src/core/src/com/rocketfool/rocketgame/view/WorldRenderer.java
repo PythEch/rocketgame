@@ -478,6 +478,7 @@ public class WorldRenderer implements Disposable {
         boolean shouldDrawPlayer = true;
         if(level.getLevelNo() == 4)
         {
+            //Mekik çalıştır batch.draw();
             if(level.getTriggers().get(2).isTriggeredBefore() ) {
                 shouldDrawPlayer = false;
                 batch.draw(
