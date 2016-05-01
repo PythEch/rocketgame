@@ -2,6 +2,7 @@ package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -25,6 +26,7 @@ import com.rocketfool.rocketgame.external.RocketGame;
 import com.rocketfool.rocketgame.model.*;
 
 import com.badlogic.gdx.video.VideoPlayer;
+import com.rocketfool.rocketgame.util.GamePreferences;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -403,13 +405,21 @@ public class GameScreen implements Screen {
                         game.setScreen(new GameScreen(newLevel, game, batch, font));
                     } else {
                         //game.setScreen(new EndingScreen(game,batch,font));
+                        System.out.println("ANAN");
+                        //Some shits
+                        renderer.stopThrusterGoinger();
+                        renderer.stopWarningSound();
+                        renderer.stopBackgroundMusic();
+                        popupView.stopPopupShutter();
+                        level.setState(Level.State.GAME_OVER);
+
                     }
 
                 }
             }, 5.0f);
 
         } else if (level.getState() == Level.State.GAME_OVER) {
-            // sexxxx
+            game.setScreen(new EndingScreen(game,batch,font) );
         }
 
         // draw trigger bounds for debug
