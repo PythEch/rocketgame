@@ -292,6 +292,9 @@ public class WorldRenderer implements Disposable {
                     break;
                 case 9:
                     texturePlanet = AssetManager.MOON;
+                    break;
+                case 10:
+                    texturePlanet = AssetManager.MARS;
             }
             texturePlanet.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 

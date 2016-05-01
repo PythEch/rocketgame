@@ -612,7 +612,7 @@ public class LevelManager {
         level.map = new Map(Gdx.graphics.getWidth() * 300, Gdx.graphics.getHeight() * 300);
 
         //Mars
-        level.planets.add(new Planet(11000, 7000, 8e25f, 700, null, level.world, 4));
+        level.planets.add(new Planet(11000, 7000, 8e25f, 700, null, level.world, 10));
 
         //initialization of the rocket
         level.playable = new Playable(7500, 9000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
