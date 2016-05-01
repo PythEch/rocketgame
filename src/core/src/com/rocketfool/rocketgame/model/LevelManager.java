@@ -686,7 +686,13 @@ public class LevelManager {
                            }
                        },
                 155.0f);
-
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that neutron stars can spin at a rate of 600 rotations per second?");
+                           }
+                       },
+                185.0f);
         return level;
     }
 
@@ -914,10 +920,10 @@ public class LevelManager {
 
                 if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
                     popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
-                            "called Oz-Turca and they call themselves Oz-Jans."); //risky?**
+                            "called Oz-Turca and they call themselves Oz-Janis."); //risky?**
                 }
                 //TODO: Alien & Human Gardasligi animasyonu. GAME OVER HERE
-                else {
+                else {//TODO trigger business for these
                     popUp.setText("We better check all the other planets before looking here.");
                 }
 
@@ -944,12 +950,11 @@ public class LevelManager {
                                popUp.setText("...and there seems to be no sign of intelligent life anywhere...");
                            }
                        },
-                60.0f);
+                120.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //Easter egg (kim 10dak bekleyecek ki?)**
-                               popUp.setText("FLY YOU FOOLS!");
+                               popUp.setText("FLY YOU FOOLS!"); //East egg :D
                            }
                        },
                 600.0f);
