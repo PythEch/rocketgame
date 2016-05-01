@@ -626,28 +626,28 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger craftTrig = new PositionTrigger(((SolidObject) level.solidObjects.get(0)), 0, 0, 750f, level.playable) {
+
+        final PositionTrigger endTrig = new PositionTrigger(5000, 10000, 1000f, level.playable) {
+            @Override
+            public void triggerPerformed() {
+                level.setState(Level.State.LEVEL_FINISHED);
+                //Popup Text:("Congratulations! You saved your friend! Looks like he is interesting information about the aliens too!!");}
+            }
+        };
+
+        final PositionTrigger craftTrig = new PositionTrigger(((SolidObject) level.solidObjects.get(0)), 0, 0, 350f, level.playable) {
             @Override
             public void triggerPerformed() {
                 //(Halfway point)
                 popUp.setText("Great work! Now let's head back!");
                 objectiveWindow.setText("Head home, towards Earth");
                 level.waypoint = new Waypoint(level, 5000, 10000, 1000f); //TODO add simple crosshair thingy sprite
+                level.triggers.add(endTrig);
             }
         };
         level.triggers.add(craftTrig);
         level.waypoint = new Waypoint(level, craftTrig); //TODO add stranded craft SPRITE, can be any size
 
-        final PositionTrigger endTrig = new PositionTrigger(5000, 10000, 1000f, level.playable) {
-            @Override
-            public void triggerPerformed() {
-                if (craftTrig.isTriggeredBefore()) {
-                    level.setState(Level.State.LEVEL_FINISHED);
-                    //Popup Text:("Congratulations! You saved your friend! Looks like he is interesting information about the aliens too!!");}
-                }
-            }
-        };
-        level.triggers.add(endTrig);
 
         //level starts here
         level.timer.start();
