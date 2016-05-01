@@ -162,19 +162,17 @@ public class PopupView {
     }
 
     public void playPopupOpener(){
-        //AssetManager.POPUP_OPENER.play(GamePreferences.getInstance().getMasterVolume()/2f);
+        AssetManager.POPUP_OPENER.play(GamePreferences.getInstance().getMasterVolume()/2f);
     }
 
     public void playPopupShutter(){
-       // popupShutter.setVolume(GamePreferences.getInstance().getMasterVolume() /6f );
-       // popupShutter.setLooping(true);
-       // popupShutter.play();
+        popupShutter.setVolume(GamePreferences.getInstance().getMasterVolume() /6f );
+        popupShutter.setLooping(true);
+        popupShutter.play();
     }
 
     public void stopPopupShutter(){
         popupShutter.stop();
-        popupShutter.setVolume(0);
-        popupShutter.dispose();
     }
 
     public float getyCoord() {
