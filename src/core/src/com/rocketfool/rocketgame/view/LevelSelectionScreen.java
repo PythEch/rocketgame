@@ -27,12 +27,13 @@ import java.io.FileNotFoundException;
 /**
  * TODO: implement
  */
-public class LevelSelectionScreen implements Screen{
+public class LevelSelectionScreen implements Screen {
 
     private Stage stage;
     private RocketGame game;
     private SpriteBatch batch;
     private BitmapFont font;
+    private TextButton back;
 
     public LevelSelectionScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
         this.game = game;
@@ -64,29 +65,33 @@ public class LevelSelectionScreen implements Screen{
         TextButton level3 = new TextButton("Level 3", buttonStyle);
         TextButton level4 = new TextButton("Level 4", buttonStyle);
         TextButton level5 = new TextButton("Level 5", buttonStyle);
+        back = new TextButton("Back", buttonStyle);
 
 
         level1.setWidth(level1.getPrefWidth() * 2f);
         level1.setHeight(level1.getPrefHeight() * 2.1f);
-        level1.setPosition(460,440);
+        level1.setPosition(460, 440);
         stage.addActor(level1);
         level2.setWidth(level1.getPrefWidth() * 2f);
         level2.setHeight(level1.getPrefHeight() * 2.1f);
-        level2.setPosition(760,440);
+        level2.setPosition(760, 440);
         stage.addActor(level2);
         level3.setWidth(level1.getPrefWidth() * 2f);
         level3.setHeight(level1.getPrefHeight() * 2.1f);
-        level3.setPosition(1065,440);
+        level3.setPosition(1065, 440);
         stage.addActor(level3);
         level5.setWidth(level1.getPrefWidth() * 2f);
         level5.setHeight(level1.getPrefHeight() * 2.1f);
-        level5.setPosition(918,198);
+        level5.setPosition(918, 198);
         stage.addActor(level5);
         level4.setWidth(level1.getPrefWidth() * 2f);
         level4.setHeight(level1.getPrefHeight() * 2.1f);
-        level4.setPosition(600,198);
+        level4.setPosition(600, 198);
         stage.addActor(level4);
 
+        back.setWidth(level1.getPrefWidth() * 2f);
+        back.setHeight(level1.getPrefHeight() * 1.5f);
+        back.setPosition(50, 50);
 
         //Listeners
         //Level1
@@ -131,6 +136,15 @@ public class LevelSelectionScreen implements Screen{
             }
         });
 
+        back.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new MainMenuScreen(game, batch, font));
+            }
+        });
+
+        stage.addActor(back);
+
         stage.addAction(Actions.alpha(0f));//0 = transperent
 
         stage.setViewport(new FitViewport(1280, 720));
@@ -145,7 +159,8 @@ public class LevelSelectionScreen implements Screen{
         Texture background = new Texture(Gdx.files.internal("Backgrounds/levelSelectionScreen.png"));
 
         batch.begin();
-        batch.draw(background,0,0);
+        batch.draw(background, 0, 0);
+        back.draw(batch, 1);
         batch.end();
 
         stage.act(delta);
@@ -154,7 +169,7 @@ public class LevelSelectionScreen implements Screen{
 
     @Override
     public void resize(int width, int height) {
-            stage.getViewport().update(width, height, true);
+        stage.getViewport().update(width, height, true);
     }
 
     @Override
