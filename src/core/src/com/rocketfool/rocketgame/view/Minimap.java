@@ -22,7 +22,7 @@ import static com.rocketfool.rocketgame.util.Constants.*;
 public class Minimap {
     public static final float PLAYABLE_SCALE = 0.25f;
     public static final float GHOST_SCALE = 0.1f;
-    public static final float PLANET_SCALE = 4e-4f;
+    public static final float PLANET_SCALE = 2.7e-4f;
 
     private float originX;
     private float originY;

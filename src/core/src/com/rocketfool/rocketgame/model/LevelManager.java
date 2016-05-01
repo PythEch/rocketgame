@@ -269,7 +269,7 @@ public class LevelManager {
         popUp.setTitle("HQ");
 
         //init of map
-        level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
+        level.map = new Map(1000 * 600, 720 * 600);
 
         //Earth
         Planet earth = new Planet(14000, 11000, 6.0f * 1.0e25f, 650, null, level.world, 8);
