@@ -399,18 +399,25 @@ public class WorldRenderer implements Disposable {
 
     private void drawLevel3Objects(SpriteBatch batch)
     {
+<<<<<<< HEAD
         for(int i = 0; i < level.getSolidObjects().size ; i++)
+=======
+        Texture textureMeteor;
+        Texture textureRock;
+        for(int i = 0; i < level.getGameObjects().size ; i++)
+>>>>>>> origin/master
         {
             if(level.getSolidObjects().get(i) instanceof RoundObstacle)
             {
                 if(i % 2 == 0)
                 {
-                    //texture = ANANANAAN;
+                    textureMeteor = AssetManager.METEOR_NORMAL;
                 }
                 else
                 {
-                    //texture = ananaanan;
+                    textureMeteor = AssetManager.METEOR_NORMAL2;
                 }
+<<<<<<< HEAD
 
 
                 RoundObstacle obj = (RoundObstacle)level.getSolidObjects().get(i);
@@ -418,21 +425,42 @@ public class WorldRenderer implements Disposable {
                         AssetManager.TOXIC_METEOR,
                         obj.getBody().getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
                         obj.getBody().getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
+=======
+                RoundObstacle obj = (RoundObstacle)level.getGameObjects().get(i);
+                batch.draw(
+                        textureMeteor,
+                        obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
+>>>>>>> origin/master
                         obj.getRadius() * toPixel * 2,
-                        obj.getRadius() * toPixel * 2.3f
+                        obj.getRadius() * toPixel * 2f
                 );
             }
+<<<<<<< HEAD
            /* else if (level.getSolidObjects().get(i) instanceof RectangleObstacle)
             {
                 RectangleObstacle obj = (RectangleObstacle)level.getSolidObjects().get(i);
+=======
+           else if (level.getGameObjects().get(i) instanceof RectangleObstacle)
+            {
+                if(i % 2 == 0)
+                {
+                    textureRock = AssetManager.ALIEN_ROCK1;
+                }
+                else
+                {
+                    textureRock = AssetManager.ALIEN_ROCK2;
+                }
+                RectangleObstacle obj = (RectangleObstacle)level.getGameObjects().get(i);
+>>>>>>> origin/master
                 batch.draw(
-                        AssetManager.TOXIC_METEOR,
-                        obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
-                        obj.getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
-                        obj.getRadius() * toPixel * 2,
-                        obj.getRadius() * toPixel * 2
+                        textureRock,
+                        obj.getPosition().x * (toPixel) - (obj.getWidt() * toPixel),
+                        obj.getPosition().y * (toPixel) - (obj.getHeight() * toPixel),
+                        obj.getWidt() * toPixel * 2,
+                        obj.getHeight() * toPixel * 2
                 );
-            }*/
+            }
         }
     }
 

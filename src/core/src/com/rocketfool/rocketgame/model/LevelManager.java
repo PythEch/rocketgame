@@ -280,7 +280,11 @@ public class LevelManager {
         Planet moon = new Planet(21000, 14000, 1.0f * 1.0e25f, 170, earth, level.world, 9);
         level.planets.add(moon);
         moon.setOrbitPreset(true);
+<<<<<<< HEAD
         level.solidObjects.add(new MoonAsteroid(moon, 3.25e2f, 40, level.world)); //TODO IMAGE
+=======
+        level.gameObjects.add(new MoonAsteroid(moon, 3.25e2f, 40, level.world));
+>>>>>>> origin/master
         //initialization of the rocket
         level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
         level.playable.getBody().setLinearVelocity(50f, -50f);
@@ -510,7 +514,7 @@ public class LevelManager {
         final PositionTrigger asteroidsPassed = new PositionTrigger(17000, 10500, 750, level.playable) {
             @Override
             public void triggerPerformed() {
-                //TODO: Stop level here
+                level.setState(Level.State.LEVEL_FINISHED);
                 //TODO End of level popup here
                 //Text: "Congratulations! You exhibited some nice piloting! We are right on the track to reach Mars. Great Job Martian!"
             }
@@ -561,14 +565,14 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Piloting is hard, isn't it?");
+                               popUp.setText("Some of the rocks looks weird here! It seems matter in these rocks are not in the periodic table.");
                            }
                        },
                 75.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Avoid collisions with obstacles!");
+                               popUp.setText("It is better to stay away from them now, our friend needs our help.");
                            }
                        },
                 105.0f);
@@ -642,7 +646,7 @@ public class LevelManager {
             @Override
             public void triggerPerformed() {
                 if (craftTrig.isTriggeredBefore()) {
-                    //TODO stop and end level here
+                    level.setState(Level.State.LEVEL_FINISHED);
                     //Popup Text:("Congratulations! You saved your friend! Looks like he is interesting information about the aliens too!!");}
                 }
             }
@@ -897,7 +901,6 @@ public class LevelManager {
                 popUp.setText("What a beautiful planet this is! However, there is no sign of life here.");
                 objectiveWindow.setText("Continue investigating planets");
                 //level.waypoints.removeIndex(1);
-                level.setState(Level.State.GAME_OVER);
 
             }
         };

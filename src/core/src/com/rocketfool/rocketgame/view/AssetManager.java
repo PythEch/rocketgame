@@ -34,6 +34,9 @@ public class AssetManager {
     public static final Texture POPUP_BODY = new Texture(Gdx.files.internal("PNG/popup.png"));
     public static final Texture TOXIC_METEOR = new Texture(Gdx.files.internal("PNG/toxicMeteor.png"));
     public static final Texture METEOR_NORMAL = new Texture(Gdx.files.internal("PNG/meteorNormal.png"));
+    public static final Texture METEOR_NORMAL2 = new Texture(Gdx.files.internal("PNG/meteorNormal2.png"));
+    public static final Texture ALIEN_ROCK1 = new Texture(Gdx.files.internal("PNG/allienrock1.png"));
+    public static final Texture ALIEN_ROCK2 = new Texture(Gdx.files.internal("PNG/allienrock2.png"));
     public static final Texture MAP_BORDER = new Texture(Gdx.files.internal("PNG/mapBorder.png"));
     public static final Texture LEVEL_FINISHED = new Texture(Gdx.files.internal("Backgrounds/levelFinish.png"));
     public static final Sound THRUSTER_STARTER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterStarter.wav"));
