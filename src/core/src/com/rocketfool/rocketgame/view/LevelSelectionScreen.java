@@ -133,7 +133,7 @@ public class LevelSelectionScreen implements Screen{
 
         stage.addAction(Actions.alpha(0f));//0 = transperent
 
-       new FitViewport(1280, 720).apply();
+        stage.setViewport(new FitViewport(1280, 720));
 
     }
 
