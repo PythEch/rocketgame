@@ -88,6 +88,8 @@ public class GameScreen implements Screen {
 
     private FileHandle video;
 
+    private String levelText;
+
     //endregion
 
     //region Constructor
@@ -398,7 +400,6 @@ public class GameScreen implements Screen {
         popupView.draw(batch);
 
         //Level ending-starting
-
         if (level.getState() == Level.State.LEVEL_FINISHED) {
             level.setState(Level.State.PAUSED);
             batch.draw(
@@ -419,27 +420,36 @@ public class GameScreen implements Screen {
                         case 1:
                             newLevel = LevelManager.createLevel2();
                             video = AssetManager.LEVEL1END;
+                            levelText = "You made it back safely, It was close!";
                             break;
                         case 2:
                             newLevel = LevelManager.createLevel3();
-                            video = AssetManager.LEVEL1END;
+                            video = AssetManager.LEVEL2END;
+                            levelText = "Congratulations! Our researchers are examining the meteor." + "\n" +
+                                        "This meteor isn't like any space rock we've seen before.";
                             break;
                         case 3:
                             newLevel = LevelManager.createLevel4();
                             video = AssetManager.LEVEL3END;
+                            levelText = "Congratulations! You exhibited some nice piloting! We are right on the track to reach Mars. Great Job Martian!" +
+                                    "\n" + "Now we can clearly hear missing spaceship's SOS signal." + "\n" +
+                                    "We should be now able to track where it is.";
                             break;
                         case 4:
                             newLevel = LevelManager.createLevel5();
                             video = AssetManager.LEVEL4END;
+                            levelText = "Congratulations! You saved our friend." + "\n" + "He has some interesting informations:" +
+                                    "\n" + "They have seen aliens and know where they are." + "\n" + "But during their wayback they crashed the meteors we have passed before.";
                             break;
                         case 5:
                             isGameOver = true;
                             video = AssetManager.LEVEL5END;
+                            levelText = "It is a new era, humans are alliens are living together now. You started it!";
                             break;
                     }
                     if (!isGameOver) {
                         //game.setScreen(new GameScreen(newLevel, game, batch, font));
-                        game.setScreen(new CutsceneScreen(game, batch, font, video, newLevel, "aaa"));
+                        game.setScreen(new CutsceneScreen(game, batch, font, video, newLevel, levelText));
                     } else {
                         level.setState(Level.State.GAME_OVER);
                     }
