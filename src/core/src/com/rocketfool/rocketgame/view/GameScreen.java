@@ -422,15 +422,19 @@ public class GameScreen implements Screen {
                             break;
                         case 2:
                             newLevel = LevelManager.createLevel3();
+                            video = AssetManager.LEVEL1END;
                             break;
                         case 3:
                             newLevel = LevelManager.createLevel4();
+                            video = AssetManager.LEVEL3END;
                             break;
                         case 4:
                             newLevel = LevelManager.createLevel5();
+                            video = AssetManager.LEVEL4END;
                             break;
                         case 5:
                             isGameOver = true;
+                            video = AssetManager.LEVEL5END;
                             break;
                     }
                     if (!isGameOver) {

@@ -1,6 +1,7 @@
 package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,6 +17,7 @@ public class EndingScreen implements Screen {
     private RocketGame game;
     private SpriteBatch batch;
     private BitmapFont font;
+    private FileHandle video;
 
 
     public EndingScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
@@ -33,8 +35,10 @@ public class EndingScreen implements Screen {
         OrthographicCamera camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+        video = AssetManager.LEVEL5END;
+
         try {
-            videoPlayer.play(Gdx.files.internal("Backgrounds/ending.webm"));
+            videoPlayer.play(video);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -46,8 +50,20 @@ public class EndingScreen implements Screen {
     public void render(float v) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
-        if (!videoPlayer.render()) { // As soon as the video is finished, we go back to main menu
-            game.setScreen(new MainMenuScreen( game, batch, font));
+        if (!videoPlayer.render()) { // As soon as the video is we play next one or we go back to main menu
+            if(video == AssetManager.LEVEL5END)
+            {
+                try {
+                    videoPlayer.play(Gdx.files.internal("Backgrounds/ending.webm"));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            else
+            {
+                game.setScreen(new MainMenuScreen(game, batch, font));
+            }
+
         }
     }
 

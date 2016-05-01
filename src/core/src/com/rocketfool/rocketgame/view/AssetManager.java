@@ -65,5 +65,6 @@ public class AssetManager {
     public static final FileHandle LEVEL4END = Gdx.files.internal("Backgrounds/cutScreens/level4end.webm");
     public static final FileHandle LEVEL5START = Gdx.files.internal("Backgrounds/cutScreens/level5Start.webm");
     public static final FileHandle LEVEL5END = Gdx.files.internal("Backgrounds/cutScreens/level5End.webm");
+    public static final FileHandle ENDING = Gdx.files.internal("Backgrounds/ending.webm");
 
 }
