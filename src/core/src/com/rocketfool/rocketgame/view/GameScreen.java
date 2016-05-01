@@ -599,8 +599,14 @@ public class GameScreen implements Screen {
     }
 
     public void zoomOut() {
-        camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
-        font.setScale(camera.zoom);
+        if (!DEBUG) {
+            camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
+            font.setScale(camera.zoom);
+        }
+        else {
+            camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
+            font.setScale(camera.zoom);
+        }
     }
 
     public void setZoom(float zoom) {
