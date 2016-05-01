@@ -3,6 +3,7 @@ package com.rocketfool.rocketgame.model;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.view.GameScreen;
 import com.badlogic.gdx.utils.Timer;
@@ -37,6 +38,7 @@ public class Level {
     protected PopUp popUp;
     protected Timer timer;
     protected ObjectiveWindow objectiveWindow;
+    protected long timerDelay;
     //endregion
 
     //region Nested Types
@@ -51,7 +53,7 @@ public class Level {
 
     //region Constructor
     public Level() {
-        this.state = State.RUNNING;
+        this.state = State.PAUSED;
 
         // Create a Box2D world with no gravity
         this.world = new World(new Vector2(0, 0), true);
@@ -161,7 +163,6 @@ public class Level {
     public void update(float deltaTime) {
         if (state == State.RUNNING) {
             timePassedReal += deltaTime;
-            timer.start();
             // Hack to make physics engine stable
             deltaTime = FRAME_RATE;
             timePassedFixed += deltaTime;
@@ -334,7 +335,7 @@ public class Level {
             healthOver();
         }
         else if (state == State.GAME_OVER) {
-            System.out.println("time to pack up boyz");
+            Timer.instance().stop();
         }
         else if (state == State.RUNNING) {
             Timer.instance().start();

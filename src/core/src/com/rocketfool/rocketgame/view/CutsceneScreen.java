@@ -72,12 +72,16 @@ public class CutsceneScreen implements Screen {
             e.printStackTrace();
         }
 
-        Timer.schedule(new Timer.Task() {
+        Timer timer = new Timer();
+
+        timer.scheduleTask(new Timer.Task() {
             @Override
             public void run() {
                 popup.setText(welcomeText);
             }
         }, 0.4f);
+
+        timer.start();
 
         videoPlayer.resize(1280, 720);
     }

@@ -36,7 +36,6 @@ public class PopUp {
         this.text = text + "\n\n" + this.text;
         this.lastText = text;
         propertyChanged = true;
-
     }
 
     public String getTitle() {

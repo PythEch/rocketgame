@@ -28,10 +28,9 @@ public class LevelManager {
     }
 
     public static Level createLevel1() {
-
         final Level level = new Level();
+        level.setState(Level.State.PAUSED);
         Level.levelNo = 1;
-        level.timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = level.objectiveWindow;
         popUp.setTitle("HQ");
@@ -68,8 +67,7 @@ public class LevelManager {
         level.triggers.add(earthTrig);
 
         //level starts here
-        level.timer.start();
-        time = 11f;
+        time = 6f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -98,11 +96,12 @@ public class LevelManager {
                                WorldController.controlState = 2;
                            }
                        },
-                time);
+               time);
+
         level.triggers.add(new Trigger() {
             @Override
             public boolean isTriggeredInternal() {
-                return level.playable.getBody().getAngularVelocity() < 0.1;
+                return WorldController.controlState == 2 && level.playable.getBody().getAngularVelocity() < 0.1;
             }
 
             @Override
@@ -111,11 +110,11 @@ public class LevelManager {
                 WorldController.controlState = 3;
             }
         });
-        //level.triggers.get(2)
+
         level.triggers.add(new Trigger() {
             @Override
             public boolean isTriggeredInternal() {
-                return level.playable.getBody().getLinearVelocity().len() < 1;
+                return WorldController.controlState == 3 && level.playable.getBody().getLinearVelocity().len() > 1;
             }
 
             @Override
@@ -138,7 +137,7 @@ public class LevelManager {
         level.triggers.add(new Trigger() {
             @Override
             public boolean isTriggeredInternal() {
-                return level.playable.getBody().getLinearVelocity().len() < (level.playable.getMaxVelocity() / 20f);
+                return WorldController.controlState == 4 && level.playable.getBody().getLinearVelocity().len() > (level.playable.getMaxVelocity() / 20f);
             }
 
             @Override
@@ -151,7 +150,7 @@ public class LevelManager {
         level.triggers.add(new Trigger() {
             @Override
             public boolean isTriggeredInternal() {
-                return level.playable.getCurrentThrust() < 1;
+                return WorldController.controlState == 5 && level.playable.getCurrentThrust() > 1;
             }
 
             @Override
@@ -218,14 +217,13 @@ public class LevelManager {
     }
 
     public static Level createLevel2() {
-
+        Timer.instance().stop();
         final Level level = new Level();
         Level.levelNo = 2;
         level.timer = new Timer();
         final PopUp popUp = level.popUp;
         final ObjectiveWindow objectiveWindow = level.objectiveWindow;
         popUp.setTitle("HQ");
-
 
         //init of map
         level.map = new Map(1000 * 600, 720 * 600);
@@ -293,14 +291,10 @@ public class LevelManager {
             }
         };
 
-
         level.waypoint = new Waypoint(level, moonTrig);
 
-
         //level starts here
-        level.timer.start();
         time = 5f;
-
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -427,7 +421,7 @@ public class LevelManager {
     }
 
     public static Level createLevel3() {
-
+        Timer.instance().stop();
         final Level level = new Level();
         Level.levelNo = 3;
         level.timer = new Timer();
@@ -473,7 +467,6 @@ public class LevelManager {
         level.triggers.add(asteroidsPassed);
         level.waypoint = new Waypoint(level, asteroidsPassed);
         //level starts here
-        level.timer.start();
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -554,7 +547,7 @@ public class LevelManager {
     }
 
     public static Level createLevel4() {
-
+        Timer.instance().stop();
         final Level level = new Level();
         Level.levelNo = 4;
         level.timer = new Timer();
@@ -581,7 +574,6 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers
-
         final PositionTrigger endTrig = new PositionTrigger(5000, 10000, 1000f, level.playable) {
             @Override
             public void triggerPerformed() {
@@ -603,10 +595,7 @@ public class LevelManager {
         level.triggers.add(craftTrig);
         level.waypoint = new Waypoint(level, craftTrig); //TODO add stranded craft SPRITE, can be any size
 
-
         //level starts here
-        level.timer.start();
-
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -685,7 +674,6 @@ public class LevelManager {
      * This level was cut for being too difficult to balance and too difficult to play.
      */
     public static Level createLevelX() {
-
         final Level level = new Level();
         Level.levelNo = 5;
         level.timer = new Timer();
@@ -720,8 +708,6 @@ public class LevelManager {
         level.triggers.add(earthTrig);
 
         //level starts here
-        level.timer.start();
-
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -777,6 +763,7 @@ public class LevelManager {
     }
 
     public static Level createLevel5() {
+        Timer.instance().stop();
         //Previously Level 6. Don't delete this one. :)
         /* For this level
          * 
@@ -902,8 +889,6 @@ public class LevelManager {
         level.triggers.add(secret);
 
         //level starts here
-        level.timer.start();
-
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {

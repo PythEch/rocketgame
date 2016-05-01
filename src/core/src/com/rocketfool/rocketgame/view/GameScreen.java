@@ -541,6 +541,8 @@ public class GameScreen implements Screen {
         timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
 
         shapeRenderer = new ShapeRenderer();
+
+        level.setState(Level.State.RUNNING);
     } //endregion
 
     public void zoomIn() {
