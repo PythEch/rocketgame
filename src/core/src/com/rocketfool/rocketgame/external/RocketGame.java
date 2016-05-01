@@ -3,11 +3,7 @@ package com.rocketfool.rocketgame.external;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rocketfool.rocketgame.model.LevelManager;
-import com.rocketfool.rocketgame.view.GameScreen;
 import com.rocketfool.rocketgame.view.MainMenuScreen;
-import com.rocketfool.rocketgame.view.MoonCrashScreen;
-import com.rocketfool.rocketgame.view.TakeoffScreen;
 
 /**
  * A Game class is used to switch between Screens and share data with them.

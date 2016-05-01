@@ -49,5 +49,6 @@ public class AssetManager {
     public static final Music WARNING_SOUND= Gdx.audio.newMusic(Gdx.files.internal("SFX/Emergency_Warning_05.wav"));
     public static final Sound EXPLOSION = Gdx.audio.newSound(Gdx.files.internal("SFX/Explosion_01.wav"));
     public static final Sound DEATH_SIGN = Gdx.audio.newSound(Gdx.files.internal("SFX/Medical_EKG_Flat_Line_01.wav"));
+    public static final FileHandle TAKEOFF_VIDEO = Gdx.files.internal("Backgrounds/level2/earthTakeOff.webm");
 
 }

@@ -98,7 +98,7 @@ public class LevelSelectionScreen implements Screen {
         level1.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(LevelManager.createLevel1(), game, batch, font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel1()));
             }
         });
 
@@ -108,7 +108,7 @@ public class LevelSelectionScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 //game.setScreen(new MoonCrashScreen(game, batch, font));
                 // TODO: revert this shit
-                game.setScreen(new GameScreen(LevelManager.createLevel2(), game, batch, font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel2()));
             }
         });
 
@@ -116,7 +116,7 @@ public class LevelSelectionScreen implements Screen {
         level3.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(LevelManager.createLevel3(), game, batch, font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel3()));
             }
         });
 
@@ -124,7 +124,7 @@ public class LevelSelectionScreen implements Screen {
         level4.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(LevelManager.createLevel4(), game, batch, font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel4()));
             }
         });
 
@@ -132,7 +132,7 @@ public class LevelSelectionScreen implements Screen {
         level5.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(LevelManager.createLevel5(), game, batch, font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel5()));
             }
         });
 

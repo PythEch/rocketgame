@@ -1,9 +1,5 @@
 package com.rocketfool.rocketgame.view;
 
-import aurelienribon.tweenengine.BaseTween;
-import aurelienribon.tweenengine.Tween;
-import aurelienribon.tweenengine.TweenCallback;
-import aurelienribon.tweenengine.TweenManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,19 +8,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.rocketfool.rocketgame.external.RocketGame;
+import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.model.PopUp;
-import com.rocketfool.rocketgame.view.AssetManager;
-import com.rocketfool.rocketgame.view.MainMenuScreen;
-import com.rocketfool.rocketgame.view.PopupView;
-import com.rocketfool.rocketgame.view.SpriteAccessor;
-
-import static com.rocketfool.rocketgame.util.Constants.toPixel;
 
 public class MoonCrashScreen implements Screen {
     private static final float METEOR_DISTANCE = 450;
@@ -73,10 +62,9 @@ public class MoonCrashScreen implements Screen {
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
-                System.out.println("test");
-                game.setScreen(new TakeoffScreen(game,batch,font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel2()));
             }
-        },13f);
+        }, 13f);
 
         meteorAngle = 150;
         meteorPosition = new Vector2(0, 0);
@@ -93,7 +81,7 @@ public class MoonCrashScreen implements Screen {
 
         batch.begin();
         splash.draw(batch);
-        batch.draw(texture,0,0);
+        batch.draw(texture, 0, 0);
         popupView.draw(batch);
         drawMeteor(batch);
         batch.end();

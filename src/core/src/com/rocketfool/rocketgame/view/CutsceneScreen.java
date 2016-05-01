@@ -4,6 +4,7 @@ package com.rocketfool.rocketgame.view;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.video.VideoPlayer;
 import com.badlogic.gdx.video.VideoPlayerDesktop;
 import com.rocketfool.rocketgame.external.RocketGame;
+import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.model.PopUp;
 
@@ -21,18 +23,22 @@ import java.io.FileNotFoundException;
 /**
  * Created by pythech on 29/04/16.
  */
-public class TakeoffScreen implements Screen {
+public class CutsceneScreen implements Screen {
     private VideoPlayer videoPlayer;
     private RocketGame game;
     private SpriteBatch batch;
     private BitmapFont font;
     private PopUp popup;
     private PopupView popupView;
+    private FileHandle videoHandle;
+    private Level level;
 
-    public TakeoffScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
+    public CutsceneScreen(RocketGame game, SpriteBatch batch, BitmapFont font, FileHandle fileHandle, Level level) {
         this.game = game;
         this.batch = batch;
         this.font = font;
+        this.videoHandle = fileHandle;
+        this.level = level;
     }
 
     @Override
@@ -48,7 +54,7 @@ public class TakeoffScreen implements Screen {
         popupView = new PopupView(popup, camera);
 
         try {
-            videoPlayer.play(Gdx.files.internal("Backgrounds/level2/earthTakeOff.webm"));
+            videoPlayer.play(videoHandle);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -68,7 +74,7 @@ public class TakeoffScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
         if (!videoPlayer.render()) { // As soon as the video is finished, we start level2.
-            game.setScreen(new GameScreen(LevelManager.createLevel2(), game, batch, font));
+            game.setScreen(new GameScreen(level, game, batch, font));
         }
 
         popupView.update(v);
