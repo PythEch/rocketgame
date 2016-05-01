@@ -55,5 +55,15 @@ public class AssetManager {
     public static final Sound EXPLOSION = Gdx.audio.newSound(Gdx.files.internal("SFX/Explosion_01.wav"));
     public static final Sound DEATH_SIGN = Gdx.audio.newSound(Gdx.files.internal("SFX/Medical_EKG_Flat_Line_01.wav"));
     public static final FileHandle TAKEOFF_VIDEO = Gdx.files.internal("Backgrounds/level2/earthTakeOff.webm");
+    public static final FileHandle LEVEL1START = Gdx.files.internal("Backgrounds/cutScreens/level1Start.webm");
+    public static final FileHandle LEVEL1END = Gdx.files.internal("Backgrounds/cutScreens/level1End.webm");
+    public static final FileHandle LEVEL2START = Gdx.files.internal("Backgrounds/cutScreens/level2Start.webm");
+    public static final FileHandle LEVEL2END = Gdx.files.internal("Backgrounds/cutScreens/level2End.webm");
+    public static final FileHandle LEVEL3START = Gdx.files.internal("Backgrounds/cutScreens/level3Start.webm");
+    public static final FileHandle LEVEL3END = Gdx.files.internal("Backgrounds/cutScreens/level3End.webm");
+    public static final FileHandle LEVEL4START = Gdx.files.internal("Backgrounds/cutScreens/level4Start.webm");
+    public static final FileHandle LEVEL4END = Gdx.files.internal("Backgrounds/cutScreens/level4end.webm");
+    public static final FileHandle LEVEL5START = Gdx.files.internal("Backgrounds/cutScreens/level5Start.webm");
+    public static final FileHandle LEVEL5END = Gdx.files.internal("Backgrounds/cutScreens/level5End.webm");
 
 }

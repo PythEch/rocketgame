@@ -3,6 +3,7 @@ package com.rocketfool.rocketgame.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -84,6 +85,8 @@ public class GameScreen implements Screen {
     private TextureAtlas waypointAtlas;
 
     private Texture sasTexture;
+
+    private FileHandle video;
 
     //endregion
 
@@ -394,6 +397,7 @@ public class GameScreen implements Screen {
 
         popupView.draw(batch);
 
+        //Level ending-starting
 
         if (level.getState() == Level.State.LEVEL_FINISHED) {
             level.setState(Level.State.PAUSED);
@@ -414,6 +418,7 @@ public class GameScreen implements Screen {
                     switch (level.getLevelNo()) {
                         case 1:
                             newLevel = LevelManager.createLevel2();
+                            video = AssetManager.LEVEL1END;
                             break;
                         case 2:
                             newLevel = LevelManager.createLevel3();
@@ -429,8 +434,8 @@ public class GameScreen implements Screen {
                             break;
                     }
                     if (!isGameOver) {
-                        game.setScreen(new GameScreen(newLevel, game, batch, font));
-                       // game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, newLevel, "aaa"));
+                        //game.setScreen(new GameScreen(newLevel, game, batch, font));
+                        game.setScreen(new CutsceneScreen(game, batch, font, video, newLevel, "aaa"));
                     } else {
                         level.setState(Level.State.GAME_OVER);
                     }
