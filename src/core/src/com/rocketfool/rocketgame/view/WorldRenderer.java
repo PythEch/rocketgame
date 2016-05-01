@@ -161,6 +161,7 @@ public class WorldRenderer implements Disposable {
         drawTrajectory(batch);
         drawWarningSign(batch);
         drawLevel2MoonAsteroid(batch);
+        drawMapBorder(batch);
 
 		if (!QUICK_LOAD)
         for (VisualMeteor meteor : meteors) {
@@ -390,6 +391,19 @@ public class WorldRenderer implements Disposable {
             }
         }
 
+    }
+
+    private void drawMapBorder(SpriteBatch batch) {
+        int side = Math.max(level.getMap().getWidth(), level.getMap().getHeight());
+        float scale = (float)side / AssetManager.MAP_BORDER.getWidth();
+
+        batch.draw(
+                AssetManager.MAP_BORDER,
+                -side / 2f + level.getMap().getWidth() / 2f,
+                -side / 2f + level.getMap().getHeight() / 2f,
+                AssetManager.MAP_BORDER.getWidth() * scale,
+                AssetManager.MAP_BORDER.getHeight() * scale
+        );
     }
 
     public TrajectorySimulator getTrajectorySimulator() {

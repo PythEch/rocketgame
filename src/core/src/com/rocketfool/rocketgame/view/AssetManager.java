@@ -33,6 +33,7 @@ public class AssetManager {
     public static final Texture POPUP_HEAD = new Texture(Gdx.files.internal("PNG/title.png"));
     public static final Texture POPUP_BODY = new Texture(Gdx.files.internal("PNG/popup.png"));
     public static final Texture TOXIC_METEOR = new Texture(Gdx.files.internal("PNG/toxicMeteor.png"));
+    public static final Texture MAP_BORDER = new Texture(Gdx.files.internal("PNG/mapBorder.png"));
     public static final Sound THRUSTER_STARTER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterStarter.wav"));
     public static final Sound THRUSTER_GOINGER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterGoinger.wav"));
     public static final Sound THRUSTER_ENDER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterEnder.wav"));

@@ -379,8 +379,6 @@ public class GameScreen implements Screen {
                             positionTrigger.getRadius() * toPixel
                     );
 
-                    shapeRenderer.circle(0, 0, 100);
-
                     shapeRenderer.end();
                     batch.begin();
 
@@ -487,7 +485,7 @@ public class GameScreen implements Screen {
     }
 
     public void zoomOut() {
-        camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
+        camera.zoom = Math.min(camera.zoom * 1.04f, 5500f);
         font.setScale(camera.zoom);
     }
 
