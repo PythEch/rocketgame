@@ -298,7 +298,7 @@ public class LevelManager {
                 }
                 else
                 {
-                popUp.setText("Great, now that you're free from Earth's orbit"); // TODO: fix script
+                popUp.setText("Great, now that you're free from Earth's orbit");
                     System.out.println(time % 100);
                 }
                 objectiveWindow.setText("Examine the object on the Moon's orbit");
@@ -327,7 +327,7 @@ public class LevelManager {
             public void triggerPerformed() {
                 if (moonTrig.isTriggeredBefore() ) {
                     if (level.playable.getBody().getLinearVelocity().len() < 70) {
-                        //TODO stop game here
+                        level.setState(Level.State.LEVEL_FINISHED);
                         //TODO end of level screen
                         //Title: "Mission Accomplished!"
                         //Text: "Congratulations! Our researchers will examine this craft! It looks like we've finally been visited by aliens!");

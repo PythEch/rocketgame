@@ -44,7 +44,7 @@ public class Level {
     }
 
     public enum State {
-        RUNNING, PAUSED, GAME_OVER, HEALTH_OVER
+        RUNNING, PAUSED, GAME_OVER, HEALTH_OVER, LEVEL_FINISHED
     }
     //endregion
 
@@ -414,6 +414,10 @@ public class Level {
 
     public Array<GameObject> getGameObjects() {
         return gameObjects;
+    }
+
+    public static byte getLevelNo() {
+        return levelNo;
     }
 
     //endregion

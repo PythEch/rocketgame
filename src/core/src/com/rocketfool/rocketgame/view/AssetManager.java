@@ -18,7 +18,7 @@ public class AssetManager {
     public static final Texture GHOST = new Texture(Gdx.files.internal("PNG/Yellow_icon.png"), true);
     public static final Texture WARNING = new Texture(Gdx.files.internal("PNG/redWarning.png"), true);
     public static final Texture OVERLAY = new Texture(Gdx.files.internal("PNG/overlay.png"), true);
-    public static final Texture MINIMAP_PLANET = new Texture(Gdx.files.internal("PNG/red_dot.png"));
+    public static final Texture MINIMAP_PLANET = new Texture(Gdx.files.internal("PNG/red_dot.png")); //ToDo: increase quality
     public static final Texture MINIMAP_PLAYER = new Texture(Gdx.files.internal("PNG/green_dot.png"));
     public static final Texture PROGFILLER = new Texture(Gdx.files.internal("PNG/progFiller.png"), true);
     public static final Texture PLANET1 = new Texture(Gdx.files.internal("PNG/Planets/1.png"), true);
@@ -34,6 +34,7 @@ public class AssetManager {
     public static final Texture POPUP_BODY = new Texture(Gdx.files.internal("PNG/popup.png"));
     public static final Texture TOXIC_METEOR = new Texture(Gdx.files.internal("PNG/toxicMeteor.png"));
     public static final Texture MAP_BORDER = new Texture(Gdx.files.internal("PNG/mapBorder.png"));
+    public static final Texture LEVEL_FINISHED = new Texture(Gdx.files.internal("Backgrounds/levelFinish.png"));
     public static final Sound THRUSTER_STARTER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterStarter.wav"));
     public static final Sound THRUSTER_GOINGER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterGoinger.wav"));
     public static final Sound THRUSTER_ENDER = Gdx.audio.newSound(Gdx.files.internal("SFX/ThrusterEnder.wav"));
