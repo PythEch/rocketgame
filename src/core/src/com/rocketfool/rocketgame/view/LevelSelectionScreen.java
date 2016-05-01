@@ -124,7 +124,7 @@ public class LevelSelectionScreen implements Screen{
         });
 
         //Level5
-        level4.addListener(new ClickListener() {
+        level5.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new GameScreen(LevelManager.createLevel5(), game, batch, font));
