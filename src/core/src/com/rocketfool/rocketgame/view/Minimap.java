@@ -46,7 +46,7 @@ public class Minimap {
         this.trajectorySimulator = trajectorySimulator;
         this.enabled = true;
 
-        float realRadius = (float)Math.sqrt(Math.pow(level.getMap().getWidth(), 2) + Math.pow(level.getMap().getHeight(), 2)) / 2f;
+        float realRadius = level.getMap().getRadius();
 
         this.width = radius / realRadius * level.getMap().getWidth();
         this.height = radius / realRadius * level.getMap().getHeight();

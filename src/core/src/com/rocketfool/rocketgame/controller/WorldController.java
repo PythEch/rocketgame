@@ -14,6 +14,7 @@ import com.rocketfool.rocketgame.view.GameScreen;
 import com.rocketfool.rocketgame.view.WorldRenderer;
 
 import static com.rocketfool.rocketgame.util.Constants.DEBUG;
+import static com.rocketfool.rocketgame.util.Constants.toMeter;
 
 /**
  * Handles user input and signals view {@link GameScreen} and model {@link Level} accordingly

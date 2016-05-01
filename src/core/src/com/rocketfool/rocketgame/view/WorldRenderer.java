@@ -229,14 +229,19 @@ public class WorldRenderer implements Disposable {
         int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
         //sabatch.setColor(1, 1, 1, alpha);
 
+        float minX = -camera.viewportWidth * 660 / 2f;
+        float minY = -camera.viewportHeight * 660 / 2f;
+        float maxX = level.getMap().getWidth() - minX;
+        float maxY = level.getMap().getHeight() - minY;
+
         batch.draw(
                 texture,
+                minX,
+                minY,
                 0,
                 0,
-                0,
-                0,
-                level.getMap().getWidth(),
-                level.getMap().getHeight()
+                (int)(maxX - minX),
+                (int)(maxY - minY)
         );
 
         batch.setColor(1, 1, 1, 1);
@@ -393,10 +398,10 @@ public class WorldRenderer implements Disposable {
     }
 
     private void drawMapBorder(SpriteBatch batch) {
-        float radius = Math.max(level.getMap().getWidth(), level.getMap().getHeight());
+        float radius = level.getMap().getRadius();
         float scale = 300;
 
-        Vector2 mapCenter = new Vector2(level.getMap().getWidth() / 2f, level.getMap().getHeight() / 2f);
+        Vector2 mapCenter = level.getMap().getCenter();
         Texture texture = AssetManager.MINIMAP_PLANET;
 
         for (float angle = 0; angle < 360; angle += 1.5f) {
