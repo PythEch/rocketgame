@@ -396,11 +396,9 @@ public class GameScreen implements Screen {
                             break;
                     }
                     if (!isGameOver) {
-                        game.setScreen(new GameScreen(newLevel, game, batch, font));
+                        //game.setScreen(new GameScreen(newLevel, game, batch, font));
+                        game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, newLevel, "aaa"));
                     } else {
-                        //game.setScreen(new LevelEnding(game,batch,font));
-                        System.out.println("ANAN");
-                        //Some shits
                         level.setState(Level.State.GAME_OVER);
                     }
 
@@ -486,6 +484,15 @@ public class GameScreen implements Screen {
     public void dispose() {
         debugRenderer.dispose();
         renderer.dispose();
+        if (player != null)
+            player.dispose();
+        font.dispose();
+        particleEffect.dispose();
+        stage.dispose();
+        skin.dispose();
+        timerFont.dispose();
+        shapeRenderer.dispose();
+        waypointAtlas.dispose();
     }
     //endregion
 
@@ -587,7 +594,6 @@ public class GameScreen implements Screen {
                         break;
                     case 2:
                         game.setScreen(new MainMenuScreen(game, batch, font));
-                        dispose();
                         break;
                     default:
                         break;

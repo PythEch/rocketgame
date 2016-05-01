@@ -252,6 +252,7 @@ public class LevelManager {
         final PositionTrigger outOfEarthTrig = new PositionTrigger(14000, 11000, 800, level.playable, true) {
             @Override
             public void triggerAction() {
+                level.setState(Level.State.LEVEL_FINISHED);
                 if (time % 100 < 90) {
                     popup.setText("I'm impressed that you are out of orbit already. But don't get too exited. Get close to the Moon.");
                     System.out.println(time % 100);
@@ -884,6 +885,7 @@ public class LevelManager {
 
                 if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
                     level.setState(Level.State.GAME_OVER);
+
                 } else {
                     popup.setText("We better check all the other planets before looking here.");
                 }

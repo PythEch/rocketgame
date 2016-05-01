@@ -42,7 +42,7 @@ public class CutsceneScreen implements Screen {
         this.welcomeText = welcomeText;
     }
 
-    public CutsceneScreen(RocketGame game, SpriteBatch batch, BitmapFont font, FileHandle fileHandle, CutsceneScreen cutscene, String welcomeText) {
+    public CutsceneScreen(RocketGame game, SpriteBatch batch, BitmapFont font, FileHandle fileHandle, String welcomeText, CutsceneScreen cutscene) {
         this.game = game;
         this.batch = batch;
         this.font = font;
@@ -53,7 +53,6 @@ public class CutsceneScreen implements Screen {
 
     @Override
     public void show() {
-
         FitViewport viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         videoPlayer = new VideoPlayerDesktop(viewport);
 
@@ -88,9 +87,12 @@ public class CutsceneScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
         if (!videoPlayer.render()) { // As soon as the video is finished, we start level2.
+            System.out.println("1");
             if (cutscene == null && level != null) {
+                System.out.println("2");
                 game.setScreen(new GameScreen(level, game, batch, font));
             } else if (cutscene != null && level == null) {
+                System.out.println("3");
                 game.setScreen(cutscene);
             }
         }
