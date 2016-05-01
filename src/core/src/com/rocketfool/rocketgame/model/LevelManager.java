@@ -635,7 +635,7 @@ public class LevelManager {
             }
         };
 
-        final PositionTrigger craftTrig = new PositionTrigger(((SolidObject) level.solidObjects.get(0)), 0, 0, 350f, level.playable) {
+        final PositionTrigger craftTrig = new PositionTrigger(((SolidObject) level.solidObjects.get(0)), 0, 0, 150f, level.playable) {
             @Override
             public void triggerPerformed() {
                 //(Halfway point)
@@ -937,15 +937,7 @@ public class LevelManager {
             public void triggerPerformed() {
 
                 if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
-                    Timer.schedule(new Timer.Task() {
-                        @Override
-                        public void run() {
-                            popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
-                                    "called Oz-Turca and they call themselves Oz-Janis.");
-                        }
-                    },4.0f);
-
-                    level.setState(Level.State.GAME_OVER);
+                   level.setState(Level.State.GAME_OVER);
                 }
                 else {
                     popUp.setText("We better check all the other planets before looking here.");

@@ -114,7 +114,7 @@ public class WorldController {
                 body.setLinearVelocity(0, 0);
             }
             if (Gdx.input.isKeyPressed(Input.Keys.H)) {
-                body.setTransform(0, 0, 0);
+                body.setTransform(9000, 6000, 0);
             }
         }
     }

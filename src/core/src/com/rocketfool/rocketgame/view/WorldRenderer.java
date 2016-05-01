@@ -18,6 +18,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.rocketfool.rocketgame.model.*;
 import com.badlogic.gdx.utils.Timer;
 import com.rocketfool.rocketgame.util.GamePreferences;
+import com.sun.org.apache.xml.internal.security.keys.content.SPKIData;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -170,6 +171,7 @@ public class WorldRenderer implements Disposable {
         drawWarningSign(batch);
         drawLevel2MoonAsteroid(batch);
         drawLevel3Objects(batch);
+        drawLevel4Textures(batch);
         drawMapBorder(batch);
 
         if (!QUICK_LOAD)
@@ -468,6 +470,25 @@ public class WorldRenderer implements Disposable {
                     AssetManager.CROSS_HERE.getWidth() * 50,
                     AssetManager.CROSS_HERE.getHeight() * 50
             );
+        }
+    }
+
+    private void drawLevel4Textures(SpriteBatch batch)
+    {
+        boolean shouldDrawPlayer = true;
+        if(level.getLevelNo() == 4)
+        {
+            batch.draw();
+            if(level.getTriggers().get(2).isTriggeredBefore() ) {
+                shouldDrawPlayer = false;
+                batch.draw(
+                        AssetManager.CROSS_HERE,
+                        4300 * toPixel,
+                        9100 * toPixel,
+                        AssetManager.CROSS_HERE.getWidth() * 50,
+                        AssetManager.CROSS_HERE.getHeight() * 50
+                );
+            }
         }
     }
 
