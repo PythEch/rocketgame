@@ -298,7 +298,7 @@ public class LevelManager {
                 }
                 else
                 {
-                    popUp.setText("Great, now that you're out of Earth's orbit right now. Get close to the moon.");
+                popUp.setText("Great, now that you're free from the Earth's gravity bla bla bla"); // TODO: fix script
                     System.out.println(time % 100);
                 }
                 objectiveWindow.setText("Examine the object on the Moon's orbit");
@@ -306,7 +306,7 @@ public class LevelManager {
         };
         level.triggers.add(outOfEarthTrig);
 
-        final PositionTrigger moonTrig = new PositionTrigger(level.planets.get(1), 170, 0, 250, level.playable) {
+        final PositionTrigger moonTrig = new PositionTrigger(level.planets.get(1), 0, 0, 450, level.playable) {
             @Override
             public void triggerPerformed() {
                 //(Half way through mission)
@@ -504,9 +504,6 @@ public class LevelManager {
         //default Triggers
         addDefaultTriggers(level);
 
-        if (Constants.DEBUG) {
-            //level.planets.add(new Planet(17000, 10000, 1e20f, 500, null, level.world, 4));
-        }
         //endGame Triggers
         final PositionTrigger asteroidsPassed = new PositionTrigger(17000, 10000, 500, level.playable) {
             @Override
@@ -523,16 +520,16 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("You received an SOS code from a fellow traveller at Mars. Their ship is stranded " +
-                                       "in orbit of Mars. You will need to go through here though...");
-                               objectiveWindow.setText("Reach Mars");
+                               //TODO Fix minimap or disable minimap here
                            }
                        },
-                5.0f);
+                0.5f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Looks like there are lots of obstacles on your way. It's best to avoid them.");
+                               popUp.setText("You received an SOS code from a fellow traveller at Mars. Their ship is stranded " +
+                                       "in orbit and you must save them! You will need to go through these asteroids though...");
+                               objectiveWindow.setText("Reach Mars");
                            }
                        },
                 15.0f);
@@ -540,10 +537,17 @@ public class LevelManager {
                            @Override
                            public void run() {
                                popUp.setText("Space might not be so empty after all. Even the smallest rock or space junk piece can cause serious damage to the craft," +
-                                       " especially at higher speeds, so it would be best to avoid even touching anything!");
+                                               " especially at higher speeds, so it would be best to avoid even touching anything!");
                            }
                        },
-                25.0f);
+                30.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText( "Be extra careful because some of them are moving too!" );
+                           }
+                       },
+                35.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -557,14 +561,14 @@ public class LevelManager {
                                popUp.setText("Piloting is hard, isn't it?");
                            }
                        },
-                65.0f);
+                75.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("Avoid collisions with obstacles!");
                            }
                        },
-                85.0f);
+                105.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -572,43 +576,21 @@ public class LevelManager {
                                        "they will bond and be permanently stuck together.");
                            }
                        },
-                95.0f);
+                135.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("Did you know that on Venus a day is longer than a year.");
                            }
                        },
-                105.0f);
+                165.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
+                               popUp.setText("Did you know that the Moon is very slowly drifting away from Earth?");
                            }
                        },
-                115.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
-                           }
-                       },
-                125.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
-                           }
-                       },
-                135.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
-                           }
-                       },
-                145.0f);
-
+                195.0f);
 
         return level;
     }
@@ -671,7 +653,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                objectiveWindow.setText("Save your friend!");
-                               popUp.setText("Mars is close and your friend needs help! But be careful with the strong " +
+                               popUp.setText("Your friend's in sight in low orbit! But be careful with the strong " +
                                        "gravity! All that fuel and life support you're carrying is making you heavy!");
                            }
                        },
@@ -682,18 +664,16 @@ public class LevelManager {
                                popUp.setText("You have to pass over your friend's ship in order to save them from the orbit.");
                            }
                        },
-                12.0f);
+                18.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("You'll need to orbit Mars carefully to catch up with them! Because remember," +
-                                       "althouh the total energy of a body in orbit is conserved, it continuously changes form " +
-                                       "between gravitational potential energy (high up) kinetic energy (near the surface). " +
-                                       "Therefore, expect to orbit faster at lower altitudes to chase them or take a high" +
-                                       "orbit to wait for them to come near you.");
+                                       "although the total energy of a body in orbit is conserved, it continuously changes form " +
+                                       "between gravitational potential energy (high up) kinetic energy (near the surface). " );
                            }
                        },
-                20.0f);
+                25.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -705,41 +685,41 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that all of space is completely silent.");
-                           }
-                       },
-                45.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popUp.setText("Did you know that if you put Saturn in water it would float");
-                           }
-                       },
-                55.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popUp.setText("Did you know that the hottest planet is not the closest planet to the Sun.");
+                               popUp.setText("Did you know that all of space is completely silent? You hear your engine because there" +
+                                       " is air around you, but nothing beyond that!");
                            }
                        },
                 65.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that he full cost of a spacesuit like the one" +
-                                       " that you are wearing is about $11 million although 70% of this is for " +
-                                       "the backpack and the control module.");
+                               popUp.setText("Did you know that if you put Saturn in water it would float?");
                            }
                        },
-                75.0f);
+                95.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that neutron stars can spin at a rate of 600 rotations per second.");
+                               popUp.setText("Did you know that the hottest planet is not the closest planet to the Sun?");
                            }
                        },
-                85.0f);
-
+                125.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that he full cost of a spacesuit like the one" +
+                                       " that you are wearing is about $11 million although 70% of this is for " +
+                                       "the backpack and the control module?");
+                           }
+                       },
+                155.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText("Did you know that neutron stars can spin at a rate of 600 rotations per second?");
+                           }
+                       },
+                185.0f);
         return level;
     }
 
@@ -967,10 +947,10 @@ public class LevelManager {
 
                 if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
                     popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
-                            "called Oz-Turca and they call themselves Oz-Jans."); //risky?**
+                            "called Oz-Turca and they call themselves Oz-Janis."); //risky?**
                 }
                 //TODO: Alien & Human Gardasligi animasyonu. GAME OVER HERE
-                else {
+                else {//TODO trigger business for these
                     popUp.setText("We better check all the other planets before looking here.");
                 }
 
@@ -997,12 +977,11 @@ public class LevelManager {
                                popUp.setText("...and there seems to be no sign of intelligent life anywhere...");
                            }
                        },
-                60.0f);
+                120.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               //Easter egg (kim 10dak bekleyecek ki?)**
-                               popUp.setText("FLY YOU FOOLS!");
+                               popUp.setText("FLY YOU FOOLS!"); //East egg :D
                            }
                        },
                 600.0f);
