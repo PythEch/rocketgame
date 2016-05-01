@@ -494,10 +494,10 @@ public class WorldRenderer implements Disposable {
 
     private void drawMapBorder(SpriteBatch batch) {
         float radius = level.getMap().getRadius();
-        float scale = 300;
+        float scale = 10;
 
         Vector2 mapCenter = level.getMap().getCenter();
-        Texture texture = AssetManager.MINIMAP_PLANET;
+        Texture texture = AssetManager.MAPBORDER_DOT;
 
         for (float angle = 0; angle < 360; angle += 1.5f) {
             Vector2 dotPos = new Vector2(radius, 0).rotate(angle).add(mapCenter);
