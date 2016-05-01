@@ -268,6 +268,7 @@ public class LevelManager {
         final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
         popUp.setTitle("HQ");
 
+
         //init of map
         level.map = new Map(1000 * 600, 720 * 600);
 
@@ -291,7 +292,15 @@ public class LevelManager {
         final PositionTrigger outOfEarthTrig = new PositionTrigger(14000, 11000, 800, level.playable, true) {
             @Override
             public void triggerPerformed() {
-                popUp.setText("Great, now that you're free from the Earth's gravity bla bla bla"); // TODO: fix script
+                if(time % 100 < 90) {
+                    popUp.setText("I'm impressed that you are out of orbit already. But dont get too exited. Get close to the moon");
+                    System.out.println(time % 100);
+                }
+                else
+                {
+                    popUp.setText("Great, now that you're out of Earth's orbit right now. Get close to the moon.");
+                    System.out.println(time % 100);
+                }
                 objectiveWindow.setText("Examine the object on the Moon's orbit");
             }
         };
@@ -316,7 +325,7 @@ public class LevelManager {
         final PositionTrigger earthTrig = new PositionTrigger(14000, 11000, 750, level.playable) {
             @Override
             public void triggerPerformed() {
-                if (moonTrig.isTriggeredBefore()) {
+                if (moonTrig.isTriggeredBefore() ) {
                     if (level.playable.getBody().getLinearVelocity().len() < 70) {
                         //TODO stop game here
                         //TODO end of level screen
@@ -327,6 +336,7 @@ public class LevelManager {
                 }
             }
         };
+
 
         level.waypoint = new Waypoint(level, moonTrig); //<== TODO: Simple Waypoint image: crashed UFO on the Moon.
 
@@ -339,7 +349,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                popUp.setText("You are on the Earth's orbit right now."
-                                       + "Camera controls restored.");
+                                       + " Camera controls restored.");
                                objectiveWindow.setText("Examine the object on the Moon's orbit");
                                WorldController.controlState = -1;
                                if (Constants.DEBUG)
@@ -347,11 +357,13 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 9;
+        time += 12;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("The Moon might be too far to see, but your minimap can help you find it.");
+                               if(!outOfEarthTrig.isTriggeredInternal() ) {
+                                   popUp.setText("The Moon might be too far to see, but your minimap can help you find it.");
+                               }
                            }
                        },
                 time);
@@ -359,9 +371,11 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Thrusting straight towards the Moon would be inefficient and difficult " +
-                                       "because you work directly against Earth's gravity. \n"
-                                       + "Orbits are weird like that...");
+                               if(!outOfEarthTrig.isTriggeredInternal() ) {
+                                   popUp.setText("Thrusting straight towards the Moon would be inefficient and difficult " +
+                                           "because you work directly against Earth's gravity. \n"
+                                           + "Orbits are weird like that...");
+                               }
                            }
                        },
                 time);
@@ -369,10 +383,12 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("First let's quickly recall Newton's Universal Law of Gravitation: \n" +
-                                       "F = G * M * m / r^2 \n " +
-                                       "You probably remember this equation, but don't forget that r is " +
-                                       "squared, so gravity weakens quickly as you get farther away from a planet.");
+                               if(!outOfEarthTrig.isTriggeredInternal() ) {
+                                   popUp.setText("First let's quickly recall Newton's Universal Law of Gravitation: \n" +
+                                           "F = G * M * m / r^2 \n " +
+                                           "You probably remember this equation, but don't forget that r is " +
+                                           "squared, so gravity weakens quickly as you get farther away from a planet.");
+                               }
                            }
                        },
                 time);
@@ -380,9 +396,11 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Anyway, orbits can be regarded as continuous falling due to gravity, " +
-                                       "but actually going too fast to hit the ground, like in Newton's famous " +
-                                       "cannonball model, which... ");
+                               if(!outOfEarthTrig.isTriggeredInternal() ) {
+                                   popUp.setText("Anyway, orbits can be regarded as continuous falling due to gravity, " +
+                                           "but actually going too fast to hit the ground, like in Newton's famous " +
+                                           "cannonball model, which... ");
+                               }
                            }
                        },
                 time);
@@ -390,7 +408,9 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Sorry, I'm getting carried away. Returning to the situation at hand... ");
+                               if(!outOfEarthTrig.isTriggeredInternal() ) {
+                                   popUp.setText("Sorry, I'm getting carried away. Returning to the situation at hand... ");
+                               }
                            }
                        },
                 time);
@@ -398,8 +418,10 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Perhaps you can do a Hohmann transfer to work with the gravity " +
-                                       "instead of against it? ");
+                               if(!outOfEarthTrig.isTriggeredInternal() ) {
+                                   popUp.setText("Perhaps you can do a Hohmann transfer to work with the gravity " +
+                                           "instead of against it? ");
+                               }
                            }
                        },
                 time);
@@ -407,31 +429,36 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText(
-                                       "Control systems are online." +
-                                               "The Hohmann Transfer: \n" +
-                                               "1. Fire your engines in the way you are flying in your orbit ('prograde'). \n" +
-                                               "2. This will raise the highest point of your orbit (the apoapsis) on the " +
-                                               "other side of the planet. Wait until you get there. \n" +
-                                               "3. Then burn prograde again and there! You've efficiently raised your orbit"
-                                               + "altitude! Now give it a try!");
+                               if(!outOfEarthTrig.isTriggeredInternal() ) {
+                                   popUp.setText(
+                                           "Control systems are online." +
+                                                   "The Hohmann Transfer: \n" +
+                                                   "1. Fire your engines in the way you are flying in your orbit ('prograde'). \n" +
+                                                   "2. This will raise the highest point of your orbit (the apoapsis) on the " +
+                                                   "other side of the planet. Wait until you get there. \n" +
+                                                   "3. Then burn prograde again and there! You've efficiently raised your orbit"
+                                                   + "altitude! Now give it a try!");
+                               }
                                WorldController.controlState = 6;
                            }
                        },
                 time);
         time += 33;
+        /* /// Z-X for only DeBug, players should not able to use these??
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText(
-                                       "New controls available: \n" +
-                                               "Press Z to rapidly maximize your thrust. \n" +
-                                               "Press X to rapidly cut down your thrust. \n");
-                               WorldController.controlState = 7;
+                               if(!outOfEarthTrig.isTriggeredInternal() ) {
+                                   popUp.setText(
+                                           "New controls available: \n" +
+                                                   "Press Z to rapidly maximize your thrust. \n" +
+                                                   "Press X to rapidly cut down your thrust. \n");
+                                   WorldController.controlState = 7;
+                               }
                            }
                        },
                 time);
-        time += 7;
+        time += 7;*/
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
