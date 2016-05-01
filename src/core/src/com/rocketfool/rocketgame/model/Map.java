@@ -31,7 +31,7 @@ public class Map {
     }
 
     public float getRadius() {
-        return (float)Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2)) / 2f;
+        return (float) Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2)) / 2f;
     }
 
     public Vector2 getCenter() {

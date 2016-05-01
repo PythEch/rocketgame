@@ -12,7 +12,11 @@ import static com.rocketfool.rocketgame.model.Playable.BASE;
  * Designs and initiates levels and manages them.
  */
 public class LevelManager {
-    static float time; //message display time
+    /**
+     * message display time
+     */
+    static float time;
+
     //region Methods
 
     /**
@@ -20,7 +24,7 @@ public class LevelManager {
      */
     public static Level createLevel0() {
         final Level level = new Level();
-        Level.levelNo = 0;
+        level.levelNo = 0;
 
         level.map = new Map(Gdx.graphics.getWidth() * 500, Gdx.graphics.getHeight() * 500);
         level.playable = new Playable(1000, 1000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
@@ -30,10 +34,10 @@ public class LevelManager {
     public static Level createLevel1() {
         final Level level = new Level();
         level.setState(Level.State.PAUSED);
-        Level.levelNo = 1;
-        final PopUp popUp = level.popUp;
+        level.levelNo = 1;
+        final Popup popup = level.popup;
         final ObjectiveWindow objectiveWindow = level.objectiveWindow;
-        popUp.setTitle("HQ");
+        popup.setTitle("HQ");
 
         //levelMap
         level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 700);
@@ -54,7 +58,7 @@ public class LevelManager {
         //endGame Triggers
         final PositionTrigger earthTrig = new PositionTrigger(14000, 9000, 750, level.playable) {
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 if (level.playable.getBody().getLinearVelocity().len() < 70) {
                     WorldController.controlState = 7;
                     //TODO: Stop level here
@@ -81,7 +85,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("What was THAT? A strange object whizzing by left you spinning chaotically in space!" +
+                               popup.setText("What was THAT? A strange object whizzing by left you spinning chaotically in space!" +
                                        "You must regain control!");
                                objectiveWindow.setText("Regain control of the ship.");
                            }
@@ -91,12 +95,12 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Use RIGHT & LEFT arrow keys to control angular movement.");
-                               popUp.setText("Now stop the spinning.");
+                               popup.setText("Use RIGHT & LEFT arrow keys to control angular movement.");
+                               popup.setText("Now stop the spinning.");
                                WorldController.controlState = 2;
                            }
                        },
-               time);
+                time);
 
         level.triggers.add(new Trigger() {
             @Override
@@ -105,8 +109,8 @@ public class LevelManager {
             }
 
             @Override
-            public void triggerPerformed() {
-                popUp.setText("SAS restored! \n The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
+            public void triggerAction() {
+                popup.setText("SAS restored! \n The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
                 WorldController.controlState = 3;
             }
         });
@@ -118,8 +122,8 @@ public class LevelManager {
             }
 
             @Override
-            public void triggerPerformed() {
-                popUp.setText("That's better! Now use the UP & DOWN arrow keys to increase/ decrease" +
+            public void triggerAction() {
+                popup.setText("That's better! Now use the UP & DOWN arrow keys to increase/ decrease" +
                         "your thrust. \n Try to reduce your velocity to zero " +
                         "(The velocity display is at the top).");
                 WorldController.controlState = 4;
@@ -127,7 +131,7 @@ public class LevelManager {
                 Timer.schedule(new Timer.Task() {
                                    @Override
                                    public void run() {
-                                       popUp.setText("As said by Newton's first law of motion, unless a force (like thrust) " +
+                                       popup.setText("As said by Newton's first law of motion, unless a force (like thrust) " +
                                                "acts on you, you would drift at constant speed for ever!");
                                    }
                                },
@@ -141,8 +145,8 @@ public class LevelManager {
             }
 
             @Override
-            public void triggerPerformed() {
-                popUp.setText("OK! Now let's get our bearings! \n Use A & S keys to zoom out or zoom in, and press ESC for the Pause Menu.");
+            public void triggerAction() {
+                popup.setText("OK! Now let's get our bearings! \n Use A & S keys to zoom out or zoom in, and press ESC for the Pause Menu.");
                 WorldController.controlState = 5;
             }
         });
@@ -154,9 +158,9 @@ public class LevelManager {
             }
 
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 TrajectorySimulator.enabled = true;
-                popUp.setText("Supercomputer connections restored! Trajectory calculation features online." +
+                popup.setText("Supercomputer connections restored! Trajectory calculation features online." +
                         " (Press T to activate it. It doesn't work unless you're moving.)");
                 WorldController.controlState = 6;
 
@@ -165,7 +169,7 @@ public class LevelManager {
                                    @Override
                                    public void run() {
                                        level.screen.getMinimap().setEnabled(true);
-                                       popUp.setText("Navigation system restored! Minimap online!");
+                                       popup.setText("Navigation system restored! Minimap online!");
                                    }
                                },
                         time);
@@ -173,7 +177,7 @@ public class LevelManager {
                 Timer.schedule(new Timer.Task() {
                                    @Override
                                    public void run() {
-                                       popUp.setText("All systems restored! Now it's time to find your way back home! " +
+                                       popup.setText("All systems restored! Now it's time to find your way back home! " +
                                                "This blue waypoint will guide you to your objective!");
                                        level.waypoint = new Waypoint(level, 4000, 9000, 1250);
                                        objectiveWindow.setText("Find your way back to Earth");
@@ -184,7 +188,7 @@ public class LevelManager {
                 Timer.schedule(new Timer.Task() {
                                    @Override
                                    public void run() {
-                                       popUp.setText("As Newton's second law of motion says, force is the rate of change of " +
+                                       popup.setText("As Newton's second law of motion says, force is the rate of change of " +
                                                "momentum, which is a body's likelihood of preserving its speed. \n" +
                                                "The rocket is pretty heavy, so accelerating takes a while. Be careful, because "
                                                + "that means stopping takes time too!");
@@ -195,7 +199,7 @@ public class LevelManager {
                 Timer.schedule(new Timer.Task() {
                                    @Override
                                    public void run() {
-                                       popUp.setText("See that trail behind the rocket? As Newton's third law of motion says," +
+                                       popup.setText("See that trail behind the rocket? As Newton's third law of motion says," +
                                                "forces exist in opposite-directioned pairs. \n" +
                                                "That's why you need to blast away tons of hot plasma to accelerate!");
                                    }
@@ -205,7 +209,7 @@ public class LevelManager {
                 Timer.schedule(new Timer.Task() {
                                    @Override
                                    public void run() {
-                                       popUp.setText("Remember to slow down near Earth! Coming in too fast will make you crash!");
+                                       popup.setText("Remember to slow down near Earth! Coming in too fast will make you crash!");
                                    }
                                },
                         time);
@@ -219,11 +223,11 @@ public class LevelManager {
     public static Level createLevel2() {
         Timer.instance().stop();
         final Level level = new Level();
-        Level.levelNo = 2;
+        level.levelNo = 2;
         level.timer = new Timer();
-        final PopUp popUp = level.popUp;
+        final Popup popup = level.popup;
         final ObjectiveWindow objectiveWindow = level.objectiveWindow;
-        popUp.setTitle("HQ");
+        popup.setTitle("HQ");
 
         //init of map
         level.map = new Map(1000 * 600, 720 * 600);
@@ -247,12 +251,12 @@ public class LevelManager {
 
         final PositionTrigger outOfEarthTrig = new PositionTrigger(14000, 11000, 800, level.playable, true) {
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 if (time % 100 < 90) {
-                    popUp.setText("I'm impressed that you are out of orbit already. But don't get too exited. Get close to the Moon.");
+                    popup.setText("I'm impressed that you are out of orbit already. But don't get too exited. Get close to the Moon.");
                     System.out.println(time % 100);
                 } else {
-                    popUp.setText("Great, now that you're free from Earth's orbit");
+                    popup.setText("Great, now that you're free from Earth's orbit");
                     System.out.println(time % 100);
                 }
                 objectiveWindow.setText("Examine the object on the Moon's orbit");
@@ -262,10 +266,10 @@ public class LevelManager {
 
         final PositionTrigger moonTrig = new PositionTrigger(level.planets.get(1), 0, 0, 450, level.playable) {
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 //(Half way through mission)
                 if (level.playable.getBody().getLinearVelocity().len() < 70) {
-                    popUp.setText("You've reached the Moon. And what strange things have we found here? Better take it back to Earth!");
+                    popup.setText("You've reached the Moon. And what strange things have we found here? Better take it back to Earth!");
                     objectiveWindow.setText("Return to Earth");
                     // FIXME: waypointleri tekrar düşün rip
                     //level.waypoints.removeIndex(0);
@@ -278,7 +282,7 @@ public class LevelManager {
 
         final PositionTrigger earthTrig = new PositionTrigger(14000, 11000, 750, level.playable) {
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 if (moonTrig.isTriggeredBefore()) {
                     if (level.playable.getBody().getLinearVelocity().len() < 70) {
                         level.setState(Level.State.LEVEL_FINISHED);
@@ -298,7 +302,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("You are on the Earth's orbit right now."
+                               popup.setText("You are on the Earth's orbit right now."
                                        + " Camera controls restored.");
                                objectiveWindow.setText("Examine the object on the Moon's orbit");
                                WorldController.controlState = -1;
@@ -312,7 +316,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                if (!outOfEarthTrig.isTriggeredInternal()) {
-                                   popUp.setText("The Moon might be too far to see, but your minimap can help you find it.");
+                                   popup.setText("The Moon might be too far to see, but your minimap can help you find it.");
                                }
                            }
                        },
@@ -322,7 +326,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                if (!outOfEarthTrig.isTriggeredInternal()) {
-                                   popUp.setText("Thrusting straight towards the Moon would be inefficient and difficult " +
+                                   popup.setText("Thrusting straight towards the Moon would be inefficient and difficult " +
                                            "because you work directly against Earth's gravity. \n"
                                            + "Orbits are weird like that...");
                                }
@@ -334,7 +338,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                if (!outOfEarthTrig.isTriggeredInternal()) {
-                                   popUp.setText("First let's quickly recall Newton's Universal Law of Gravitation: \n" +
+                                   popup.setText("First let's quickly recall Newton's Universal Law of Gravitation: \n" +
                                            "F = G * M * m / r^2 \n " +
                                            "You probably remember this equation, but don't forget that r is " +
                                            "squared, so gravity weakens quickly as you get farther away from a planet.");
@@ -347,7 +351,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                if (!outOfEarthTrig.isTriggeredInternal()) {
-                                   popUp.setText("Anyway, orbits can be regarded as continuous falling due to gravity, " +
+                                   popup.setText("Anyway, orbits can be regarded as continuous falling due to gravity, " +
                                            "but actually going too fast to hit the ground, like in Newton's famous " +
                                            "cannonball model, which... ");
                                }
@@ -359,7 +363,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                if (!outOfEarthTrig.isTriggeredInternal()) {
-                                   popUp.setText("Sorry, I'm getting carried away. Returning to the situation at hand... ");
+                                   popup.setText("Sorry, I'm getting carried away. Returning to the situation at hand... ");
                                }
                            }
                        },
@@ -369,7 +373,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                if (!outOfEarthTrig.isTriggeredInternal()) {
-                                   popUp.setText("Perhaps you can do a Hohmann transfer to work with the gravity " +
+                                   popup.setText("Perhaps you can do a Hohmann transfer to work with the gravity " +
                                            "instead of against it? ");
                                }
                            }
@@ -380,7 +384,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                if (!outOfEarthTrig.isTriggeredInternal()) {
-                                   popUp.setText(
+                                   popup.setText(
                                            "Control systems are online." +
                                                    "The Hohmann Transfer: \n" +
                                                    "1. Fire your engines in the way you are flying in your orbit ('prograde'). \n" +
@@ -399,7 +403,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                if (!outOfEarthTrig.isTriggeredInternal()) {
-                                   popUp.setText(
+                                   popup.setText(
                                            "While you are approaching the moon \n" +
                                                    "Your speed should be less than half."
                                    );
@@ -412,7 +416,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Finally, I should remind you to watch your fuel levels! Good luck!");
+                               popup.setText("Finally, I should remind you to watch your fuel levels! Good luck!");
                            }
                        },
                 time);
@@ -423,11 +427,11 @@ public class LevelManager {
     public static Level createLevel3() {
         Timer.instance().stop();
         final Level level = new Level();
-        Level.levelNo = 3;
+        level.levelNo = 3;
         level.timer = new Timer();
-        final PopUp popUp = level.popUp;
+        final Popup popup = level.popup;
         final ObjectiveWindow objectiveWindow = level.objectiveWindow;
-        popUp.setTitle("HQ");
+        popup.setTitle("HQ");
         WorldController.controlState = 7;
 
         //init of map
@@ -458,7 +462,7 @@ public class LevelManager {
         //endGame Triggers
         final PositionTrigger asteroidsPassed = new PositionTrigger(17000, 10500, 750, level.playable) {
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 level.setState(Level.State.LEVEL_FINISHED);
                 //TODO End of level popup here
                 //Text: "Congratulations! You exhibited some nice piloting! We are right on the track to reach Mars. Great Job Martian!"
@@ -477,7 +481,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("You received an SOS code from a friend near Mars. Their ship is stranded " +
+                               popup.setText("You received an SOS code from a friend near Mars. Their ship is stranded " +
                                        "in orbit and you must save them! You will need to go through these asteroids though... \n" +
                                        "Your scanners don't seem to pick them up!");
                                objectiveWindow.setText("Reach Mars");
@@ -487,7 +491,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Space might not be so empty after all. Even the smallest rock or space junk piece can cause serious damage to the craft," +
+                               popup.setText("Space might not be so empty after all. Even the smallest rock or space junk piece can cause serious damage to the craft," +
                                        " especially at higher speeds, so it would be best to avoid even touching anything!");
                            }
                        },
@@ -495,35 +499,35 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Be extra careful because some of them are moving too!");
+                               popup.setText("Be extra careful because some of them are moving too!");
                            }
                        },
                 35.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know? \n The distance between Earth and Mars is 225 million kilometers.");
+                               popup.setText("Did you know? \n The distance between Earth and Mars is 225 million kilometers.");
                            }
                        },
                 45.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Some of the rocks looks weird here! It seems matter in these rocks are not in the periodic table.");
+                               popup.setText("Some of the rocks looks weird here! It seems matter in these rocks are not in the periodic table.");
                            }
                        },
                 75.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("It is better to stay away from them now, our friend needs our help.");
+                               popup.setText("It is better to stay away from them now, our friend needs our help.");
                            }
                        },
                 105.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that if two pieces of the same type of metal touch in space, " +
+                               popup.setText("Did you know that if two pieces of the same type of metal touch in space, " +
                                        "they will bond and be permanently stuck together.");
                            }
                        },
@@ -531,14 +535,14 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that on Venus a day is longer than a year.");
+                               popup.setText("Did you know that on Venus a day is longer than a year.");
                            }
                        },
                 165.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that the Moon is very slowly drifting away from Earth?");
+                               popup.setText("Did you know that the Moon is very slowly drifting away from Earth?");
                            }
                        },
                 195.0f);
@@ -549,11 +553,11 @@ public class LevelManager {
     public static Level createLevel4() {
         Timer.instance().stop();
         final Level level = new Level();
-        Level.levelNo = 4;
+        level.levelNo = 4;
         level.timer = new Timer();
-        final PopUp popUp = level.popUp;
+        final Popup popup = level.popup;
         final ObjectiveWindow objectiveWindow = level.objectiveWindow;
-        popUp.setTitle("HQ");
+        popup.setTitle("HQ");
         WorldController.controlState = 7;
 
         //init of map
@@ -576,7 +580,7 @@ public class LevelManager {
         //endGame Triggers
         final PositionTrigger endTrig = new PositionTrigger(5000, 10000, 1000f, level.playable) {
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 level.setState(Level.State.LEVEL_FINISHED);
                 //Popup Text:("Congratulations! You saved your friend! Looks like he is interesting information about the aliens too!!");}
             }
@@ -584,9 +588,9 @@ public class LevelManager {
 
         final PositionTrigger craftTrig = new PositionTrigger(((SolidObject) level.solidObjects.get(0)), 0, 0, 150f, level.playable) {
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 //(Halfway point)
-                popUp.setText("Great work! Now let's head back!");
+                popup.setText("Great work! Now let's head back!");
                 objectiveWindow.setText("Head home, towards Earth");
                 level.waypoint = new Waypoint(level, 5000, 10000, 1000f); //TODO add simple crosshair thingy sprite
                 level.triggers.add(endTrig);
@@ -600,7 +604,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                objectiveWindow.setText("Save your friend!");
-                               popUp.setText("Your friend's in sight in low orbit! But be careful with the strong " +
+                               popup.setText("Your friend's in sight in low orbit! But be careful with the strong " +
                                        "gravity! All that fuel and life support you're carrying is making you heavy!");
                            }
                        },
@@ -608,14 +612,14 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("You have to pass over your friend's ship in order to save them from the orbit.");
+                               popup.setText("You have to pass over your friend's ship in order to save them from the orbit.");
                            }
                        },
                 18.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("You'll need to orbit Mars carefully to catch up with them! Because remember," +
+                               popup.setText("You'll need to orbit Mars carefully to catch up with them! Because remember," +
                                        "although the total energy of a body in orbit is conserved, it continuously changes form " +
                                        "between gravitational potential energy (high up) kinetic energy (near the surface). ");
                            }
@@ -624,7 +628,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Therefore, expect to orbit faster at lower altitudes to chase them or take a high" +
+                               popup.setText("Therefore, expect to orbit faster at lower altitudes to chase them or take a high" +
                                        "orbit to wait for them to come near you.");
                            }
                        },
@@ -632,7 +636,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that all of space is completely silent? You hear your engine because there" +
+                               popup.setText("Did you know that all of space is completely silent? You hear your engine because there" +
                                        " is air around you, but nothing beyond that!");
                            }
                        },
@@ -640,21 +644,21 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that if you put Saturn in water it would float?");
+                               popup.setText("Did you know that if you put Saturn in water it would float?");
                            }
                        },
                 95.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that the hottest planet is not the closest planet to the Sun?");
+                               popup.setText("Did you know that the hottest planet is not the closest planet to the Sun?");
                            }
                        },
                 125.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that he full cost of a spacesuit like the one" +
+                               popup.setText("Did you know that he full cost of a spacesuit like the one" +
                                        " that you are wearing is about $11 million although 70% of this is for " +
                                        "the backpack and the control module?");
                            }
@@ -663,7 +667,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that neutron stars can spin at a rate of 600 rotations per second?");
+                               popup.setText("Did you know that neutron stars can spin at a rate of 600 rotations per second?");
                            }
                        },
                 185.0f);
@@ -675,11 +679,11 @@ public class LevelManager {
      */
     public static Level createLevelX() {
         final Level level = new Level();
-        Level.levelNo = 5;
+        level.levelNo = 5;
         level.timer = new Timer();
-        final PopUp popUp = level.popUp;
+        final Popup popup = level.popup;
         final ObjectiveWindow objectiveWindow = level.objectiveWindow;
-        popUp.setTitle("HQ");
+        popup.setTitle("HQ");
 
         //map
         level.map = new Map(Gdx.graphics.getWidth() * 500, Gdx.graphics.getHeight() * 500);
@@ -699,9 +703,9 @@ public class LevelManager {
         //endGame Triggers
         final PositionTrigger earthTrig = new PositionTrigger(5000, 5000, 850, level.playable) {
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 //System.out.println("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
-                popUp.setText("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
+                popup.setText("Congratulations! You've just landed Earth. Great Job! Level 5 is completed.");
                 // end of level
             }
         };
@@ -714,7 +718,7 @@ public class LevelManager {
                                //System.out.println("In order to check out the news. Land on the Earth.");
                                level.waypoint = new Waypoint(level, 5000, 5805, 10);
                                objectiveWindow.setText("Land on the Earth.");
-                               popUp.setText("In order to check out the news. Land on the Earth.");
+                               popup.setText("In order to check out the news. Land on the Earth.");
                            }
                        },
                 5.0f);
@@ -722,7 +726,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                //System.out.println("You have to make a gravity-assisted landing.");
-                               popUp.setText("You have to make a gravity-assisted landing.");
+                               popup.setText("You have to make a gravity-assisted landing.");
                            }
                        },
                 20.0f);
@@ -730,7 +734,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                //System.out.println("Spaceships usually use this method to land on the Earth.");
-                               popUp.setText("Spaceships usually use this method to land on the Earth.");
+                               popup.setText("Spaceships usually use this method to land on the Earth.");
                            }
                        },
                 40.0f);
@@ -738,7 +742,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                //System.out.println("Moon is an important object during the process of gravity-assisted landing.");
-                               popUp.setText("Moon is an important object during the process of gravity-assisted landing.");
+                               popup.setText("Moon is an important object during the process of gravity-assisted landing.");
                            }
                        },
                 60.0f);
@@ -746,7 +750,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                //System.out.println("Are you excited for the news about the aliens?");
-                               popUp.setText("Are you excited for the news about the aliens?");
+                               popup.setText("Are you excited for the news about the aliens?");
                            }
                        },
                 80.0f);
@@ -754,7 +758,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                //System.out.println("Time for some alien investigation!");
-                               popUp.setText("Time for some alien investigation!");
+                               popup.setText("Time for some alien investigation!");
                            }
                        },
                 100.0f);
@@ -782,11 +786,11 @@ public class LevelManager {
          */
 
         final Level level = new Level();
-        Level.levelNo = 5;
+        level.levelNo = 5;
         level.timer = new Timer();
-        final PopUp popUp = level.popUp;
+        final Popup popup = level.popup;
         final ObjectiveWindow objectiveWindow = level.objectiveWindow;
-        popUp.setTitle("HQ");
+        popup.setTitle("HQ");
         WorldController.controlState = 7;
 
         //map
@@ -826,8 +830,8 @@ public class LevelManager {
         //endGame Triggers
         final PositionTrigger planet0 = new PositionTrigger(11000, 13000, 1500, level.playable) {
             @Override
-            public void triggerPerformed() {
-                popUp.setText("This is not the planet you are looking for. Move along!");
+            public void triggerAction() {
+                popup.setText("This is not the planet you are looking for. Move along!");
                 //level.waypoints.removeIndex(0);
             }
         };
@@ -835,8 +839,8 @@ public class LevelManager {
 
         final PositionTrigger planet1 = new PositionTrigger(5500, 5500, 1000, level.playable) {
             @Override
-            public void triggerPerformed() {
-                popUp.setText("What a beautiful planet this is! However, there is no sign of life here.");
+            public void triggerAction() {
+                popup.setText("What a beautiful planet this is! However, there is no sign of life here.");
                 objectiveWindow.setText("Continue investigating planets");
                 //level.waypoints.removeIndex(1);
 
@@ -846,8 +850,8 @@ public class LevelManager {
 
         final PositionTrigger planet2 = new PositionTrigger(14000, 3700, 850, level.playable) {
             @Override
-            public void triggerPerformed() {
-                popUp.setText("Nothing to do here! I don't want to be on this planet anymore.");
+            public void triggerAction() {
+                popup.setText("Nothing to do here! I don't want to be on this planet anymore.");
                 //level.waypoints.removeIndex(2);
 
             }
@@ -856,13 +860,13 @@ public class LevelManager {
 
         final PositionTrigger planet3 = new PositionTrigger(8200, 7200, 700, level.playable) {
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 //if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
-                popUp.setText("I have a bad feeling about this planet. Let's move on!");
+                popup.setText("I have a bad feeling about this planet. Let's move on!");
                 //level.waypoints.removeIndex(3);
                 //}
                 //else {
-                //    popUp.setText("It seems we skipped one planet on which aliens might be living!");
+                //    popup.setText("It seems we skipped one planet on which aliens might be living!");
                 //}
 
             }
@@ -876,12 +880,12 @@ public class LevelManager {
         }
         final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
 
                 if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
                     level.setState(Level.State.GAME_OVER);
                 } else {
-                    popUp.setText("We better check all the other planets before looking here.");
+                    popup.setText("We better check all the other planets before looking here.");
                 }
 
             }
@@ -892,7 +896,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Is this really happening? As there now is evidence of existence of aliens, " +
+                               popup.setText("Is this really happening? As there now is evidence of existence of aliens, " +
                                        "your mission is to find their home planet in the space. There are several planets here," +
                                        "but our research suggests they're one one of these. Start searching!");
                                objectiveWindow.setText("Find the mysterious planet of the aliens");
@@ -902,21 +906,21 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("...and there seems to be no sign of intelligent life anywhere...");
+                               popup.setText("...and there seems to be no sign of intelligent life anywhere...");
                            }
                        },
                 120.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("FLY YOU FOOLS!"); //East egg :D
+                               popup.setText("FLY YOU FOOLS!"); //East egg :D
                            }
                        },
                 600.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("RIPGDX! What is this?"); //East egg :D
+                               popup.setText("RIPGDX! What is this?"); //East egg :D
                            }
                        },
                 630.0f);
@@ -938,9 +942,9 @@ public class LevelManager {
             }
 
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 if (!Constants.DEBUG) {
-                    level.healthOver();
+                    level.healthLost();
                 }
             }
         });
@@ -953,9 +957,9 @@ public class LevelManager {
             }
 
             @Override
-            public void triggerPerformed() {
+            public void triggerAction() {
                 if (!Constants.DEBUG) {
-                    level.healthOver();
+                    level.healthLost();
                 }
             }
         });

@@ -7,11 +7,29 @@ import com.badlogic.gdx.physics.box2d.*;
  */
 public class Planet extends CelestialObject {
     //region Fields
+    /**
+     * An optional primary planet, if exists the planet will orbit around its primary planet
+     */
     private Planet primary;
+    /**
+     * Used to determine which texture will be used in View
+     */
     private int planetType;
     //endregion
 
     //region Constructor
+
+    /**
+     * If the Primary is provided, the planet will orbit around its primary planet
+     *
+     * @param x          X-coord
+     * @param y          Y-coord
+     * @param mass       Mass in Kgs
+     * @param radius     Radius in Meters
+     * @param primary    Optional primary planet to orbit around
+     * @param world      The Box2D world that this planet will be created in
+     * @param planetType Used to determine which texture will be used in View
+     */
     public Planet(float x, float y, float mass, float radius, Planet primary, World world, int planetType) {
         super(mass, radius);
         this.primary = primary;
@@ -48,7 +66,9 @@ public class Planet extends CelestialObject {
     @Override
     public void update(float dt) {
     }
+    //endregion
 
+    //region Getters & Setters
     public int getPlanetType() {
         return planetType;
     }
@@ -57,7 +77,12 @@ public class Planet extends CelestialObject {
         this.planetType = planetType;
     }
 
-    public Planet getPrimary() { return primary; }
+    public Planet getPrimary() {
+        return primary;
+    }
 
-    public void setPrimary( Planet primary){ this.primary = primary; }
+    public void setPrimary(Planet primary) {
+        this.primary = primary;
+    }
+    //endregion
 }

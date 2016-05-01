@@ -7,8 +7,10 @@ import com.badlogic.gdx.physics.box2d.*;
  * Class for all objects with physical properties and a rectangular shape. Eg. Unplayed satellites.
  */
 public class RectangleObstacle extends SolidObject {
+    //region Fields
     private float width;
     private float height;
+    //endregion
 
     //region Constructor
     public RectangleObstacle(float x, float y, float width, float height, Vector2 speed, World world) {
@@ -48,7 +50,9 @@ public class RectangleObstacle extends SolidObject {
     @Override
     public void update(float deltaTime) {
     }
+    //endregion
 
+    //region Getters & Setters
     public float getWidth() {
         return width;
     }

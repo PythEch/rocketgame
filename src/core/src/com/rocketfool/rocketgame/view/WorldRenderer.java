@@ -18,7 +18,6 @@ import com.badlogic.gdx.utils.Disposable;
 import com.rocketfool.rocketgame.model.*;
 import com.badlogic.gdx.utils.Timer;
 import com.rocketfool.rocketgame.util.GamePreferences;
-import com.sun.org.apache.xml.internal.security.keys.content.SPKIData;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -64,21 +63,20 @@ public class WorldRenderer implements Disposable {
         this.level = level;
         this.camera = camera;
 
-        if (!QUICK_LOAD) {
-            //Meteors
-            textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
-            animationMeteor = new Animation(1f / 80f, textureAtlasMeteor.getRegions());
-            meteors = new Array<VisualMeteor>();
-            meteors.add(new VisualMeteor(0, 0, 10, 10, 180));
-            meteors.add(new VisualMeteor(12800, 7200, -3, -4, 0));
+        //Meteors
+        textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
+        animationMeteor = new Animation(1f / 80f, textureAtlasMeteor.getRegions());
+        meteors = new Array<VisualMeteor>();
+        meteors.add(new VisualMeteor(0, 0, 10, 10, 180));
+        meteors.add(new VisualMeteor(12800, 7200, -3, -4, 0));
 
-            //Stars
-            textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/starSheets/stars.atlas"));
-            for (Texture texture : textureAtlasStar.getTextures()) {
-                texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-            }
-            animationStar = new Animation(1f / 100f, textureAtlasStar.getRegions());
+        //Stars
+        textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/starSheets/stars.atlas"));
+        for (Texture texture : textureAtlasStar.getTextures()) {
+            texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         }
+        animationStar = new Animation(1f / 100f, textureAtlasStar.getRegions());
+
         //ObjectiveScreens
         textureAtlasLevel3 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet3/obj.atlas"));
         textureAtlasLevel4 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet4/obj.atlas"));
@@ -148,7 +146,7 @@ public class WorldRenderer implements Disposable {
         }, 3.0f);
         AssetManager.DEATH_SIGN.play(GamePreferences.getInstance().getMasterVolume());
 
-        level.setState(Level.State.HEALTH_OVER);
+        level.setState(Level.State.HEALTH_LOST);
         if (level.getState() == Level.State.GAME_OVER) {
             // TODO: DO GAME OVER ANIMATION
         } else {
@@ -160,10 +158,8 @@ public class WorldRenderer implements Disposable {
     public void draw(final SpriteBatch batch) {
         elapsedTime = elapsedTime + Gdx.graphics.getDeltaTime();
         drawMap(batch);
-        if (!QUICK_LOAD) {
-            drawStars(batch);
-            drawMeteors(batch);
-        }
+        drawStars(batch);
+        drawMeteors(batch);
         drawObjectiveScreen(batch);
         drawPlanets(batch);
         drawPlayer(batch);
@@ -174,10 +170,10 @@ public class WorldRenderer implements Disposable {
         drawLevel4Textures(batch);
         drawMapBorder(batch);
 
-        if (!QUICK_LOAD)
-            for (VisualMeteor meteor : meteors) {
-                meteor.update(Gdx.graphics.getDeltaTime());
-            }
+
+        for (VisualMeteor meteor : meteors) {
+            meteor.update(Gdx.graphics.getDeltaTime());
+        }
 
 
         //SFX

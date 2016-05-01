@@ -15,42 +15,65 @@ import static com.rocketfool.rocketgame.util.Constants.toMeter;
 public class Playable extends SolidObject {
     //region Constants
     /**
-    * The specific impulse of the fuel, Ns/kg, determines its efficiency.
-    * Source for comparison: ( http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print) )
-    */
-    private final float FUEL_SPECIFIC_IMPULSE = 3500;
-    private final float MAX_VELOCITY = 1200;
+     * The specific impulse of the fuel, Ns/kg, determines its efficiency.
+     * Source for comparison: ( http://www.esa.int/Education/Solid_and_liquid_fuel_rockets4/(print) )
+     */
+    private static final float FUEL_SPECIFIC_IMPULSE = 3500;
+    private static final float MAX_VELOCITY = 1200;
 
-    /** A base multiplier for thrust calculations, for convenience. */
+    /**
+     * A base multiplier for thrust calculations, for convenience.
+     */
     public static final float BASE = 1 * 1e3f;
     //endregion
 
     //region Fields
-    /** Current thrust in Newtons in every "deltaTime"*/
+    /**
+     * Current thrust in Newtons in every "deltaTime"
+     */
     private float currentThrust;
-    /** Reaction wheel strength (assuming the craft rotates using electricity instead of fuel). */
+    /**
+     * Reaction wheel strength (assuming the craft rotates using electricity instead of fuel).
+     */
     private float deltaTorque;
-    /** Thrust change rate multiplier */
+    /**
+     * Thrust change rate multiplier
+     */
     private float deltaThrust;
-    /** Mass and fuel values are both in kg. */
+    /**
+     * Mass and fuel values are both in kg.
+     */
     private float fuelLeft;
     private float startingFuel;
     private float width;
     private float height;
-    /** Maximum thrust in Newtons in every "deltaTime" */
+    /**
+     * Maximum thrust in Newtons in every "deltaTime"
+     */
     private float maxThrust;
+    /**
+     * The Stability Assist System (SAS) of a spacecraft automatically prevents unwanted
+     * spinning to make controlling the craft much easier.
+     */
     private boolean SASEnabled;
+    /**
+     * Toggle to maximize thrust in a short amount of time
+     */
     private boolean maximizeThrust;
+    /**
+     * Toggle to minimize thrust in a short amount of time
+     */
     private boolean minimizeThrust;
     private Vector2 bottomPosition;
     private Vector2 spawnPoint;
     //endregion
 
-    //Notes
-    // Similar to typical spacecraft, our typical crafts will have a dry mass of around 100t and carry up to 400t of fuel.
-    // Their max thrust will be in the 1-100 megaNewtons range, which is realistic.
-    // Sources for comparison: (https://en.wikipedia.org/wiki/RD-180) (https://en.wikipedia.org/wiki/Saturn_V#US_Space_Shuttle)
-
+    //region Constructor
+    /**
+     * Similar to typical spacecraft, our typical crafts will have a dry mass of around 100t and carry up to 400t of fuel.
+     * Their max thrust will be in the 1-100 megaNewtons range, which is realistic.
+     * Sources for comparison: (https://en.wikipedia.org/wiki/RD-180) (https://en.wikipedia.org/wiki/Saturn_V#US_Space_Shuttle)
+     */
     public Playable(float x, float y, float width, float height, float dryMass, float deltaTorque, float deltaThrust, float maxThrust, float fuel, World world) {
         this.currentThrust = 0;
         this.width = width;
@@ -64,6 +87,8 @@ public class Playable extends SolidObject {
         this.startingFuel = fuel;
 
         this.body = createBody(x, y, (dryMass + fuel), world);
+
+        // Create a copy of the current position to store it as the starting point
         this.spawnPoint = body.getPosition().cpy();
     }
 
@@ -100,7 +125,6 @@ public class Playable extends SolidObject {
     }
     //endregion
 
-
     //region Methods
     /**
      * Receives impulses and updates momenta of the body.
@@ -111,7 +135,9 @@ public class Playable extends SolidObject {
         consumeFuelAndDecreaseMass(deltaTime);
     }
 
-    /** Reduce mass of the spacecraft by burning its fuel */
+    /**
+     * Reduce mass of the spacecraft by burning its fuel
+     */
     private void consumeFuelAndDecreaseMass(float deltaTime) {
         if (fuelLeft > 0) {
             float fuelSpent = currentThrust * deltaTime / FUEL_SPECIFIC_IMPULSE;
@@ -123,7 +149,9 @@ public class Playable extends SolidObject {
         }
     }
 
-    /** Uses the momentum from the burned fuel to move the spacecraft in space */
+    /**
+     * Uses the momentum from the burned fuel to move the spacecraft in space
+     */
     private void move(float deltaTime) {
         // Calculate the bottom position of the spacecraft
         Vector2 bottomVector = new Vector2(0, -height / 2f * toMeter).rotateRad(body.getAngle());
@@ -150,7 +178,6 @@ public class Playable extends SolidObject {
         // Push the spacecraft with the thrust we calculated
         Vector2 impulseVector = new Vector2(0, currentThrust * deltaTime).rotateRad(body.getAngle());
         body.applyLinearImpulse(impulseVector.x, impulseVector.y, bottomPosition.x, bottomPosition.y, true);
-
     }
     //endregion
 
@@ -216,7 +243,6 @@ public class Playable extends SolidObject {
         currentThrust = Math.max(0, currentThrust - deltaTime * deltaThrust * 10);
     }
     //endregion
-
 
     //region Getters & Setters
     public float getCurrentThrust() {

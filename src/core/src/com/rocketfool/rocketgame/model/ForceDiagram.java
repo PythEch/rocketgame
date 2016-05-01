@@ -6,8 +6,8 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * Created by Omer on 29/04/2016.
  * Calculates all forces acting on the playable individually, in preparation for drawing them.
+ * TODO: implement
  */
 public class ForceDiagram extends GameObject {
     public static final float FRAME_RATE = 1f / 60;
@@ -72,5 +72,7 @@ public class ForceDiagram extends GameObject {
         return enabled;
     }
 
-    public static void setEnabled(boolean set){enabled = set;}
+    public static void setEnabled(boolean set) {
+        enabled = set;
+    }
 }

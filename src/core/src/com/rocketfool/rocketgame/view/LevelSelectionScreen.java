@@ -99,7 +99,7 @@ public class LevelSelectionScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel1(),
-                        "ANAN!"));
+                        "level1!"));
             }
         });
 
@@ -118,7 +118,7 @@ public class LevelSelectionScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.TAKEOFF_VIDEO, LevelManager.createLevel3(),
-                        "ANAN!"));
+                        "level3!"));
             }
         });
 

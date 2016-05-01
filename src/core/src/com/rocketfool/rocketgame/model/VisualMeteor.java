@@ -13,13 +13,15 @@ public class VisualMeteor extends GameObject {
     private int rotateDegree;
     //endregion
 
-    //
+    //region Constructor
     public VisualMeteor(int locationX, int locationY, int speedX, int speedY, int rotateDegree) {
         this.location = new Vector2(locationX, locationY);
         this.speed = new Vector2(speedX, speedY);
         this.rotateDegree = rotateDegree;
     }
+    //endregion
 
+    //region Methods
     @Override
     public void update(float deltaTime) {
         Vector2 mySpeed = speed.cpy();
@@ -27,7 +29,9 @@ public class VisualMeteor extends GameObject {
         mySpeed.y *= deltaTime * 10;
         location = location.add(mySpeed);
     }
+    //endregion
 
+    //region Getters & Setters
     public Vector2 getLocation() {
         return location;
     }
@@ -39,4 +43,5 @@ public class VisualMeteor extends GameObject {
     public int getRotateDegree() {
         return rotateDegree;
     }
+    //endregion
 }

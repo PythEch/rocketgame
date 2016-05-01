@@ -6,12 +6,13 @@ import com.badlogic.gdx.math.Vector2;
  * Non-physical bodies as visual indicators for game objectives.
  */
 public class Waypoint extends GameObject {
+    //region Fields
     private boolean onScreen;
     private PositionTrigger positionTrigger;
     private Level level;
+    //endregion
 
-    //constructors
-
+    //region Constructors
     public Waypoint(Level level, PositionTrigger positionTrigger) {
         this.positionTrigger = positionTrigger;
         this.onScreen = false;
@@ -22,8 +23,18 @@ public class Waypoint extends GameObject {
         this(level, new PositionTrigger(x, y, radius, level.getPlayable()));
         level.triggers.add(positionTrigger);
     }
+    //endregion
 
-    //methods
+    //region Methods
+    @Override
+    public void update(float deltaTime) {
+        if (positionTrigger.isTriggeredBefore()) {
+            setOnScreen(false);
+        }
+    }
+    //endregion
+
+    //region Getters & Setters
     public Vector2 getPosition() {
         float angle = getAngle();
 
@@ -46,11 +57,6 @@ public class Waypoint extends GameObject {
     public void setPositionTrigger(PositionTrigger positionTrigger) {
         this.positionTrigger = positionTrigger;
     }
+    //endregion
 
-    @Override
-    public void update(float deltaTime) {
-        if (positionTrigger.isTriggeredBefore()) {
-            setOnScreen(false);
-        }
-    }
 }
