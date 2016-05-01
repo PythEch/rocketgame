@@ -311,6 +311,12 @@ public class GameScreen implements Screen {
                     false
             );
         }
+        font.draw(
+                batch,
+                level.getObjectiveWindow().getText(),
+                camera.position.x - (camera.viewportWidth / 2f - 20) * camera.zoom,
+                camera.position.y + (camera.viewportHeight / 2f - 100) * camera.zoom
+        );
 
         //WarningMapSign
         // flash the sign by only showing it for 0.5 seconds
@@ -394,15 +400,13 @@ public class GameScreen implements Screen {
                     if (!isGameOver) {
                         game.setScreen(new GameScreen(newLevel, game, batch, font));
                     } else {
-                        game.setScreen(new EndingScreen(game,batch,font));
+                        //game.setScreen(new EndingScreen(game,batch,font));
                     }
 
                 }
-            },5.0f);
-            
-        }
-        else if (level.getState() == Level.State.GAME_OVER)
-        {
+            }, 5.0f);
+
+        } else if (level.getState() == Level.State.GAME_OVER) {
             // sexxxx
         }
 

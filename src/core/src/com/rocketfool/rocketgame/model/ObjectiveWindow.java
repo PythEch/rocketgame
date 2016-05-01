@@ -6,8 +6,8 @@ package com.rocketfool.rocketgame.model;
 public class ObjectiveWindow {
 
     //properties
-    private String text;
-    private String title;
+    private String text = "";
+    private String title = "";
 
     //constructors
     public ObjectiveWindow(String title, String text) {

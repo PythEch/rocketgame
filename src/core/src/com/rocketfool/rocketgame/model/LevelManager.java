@@ -33,7 +33,7 @@ public class LevelManager {
         Level.levelNo = 1;
         level.timer = new Timer();
         final PopUp popUp = level.popUp;
-        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        final ObjectiveWindow objectiveWindow = level.objectiveWindow;
         popUp.setTitle("HQ");
 
         //levelMap
@@ -266,7 +266,7 @@ public class LevelManager {
         Level.levelNo = 2;
         level.timer = new Timer();
         final PopUp popUp = level.popUp;
-        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        final ObjectiveWindow objectiveWindow = level.objectiveWindow;
         popUp.setTitle("HQ");
 
 
@@ -478,7 +478,7 @@ public class LevelManager {
         Level.levelNo = 3;
         level.timer = new Timer();
         final PopUp popUp = level.popUp;
-        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        final ObjectiveWindow objectiveWindow = level.objectiveWindow;
         popUp.setTitle("HQ");
         WorldController.controlState = 7;
 
@@ -604,7 +604,7 @@ public class LevelManager {
         Level.levelNo = 4;
         level.timer = new Timer();
         final PopUp popUp = level.popUp;
-        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        final ObjectiveWindow objectiveWindow = level.objectiveWindow;
         popUp.setTitle("HQ");
         WorldController.controlState = 7;
 
@@ -735,7 +735,7 @@ public class LevelManager {
         Level.levelNo = 5;
         level.timer = new Timer();
         final PopUp popUp = level.popUp;
-        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        final ObjectiveWindow objectiveWindow = level.objectiveWindow;
         popUp.setTitle("HQ");
 
         //map
@@ -843,7 +843,7 @@ public class LevelManager {
         Level.levelNo = 5;
         level.timer = new Timer();
         final PopUp popUp = level.popUp;
-        final ObjectiveWindow objectiveWindow = new ObjectiveWindow();
+        final ObjectiveWindow objectiveWindow = level.objectiveWindow;
         popUp.setTitle("HQ");
         WorldController.controlState = 7;
 

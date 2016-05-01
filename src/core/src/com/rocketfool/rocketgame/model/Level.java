@@ -36,6 +36,7 @@ public class Level {
     protected int health = 3;
     protected PopUp popUp;
     protected Timer timer;
+    protected ObjectiveWindow objectiveWindow;
     //endregion
 
     //region Nested Types
@@ -62,6 +63,7 @@ public class Level {
         this.timePassedFixed = 0;
         this.score = 0;
         this.popUp = new PopUp();
+        this.objectiveWindow = new ObjectiveWindow();
 
         // Register collisions
         world.setContactListener(new ContactListener() {
@@ -418,6 +420,10 @@ public class Level {
 
     public static byte getLevelNo() {
         return levelNo;
+    }
+
+    public ObjectiveWindow getObjectiveWindow() {
+        return objectiveWindow;
     }
 
     //endregion
