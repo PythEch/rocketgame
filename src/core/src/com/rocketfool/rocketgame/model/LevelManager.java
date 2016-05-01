@@ -521,7 +521,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               level.screen.getMinimap().setEnabled(false);
+                               //level.screen.getMinimap().setEnabled(false);
                            }
                        },
                 0.5f);

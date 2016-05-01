@@ -168,7 +168,6 @@ public class OptionsScreen implements Screen {
 
         stage.act(delta);
         stage.draw();
-
     }
 
     @Override

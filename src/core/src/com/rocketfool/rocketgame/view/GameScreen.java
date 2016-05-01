@@ -407,19 +407,18 @@ public class GameScreen implements Screen {
                         //game.setScreen(new LevelEnding(game,batch,font));
                         System.out.println("ANAN");
                         //Some shits
-                        renderer.stopThrusterGoinger();
-                        renderer.stopWarningSound();
-                        renderer.stopBackgroundMusic();
-                        popupView.stopPopupShutter();
                         level.setState(Level.State.GAME_OVER);
-
                     }
 
                 }
             }, 5.0f);
 
         } else if (level.getState() == Level.State.GAME_OVER) {
-            game.setScreen(new EndingScreen(game,batch,font) );
+            renderer.stopThrusterGoinger();
+            renderer.stopWarningSound();
+            renderer.stopBackgroundMusic();
+            popupView.stopPopupShutter();
+            game.setScreen(new EndingScreen(game, batch, font));
         }
 
         // draw trigger bounds for debug
