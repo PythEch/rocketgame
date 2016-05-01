@@ -366,8 +366,8 @@ public class WorldRenderer implements Disposable {
         if (shouldDraw) {
             batch.draw(
                     obj.getKeyFrame(elapsedTime, true),
-                    level.getPlayable().getSpawnPoint().x + 500,
-                    level.getPlayable().getSpawnPoint().y + 500
+                    level.getPlayable().getSpawnPoint().x * toPixel + 150,
+                    level.getPlayable().getSpawnPoint().y * toPixel + 150
             );
         }
     }
