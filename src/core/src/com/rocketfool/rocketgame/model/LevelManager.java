@@ -937,11 +937,17 @@ public class LevelManager {
             public void triggerPerformed() {
 
                 if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
-                    popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
-                            "called Oz-Turca and they call themselves Oz-Janis."); //risky?**
+                    Timer.schedule(new Timer.Task() {
+                        @Override
+                        public void run() {
+                            popUp.setText("Oh My God! ALIENS! They revealed themselves here They have a planet " +
+                                    "called Oz-Turca and they call themselves Oz-Janis.");
+                        }
+                    },4.0f);
+
+                    level.setState(Level.State.GAME_OVER);
                 }
-                //TODO: Alien & Human Gardasligi animasyonu. GAME OVER HERE
-                else {//TODO trigger business for these
+                else {
                     popUp.setText("We better check all the other planets before looking here.");
                 }
 

@@ -367,7 +367,7 @@ public class GameScreen implements Screen {
         }
         popupView.draw(batch);
 
-        //Level end
+        //Level end and game end
         if (level.getState() == Level.State.LEVEL_FINISHED) {
 
             batch.draw(
