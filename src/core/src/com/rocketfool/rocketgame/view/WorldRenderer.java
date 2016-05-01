@@ -420,7 +420,7 @@ public class WorldRenderer implements Disposable {
                         obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
                         obj.getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
                         obj.getRadius() * toPixel * 2,
-                        obj.getRadius() * toPixel * 2
+                        obj.getRadius() * toPixel * 2.3f
                 );
             }
            /* else if (level.getGameObjects().get(i) instanceof RectangleObstacle)
