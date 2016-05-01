@@ -291,7 +291,7 @@ public class LevelManager {
         final PositionTrigger outOfEarthTrig = new PositionTrigger(14000, 11000, 800, level.playable, true) {
             @Override
             public void triggerPerformed() {
-                popUp.setText("Great, now that you're free from the Earth's gravity bla bla bla"); // TODO: fix script
+                popUp.setText("See how Earth's gravity is so much weaker farther away?");
                 objectiveWindow.setText("Examine the object on the Moon's orbit");
             }
         };
@@ -477,9 +477,6 @@ public class LevelManager {
         //default Triggers
         addDefaultTriggers(level);
 
-        if (Constants.DEBUG) {
-            //level.planets.add(new Planet(17000, 10000, 1e20f, 500, null, level.world, 4));
-        }
         //endGame Triggers
         final PositionTrigger asteroidsPassed = new PositionTrigger(17000, 10000, 500, level.playable) {
             @Override
@@ -496,24 +493,31 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("You received an SOS code from a fellow traveller at Mars. Their ship is stranded " +
-                                       "in orbit of Mars. You will need to go through here though...");
-                               objectiveWindow.setText("Reach Mars");
+                               //TODO Fix minimap or disable minimap here
                            }
                        },
-                5.0f);
+                0.5f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Looks like there are lots of obstacles on your way. It's best to avoid them.");
+                               popUp.setText("You received an SOS code from a fellow traveller at Mars. Their ship is stranded " +
+                                       "in orbit of Mars. You will need to go through these asteroids though...");
+                               objectiveWindow.setText("Reach Mars");
                            }
                        },
-                15.0f);
+                10.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("Space might not be so empty after all. Even the smallest rock or space junk piece can cause serious damage to the craft," +
-                                       " especially at higher speeds, so it would be best to avoid even touching anything!");
+                                               " especially at higher speeds, so it would be best to avoid even touching anything!");
+                           }
+                       },
+                20.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popUp.setText( "Be extra careful because some of them are moving too!" );
                            }
                        },
                 25.0f);
@@ -530,14 +534,14 @@ public class LevelManager {
                                popUp.setText("Piloting is hard, isn't it?");
                            }
                        },
-                65.0f);
+                75.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("Avoid collisions with obstacles!");
                            }
                        },
-                85.0f);
+                105.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -545,43 +549,22 @@ public class LevelManager {
                                        "they will bond and be permanently stuck together.");
                            }
                        },
-                95.0f);
+                135.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popUp.setText("Did you know that on Venus a day is longer than a year.");
                            }
                        },
-                105.0f);
+                165.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
+                               popUp.setText("Did you know that the Moon is very slowly drifting away from Earth?");
                            }
                        },
                 115.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
-                           }
-                       },
-                125.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
-                           }
-                       },
-                135.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popUp.setText("Did you know that the moon is drifting away from Earth, Farewell old friend!");
-                           }
-                       },
-                145.0f);
-
+                //TODO maybe more facts here
 
         return level;
     }
