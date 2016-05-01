@@ -38,8 +38,12 @@ public class WorldRenderer implements Disposable {
     private Level level;
     private TextureAtlas textureAtlasMeteor;
     private TextureAtlas textureAtlasStar;
-    private TextureAtlas textureAtlasObjective1;
-    private Animation animationObjective1;
+    private TextureAtlas textureAtlasLevel3;
+    private TextureAtlas textureAtlasLevel4;
+    private TextureAtlas textureAtlasLevel5;
+    private Animation animationLevel3;
+    private Animation animationLevel4;
+    private Animation animationLevel5;
     private Animation animationStar;
     private Animation animationMeteor;
     private float elapsedTime = 0f;
@@ -75,8 +79,13 @@ public class WorldRenderer implements Disposable {
             animationStar = new Animation(1f / 100f, textureAtlasStar.getRegions());
         }
         //ObjectiveScreens
-        textureAtlasObjective1 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet/objScreen.atlas"));
-        animationObjective1 = new Animation(1f / 80f, textureAtlasObjective1.getRegions());
+        textureAtlasLevel3 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet3/obj.atlas"));
+        textureAtlasLevel4 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet4/obj.atlas"));
+        textureAtlasLevel5 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet5/obj.atlas"));
+        animationLevel3 = new Animation(1f / 80f, textureAtlasLevel3.getRegions());
+        animationLevel4 = new Animation(1f / 80f, textureAtlasLevel4.getRegions());
+        animationLevel5 = new Animation(1f / 80f, textureAtlasLevel5.getRegions());
+
 
         trajectorySimulator = new TrajectorySimulator(level);
 
@@ -154,7 +163,7 @@ public class WorldRenderer implements Disposable {
             drawStars(batch);
             drawMeteors(batch);
         }
-        drawObjectiveScreen(batch, animationObjective1);
+        drawObjectiveScreen(batch);
         drawPlanets(batch);
         drawPlayer(batch);
         drawTrajectory(batch);
@@ -339,12 +348,33 @@ public class WorldRenderer implements Disposable {
         batch.setColor(1, 1, 1, 1);
     }
 
-    private void drawObjectiveScreen(SpriteBatch batch, Animation obj) {
-        batch.draw(
-                obj.getKeyFrame(elapsedTime, true),
-                level.getPlayable().getSpawnPoint().x + 200f,
-                level.getPlayable().getSpawnPoint().y + 200f
-        );
+    private void drawObjectiveScreen(SpriteBatch batch) {
+        boolean shouldDraw = false;
+        Animation obj = null;
+
+        if(level.getLevelNo() == 3)
+        {
+            obj = animationLevel3;
+            shouldDraw = true;
+        }
+        else if(level.getLevelNo() == 4)
+        {
+            obj = animationLevel4;
+            shouldDraw = true;
+        }
+        else if (level.getLevelNo() == 5)
+        {
+            obj = animationLevel5;
+            shouldDraw = true;
+        }
+
+        if(shouldDraw) {
+            batch.draw(
+                    obj.getKeyFrame(elapsedTime, true),
+                    level.getPlayable().getSpawnPoint().x + 200f,
+                    level.getPlayable().getSpawnPoint().y + 200f
+            );
+        }
     }
 
     private void drawTrajectory(SpriteBatch batch) {
@@ -473,7 +503,7 @@ public class WorldRenderer implements Disposable {
     @Override
     public void dispose() {
         textureAtlasMeteor.dispose();
-        textureAtlasObjective1.dispose();
+        textureAtlasLevel3.dispose();
         textureAtlasStar.dispose();
     }
 
