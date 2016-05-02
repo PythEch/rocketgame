@@ -5,7 +5,9 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Align;
 import com.rocketfool.rocketgame.model.Popup;
 import com.rocketfool.rocketgame.util.GamePreferences;
 
@@ -120,7 +122,7 @@ public class PopupView {
                 false
         );
 
-        font.setScale(camera.zoom);
+        font.getData().setScale(camera.zoom);
         drawFont(batch);
     }
 
@@ -129,31 +131,35 @@ public class PopupView {
         String topText = splitted[0];
         String bottomText = splitted[1];
 
-        font.drawWrapped(
+        font.draw(
                 batch,
                 topText,
                 camera.position.x - (camera.viewportWidth / 2f - 160) * camera.zoom,
                 camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord) * camera.zoom,
-                235 * camera.zoom
+                235 * camera.zoom,
+                Align.left,
+                true
         );
 
-        font.drawWrapped(
+        font.draw(
                 batch,
                 bottomText,
                 camera.position.x - (camera.viewportWidth / 2f - 20) * camera.zoom,
                 camera.position.y - (camera.viewportHeight / 2f - 280 - yCoord + 140) * camera.zoom,
-                355 * camera.zoom
+                355 * camera.zoom,
+                Align.left,
+                true
         );
     }
 
     private String[] splitText(String text, float width, float height) {
         String topText = text;
 
-        BitmapFont.TextBounds bounds = font.getWrappedBounds(text, width);
+        GlyphLayout bounds = new GlyphLayout(font, text);
 
         while (bounds.height > height) {
             topText = topText.substring(0, topText.lastIndexOf(' '));
-            bounds = font.getWrappedBounds(topText, width);
+            bounds.setText(font, topText);
         }
 
         String bottomText = text.substring(topText.length());

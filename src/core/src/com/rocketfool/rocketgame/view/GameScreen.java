@@ -286,11 +286,12 @@ public class GameScreen implements Screen {
         if ((int) elapsedTime >= 60) {
             str = "" + (int) (elapsedTime / 60) + ":" + (int) elapsedTime % 60;
         }
-        timerFont.setScale(camera.zoom);
+
+        timerFont.getData().setScale(camera.zoom);
         timerFont.draw(
                 batch,
                 str,
-                camera.position.x + (camera.viewportWidth / 2f - 140f) * camera.zoom - timerFont.getBounds(str).width / 2f,
+                camera.position.x + (camera.viewportWidth / 2f - 140f) * camera.zoom - new GlyphLayout(font, str).width / 2f,
                 camera.position.y + (camera.viewportHeight / 2f + 320f) * camera.zoom - timerFont.getLineHeight() * 12f
         );
 
@@ -564,7 +565,7 @@ public class GameScreen implements Screen {
 
         popupView.update(dt);
 
-        font.setScale(camera.zoom);
+        font.getData().setScale(camera.zoom);
     }
 
     public void lookAt(Playable target) {
