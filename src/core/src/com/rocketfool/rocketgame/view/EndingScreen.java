@@ -49,7 +49,13 @@ public class EndingScreen implements Screen {
             e.printStackTrace();
         }
 
-        videoPlayer.resize(1280, 720);
+        if(GamePreferences.getInstance().isFullscreen())
+        {
+            videoPlayer.resize(Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height);
+        }
+        else {
+            videoPlayer.resize(1280, 720);
+        }
         videoPlayer.setVolume(GamePreferences.getInstance().getMasterVolume());
 
     }
