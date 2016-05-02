@@ -570,9 +570,9 @@ public class LevelManager {
         level.playable.getBody().setLinearVelocity(0, 0);
 
         //Stranded spacecraft
-        level.solidObjects.add(new Playable(4000, 4000, 750, 750, 1e5f, 0, 0, 0, 0, level.world));
-        ((SolidObject) level.solidObjects.get(0)).setOrbitPreset(true);//TODO set width,height to 1,1 to avoid collisions (for now needed for visibility)
-        //Collisions are almost impossible with 1,1 because when <750px this despawns anyway
+        //Note: the dimensions of the spacecraft are slightly smaller than that of the trigger to reduce chances of crashing.
+        level.solidObjects.add(new Playable(4000, 4000, 500, 500, 1e5f, 0, 0, 0, 0, level.world));
+        level.solidObjects.get(0).setOrbitPreset(true);
         //default Triggers
         addDefaultTriggers(level);
 
@@ -580,15 +580,15 @@ public class LevelManager {
         final PositionTrigger endTrig = new PositionTrigger(5000, 10000, 1000f, level.playable) {
             @Override
             public void triggerAction() {
-                //Popup Text:("Congratulations! You saved your friend! Looks like he is interesting information about the aliens too!!");}
+                    level.setState(Level.State.LEVEL_FINISHED);
             }
         };
 
-        final PositionTrigger craftTrig = new PositionTrigger(((SolidObject) level.solidObjects.get(0)), 0, 0, 150f, level.playable) {
+        final PositionTrigger craftTrig = new PositionTrigger((level.solidObjects.get(0)), 0, 0, 120f, level.playable) {
             @Override
             public void triggerAction() {
                 //(Halfway point)
-                popup.setText("Great work! Now let's head back!");
+                popup.setText("Great work! Now let's head back! Looks like your friend has some interesting findings too...");
                 objectiveWindow.setText("Head home, towards Earth");
                 level.waypoint = new Waypoint(level, 5000, 10000, 1000f);
                 level.triggers.add(endTrig);
@@ -598,6 +598,7 @@ public class LevelManager {
         level.waypoint = new Waypoint(level, craftTrig);
 
         //level starts here
+        time = 5f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -606,31 +607,36 @@ public class LevelManager {
                                        "gravity! All that fuel and life support you're carrying is making you heavy!");
                            }
                        },
-                3.0f);
+                time);
+        time += 12f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popup.setText("You have to pass over your friend's ship in order to save them from the orbit.");
+                               popup.setText("You have to pass near your friend's ship in order to save them from the orbit " +
+                                       "but be careful NOT to hit the ship!");
                            }
                        },
-                18.0f);
+                time);
+        time += 9f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popup.setText("You'll need to orbit Mars carefully to catch up with them! Because remember," +
-                                       "although the total energy of a body in orbit is conserved, it continuously changes form " +
+                                       " although the total energy of a body in orbit is conserved, it continuously changes form " +
                                        "between gravitational potential energy (high up) kinetic energy (near the surface). ");
                            }
                        },
-                25.0f);
+                time);
+        time += 20f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popup.setText("Therefore, expect to orbit faster at lower altitudes to chase them or take a high" +
-                                       "orbit to wait for them to come near you.");
+                                       " orbit to wait for them to come near you.");
                            }
                        },
-                35.0f);
+                time);
+        time += 30f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -638,21 +644,24 @@ public class LevelManager {
                                        " is air around you, but nothing beyond that!");
                            }
                        },
-                65.0f);
+                time);
+        time += 30f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popup.setText("Did you know that if you put Saturn in water it would float?");
                            }
                        },
-                95.0f);
+                time);
+        time += 30f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popup.setText("Did you know that the hottest planet is not the closest planet to the Sun?");
                            }
                        },
-                125.0f);
+                time);
+        time += 30f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -661,14 +670,15 @@ public class LevelManager {
                                        "the backpack and the control module?");
                            }
                        },
-                155.0f);
+                time);
+        time += 30f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popup.setText("Did you know that neutron stars can spin at a rate of 600 rotations per second?");
                            }
                        },
-                185.0f);
+                time);
         return level;
     }
 
@@ -771,16 +781,6 @@ public class LevelManager {
          * 
          * TODO: are trigger and waypoint places correct?
          * TODO: simple crosshairs sprite for all waypoints in this level
-         *
-         * Others
-         * TODO update GameUtils.levelsCleared (all levels)
-         * TODO check save/load function.
-         * TODO restore max zoom to 200-400 instead of 550
-         * TODO endgame popups/screens for out-of-map, no fuel, etc.
-         * TODO play-testing all levels
-         * TODO spelling checks
-         * TODO code clean-up
-         * TODO everything else that I'm forgetting
          */
 
         final Level level = new Level();

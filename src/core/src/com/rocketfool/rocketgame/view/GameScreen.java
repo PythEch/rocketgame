@@ -485,16 +485,27 @@ public class GameScreen implements Screen {
             Timer.instance().start();
 
         } else if (level.getState() == Level.State.GAME_OVER) {
-            renderer.stopThrusterGoinger();
-            renderer.stopWarningSound();
-            renderer.stopBackgroundMusic();
-            popupView.stopPopupShutter();
-            // 1. Level5END with "It is a new era, humans are alliens are living together now. You started it!" text
-            // 2. Ending without anytext or popup
-            // 2 == endingscreen
-            game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL5END, "It is a new era, humans are alliens are living together now. You started it!",
-                    new EndingScreen(game, batch, font)
-            ));
+            if (level.getHealth() != 0) {
+                //Won the game
+                renderer.stopThrusterGoinger();
+                renderer.stopWarningSound();
+                renderer.stopBackgroundMusic();
+                popupView.stopPopupShutter();
+                // 1. Level5END with "It is a new era, humans are aliens are living together now. You started it!" text
+                // 2. Ending without anytext or popup
+                // 2 == endingscreen
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL5END, "It is a new era, humans are alliens are living together now. You started it!",
+                        new EndingScreen(game, batch, font)
+                ));
+            } else {
+                //Lost the game
+                renderer.stopBackgroundMusic();
+                renderer.stopThrusterGoinger();
+                renderer.stopWarningSound();
+                popupView.stopPopupShutter();
+                renderer.dispose();
+                game.setScreen(new MainMenuScreen(game, batch, font));
+            }
         }
 
         // draw trigger bounds for debug
