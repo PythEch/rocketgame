@@ -615,7 +615,6 @@ public class LevelManager {
                            @Override
                            public void run() {
                                popup.setText("You have to pass over your friend's ship in order to save them from the orbit.");
-                               level.setState(Level.State.LEVEL_FINISHED);
                            }
                        },
                 18.0f);
