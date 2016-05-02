@@ -424,6 +424,7 @@ public class GameScreen implements Screen {
                             endVideo = AssetManager.LEVEL1END;
                             newVideo = AssetManager.LEVEL2START;
                             endLevelText = "You made it back safely, It was close!";
+                            newLevelText = "A meteor hit you during your daily routine!";
                             break;
                         case 2:
                             newLevel = LevelManager.createLevel3();
@@ -431,6 +432,8 @@ public class GameScreen implements Screen {
                             newVideo = AssetManager.LEVEL3START;
                             endLevelText = "Congratulations! Our researchers are examining the meteor." + "\n" +
                                     "This meteor isn't like any space rock we've seen before.";
+                            newLevelText = "We have received a SOS call. It seems one of our spaceships is missing." + "\n" +
+                                    "It seems last position of that ship was close the Mars however, we cant get enough signal to track it.";
                             break;
                         case 3:
                             newLevel = LevelManager.createLevel4();
@@ -439,6 +442,8 @@ public class GameScreen implements Screen {
                             endLevelText = "Congratulations! You exhibited some nice piloting! We are right on the track to reach Mars. Great Job Martian!" +
                                     "\n" + "Now we can clearly hear missing spaceship's SOS signal." + "\n" +
                                     "We should be now able to track where it is.";
+
+                            newLevelText = "We have found the ship! It is drifting on Mars' orbit. It seems there is a surviver! Quickly get close!";
                             break;
                         case 4:
                             newLevel = LevelManager.createLevel5();
@@ -446,18 +451,26 @@ public class GameScreen implements Screen {
                             newVideo = AssetManager.LEVEL5START;
                             endLevelText = "Congratulations! You saved our friend." + "\n" + "He has some interesting informations:" +
                                     "\n" + "They have seen aliens and know where they are." + "\n" + "But during their way back they crashed the meteors we have passed before.";
+                            newLevelText = "We have found the ship! It is drifting on Mars' orbit. It seems there is a survivor! Quickly get close!";
                             break;
                         case 5:
                             isGameOver = true;
                             endVideo = AssetManager.LEVEL5END;
                             endLevelText = "It is a new era, humans are alliens are living together now. You started it!";
+                            newLevelText = "Our surviver gave this cordinate, aliens' home planet should be one of them. This is unbelievable";
                             break;
                     }
                     if (!isGameOver) {
                         //game.setScreen(new GameScreen(newLevel, game, batch, font));
-                        game.setScreen(new CutsceneScreen(game, batch, font, endVideo, endLevelText,
-                                new CutsceneScreen(game, batch, font, newVideo, newLevel, newLevelText)
-                        ));
+                        if (newLevel.getLevelNo() == 2) {
+                            game.setScreen(new CutsceneScreen(game, batch, font, endVideo, endLevelText,
+                                    new MoonCrashScreen(game, batch, font)
+                            ));
+                        } else {
+                            game.setScreen(new CutsceneScreen(game, batch, font, endVideo, endLevelText,
+                                    new CutsceneScreen(game, batch, font, newVideo, newLevel, newLevelText)
+                            ));
+                        }
                     } else {
                         level.setState(Level.State.GAME_OVER);
                     }

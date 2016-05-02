@@ -253,7 +253,7 @@ public class LevelManager {
         final PositionTrigger outOfEarthTrig = new PositionTrigger(14000, 11000, 800, level.playable, true) {
             @Override
             public void triggerAction() {
-                level.setState(Level.State.LEVEL_FINISHED);
+
                 if (time % 100 < 90) {
                     popup.setText("I'm impressed that you are out of orbit already. But don't get too exited. Get close to the Moon.");
                     System.out.println(time % 100);
@@ -600,7 +600,7 @@ public class LevelManager {
             }
         };
         level.triggers.add(craftTrig);
-        level.waypoint = new Waypoint(level, craftTrig); 
+        level.waypoint = new Waypoint(level, craftTrig);
 
         //level starts here
         Timer.schedule(new Timer.Task() {
