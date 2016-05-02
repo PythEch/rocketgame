@@ -11,7 +11,7 @@ import com.rocketfool.rocketgame.util.Constants;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.title = "RocketGame v0.4";
+		config.title = "RocketGame v1.0";
 		config.width = Constants.GAME_WIDTH;
 		config.height = Constants.GAME_HEIGHT;
 		config.vSyncEnabled = true;
