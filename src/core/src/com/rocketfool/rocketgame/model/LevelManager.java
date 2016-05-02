@@ -241,7 +241,7 @@ public class LevelManager {
         moon.setOrbitPreset(true);
         level.solidObjects.add(new MoonAsteroid(moon, 3.25e2f, 40, level.world));
         //initialization of the rocket
-        level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
+        level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 12500 * BASE, 1.0e5f, level.world); //FIXME
         level.playable.getBody().setLinearVelocity(50f, -50f);
 
         //default Triggers
@@ -252,8 +252,8 @@ public class LevelManager {
         final PositionTrigger outOfEarthTrig = new PositionTrigger(14000, 11000, 800, level.playable, true) {
             @Override
             public void triggerAction() {
-                if (time % 100 < 90) {
-                    popup.setText("I'm impressed that you are out of orbit already. But don't get too exited. Get close to the Moon.");
+                if (time % 100 < 125) {
+                    popup.setText("I'm impressed that you are out of orbit already. But don't get too excited. Get close to the Moon, SLOWLY!");
                     System.out.println(time % 100);
                 } else {
                     popup.setText("Great, now that you're free from Earth's orbit");
@@ -268,33 +268,24 @@ public class LevelManager {
             @Override
             public void triggerAction() {
                 //(Half way through mission)
-                if (level.playable.getBody().getLinearVelocity().len() < 70) {
-                    popup.setText("You've reached the Moon. And what strange things have we found here? Better take it back to Earth!");
+                if (level.playable.getBody().getLinearVelocity().len() < 80) {
+                    popup.setText("You've reached the Moon and we got our sample. Better take it back to Earth!");
                     objectiveWindow.setText("Return to Earth");
-                    // FIXME: waypointleri tekrar düşün rip
-                    //level.waypoints.removeIndex(0);
-                    //level.waypoints.add(new Waypoint(14000, 11000, 800));
+
+                    final PositionTrigger earthTrig = new PositionTrigger(14000, 11000, 750, level.playable) {
+                        @Override
+                        public void triggerAction() {
+                            if (level.playable.getBody().getLinearVelocity().len() < 80) {
+                                level.setState(Level.State.LEVEL_FINISHED);
+                            }
+                        }
+                    };
+                    level.triggers.add(earthTrig);
+                    level.waypoint = new Waypoint(level, earthTrig);
                 }
             }
         };
         level.triggers.add(moonTrig);
-        level.waypoint = new Waypoint(level, moonTrig);
-
-        final PositionTrigger earthTrig = new PositionTrigger(14000, 11000, 750, level.playable) {
-            @Override
-            public void triggerAction() {
-                if (moonTrig.isTriggeredBefore()) {
-                    if (level.playable.getBody().getLinearVelocity().len() < 70) {
-                        level.setState(Level.State.LEVEL_FINISHED);
-                        //TODO end of level screen
-                        //Title: "Mission Accomplished!"
-                        //Text: "Congratulations! Our researchers will examine this craft! It looks like we've finally been visited by aliens!");
-                    }
-
-                }
-            }
-        };
-
         level.waypoint = new Waypoint(level, moonTrig);
 
         //level starts here
@@ -302,7 +293,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popup.setText("You are on the Earth's orbit right now."
+                               popup.setText("You are in the Earth's orbit right now."
                                        + " Camera controls restored.");
                                objectiveWindow.setText("Examine the object on the Moon's orbit");
                                WorldController.controlState = -1;
@@ -318,6 +309,8 @@ public class LevelManager {
                                if (!outOfEarthTrig.isTriggeredInternal()) {
                                    popup.setText("The Moon might be too far to see, but your minimap can help you find it.");
                                }
+                               if (Constants.DEBUG)
+                                   WorldController.controlState = 7;
                            }
                        },
                 time);
@@ -412,7 +405,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 7;
+        time += 10;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
