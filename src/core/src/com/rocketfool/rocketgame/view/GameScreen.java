@@ -553,6 +553,7 @@ public class GameScreen implements Screen {
 
         popupView.update(dt);
 
+        font.setScale(camera.zoom);
     }
 
     public void lookAt(Playable target) {
@@ -634,18 +635,10 @@ public class GameScreen implements Screen {
     public void zoomIn() {
 
         camera.zoom = Math.max(renderer.getMinZoom(), camera.zoom / 1.04f);
-        font.setScale(camera.zoom);
-
     }
 
     public void zoomOut() {
-        //if (!DEBUG) {
-        //    camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
-        //    font.setScale(camera.zoom);
-        //} else {
             camera.zoom = Math.min(camera.zoom * 1.04f, renderer.getMaxZoom());
-            font.setScale(camera.zoom);
-        //}
     }
 
     public void setZoom(float zoom) {

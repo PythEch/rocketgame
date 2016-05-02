@@ -241,7 +241,7 @@ public class LevelManager {
         moon.setOrbitPreset(true);
         level.solidObjects.add(new MoonAsteroid(moon, 3.25e2f, 40, level.world));
         //initialization of the rocket
-        level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 12500 * BASE, 1.0e5f, level.world); //FIXME
+        level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1250 * BASE, 1.0e5f, level.world);
         level.playable.getBody().setLinearVelocity(50f, -50f);
 
         //default Triggers
@@ -443,7 +443,7 @@ public class LevelManager {
                 level.solidObjects.add(new RectangleObstacle(((float) (Math.random()) * 17500) + 500f, ((float) (Math.random()) * 10000) + 500f + 30 * i / 2, i / 2, i / 3, speed, level.world));
             }
         }
-        //TODO: Dispose method could maybe be implemented for level class to remove the objects going out of the map and summoning new ones
+        //TODO: MAYBE, Dispose method could be implemented for level class to remove the objects going out of the map and summoning new ones
 
         //initialization of the rocket
         level.playable = new Playable(700, 700, 88, 108, 1e5f, 950 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
@@ -453,12 +453,10 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger asteroidsPassed = new PositionTrigger(17000, 10500, 750, level.playable) {
+        final PositionTrigger asteroidsPassed = new PositionTrigger(17000, 11000, 1000, level.playable) {
             @Override
             public void triggerAction() {
                 level.setState(Level.State.LEVEL_FINISHED);
-                //TODO End of level popup here
-                //Text: "Congratulations! You exhibited some nice piloting! We are right on the track to reach Mars. Great Job Martian!"
             }
         };
         level.triggers.add(asteroidsPassed);
@@ -474,72 +472,79 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popup.setText("The reason we are not getting enough signal should be these meteors." +
-                                       "But we need to pass them first. But \n" +
+                               popup.setText("The reason that we are not getting a good signal should be these meteors." +
+                                       "We need to pass through them first. But \n" +
                                        "Your scanners don't seem to pick them up!");
                                objectiveWindow.setText("Reach Mars");
                            }
                        },
-                18.0f);
+                25.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popup.setText("Space might not be so empty after all. Even the smallest rock or space junk piece can cause serious damage to the craft," +
-                                       " especially at higher speeds, so it would be best to avoid even touching anything!");
+                                       " especially at higher speeds, so it would be best to avoid even TOUCHING anything!");
                            }
                        },
-                30.0f);
+                40.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popup.setText("Be extra careful because some of them are moving too!");
                            }
                        },
-                35.0f);
+                48.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popup.setText("Some of these rocks look really weird! It seems the matter in them are not even on the periodic table." + "\n"
+                               + "They're like the one that hit us!");
+                           }
+                       },
+                63.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popup.setText("It is best to stay away from them now, our friend needs our help.");
+                           }
+                       },
+                70.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popup.setText("Did you know? \n The distance between Earth and Mars is 225 million kilometers.");
                            }
                        },
-                45.0f);
+                100.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popup.setText("Some of the rocks looks weird here! It seems matter in these rocks are not in the periodic table." + "\n"
-                               + "It should be one which hit us!");
-                           }
-                       },
-                75.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popup.setText("It is better to stay away from them now, our friend needs our help.");
-                           }
-                       },
-                105.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popup.setText("Did you know that if two pieces of the same type of metal touch in space, " +
+                               popup.setText("Did you know? If two pieces of the same type of metal touch in space, " +
                                        "they will bond and be permanently stuck together.");
                            }
                        },
-                135.0f);
+                130.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popup.setText("Did you know that on Venus a day is longer than a year.");
+                               popup.setText("Did you know? On Venus, a day is longer than a year.");
                            }
                        },
-                165.0f);
+                160.0f);
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popup.setText("Did you know that the Moon is very slowly drifting away from Earth?");
+                               popup.setText("Did you know? The Moon is very slowly drifting away from Earth...");
                            }
                        },
-                195.0f);
+                190.0f);
+        Timer.schedule(new Timer.Task() {
+                           @Override
+                           public void run() {
+                               popup.setText("Maybe it's best if I don't distract you any more...");
+                           }
+                       },
+                210.0f);
 
         return level;
     }
