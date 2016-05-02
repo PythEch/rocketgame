@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rocketfool.rocketgame.view.MainMenuScreen;
+import com.rocketfool.rocketgame.view.SplashScreen;
 
 /**
  * A Game class is used to switch between Screens and share data with them.
@@ -21,7 +22,7 @@ public class RocketGame extends Game {
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont();
-        this.setScreen(new MainMenuScreen(this, batch, font));
+        this.setScreen(new SplashScreen(this, batch, font));
     }
 
     @Override
