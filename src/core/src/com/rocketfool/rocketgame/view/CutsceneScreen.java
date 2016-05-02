@@ -83,7 +83,7 @@ public class CutsceneScreen implements Screen {
 
         if(GamePreferences.getInstance().isFullscreen())
         {
-            videoPlayer.resize(Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height);
+            videoPlayer.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         }
         else {
             videoPlayer.resize(1280, 720);

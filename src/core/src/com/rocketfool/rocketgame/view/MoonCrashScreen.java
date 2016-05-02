@@ -85,7 +85,7 @@ public class MoonCrashScreen implements Screen {
         batch.begin();
         splash.draw(batch);
         if(GamePreferences.getInstance().isFullscreen())
-        batch.draw(texture, 0, 0, Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height);
+        batch.draw(texture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         else {
             batch.draw(texture, 0, 0 );
         }
@@ -94,7 +94,7 @@ public class MoonCrashScreen implements Screen {
         batch.end();
         if(GamePreferences.getInstance().isFullscreen())
         {
-            this.resize(Gdx.graphics.getDesktopDisplayMode().width,Gdx.graphics.getDesktopDisplayMode().height);
+            this.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         }
     }
 

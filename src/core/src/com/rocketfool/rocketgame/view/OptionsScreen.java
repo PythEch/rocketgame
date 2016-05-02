@@ -1,6 +1,7 @@
 package com.rocketfool.rocketgame.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -108,20 +109,12 @@ public class OptionsScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if(!GamePreferences.getInstance().isFullscreen()) {
-                    Gdx.graphics.setDisplayMode(
-                            Gdx.graphics.getDesktopDisplayMode().width,
-                            Gdx.graphics.getDesktopDisplayMode().height,
-                            true
-                    );
+                    Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
                     GamePreferences.getInstance().setFullscreen(true);
                 }
                 else
                 {
-                    Gdx.graphics.setDisplayMode(
-                            Constants.GAME_WIDTH,
-                            Constants.GAME_HEIGHT,
-                            false
-                    );
+                    Gdx.graphics.setWindowedMode(Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
                     GamePreferences.getInstance().setFullscreen(false);
                 }
                 fullscreenStatus = GamePreferences.getInstance().isFullscreen();
