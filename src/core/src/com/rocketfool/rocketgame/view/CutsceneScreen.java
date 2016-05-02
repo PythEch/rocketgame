@@ -15,6 +15,7 @@ import com.badlogic.gdx.video.VideoPlayerDesktop;
 import com.rocketfool.rocketgame.external.RocketGame;
 import com.rocketfool.rocketgame.model.Level;
 import com.rocketfool.rocketgame.model.Popup;
+import com.rocketfool.rocketgame.util.GamePreferences;
 
 import java.io.FileNotFoundException;
 
@@ -22,7 +23,7 @@ import java.io.FileNotFoundException;
  * Created by pythech on 29/04/16.
  */
 public class CutsceneScreen implements Screen {
-    private VideoPlayer videoPlayer;
+    private VideoPlayerDesktop videoPlayer;
     private RocketGame game;
     private SpriteBatch batch;
     private BitmapFont font;
@@ -80,7 +81,14 @@ public class CutsceneScreen implements Screen {
 
         timer.start();
 
-        videoPlayer.resize(1280, 720);
+        if(GamePreferences.getInstance().isFullscreen())
+        {
+            videoPlayer.resize(Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height);
+        }
+        else {
+            videoPlayer.resize(1280, 720);
+        }
+        videoPlayer.setVolume(GamePreferences.getInstance().getMasterVolume());
     }
 
     @Override

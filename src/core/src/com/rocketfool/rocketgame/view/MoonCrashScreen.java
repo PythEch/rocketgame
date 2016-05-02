@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.rocketfool.rocketgame.external.RocketGame;
 import com.rocketfool.rocketgame.model.LevelManager;
 import com.rocketfool.rocketgame.model.Popup;
+import com.rocketfool.rocketgame.util.GamePreferences;
 
 public class MoonCrashScreen implements Screen {
     private static final float METEOR_DISTANCE = 450;
@@ -83,10 +84,18 @@ public class MoonCrashScreen implements Screen {
 
         batch.begin();
         splash.draw(batch);
-        batch.draw(texture, 0, 0);
+        if(GamePreferences.getInstance().isFullscreen())
+        batch.draw(texture, 0, 0, Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height);
+        else {
+            batch.draw(texture, 0, 0 );
+        }
         popupView.draw(batch);
         drawMeteor(batch);
         batch.end();
+        if(GamePreferences.getInstance().isFullscreen())
+        {
+            this.resize(Gdx.graphics.getDesktopDisplayMode().width,Gdx.graphics.getDesktopDisplayMode().height);
+        }
     }
 
     private void updateMeteor(float deltaTime) {

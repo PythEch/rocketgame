@@ -166,7 +166,7 @@ public class PopupView {
     }
 
     public void playPopupShutter(){
-        popupShutter.setVolume(GamePreferences.getInstance().getMasterVolume() /6f );
+        popupShutter.setVolume(GamePreferences.getInstance().getMasterVolume() /13f );
         popupShutter.setLooping(true);
         popupShutter.play();
     }

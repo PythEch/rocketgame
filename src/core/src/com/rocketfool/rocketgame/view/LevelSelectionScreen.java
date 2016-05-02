@@ -34,11 +34,13 @@ public class LevelSelectionScreen implements Screen {
     private SpriteBatch batch;
     private BitmapFont font;
     private TextButton back;
+    private MainMenuScreen mainMenuScreen;
 
-    public LevelSelectionScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
+    public LevelSelectionScreen(RocketGame game, SpriteBatch batch, BitmapFont font, MainMenuScreen mainMenuScreen) {
         this.game = game;
         this.batch = batch;
         this.font = font;
+        this.mainMenuScreen = mainMenuScreen;
     }
 
     @Override
@@ -98,6 +100,7 @@ public class LevelSelectionScreen implements Screen {
         level1.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                mainMenuScreen.disposePlayer();
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL1START, LevelManager.createLevel1(),
                         "A meteor hit you during your daily routine!"));
             }
@@ -108,7 +111,7 @@ public class LevelSelectionScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 //game.setScreen(new MoonCrashScreen(game, batch, font));
-
+                mainMenuScreen.disposePlayer();
                 game.setScreen(new MoonCrashScreen(game, batch, font));
             }
         });
@@ -117,6 +120,7 @@ public class LevelSelectionScreen implements Screen {
         level3.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                mainMenuScreen.disposePlayer();
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL3START, LevelManager.createLevel3(),
                         "We have received a SOS call. It seems one of our spaceships is missing." + "\n" +
                                 "It seems last position of that ship was close the Mars however, we cant get enough signal to track it.") );
@@ -127,6 +131,7 @@ public class LevelSelectionScreen implements Screen {
         level4.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                mainMenuScreen.disposePlayer();
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL4START, LevelManager.createLevel4(),
                         "We have found the ship! It is drifting on Mars' orbit. It seems there is a surviver! Quickly get close!"));
             }
@@ -136,6 +141,7 @@ public class LevelSelectionScreen implements Screen {
         level5.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                mainMenuScreen.disposePlayer();
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL5START, LevelManager.createLevel5(),
                         "Our surviver gave this cordinate, aliens' home planet should be one of them. This is unbelievable"));
             }
@@ -144,6 +150,7 @@ public class LevelSelectionScreen implements Screen {
         back.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                mainMenuScreen.disposePlayer();
                 game.setScreen(new MainMenuScreen(game, batch, font));
             }
         });

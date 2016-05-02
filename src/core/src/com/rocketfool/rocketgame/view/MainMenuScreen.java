@@ -102,8 +102,7 @@ public class MainMenuScreen implements Screen {
         newGame.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                videoPlayer.dispose();
-                game.setScreen(new LevelSelectionScreen(game,batch,font));
+                game.setScreen(new LevelSelectionScreen(game,batch,font, MainMenuScreen.this));
                 //game.setScreen(new GameScreen(LevelManager.createLevel2(), game, batch, font));
             }
         });

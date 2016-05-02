@@ -427,8 +427,8 @@ public class GameScreen implements Screen {
                             newLevel = LevelManager.createLevel2();
                             endVideo = AssetManager.LEVEL1END;
                             newVideo = AssetManager.LEVEL2START;
-                            endLevelText = "You made it back safely, It was close!";
-                            newLevelText = "A meteor hit you during your daily routine!";
+                            endLevelText = "You made it back safely! That was close!";
+                            newLevelText = "Look out for that meteor!"; //"A meteor hit you during your daily routine!"
                             break;
                         case 2:
                             newLevel = LevelManager.createLevel3();
@@ -553,6 +553,7 @@ public class GameScreen implements Screen {
 
         popupView.update(dt);
 
+        font.setScale(camera.zoom);
     }
 
     public void lookAt(Playable target) {
@@ -633,19 +634,11 @@ public class GameScreen implements Screen {
 
     public void zoomIn() {
 
-        camera.zoom = Math.max(0.5f, camera.zoom / 1.04f);
-        font.setScale(camera.zoom);
-
+        camera.zoom = Math.max(renderer.getMinZoom(), camera.zoom / 1.04f);
     }
 
     public void zoomOut() {
-        if (!DEBUG) {
-            camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
-            font.setScale(camera.zoom);
-        } else {
-            camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
-            font.setScale(camera.zoom);
-        }
+            camera.zoom = Math.min(camera.zoom * 1.04f, renderer.getMaxZoom());
     }
 
     public void setZoom(float zoom) {
@@ -683,6 +676,11 @@ public class GameScreen implements Screen {
                         level.setHealth(3);
                         break;
                     case 2:
+                        renderer.stopBackgroundMusic();
+                        renderer.stopThrusterGoinger();
+                        renderer.stopWarningSound();
+                        popupView.stopPopupShutter();
+                        renderer.dispose();
                         game.setScreen(new MainMenuScreen(game, batch, font));
                         break;
                     default:

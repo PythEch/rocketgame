@@ -137,7 +137,7 @@ public class OptionsScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 mainMenuScreen.disposePlayer();
-                game.setScreen(new MainMenuScreen(game,batch,font){});
+                game.setScreen(new MainMenuScreen(game,batch,font) );
             }
         });
 

@@ -76,7 +76,7 @@ public class Minimap {
             drawAt(batch, AssetManager.GHOST, point.x, point.y, GHOST_SCALE);
         }
 
-        if (DEBUG)
+        if (DEBUG && level.getTimePassedReal() < 1)
             debugDraw(batch);
     }
 

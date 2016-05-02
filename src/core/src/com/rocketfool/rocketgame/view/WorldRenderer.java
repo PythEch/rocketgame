@@ -27,8 +27,8 @@ import static com.rocketfool.rocketgame.util.Constants.*;
  */
 public class WorldRenderer implements Disposable {
     //region Constants
-    public static final float MAX_ZOOM = 10f;
-    public static final float MIN_ZOOM = 0.5f;
+    public static final float MAX_ZOOM = 550f;
+    public static final float MIN_ZOOM = 1f;
     public static final int MAX_ALPHA = 10;  // 1 = opak 255 = saydam
     public static final int MIN_ALPHA = 255;
     public static final float STAR_FREQUENCY = 3f;
@@ -519,6 +519,13 @@ public class WorldRenderer implements Disposable {
         }
     }
 
+    public static float getMaxZoom() {
+        return MAX_ZOOM;
+    }
+
+    public static float getMinZoom() {
+        return MIN_ZOOM;
+    }
 
     public TrajectorySimulator getTrajectorySimulator() {
         return trajectorySimulator;

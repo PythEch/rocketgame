@@ -15,7 +15,7 @@ public final class Constants {
     //endregion
 
     /** Used to indicate whether DEBUG features should be enabled. */
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = false;
 
     public static final int GAME_WIDTH = 1280;
     public static final int GAME_HEIGHT = 720;
