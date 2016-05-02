@@ -235,7 +235,7 @@ public class WorldRenderer implements Disposable {
         texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         texture.setFilter(Texture.TextureFilter.MipMapNearestLinear, Texture.TextureFilter.MipMapNearestLinear);
 
-        int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
+        int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(10f, camera.zoom) - MIN_ZOOM) / (10f - MIN_ZOOM)) + MAX_ALPHA;
         //sabatch.setColor(1, 1, 1, alpha);
 
         float minX = -camera.viewportWidth * 660 / 2f;
@@ -332,7 +332,8 @@ public class WorldRenderer implements Disposable {
         Texture texture = animationStar.getKeyFrame(elapsedTime, true).getTexture();
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
-        int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
+        int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(10f, camera.zoom) - MIN_ZOOM) / (10f - MIN_ZOOM)) + MAX_ALPHA;
+
         batch.setColor(1, 1, 1, alpha);
 
         batch.draw(
