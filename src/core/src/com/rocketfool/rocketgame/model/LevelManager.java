@@ -91,7 +91,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 10;
+        time += 14;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -132,7 +132,7 @@ public class LevelManager {
                                    @Override
                                    public void run() {
                                        popup.setText("As said by Newton's first law of motion, unless a force (like thrust) " +
-                                               "acts on you, you would drift at constant speed for ever!");
+                                               "acts on you, you would drift at constant speed for ever! Now let's turn up those engines!");
                                    }
                                },
                         11f);
@@ -572,7 +572,7 @@ public class LevelManager {
         level.playable.getBody().setLinearVelocity(0, 0);
 
         //Stranded spacecraft
-        level.solidObjects.add(new Playable(4000, 4000, 1000, 1000, 1e5f, 0, 0, 0, 0, level.world));
+        level.solidObjects.add(new Playable(4000, 4000, 750, 750, 1e5f, 0, 0, 0, 0, level.world));
         ((SolidObject) level.solidObjects.get(0)).setOrbitPreset(true);//TODO set width,height to 1,1 to avoid collisions (for now needed for visibility)
         //Collisions are almost impossible with 1,1 because when <750px this despawns anyway
         //default Triggers
@@ -883,7 +883,7 @@ public class LevelManager {
             @Override
             public void triggerAction() {
 
-                if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
+                if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggeredBefore()) {
                     level.setState(Level.State.GAME_OVER);
 
                 } else {
