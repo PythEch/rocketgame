@@ -10,12 +10,13 @@ import com.badlogic.gdx.video.VideoPlayer;
 import com.badlogic.gdx.video.VideoPlayerDesktop;
 import com.rocketfool.rocketgame.external.RocketGame;
 import com.rocketfool.rocketgame.model.Popup;
+import com.rocketfool.rocketgame.util.GamePreferences;
 import com.sun.org.apache.bcel.internal.generic.POP;
 
 import java.io.FileNotFoundException;
 
 public class EndingScreen implements Screen {
-    private VideoPlayer videoPlayer;
+    private VideoPlayerDesktop videoPlayer;
     private RocketGame game;
     private SpriteBatch batch;
     private BitmapFont font;
@@ -49,6 +50,8 @@ public class EndingScreen implements Screen {
         }
 
         videoPlayer.resize(1280, 720);
+        videoPlayer.setVolume(GamePreferences.getInstance().getMasterVolume());
+
     }
 
     @Override

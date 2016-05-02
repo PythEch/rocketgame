@@ -683,6 +683,11 @@ public class GameScreen implements Screen {
                         level.setHealth(3);
                         break;
                     case 2:
+                        renderer.stopBackgroundMusic();
+                        renderer.stopThrusterGoinger();
+                        renderer.stopWarningSound();
+                        popupView.stopPopupShutter();
+                        renderer.dispose();
                         game.setScreen(new MainMenuScreen(game, batch, font));
                         break;
                     default:
