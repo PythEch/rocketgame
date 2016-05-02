@@ -119,7 +119,7 @@ public class LevelManager {
         level.triggers.add(new Trigger() {
             @Override
             public boolean isTriggeredInternal() {
-                return WorldController.controlState == 3 && level.playable.getBody().getLinearVelocity().len() > 1;
+                return WorldController.controlState == 3 && level.playable.getBody().getAngularVelocity() == 0;
             }
 
             @Override
@@ -142,7 +142,7 @@ public class LevelManager {
         level.triggers.add(new Trigger() {
             @Override
             public boolean isTriggeredInternal() {
-                return WorldController.controlState == 4 && level.playable.getBody().getLinearVelocity().len() > (level.playable.getMaxVelocity() / 20f);
+                return WorldController.controlState == 4 && level.playable.getBody().getLinearVelocity().len() < (level.playable.getMaxVelocity() / 20f);
             }
 
             @Override
