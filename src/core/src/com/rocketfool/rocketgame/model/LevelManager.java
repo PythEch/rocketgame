@@ -298,7 +298,7 @@ public class LevelManager {
         level.waypoint = new Waypoint(level, moonTrig);
 
         //level starts here
-        time = 5f;
+        time = 20f;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -321,7 +321,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 5;
+        time += 8;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -333,7 +333,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 10;
+        time += 12;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -346,7 +346,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 12;
+        time += 18;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -358,7 +358,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 10;
+        time += 12;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -368,7 +368,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 6;
+        time += 7;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -379,7 +379,7 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 7;
+        time += 8;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
@@ -397,15 +397,15 @@ public class LevelManager {
                            }
                        },
                 time);
-        time += 33;
-        /// Z-X for only DeBug, players should not able to use these??
+        time += 35;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                if (!outOfEarthTrig.isTriggeredInternal()) {
                                    popup.setText(
                                            "While you are approaching the moon \n" +
-                                                   "Your speed should be less than half."
+                                                   "Your speed should be less than halfway \n" +
+                                                   "along the speed bar (top of screen)."
                                    );
                                    WorldController.controlState = 7;
                                }
