@@ -1,9 +1,5 @@
 package com.rocketfool.rocketgame.view;
 
-import aurelienribon.tweenengine.BaseTween;
-import aurelienribon.tweenengine.Tween;
-import aurelienribon.tweenengine.TweenCallback;
-import aurelienribon.tweenengine.TweenManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,19 +8,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.rocketfool.rocketgame.external.RocketGame;
-import com.rocketfool.rocketgame.model.PopUp;
-import com.rocketfool.rocketgame.view.AssetManager;
-import com.rocketfool.rocketgame.view.MainMenuScreen;
-import com.rocketfool.rocketgame.view.PopupView;
-import com.rocketfool.rocketgame.view.SpriteAccessor;
-
-import static com.rocketfool.rocketgame.util.Constants.toPixel;
+import com.rocketfool.rocketgame.model.LevelManager;
+import com.rocketfool.rocketgame.model.Popup;
+import com.rocketfool.rocketgame.util.GamePreferences;
 
 public class MoonCrashScreen implements Screen {
     private static final float METEOR_DISTANCE = 450;
@@ -35,7 +25,7 @@ public class MoonCrashScreen implements Screen {
     private Sprite splash;
     private SpriteBatch batch;
     private BitmapFont font;
-    private PopUp popup;
+    private Popup popup;
     private PopupView popupView;
     private OrthographicCamera camera;
     private Viewport viewport;
@@ -57,26 +47,27 @@ public class MoonCrashScreen implements Screen {
         this.camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        this.popup = new PopUp();
+        this.popup = new Popup();
         this.popupView = new PopupView(popup, camera);
 
+        Timer timer = new Timer();
 
-        Timer.schedule(new Timer.Task() {
+        timer.scheduleTask(new Timer.Task() {
             @Override
             public void run() {
                 popup.setText("It is a great idea to check it out.");
-                popup.setText("It looks like there is an unidentified meteor on Moon's orbit.");
+                popup.setText("It looks like there is an unidentified meteor on Moon's orbit. Looks like the one who hit you");
             }
         }, 1f);
 
-
-        Timer.schedule(new Timer.Task() {
+        timer.scheduleTask(new Timer.Task() {
             @Override
             public void run() {
-                System.out.println("test");
-                game.setScreen(new TakeoffScreen(game,batch,font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL2START, LevelManager.createLevel2(), "You starting a new journey. Be careful out there!"));
             }
-        },13f);
+        }, 13f);
+
+        timer.start();
 
         meteorAngle = 150;
         meteorPosition = new Vector2(0, 0);
@@ -93,10 +84,18 @@ public class MoonCrashScreen implements Screen {
 
         batch.begin();
         splash.draw(batch);
-        batch.draw(texture,0,0);
+        if(GamePreferences.getInstance().isFullscreen())
+        batch.draw(texture, 0, 0, Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height);
+        else {
+            batch.draw(texture, 0, 0 );
+        }
         popupView.draw(batch);
         drawMeteor(batch);
         batch.end();
+        if(GamePreferences.getInstance().isFullscreen())
+        {
+            this.resize(Gdx.graphics.getDesktopDisplayMode().width,Gdx.graphics.getDesktopDisplayMode().height);
+        }
     }
 
     private void updateMeteor(float deltaTime) {

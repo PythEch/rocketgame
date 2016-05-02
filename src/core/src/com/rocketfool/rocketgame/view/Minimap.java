@@ -22,27 +22,38 @@ import static com.rocketfool.rocketgame.util.Constants.*;
 public class Minimap {
     public static final float PLAYABLE_SCALE = 0.25f;
     public static final float GHOST_SCALE = 0.1f;
-    public static final float PLANET_SCALE = 4e-4f;
+    public static final float PLANET_SCALE = 2.7e-4f;
 
     private float originX;
     private float originY;
-    private float side;
+    private float width;
+    private float height;
     private float radius;
     private Level level;
     private OrthographicCamera camera;
     private TrajectorySimulator trajectorySimulator;
     private ShapeRenderer shapeRenderer;
+    private Vector2 center;
+    private Vector2 origin;
     private boolean enabled;
 
-    public Minimap(float originX, float originY, float side, Level level, OrthographicCamera camera, TrajectorySimulator trajectorySimulator) {
+    public Minimap(float originX, float originY, float radius, Level level, OrthographicCamera camera, TrajectorySimulator trajectorySimulator) {
         this.originX = originX;
         this.originY = originY;
-        this.side = side;
-        this.radius = (float)(side * Math.sqrt(2) / 2);
+        this.radius = radius;
         this.level = level;
         this.camera = camera;
         this.trajectorySimulator = trajectorySimulator;
         this.enabled = true;
+
+        float realRadius = level.getMap().getRadius();
+
+        this.width = radius / realRadius * level.getMap().getWidth();
+        this.height = radius / realRadius * level.getMap().getHeight();
+
+        center = new Vector2(originX + radius / (float)Math.sqrt(2), originY + radius / (float)Math.sqrt(2));
+        origin = new Vector2(center.x - width / 2f, center.y - height / 2f);
+
         if (DEBUG)
             shapeRenderer = new ShapeRenderer();
     }
@@ -55,7 +66,7 @@ public class Minimap {
         for (Planet planet : level.getPlanets()) {
             Vector2 planetPos = planet.getBody().getPosition();
             float planetArea = (float) (Math.PI * planet.getRadius() * planet.getRadius());
-            float planetScale = (float)(Math.sqrt(planetArea) * PLANET_SCALE);
+            float planetScale = (float) (Math.sqrt(planetArea) * PLANET_SCALE);
 
             drawAt(batch, AssetManager.MINIMAP_PLANET, planetPos.x, planetPos.y, planetScale);
         }
@@ -65,22 +76,22 @@ public class Minimap {
             drawAt(batch, AssetManager.GHOST, point.x, point.y, GHOST_SCALE);
         }
 
-        if (DEBUG)
+        if (DEBUG && level.getTimePassedReal() < 1)
             debugDraw(batch);
     }
 
     private void drawAt(SpriteBatch batch, Texture texture, float x, float y, float scale) {
-        x = side * (x * toPixel / level.getMap().getWidth());
-        y = side * (y * toPixel / level.getMap().getHeight());
+        x = width * (x * toPixel / level.getMap().getWidth()) + origin.x;
+        y = height * (y * toPixel / level.getMap().getHeight()) + origin.y;
 
-        if (new Vector2(x, y).dst(side / 2, side / 2) > radius) {
+        if (center.dst(x,y) > radius) {
             return;
         }
 
         batch.draw(
                 texture,
-                camera.position.x + (-camera.viewportWidth / 2f + x + originX - texture.getWidth() * scale / 2f) * camera.zoom,
-                camera.position.y + (-camera.viewportHeight / 2f + y + originY - texture.getHeight() * scale / 2f) * camera.zoom,
+                camera.position.x + (-camera.viewportWidth / 2f + x - texture.getWidth() * scale / 2f) * camera.zoom,
+                camera.position.y + (-camera.viewportHeight / 2f + y - texture.getHeight() * scale / 2f) * camera.zoom,
                 0,
                 0,
                 texture.getWidth(),
@@ -100,14 +111,20 @@ public class Minimap {
     private void debugDraw(SpriteBatch batch) {
         batch.end();
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+
         shapeRenderer.setColor(Color.GREEN);
-        shapeRenderer.rect(originX, originY, side, side);
-        shapeRenderer.circle(originX + side / 2, originY + side / 2, radius);
+        shapeRenderer.rect(origin.x, origin.y, width, height);
+        shapeRenderer.circle(center.x, center.y, radius);
+
         shapeRenderer.end();
         batch.begin();
     }
 
-    public boolean isEnabled() {return enabled;}
+    public boolean isEnabled() {
+        return enabled;
+    }
 
-    public void setEnabled(boolean enabled){this.enabled = enabled;}
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 }

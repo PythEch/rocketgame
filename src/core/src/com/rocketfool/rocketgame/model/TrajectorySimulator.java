@@ -25,14 +25,17 @@ public class TrajectorySimulator extends GameObject {
 
     /**
      * The minimum threshold in our skip algorithm.
-     * In this case the skipCount never goes below 10 but who knows what's going to happen?
      */
     public static final int MIN_SKIP = 2;
 
+    /**
+     * The maximum velocity is used to scale the interval of the dots
+     */
     public static final float MAX_VELOCITY = 120;
 
-    public static final float MIN_THRUST = 0.00001f;
-
+    /**
+     * Minimum threshold to calculate a trajectory
+     */
     public static final int IGNORE_THRESHOLD = 15;
 
     public static boolean enabled = true;
@@ -109,15 +112,15 @@ public class TrajectorySimulator extends GameObject {
 
         // Copy all planets to our own world
         for (Planet planet : level.getPlanets()) {
-           Planet newPlanet = new Planet(
-                   planet.getBody().getPosition().x,
-                   planet.getBody().getPosition().y,
-                   planet.getMass(),
-                   planet.getRadius(),
-                   planet.getPrimary(),
-                   world,
-                   planet.getPlanetType()
-           );
+            Planet newPlanet = new Planet(
+                    planet.getBody().getPosition().x,
+                    planet.getBody().getPosition().y,
+                    planet.getMass(),
+                    planet.getRadius(),
+                    planet.getPrimary(),
+                    world,
+                    planet.getPlanetType()
+            );
             planets.add(newPlanet);
         }
 
@@ -179,12 +182,14 @@ public class TrajectorySimulator extends GameObject {
     public void update(float deltaTime) {
         collided = false;
 
+        // skip if no trajectory is necessary
         if (level.getPlayable().getBody().getLinearVelocity().len() + level.getPlayable().getCurrentThrust() < IGNORE_THRESHOLD) {
             currentEstimationPath.clear();
             return;
         }
 
-        int skipCount = (int)((1 - (level.getPlayable().getBody().getLinearVelocity().len() / MAX_VELOCITY)) * SKIP_MULTIPLIER);
+        // Calculate a reasonable skipCount so that the spacings between the trajectory dots will be evenly as possible
+        int skipCount = (int) ((1 - (level.getPlayable().getBody().getLinearVelocity().len() / MAX_VELOCITY)) * SKIP_MULTIPLIER);
         skipCount = Math.max(MIN_SKIP, skipCount);
 
         // Reset our simulation in case of a user input
@@ -206,7 +211,10 @@ public class TrajectorySimulator extends GameObject {
                 currentEstimationPath.add(playable.getBody().getPosition().cpy());
         }
     }
-    
+
+    /**
+     * Update the positions of the planets
+     */
     private void updatePlanets() {
         for (int i = 0; i < planets.size; i++) {
             Planet myPlanet = planets.get(i);
@@ -216,6 +224,9 @@ public class TrajectorySimulator extends GameObject {
         }
     }
 
+    /**
+     * Calculate the gravity
+     */
     private void doGravity() {
         for (Planet planet : planets) {
             Body spaceship = playable.getBody();

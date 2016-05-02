@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rocketfool.rocketgame.model.PopUp;
+import com.rocketfool.rocketgame.model.Popup;
 import com.rocketfool.rocketgame.util.GamePreferences;
 
 /**
@@ -15,7 +15,7 @@ import com.rocketfool.rocketgame.util.GamePreferences;
  * TODO: maybe pop this up when user clicks the head?
  */
 public class PopupView {
-    private PopUp popup;
+    private Popup popup;
     private OrthographicCamera camera;
     private BitmapFont font;
     private TweenManager tweenManager;
@@ -26,7 +26,7 @@ public class PopupView {
     private Tween tween;
     private Music popupShutter;
 
-    public PopupView(PopUp popup, OrthographicCamera camera) {
+    public PopupView(Popup popup, OrthographicCamera camera) {
         this.popup = popup;
         this.camera = camera;
         this.font = new BitmapFont(); // TODO: select a font
@@ -41,7 +41,7 @@ public class PopupView {
         popupShutter = AssetManager.POPUP_SHUTTER_1;
     }
 
-    public PopupView(PopUp popup, OrthographicCamera camera, float delay) {
+    public PopupView(Popup popup, OrthographicCamera camera, float delay) {
         this(popup, camera);
         this.customDelay = delay;
     }
@@ -166,7 +166,7 @@ public class PopupView {
     }
 
     public void playPopupShutter(){
-        popupShutter.setVolume(GamePreferences.getInstance().getMasterVolume() /6f );
+        popupShutter.setVolume(GamePreferences.getInstance().getMasterVolume() /13f );
         popupShutter.setLooping(true);
         popupShutter.play();
     }

@@ -1,51 +1,49 @@
 package com.rocketfool.rocketgame.model;
 
+import com.badlogic.gdx.math.Vector2;
+
 /**
  * Non-physical bodies as visual indicators for game objectives.
  */
 public class Waypoint extends GameObject {
-    private float x;
-    private float y;
-    private float radius;
+    //region Fields
     private boolean onScreen;
-    private PositionTrigger t;
+    private PositionTrigger positionTrigger;
+    private Level level;
+    //endregion
 
-    //constructors
-    public Waypoint(float x, float y, float radius) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.onScreen = true;
-        t = null;
-
+    //region Constructors
+    public Waypoint(Level level, PositionTrigger positionTrigger) {
+        this.positionTrigger = positionTrigger;
+        this.onScreen = false;
+        this.level = level;
     }
 
-    public Waypoint(PositionTrigger t) {
-        this.x = t.getX();
-        this.y = t.getY();
-        this.radius = t.getRadius();
-        this.onScreen = true;
-        this.t = t;
+    public Waypoint(Level level, float x, float y, float radius) {
+        this(level, new PositionTrigger(x, y, radius, level.getPlayable()));
+        level.triggers.add(positionTrigger);
     }
+    //endregion
 
-    //methods
-    public void followTrigger() {
-        if (t != null) {
-            this.x = t.getX();
-            this.y = t.getY();
+    //region Methods
+    @Override
+    public void update(float deltaTime) {
+        if (positionTrigger.isTriggeredBefore()) {
+            setOnScreen(false);
         }
     }
+    //endregion
 
-    public float getX() {
-        return x;
+    //region Getters & Setters
+    public Vector2 getPosition() {
+        float angle = getAngle();
+
+        return level.getPlayable().getBody().getPosition().add(new Vector2(5, 0).rotate(angle));
     }
 
-    public float getY() {
-        return y;
-    }
-
-    public float getRadius() {
-        return radius;
+    public float getAngle() {
+        Vector2 directionVector = positionTrigger.getPosition().sub(level.getPlayable().getBody().getPosition());
+        return directionVector.angle();
     }
 
     public boolean isOnScreen() {
@@ -56,8 +54,9 @@ public class Waypoint extends GameObject {
         this.onScreen = onScreen;
     }
 
-    @Override
-    public void update(float deltaTime) {
-
+    public void setPositionTrigger(PositionTrigger positionTrigger) {
+        this.positionTrigger = positionTrigger;
     }
+    //endregion
+
 }

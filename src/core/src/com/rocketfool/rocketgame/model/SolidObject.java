@@ -20,9 +20,13 @@ public abstract class SolidObject extends GameObject {
     public Body getBody() {
         return body;
     }
+
+    public boolean isOrbitPreset() {
+        return orbitPreset;
+    }
+
+    public void setOrbitPreset(boolean orbitPreset) {
+        this.orbitPreset = orbitPreset;
+    }
     //endregion
-
-    public boolean isOrbitPreset() {return orbitPreset;}
-
-    public void setOrbitPreset(boolean orbitPreset) {this.orbitPreset = orbitPreset;}
 }
