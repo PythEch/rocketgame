@@ -29,7 +29,7 @@ public class WorldRenderer implements Disposable {
     //region Constants
     public static final float MAX_ZOOM = 550f;
     public static final float MIN_ZOOM = 1f;
-    public static final int MAX_ALPHA = 10;  // 1 = opak 255 = saydam
+    public static final int MAX_ALPHA = 10;  // 1 = opaque, 255 = transparent
     public static final int MIN_ALPHA = 255;
     public static final float STAR_FREQUENCY = 3f;
     //endregion
@@ -54,8 +54,8 @@ public class WorldRenderer implements Disposable {
     private Music warningSound;
     private Music bqMusic;
     private boolean isGoignerplaying;
-    private boolean isBQPlaying;
     private boolean isThrustStopperActive;
+    private boolean isBQPlaying;
     //endregion
 
     //region Constructor

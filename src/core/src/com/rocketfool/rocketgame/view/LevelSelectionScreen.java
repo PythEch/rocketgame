@@ -25,7 +25,7 @@ import com.rocketfool.rocketgame.model.LevelManager;
 import java.io.FileNotFoundException;
 
 /**
- * TODO: implement
+ * This is the Screen used to choose the level to play.
  */
 public class LevelSelectionScreen implements Screen {
 
