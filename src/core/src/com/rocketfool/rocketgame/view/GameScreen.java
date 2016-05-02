@@ -427,8 +427,8 @@ public class GameScreen implements Screen {
                             newLevel = LevelManager.createLevel2();
                             endVideo = AssetManager.LEVEL1END;
                             newVideo = AssetManager.LEVEL2START;
-                            endLevelText = "You made it back safely, It was close!";
-                            newLevelText = "A meteor hit you during your daily routine!";
+                            endLevelText = "You made it back safely! That was close!";
+                            newLevelText = "Look out for that meteor!"; //"A meteor hit you during your daily routine!"
                             break;
                         case 2:
                             newLevel = LevelManager.createLevel3();

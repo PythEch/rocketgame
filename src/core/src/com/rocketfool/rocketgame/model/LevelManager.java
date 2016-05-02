@@ -56,15 +56,12 @@ public class LevelManager {
         addDefaultTriggers(level);
 
         //endGame Triggers
-        final PositionTrigger earthTrig = new PositionTrigger(14000, 9000, 750, level.playable) {
+        final PositionTrigger earthTrig = new PositionTrigger(14000, 9000, 1000, level.playable) {
             @Override
             public void triggerAction() {
-                if (level.playable.getBody().getLinearVelocity().len() < 70) {
+                if (level.playable.getBody().getLinearVelocity().len() < 80) {
                     WorldController.controlState = 7;
-                    //TODO: Stop level here
-                    //TODO: End of level popup here with "move to menu" or "next level" or "restart"
-                    //Title: ("Mission Accomplished!")
-                    //Text: ("Congratulations! You made it back safely! Hopefully this experience will help in the future!");
+                    level.setState(Level.State.LEVEL_FINISHED);
                 }
             }
         };
@@ -85,8 +82,8 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popup.setText("What was THAT? A strange object whizzing by left you spinning chaotically in space!" +
-                                       "You must regain control! But don't worry, as you guide I, Professor Tekman will guid you!");
+                               popup.setText("What was THAT? A strange meteor whizzing by left you spinning chaotically in space!" +
+                                       "You must regain control! But don't worry, as you guide I, Professor Tekman will help you!");
                                objectiveWindow.setText("Regain control of the ship.");
                            }
                        },
@@ -105,12 +102,12 @@ public class LevelManager {
         level.triggers.add(new Trigger() {
             @Override
             public boolean isTriggeredInternal() {
-                return WorldController.controlState == 2 && level.playable.getBody().getAngularVelocity() < 0.1;
+                return WorldController.controlState == 2 && level.playable.getBody().getAngularVelocity() < 0.25;
             }
 
             @Override
             public void triggerAction() {
-                popup.setText("SAS restored! \n The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning.");
+                popup.setText("SAS restored! \n The RIGHT SHIFT key toggles the SAS, which automatically reduces spinning to 0.");
                 WorldController.controlState = 3;
             }
         });
@@ -118,7 +115,7 @@ public class LevelManager {
         level.triggers.add(new Trigger() {
             @Override
             public boolean isTriggeredInternal() {
-                return WorldController.controlState == 3 && level.playable.getBody().getAngularVelocity() == 0;
+                return WorldController.controlState == 3 && level.playable.getBody().getAngularVelocity() == 0 && level.playable.getSASEnabled();
             }
 
             @Override
@@ -128,26 +125,19 @@ public class LevelManager {
                         "your thrust. \n Try to reduce your velocity to zero " +
                         "(The velocity display is at the top).");
                 WorldController.controlState = 4;
-
-                Timer.schedule(new Timer.Task() {
-                                   @Override
-                                   public void run() {
-                                       popup.setText("As said by Newton's first law of motion, unless a force (like thrust) " +
-                                               "acts on you, you would drift at constant speed for ever! Now let's turn up those engines!");
-                                   }
-                               },
-                        11f);
             }
         });
         level.triggers.add(new Trigger() {
             @Override
             public boolean isTriggeredInternal() {
-                return WorldController.controlState == 4 && level.playable.getBody().getLinearVelocity().len() < (level.playable.getMaxVelocity() / 20f);
+                return WorldController.controlState == 4 && (level.playable.getBody().getLinearVelocity().len() < 1.5);
             }
 
             @Override
             public void triggerAction() {
-                popup.setText("OK! Now let's get our bearings! \n Use A & S keys to zoom out or zoom in, and press ESC for the Pause Menu.");
+                popup.setText("OK! Now let's get our bearings! \n Use A & S keys to zoom out or zoom in, and press ESC for the Pause Menu." +
+                        " Then let's turn up those engines!");
+                level.playable.setCurrentThrust(0);
                 WorldController.controlState = 5;
             }
         });
@@ -155,7 +145,7 @@ public class LevelManager {
         level.triggers.add(new Trigger() {
             @Override
             public boolean isTriggeredInternal() {
-                return WorldController.controlState == 5 && level.playable.getCurrentThrust() > 1;
+                return WorldController.controlState == 5 && level.playable.getCurrentThrust() > 100;
             }
 
             @Override
@@ -170,43 +160,52 @@ public class LevelManager {
                                    @Override
                                    public void run() {
                                        level.screen.getMinimap().setEnabled(true);
-                                       popup.setText("Navigation system restored! Minimap online!");
+                                       popup.setText("Navigation system restored! Minimap online Look's like Earth's not too far away.");
                                    }
                                },
                         time);
-                time += 5f;
+                time += 8f;
                 Timer.schedule(new Timer.Task() {
                                    @Override
                                    public void run() {
                                        popup.setText("All systems restored! Now it's time to find your way back home! " +
                                                "This blue waypoint will guide you to your objective!");
-                                       level.waypoint = new Waypoint(level, 4000, 9000, 1250);
+                                       level.waypoint = new Waypoint(level, 14000, 9000, 1000);
                                        objectiveWindow.setText("Find your way back to Earth");
                                    }
                                },
                         time);
-                time += 9;
+                time += 15;
                 Timer.schedule(new Timer.Task() {
                                    @Override
                                    public void run() {
-                                       popup.setText("As Newton's second law of motion says, force is the rate of change of " +
-                                               "momentum, which is a body's likelihood of preserving its speed. \n" +
-                                               "The rocket is pretty heavy, so accelerating takes a while. Be careful, because "
+                                       popup.setText("As said by Newton's first law of motion, unless a force (like thrust) " +
+                                               "acts on you, you would drift at constant speed for ever! So better not run out of fuel in space!");
+                                   }
+                               },
+                        time);
+                time += 23;
+                Timer.schedule(new Timer.Task() {
+                                   @Override
+                                   public void run() {
+                                       popup.setText("As Newton's second law of motion says, force is the rate of change of a body's" +
+                                               "momentum, which its likelihood of preserving its speed. \n" +
+                                               "The rocket is pretty heavy, so accelerating takes time. Be careful, because "
                                                + "that means stopping takes time too!");
                                    }
                                },
                         time);
-                time += 21;
+                time += 28;
                 Timer.schedule(new Timer.Task() {
                                    @Override
                                    public void run() {
-                                       popup.setText("See that trail behind the rocket? As Newton's third law of motion says," +
+                                       popup.setText("See that trail behind the rocket? As Newton's third law of motion says, " +
                                                "forces exist in opposite-directioned pairs. \n" +
                                                "That's why you need to blast away tons of hot plasma to accelerate!");
                                    }
                                },
                         time);
-                time += 20;
+                time += 23;
                 Timer.schedule(new Timer.Task() {
                                    @Override
                                    public void run() {
