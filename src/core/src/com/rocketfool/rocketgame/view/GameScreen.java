@@ -86,9 +86,9 @@ public class GameScreen implements Screen {
 
     private Texture sasTexture;
 
-    private FileHandle video;
+    private FileHandle endVideo;
 
-    private String levelText;
+    private String endLevelText;
 
     //endregion
 
@@ -184,7 +184,6 @@ public class GameScreen implements Screen {
             drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 32);
 
         }
-
 
 
         //Overlay-static
@@ -372,14 +371,14 @@ public class GameScreen implements Screen {
         }
 
         //SAS Indicator
-        if(level.getPlayable().getSASEnabled() )
+        if (level.getPlayable().getSASEnabled())
             sasTexture = AssetManager.SAS_ON;
         else
             sasTexture = AssetManager.SAS_OFF;
 
         batch.draw(
                 sasTexture,
-                camera.position.x - (camera.viewportWidth / 2f - 0 )  * camera.zoom,
+                camera.position.x - (camera.viewportWidth / 2f - 0) * camera.zoom,
                 camera.position.y - (camera.viewportHeight / 2f - 400) * camera.zoom,
                 0,
                 0,
@@ -390,8 +389,8 @@ public class GameScreen implements Screen {
                 0,
                 0,
                 0,
-                sasTexture.getWidth() ,
-                sasTexture.getHeight() ,
+                sasTexture.getWidth(),
+                sasTexture.getHeight(),
                 false,
                 false
         );
@@ -416,40 +415,49 @@ public class GameScreen implements Screen {
 
                     Level newLevel = null;
                     boolean isGameOver = false;
+                    FileHandle newVideo = null;
+                    String newLevelText = "";
+
                     switch (level.getLevelNo()) {
                         case 1:
                             newLevel = LevelManager.createLevel2();
-                            video = AssetManager.LEVEL1END;
-                            levelText = "You made it back safely, It was close!";
+                            endVideo = AssetManager.LEVEL1END;
+                            newVideo = AssetManager.LEVEL2START;
+                            endLevelText = "You made it back safely, It was close!";
                             break;
                         case 2:
                             newLevel = LevelManager.createLevel3();
-                            video = AssetManager.LEVEL2END;
-                            levelText = "Congratulations! Our researchers are examining the meteor." + "\n" +
-                                        "This meteor isn't like any space rock we've seen before.";
+                            endVideo = AssetManager.LEVEL2END;
+                            newVideo = AssetManager.LEVEL3START;
+                            endLevelText = "Congratulations! Our researchers are examining the meteor." + "\n" +
+                                    "This meteor isn't like any space rock we've seen before.";
                             break;
                         case 3:
                             newLevel = LevelManager.createLevel4();
-                            video = AssetManager.LEVEL3END;
-                            levelText = "Congratulations! You exhibited some nice piloting! We are right on the track to reach Mars. Great Job Martian!" +
+                            endVideo = AssetManager.LEVEL3END;
+                            newVideo = AssetManager.LEVEL4START;
+                            endLevelText = "Congratulations! You exhibited some nice piloting! We are right on the track to reach Mars. Great Job Martian!" +
                                     "\n" + "Now we can clearly hear missing spaceship's SOS signal." + "\n" +
                                     "We should be now able to track where it is.";
                             break;
                         case 4:
                             newLevel = LevelManager.createLevel5();
-                            video = AssetManager.LEVEL4END;
-                            levelText = "Congratulations! You saved our friend." + "\n" + "He has some interesting informations:" +
+                            endVideo = AssetManager.LEVEL4END;
+                            newVideo = AssetManager.LEVEL5START;
+                            endLevelText = "Congratulations! You saved our friend." + "\n" + "He has some interesting informations:" +
                                     "\n" + "They have seen aliens and know where they are." + "\n" + "But during their way back they crashed the meteors we have passed before.";
                             break;
                         case 5:
                             isGameOver = true;
-                            video = AssetManager.LEVEL5END;
-                            levelText = "It is a new era, humans are alliens are living together now. You started it!";
+                            endVideo = AssetManager.LEVEL5END;
+                            endLevelText = "It is a new era, humans are alliens are living together now. You started it!";
                             break;
                     }
                     if (!isGameOver) {
                         //game.setScreen(new GameScreen(newLevel, game, batch, font));
-                        game.setScreen(new CutsceneScreen(game, batch, font, video, newLevel, levelText));
+                        game.setScreen(new CutsceneScreen(game, batch, font, endVideo, endLevelText,
+                                new CutsceneScreen(game, batch, font, newVideo, newLevel, newLevelText)
+                        ));
                     } else {
                         level.setState(Level.State.GAME_OVER);
                     }
@@ -612,8 +620,7 @@ public class GameScreen implements Screen {
         if (!DEBUG) {
             camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
             font.setScale(camera.zoom);
-        }
-        else {
+        } else {
             camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
             font.setScale(camera.zoom);
         }
