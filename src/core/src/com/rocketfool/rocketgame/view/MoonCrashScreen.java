@@ -54,7 +54,7 @@ public class MoonCrashScreen implements Screen {
             @Override
             public void run() {
                 popup.setText("It is a great idea to check it out.");
-                popup.setText("It looks like there is an unidentified meteor on Moon's orbit.");
+                popup.setText("It looks like there is an unidentified meteor on Moon's orbit. Looks like the one who hit you");
             }
         }, 1f);
 

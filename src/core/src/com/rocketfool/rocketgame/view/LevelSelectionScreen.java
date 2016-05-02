@@ -99,7 +99,7 @@ public class LevelSelectionScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL1START, LevelManager.createLevel1(),
-                        "level1!"));
+                        "A meteor hit you during your daily routine!"));
             }
         });
 
@@ -108,7 +108,7 @@ public class LevelSelectionScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 //game.setScreen(new MoonCrashScreen(game, batch, font));
-                // TODO: revert this shit
+
                 game.setScreen(new MoonCrashScreen(game, batch, font));
             }
         });
@@ -118,7 +118,8 @@ public class LevelSelectionScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL3START, LevelManager.createLevel3(),
-                        "level3!"));
+                        "We have received a SOS call. It seems one of our spaceships is missing." + "\n" +
+                                "It seems last position of that ship was close the Mars however, we cant get enough signal to track it.") );
             }
         });
 
@@ -127,7 +128,7 @@ public class LevelSelectionScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL4START, LevelManager.createLevel4(),
-                        "You starting a new journey. Be careful out there!"));
+                        "We have found the ship! It is drifting on Mars' orbit. It seems there is a surviver! Quickly get close!"));
             }
         });
 
@@ -136,7 +137,7 @@ public class LevelSelectionScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL5START, LevelManager.createLevel5(),
-                        "You starting a new journey. Be careful out there!"));
+                        "Our surviver gave this cordinate, aliens' home planet should be one of them. This is unbelievable"));
             }
         });
 

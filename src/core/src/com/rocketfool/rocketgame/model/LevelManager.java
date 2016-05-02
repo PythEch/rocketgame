@@ -85,6 +85,7 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
+                               popup.setText("Your assistant Mr.Tekman is here to guide you.");
                                popup.setText("What was THAT? A strange object whizzing by left you spinning chaotically in space!" +
                                        "You must regain control!");
                                objectiveWindow.setText("Regain control of the ship.");
@@ -239,7 +240,7 @@ public class LevelManager {
         Planet moon = new Planet(21000, 14000, 1.0f * 1.0e25f, 170, earth, level.world, 9);
         level.planets.add(moon);
         moon.setOrbitPreset(true);
-        level.solidObjects.add(new MoonAsteroid(moon, 3.25e2f, 40, level.world)); //TODO IMAGE
+        level.solidObjects.add(new MoonAsteroid(moon, 3.25e2f, 40, level.world));
         //initialization of the rocket
         level.playable = new Playable(14550, 11550, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.0e5f, level.world);
         level.playable.getBody().setLinearVelocity(50f, -50f);
@@ -482,8 +483,8 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popup.setText("You received an SOS code from a friend near Mars. Their ship is stranded " +
-                                       "in orbit and you must save them! You will need to go through these asteroids though... \n" +
+                               popup.setText("The reason we are not getting enough signal should be these meteors." +
+                                       "But we need to pass them first. But \n" +
                                        "Your scanners don't seem to pick them up!");
                                objectiveWindow.setText("Reach Mars");
                            }
@@ -514,7 +515,8 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popup.setText("Some of the rocks looks weird here! It seems matter in these rocks are not in the periodic table.");
+                               popup.setText("Some of the rocks looks weird here! It seems matter in these rocks are not in the periodic table." + "\n"
+                               + "It should be one which hit us!");
                            }
                        },
                 75.0f);
@@ -593,12 +595,12 @@ public class LevelManager {
                 //(Halfway point)
                 popup.setText("Great work! Now let's head back!");
                 objectiveWindow.setText("Head home, towards Earth");
-                level.waypoint = new Waypoint(level, 5000, 10000, 1000f); //TODO add simple crosshair thingy sprite
+                level.waypoint = new Waypoint(level, 5000, 10000, 1000f);
                 level.triggers.add(endTrig);
             }
         };
         level.triggers.add(craftTrig);
-        level.waypoint = new Waypoint(level, craftTrig); //TODO add stranded craft SPRITE, can be any size
+        level.waypoint = new Waypoint(level, craftTrig); 
 
         //level starts here
         Timer.schedule(new Timer.Task() {
