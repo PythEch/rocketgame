@@ -26,7 +26,7 @@ public class Level {
      * Used to represent the different states of the level
      */
     public enum State {
-        RUNNING, PAUSED, GAME_OVER, HEALTH_LOST, LEVEL_FINISHED
+        RUNNING, PAUSED, GAME_OVER, HEALTH_LOST, LEVEL_FINISHED, LEVEL_CHANGING
     }
     //endregion
 

@@ -399,8 +399,8 @@ public class GameScreen implements Screen {
         popupView.draw(batch);
 
         //Level ending-starting
-        if (level.getState() == Level.State.LEVEL_FINISHED) {
-            level.setState(Level.State.PAUSED);
+
+        if (level.getState() == Level.State.LEVEL_CHANGING) {
             batch.draw(
                     AssetManager.LEVEL_FINISHED,
                     camera.position.x - camera.viewportWidth / 2f * camera.zoom,
@@ -408,6 +408,10 @@ public class GameScreen implements Screen {
                     AssetManager.LEVEL_FINISHED.getWidth() * camera.zoom,
                     AssetManager.LEVEL_FINISHED.getHeight() * camera.zoom
             );
+        }
+
+        if (level.getState() == Level.State.LEVEL_FINISHED) {
+            level.setState(Level.State.LEVEL_CHANGING);
 
             Timer.schedule(new Timer.Task() {
                 @Override
