@@ -847,7 +847,6 @@ public class LevelManager {
                 popup.setText("What a beautiful planet this is! However, there is no sign of life here.");
                 objectiveWindow.setText("Continue investigating planets");
                 //level.waypoints.removeIndex(1);
-                level.setState(Level.State.LEVEL_FINISHED);
 
             }
         };
@@ -916,20 +915,6 @@ public class LevelManager {
                            }
                        },
                 120.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popup.setText("FLY YOU FOOLS!"); //East egg :D
-                           }
-                       },
-                600.0f);
-        Timer.schedule(new Timer.Task() {
-                           @Override
-                           public void run() {
-                               popup.setText("RIPGDX! What is this?"); //East egg :D
-                           }
-                       },
-                630.0f);
 
         return level;
     }
