@@ -54,6 +54,14 @@ public class MainMenuScreen implements Screen {
     public void show() {
         GamePreferences.getInstance().load();
 
+        if (GamePreferences.getInstance().isFullscreen()) {
+            Gdx.graphics.setDisplayMode(
+                    Gdx.graphics.getDesktopDisplayMode().width,
+                    Gdx.graphics.getDesktopDisplayMode().height,
+                    true
+            );
+        }
+
         focusRocket = false;
         elapsedTime = 0;
 
@@ -134,7 +142,7 @@ public class MainMenuScreen implements Screen {
         }
 
         videoPlayer.resize(1280, 720);
-        videoPlayer.setVolume(game.isSfx()? 1:0);
+        videoPlayer.setVolume(GamePreferences.getInstance().getMasterVolume());
     }
 
     @Override
@@ -166,7 +174,6 @@ public class MainMenuScreen implements Screen {
 
             ((OrthographicCamera)stage.getCamera()).zoom -= 0.0070f;
             camera.zoom -= 0.0070f;
-            System.out.println(camera.zoom);
             camera.position.set(camTarget);
             camera.update();
             stage.getCamera().update();

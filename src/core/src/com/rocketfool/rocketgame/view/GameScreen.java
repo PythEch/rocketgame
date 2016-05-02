@@ -3,30 +3,25 @@ package com.rocketfool.rocketgame.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.rocketfool.rocketgame.controller.WorldController;
 import com.rocketfool.rocketgame.external.RocketGame;
-import com.rocketfool.rocketgame.model.LevelManager;
-import com.rocketfool.rocketgame.model.Playable;
-import com.rocketfool.rocketgame.model.Level;
+import com.rocketfool.rocketgame.model.*;
 
 import com.badlogic.gdx.video.VideoPlayer;
-import com.rocketfool.rocketgame.model.PopUp;
 
 import static com.rocketfool.rocketgame.util.Constants.*;
 
@@ -80,8 +75,20 @@ public class GameScreen implements Screen {
     private Minimap minimap;
 
     private PopupView popupView;
+
     private BitmapFont timerFont;
 
+    private ShapeRenderer shapeRenderer;
+
+    private Animation waypointAnimation;
+
+    private TextureAtlas waypointAtlas;
+
+    private Texture sasTexture;
+
+    private FileHandle endVideo;
+
+    private String endLevelText;
 
     //endregion
 
@@ -116,6 +123,8 @@ public class GameScreen implements Screen {
 
         batch.setProjectionMatrix(camera.combined);
 
+        sasTexture = AssetManager.SAS_OFF;
+
 
         batch.begin();
         // Our main draw method
@@ -137,10 +146,8 @@ public class GameScreen implements Screen {
             particleEffect.getEmitters().get(i).getAngle().setLow(angle);
         }
         draw();
-        if (minimap.isEnabled()){
-            minimap.draw(batch);
-        }
-        popupView.draw(batch);
+
+
         batch.end();
 
         // Draw boundries of physics objects if debug is enabled
@@ -177,6 +184,7 @@ public class GameScreen implements Screen {
             drawDebugString("Mass1: " + cameraTarget.getBody().getMassData().mass, 32);
 
         }
+
 
         //Overlay-static
         //When camera moves or zooms, overlay follows it by below algorithm
@@ -267,17 +275,16 @@ public class GameScreen implements Screen {
                 0,
                 0,
                 0,
-                overlayFiller.getWidth() ,
-                overlayFiller.getHeight() ,
+                overlayFiller.getWidth(),
+                overlayFiller.getHeight(),
                 false,
                 false
         );
 
         //Timer
-        String str = "" + (int)elapsedTime ;
-        if( (int)elapsedTime >= 60)
-        {
-            str = ""+ (int)(elapsedTime/60) + ":" + (int)elapsedTime % 60;
+        String str = "" + (int) elapsedTime;
+        if ((int) elapsedTime >= 60) {
+            str = "" + (int) (elapsedTime / 60) + ":" + (int) elapsedTime % 60;
         }
         timerFont.setScale(camera.zoom);
         timerFont.draw(
@@ -310,19 +317,24 @@ public class GameScreen implements Screen {
                     false
             );
         }
+        font.draw(
+                batch,
+                level.getObjectiveWindow().getText(),
+                camera.position.x - (camera.viewportWidth / 2f - 20) * camera.zoom,
+                camera.position.y + (camera.viewportHeight / 2f - 100) * camera.zoom
+        );
 
         //WarningMapSign
         // flash the sign by only showing it for 0.5 seconds
-        if(renderer.getTrajectorySimulator().isCollided() && (int)(elapsedTime * 2) % 2 == 0)
-        {
+        if (renderer.getTrajectorySimulator().isCollided() && (int) (elapsedTime * 2) % 2 == 0) {
             batch.draw(
                     AssetManager.WARNING,
                     camera.position.x - (camera.viewportWidth / 2f - 1022) * camera.zoom, //1022 hud x pos
                     camera.position.y - (camera.viewportHeight / 2f - 235) * camera.zoom, //235 hud y pos
                     0,
                     0,
-                    AssetManager.WARNING.getWidth() /14f , //14f = scaling ratio
-                    AssetManager.WARNING.getHeight() /14f ,
+                    AssetManager.WARNING.getWidth() / 14f, //14f = scaling ratio
+                    AssetManager.WARNING.getHeight() / 14f,
                     camera.zoom,
                     camera.zoom,
                     0,
@@ -334,6 +346,187 @@ public class GameScreen implements Screen {
                     false
             );
         }
+
+        // draw waypoint
+        if (level.getWaypoint() != null) {
+            //Texture texture = waypointAnimation.getKeyFrame(elapsedTime, true).getTexture();
+            //texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+            TextureRegion texture = waypointAnimation.getKeyFrame(elapsedTime, true);
+            batch.draw(
+                    texture,
+                    level.getWaypoint().getPosition().x * toPixel,
+                    level.getWaypoint().getPosition().y * toPixel,
+                    0,
+                    0,
+                    texture.getRegionWidth(),
+                    texture.getRegionHeight(),
+                    0.25f,
+                    0.25f,
+                    level.getWaypoint().getAngle()
+            );
+        }
+
+        if (minimap.isEnabled()) {
+            minimap.draw(batch);
+        }
+
+        //SAS Indicator
+        if (level.getPlayable().getSASEnabled())
+            sasTexture = AssetManager.SAS_ON;
+        else
+            sasTexture = AssetManager.SAS_OFF;
+
+        batch.draw(
+                sasTexture,
+                camera.position.x - (camera.viewportWidth / 2f - 0) * camera.zoom,
+                camera.position.y - (camera.viewportHeight / 2f - 400) * camera.zoom,
+                0,
+                0,
+                sasTexture.getWidth(),
+                sasTexture.getHeight(),
+                camera.zoom,
+                camera.zoom,
+                0,
+                0,
+                0,
+                sasTexture.getWidth(),
+                sasTexture.getHeight(),
+                false,
+                false
+        );
+
+
+        popupView.draw(batch);
+
+        //Level ending-starting
+
+        if (level.getState() == Level.State.LEVEL_CHANGING) {
+            batch.draw(
+                    AssetManager.LEVEL_FINISHED,
+                    camera.position.x - camera.viewportWidth / 2f * camera.zoom,
+                    camera.position.y - camera.viewportHeight / 2f * camera.zoom,
+                    AssetManager.LEVEL_FINISHED.getWidth() * camera.zoom,
+                    AssetManager.LEVEL_FINISHED.getHeight() * camera.zoom
+            );
+        }
+
+        if (level.getState() == Level.State.LEVEL_FINISHED) {
+            level.setState(Level.State.LEVEL_CHANGING);
+
+            Timer.schedule(new Timer.Task() {
+                @Override
+                public void run() {
+
+                    Level newLevel = null;
+                    boolean isGameOver = false;
+                    FileHandle newVideo = null;
+                    String newLevelText = "";
+
+                    switch (level.getLevelNo()) {
+                        case 1:
+                            newLevel = LevelManager.createLevel2();
+                            endVideo = AssetManager.LEVEL1END;
+                            newVideo = AssetManager.LEVEL2START;
+                            endLevelText = "You made it back safely, It was close!";
+                            newLevelText = "A meteor hit you during your daily routine!";
+                            break;
+                        case 2:
+                            newLevel = LevelManager.createLevel3();
+                            endVideo = AssetManager.LEVEL2END;
+                            newVideo = AssetManager.LEVEL3START;
+                            endLevelText = "Congratulations! Our researchers are examining the meteor." + "\n" +
+                                    "This meteor isn't like any space rock we've seen before.";
+                            newLevelText = "We have received a SOS call. It seems one of our spaceships is missing." + "\n" +
+                                    "It seems last position of that ship was close the Mars however, we cant get enough signal to track it.";
+                            break;
+                        case 3:
+                            newLevel = LevelManager.createLevel4();
+                            endVideo = AssetManager.LEVEL3END;
+                            newVideo = AssetManager.LEVEL4START;
+                            endLevelText = "Congratulations! You exhibited some nice piloting! We are right on the track to reach Mars. Great Job Martian!" +
+                                    "\n" + "Now we can clearly hear missing spaceship's SOS signal." + "\n" +
+                                    "We should be now able to track where it is.";
+
+                            newLevelText = "We have found the ship! It is drifting on Mars' orbit. It seems there is a surviver! Quickly get close!";
+                            break;
+                        case 4:
+                            newLevel = LevelManager.createLevel5();
+                            endVideo = AssetManager.LEVEL4END;
+                            newVideo = AssetManager.LEVEL5START;
+                            endLevelText = "Congratulations! You saved our friend." + "\n" + "He has some interesting informations:" +
+                                    "\n" + "They have seen aliens and know where they are." + "\n" + "But during their way back they crashed the meteors we have passed before.";
+                            newLevelText = "Our surviver gave this cordinate, aliens' home planet should be one of them. This is unbelievable";
+                            break;
+                        case 5:
+                            isGameOver = true;
+                            endVideo = AssetManager.LEVEL5END;
+                            endLevelText = "It is a new era, humans are alliens are living together now. You started it!";
+                            newLevelText = "Our surviver gave this cordinate, aliens' home planet should be one of them. This is unbelievable";
+                            break;
+                    }
+                    if (!isGameOver) {
+                        //game.setScreen(new GameScreen(newLevel, game, batch, font));
+                        if (newLevel.getLevelNo() == 2) {
+                            game.setScreen(new CutsceneScreen(game, batch, font, endVideo, endLevelText,
+                                    new MoonCrashScreen(game, batch, font)
+                            ));
+                        } else {
+                            game.setScreen(new CutsceneScreen(game, batch, font, endVideo, endLevelText,
+                                    new CutsceneScreen(game, batch, font, newVideo, newLevel, newLevelText)
+                            ));
+                        }
+                    } else {
+                        level.setState(Level.State.GAME_OVER);
+                    }
+
+                }
+            }, 5.0f);
+
+            Timer.instance().start();
+
+        } else if (level.getState() == Level.State.GAME_OVER) {
+            renderer.stopThrusterGoinger();
+            renderer.stopWarningSound();
+            renderer.stopBackgroundMusic();
+            popupView.stopPopupShutter();
+            // 1. Level5END with "It is a new era, humans are alliens are living together now. You started it!" text
+            // 2. Ending without anytext or popup
+            // 2 == endingscreen
+            game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL5END, "It is a new era, humans are alliens are living together now. You started it!",
+                    new EndingScreen(game, batch, font)
+            ));
+        }
+
+        // draw trigger bounds for debug
+        if (DEBUG) {
+            for (Trigger trigger : level.getTriggers()) {
+                if (trigger instanceof PositionTrigger) {
+                    PositionTrigger positionTrigger = (PositionTrigger) trigger;
+
+                    batch.end();
+                    shapeRenderer.setProjectionMatrix(camera.combined);
+
+                    shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+
+                    if (positionTrigger.isTriggeredBefore()) {
+                        shapeRenderer.setColor(Color.GREEN);
+                    } else {
+                        shapeRenderer.setColor(Color.RED);
+                    }
+
+                    shapeRenderer.circle(
+                            positionTrigger.getPosition().x * toPixel,
+                            positionTrigger.getPosition().y * toPixel,
+                            positionTrigger.getRadius() * toPixel
+                    );
+
+                    shapeRenderer.end();
+                    batch.begin();
+
+                }
+            }
+        }
+
     }
 
     private void drawDebugString(String str, int row) {
@@ -359,6 +552,7 @@ public class GameScreen implements Screen {
         camera.update();
 
         popupView.update(dt);
+
     }
 
     public void lookAt(Playable target) {
@@ -375,6 +569,15 @@ public class GameScreen implements Screen {
     public void dispose() {
         debugRenderer.dispose();
         renderer.dispose();
+        if (player != null)
+            player.dispose();
+        font.dispose();
+        particleEffect.dispose();
+        stage.dispose();
+        skin.dispose();
+        timerFont.dispose();
+        shapeRenderer.dispose();
+        waypointAtlas.dispose();
     }
     //endregion
 
@@ -397,6 +600,10 @@ public class GameScreen implements Screen {
         particleEffect = new ParticleEffect();
         particleEffect.load(Gdx.files.internal("effects/trail.p"), Gdx.files.internal("PNG"));
 
+        //Waypoint
+        waypointAtlas = new TextureAtlas(Gdx.files.internal("waypointSheets/waypoint.atlas"));
+        waypointAnimation = new Animation(1f / 60f, waypointAtlas.getRegions());
+
 
         //level = LevelManager.createLevel2();
         cameraTarget = level.getPlayable();
@@ -408,16 +615,20 @@ public class GameScreen implements Screen {
 
         skin = new Skin(Gdx.files.internal("Skin/uiskin.json"));
 
-        minimap = new Minimap(1064, 48, 81 * 2 + 2, level, camera, renderer.getTrajectorySimulator());
+        minimap = new Minimap(1064, 48, 116, level, camera, renderer.getTrajectorySimulator());
 
         level.setScreenReference(this);
 
         viewport = new FitViewport(1280, 720, camera);
         viewport.apply();
 
-        popupView = new PopupView(level.getPopUp(), camera);
+        popupView = new PopupView(level.getPopup(), camera);
 
         timerFont = new BitmapFont(Gdx.files.internal("fonts/contrax.fnt"));
+
+        shapeRenderer = new ShapeRenderer();
+
+        level.setState(Level.State.RUNNING);
     } //endregion
 
     public void zoomIn() {
@@ -428,8 +639,13 @@ public class GameScreen implements Screen {
     }
 
     public void zoomOut() {
-        camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
-        font.setScale(camera.zoom);
+        if (!DEBUG) {
+            camera.zoom = Math.min(camera.zoom * 1.04f, 150f);
+            font.setScale(camera.zoom);
+        } else {
+            camera.zoom = Math.min(camera.zoom * 1.04f, 550f);
+            font.setScale(camera.zoom);
+        }
     }
 
     public void setZoom(float zoom) {
@@ -463,20 +679,11 @@ public class GameScreen implements Screen {
                         DEBUG = !DEBUG;
                         break;
                     case 1:
-                        saveCheckpoint();
+                        level.resetLevel();
+                        level.setHealth(3);
                         break;
                     case 2:
-                        loadCheckpoint();
-                        break;
-                    case 3:
-                        restartLevel();
-                        break;
-                    case 4:
-                        showOptions();
-                        break;
-                    case 5:
                         game.setScreen(new MainMenuScreen(game, batch, font));
-                        dispose();
                         break;
                     default:
                         break;
@@ -496,7 +703,6 @@ public class GameScreen implements Screen {
                     @Override
                     public void run() {
                         level.setState(Level.State.RUNNING);
-                        System.out.println("called");
                     }
                 }, 0.150f);
             }
@@ -504,15 +710,9 @@ public class GameScreen implements Screen {
 
         dialog.button("Toggle Debug", 0);
         dialog.getButtonTable().row();
-        dialog.button("Save Checkpoint", 1);
+        dialog.button("Restart Level", 1);
         dialog.getButtonTable().row();
-        dialog.button("Load Checkpoint", 2);
-        dialog.getButtonTable().row();
-        dialog.button("Restart Level", 3);
-        dialog.getButtonTable().row();
-        dialog.button("Options", 4);
-        dialog.getButtonTable().row();
-        dialog.button("Exit", 5);
+        dialog.button("Exit", 2);
         dialog.getButtonTable().row().padTop(
                 dialog.getButtonTable().getCells().first().getPrefHeight()
         );
@@ -525,7 +725,6 @@ public class GameScreen implements Screen {
         }
         dialog.getCells().first().padTop(dialog.getPrefHeight() * 0.05f);
         dialog.padBottom(dialog.getPrefHeight() * 0.05f);
-
 
         dialog.key(Input.Keys.ESCAPE, -1);
         //dialog.key(Input.Keys.ENTER, 5);
@@ -571,5 +770,7 @@ public class GameScreen implements Screen {
 
     }
 
-    public Minimap getMinimap(){return minimap;}
+    public Minimap getMinimap() {
+        return minimap;
+    }
 }

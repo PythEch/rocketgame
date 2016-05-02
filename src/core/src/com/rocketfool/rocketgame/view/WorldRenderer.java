@@ -15,10 +15,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
-import com.rocketfool.rocketgame.model.Level;
-import com.rocketfool.rocketgame.model.Planet;
-import com.rocketfool.rocketgame.model.TrajectorySimulator;
-import com.rocketfool.rocketgame.model.VisualMeteor;
+import com.rocketfool.rocketgame.model.*;
 import com.badlogic.gdx.utils.Timer;
 import com.rocketfool.rocketgame.util.GamePreferences;
 
@@ -41,8 +38,12 @@ public class WorldRenderer implements Disposable {
     private Level level;
     private TextureAtlas textureAtlasMeteor;
     private TextureAtlas textureAtlasStar;
-    private TextureAtlas textureAtlasObjective1;
-    private Animation animationObjective1;
+    private TextureAtlas textureAtlasLevel3;
+    private TextureAtlas textureAtlasLevel4;
+    private TextureAtlas textureAtlasLevel5;
+    private Animation animationLevel3;
+    private Animation animationLevel4;
+    private Animation animationLevel5;
     private Animation animationStar;
     private Animation animationMeteor;
     private float elapsedTime = 0f;
@@ -62,31 +63,35 @@ public class WorldRenderer implements Disposable {
         this.level = level;
         this.camera = camera;
 
-        if (!QUICK_LOAD) {
-            //Meteors
-            textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
-            animationMeteor = new Animation(1f / 80f, textureAtlasMeteor.getRegions());
-            meteors = new Array<VisualMeteor>();
-            meteors.add(new VisualMeteor(0, 0, 10, 10, 180));
-            meteors.add(new VisualMeteor(12800, 7200, -3, -4, 0));
+        //Meteors
+        textureAtlasMeteor = new TextureAtlas(Gdx.files.internal("Backgrounds/meteorSheets/meteors.atlas"));
+        animationMeteor = new Animation(1f / 80f, textureAtlasMeteor.getRegions());
+        meteors = new Array<VisualMeteor>();
+        meteors.add(new VisualMeteor(0, 0, 10, 10, 180));
+        meteors.add(new VisualMeteor(12800, 7200, -3, -4, 0));
 
-            //Stars
-            textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/starSheets/stars.atlas"));
-            for (Texture texture : textureAtlasStar.getTextures()) {
-                texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-            }
-            animationStar = new Animation(1f / 100f, textureAtlasStar.getRegions());
+        //Stars
+        textureAtlasStar = new TextureAtlas(Gdx.files.internal("Backgrounds/starSheets/stars.atlas"));
+        for (Texture texture : textureAtlasStar.getTextures()) {
+            texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         }
+        animationStar = new Animation(1f / 100f, textureAtlasStar.getRegions());
+
         //ObjectiveScreens
-        textureAtlasObjective1 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet/objScreen.atlas"));
-        animationObjective1 = new Animation(1f / 80f, textureAtlasObjective1.getRegions());
+        textureAtlasLevel3 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet3/obj.atlas"));
+        textureAtlasLevel4 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet4/obj.atlas"));
+        textureAtlasLevel5 = new TextureAtlas(Gdx.files.internal("Backgrounds/objectiveSheet5/obj.atlas"));
+        animationLevel3 = new Animation(1f / 80f, textureAtlasLevel3.getRegions());
+        animationLevel4 = new Animation(1f / 80f, textureAtlasLevel4.getRegions());
+        animationLevel5 = new Animation(1f / 80f, textureAtlasLevel5.getRegions());
+
 
         trajectorySimulator = new TrajectorySimulator(level);
 
         //SFX
         thrusterGoinger = AssetManager.THRUSTER_GOINGER;
         warningSound = AssetManager.WARNING_SOUND;
-        bqMusic =AssetManager.BQ_MUSIC;
+        bqMusic = AssetManager.BQ_MUSIC;
         isGoignerplaying = false;
         isThrustStopperActive = false;
         isBQPlaying = false;
@@ -138,35 +143,38 @@ public class WorldRenderer implements Disposable {
             public void run() {
 
             }
-        },3.0f);
-        AssetManager.DEATH_SIGN.play(GamePreferences.getInstance().getMasterVolume() );
+        }, 3.0f);
+        AssetManager.DEATH_SIGN.play(GamePreferences.getInstance().getMasterVolume());
 
-        level.setState(Level.State.HEALTH_OVER);
+        level.setState(Level.State.HEALTH_LOST);
         if (level.getState() == Level.State.GAME_OVER) {
             // TODO: DO GAME OVER ANIMATION
-        }
-        else {
+        } else {
             // TODO: DO HEALTH OVER ANIMATION
         }
         registerCollision();
     }
 
-    public void draw(SpriteBatch batch) {
+    public void draw(final SpriteBatch batch) {
         elapsedTime = elapsedTime + Gdx.graphics.getDeltaTime();
         drawMap(batch);
-        if (!QUICK_LOAD) {
-            drawStars(batch);
-            drawMeteors(batch);
-        }
-        drawObjectiveScreen(batch, animationObjective1);
+        drawStars(batch);
+        drawMeteors(batch);
+        drawObjectiveScreen(batch);
         drawPlanets(batch);
         drawPlayer(batch);
         drawTrajectory(batch);
         drawWarningSign(batch);
-		if (!QUICK_LOAD)
+        drawLevel2MoonAsteroid(batch);
+        drawLevel3Objects(batch);
+        drawLevel4Textures(batch);
+        drawMapBorder(batch);
+
+
         for (VisualMeteor meteor : meteors) {
             meteor.update(Gdx.graphics.getDeltaTime());
         }
+
 
         //SFX
         //Rocket thrust sound
@@ -230,14 +238,19 @@ public class WorldRenderer implements Disposable {
         int alpha = (int) ((MIN_ALPHA - MAX_ALPHA) * (Math.min(MAX_ZOOM, camera.zoom) - MIN_ZOOM) / (MAX_ZOOM - MIN_ZOOM)) + MAX_ALPHA;
         //sabatch.setColor(1, 1, 1, alpha);
 
+        float minX = -camera.viewportWidth * 660 / 2f;
+        float minY = -camera.viewportHeight * 660 / 2f;
+        float maxX = level.getMap().getWidth() - minX;
+        float maxY = level.getMap().getHeight() - minY;
+
         batch.draw(
                 texture,
+                minX,
+                minY,
                 0,
                 0,
-                0,
-                0,
-                level.getMap().getWidth(),
-                level.getMap().getHeight()
+                (int) (maxX - minX),
+                (int) (maxY - minY)
         );
 
         batch.setColor(1, 1, 1, 1);
@@ -275,6 +288,9 @@ public class WorldRenderer implements Disposable {
                     break;
                 case 9:
                     texturePlanet = AssetManager.MOON;
+                    break;
+                case 10:
+                    texturePlanet = AssetManager.MARS;
             }
             texturePlanet.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
@@ -287,6 +303,7 @@ public class WorldRenderer implements Disposable {
             );
         }
     }
+
 
     private void drawMeteors(SpriteBatch batch) {
         for (VisualMeteor meteor : meteors) {
@@ -332,12 +349,28 @@ public class WorldRenderer implements Disposable {
         batch.setColor(1, 1, 1, 1);
     }
 
-    private void drawObjectiveScreen(SpriteBatch batch, Animation obj) {
-        batch.draw(
-                obj.getKeyFrame(elapsedTime, true),
-                level.getPlayable().getSpawnPoint().x + 200f,
-                level.getPlayable().getSpawnPoint().y + 200f
-        );
+    private void drawObjectiveScreen(SpriteBatch batch) {
+        boolean shouldDraw = false;
+        Animation obj = null;
+
+        if (level.getLevelNo() == 3) {
+            obj = animationLevel3;
+            shouldDraw = true;
+        } else if (level.getLevelNo() == 4) {
+            obj = animationLevel4;
+            shouldDraw = true;
+        } else if (level.getLevelNo() == 5) {
+            obj = animationLevel5;
+            shouldDraw = true;
+        }
+
+        if (shouldDraw) {
+            batch.draw(
+                    obj.getKeyFrame(elapsedTime, true),
+                    level.getPlayable().getSpawnPoint().x * toPixel + 150,
+                    level.getPlayable().getSpawnPoint().y * toPixel + 150
+            );
+        }
     }
 
     private void drawTrajectory(SpriteBatch batch) {
@@ -356,13 +389,13 @@ public class WorldRenderer implements Disposable {
             }
         }
     }
+
     private void drawWarningSign(SpriteBatch batch) {
         //Draws warning sign
         if (trajectorySimulator.isCollided()) {
             float randMultiplier = MathUtils.random(0.7f, 1.0f);
             float myWidth = AssetManager.WARNING.getWidth() * randMultiplier;
             float myHeight = AssetManager.WARNING.getHeight() * randMultiplier;
-
 
             batch.draw(
                     AssetManager.WARNING,
@@ -374,6 +407,119 @@ public class WorldRenderer implements Disposable {
         }
     }
 
+    private void drawLevel2MoonAsteroid(SpriteBatch batch) {
+
+        for (int i = 0; i < level.getSolidObjects().size; i++) {
+            if (level.getSolidObjects().get(i) instanceof MoonAsteroid) {
+                MoonAsteroid obj = (MoonAsteroid) level.getSolidObjects().get(i);
+                batch.draw(
+                        AssetManager.TOXIC_METEOR,
+                        obj.getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
+                        obj.getRadius() * toPixel * 2,
+                        obj.getRadius() * toPixel * 2
+                );
+            }
+        }
+    }
+
+    private void drawLevel3Objects(SpriteBatch batch)
+    {
+        if(level.getLevelNo() == 3)
+        {
+            Texture textureMeteor;
+            Texture textureRock;
+            for (int i = 0; i < level.getSolidObjects().size; i++) {
+                if (level.getSolidObjects().get(i) instanceof RoundObstacle) {
+                    if (i % 4 == 0) {
+                        textureMeteor = AssetManager.METEOR_NORMAL;
+                    } else {
+                        textureMeteor = AssetManager.METEOR_NORMAL2;
+                    }
+
+                    RoundObstacle obj = (RoundObstacle) level.getSolidObjects().get(i);
+                    batch.draw(
+                            textureMeteor,
+                            obj.getBody().getPosition().x * (toPixel) - (obj.getRadius() * toPixel),
+                            obj.getBody().getPosition().y * (toPixel) - (obj.getRadius() * toPixel),
+                            obj.getRadius() * toPixel * 2,
+                            obj.getRadius() * toPixel * 2f
+                    );
+                } else if (level.getSolidObjects().get(i) instanceof RectangleObstacle) {
+                    RectangleObstacle obj = (RectangleObstacle) level.getSolidObjects().get(i);
+                    if (i % 4 == 0) {
+                        textureRock = AssetManager.ALIEN_ROCK1;
+                    } else {
+                        textureRock = AssetManager.ALIEN_ROCK2;
+                    }
+                    batch.draw(
+                            textureRock,
+                            obj.getBody().getPosition().x * (toPixel) - (obj.getWidth() * toPixel),
+                            obj.getBody().getPosition().y * (toPixel) - (obj.getHeight() * toPixel),
+                            obj.getWidth() * toPixel * 2,
+                            obj.getHeight() * toPixel * 2
+                    );
+                }
+            }
+
+            batch.draw(
+                    AssetManager.CROSS_HERE,
+                    16300 * toPixel,
+                    9700 * toPixel,
+                    AssetManager.CROSS_HERE.getWidth() * 50,
+                    AssetManager.CROSS_HERE.getHeight() * 50
+            );
+        }
+    }
+
+    private void drawLevel4Textures(SpriteBatch batch)
+    {
+        boolean shouldDrawPlayer = true;
+        if(level.getLevelNo() == 4)
+        {
+            if(shouldDrawPlayer) {
+                batch.draw(
+                        AssetManager.LEVEL4PLAYER2,
+                        (level.getSolidObjects().get(0).getBody().getPosition().x * toPixel) - 430,
+                        (level.getSolidObjects().get(0).getBody().getPosition().y * toPixel) - 500,
+                        AssetManager.LEVEL4PLAYER2.getWidth() * 7,
+                        AssetManager.LEVEL4PLAYER2.getHeight() * 7
+                );
+            }
+            if(level.getTriggers().get(2).isTriggeredBefore() ) {
+                shouldDrawPlayer = false;
+                batch.draw(
+                        AssetManager.CROSS_HERE,
+                        4300 * toPixel,
+                        9100 * toPixel,
+                        AssetManager.CROSS_HERE.getWidth() * 50,
+                        AssetManager.CROSS_HERE.getHeight() * 50
+                );
+            }
+        }
+    }
+
+    private void drawMapBorder(SpriteBatch batch) {
+        float radius = level.getMap().getRadius();
+        float scale = 10;
+
+        Vector2 mapCenter = level.getMap().getCenter();
+        Texture texture = AssetManager.MAPBORDER_DOT;
+
+        for (float angle = 0; angle < 360; angle += 1.5f) {
+            Vector2 dotPos = new Vector2(radius, 0).rotate(angle).add(mapCenter);
+
+            batch.draw(
+                    texture,
+                    dotPos.x - texture.getWidth() * scale / 2f,
+                    dotPos.y - texture.getHeight() * scale / 2f,
+                    texture.getWidth() * scale,
+                    texture.getHeight() * scale
+            );
+        }
+    }
+
+
     public TrajectorySimulator getTrajectorySimulator() {
         return trajectorySimulator;
     }
@@ -381,7 +527,7 @@ public class WorldRenderer implements Disposable {
     @Override
     public void dispose() {
         textureAtlasMeteor.dispose();
-        textureAtlasObjective1.dispose();
+        textureAtlasLevel3.dispose();
         textureAtlasStar.dispose();
     }
 
@@ -417,7 +563,7 @@ public class WorldRenderer implements Disposable {
         bqMusic.play();
     }
 
-    public void stopBackgroundMusic(){
+    public void stopBackgroundMusic() {
         bqMusic.stop();
     }
 

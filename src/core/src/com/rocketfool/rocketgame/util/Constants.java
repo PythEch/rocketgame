@@ -16,9 +16,6 @@ public final class Constants {
 
     /** Used to indicate whether DEBUG features should be enabled. */
     public static boolean DEBUG = true;
-    /** Used to disable some features to reduce load time for debugging. */
-    public static final boolean QUICK_LOAD = false;
-    //TODO: Where can we use this other than RocketGame.java?
 
     public static final int GAME_WIDTH = 1280;
     public static final int GAME_HEIGHT = 720;
@@ -31,4 +28,8 @@ public final class Constants {
     public static final float FRAME_RATE = 1 / 60f;
 
     public static final String PREFERENCES = "rocketgame.prefs";
+
+    // Box2D constants recommended by the manual
+    public static final int VELOCITY_ITERATIONS = 8;
+    public static final int POSITION_ITERATIONS = 3;
 }

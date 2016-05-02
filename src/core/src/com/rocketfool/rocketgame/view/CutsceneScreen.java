@@ -1,102 +1,130 @@
 package com.rocketfool.rocketgame.view;
 
-import com.badlogic.gdx.ApplicationAdapter;
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.*;
-import com.badlogic.gdx.graphics.VertexAttributes.Usage;
-import com.badlogic.gdx.graphics.g3d.Environment;
-import com.badlogic.gdx.graphics.g3d.Material;
-import com.badlogic.gdx.graphics.g3d.Model;
-import com.badlogic.gdx.graphics.g3d.ModelBatch;
-import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
-import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
-import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
-import com.badlogic.gdx.graphics.g3d.utils.DefaultShaderProvider;
-import com.badlogic.gdx.graphics.g3d.utils.MeshBuilder;
-import com.badlogic.gdx.graphics.g3d.utils.MeshPartBuilder.VertexInfo;
-import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
-import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.video.VideoPlayer;
-import com.badlogic.gdx.video.VideoPlayerCreator;
+import com.badlogic.gdx.video.VideoPlayerDesktop;
+import com.rocketfool.rocketgame.external.RocketGame;
+import com.rocketfool.rocketgame.model.Level;
+import com.rocketfool.rocketgame.model.Popup;
 
 import java.io.FileNotFoundException;
 
-public class CutsceneScreen extends ApplicationAdapter {
-    public OrthographicCamera cam;
-    public CameraInputController inputController;
-    public ModelInstance instance;
-    public Environment environment;
+/**
+ * Created by pythech on 29/04/16.
+ */
+public class CutsceneScreen implements Screen {
+    private VideoPlayer videoPlayer;
+    private RocketGame game;
+    private SpriteBatch batch;
+    private BitmapFont font;
+    private Popup popup;
+    private PopupView popupView;
+    private FileHandle videoHandle;
+    private Level level;
+    private String welcomeText;
+    private Screen cutscene;
+    private OrthographicCamera camera;
 
-    public VideoPlayer videoPlayer;
-    public Mesh mesh;
+    public CutsceneScreen(RocketGame game, SpriteBatch batch, BitmapFont font, FileHandle fileHandle, Level level, String welcomeText) {
+        this.game = game;
+        this.batch = batch;
+        this.font = font;
+        this.videoHandle = fileHandle;
+        this.level = level;
+        this.welcomeText = welcomeText;
+    }
 
-    private final Vector3 tmpV1 = new Vector3();
-    private final Vector3 target = new Vector3();
+    public CutsceneScreen(RocketGame game, SpriteBatch batch, BitmapFont font, FileHandle fileHandle, String welcomeText, Screen cutscene) {
+        this.game = game;
+        this.batch = batch;
+        this.font = font;
+        this.videoHandle = fileHandle;
+        this.cutscene = cutscene;
+        this.welcomeText = welcomeText;
+    }
 
     @Override
-    public void create() {
-        environment = new Environment();
-        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, .4f, .4f, .4f, 1f));
-        environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
+    public void show() {
+        FitViewport viewport = new FitViewport(1280, 720);
+        videoPlayer = new VideoPlayerDesktop(viewport);
 
-        /*cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        cam.setToOrtho(false);
-        cam.lookAt(0, 0, 0);
-        cam.near = 0.1f;
-        cam.far = 300f;
-        cam.update();*/
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+        popup = new Popup();
+        popupView = new PopupView(popup, camera);
 
-        videoPlayer = VideoPlayerCreator.createVideoPlayer();
-        videoPlayer.resize(1280, 720);
-
-      //  videoPlayer = VideoPlayerCreator.createVideoPlayer(new FitViewport(1280, 720, cam));
         try {
-            videoPlayer.play(Gdx.files.internal("test.webm"));
+            videoPlayer.play(videoHandle);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        inputController = new CameraInputController(cam);
-        Gdx.input.setInputProcessor(new InputMultiplexer());
-        Gdx.gl.glEnable(GL20.GL_CULL_FACE);
-        Gdx.gl.glCullFace(GL20.GL_BACK);
+        Timer timer = new Timer();
+
+        timer.scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                popup.setText(welcomeText);
+            }
+        }, 0.4f);
+
+        timer.start();
+
+        videoPlayer.resize(1280, 720);
     }
 
     @Override
-    public void render() {
-        inputController.update();
-
-        Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    public void render(float v) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
-        if (!videoPlayer.render()) { // As soon as the video is finished, we start the file again using the same player.
-            try {
-                videoPlayer.play(Gdx.files.internal("test.webm"));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+        if (!videoPlayer.render()) { // As soon as the video is finished, we start level2.
+            if (cutscene == null && level != null) {
+                game.setScreen(new GameScreen(level, game, batch, font));
+            } else if (cutscene != null && level == null) {
+                game.setScreen(cutscene);
             }
         }
+
+        popupView.update(v);
+
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        popupView.draw(batch);
+        batch.end();
+    }
+
+    @Override
+    public void resize(int i, int i1) {
+
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
     }
 
     @Override
     public void dispose() {
-    }
 
-    public boolean needsGL20() {
-        return true;
-    }
-
-    public void resume() {
-    }
-
-    public void resize(int width, int height) {
-    }
-
-    public void pause() {
     }
 }

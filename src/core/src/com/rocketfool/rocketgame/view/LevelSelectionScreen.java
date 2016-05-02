@@ -27,12 +27,13 @@ import java.io.FileNotFoundException;
 /**
  * TODO: implement
  */
-public class LevelSelectionScreen implements Screen{
+public class LevelSelectionScreen implements Screen {
 
     private Stage stage;
     private RocketGame game;
     private SpriteBatch batch;
     private BitmapFont font;
+    private TextButton back;
 
     public LevelSelectionScreen(RocketGame game, SpriteBatch batch, BitmapFont font) {
         this.game = game;
@@ -64,36 +65,41 @@ public class LevelSelectionScreen implements Screen{
         TextButton level3 = new TextButton("Level 3", buttonStyle);
         TextButton level4 = new TextButton("Level 4", buttonStyle);
         TextButton level5 = new TextButton("Level 5", buttonStyle);
+        back = new TextButton("Back", buttonStyle);
 
 
         level1.setWidth(level1.getPrefWidth() * 2f);
         level1.setHeight(level1.getPrefHeight() * 2.1f);
-        level1.setPosition(460,440);
+        level1.setPosition(460, 440);
         stage.addActor(level1);
         level2.setWidth(level1.getPrefWidth() * 2f);
         level2.setHeight(level1.getPrefHeight() * 2.1f);
-        level2.setPosition(760,440);
+        level2.setPosition(760, 440);
         stage.addActor(level2);
         level3.setWidth(level1.getPrefWidth() * 2f);
         level3.setHeight(level1.getPrefHeight() * 2.1f);
-        level3.setPosition(1065,440);
+        level3.setPosition(1065, 440);
         stage.addActor(level3);
         level5.setWidth(level1.getPrefWidth() * 2f);
         level5.setHeight(level1.getPrefHeight() * 2.1f);
-        level5.setPosition(918,198);
+        level5.setPosition(918, 198);
         stage.addActor(level5);
         level4.setWidth(level1.getPrefWidth() * 2f);
         level4.setHeight(level1.getPrefHeight() * 2.1f);
-        level4.setPosition(600,198);
+        level4.setPosition(600, 198);
         stage.addActor(level4);
 
+        back.setWidth(level1.getPrefWidth() * 2f);
+        back.setHeight(level1.getPrefHeight() * 1.5f);
+        back.setPosition(50, 50);
 
         //Listeners
         //Level1
         level1.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(LevelManager.createLevel1(), game, batch, font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL1START, LevelManager.createLevel1(),
+                        "A meteor hit you during your daily routine!"));
             }
         });
 
@@ -101,6 +107,8 @@ public class LevelSelectionScreen implements Screen{
         level2.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                //game.setScreen(new MoonCrashScreen(game, batch, font));
+
                 game.setScreen(new MoonCrashScreen(game, batch, font));
             }
         });
@@ -109,7 +117,9 @@ public class LevelSelectionScreen implements Screen{
         level3.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(LevelManager.createLevel3(), game, batch, font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL3START, LevelManager.createLevel3(),
+                        "We have received a SOS call. It seems one of our spaceships is missing." + "\n" +
+                                "It seems last position of that ship was close the Mars however, we cant get enough signal to track it.") );
             }
         });
 
@@ -117,19 +127,32 @@ public class LevelSelectionScreen implements Screen{
         level4.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(LevelManager.createLevel4(), game, batch, font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL4START, LevelManager.createLevel4(),
+                        "We have found the ship! It is drifting on Mars' orbit. It seems there is a surviver! Quickly get close!"));
             }
         });
 
         //Level5
-        level4.addListener(new ClickListener() {
+        level5.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(LevelManager.createLevel5(), game, batch, font));
+                game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL5START, LevelManager.createLevel5(),
+                        "Our surviver gave this cordinate, aliens' home planet should be one of them. This is unbelievable"));
             }
         });
 
+        back.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new MainMenuScreen(game, batch, font));
+            }
+        });
+
+        stage.addActor(back);
+
         stage.addAction(Actions.alpha(0f));//0 = transperent
+
+        stage.setViewport(new FitViewport(1280, 720));
 
     }
 
@@ -140,8 +163,10 @@ public class LevelSelectionScreen implements Screen{
         //BQ picture
         Texture background = new Texture(Gdx.files.internal("Backgrounds/levelSelectionScreen.png"));
 
+        batch.setProjectionMatrix(stage.getViewport().getCamera().combined);
         batch.begin();
-        batch.draw(background,0,0);
+        batch.draw(background, 0, 0);
+        back.draw(batch, 1);
         batch.end();
 
         stage.act(delta);
@@ -149,8 +174,8 @@ public class LevelSelectionScreen implements Screen{
     }
 
     @Override
-    public void resize(int i, int i1) {
-
+    public void resize(int width, int height) {
+        stage.getViewport().update(width, height, true);
     }
 
     @Override

@@ -66,8 +66,8 @@ public class OptionsScreen implements Screen {
         buttonStyle.down = skin.getDrawable("button_02");
         skin.add("default", buttonStyle);
 
-        sfxStatus = game.isSfx();
-        fullscreenStatus = game.isFullScreen();
+        sfxStatus = GamePreferences.getInstance().getMasterVolume() == 1;
+        fullscreenStatus = GamePreferences.getInstance().isFullscreen();
 
         final TextButton sfx = new TextButton("Toggle Sfx:  " + (sfxStatus ? "On" : "Off"), buttonStyle);
         final TextButton fullscreen = new TextButton("Fullscreen:  " + (fullscreenStatus ? "On" : "Off"), buttonStyle);
@@ -92,14 +92,14 @@ public class OptionsScreen implements Screen {
                 {
                     GamePreferences.getInstance().setMasterVolume(0);
                     mainMenuScreen.setVideoPlayerVolume(0);
-                    game.setSfx(false);
                 }
                 else
                 {
                     GamePreferences.getInstance().setMasterVolume(1);
                     mainMenuScreen.setVideoPlayerVolume(1);
-                    game.setSfx(true);
                 }
+
+                GamePreferences.getInstance().save();
             }
         });
 
@@ -107,13 +107,13 @@ public class OptionsScreen implements Screen {
         fullscreen.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                if(!game.isFullScreen()) {
+                if(!GamePreferences.getInstance().isFullscreen()) {
                     Gdx.graphics.setDisplayMode(
                             Gdx.graphics.getDesktopDisplayMode().width,
                             Gdx.graphics.getDesktopDisplayMode().height,
                             true
                     );
-                    game.setFullScreen(true);
+                    GamePreferences.getInstance().setFullscreen(true);
                 }
                 else
                 {
@@ -122,11 +122,13 @@ public class OptionsScreen implements Screen {
                             Constants.GAME_HEIGHT,
                             false
                     );
-                    game.setFullScreen(false);
+                    GamePreferences.getInstance().setFullscreen(false);
                 }
-                fullscreenStatus = game.isFullScreen();
+                fullscreenStatus = GamePreferences.getInstance().isFullscreen();
                 fullscreen.setText("Fullscreen:  " + (fullscreenStatus ? "On" : "Off"));
                 game.setScreen(new OptionsScreen(game, batch, font, mainMenuScreen));
+
+                GamePreferences.getInstance().save();
             }
         });
 
@@ -166,7 +168,6 @@ public class OptionsScreen implements Screen {
 
         stage.act(delta);
         stage.draw();
-
     }
 
     @Override

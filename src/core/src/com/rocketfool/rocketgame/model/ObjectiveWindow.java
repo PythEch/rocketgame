@@ -4,12 +4,12 @@ package com.rocketfool.rocketgame.model;
  * Created by Omer on 26/04/2016.
  */
 public class ObjectiveWindow {
+    //region Fields
+    private String text = "";
+    private String title = "";
+    //endregion
 
-    //properties
-    private String text;
-    private String title;
-
-    //constructors
+    //region Constructors
     public ObjectiveWindow(String title, String text) {
         this.text = text;
         this.title = title;
@@ -19,9 +19,11 @@ public class ObjectiveWindow {
         this.text = text;
     }
 
-    public ObjectiveWindow() {}
+    public ObjectiveWindow() {
+    }
+    //endregion
 
-    //basic getter setters
+    //region Getters & Setters
     public String getText() {
         return text;
     }
@@ -37,6 +39,5 @@ public class ObjectiveWindow {
     public void setTitle(String title) {
         this.title = title;
     }
-
-
+    //endregion
 }
