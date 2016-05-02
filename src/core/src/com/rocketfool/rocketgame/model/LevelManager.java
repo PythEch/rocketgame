@@ -775,13 +775,8 @@ public class LevelManager {
     }
 
     public static Level createLevel5() {
+        //Previously Level 6.
         Timer.instance().stop();
-        //Previously Level 6. Don't delete this one. :)
-        /* For this level
-         * 
-         * TODO: are trigger and waypoint places correct?
-         * TODO: simple crosshairs sprite for all waypoints in this level
-         */
 
         final Level level = new Level();
         level.levelNo = 5;
@@ -792,9 +787,9 @@ public class LevelManager {
         WorldController.controlState = 7;
 
         //map
-        level.map = new Map(Gdx.graphics.getWidth() * 600, Gdx.graphics.getHeight() * 600);
+        level.map = new Map(Gdx.graphics.getWidth() * 350, Gdx.graphics.getHeight() * 350);
 
-        //secretPlanet
+        //ActualPlanet
         level.planets.add(new Planet(16000, 15000, 1.0e25f, 125, null, level.world, 7));
         //planet0
         level.planets.add(new Planet(11000, 13000, 4.0e25f, 800, null, level.world, 6));
@@ -805,32 +800,17 @@ public class LevelManager {
         //planet3
         level.planets.add(new Planet(8200, 7200, 1.75e25f, 350, null, level.world, 3));
 
-        //rocket
+        //Rocket
         level.playable = new Playable(4000, 4000, 88, 108, 1e5f, 750 * BASE, 200 * BASE, 1000 * BASE, 1.5e5f, level.world);
 
         //default Triggers
         addDefaultTriggers(level);
-
-        //waypoints
-        /*
-        Waypoint zerothPlanet = new Waypoint(11000, 11500, 5);
-        level.waypoints.add(zerothPlanet);
-        Waypoint firstPlanet = new Waypoint(5500, 4600, 5);
-        level.waypoints.add(firstPlanet);
-        Waypoint secondWaypoint = new Waypoint(1400, 3700, 5);
-        level.waypoints.add(secondWaypoint);
-        Waypoint thirdPlanet = new Waypoint(8650, 7200, 5);
-        level.waypoints.add(thirdPlanet);*/
-        // u wot m8
-
-        //FIXME: fix these waypoints, make them in order
 
         //endGame Triggers
         final PositionTrigger planet0 = new PositionTrigger(11000, 13000, 1500, level.playable) {
             @Override
             public void triggerAction() {
                 popup.setText("This is not the planet you are looking for. Move along!");
-                //level.waypoints.removeIndex(0);
             }
         };
         level.triggers.add(planet0);
@@ -840,8 +820,6 @@ public class LevelManager {
             public void triggerAction() {
                 popup.setText("What a beautiful planet this is! However, there is no sign of life here.");
                 objectiveWindow.setText("Continue investigating planets");
-                //level.waypoints.removeIndex(1);
-
             }
         };
         level.triggers.add(planet1);
@@ -850,8 +828,6 @@ public class LevelManager {
             @Override
             public void triggerAction() {
                 popup.setText("Nothing to do here! I don't want to be on this planet anymore.");
-                //level.waypoints.removeIndex(2);
-
             }
         };
         level.triggers.add(planet2);
@@ -859,23 +835,11 @@ public class LevelManager {
         final PositionTrigger planet3 = new PositionTrigger(8200, 7200, 700, level.playable) {
             @Override
             public void triggerAction() {
-                //if (planet1.isTriggered() && planet2.isTriggeredBefore()) {
                 popup.setText("I have a bad feeling about this planet. Let's move on!");
-                //level.waypoints.removeIndex(3);
-                //}
-                //else {
-                //    popup.setText("It seems we skipped one planet on which aliens might be living!");
-                //}
-
             }
         };
         level.triggers.add(planet3);
 
-        //add final waypoint for the secret planet
-        if (planet0.isTriggeredBefore() && planet1.isTriggeredBefore() && planet2.isTriggeredBefore() && planet3.isTriggered()) {
-            //Waypoint secretOne = new Waypoint(16000, 14750, 5);
-            //level.waypoints.add(secretOne);
-        }
         final PositionTrigger secret = new PositionTrigger(16000, 15000, 300, level.playable) {
             @Override
             public void triggerAction() {
@@ -884,9 +848,9 @@ public class LevelManager {
                     level.setState(Level.State.GAME_OVER);
 
                 } else {
-                    popup.setText("We better check all the other planets before looking here.");
+                    popup.setText("We better check all the other planets before looking here. It doesn't seem likely to be" +
+                            "this one...");
                 }
-
             }
         };
         level.triggers.add(secret);
