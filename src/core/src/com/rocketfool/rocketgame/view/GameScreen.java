@@ -439,7 +439,7 @@ public class GameScreen implements Screen {
                             newLevel = LevelManager.createLevel5();
                             video = AssetManager.LEVEL4END;
                             levelText = "Congratulations! You saved our friend." + "\n" + "He has some interesting informations:" +
-                                    "\n" + "They have seen aliens and know where they are." + "\n" + "But during their wayback they crashed the meteors we have passed before.";
+                                    "\n" + "They have seen aliens and know where they are." + "\n" + "But during their way back they crashed the meteors we have passed before.";
                             break;
                         case 5:
                             isGameOver = true;
