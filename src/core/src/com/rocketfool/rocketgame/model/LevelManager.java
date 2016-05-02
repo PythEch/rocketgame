@@ -124,6 +124,7 @@ public class LevelManager {
 
             @Override
             public void triggerAction() {
+
                 popup.setText("That's better! Now use the UP & DOWN arrow keys to increase/ decrease" +
                         "your thrust. \n Try to reduce your velocity to zero " +
                         "(The velocity display is at the top).");
@@ -584,7 +585,6 @@ public class LevelManager {
         final PositionTrigger endTrig = new PositionTrigger(5000, 10000, 1000f, level.playable) {
             @Override
             public void triggerAction() {
-                level.setState(Level.State.LEVEL_FINISHED);
                 //Popup Text:("Congratulations! You saved your friend! Looks like he is interesting information about the aliens too!!");}
             }
         };
@@ -616,6 +616,7 @@ public class LevelManager {
                            @Override
                            public void run() {
                                popup.setText("You have to pass over your friend's ship in order to save them from the orbit.");
+                               level.setState(Level.State.LEVEL_FINISHED);
                            }
                        },
                 18.0f);
@@ -846,6 +847,7 @@ public class LevelManager {
                 popup.setText("What a beautiful planet this is! However, there is no sign of life here.");
                 objectiveWindow.setText("Continue investigating planets");
                 //level.waypoints.removeIndex(1);
+                level.setState(Level.State.LEVEL_FINISHED);
 
             }
         };

@@ -49,8 +49,9 @@ public class MoonCrashScreen implements Screen {
         this.popup = new Popup();
         this.popupView = new PopupView(popup, camera);
 
+        Timer timer = new Timer();
 
-        Timer.schedule(new Timer.Task() {
+        timer.scheduleTask(new Timer.Task() {
             @Override
             public void run() {
                 popup.setText("It is a great idea to check it out.");
@@ -58,13 +59,14 @@ public class MoonCrashScreen implements Screen {
             }
         }, 1f);
 
-
-        Timer.schedule(new Timer.Task() {
+        timer.scheduleTask(new Timer.Task() {
             @Override
             public void run() {
                 game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL2START, LevelManager.createLevel2(), "You starting a new journey. Be careful out there!"));
             }
         }, 13f);
+
+        timer.start();
 
         meteorAngle = 150;
         meteorPosition = new Vector2(0, 0);

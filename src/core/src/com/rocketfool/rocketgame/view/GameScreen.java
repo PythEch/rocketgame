@@ -451,7 +451,7 @@ public class GameScreen implements Screen {
                             newVideo = AssetManager.LEVEL5START;
                             endLevelText = "Congratulations! You saved our friend." + "\n" + "He has some interesting informations:" +
                                     "\n" + "They have seen aliens and know where they are." + "\n" + "But during their way back they crashed the meteors we have passed before.";
-                            newLevelText = "We have found the ship! It is drifting on Mars' orbit. It seems there is a survivor! Quickly get close!";
+                            newLevelText = "Our surviver gave this cordinate, aliens' home planet should be one of them. This is unbelievable";
                             break;
                         case 5:
                             isGameOver = true;
@@ -485,7 +485,12 @@ public class GameScreen implements Screen {
             renderer.stopWarningSound();
             renderer.stopBackgroundMusic();
             popupView.stopPopupShutter();
-            game.setScreen(new EndingScreen(game, batch, font));
+            // 1. Level5END with "It is a new era, humans are alliens are living together now. You started it!" text
+            // 2. Ending without anytext or popup
+            // 2 == endingscreen
+            game.setScreen(new CutsceneScreen(game, batch, font, AssetManager.LEVEL5END, "It is a new era, humans are alliens are living together now. You started it!",
+                    new EndingScreen(game, batch, font)
+            ));
         }
 
         // draw trigger bounds for debug
