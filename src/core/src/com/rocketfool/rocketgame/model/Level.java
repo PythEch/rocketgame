@@ -362,7 +362,7 @@ public class Level {
             orbiter.getBody().setTransform(
                     x + (float) (1500 * Math.cos(w * timePassed + phase)),
                     y + (float) (1500 * Math.sin(w * timePassed + phase)),
-                    0f);
+                    5f);
         } else if (selection == 5) { //Moon around Earth quick preset for Level 5
             float x = ((Planet) orbiter).getPrimary().getBody().getPosition().x;
             float y = ((Planet) orbiter).getPrimary().getBody().getPosition().y;

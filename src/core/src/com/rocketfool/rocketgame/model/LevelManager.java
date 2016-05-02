@@ -85,19 +85,18 @@ public class LevelManager {
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
-                               popup.setText("Your assistant Mr.Tekman is here to guide you.");
                                popup.setText("What was THAT? A strange object whizzing by left you spinning chaotically in space!" +
-                                       "You must regain control!");
+                                       "You must regain control! But don't worry, as you guide I, Professor Tekman will guid you!");
                                objectiveWindow.setText("Regain control of the ship.");
                            }
                        },
                 time);
-        time += 14;
+        time += 16;
         Timer.schedule(new Timer.Task() {
                            @Override
                            public void run() {
                                popup.setText("Use RIGHT & LEFT arrow keys to control angular movement.");
-                               popup.setText("Now stop the spinning.");
+                               popup.setText("Now stop that spinning.");
                                WorldController.controlState = 2;
                            }
                        },
