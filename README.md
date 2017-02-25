@@ -1,18 +1,21 @@
-## Importing this project
-#### To import in Eclipse
-File -> Import -> General -> Existing Projects into Workspace
-#### To import in IntelliJ IDEA
-File -> Open -> YourProject.ipr
+#RocketGame 
 
-## How to Git or Github
-* Use [Github's GUI](https://desktop.github.com) to make your life easier
-* Read tutorials
-  * [Learn markdown](https://guides.github.com/features/mastering-markdown/)
-  * [Make toy repositories](https://guides.github.com/activities/hello-world/)
-  * ???
-* Do not commit all your changes at once (often I'm guilty of doing this while I'm in a rush)!
-  * Consider [splitting up your changes](http://stackoverflow.com/a/18531719) so it becomes easier to both
-    * keep a nice history of commits
-    * analyze each commit's purpose and results
-  * Otherwise git becomes nothing more than a glorified Dropbox
-* Always ![Sync](http://i.imgur.com/0t5l4QJ.png) before you start working on the project
+This is a computer game that is created with the aim of making various principles of space travel, such as orbital mechanics, easy to understand for a general audience in an entertaining way. The game is primarily about piloting a rocket from one location to another in a two-dimensional space environment with realistic gravitation but reduced distances while managing additional concerns like fuel consumption and avoiding obstacles.
+
+Implemented in Java as a group project for Bilkent University CS-102 course, got 10/10 on demo.
+
+###Libraries Used
+- LibGDX (with gdx-video plugin)
+- Box2D
+
+###Screenshots
+
+![Main Menu](Screenshots/main_menu.jpg)
+![Sample Cutscene](Screenshots/cutscene.png)
+![In-Game](Screenshots/generic.png)
+![Realistic physics which allows us to see orbital motions](Screenshots/orbit.png)
+![Near The Planet Earth](Screenshots/earth.jpg)
+![Collision Prediction](Screenshots/collision.png)
+![Trajectory Simulator](Screenshots/trajectory.png)
+
+### [Demo (in Turkish)](https://www.youtube.com/watch?v=31m7LLYHFeE)
