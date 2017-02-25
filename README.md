@@ -8,14 +8,14 @@ Implemented in Java as a group project for Bilkent University CS-102 course, got
 - LibGDX (with gdx-video plugin)
 - Box2D
 
+### [Demo (in Turkish)](https://www.youtube.com/watch?v=31m7LLYHFeE)
+
 ###Screenshots
 
-![Main Menu](Screenshots/main_menu.jpg)
-![Sample Cutscene](Screenshots/cutscene.png)
-![In-Game](Screenshots/generic.png)
-![Realistic physics which allows us to see orbital motions](Screenshots/orbit.png)
-![Near The Planet Earth](Screenshots/earth.jpg)
-![Collision Prediction](Screenshots/collision.png)
-![Trajectory Simulator](Screenshots/trajectory.png)
-
-### [Demo (in Turkish)](https://www.youtube.com/watch?v=31m7LLYHFeE)
+![Main Menu](Screenshots/main_menu.jpg "Main Menu")
+![Sample Cutscene](Screenshots/cutscene.png "Sample Cutscene")
+![In-Game](Screenshots/generic.png "In-Game")
+![Orbital Motion](Screenshots/orbit.png "Realistic physics which allows us to see orbital motions")
+![Near The Planet Earth](Screenshots/earth.jpg "Near the planet Earth")
+![Collision Prediction](Screenshots/collision.png "Collision prediction")
+![Trajectory Simulator](Screenshots/trajectory.png "You can take crazy paths like this, the trajectory simulator will guide you through!")
